@@ -39,7 +39,6 @@ SKIP_SCHEMES = ("mailto:", "javascript:", "tel:", "data:", "ftp:", "news:", "irc
 DOC_EXT = {".pdf", ".zip", ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".odt", ".txt", ".gz",
            ".bz2", ".7z", ".rar", ".tar", ".chm", ".epub", ".sql", ".fdb", ".fbk", ".exe", ".msi", ".rtf"}
 INFRA_FILES = {"google27b5d15e48805187.html",  # Google Search Console site verification
-               "sp-push-worker.js", "sp-push-worker-fb.js", "sp-push-manifest.json",  # SendPulse web push
                "robots.txt", "favicon.ico", "404.html", "50x.html", "sitemap.xml", "_redirects.map"}
 
 

@@ -8,8 +8,7 @@ DST=/srv/firebirdsql/assets
 SSH="ssh -p $ORIGIN_PORT -i /home/deploy/.ssh/id_origin_mirror -o StrictHostKeyChecking=accept-new"
 DIRS="file img js template plugins"
 # Not synced (unused): doclibs (in private/doclibs), book, doctools, security (PHP captcha), lst_files.
-FILES="favicon.ico google27b5d15e48805187.html sp-push-worker.js sp-push-worker-fb.js sp-push-manifest.json 404.html 50x.html"
-# sp-push-*: SendPulse web push (script in site/layouts/partials/head.html).
+FILES="favicon.ico google27b5d15e48805187.html 404.html 50x.html"
 OPTS=(-a --delete --exclude-from=/usr/local/etc/fb-assets-exclude.txt -e "$SSH")
 total=$(find $DST -type f 2>/dev/null | wc -l)
 del=0
