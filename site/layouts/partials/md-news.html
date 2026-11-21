@@ -1,0 +1,30 @@
+{{/* Markdown news, newest first. Input: dict "fmt" "list"|"home". */}}
+{{- $news := where (where site.RegularPages "Section" "news") "Draft" false -}}
+{{- range $news.ByDate.Reverse -}}
+{{- $summary := .Params.summary | default (.Summary | plainify | truncate 200) -}}
+{{- if eq $.fmt "home" }}
+<div class="news-item d-flex flex-column flex-md-row mb-4 pb-4 border-bottom">
+	<div class="news-thumb me-3"><a href="{{ .RelPermalink }}"><img src="{{ .Params.image | default "/img/main-logo-news.png" }}" alt="{{ .Title }}"></a></div>
+	<div class="news-content flex-grow-1">
+		<div class="d-flex justify-content-between align-items-center mb-1">
+			<div class="text-uppercase small custom-green"><a href="/en/news" class="text-decoration-none custom-green">Firebird News</a></div>
+			<div class="news-date d-flex align-items-center">{{ .Date.Format "Jan 2, 2006" }}</div>
+		</div>
+		<h3 class="h5 mb-2"><a href="{{ .RelPermalink }}" class="text-dark text-decoration-none">{{ .Title }}</a></h3>
+		<p class="text mb-2">{{ $summary }}</p>
+	</div>
+</div>
+{{- else }}
+<div class="trending-news-item technology-item">
+	<div class="trending-news-thumb"></div>
+	<div class="trending-news-content">
+		<div class="post-meta">
+			<div class="meta-categories"><a>News &amp; Events</a></div>
+			<div class="meta-date"><span>{{ .Date.Format "January 02, 2006" }}</span></div>
+		</div>
+		<h3 class="title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+		<p class="text">{{ $summary }}</p>
+	</div>
+</div>
+{{- end }}
+{{- end -}}

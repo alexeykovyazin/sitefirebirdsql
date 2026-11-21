@@ -19,3 +19,7 @@ timeout = "300s"
 
 [security]
   allowContent = ["text/html", "text/markdown", "text/org", "text/asciidoc", "text/rst", "text/pandoc"]
+
+# Markdown news (site/content/news/*.md) -> /en/news/<file name>/
+[permalinks]
+  news = "/en/news/:contentbasename/"

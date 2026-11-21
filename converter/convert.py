@@ -93,6 +93,23 @@ def parse_legacy(h):
     }
 
 
+def load_global_replace():
+    """converter/global-replace.tsv: text replacements for every page (old -> new), e.g. a new release link."""
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "global-replace.tsv")
+    if not os.path.exists(p):
+        return []
+    return [(r["old"], r["new"]) for r in csv.DictReader(open(p, encoding="utf-8"), delimiter="\t") if r.get("old")]
+
+
+GLOBAL_REPLACE = load_global_replace()
+
+
+def global_replace(s):
+    for a, b in GLOBAL_REPLACE:
+        s = s.replace(a, b)
+    return s
+
+
 def yaml_str(s):
     return json.dumps(s, ensure_ascii=False)
 
@@ -137,7 +154,7 @@ def main():
         if len(fid) > 120:
             fid = fid[:100] + "-" + hashlib.md5(url.encode()).hexdigest()[:8]
         fname = fid + ".html"
-        body = relink(p["body"])
+        body = global_replace(relink(p["body"]))
         # nginx serves "/x" and "/x/" from x/index.html; a dot in the last segment would make Hugo write a file.
         hugo_url = url if url.endswith("/") or "." not in url.rsplit("/", 1)[-1] else url + "/"
         fm = ["---",
@@ -158,7 +175,8 @@ def main():
         manual = os.path.join(os.path.dirname(os.path.abspath(__file__)), "manual", fname)
         if os.path.exists(manual):
             # Page edited by hand (converter/manual/<file>): it wins over the CMS copy.
-            shutil.copyfile(manual, target_file)
+            with open(manual, encoding="utf-8") as src, open(target_file, "w", encoding="utf-8", newline="\n") as dst:
+                dst.write(global_replace(src.read()))
             served.add(url.rstrip("/") or "/")
             for r in rs:
                 conv.append((r["url"], r["format"], "manual-override" if r is canon else "same-as " + url, fname))

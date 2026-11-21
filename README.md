@@ -55,6 +55,10 @@ hugo --quiet -d ../public
 
 The result is in `public/`. nginx serves it, then the asset folders (see `deploy/nginx/`).
 
+## Add news, a driver version or a release
+
+See [docs/adding-content.md](docs/adding-content.md): news in Markdown, a new Jaybird version, a new Firebird release.
+
 ## Change a page
 
 - Generated pages are in `site/content/pages/`. Do not edit them: the converter writes them again.
@@ -102,6 +106,7 @@ Reports (broken links, orphan files and pages) are copied to `reports/verify/`.
 | `scraper/` | CMS crawler |
 | `deploy/` | deploy and sync scripts, nginx config, droplet setup |
 | `tools/` | link check, theme download |
+| `docs/` | how to add news, driver versions, releases |
 | `reports/verify/` | last link check reports |
 
 Server addresses are not in the repo. Set `DROPLET_HOST`, `ORIGIN_URL` and `DO_TOKEN_FILE`

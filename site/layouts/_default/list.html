@@ -1,1 +1,10 @@
-{{ define "main" }}{{ .Content }}{{ end }}
+{{ define "main" }}
+{{- if .IsHome -}}
+  {{- /* Markdown news go on top of the home page news block. */ -}}
+  {{- $mark := `<div class="news-item d-flex flex-column flex-md-row mb-4 pb-4 border-bottom">` -}}
+  {{- $items := partial "md-news.html" (dict "fmt" "home") -}}
+  {{- replace .Content $mark (print $items $mark) 1 | safeHTML -}}
+{{- else -}}
+{{ .Content }}
+{{- end -}}
+{{ end }}
