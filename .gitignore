@@ -14,3 +14,6 @@ private/
 
 # Very old files removed from the site, kept local only
 veryold/
+
+# Local theme/asset copy for hugo server (tools/fetch_assets.py)
+/assets/
