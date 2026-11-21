@@ -1,0 +1,213 @@
+---
+title: "Firebird: Developer's Report: Core Coding and Development"
+html_title: "Firebird: Developer's Report: Core Coding and Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Coding and Development"
+menu_active: ""
+source_url: "/en/report-core-development-202006"
+source_format: new
+url: "/en/report-core-development-202006"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Coding and Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">February to May 2020</span></strong></div>
+
+<h4><u>February 2020</u></h4>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>A bit better solution for CORE-6110: 64-bit transaction IDs are not stored properly in status vector</li>
+	<li>Correct usage of Arg::Int64</li>
+	<li>Complete fix for bug CORE-6233 : Wrong dependencies of stored function on view after backup and restore.</li>
+	<li>New feature CORE-4933 : Add better transaction control to isql</li>
+	<li>Fixed bug CORE-6254 : AV in engine when using SET TRANSACTION and ON TRANSACTION START trigger uses EXECUTE STATEMENT against current transaction</li>
+	<li>Fixed bug CORE-6252 : UNIQUE CONSTRAINT violation</li>
+	<li>Improvement CORE-6095 : Extend trace record for COMMIT/ROLLBACK RETAINING to allow chaining of transaction ids&nbsp;</li>
+	<li>Fixed bug CORE-6253 : Crash via locked fb_lock file</li>
+</ul>
+
+<h3><em>B3_0_Release</em></h3>
+
+<ul>
+	<li>Backport new feature CORE-4933 : Add better transaction control to isql&nbsp;</li>
+	<li>Fixed bug CORE-6254 : AV in engine when using SET TRANSACTION and ON TRANSACTION START trigger uses EXECUTE STATEMENT against current transaction</li>
+	<li>Fixed bug CORE-6252 : UNIQUE CONSTRAINT violation</li>
+	<li>Fixed bug CORE-6253 : Crash via locked fb_lock file</li>
+</ul>
+
+<h4><u>March</u></h4>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>Allow MP compilation for extern projects. MSVC15 only for now.</li>
+	<li>Fixed bug CORE-6224 : [AV] Re-destruction of the rem_port object</li>
+	<li>Make CLOOP generate correct VERSION constants for all kind of outputs.</li>
+	<li>Fixed bug reported privately: request of expression index could run outside of main request&#39;s snapshot.</li>
+	<li>Merge branch &#39;query_restarts_2&#39;</li>
+	<li>Optimization : use overlapped IO for database files on Windows. Cleanup corresponding (never used) code from IB6.</li>
+</ul>
+
+<h3><em>B3_0_Release</em></h3>
+
+<ul>
+	<li>Fixed bug CORE-6224 : [AV] Re-destruction of the rem_port object</li>
+	<li>Make CLOOP generate correct VERSION constants for all kind of outputs.</li>
+	<li>Correct my old fix for CORE-5470 - use converters in correct order query_restarts_2</li>
+	<li>Fixed regression found by Nikolay: Let restart request immediately when update conflict happens at positioned UPDATE\DELETE</li>
+	<li>Introduced generic way to add some specific markers for primary BLR verbs using new blr_marks code.</li>
+	<li>Restore how DebugInfo was generated.</li>
+	<li>Preserve locks when required and there is no next savepoint (for ex. no transaction-level savepoint)</li>
+	<li>Update documentation.</li>
+</ul>
+
+<h4><u>April</u></h4>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>Some additional checks and documentation for new MAKE_DBKEY function.</li>
+	<li>Windows build for ExtAuth sample plugin and its keygen</li>
+	<li>Add pre-built binaries of ExtAuth plugin (\examples\prebuilt\plugins) and its keygen (\examples\prebuilt\bin).</li>
+	<li>Avoid creating folders for the build logs of misc libraries</li>
+	<li>Update documentation (CORE-4933)</li>
+</ul>
+
+<h4><u>May</u></h4>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>&nbsp;Renamed exauth sample plugins\app.</li>
+	<li>Windows build for dbcrypt sample plugins\app.</li>
+	<li>Fixed dbcrypt sample app to compile on Windows.</li>
+	<li>make_examples.bat updated.</li>
+	<li>Update documentation.</li>
+	<li>Reimplemented TraceLog as ring-buffer in shared memory</li>
+	<li>Added simple ITimer implementation, independent of system time changes. Use common template for Attachment::IdleTimer.</li>
+	<li>Don&#39;t start session idle timer if there is executing statement.</li>
+	<li>Show in monitoring tables real expiration time of timeout timers, independent of system time change after timer start.</li>
+	<li>Avoid races when trace plugin is [un]loaded and firebird process is stopped. Fixed bug CORE-5838 : Rotated Trace files locked by engine</li>
+	<li>Refactored TimerImpl to use std::function as Adriano suggested.</li>
+	<li>Reimplement trace configurations storage. This should fix CORE-6296 : Many connections results in poor performance</li>
+	<li>Fixed 5 seconds delay when user application exits not calling fb_shutdown</li>
+	<li>Ensure timer handler can&#39;t run after the stop() is executed.</li>
+	<li>Fixed race with idle timer handler and ~PluginLogWriter().</li>
+	<li>Make Idle timer handler to not blocks when run in parallel with write() anymore.</li>
+	<li>Use full file name for touch timer</li>
+	<li>Fixed bug CORE-6319 : NBACKUP locks db file on error</li>
+	<li>Shared objects (lock manager, event manager and replication manager) should be deleted under g_mutex protection. This should fix<br />
+	bugchecks happens occasionally when run test for CORE-5034. Also, don&#39;t acquire local GlobalObjectHolder::m_mutex when it is not<br />
+	necessary.</li>
+</ul>
+<em>Vladyslav Khorsun</em><br />
+<em>Dnetpropetrovsk, Ukraine</em>
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

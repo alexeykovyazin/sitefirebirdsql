@@ -1,0 +1,105 @@
+
+    <!--====== Required meta tags ======-->
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{{ with .Params.description }}<meta name="description" content="{{ . }}" />{{ end }}
+{{ with false }}<meta name="generator" content="{{ . }}" />{{ end }}
+
+<meta property="fb:app_id" content="164106886965924" /> 
+<meta property="fb:admins" content="591628600"/>
+{{ with .Params.og_title }}<meta property="og:title" content="{{ . }}" />{{ end }}
+{{ with .Params.og_description }}<meta property="og:description" content="{{ . }}" />{{ end }}
+{{ with .Params.og_image }}<meta property="og:image" content="{{ . }}" />{{ end }}
+{{ with .Params.og_site_name }}<meta property="og:site_name" content="{{ . }}" />{{ end }}
+
+<!--====== Title ======-->
+<title>{{ .Params.html_title | default .Title }}</title>
+
+<!--====== Favicon Icon ======-->
+
+
+<!--====== Bootstrap css ======-->
+<link rel="stylesheet" href="/template/css/bootstrap.min.css">
+
+<!--====== Fontawesome css ======-->
+<link rel="stylesheet" href="/template/css/font-awesome.min.css">
+
+<!--====== Magnific Popup css ======-->
+<link rel="stylesheet" href="/template/css/magnific-popup.css">
+
+<!--====== nice select css ======-->
+<link rel="stylesheet" href="/template/css/nice-select.css">
+
+<!--====== Slick css ======-->
+<link rel="stylesheet" href="/template/css/slick.css">
+
+<!--====== stellarnav css ======-->
+<link rel="stylesheet" href="/template/css/stellarnav.css">
+
+<!--====== Default css ======-->
+<link rel="stylesheet" href="/template/css/default.css">
+
+<!--====== Style css ======-->
+<link rel="stylesheet" href="/template/css/style.css?v=2">
+
+<!--====== jquery js ======-->
+<script src="/template/js/vendor/modernizr-3.6.0.min.js"></script>
+<script src="/template/js/vendor/jquery-1.12.4.min.js"></script>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2290083-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SH0FN8M2JF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SH0FN8M2JF');
+</script>
+
+
+
+<script charset="UTF-8" src="//cdn.sendpulse.com/28edd3380a1c17cf65b137fe96516659/js/push/75e46cb696e4340c9933758959ff8433_1.js" async></script> 
+
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+<script>
+window.fbAsyncInit = function() {
+  FB.init({
+    appId: '840352380687239',
+    autoLogAppEvents: true,
+    xfbml: true,
+    version: 'v13.0'
+  });
+};
+</script>
+
+<!--====== jquery js ======-->
+<script src="/template/js/vendor/modernizr-3.6.0.min.js"></script>
+<script src="/template/js/vendor/jquery-1.12.4.min.js"></script>
+
+<script type="text/javascript" src="/js/ajax-min.js"></script>
+<script type="text/javascript" src="/js/tab-min.js"></script>
+<script type="text/javascript" src="/js/functions-min.js?v=5.3"></script>
+
+<script type="text/javascript" src="/js/mailto-min.js"></script>
+
+{{ with .Params.source_url }}<link rel="canonical" href="https://firebirdsql.org{{ . }}" />{{ end }}
+<link rel="stylesheet" href="/site-extra.css">

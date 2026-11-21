@@ -1,0 +1,225 @@
+---
+title: "Firebird: Medical Analytical System for Moscow City Hospital #31"
+html_title: "Firebird: Medical Analytical System for Moscow City Hospital #31"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Medical Analytical System for Moscow City Hospital #31"
+menu_active: ""
+source_url: "/en/case-studies-catalog/medical-analytical-system-for-moscow-city-hospital-31-12651"
+source_format: new
+url: "/en/case-studies-catalog/medical-analytical-system-for-moscow-city-hospital-31-12651"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+ 
+    <section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/case-studies/">Case Studies</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/case-studies-catalog/">Case Studies Catalog</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Medical Analytical System for Moscow City Hospital #31</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-8">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div class="post-categories d-flex justify-content-between align-content-center">
+                        <div class="categories-share">
+                            <ul>
+                                <li><i class="fas fa-calendar"></i> Sep 14, 2011</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="title">Medical Analytical System for Moscow City Hospital #31</h3>
+                                            </div>
+                    <div class="post-text mt-30">
+                        <a href="/file/case_studies/Medical%20Analytical%20System%20for%20Moscow%20City%20Hospital%2031.pdf" target="_blank">View this Case Study in PDF format </a><br />
+&nbsp;
+<h3>About us</h3>
+<br />
+<img align="right" alt="Moscow City Hospital #31" height="200" src="/img/case_studies/Moscow_City_Hospital_31.jpg" width="318" /> Moscow City Hospital #31 is a modern, 620 bed medical institution providing emergency and in-patient medical services with a staff of over 400. The hospital is equipped with modern medical instruments and computers.<br />
+<br />
+Our hospital information system is one of the key elements of successful patient care. It helps organize and manage patient treatment programs, maintains all medical records, and prepares necessary documents. It isn&#39;t just a multi-user database; it maintains information in complex data structures and applies sophisticated analytical processes to maximize the value of the information to the medical staff and management.<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Problem</span></strong><br />
+<br />
+In 2008, the hospital was using a medical information system which adequately handled data entry and basic reporting, but lacked analytical capabilities. There were important reports that required more complex analysis and data structures than those currently used, that could not be easily implemented in the Oracle based database system.<br />
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Quest for solution</span></strong><br />
+<br />
+Our IT department was challenged to find a way to solve these problems that could grow with the hospital while maintaining reasonable costs. Oracle&#39;s license costs were approximately $15,000 (USD) per server, plus mandatory technical support fees. Worse, some of the necessary capabilities weren&#39;t even possible with Oracle. The data processing algorithms require medical data to be stored in denormalized tables, and both read and written to within the frames of single transactions. Oracle prohibits such operations from being done within triggers (which they call &ldquo;data mutation&rdquo;), and forces use of asynchronous operations instead.<br />
+<br />
+&ldquo;Oracle is well-known for its wide functionality&rdquo;, says Alexander Sedov, CIO of the hospital, &ldquo;but we found that many regulations, required by Oracle, [make it] not suitable for our task&rdquo;.<br />
+<br />
+In their search for less expensive, more flexible alternatives, the IT department found Firebird. They realized that Firebird&#39;s free, open source licensing would save the hospital tens of thousands of dollars in licensing costs and recurring support fees, if it could do the job.<br />
+<br />
+In Firebird, they found:
+<ul>
+	<li>An easy to use and powerful SQL language implementation;</li>
+	<li>The ability to directly return stored procedures&#39; execution results as result sets, without having to create additional, temporary database objects;</li>
+	<li>Transparent implementation of business logic in triggers, through Firebird ability to read and change inserted/updated records within the same trigger;</li>
+	<li>Ability to raise exceptions in triggers and stored procedures to change execution flow and notify users of problems in a friendly manner;</li>
+	<li>A powerful &quot;Events&quot; capability that allows the server to notify clients of specific situations from the server side. (This ability is especially essential for this particular case to orchestrate data loading and processing tasks.)</li>
+	<li>And of course, Firebird&#39;s whole &ldquo;active tables&rdquo; concept, which allows its triggers to &quot;mutate data&quot;, and provide the necessary control of data changes in operations with denormalized data.</li>
+</ul>
+As a bonus, they found that Firebird has a variety of powerful, easy to use third-party tools for database development, with really low prices (especially when compared with the alternatives for Oracle).<br />
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Solution</span></strong><br />
+&nbsp;
+
+<img alt="Moscow City Hospital #31" height="200" src="/img/case_studies/Moscow_City_Hospital_31_1.jpg" width="377" align="right"/>
+			The IT department chose Firebird 2.1 as the basis for its new analytical system, which it developed in less than 7 months. The database now contains over 400 tables, and over 600 stored procedures and triggers containing the data processing
+logic. It supports approximately 100 concurrent users, who enter and import/export data, generate reports, and perform OLAP processing, without requiring separate transaction and query databases. The database size is over 1.5Gigabytes, growing by about 50 Megabytes per month. Database maintenance is implemented with IBSurgeon&rsquo;s FBDataGuard tool to ensure minimal outages.<br />
+			<br />
+			Through this new system and its advanced capabilities, Firebird plays an important role in patient treatment, as well as the traditional administrative activities.
+
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Future</span></strong><br />
+<br />
+The IT department Moscow City Hospital #31 now plans to build upon their successful experience with Firebird, by implementing a module to manage a central drugstore warehouse and 10 local drugstores in the remote hospital departments. Meanwhile, they&#39;ll continue to develop the medical information system, migrating to the new Firebird 2.5 version to provide even better performance and stability.<br />
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Contacts</span></strong><br />
+<br />
+Alexander Sedov, CIO, <a href="http://www.mosgorzdrav.ru/mgz/KOMZDRAVinstitutions.nsf/fa_MainForm?OpenForm&amp;type=ka_FotoList&amp;lpu=lpu_00022" target="_blank">Moscow City Hospital #31</a><br />
+sedov@gkb-31.ru<br />
+<br />
+&nbsp;
+                    </div>
+                  	<div>
+                    	<div>
+  <iframe frameborder="0"
+    height="150" 
+    scrolling="no" 
+    src="https://firebirdfoundation.substack.com/embed" 
+    style="border:1px solid #EEE; background:white;" 
+    width="100%" 
+    allow="encrypted-media"
+    sandbox="allow-scripts allow-same-origin allow-forms"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>  
+                  	</div>
+                    <div class="post-tags">
+                        <ul>
+                            <li><a><i class="fa fa-share"></i> Share With:</a></li>
+                            <li style="cursor: pointer;"><a class="share-icon fb" data-url="/en/case-studies-catalog/medical-analytical-system-for-moscow-city-hospital-31-12651"><i class="fab fa-facebook-f"></i></a></li>
+                          
+                            <li style="cursor: pointer;"><a class="share-icon lin" data-url="/en/case-studies-catalog/medical-analytical-system-for-moscow-city-hospital-31-12651"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="post-reader-text post-reader-text-2 post-reader-text-3 pt-50">
+                    <div class="row">
+                                                    <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/case-studies-catalog/xpertbilling-a-robust-and-fully-featured-customer-care-billing-system-for-the-telecoms-9988">XPertBilling®:  A Robust and fully featured Customer Care Billing system for the Telecoms</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                                                            <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/case-studies-catalog/masa---statistical-analysis-and-plan-optimization-solution-for-industrial-plants-53264">MASA — Statistical analysis and plan optimization solution for industrial plants</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-20">
+                <div class="all-post-sidebar">
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

@@ -1,0 +1,406 @@
+---
+title: "Firebird: A not-so-very technical discussion of Multi Version Concurrency Control"
+html_title: "Firebird: A not-so-very technical discussion of Multi Version Concurrency Control"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "A not-so-very technical discussion of Multi Version Concurrency Control"
+menu_active: "/en/firebird-rdbms/"
+source_url: "/en/multi-version-concurrency-control"
+source_format: new
+url: "/en/multi-version-concurrency-control"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/documentation/">Documentation</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-rdbms/">Firebird RDBMS</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/white-papers-presentations/">White Papers &amp; Presentations</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">A not-so-very technical discussion of Multi Version Concurrency Control</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Origins of conflict</span></strong><br /> <br /> In February 2002 Oracle published a &ldquo;Technical Comparison of Oracle Database vs. IBM DB2 UDB: Focus on Performance&rdquo; white paper where they claimed to have better architecture in Oracle 9i compared to IBM DB2 UDB V7.2. In August 2002 IBM published &ldquo;A Technical Discussion of Multi Version Read Consistency&rdquo; white paper claiming that Oracle multi-version concurrency is not better than the approach used in IBM DB2, but requires many workarounds to achieve needed results.<br /> <br /> Traditionally, the problem of concurrency is solved using locking. If A needs access to resource N, it locks it; after use the lock is released. If B wants to access resource N while A is using it, it must wait. It is clear that such approach may give very poor results when the locks are applied at a very high level &mdash; consider the example of two editors editing different chapters in a big MS Word document. MS Word blocks access to the document file at the file system level. While the first editor is able to modify the document, the second must wait until the first one finishes editing. And this is correct, since the second editor does not know what changes were made by the first one in general. However, MS Word gives an option to open the document in read-only mode, allowing the second editor to read the chapter, and plan what to change on the &ldquo;secondary storage&rdquo;, read &ldquo;using a pen and a sheet of paper&rdquo;. When the first editor finishes editing, the second editor re-opens the latest version of the document in a read-write mode and &ldquo;applies&rdquo; the changes noted on the paper.<br /> <br /> In its white paper Oracle claims that IBM DB2 UDB V7.2 EEE, which uses locking as in the example above, has poor concurrency, citing the &ldquo;Oracle to DB2 Porting Guide&rdquo;: <em>&ldquo;As a result of different concurrency controls in Oracle and DB2 UDB, an application ported directly from Oracle to DB2 UDB may experience deadlocks that it did not have previously. As DB2 UDB acquires a share lock for readers, updaters may be blocked where that was not the case using Oracle. A deadlock occurs when two or more applications are waiting for each other but neither can proceed because each has locks that are required by others. The only way to resolve a deadlock is to roll back one of the applications.&rdquo;</em><a href="#oracle"><sup>1</sup></a> In response, IBM claims that Oracle's multi-version architecture does not solve the problem, since now the database engine has to do much more I/O to access needed record versions and the disk space for record versions is limited, and, when it is filled completely, transactions are rolled back with a ORA-1555 &quot;Snapshot too old&quot; message. IBM also claims that approach used in Oracle gives incorrect results under some conditions and additional programming is needed to solve the issue.<br /> <br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Firebird case</span></strong><br /> <br /> InterBase, the predecessor of Firebird, was among the first commercial databases to implement multi-version concurrency control (MVCC)<a href="#ann_harrison"><sup>2</sup></a>. This makes the behavior of Firebird close to Oracle, however with a notable difference &ndash; Firebird is naturally multi-versioned, while Oracle acquired this feature in Oracle 7.x. Until than it had an architecture similar to IBM DB2. Firebird simply does not have the negative issues emphasized in the both white papers, while using all advantages of MVCC.<br /> <br /> <strong><span style="color: rgb(71, 71, 71); font-size: 16px;">Concept</span></strong><br /> <br /> So how does it work? The main idea was already presented when we talked about MS Word opening a file in read-only mode, but there are some important details. As the name implies, each record in the system might have multiple versions visible to different transactions. When a transaction modifies a record, a new version is written to the database, and a previous version, representing only the difference between the version of the record that was read by the transaction and the new value of the record, is written as a back version of that record.<br /> <br /> How does the system know which version is visible to which transaction? When a transaction starts, it receives a singly incrementing number. This number uniquely identifies the transaction within the system during the lifespan of the database since the last restore. Every change that is done in the database is &ldquo;signed&rdquo; by the transaction number. When a record is read on behalf of some transaction, the database system compares the &ldquo;signature&rdquo; of the record with a transaction number. If the &ldquo;signature&rdquo; belongs to a transaction that was committed when the current transaction started, that version is returned to the application. Otherwise, the database engine computes the needed version using the current record state and the back versions of that record without regard to the locks that the writing transaction has.<br /> <br /> This is very simplified description of what happens in Firebird, for more technical details please read the<a href="http://www.ibphoenix.com/resources/documents/search/doc_21" target="_blank"> Firebird for the Database Expert: Episode 4- OAT, OIT, &amp; Sweep</a> article<a href="#episode_4"><sup>3</sup></a>. Ann W. Harrison provides an excellent description with examples that illustrate the whole complexity of this issue.<br /> <br /> <strong><span style="color: rgb(71, 71, 71); font-size: 16px;">Similarities and differences<br /> </span></strong><br /> The description above should be enough to see that Firebird functions similarly to Oracle 9i.<br /> <ul>     <li>Multi-generational architecture allows different transactions to avoid conflicts between readers and writers. The reading transaction can always see a consistent view of the database regardless of the write operations that are happening concurrently. IBM DB2 can provide such level of concurrency only sacrificing the database consistency and using dirty reads.</li>     <li>The mechanism of back versions in Firebird is similar to the rollback segments used in Oracle for the same purposes. Both systems are optimistic, in other words, they assume that, in most cases, an application will not need previous versions of the records. The optimization is performed to give the best performance to the most likely case.</li> </ul> But unlike Oracle, Firebird cannot produce anything similar to the ORA-1555 &quot;Snapshot too old&quot;. There is no need to estimate the size of the rollback segments as described in the IBM white paper, since all information needed for rollback operations and computing previous record versions is stored inside the database itself and the database file grows automatically if more space is needed.<br /> <br /> However, the approach used in Firebird has its price. What Oracle solves by rolling the rollback segments over, and which finally leads to the ORA-1555 &quot;Snapshot too old&quot; error, Firebird must handle differently.<br /> <br /> The first issue is long record version chains. Oracle drops rollback segments when they get too large. Firebird never drops a back version if it could be seen by any running transaction. As a result, a long-lived transaction blocks the removal of back versions of all records, causing the database to grow and performance to deteriorate. The performance cost is due both to the decreased density of valid data and to the cost of checking whether any back versions of records can be deleted.<br /> <br /> A second issue is the cost of removing back versions. Oracle's back versions are in a separate segment. Firebird's back versions are in the database, so they must be removed one at a time, as they are encountered by subsequent transactions.<br /> <br /> A third issue is the cost of a rollback. When a transaction inserts, updates, or deletes a record, Firebird changes the database immediately, relying on the back versions as an undo log. A failed transaction's work remains in the database and must be removed when it is found.<br /> <br /> Firebird successfully handles these cases without user intervention. Its behavior is controlled by a few parameters, like &ldquo;sweep interval&rdquo;. However detailed discussion is out of the scope of this paper: please see Firebird documentation for more details.<br /> <br /> It is worth mentioning one very nice &ldquo;consequence&rdquo; of the fact that there is no recovery log. Firebird has to take additional care to keep the database file in a consistent state &mdash; if a crash happens, there is no other place where information can be recovered except the database file itself. This is achieved using the careful write technique &mdash; Firebird writes data onto disk in such a manner that, at every single moment, the database file is consistent. The careful writes feature is something that really makes the life of the end-user easier. In addition to automated database housekeeping, Firebird has also automated crash recovery &mdash; a truly DBA-free database engine.<br /> <br /> The next critique of Oracle's versioning mechanism is what IBM calls an ability to see current data. The example on Illustration 1 is used to demonstrate the weakness of Oracle 9i.<br /> <br /> <table width="100%" cellspacing="0" cellpadding="0" border="0" class="Table">     <tbody>         <tr class="Table_Header">             <td>Time</td>             <td>Transaction 1</td>             <td>Transaction 2</td>         </tr>         <tr class="Table_Row_White">             <td>1.</td>             <td>Begin transaction</td>             <td>&nbsp;</td>         </tr>         <tr class="Table_Row_Grey">             <td>2.</td>             <td>&nbsp;</td>             <td>Begin transaction</td>         </tr>         <tr class="Table_Row_White">             <td>3.</td>             <td>Select available seats on flight ABC111. See seat 23F is the last seat available Reserve this seat.</td>             <td>&nbsp;</td>         </tr>         <tr class="Table_Row_Grey">             <td>4.</td>             <td>&nbsp;</td>             <td>Select available seats on flight ABC111. Also sees 23F as Oracle will go  to the rollback segment to get the old version of that block.</td>         </tr>         <tr class="Table_Row_White">             <td>5.</td>             <td>Commit Transaction.</td>             <td>&nbsp;</td>         </tr>         <tr class="Table_Row_Grey">             <td>6.</td>             <td>&nbsp;</td>             <td>Reserve this seat.</td>         </tr>         <tr class="Table_Row_White">             <td>7.</td>             <td>&nbsp;</td>             <td>Commit Transaction. Successful but now the flight is oversold.</td>         </tr>     </tbody> </table> <br /> <em>Illustration 1: Example IBM used to show incorrect logic in Oracle 9i version control.</em><br /> <br /> So, how does it apply to Firebird? It will not work. Firebird reports an error on step 6. The logic is quite simple in this case. At the beginning of the operation, both transactions saw a record version signed by a transaction, let's say, 120. When transaction 1 committed on step 5, the new record version was signed with a number of transaction 1, lets say, 125. Now, if transaction 2 tries to update the same record, it will find that the version of the record is no longer 120, but 125, and will report an error to the application. The update operation will not succeed.<br /> <br /> Furthermore, the same error will be reported if step 6 happens before step 5, but after step 3. It is also possible to tell transaction 2 to wait until transaction 1 finishes and then decide the outcome of the operation. If transaction 2 is lucky and transaction 1 is rolled back (for example, the customer booking a seat in transaction 1 changed his mind), it will successfully book the seat for the second customer. In case of IBM DB2, the lock conflict would have happened already in step 4, since transaction 2 would try to lock a record that had already been modified by transaction 1. The change of mind by the first customer does not help the second one. The application has to re-read the table and check for a new seat for the booking.<br /> <br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Conclusion<br /> </span></strong><br /> From the above it is clear that multi-version concurrency control, if implemented correctly, provides a superior concurrency in cases when update conflicts are rare compared to traditional pessimistic locking schemes. It is also clear that there are cases when pessimistic locking will perform better. However, the claim made by IBM that multi-version concurrency control is not used in most database systems is no longer true since Microsoft has decided to switch to MVCC in the next version of SQL Server (code name Yukon). Now two of three biggest commercial database vendors use MVCC. In fact, the versioning mechanism used in Yukon is almost an exact copy of the mechanism used in Firebird. It took almost 20 years for other software vendors to find out that MVCC is great approach to handle concurrent access to the database.<br /> <br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Acknowledgments</span></strong><br /> <br /> The author is grateful to Ann W. Harrison and Helen Borrie for their comments and help during the preparation of this paper.<br /> <br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">References<br /> </span></strong> <ol>     <li>A Technical Discussion of Multi Version Read Consistency, By IBM Software Group, Toronto Laboratory August 2002, <a href="ftp://ftp.software.ibm.com/software/data/pubs/papers/readconsistency.pdf">ftp://ftp.software.ibm.com/software/data/pubs/papers/readconsistency.pdf</a></li>     <li>Technical Comparison of Oracle Database vs. IBM DB2 UDB: Focus on Performance, An Oracle White Paper, February 2002</li> </ol> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">About the Author<br /> </span></strong><br /> Roman Rokytskyy is one of the Firebird Project members, leader of the JayBird subproject, the JCA/JDBC driver for Firebird.<br /> <br /><br /><br /> <a name="oracle"><sup>1</sup></a>Oracle to DB2 Porting Guide, page 47, <a href="http://www.db2udb.net/guide/program/text/oraclev3.pdf">http://www.db2udb.net/guide/program/text/oraclev3.pdf</a><br /> <br /> <a name="ann_harrison"><sup>2</sup></a> According to Ann W. Harrison, first was Rdb/ELN released in 1984 by DEC, second was InterBase, both designed by Jim Starkey. Later DEC decided to push Rdb/VMS, which had the same API, but was implemented completely different, so InterBase can be considered the first database using MVCC that survived to our days.<br /> <br /> <a name="episode_4"><sup>3</sup></a><a href="http://www.ibphoenix.com/resources/documents/search/doc_21" target="_blank">http://www.ibphoenix.com/resources/documents/search/doc_21</a><br /> <br />
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Documentation</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-rdbms/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird RDBMS</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-notes/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Notes</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/reference-manuals/" class="menulvl_3"><i class="fa fa-arrow-right"></i> All Reference Manuals</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/white-papers-presentations/" class="menulvl_3"><i class="fa fa-arrow-right"></i> White Papers &amp; Presentations</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/books/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Books</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/drivers-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Drivers Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-docs-and-articles/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Docs and Articles</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/external-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> External Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/licensing/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Licensing</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/features/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Features</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sql-conformance/" class="menulvl_3"><i class="fa fa-arrow-right"></i> SQL Conformance</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/historical-reference/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Historical Reference</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-doc/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-brand-faq/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Branding Policy</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Brand FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/logos/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Logos</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-and-other-databases/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird and other databases</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,152 @@
+---
+title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+html_title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Security and Design Enhancements"
+menu_active: ""
+source_url: "/en/report-core-security-201705"
+source_format: new
+url: "/en/report-core-security-201705"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/archives/">Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/ff-reports-archives/">Developer Reports Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Security and Design Enhancements</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">January to April 2017</span></strong><br />
+<br />
+<span style="color:#474747;font-size:15px;font-weight:bold;">FB4 development</span></p>
+
+<ul>
+	<li>Completed with decimal float datatype. This feature will be (after alpha1 release) extended with Numeric(34, N) datatype which will be implemented on base of decimal float.</li>
+	<li>Batch execution - active development phase, trivial batches (i.e. w/o blobs) may be run in embedded mode. To be completed prior beta1 release.</li>
+</ul>
+
+<p><span style="color:#474747;font-size:15px;font-weight:bold;">Bugfixing and support</span></p>
+
+<ul>
+	<li>CORE-5442: Enhance control upon ability to share database crypt key between attachments in SS</li>
+	<li>CORE-5472: Fixed problems with dbcrypt key transfer from client</li>
+	<li>CORE-5368: Regression: client application is hang (in same cases throw an access violation in Engine12.dll) on selecting from multiple threads using 1 embedded connection</li>
+	<li>CORE-5452: Segfault when engine&#39;s dynamic library is unloaded right after closing worker threads (GC and/or cache writer)</li>
+	<li>CORE-5484: Database on NFS share is unavailable when accessed using mount point path</li>
+	<li>CORE-5458: Connections fail due to dead NFS mount points</li>
+	<li>CORE-5496: Creating SRP SYSDBA with explicit admin (-admin yes in gsec or grant admin role in create user) makes SYSDBA account appear duplicated</li>
+	<li>CORE-5503: Classic server has a maximum of 64 connections when using systemd init scripts</li>
+</ul>
+
+<p><span style="color:#474747;font-size:15px;font-weight:bold;">Security issue</span></p>
+
+<ul>
+	<li>CORE-5474: &#39;Restrict UDF&#39; is not effective, because fbudf.so is dynamically linked against libc (it was possible to run under linux any function from C-library, for FB &lt; 3.0 - even w/o specific DB access rights)</li>
+</ul>
+
+<p><em>Alex Peshkov</em><br />
+<em>Yaroslavl, Russia</em></p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

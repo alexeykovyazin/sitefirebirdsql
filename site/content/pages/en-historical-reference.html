@@ -1,0 +1,826 @@
+---
+title: "Firebird: Historical Reference"
+html_title: "Firebird: Historical Reference"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Historical Reference"
+menu_active: "/en/firebird-rdbms/"
+source_url: "/en/historical-reference/"
+source_format: new
+url: "/en/historical-reference/"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/documentation/">Documentation</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-rdbms/">Firebird RDBMS</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Historical Reference</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Introduction</span></strong><br />
+<br />
+We&#39;re collected various historic records about InterBase and Firebird from ancient times to present days. To be consistent, we&#39;re arranged them in groups that cover significant periods in history of InterBase and Firebird, and link these groups in chronological order. Moreover, we&#39;re provided a small Who&#39;s Who gallery of InterBase/Firebird community.<br />
+<br />
+Although our records are quite complete and accurate, it&#39;s possible that we&#39;re missed some interesting document or important event that you&#39;re aware of. Please, report any such omission to our historiographer.<br />
+<br />
+Because some records are links to other sites, it&#39;s possible that these links would get broken over time. Please, report any such broken link to our webmaster.<br />
+<br />
+<em>Your InterBase/Firebird Documentary Team</em><br />
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">How InterBase came to be</span></strong><br />
+<br />
+Who could be more competent to delineate early days of InterBase than her parents? Fortunately, Jim Starkey and Ann Harrison were willing to share their memories about those glorious days, when IBM ruled the IT world, Microsoft was a small company and true programmers didn&#39;t use Pascal.<br />
+<br />
+Jim Starkey is a Firebird advisory board member regularly appearing in IB-Architect mailing list.<br />
+<br />
+Ann Harrison is president of <a href="http://www.ibphoenix.com/" target="_blank">IBPhoenix</a>, one of Firebird Admins and a Firebird developer.<br />
+<br />
+<strong><span style="color: rgb(71, 71, 71); font-size: 15px;">Ann Harrison&#39;s Reminiscences on InterBase&#39;s Beginnings</span></strong><br />
+<br />
+InterBase started in the shower. Specifically in the blue-tiled walk-in shower at 297 Reedy Meadow Road, Groton, Massachusetts, USA. There, looking through the shower window into the woods, Jim Starkey had the &quot;Eureka&quot; that eventually became InterBase. <a href="/en/ann-harrison-s-reminiscences-on-interbase-s-beginnings">Read More</a><br />
+<br />
+<span style="color: rgb(71, 71, 71); font-size: 15px;"><strong>How Jim Starkey remembers it</strong></span><br />
+<br />
+I founded the company the day after Labor Day weekend in 1984. I had been at DEC for almost 10 years, had loved it, but didn&#39;t love it that much. I decided that if I were doomed to suffer, I would rather suffer from my own mistakes than somebody else&#39;s.&nbsp;<a href="/en/how-jim-starkey-remembers-it">Read More</a><br />
+<br />
+<strong><span style="color: rgb(71, 71, 71); font-size: 15px;">Further recollections from Ann Harrison</span></strong><br />
+<br />
+InterBase started on Apollo Domain, a spectacularly wonderful workstation with terrific networking. The initial release supported Apollo, Sun, HP/UX, VAX/VMS, Ultrix, and something else that escapes me. So, if you wonder &#39;was InterBase originally a Windows/DOS system?&#39;, the answer is &#39;no&#39;.&nbsp;<a href="/en/	further-recollections-from-ann-harrison">Read More</a><br />
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">InterBase at Borland</span></strong><br />
+<br />
+When Borland bought Ashton-Tate in October, 1991, they got also the InterBase with it (version 3 at that time). Shortly thereafter they decided that they needed the technology in-house, so they moved about 1/3 of the company, including most of the senior engineers, to Scott&#39;s Valley. Several senior people from support also moved west, and most of the local sales offices remained intact.<br />
+<br />
+At that time, both Jim Starkey and Ann Harrison went to pursuit their other interests. But Ann never really break away from InterBase, and she was a valuable member of InterBase community centred around MERS InterBase mailing list (now defunct, but searchable archive is still available) for years. Thanks to her unselfish willingness to share her detailed knowledge of InterBase internals, many developers descovered the beauty and power of IB&#39;s design and became loyal followers (and that at the end saved the InterBase in 1999).<br />
+<br />
+Borland&#39;s custody of InterBase was unbalanced, and greatly depended on &quot;changes in the weather&quot; as Borland changed his focus and priorities (along with top management) several times over the decade they catered it (before IB became Open Source). While Borland did a lot of good to InterBase, they never really make the best account of it to unleash its power in the market. The main Borland&#39;s achievements were:
+<ul>
+	<li>Implementation of stored procedures;</li>
+	<li>Windows port and the SuperServer architecture;</li>
+	<li>Novell Netware port (discontinued after v5.6);</li>
+	<li>Increased populatiry of InterBase thanks to its incorporation into their RAD products from day one.</li>
+</ul>
+On the other side, Borland was constantly criticized for lack of marketing efforts (not only those related to InterBase), and especially for poor integration of InterBase with RAD tools that would really unleash its power (it took five(!) versions of Delphi before Borland licensed(!) a component library to provide native access to InterBase) and disestablishment of free deployment licenses for Local InterBase for Windows after Delphi 1 (It&#39;s very likely that we would saw the demise of flat databases far earlier, if Borland would continue to offer the free deployment licenses for Local InterBase after 1995, appart from boost in popularity of InterBase &mdash; as we can see now, when InterBase is Open Source).<br />
+<br />
+To be honest, all these complaints should account on Borland&#39;s top management rather on InterBase division at Borland. While Borland&#39;s top management was busy changing company&#39;s name from Borland to Inprise to Inprise/Borland.com to Borland/Inprise to Borland Software Corp., and moving people from right to left and vice versa, InterBase R&amp;D and technical support engineers along with sales people did their best for InterBase in constraints imposed to them, and they were always very responsive to their customers and the community at large. But it was obviously not enough for Dale Fuller, the interim CEO of Borland in 1999...<br />
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">How InterBase became Open Source</span></strong><br />
+<br />
+<span style="color: rgb(71, 71, 71); font-size: 15px;"><strong>From article featured in the UK Borland Users Group Magazine<br />
+(Nov/Dec 2000)</strong></span><br />
+<br />
+&quot;Just before Christmas 1999 Dale Fuller&#39;s management team had a meeting with the senior executives of the InterBase division and told them of their new business plan. It has been stated by informed personnel that they had decided that the revenue stream was insufficient for the size of the division. They also said they wanted to lay off at least 50% of the current InterBase staff of 39 (including part-timers and contractors ). In addition, there would be no budget to restore the struggling US marketing and sales staff, which had already been reduced to one 3/4 time person and an intern. This was not a workable scenario to grow a product business. It has never been clear to me just what Dale and his team had in mind, but I believe it was intended to cancel the release of 6.0 and sit on the diminishing revenue stream from 5.n for a couple of years.&quot;<br />
+<br />
+&quot;Possibly unbeknown to the Inprise management team, the InterBase team had been quietly building a sound and profitable (i.e., not loss making) business. One of the original developers of InterBase (Ann Harrison) had continued to provide excellent technical support for the product via the mers list server/news group. The product manager, Bill Karwin had equally spent many hours there helping developers. On the business side Paul Beach, responsible for worldwide sales (non-US) was basically generating about 90% of the total turnover. With little resources he had concentrated on building a formidable network of VARS that typically integrated InterBase with other Borland tools.&quot;<br />
+<br />
+&quot;Their response (Karwin and Beach) to the new business plan was probably not what was expected. They resigned. Their resignations hit developers and VARS hard. Contractually they couldn&#39;t explain why they resigned, but gradually the above picture became clear. Thus the InterBase Developer&#39;s Initiative (IBDI) was born. Suddenly we discovered that some serious business and serious money was riding on InterBase. Enough people came forward to buy InterBase several times over. A sale was not to be, but the development community was now forming itself into an organised force to be recognised.&quot;<br />
+<br />
+<em>Paul Reeves<br />
+(BUG InterBase Group Leader)</em><br />
+<br />
+InterBase became an open source product on 25th July 2000. There should have been dancing in the streets and unbounded joy throughout heaven and earth. The release should have brought praise for enlightened and forward thinking management. Instead there was anger and recrimination towards Inprise (now Borland Software Corp.). What went wrong?<br />
+<br />
+Let&#39;s the events speak for themselves! A list of events in chronological order as they have been recorded by on-line press.<br />
+&nbsp;
+<table border="0" cellpadding="0" cellspacing="0" class="Table" width="100%">
+	<tbody>
+		<tr class="Table_Row_White">
+			<td rowspan="1" width="120">December 28, 1999</td>
+			<td>(eWeek) Inprise mulls future of InterBase division</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>January 03, 2000</td>
+			<td>(Inprise press release) Open-sourcing of InterBase announcement</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>January 04, 2000</td>
+			<td>(LinuxJournal) Conversation with Dale Fuller regarding InterBase</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>February 14, 2000</td>
+			<td>(Inprise press release) New Company to Manage InterBase</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>February 16, 2000</td>
+			<td>(PC Week) InterBase proves its mettle</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>March 27, 2000</td>
+			<td>(Inter@ctive Week) Forming an InterBase Company</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>March 27, 2000</td>
+			<td>(Inter@ctive Week) The New Open Source Frontier</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>March 27, 2000</td>
+			<td>(Computergram) <a href="http://www.ibphoenix.com/resources/documents/search/doc_13" target="_blank">Inprise Spins Out Database Division for Open Source Future</a></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>April 10, 2000</td>
+			<td>(The 451) <a href="http://www.ibphoenix.com/resources/documents/search/doc_11" target="_blank">Disappearing Inprise spawns InterBase</a></td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>April 26, 2000</td>
+			<td>(SD Times) InterBase Reborn as Open-Source Player</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>July 14, 2000</td>
+			<td>(Infoworld) Dale Fuller: Inprise/Borland welcomes Microsoft to the jungle</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>July 15, 2000</td>
+			<td>(SD Times) Phoenix Rises Again &mdash; Independent InterBase expanding operations</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>July 17, 2000</td>
+			<td>(Slashdot) <a href="http://news.slashdot.org/article.pl?sid=00/07/12/124244" target="_blank">Attendee reports on InterBase and Kylix from Borcon</a></td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>July 21, 2000</td>
+			<td>(The 451) <a href="http://www.ibphoenix.com/resources/documents/search/doc_12" target="_blank">Will Borland let InterBase go?</a></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>July 25, 2000</td>
+			<td>(Inprise press release) Inprise/Borland Terminates Negotiations to Sell InterBase&reg; Product Line</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>July 25, 2000</td>
+			<td>(Inprise press release) Inprise/Borland Introduces InterBase 6.0 Now Free and Open Source on Linux&reg;, Windows, and Solaris&reg;</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>July 27, 2000</td>
+			<td>(Inprise press release) Inprise/Borland&#39;s InterBase&reg; ships with Cobalt Networks&reg; Next Generation Server Appliance</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>July 28, 2000</td>
+			<td>(Infoworld) InterBase: The spin-off that hasn&#39;t</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>July 31, 2000</td>
+			<td>The Firebird Project was born</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>August 25, 2000</td>
+			<td>(Client Server NEWS 361,&nbsp; August 7-11, 2000) <a href="http://www.ibphoenix.com/resources/documents/search/doc_9" target="_blank">InterBase Flap Could Fork Code</a></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>August 29, 2000</td>
+			<td>(Client Server NEWS 364, August 28 &mdash; September 1, 2000) <a href="http://www.ibphoenix.com/resources/documents/search/doc_10" target="_blank">InterBase Rises</a></td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>September 12, 2000</td>
+			<td>(Inprise/Borland) An open letter to the InterBase Developer Community</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>September 15, 2000</td>
+			<td>(LinuxGram) Inprise is back in the InterBase Business</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>November 13, 2000</td>
+			<td>(UK Borland User Group Magazine) <a href="http://www.ibphoenix.com/resources/documents/search/doc_14" target="_blank">Whats happening to InterBase?</a></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>November 22, 2000</td>
+			<td>(Upside Today) IBPhoenix president gets past the politics</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>January 09, 2001</td>
+			<td>(IBPhoenix) InterBase Security Alert</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>February 19, 2001</td>
+			<td>(Crypto-Gram) Bruce Schneier writes about that backdoor in the latest edition of his monthly newsletter on security issues</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>March 13, 2001</td>
+			<td>Borland release certified kits for InterBase 6.0</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>April 19, 2001</td>
+			<td>(IBPhoenix) IBPhoenix&#39;s response to Borland&#39;s certified kits</td>
+		</tr>
+	</tbody>
+</table>
+<br />
+<strong><span style="color: rgb(71, 71, 71); font-size: 15px;">Firebird records</span></strong><br />
+<br />
+The InterBase community&#39;s activity since the July 25 opening of the InterBase&reg; sources has been frenetic. Within 24 hours, a source code tree was up. By the end of the first weekend, the Firebird project on SourceForge began. Since then, projects have sprouted from every quarter, as the community launched into the initial wetting of hands.<br />
+<br />
+Unwilling to wait for Inprise to resolve difficulties resulting from the breakdown of negotiations to spin off a support company for OS InterBase&reg;, open source coders set up their Firebird tree as a workshop repository for initial work on platform builds, new ports and tools developments.<br />
+<br />
+At the beginning, Firebird developers were used to use MER Systems News Server (because there was also the famous InterBase list) as main communication HUB. But because Robert Schieck, the owner of MERS server joined the Borland camp (he is now the designated InterBase Community Leader at Borland) and started to moderate some community members down, all communication moved to other places, like yahoogroups (egroups at that time) and SourceForge, and importance of this server declined (InterBase list at MER Systems is now defunct, but searchable archive is still available).<br />
+<br />
+Since it&#39;s conception, the evolution of Firebird Project was roaring. Unfortunately, the pace of changes was so high that many historical records and documents from first year are lost or buried deeply in personal archives. Anyway, here is the list of some events in history of Firebird project:<br />
+&nbsp;
+<table border="0" cellpadding="0" cellspacing="0" class="Table" width="100%">
+	<tbody>
+		<tr class="Table_Row_White">
+			<td width="120">August 18, 2000</td>
+			<td>Classic InterBase 6.0 Port to FreeBSD 4.0.</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>August 18, 2000</td>
+			<td>Self-bootstrapping build for Linux ready to download and try out.</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>August 25, 2000</td>
+			<td>IBPhoenix launches the InterBase 6.0 ODBC Appeal.</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>August 30, 2000</td>
+			<td>Ann Harrison&#39;s InterBase Roadmap.</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>November 22, 2000</td>
+			<td>Firebird 0.9 Kits for Windows and Linux available for download and testing.</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>December 22, 2000</td>
+			<td>Firebird 0.9 for Linux was officially released on Sourceforge.</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>December 30, 2000</td>
+			<td>New Firebird release 0.9-4 Test 1. This release includes Win32 production and debug builds.</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>January 21, 2001</td>
+			<td>Updated Firebird binaries for Linux. This fixes a problem with temporary files.</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>March 02, 2001</td>
+			<td>Firebird V1.0 draws closer. The Firebird project is fixing bugs while it slowly prepares for the release of its first major version. Check here for more information, including a list of planned features, a summary of bugs fixed, and details of those that are still open.</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>March 27, 2001</td>
+			<td>The Firebird Project has relaunched its&#39; web-site. It is now driven by phpNuke which allows for dynamic, interactive content.</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>April 24, 2001</td>
+			<td>Newsgroup access to a variety of Firebird and InterBase oriented list servers was established on Atkin server.</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>May 11, 2001</td>
+			<td>First Powered By Firebird Site located: http://www.utilitybar.com.</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>May 24, 2001</td>
+			<td>Firebird 0.9.5 Snapshot builds for Linux and Windows.</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>June 29, 2001</td>
+			<td>Firebird 0.9.5 Snapshot builds for Solaris (Sparc).</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>July 31, 2001</td>
+			<td>The latest version of the IBPhoenix ODBC Driver was released as Open Source under the Initial Developer&#39;s PUBLIC LICENSE Version 1.0.</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>August 08, 2001</td>
+			<td>Untested HP-UX 10.20 Firebird 0.9.4 Classic and SuperServer build&#39;s.</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>August 15, 2001</td>
+			<td>Firebird 1.0.0 Beta 2 for Windows and Linux.</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>August 28, 2001</td>
+			<td>Firebird 1.0.0 Beta 2 for Solaris (Sparc).</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>August 30, 2001</td>
+			<td>Firebird 1.0.0 Beta 2 for Solaris (X86).</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>October 03, 2001</td>
+			<td>Firebird 1.0.0 Beta2 for FreeBSD.</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>November 08, 2001</td>
+			<td><a href="http://www.ibphoenix.com/resources/documents/search/doc_15" target="_blank">Whats happening with Firebird?</a> Article from the UK Borland User Group Magazine by Paul Reeves (Nov/Dec 2001)</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>November 14, 2001</td>
+			<td>Firebird InterClient 2.01 Kits (JDK 1.3) for Windows and Linux.</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>November 14, 2001</td>
+			<td>The Firebird project is proud to announce the availability of the Firebird relational database engine Version 1.0.0 &mdash; Release Candidate 1. Currently the Win32 and Linux binaries are available, other platforms are expected to join them in the near future. This release was built from code which has been subjected to extensive cleanup, bug-fixing and beta testing during the year between the original release of the code and this release.</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>November 14, 2001</td>
+			<td>Firebird RC1 Classic Build for MacOs (Darwin).</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>November 16, 2001</td>
+			<td>Firebird RC1 Debian Linux Packages.</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>November 19, 2001</td>
+			<td>Firebird RC1 for Sun Solaris (Sparc).</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>November 20, 2001</td>
+			<td>Firebird RC1 for FreeBSD (4.3 &amp; 4.4).</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>November 27, 2001</td>
+			<td>Firebird RC1 for Sun Solaris (X86).</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>December 21, 2001</td>
+			<td>The Firebird project announces the availability of Release Candidate 2 (RC2) for Windows and Linux (including 64 bit I/O).</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>December 23, 2001</td>
+			<td>Firebird Rlease Candidate 2 (RC2) builds for Sun Solaris (Sparc).</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>January 02, 2002</td>
+			<td>Firebird Rlease Candidate 2 (RC2) Classic build for HP-UX 10.20.</td>
+		</tr>
+	</tbody>
+</table>
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Who is Who around InterBase and Firebird</span></strong><br />
+&nbsp;
+<table border="0" cellpadding="5" cellspacing="5" width="690">
+	<tbody>
+		<tr>
+			<td width="230"><img alt="Ann Harrison" border="0" height="171" src="/img/about/annharrison.gif" width="151" /><br />
+			Ann Harrison<br />
+			<br />
+			InterBase Community leader (involved in InterBase R &amp; D since earliest days), was President-designate of the ISC spin-off company that never happened. Now a Firebird Admin, oracle of ancient code, IBPhoenix consultant and rescuer of sick databases.</td>
+			<td width="230"><img alt="Mark O'Donohue" border="0" height="114" src="/img/about/odonohue.gif" width="145" /><br />
+			Mark O&#39;Donohue<br />
+			<br />
+			Firebird Lead Developer and Admin, Starbase nostalgic, database security expert, Linux and Java lover and fair-weather surfie.</td>
+			<td width="230"><img alt="Claudio Valderrama" border="0" height="186" src="/img/about/claudiovalderrama.jpg" width="118" /><br />
+			Claudio Valderrama<br />
+			<br />
+			Prolific contributor to the community support lists, owner of the IB Webring, dedicated source code bug researcher and fixit-man, author and collector of erudite writings about InterBase.Prolific contributor to the community support lists, owner of the IB Webring, dedicated source code bug researcher and fixit-man, author and collector of erudite writings about InterBase.</td>
+		</tr>
+		<tr>
+			<td>Mike Nordell<br />
+			<br />
+			Firebird Admin, shotgun rider and bug-collector, currently devoting his considerable coding talents to Firebird 2.</td>
+			<td><img alt="Pavel Cisar" border="0" height="164" src="/img/about/pavelcisar.gif" width="120" /><br />
+			Pavel Cisar<br />
+			<br />
+			Firebird Admin, Webmaster &amp; newbie kit-builder, IBPhoenix consultant in Czechoslovakia. Co-founder and maintainer of Delphree open source site.</td>
+			<td>John Bellardo<br />
+			<br />
+			Firebird source code developer, responsible for the Mac/Darwin builds and active in the Firebird 2 development effort.</td>
+		</tr>
+		<tr>
+			<td>&nbsp;David Jencks<br />
+			<br />
+			Firebird source code developer, &quot;Mr JDBC&quot; and support champion in IB-Java list.</td>
+			<td>Neil McCalden<br />
+			<br />
+			Firebird source code developer, Solaris kit builder and fixit-man.</td>
+			<td><img alt="Paul Beach" border="0" height="196" src="/img/about/paulbeach.gif" width="153" /><br />
+			Paul Beach<br />
+			<br />
+			Former InterBase Gen. Manager, subsequently business director of the ISC spin-off that never happened. Now a Firebird member, HP-UX guru, QA tester, IBPhoenix world-wide coordinator and water diviner.</td>
+		</tr>
+		<tr>
+			<td><img alt="Helen Borrie" border="0" height="173" src="/img/about/helenb.gif" width="135" /><br />
+			Helen Borrie<br />
+			<br />
+			Documenter, tech writer and webbie; IBPhoenix consultant for Australia and New Zealand, co-founder of IBDI.</td>
+			<td>Frank Schlottman-G&ouml;dde<br />
+			<br />
+			Firebird Admin and source code developer. Frank&#39;s the one who found the security exploits in the source code.</td>
+			<td>Paul Reeves<br />
+			<br />
+			Webbie, build coordinator, jack-of-all-trades, IBPhoenix consultant for UK, France, Benelux and surrounding districts.</td>
+		</tr>
+		<tr>
+			<td>&nbsp;Geoffrey Speicher<br />
+			<br />
+			&quot;Mr FreeBSD&quot; buildmaster.</td>
+			<td>Sean Leyne<br />
+			<br />
+			Ringmaster of the Firebird Bug Circus, keeper of the newsgroup mirrors, Borland newsgroups watchdog, Firebird developer.</td>
+			<td><img alt="Jim Starkey" border="0" height="150" src="/img/about/wolf1.jpg" width="122" /><br />
+			Jim Starkey<br />
+			<br />
+			&#39;The Big Bad Wolf who lives in IB-Architect&#39;. Original architect of InterBase, wrote the JDBC-compliant ODBC driver with funding contributions from the IBDI community. Contributes regularly to discussions on existing and proposed new architecture.</td>
+		</tr>
+		<tr>
+			<td>&nbsp;Luis Forra<br />
+			<br />
+			Documentation support, Win32 kit builder.</td>
+			<td>Dave Schnepper<br />
+			<br />
+			Open Source developer, Firebird advisor on character set internationalization, former Borland InterBase techie.</td>
+			<td><img alt="Reed Mideke" border="0" height="103" src="/img/about/mideke.gif" width="175" /><br />
+			Reed Mideke<br />
+			<br />
+			One of Firebird&#39;s Win32 build specialists, Spitfire 1600 afficionado and former Borland InterBase techie.</td>
+		</tr>
+		<tr>
+			<td><img alt="Jason Wharton" border="0" height="135" src="/img/about/jasonwharton.gif" width="112" /><br />
+			Jason Wharton<br />
+			<br />
+			Creator of IB Objects, benefactor of community web resources and some Firebird projects, co-founder of IBDI.</td>
+			<td><img alt="Dalton Calford" border="0" height="149" src="/img/about/calford.gif" width="145" /><br />
+			Dalton Calford<br />
+			<br />
+			Co-founder of IBDI, coordinator of IB-Designer project.</td>
+			<td>Craig Leonardi<br />
+			<br />
+			Benefactor of Firebird UDF library development.</td>
+		</tr>
+	</tbody>
+</table>
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Interbase roadmap</span></strong><br />
+<br />
+As more information is available, there will be a more complete history of the Interbase versions. Those that do not remember their past are condemned to repeat it again and again. <a href="http://www.cvalde.net/ibRoadmap.htm" target="_blank">Read More</a>
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Documentation</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-rdbms/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird RDBMS</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-notes/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Notes</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/reference-manuals/" class="menulvl_3"><i class="fa fa-arrow-right"></i> All Reference Manuals</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/white-papers-presentations/" class="menulvl_3"><i class="fa fa-arrow-right"></i> White Papers &amp; Presentations</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/books/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Books</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/drivers-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Drivers Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-docs-and-articles/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Docs and Articles</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/external-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> External Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/licensing/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Licensing</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/features/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Features</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sql-conformance/" class="menulvl_3"><i class="fa fa-arrow-right"></i> SQL Conformance</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree bgLVL_3_sel bgLVL_3">
+      <a href="/en/historical-reference/" class="menulvl_3_sel"><i class="fa fa-arrow-right"></i> Historical Reference</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-doc/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-brand-faq/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Branding Policy</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Brand FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/logos/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Logos</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-and-other-databases/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird and other databases</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

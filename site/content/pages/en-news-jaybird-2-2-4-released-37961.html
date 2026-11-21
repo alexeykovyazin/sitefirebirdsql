@@ -1,0 +1,179 @@
+---
+title: "Firebird: Jaybird 2.2.4 Released"
+html_title: "Firebird: Jaybird 2.2.4 Released"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Jaybird 2.2.4 Released"
+menu_active: ""
+source_url: "/en/news/jaybird-2-2-4-released-37961"
+source_format: new
+url: "/en/news/jaybird-2-2-4-released-37961"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+ 
+    <section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/about-firebird/">About Firebird</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/news/">News &amp; Events</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Jaybird 2.2.4 Released</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-8">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div class="post-categories d-flex justify-content-between align-content-center">
+                        <div class="categories-share">
+                            <ul>
+                                <li><i class="fas fa-calendar"></i> Dec 07, 2013</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="title">Jaybird 2.2.4 Released</h3>
+                                            </div>
+                    <div class="post-text mt-30">
+                        The Firebird JDBC team is happy to announce the release of <span lang="NL"><a href="/en/jdbc-driver/"><span lang="EN-US" style="mso-ansi-language:EN-US">Jaybird 2.2.4</span></a></span><span lang="EN-US" style="mso-ansi-language:EN-US"><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->.<br /><br />This release contains the following fixes:<br /> <ul>     <li>Fixed: Exceptions during statement preparation leave connection and transaction open after explicit close (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-311">JDBC-311</a>)</li>     <li>Fixed batch update (or insert) with blob set through <span style="font-family: Courier New;">setBinaryStream()</span> sets empty blob for all but the first batch entry (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-312">JDBC-312</a>)</li>     <li>Fixed incomplete checks of database, transaction, statement and  blob handle validity before continuing with actions. These incomplete  checks could lead to unexpected exceptions (for example a <span style="font-family: Courier New;">NullPointerException</span> in <span style="font-family: Courier New;">iscDatabaseInfo</span>) (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-313">JDBC-313</a>)</li>     <li>Fixed error when setting connection charset equal to &quot;<span style="font-family: Courier New;">file.encoding</span>&quot; java property (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-314">JDBC-314</a>)</li>     <li>Fixed connection character set not correctly set when specifying the Java connection characterset (<span style="font-family: Courier New;">charSet </span>or <span style="font-family: Courier New;">localEncoding</span> property)  (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-315">JDBC-315</a>)</li>     <li>Fixed incorrect lengths and/or radix reported by <span style="font-family: Courier New;">getTypeInfo </span>and <span style="font-family: Courier New;">getColumns </span>metadata (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-317">JDBC-317</a>, <a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-318">JDBC-318</a>)</li>     <li>Initial Java 8 / JDBC 4.2 support (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-319">JDBC-319</a>)</li>     <li>Firebird 3 <span style="font-family: Courier New;">BOOLEAN </span>type support, see <a target="_blank" href="/file/documentation/drivers_documentation/java/2.2.4/release_notes.html#__RefHeading__4766_1756560361">Support for Firebird 3 BOOLEAN type</a> in the release notes for more details (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-321">JDBC-321</a>)</li>     <li>Added fallback of loading <span style="font-family: Courier New;">GDSFactoryPlugin </span>implementations to prevent <span style="font-family: Courier New;">NullPointerException </span>in Hibernate reverse engineering wizard in NetBeans (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-325">JDBC-325</a>)</li>     <li>Fixed: Jaybird should specify dialect 3 in dpb when no explicit dialect was set (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-327">JDBC-327</a>)</li>     <li>Fixed: several <span style="font-family: Courier New;">DatabaseMetaData </span>methods defined by JDBC to only accept the actual table name also accepted a <span style="font-family: Courier New;">LIKE</span>-pattern or empty string or <span style="font-family: Courier New;">null</span>. This was changed to conform to JDBC. This change can break applications that relied on the incorrect behavior (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-331">JDBC-331</a>)</li> </ul> <div style="margin-left: 40px;">Affected methods are: <span style="font-family: Courier New;">getPrimaryKeys</span>, <span style="font-family: Courier New;">getBestRowIdentifier</span>, <span style="font-family: Courier New;">getImportedKeys</span>, <span style="font-family: Courier New;">getExportedKeys </span>and <span style="font-family: Courier New;">getCrossReference</span>. As part of this change <span style="font-family: Courier New;">getIndexInfo </span>now handles names in the wrong case slightly different.<br /> <br /> Jaybird 3.0 will further modify and restrict the pattern matching and case sensitivity of metadata methods. See <a target="_blank" href="/file/documentation/drivers_documentation/java/2.2.4/release_notes.html#__RefHeading__3727_304866878">Future changes to Jaybird</a> in the release notes for more details.</div> <div><br /> <span lang="EN-US" style="mso-ansi-language:EN-US">The release is also available on maven(*): </span></div> <div style="margin-left: 40px;"><span style="font-family: Courier New;">&lt;groupId&gt;org.firebirdsql.jdbc&lt;/groupId&gt; <br /> &lt;artifactId&gt;jaybird-jdkXX&lt;/artifactId&gt; <br /> &lt;version&gt;2.2.4&lt;/version&gt;</span></div> <br /> <span lang="EN-US" style="mso-ansi-language:EN-US">*The artifactId depends on your target Java version: jaybird-jdk15, jaybird-jdk16</span><span lang="EN-US" style="mso-ansi-language:EN-US"><span lang="EN-US" style="mso-ansi-language:EN-US">, jaybird-jdk17</span> or jaybird-jdk18.<br /> </span></span>
+                    </div>
+                  	<div>
+                    	<div>
+  <iframe frameborder="0"
+    height="150" 
+    scrolling="no" 
+    src="https://firebirdfoundation.substack.com/embed" 
+    style="border:1px solid #EEE; background:white;" 
+    width="100%" 
+    allow="encrypted-media"
+    sandbox="allow-scripts allow-same-origin allow-forms"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>  
+                  	</div>
+                    <div class="post-tags">
+                        <ul>
+                            <li><a><i class="fa fa-share"></i> Share With:</a></li>
+                            <li style="cursor: pointer;"><a class="share-icon fb" data-url="/en/news/jaybird-2-2-4-released-37961"><i class="fab fa-facebook-f"></i></a></li>
+                          
+                            <li style="cursor: pointer;"><a class="share-icon lin" data-url="/en/news/jaybird-2-2-4-released-37961"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="post-reader-text post-reader-text-2 post-reader-text-3 pt-50">
+                    <div class="row">
+                                                    <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/firebird-seminars-in-siegburg-germany-and-prague-czech-republic-37939">Firebird Seminars in Siegburg (Germany) and Prague (Czech Republic)</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                                                            <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/ngram-indexes-in-firebird-fast-substring-search-without-a-full-scan">VIDEO: NGRAM indexes in Firebird: fast substring search without a full scan</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-20">
+                <div class="all-post-sidebar">
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

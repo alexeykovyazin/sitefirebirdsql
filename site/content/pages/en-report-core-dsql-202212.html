@@ -1,0 +1,450 @@
+---
+title: "Firebird: Developer's Report: DSQL and General Coding"
+html_title: "Firebird: Developer's Report: DSQL and General Coding"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: DSQL and General Coding"
+menu_active: ""
+source_url: "/en/report-core-dsql-202212"
+source_format: new
+url: "/en/report-core-dsql-202212"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: DSQL and General Coding</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">January to December 2022</span></strong></p>
+
+<h3>December 2022</h3>
+
+<p><u>master branch</u></p>
+
+<ul>
+	<li>Finished and merged RDB$BLOB_UTIL.</li>
+	<li>Fixed docker Linux build after introduction of libcds.</li>
+	<li>Remove appveyor build from master.</li>
+	<li>Improvement to make TARGET usage allowing usage of Release/Debug independently of DefaultTarget. Add libcds cleanup.</li>
+	<li>Fixed Android package version.</li>
+	<li>Fixed #7422 - Seek in temporary blob level 0 makes read return wrong data.</li>
+	<li>Investigating usage of vcpkg to maintain external dependencies.</li>
+	<li>Fixed some warnings.</li>
+</ul>
+
+<h3>November</h3>
+
+<p><u>master branch</u></p>
+
+<ul>
+	<li>Fixed #7379 - BLOB_APPEND with existing blob accepts malformed string.</li>
+	<li>Improvement #7382 - Performance improvement for BLOB copying.</li>
+	<li>Specifying dynamic external routines.</li>
+	<li>Fixed #7385 - Broken lock of statements cache during multithreaded index activation.</li>
+	<li>Improvement #7399 - Simplify client library build.</li>
+	<li>Investigating hang happening in #7385.</li>
+	<li>Fixed #7391 - AV when compiling stored procedure.</li>
+	<li>Started implementation of dynamic external routines.</li>
+</ul>
+
+<p><u>v4 branch</u></p>
+
+<ul>
+	<li>www</li>
+	<li>Add Linux and MacOS v4 snapshots to https://github.com/FirebirdSQL/snapshots/releases/tag/snapshot-v4.0.</li>
+	<li>Tried to setup Windows snapshots using GitHub Actions self-hosted runner, but it was incompatible with WinCompile&#39;s Windows 2008.</li>
+</ul>
+
+<p><u>Others</u></p>
+
+<ul>
+	<li>Updated GitHub action mknejp/delete-release-assets to fix problems in our workflow and sent changes upstream.</li>
+	<li>Research usage of antlr4</li>
+</ul>
+
+<h3>October</h3>
+
+<p><u>master branch</u></p>
+
+<ul>
+	<li>- Continuing working in new getInfo() API.</li>
+	<li>#7350 - SKIP LOCKED clause for SELECT WITH LOCK, UPDATE and DELETE.</li>
+	<li>Review of opened PRs thinking on v5 beta 1.</li>
+	<li>#7338 - Public interfaces: support for C++11 and add version definition (#define) for conditional compilation.</li>
+	<li>Bringing RDB$BLOB_UTIL up to date.</li>
+	<li>Fixed crash in debug build related to conditional indexes.</li>
+	<li>Re-thinking RDB$BLOB_UTIL after BLOB_APPEND.</li>
+	<li>Investigating usage of vcpkg to maintain external dependencies.</li>
+	<li>Replace deprecated GitHub Actions&#39; set-output.</li>
+</ul>
+
+<p><u>v4 branch</u></p>
+
+<ul>
+	<li>#6964 - Backported fix for --with-system-re2 configure option for using system-wide libre2</li>
+	<li>#7369 - 4.0.2: build fails against re2 20220601.</li>
+</ul>
+
+<p><u>Others</u></p>
+
+<ul>
+	<li>Research usage of antlr4</li>
+</ul>
+
+<h3>September</h3>
+
+<p><u>master branch</u></p>
+
+<ul>
+	<li>Fix Android packaging issues.</li>
+	<li>Split Android package into two phases, second one to run in emulator.</li>
+	<li>Add GitHub action to create full package for x86, x64, arm32 and arm64.</li>
+	<li>Added tzdata to Android packages.</li>
+	<li>#7317 - Automated Linux ARM32/64 builds using crosstool-ng toolchain and QEMU. Changed x86/x64 builds to also use crosstool-ng.</li>
+	<li>Fixed #7309 - Firebird 5.0 server does not release memory after INSERT query.</li>
+	<li>Fixed #5749 - Token unknown error on formfeed in query [CORE5479].</li>
+	<li>Start working in new getInfo() API.</li>
+	<li>Added unit tests for Clumplet InfoResponse kind.</li>
+</ul>
+
+<h3>August</h3>
+
+<p><u>master branch</u></p>
+
+<ul>
+	<li>Finished implementation of unit tests.</li>
+	<li>Improve Windows build process making it generating public files directly in the output directory and separated by configuration.</li>
+	<li>Fix problems with Windows package scripts.</li>
+	<li>Improve Windows build speed not building both release and debug external libraries.</li>
+	<li>Store snapshots in FirebirdSQL/snapshots.</li>
+	<li>Specification and discussion of new statement EXECUTE SQL.</li>
+	<li>Work in named parameters support.</li>
+	<li>Change release filenames.</li>
+	<li>Make Android build work with modern NDK.</li>
+</ul>
+
+<p><u>v4 branch</u></p>
+
+<ul>
+	<li>Fixed #7243 - Some UNICODE characters can lead to wrong CONTAINING evaluation when lower/upper uses different number of bytes in its encoding.</li>
+	<li>Reviewed and applied fix for #7241 - Mac OS installer - firebird user not created correctly if group already exists.</li>
+</ul>
+
+<p><u>v3 branch</u></p>
+
+<ul>
+	<li>Finished fix for #7237 - Starting operator become unstable on indexed varchar fields.</li>
+</ul>
+
+<p><u>Others</u></p>
+
+<ul>
+	<li>Added ChangeLog generator action to make creation of CHANGELOG.md easier.</li>
+	<li>Forked GitHub Action https://github.com/mknejp/delete-release-assets</li>
+	<li>to improve for Firebird needs.</li>
+</ul>
+
+<h3>July</h3>
+
+<p><u>master branch</u></p>
+
+<ul>
+	<li>Fixed #7220 - TYPE OF COLUMN dependency not tracked in package header and external routines.</li>
+	<li>Fixed #7227 - Dependencies of subroutines are not preserved after backup restore.</li>
+	<li>Research related to #3863.</li>
+	<li>Started implementation of unit tests.</li>
+	<li>Make MacOS GitHub Actions build use static libc++ to avoid problems with shared C++ libraries.</li>
+	<li>Cache MacOS libicu build in GitHub Actions to make build faster.</li>
+</ul>
+
+<p><u>v4 branch</u></p>
+
+<ul>
+	<li>Fixed #7229 - ALTER COLUMN DROP IDENTITY does not reset generator name in metadata cache</li>
+</ul>
+
+<p><u>v3 branch</u></p>
+
+<ul>
+	<li>Started fix for #7237 - Starting operator become unstable on indexed varchar fields.</li>
+</ul>
+
+<h3>June</h3>
+
+<p><u>master branch</u></p>
+
+<ul>
+	<li>Profiler: finished implementation of remote session profiling.</li>
+	<li>Reviewed feature &quot;Parallel backup, restore and sweep&quot;.</li>
+	<li>Profiler: automatic flush.</li>
+	<li>Profiler: improve timings accurary.</li>
+	<li>Benchmarks and discussions related to record encoding and tested increase of MAX_RECORD_SIZE.</li>
+	<li>Profiler: add TOTAL_TIME column to PLG$PROF_REQUESTS. Add view PLG$PROF_STATEMENT_STATS_VIEW.</li>
+	<li>Profiler: improve PSQL stats in corner cases.</li>
+	<li>Fixed #7202 - ISQL -ch utf8 (Windows only): either silently quits to OS or issues non-expected &#39;malformed string&#39; when non-ascii character occurs in the typed command.</li>
+	<li>Research and discussion about ISQL problem detecting pipe as interactive in Windows.</li>
+	<li>Update VS docker build to 16.11.16.</li>
+	<li>Fix build with VS build tools instead of Visual Studio.</li>
+	<li>Profiler: design for future extensions with different timings types.</li>
+	<li>Fixed #6869 - Domain CHECK-expression can be ignored when we DROP objects that are involved in it.</li>
+	<li>Fixed #6807 - Regression in FB 4.x : &quot;Unexpected end of command&quot; with incorrect line/column info.</li>
+	<li>Added workflow to trim trailing spaces from source files and avoid unnecessary merge conflicts.</li>
+</ul>
+
+<p><u>v4 branch</u></p>
+
+<ul>
+	<li>Fixed Windows empbuild Debug build.</li>
+	<li>Fixed #7202 - ISQL -ch utf8 (Windows only): either silently quits to OS or issues non-expected &#39;malformed string&#39; when non-ascii character occurs in the typed command.</li>
+	<li>Backported improvement #7038 - Improve performance of STARTING WITH with insensitive collations.</li>
+	<li>Reviewed PR #7217 - Fix a bug when it was not allowed to execute DROP PACKAGE BODY for a package with a procedure even if a user has DROP ANY PACKAGE privilege.</li>
+	<li>Research related to #7171 - Authentication error / Connection shutdown problems.</li>
+	<li>Fixed #7222 - Dependencies of packaged functions are not tracked.</li>
+</ul>
+
+<h3>May</h3>
+
+<p><u>master branch</u></p>
+
+<ul>
+	<li>Profiler: various changes accordingly to review comments.</li>
+	<li>Working in internal DSL to replace GDML.</li>
+	<li>Fixed #7176 - Incorrect error &quot;Invalid token. Malformed string.&quot; with union + blob + non utf8 varchar.</li>
+	<li>Put debug option DSQL_KEEP_BLR into statement cache&#39;s key.</li>
+	<li>Add possibility to have default expressions in system packages&#39; procedures and functions parameters.</li>
+	<li>Fixed #7179 - Wrong error message - &quot;string right truncation. expected length 30, actual 30&quot;</li>
+	<li>Fixed #7183 - Regression when derived table has column evaluated as result of subquery with IN(), ANY() or ALL() predicate: &quot;invalid BLR at offset ... / context already in use&quot;.</li>
+	<li>Profiler: started implementation of remote session profiling.</li>
+</ul>
+
+<p><u>v4 branch</u></p>
+
+<ul>
+	<li>Fixed #7179 - Wrong error message - &quot;string right truncation. expected length 30, actual 30&quot;</li>
+	<li>Reviewed fix for #7178: Add PUBLIC user to sql script condition which selects privileges from granted user roles.</li>
+</ul>
+
+<p><u>v3 branch</u></p>
+
+<ul>
+	<li>Investigation of #7190 - TRIM function is wrongly working in collate UNICODE_CI_AI.</li>
+</ul>
+
+<h3>April</h3>
+
+<p><u>master branch</u></p>
+
+<ul>
+	<li>Working in internal DSL to replace GDML.</li>
+	<li>Fixed problem found by Dmitry where node-&gt;getDesc is called after parts of csb is released.</li>
+	<li>Improvement #7169 - Improve ICU version mismatch diagnostics.</li>
+	<li>Adjust logic of POSIX DlfcnModule::findSymbol to avoid problems when same library is loaded through different file names (symbolic links /directly).</li>
+</ul>
+
+<p><u>v4 branch</u></p>
+
+<ul>
+	<li>Fixed #7167 - Incorrect transliteration of field names in constraint violation errors.</li>
+	<li>Fixed #7168 - Ignore missing UDR libraries during restore.</li>
+	<li>Fixed #7124 - Inconsistent RDB$USER_PRIVILEGES after dropping identity.</li>
+	<li>Fixed #7123 - ISQL does not extract &quot;INCREMENT BY&quot; for IDENTITY column.</li>
+</ul>
+
+<p><u>v3 branch</u></p>
+
+<ul>
+	<li>Analized test for CORE-1885.</li>
+</ul>
+
+<h3>March</h3>
+
+<p><u>master branch</u></p>
+
+<ul>
+	<li>Compiled statement cache.</li>
+	<li>Make DeclareLocalTableNode::execute truncate the table if it already had data from a previous execution.</li>
+	<li>Simplify Statement::verifyAccess for internal statements.</li>
+	<li>Unset req_in_use in EXE_release.</li>
+	<li>Do not checkCancelState twice when there is no contention in thread_db::reschedule().</li>
+	<li>Local tables design.</li>
+	<li>Working in internal DSL to replace GDML.</li>
+	<li>Verified problem (record not found for user) reported by Pavel Zotov after compiled statement cache.</li>
+	<li>Fixed problem with DDL+DML in the same transaction with compiled statement cache - reported by Pavel Zotov.</li>
+</ul>
+
+<p><u>v4 branch</u></p>
+
+<ul>
+	<li>Remove deprecated GitHub Actions Windows 2016 environment.</li>
+</ul>
+
+<p><u>v3 branch</u></p>
+
+<ul>
+	<li>Fixed #7094 - Incorrect indexed lookup of strings when the last keys characters are part of collated contractions and there is multi-segment insensitive descending index.</li>
+	<li>Fixed #7140 - Wrong select result in case of special sort character.</li>
+</ul>
+
+<h3>February</h3>
+
+<p><u>master branch</u></p>
+
+<ul>
+	<li>Refactor statement and request parts so multiple DSQL requests could be created from a single compiled statement paving the ground for compiled statement cache.</li>
+	<li>Finished addition of table MON$COMPILED_STATEMENTS and columns MON$STATEMENTS.MON$COMPILED_STATEMENT_ID and MON$CALL_STACK.MON$COMPILED_STATEMENT_ID.</li>
+	<li>Compiled statement cache initial work and discussions.</li>
+	<li>Refactor: avoid prefix Jrd in Statement class and Statement/jrd_req accessors/variables.</li>
+	<li>Removed bad asserts in INTL libraries.</li>
+	<li>Refactor: renamed jrd_req class to Request.</li>
+	<li>Started development of compiled statement cache.</li>
+</ul>
+
+<p><u>v4 branch</u></p>
+
+<ul>
+	<li>Verified problem with FB in OpenSUSE 15.3 which was reported as bugged - not confirmed.</li>
+</ul>
+
+<h3>January</h3>
+
+<p><u>master branch</u></p>
+
+<ul>
+	<li>Worked in CALL statement.</li>
+	<li>Improvement #4769 - Allow sub-routines to access variables/parameters defined at the outer/parent level [CORE4449].</li>
+	<li>Code cleanup: mark nodes and stream classes as final as possible and replace FB_FINAL by final.</li>
+	<li>Tested setting UTF-8 codepage through manifest for allow acessing database with Unicode characters in file name.</li>
+	<li>Cleanup: remove blr_parameter3.</li>
+	<li>WIP - DSQL refactor for compiled statement cache.</li>
+</ul>
+
+<p><u>v4 branch</u></p>
+
+<ul>
+	<li>Fixed #7090 - Performance degradation with CURRENT_DATE, LOCALTIME and LOCALTIMESTAMP.</li>
+	<li>Improvement #7092 - Improve performance of CURRENT_TIME.</li>
+	<li>Refactor request&#39;s timestamp handling.</li>
+	<li>#7041 - Helping with MacOS M1 port.</li>
+	<li>Fixed #7112 - Avoid unload of plugins in MacOS due to problematic reload of them.</li>
+	<li>Fixed #7108 - Firebird does not find an record when adding a foreign key.</li>
+</ul>
+
+<p><u>v3 branch</u></p>
+
+<ul>
+	<li>Use clock_gettime in MacOS.</li>
+</ul>
+
+<p><u>others</u></p>
+
+<ul>
+	<li>Helping with C# mappings for the OO API.</li>
+</ul>
+
+<div><em>Adriano dos Santos Fernandes </em></div>
+
+<div><em>Sao Paulo, Brazil</em></div>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

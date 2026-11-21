@@ -1,0 +1,321 @@
+---
+title: "Firebird: Developer's Report: Firebird Core Development & Coordination"
+html_title: "Firebird: Developer's Report: Firebird Core Development & Coordination"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Firebird Core Development & Coordination"
+menu_active: ""
+source_url: "/en/report-core-coordination-201701"
+source_format: new
+url: "/en/report-core-coordination-201701"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/archives/">Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/ff-reports-archives/">Developer Reports Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Firebird Core Development &amp; Coordination</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <strong style="line-height: 20.8px;"><span style="color: rgb(6, 134, 173); font-size: 16px;">September 2016 to January 2017</span></strong><br style="line-height: 20.8px;" />
+&nbsp;
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><strong><u>January&nbsp;2017</u></strong></span></div>
+
+<div style="line-height: 20.8px;">&nbsp;</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Built-in replication:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">Fixed crash on the slave side</li>
+	<li style="line-height: 20.8px;">Improved the segment archiving timeouts</li>
+	<li style="line-height: 20.8px;">Implemented internal&nbsp;segment copying</li>
+</ul>
+Other v4 development:</div>
+
+<ul style="line-height: 20.8px;">
+	<li>Fixed the optimizer regression introduced in June 2016</li>
+</ul>
+
+<div style="line-height: 20.8px;">
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;"><span style="line-height: 1.6;">v3 bugfixing and improvements:</span></div>
+
+<ul>
+	<li style="line-height: 20.8px;">CORE-5456: Migrating Firebird 2.5.2 to 3.0.1 gbak restore crashes at the end always</li>
+	<li style="line-height: 20.8px;">CORE-5435: Badly selective index could be used for extra filtering even if selective index is used for sorting</li>
+	<li style="line-height: 20.8px;">CORE-5421: Performance degradation in FB 3.0.2 compared to FB 2.5.7</li>
+	<li style="line-height: 20.8px;">CORE-5414: Error restoring on FB 3.0 from FB 2.5: bugcheck 221 (cannot remap)</li>
+	<li style="line-height: 20.8px;">CORE-3530: BETWEEN operand/clause not supported for COMPUTED columns</li>
+	<li style="line-height: 20.8px;">CORE-1095: Support BETWEEN predicate for select expressions</li>
+</ul>
+</div>
+
+<div style="line-height: 20.8px;">Other tasks<span style="line-height: 20.8px;">:</span></div>
+
+<ul>
+	<li>Composed&nbsp;WhatsNew for&nbsp;v3.0.2</li>
+	<li>Composed&nbsp;WhatsNew for&nbsp;v2.5.7</li>
+</ul>
+<span style="color:#474747;font-size:15px;font-weight:bold;"><strong><u>December 2016</u></strong></span></div>
+
+<div>&nbsp;</div>
+
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Built-in replication:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">Fixed infinite journal replay on slave after a master crash</li>
+	<li style="line-height: 20.8px;">Forcibly disabled db-level triggers for replica connections</li>
+	<li style="line-height: 20.8px;">Fixed incomplete replication of the savepoints stack</li>
+</ul>
+
+<div style="line-height: 20.8px;">Other v4 development:</div>
+</div>
+
+<ul style="line-height: 20.8px;">
+	<li>Reworked syntax for the context variables committed priorly</li>
+	<li>Continued development of timing/wait statistics</li>
+</ul>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;"><span style="line-height: 1.6;">v3 bugfixing:</span></div>
+</div>
+
+<div style="line-height: 20.8px;">
+<ul>
+	<li style="line-height: 20.8px;">CORE-5392: BUGCHECK 179 (decompression overran buffer) or unexpected lock conflict may happen during record versions backout</li>
+</ul>
+</div>
+v2.5 bugfixing:
+
+<ul>
+	<li>CORE-5418: Inconsistent output when retrieving the server log via Services API</li>
+</ul>
+</div>
+</div>
+
+<div><span style="color:#474747;font-size:15px;font-weight:bold;"><u>November 2016</u></span></div>
+
+<div>&nbsp;</div>
+
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Built-in replication:</div>
+
+<ul style="line-height: 20.8px;">
+	<li>Fixed journal rewind with active transactions pending</li>
+	<li>Added more verbose logging for debug purposes</li>
+</ul>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;"><span style="line-height: 20.8px;">Other v4 development:</span></div>
+</div>
+</div>
+
+<ul style="line-height: 20.8px;">
+	<li>Fixed regression in CS related to thread scheduling by the OS (unexpectedly long delays during context switches)</li>
+</ul>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;"><span style="line-height: 1.6;">v3 bugfixing:</span></div>
+</div>
+
+<div style="line-height: 20.8px;">
+<ul>
+	<li style="line-height: 20.8px;">CORE-5393: Bad optimization of some operations with views containing subqueries</li>
+	<li>CORE-5382:&nbsp;Incorrect processing (truncation) of SQL statement longer than 10MB</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div>
+<div><span style="color:#474747;font-size:15px;font-weight:bold;"><u>October 2016</u></span></div>
+
+<div>&nbsp;</div>
+
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Built-in replication:</div>
+
+<ul style="line-height: 20.8px;">
+	<li>Misc bugfixing</li>
+</ul>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;"><span style="line-height: 20.8px;">Other v4 development:</span></div>
+</div>
+</div>
+
+<ul style="line-height: 20.8px;">
+	<li>Fixed crash for db-level triggers after commit by Roman Simakov</li>
+</ul>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;"><span style="line-height: 1.6;">v3 bugfixing:</span></div>
+</div>
+
+<div style="line-height: 20.8px;">
+<ul>
+	<li style="line-height: 20.8px;">CORE-5381: Regression: could not execute query (select from view with nested view)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div>
+<div>
+<div style="line-height: 20.8px;"><span style="line-height: 20.8px;">Other tasks:</span></div>
+</div>
+
+<div>
+<ul>
+	<li>Prepared talks for FBconf&nbsp;&#39;2016</li>
+</ul>
+</div>
+<span style="color:#474747;font-size:15px;font-weight:bold;"><u>September 2016</u></span></div>
+
+<div>&nbsp;</div>
+
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;"><span style="line-height: 20.8px;">Other v4 development:</span></div>
+</div>
+
+<ul style="line-height: 20.8px;">
+	<li>CORE-2040:&nbsp;Allow exception name and possibly exception text to be determined within a &quot;WHEN ANY&quot; error handling block</li>
+	<li>CORE-1132:&nbsp;Exception context in PSQL exception handlers</li>
+</ul>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;"><span style="line-height: 1.6;">v3 bugfixing:</span></div>
+</div>
+
+<div style="line-height: 20.8px;">
+<ul>
+	<li style="line-height: 20.8px;">CORE-5351:&nbsp;LEFT JOIN incorrectly pushes UDF into the inner stream causing wrong results</li>
+</ul>
+</div>
+<span style="line-height: 20.8px;">Other tasks:</span></div>
+</div>
+
+<div>
+<ul>
+	<li>Composed WhatsNew for v3.0.1</li>
+</ul>
+</div>
+</div>
+
+<div><br />
+<em>Dmitry Yemanov</em></div>
+</div>
+<em style="line-height: 20.8px;">Penza, Russia</em>
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

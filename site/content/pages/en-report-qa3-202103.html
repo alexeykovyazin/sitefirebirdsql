@@ -1,0 +1,173 @@
+---
+title: "Firebird: Developer's Report: QA Stress Testing & Development"
+html_title: "Firebird: Developer's Report: QA Stress Testing & Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: QA Stress Testing & Development"
+menu_active: ""
+source_url: "/en/report-qa3-202103"
+source_format: new
+url: "/en/report-qa3-202103"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: QA Stress Testing &amp; Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <span style="font-weight: bold; color: rgb(6, 134, 173); font-size: 16px;">January to March 2021</span><br style="line-height: 20.8px;" />
+<br style="line-height: 20.8px;" />
+<span style="color:#474747;font-size:15px;font-weight:bold;"><u style="line-height: 20.8px;">March 2021</u></span>
+
+<ul>
+	<li>Created / modified QA tests for ~60 tracker tickets</li>
+	<li>Found / reported bugs: CORE-6500, <span class="js-issue-title markdown-title">CORE-6503, CORE-6504, CORE-6517, CORE-6527, CORE-6528</span></li>
+	<li>Reported FB crashing when run test functional.util.gbak_zip on Linux</li>
+	<li>Misc changes in qa-rundaily.sh</li>
+	<li>Changes in fbt-cross-report.py related to work both on Linux and Windows</li>
+	<li>Discussed with Vlad Khorsun ability to add into trace log info about statements restart</li>
+	<li>Reported FB hanging during execution test for CORE-6163</li>
+	<li>Linux, run tests on FB 4.0.0.2377: got crashes for CORE-6437</li>
+	<li>Discussed with Pavel Cisar features of parsing .fbt file structure</li>
+	<li>WI-V3.0.8.33420: can not create mapping with name longer than 16 non-ascii characters</li>
+	<li>Test for CORE-6469, Linux only: need to increase delay before closing trace session, otherwise trace log remain incomplete</li>
+	<li>First scratch of web page with overall QA results for different OS and major FB versions</li>
+	<li>Discussed with Pavel Cisar features of trace API usage in FDB</li>
+</ul>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>February 2021</u></span></div>
+
+<ul>
+	<li>Created / modified QA tests for ~30 tracker tickets</li>
+	<li>QA-scenarios: continued implementation for launch fbt_run Linux</li>
+	<li>Suggestions and features request for fbtest: sent final list to Pavel Cisar</li>
+	<li>Multiple small changes / fixes&nbsp; in qa-rundaily scenario for Linux</li>
+	<li>Discussed with Alex Peshkov implementation details of test for CORE-6023</li>
+	<li>Reported to Dmitry Yemanov that backported bugfix for CORE-6486 and CORE-6487 was incomplete</li>
+	<li>Ran tests on Linux, build 4.0.0.2372, CS: 4 core dumps detected</li>
+	<li>QA-rundaily scenario, on Linux: gfix crashes three times during run test for CORE-6437</li>
+</ul>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>January 2021</u></span></div>
+
+<ul>
+	<li>Created / modified QA tests for ~30 tracker tickets</li>
+	<li>Found / reported bugs: <span class="js-issue-title markdown-title">CORE-6463, CORE-6464, CORE-6469, CORE-6470, CORE-6476</span></li>
+	<li>QA scenarios: start deep refactoring of Windows batch files</li>
+	<li>Discussed with Vlad Khorsun implementation details of test for CORE-5832</li>
+	<li>Reported FB 4.0.0.2335 crashing when performing test &quot;functional\tabloid\max-path-length.fbt&quot;</li>
+	<li>Discussed with Alex Peshkov ability to see in trace activity for database that is self-security</li>
+	<li>Reported multiple failed fbt-tests (and several crashes) on build 4.0.0.2349</li>
+	<li>QA scenarios: start implementation of rundaily.sh for run all fbt tests on Linux</li>
+	<li>QA: collected fbtest improvement suggestions</li>
+	<li>Tested special build 4.0.0.2317 with patch for CORE-6458</li>
+	<li>Reported crash of build LI-V3.0.7.33388, SS</li>
+</ul>
+
+<div style="line-height: 20.8px;"><br />
+<em style="line-height: 20.8px;">Pavel Zotov</em></div>
+<em style="line-height: 20.8px;">Moscow, Russian Federation</em><br style="line-height: 20.8px;" />
+&nbsp;
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

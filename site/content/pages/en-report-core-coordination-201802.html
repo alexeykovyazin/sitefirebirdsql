@@ -1,0 +1,385 @@
+---
+title: "Firebird: Developer's Report: Firebird Core Development & Coordination"
+html_title: "Firebird: Developer's Report: Firebird Core Development & Coordination"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Firebird Core Development & Coordination"
+menu_active: ""
+source_url: "/en/report-core-coordination-201802"
+source_format: new
+url: "/en/report-core-coordination-201802"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/archives/">Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/ff-reports-archives/">Developer Reports Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Firebird Core Development &amp; Coordination</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><strong style="line-height: 20.8px;"><span style="color: rgb(6, 134, 173); font-size: 16px;">October 2017 to January 2018</span></strong><br style="line-height: 20.8px;" />
+&nbsp;</p>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><strong><u>January 2018</u></strong></span></div>
+
+<div style="line-height: 20.8px;">&nbsp;</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Built-in replication:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">More reliable journal rewind after server crash</li>
+	<li style="line-height: 20.8px;">Fixed savepoints handling for statement-level replication</li>
+	<li style="line-height: 20.8px;">Preparation for the merge</li>
+</ul>
+</div>
+
+<div style="line-height: 20.8px;">
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Other development:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">Refactored temporary space manager</li>
+	<li style="line-height: 20.8px;">CORE-5718: Make TempCacheLimit setting database-wise</li>
+</ul>
+</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Bugfixing:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">Synchronize access to the global counter</li>
+	<li style="line-height: 20.8px;">Added missing short-curcuit permission check for DBA/DBO during CREATE operations</li>
+	<li style="line-height: 20.8px;">Additional protection for old CORE-3046</li>
+	<li style="line-height: 20.8px;">Fixed CORE-5598: block size exceeds implementation restriction error (HASH JOIN plan)</li>
+</ul>
+</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;"><strong style="color: rgb(71, 71, 71); font-size: 15px;"><u>December 2017</u></strong></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div>&nbsp;</div>
+
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Built-in replication:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">Optimize replication of generators</li>
+	<li style="line-height: 20.8px;">Reset journal sequence after promoting replica to the master database</li>
+	<li style="line-height: 20.8px;">Ensure databases are matched using any path separators (configuration)</li>
+</ul>
+</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Other development:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">Allow efficient IS NOT DISTINCT FROM for DBKEY access</li>
+	<li style="line-height: 20.8px;">CORE-5676: Consider equivalence classes for index navigation</li>
+</ul>
+</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Bugfixing:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">CORE-5684: Error &#39;no current record for fetch operation&#39; is raised while deleting record from MON$ using ORDER BY clause</li>
+</ul>
+</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>November 2017</u></span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div>&nbsp;</div>
+
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Built-in replication:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">Disallow replication of some DDL commands</li>
+	<li style="line-height: 20.8px;">Fixed &quot;segment is missing&quot; error while applying journal</li>
+	<li style="line-height: 20.8px;">Fixed &quot;no current record to fetch&quot; error</li>
+</ul>
+</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Other development:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">CORE-4529: Allow to use index when GROUP BY on field which has DESCENDING index</li>
+</ul>
+</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Bugfixing:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">CORE-5659: Bad PLAN generated for query on Firebird v3.0</li>
+	<li style="line-height: 20.8px;">CORE-5547: Server crashes while compiling stored procedure with nested references to query-based computed fields</li>
+	<li style="line-height: 20.8px;">CORE-4492: OR/IN predicates for RDB$DB_KEY lead to NATURAL plan</li>
+	<li style="line-height: 20.8px;">CORE-3596: Client library cannot connect to the non-ASCII host name (backport)</li>
+	<li>CORE-3295: Estimate the actual record compression ratio in the optimizer</li>
+</ul>
+</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;"><span style="color: rgb(71, 71, 71); font-size: 15px; font-weight: bold;"><u>October 2017</u></span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div>&nbsp;</div>
+
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Built-in replication:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">Fixed hanging journal after master process kill</li>
+	<li style="line-height: 20.8px;">Support for online replica recreation</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div>
+<div><br />
+<em>Dmitry Yemanov</em></div>
+</div>
+</div>
+
+<p><em style="line-height: 20.8px;">Penza, Russia</em></p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

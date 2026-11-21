@@ -1,0 +1,209 @@
+---
+title: "Firebird: Developer's Report: Core Coding and Development"
+html_title: "Firebird: Developer's Report: Core Coding and Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Coding and Development"
+menu_active: ""
+source_url: "/en/report-core-development-201905"
+source_format: new
+url: "/en/report-core-development-201905"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/archives/">Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/ff-reports-archives/">Developer Reports Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Coding and Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">October 2018 to January 2019</span></strong></div>
+
+<h3><u>October 2018</u></h3>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>Fix of unnecessary wait for prepared but still active concurrent transaction, see CORE-5930.</li>
+</ul>
+
+<h3><em>B3_0_Release</em></h3>
+
+<ul>
+	<li>Fixed bug CORE-5935 : Bugcheck 165 (cannot find tip page)</li>
+	<li>Fixed bug CORE-5936 : Firebird server segfaults in the end of database backup</li>
+	<li>Fixed bug CORE-5949 : Bugcheck could happen when read-only database with non-zero linger is set to read-write mode.</li>
+</ul>
+
+<h3>B2_5_Release</h3>
+
+<ul>
+	<li>Fixed bug CORE-5935 : Bugcheck 165 (cannot find tip page)</li>
+	<li>Fixed bug CORE-5936 : Firebird server segfaults in the end of database backup</li>
+</ul>
+
+<h3><u>November 2018</u></h3>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>Enable &quot;Enhance Optimized Debugging&quot; to produce more useful debug info (.pdb files)</li>
+	<li>Fixed bug bug CORE-5959 : Firebird returns wrong time after changes of time zone</li>
+	<li>Update WIndows build</li>
+</ul>
+
+<h3><em>B3_0_Release</em></h3>
+
+<ul>
+	<li>Backport fix for bug CORE-5959 : Firebird returns wrong time after changes of time zone</li>
+</ul>
+
+<h3>B2_5_Release</h3>
+
+<ul>
+	<li>Fixed bug CORE-5958 : FB 2.5.8 hangs</li>
+</ul>
+
+<h3><u>December 2018</u></h3>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>Rename setting: TpcBlockSize -&gt; TipCacheBlockSize</li>
+	<li>Correct usage of different time units in IdleTimer.</li>
+</ul>
+
+<h3><u>January 2019</u></h3>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>Update Windows ICU version to 63.1</li>
+	<li>Make old compilers (not supporting C++11 &quot;noexcept&quot;) work with new ICU</li>
+	<li>Ported fix for bug CORE-5980 : Firebird 2.5.6 &amp; 25.8 server crash</li>
+	<li>Fixed bug CORE-5991 : Trace could not work correctly with quoted file names in trace configurations</li>
+	<li>Fixed bug CORE-5993 : When creation of audit log file fails, there is no error message in firebird.log</li>
+	<li>Fixed bug CORE-5995 : Creator user name is empty in user trace sessions</li>
+</ul>
+
+<h3><em>B3_0_Release</em></h3>
+
+<ul>
+	<li>Ported fix for bug CORE-5980 : Firebird 2.5.6 &amp; 25.8 server crash</li>
+	<li>Fixed bug CORE-5991 : Trace could not work correctly with quoted file names in trace configurations</li>
+	<li>Fixed bug CORE-5993 : When creation of audit log file fails, there is no error message in firebird.log</li>
+	<li>Fixed bug CORE-5995 : Creator user name is empty in user trace sessions</li>
+</ul>
+
+<h3><em>B2_5_Release</em></h3>
+
+<ul>
+	<li>Fixed bug CORE-5980 : Firebird 2.5.6 &amp; 25.8 server crash</li>
+</ul>
+
+<div><em>Vladyslav Khorsun</em></div>
+
+<p><em>Dnetpropetrovsk, Ukraine</em></p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

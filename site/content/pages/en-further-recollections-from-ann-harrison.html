@@ -1,0 +1,406 @@
+---
+title: "Firebird: Further recollections from Ann Harrison"
+html_title: "Firebird: Further recollections from Ann Harrison"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Further recollections from Ann Harrison"
+menu_active: "/en/firebird-rdbms/"
+source_url: "/en/further-recollections-from-ann-harrison"
+source_format: new
+url: "/en/further-recollections-from-ann-harrison"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/documentation/">Documentation</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-rdbms/">Firebird RDBMS</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/historical-reference/">Historical Reference</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Further recollections from Ann Harrison</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    InterBase started on Apollo Domain, a spectacularly wonderful workstation with terrific networking. The initial release supported Apollo, Sun, HP/UX, VAX/VMS, Ultrix, and something else that escapes me. So, if you wonder 'was InterBase originally a Windows/DOS system?', the answer is 'no'.<br /><br />Interbase (the company, with a small 'b') started as Groton Database Systems in our spare bedroom in Groton, Mass. All the 'gds' tags and the 'g' prefix utilities (gfix, gpre, gbak) come from those days. The three founders had previously worked at DEC on the Rdb projects. We were (are) Jim Starkey who did the software architecture and wrote most of the code, Don DePalma who wrote documentation etc. and me, Ann Harrison. I brought in a salary and kept us from starving. That was 1984.<br /><br />The system relations and the API were based on DEC's relational architecture, which would have been an excellent basis for a program to program relational database standard. It was extensible, supported SQL, QUEL, and DEC's own flavor of relational language. The design made multi-database programs quite simple and provided a good basis for distributed processing. Another ball dropped. Anyway, that's why the system relations are RDB$xxx.<br /><br />In 1986, we (by now seven founders) sold stock to Ashton-Tate, a big company that would give us credibility and funding so we could get over the twin hurdles of 'Who are you guys?' and never having enough money to hire marketing talent to stir up leads to provide revenue to hire ...<br /><br />Alas, Ashton-Tate decided that they really loved InterBase, so investing in database companies must be great, so they invested in Sybase too. [Bad day.] At that point, all they wanted from us was to be great, and to be just like dBase, and just like Sybase, and demonstrably faster than either of them at everything. Need I mention that that drained engineering resources?<br />	  	<br />Ashton-Tate's inspired management put them in a death spiral at about the time time ran out on the clause in their contract that said they either had to buy the whole thing, or sell it back at cost. They bought it, and Jim's last act as President was to fire himself. He was the only one who left then (we were about 65 people).<br /><br />Shortly thereafter (1992) Borland bought Ashton-Tate. They decided they needed the technology in-house, so they moved about 1/3 of the company, including most of the senior engineers, to Scott's Valley. Several senior people from support also moved west, and most of the local sales offices remained intact.<br /><br />What Borland got was a very sophisticated database that ran on a dozen platforms, mostly Unix. The only PC systems supported were SCO/Unix, and OS/2. (Did I mention that Ashton-Tate had really inspired management?)<br /><br />The internationalization was extremely primitive - if you stored eight-bit characters, we didn't mangle them, usually. The system did not support stored procedures - we felt, and had measured, that either embedded or dynamic SQL was as fast as stored procedures - the time gained by pre-compiling and optimizing them didn't make up for the time spent figuring out whether the optimization and compilation were up to date.<br /><br />Under Borland, the light suddenly went on that stored procedures weren't about speed, they were about encapsulation. What I'm trying to say is that lots of good stuff happened after I decided not to move with the company. <br />
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Documentation</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-rdbms/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird RDBMS</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-notes/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Notes</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/reference-manuals/" class="menulvl_3"><i class="fa fa-arrow-right"></i> All Reference Manuals</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/white-papers-presentations/" class="menulvl_3"><i class="fa fa-arrow-right"></i> White Papers &amp; Presentations</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/books/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Books</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/drivers-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Drivers Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-docs-and-articles/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Docs and Articles</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/external-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> External Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/licensing/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Licensing</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/features/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Features</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sql-conformance/" class="menulvl_3"><i class="fa fa-arrow-right"></i> SQL Conformance</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/historical-reference/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Historical Reference</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-doc/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-brand-faq/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Branding Policy</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Brand FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/logos/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Logos</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-and-other-databases/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird and other databases</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

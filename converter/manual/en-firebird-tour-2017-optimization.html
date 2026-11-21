@@ -1,0 +1,617 @@
+---
+title: "Firebird: Firebird Tour 2017: Performance Optimization"
+html_title: "Firebird: Firebird Tour 2017: Performance Optimization"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Firebird Tour 2017: Performance Optimization"
+menu_active: "/en/community/"
+source_url: "/en/firebird-tour-2017-optimization/"
+source_format: new
+url: "/en/firebird-tour-2017-optimization/"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/community/">Community</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/events/">Events</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Firebird Tour 2017: Performance Optimization</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <h2>Firebird Tour 2017: Performance seminars</h2>
+Firebird Project, <a href="https://ib-aid.com">IBSurgeon</a>,<a href="https://ib-aid.com"> </a>and <a href="http://www.ibphoenix.com">IBPhoenix</a> are happy to announce Firebird Tour 2017: a series of seminars around the globe, devoted to the performance optimization of Firebird databases. The speakers will be Vlad Khorsun and Dmitry Yemanov (Firebird Project), Dmitry Kuzmenko (IBSurgeon), Alexey Kovyazin (IBSurgeon) and Pavel Cizar (IBPhoenix).
+
+<p>Here is the detailed program for Prague and Bad Sassendorf (please note that it can slightly change during next 2 weeks):</p>
+
+<ol>
+	<li>Performance improvements in Firebird 3 and 4 &ndash; Vlad Khorsun, Firebird core developer
+	<ul>
+		<li>CPU usage in Firebird (Details of scaling in 3.0, DSQL cache of prepared statements, Pool of external connections)</li>
+		<li>On Disk Structure changes for performance (Primary/secondary data pages. Flag swept, SCN for nbackup)</li>
+		<li>SQL improvements</li>
+	</ul>
+	</li>
+	<li>How to use Firebird 3.0 statistics and advanced plans to optimize SQL queries &ndash; Vlad Khorsun, Firebird core team and Dmitry Kuzmenko, IBSurgeon
+	<ul>
+		<li>Understanding new table and index statistics elements (Tables - formats, fragments, packing, pages, blobs, blob levels, Indices - Node, key and prefix length, compression ratio, clustering factor, and how and when all of these affects performance)</li>
+		<li>Gstat detailed statistics output and its interpretation</li>
+		<li>Plan elements, in brief
+		<ul>
+			<li>natural, index search, index order, sorting, joins, etc</li>
+			<li>Old and new plan output</li>
+			<li>Cost estimation</li>
+			<li>Explained plan examples</li>
+		</ul>
+		</li>
+		<li>SQL optimizer improvements and their impact on performance</li>
+	</ul>
+	</li>
+	<li>Tuning Linux, Windows and Firebird for heavy workload: practical examples based on ERP with 1000+ daily users and 460Gb database &ndash; Alexey Kovyazin, IBSurgeon
+	<ul>
+		<li>How to monitor the actual load and what it means in terms of Firebird</li>
+		<li>CPU tuning</li>
+		<li>Optimal memory settings</li>
+		<li>Network tuning</li>
+		<li>Disk performance settings</li>
+		<li>Tips for selecting hardware</li>
+	</ul>
+	</li>
+	<li>Advanced Trace API&nbsp;- Vlad Khorsun, Firebird core developer
+	<ul>
+		<li>Trace API internal implementation details</li>
+		<li>Configuration on heavy loaded systems to avoid performance suppression</li>
+		<li>Getting useful information from big trace logs: top slow queries, top frequent queries and more</li>
+	</ul>
+	</li>
+	<li>Automatic performance monitoring with HQBird, Alexey Kovyazin, IBSurgeon
+	<ul>
+		<li>Complex approach MON$ + TraceAPI</li>
+		<li>Identifying problematic transactions and related applications</li>
+		<li>Identifying and catching problematic queries</li>
+		<li>Temp files: sorting and other</li>
+	</ul>
+	</li>
+	<li>Database internal storage structure optimization &ndash; Pavel Cizar, Firebird QA, IBPhoenix (this session will be only in Prague)
+	<ul>
+		<li>Firebird performance is affected by many factors. One of them is how data and indices are physically stored and distributed in the database. Right now Firebird database administrators can&#39;t significantly influence physical storage and distribution of data, so it would better match the data usage profile. This session will present one from possible ways how to fix that.</li>
+	</ul>
+	</li>
+</ol>
+
+<h3>Presentations (PDF)</h3>
+
+<ul>
+<li><a href="/file/community/tour-2017/firebird.performance.2017.english.pdf">Performance improvements in Firebird 3 and 4 &ndash; Vlad Khorsun, Firebird Project</a></li>
+<li><a href="/file/community/tour-2017/firebird2017.performance.preview.pdf">Firebird performance: short version &ndash; Vlad Khorsun, Firebird Project</a></li>
+<li><a href="/file/community/tour-2017/fb.2017.firebird3.stats_and_plans.pdf">Firebird 3.0 statistics and plans &ndash; Dmitry Kuzmenko, IBSurgeon</a></li>
+<li><a href="/file/community/tour-2017/firebird.tuning.2017.english.pdf">Tuning Linux, Windows and Firebird for heavy workload &ndash; Alexey Kovyazin, IBSurgeon</a></li>
+<li><a href="/file/community/tour-2017/fb.2017.trace.english.pdf">Advanced Trace API &ndash; Vlad Khorsun, Firebird Project</a></li>
+</ul>
+
+
+<p>Seminars will take place:<br />
+1) in <a href="http://extolinn.cz">Hotel Extoll Inn</a>, Prague (Czech Republic) at October 3, from 9-30 to 17-00<br />
+2) in Haus D&uuml;sse (Bad Sassendorf) (Germany) at October 5 - <a href="https://ib-aid.com/download/conferences/firebird_tour_2017_seminar_dusse.pdf">see all details here</a>,<br />
+3) in Moscow (Russia) at November 3, Technopark &quot;Slava&quot; - <a href="http://www.ibase.ru/firebird-tour-2017-performance-optimization">see all details here</a>.<br />
+&nbsp;</p>
+
+<p>Seats are limited! Book here:</p>
+
+<ul>
+	<li>Seminar at Prague (Czech Republic), October 3, 2017 - registration completed.</li>
+	<li>Seminar in Bad Sassendorf (Germany), October 5, 2017 - registration completed.&nbsp;</li>
+	<li>Seminar in Moscow - <a href="http://www.ibase.ru/firebird-tour-2017-performance-optimization">register here</a>.
+	<ul>
+	</ul>
+	</li>
+</ul>
+
+<p>The conference package includes attendance at the conference, materials (downloads), and appropriate&nbsp;meals during the seminar.<br />
+Please note that hotel accommodation is not included!&nbsp;<br />
+<br />
+Please feel free to contact us: <a href="mailto:case@firebirdsql.org?subject=Firebird%20Tour%202017%20questions">case@firebirdsql.org</a></p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Community</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-foundation/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Foundation</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/articles-of-association/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Articles of Association</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sponsors/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Sponsors</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+    
+ 
+ 
+    
+   <div class="menu-tree  bgLVL_4">   
+      <a href="/en/how-to-become-a-sponsor/" class="menulvl_4" ><i class="fa fa-arrow-right"></i> How to Become a Sponsor</a>          
+      
+   </div> 
+    
+
+
+  
+    
+ 
+ 
+    
+ 
+ 
+    
+   <div class="menu-tree  bgLVL_4">   
+      <a href="/en/donors/" class="menulvl_4" ><i class="fa fa-arrow-right"></i> Donors and Past Sponsors</a>          
+      
+   </div> 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/public-reports-documents/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Public Reports &amp; Documents</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-foundation-retrospective/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Foundation: a Retrospective</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-protection/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Protecting the Firebird Brand</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+    
+ 
+ 
+    
+   <div class="menu-tree  bgLVL_4">   
+      <a href="/en/branding-blacklist/" class="menulvl_4" ><i class="fa fa-arrow-right"></i> Branding Blacklist</a>          
+      
+   </div> 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/emberwings-magazine/" class="menulvl_2"><i class="fa fa-arrow-right"></i> EmberWings Magazine</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/news-portals/" class="menulvl_2"><i class="fa fa-arrow-right"></i> News Portals</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/blogs/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Blogs</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/regional-sites/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Regional Sites</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/mailing-lists/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Mailing Lists</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/events/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Events</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2019/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2019</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-performance-tour-2019/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Performance Tour 2018</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree bgLVL_3_sel bgLVL_3">
+      <a href="/en/firebird-tour-2017-optimization/" class="menulvl_3_sel"><i class="fa fa-arrow-right"></i> Firebird Tour 2017: Performance Optimization</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2016/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2016</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-2016-tour-big-databases/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 2015 Tour: Big Databases</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-tour-2015/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 2015 Spring Tour</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2014/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2014</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-tour-2013/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 2013 Tour</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2012/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2012</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2011/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2011</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-performance-webinar-26-nov-2024/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Performance Webinar (26-NOV-2024)</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

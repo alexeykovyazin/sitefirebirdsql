@@ -1,0 +1,385 @@
+---
+title: "Firebird: Developer's Report: QA Stress Testing & Development"
+html_title: "Firebird: Developer's Report: QA Stress Testing & Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: QA Stress Testing & Development"
+menu_active: ""
+source_url: "/en/report-qa3-202212"
+source_format: new
+url: "/en/report-qa3-202212"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: QA Stress Testing &amp; Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><span style="font-weight: bold; color: rgb(6, 134, 173); font-size: 16px;">September to December 2022</span></p>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>September 2022</u></span></div>
+
+<ul>
+	<li>
+	<p>LI-V3.0.11.33618: bugcheck &quot;Too many savepoints (287), file: tra.cpp line: 1443&quot; on REPLICA.</p>
+	</li>
+	<li>
+	<p>QA fbtest. WI-V3.0.11.33621, SS: hangs when test for CORE-2940 executed.</p>
+	</li>
+	<li>
+	<p>Execution of test for CORE-4653 causes FB 5.x crashes. Windows only (since 16.08.2022).<br />
+	Problem relates to insufficient stack size (4Mb on Windows vs 16Mb on Linux).</p>
+	</li>
+	<li>
+	<p>QA fbtest. Name of security DB on Windows became in uppercase (since 5.0.0.706). One need to change some tests.</p>
+	</li>
+	<li>
+	<p>Test for CORE-5970 sporadically issued unexpected gdscode (335544344, io_error) instead of 335545230.</p>
+	</li>
+	<li>
+	<p>Linux, FB 3.x ... 5.x, Classic. Again problem with client detach before its process crashed. Collected all such cases, sent letter to FB team.</p>
+	</li>
+	<li>
+	<p>WI-V3.0.11.33616 Classic, experimental build: can not establish connection when some process runs query with<br />
+	&#39;UPDATE OR INSERT&#39; in NOWAIT transaction.</p>
+	</li>
+	<li>
+	<p>FB 5.0.0.720: hanged on attempt to create DB in embedded mode, both on Linux and Windows.</p>
+	</li>
+	<li>
+	<p>FB 5.x, test for core-5685: new line in STDERR: &#39;port detached&#39;.</p>
+	</li>
+	<li>
+	<p>Batch that creates FB snapshot: re-implemented code that uploads file to FTP server because of prohibition to specify wildcard characters in any FTP-commands (even in &#39;dir&#39;) - RFC3659 (actual after migration from Win Server 2008).</p>
+	</li>
+	<li>
+	<p>FB 3.x and 4.x: Classic is FASTER than Super when lot of connections operate with the same data. Lot of measures (requested by Alexey Kovyazin). Sent report to FB team.</p>
+	</li>
+	<li>
+	<p>WI-3.0.11.33616, Classic, experimental build: four crashes for one minute.</p>
+	</li>
+	<li>
+	<p>Gathered full history of outcomes of test CORE-5034 (requested by Alex).</p>
+	</li>
+	<li>
+	<p>Attempt to run sweep on read-only databasesilently fails (no errors / warnings in the log or trace).</p>
+	</li>
+	<li>
+	<p>NEW QA. Class Action, def trace(): minor correction required when argument &#39;config&#39; is NOT None.</p>
+	</li>
+	<li>
+	<p>MAPPING can be ignored (real user name will be shown instead of mapped) if &#39;CREATE MAPPING&#39; clause contains plugin (&#39;Srp&#39;)<br />
+	and this plugin is not specified in the FIRST position of AuthCLient list.</p>
+	</li>
+	<li>
+	<p>NEW QA: commit() of con.main_transaction does not lead to the same for all other transactions of this connection, and they silently are rolled back.</p>
+	</li>
+	<li>
+	<p>NEW QA. Problems with re-implementing test for CORE-4582: database can not be returned to online state.</p>
+	</li>
+	<li>
+	<p>Windows, 5.0.0.736, SuperServer: crash on executing test for GH-6947.</p>
+	</li>
+	<li>
+	<p>NEW QA. Got error &#39;multiple maps found&#39; when created self-security DB and mapping in it with name and attributes that exactly match other mapping in the default security.db.</p>
+	</li>
+	<li>
+	<p>Attribute &quot;shut single&quot; (or &quot;shut multi&quot;) is lost during backup-restore (in all FB since at least 2.5).</p>
+	</li>
+	<li>
+	<p>NEW QA. Maximal length of DB that is passed to gbak is limited by 255 MINUS length of protocol prefix (e.g. &#39;localhost/3052:&#39; or &#39;xnet://&#39; etc). This is not so for gfix and gstat - they dor not take in account this prefix and can operate with files which length is 255 characters.</p>
+	</li>
+	<li>
+	<p>NEW QA. ISQL command &#39;show database&#39;: its output can not be fully checked because name of database is always stripped out.</p>
+	</li>
+	<li>
+	<p>Weird result of SQL query during concatenation of attributes from mon$database for issuing string that is shown in the DB header tail by &#39;gstat -h&#39; command: ten spaces are inserted between &#39;backup lock&#39; and &#39;read-write&#39; phrases. Need apply TRIM() to mon$read_only (and *only* to this column).</p>
+	</li>
+	<li>
+	<p>NEW QA. Questions about reproducing problem described in GH-5995. Parameter KeyHolderPlugin is per-database (but this is not noted in its description).</p>
+	</li>
+	<li>
+	<p>NEW QA. 4.0.3.2849, WIndows, Classic: hanged when execute test &quot;functional.tabloid.max-path-length&quot;.</p>
+	</li>
+	<li>
+	<p>NEW QA. Re-implementing test for core-4337. Log of &#39;gfix -sweep&#39; can remain empty for every ~10 run in FB 4.0.1 Classic.<br />
+	Trace will not contain error messages with gds = 335544856 and 335545130 (connection shutdown / killed by database admin).</p>
+	</li>
+	<li>
+	<p>NEW QA. Problems with re-implementing test for CORE-6309 (limbo transactions). Utility GFIX issues totally different (very detailed) output comparing to the same test in FBT. Utility fbsvcmgr fails. One need to use exactly the same &quot;host/port:db_name&quot; in order to reproduce problem on some other host.</p>
+	</li>
+	<li>
+	<p>QA fbtest. FB 5.0.0.745: STDERR content of test for CORE-3064 became differ.</p>
+	</li>
+	<li>
+	<p>WI-3.0.11.33622, SS, experimental build: crash on replica.</p>
+	</li>
+	<li>
+	<p>LI-T5.0.0.758: lot of crashes, both on SS and CS.</p>
+	</li>
+	<li>
+	<p>LI-T5.0.0.760, SS: crashes on test for CORE=3362 (&#39;cursor stability&#39;).</p>
+	</li>
+	<li>
+	<p>NEW QA: adapted 37 tests for running under pytest + firebird-qa plugin. Implemented / refactored /adjusted&nbsp; tests from FBT suite: core-6444, core-3064 ; functional/*misc* (2 tests)</p>
+	</li>
+	<li>
+	<p>Re-implemented aux batch for build FB 2.5.x (experimental builds) on Windows test server, problems with VS80COMNTOOLS</p>
+	</li>
+</ul>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>October 2022</u></span></div>
+
+<ul>
+	<li>
+	<p>QA fbtest. Implemented / refactored /adjusted&nbsp; .fbt for 39 tests.</p>
+	</li>
+	<li>
+	<p>Test for core-4731 became failed after fix for gh-7186 (statement &#39;delete from rdb$backup_history&#39; is now allowed).</p>
+	</li>
+	<li>
+	<p>FBT_RUN: crash of 3.0.11.33632 CS, Linux, when executing test for core-3064.</p>
+	</li>
+	<li>
+	<p>3.0.11.33632, Windows: mon$statement.mon$state remains 2 even if we execute&nbsp; &#39;DELETE FROM MON$STATEMENTS&#39; (this occurs when cursor fetches lot of records one-by-one: only *current* operation will be killed, i.e. fetch of some record).</p>
+	</li>
+	<li>
+	<p>QA fbtest. Test &quot;replication/test_shutdown_during_applying_segments_leads_to_crash&quot;: crash of LI-T5.0.0.763 SS on Linux (CentOS).</p>
+	</li>
+	<li>
+	<p>Weird result of set time zone &#39;-02:00&#39; : duplicate with value &#39;11:33:33 America/Sao_Paulo&#39; on Linux with icu version &#39;2018e&#39;.</p>
+	</li>
+	<li>
+	<p>NEW QA. Re-implementing tests for core-0959: gstat does not allow to use connection string startring with &#39;inet://&#39;, &#39;xnet://&#39;, &#39;wnet://&#39; (unlike gfix and gbak - they have no problem with that).</p>
+	</li>
+	<li>
+	<p>Fixed missed &#39;ORDER BY&#39; in the test for core-5892</p>
+	</li>
+	<li>
+	<p>NEW QA: pytest hangs at final point when check FB 4.0.1 and 4.0.2 (both Release), Classic mode, Linux only. Started long investigation, dicsussed with pcisar since 09.10.2022 19:29. Found two tests (core_5441_test.py and core_5470_test.py) which must be executed one-by-one for 100% reproducing of that.</p>
+	</li>
+	<li>
+	<p>Continued investigation of hanging pytest when running tests core_5441 and core_5470. Sent report to FB team.</p>
+	</li>
+	<li>
+	<p>NEW QA: continued investigation of problem with tests core_5441 and core_5470. Found that problem somehow relates to the INCLUDE_FILTER regexp; pytest can hang when this regexp contain PIPE between two or three tokens.</p>
+	</li>
+	<li>
+	<p>NEW QA: encountered with broken TX isolation when running test CORE-2216 on 4.0.1.2692 (Release), Linux, Classic only: transaction that is started by NBACKUP connection does not see changes in the rdb$backup_history.</p>
+	</li>
+	<li>
+	<p>QA fbtest: some tests need to be changed after recent commits related to optimizer (core-2078, core-5236, optimizer/opt_inner_join_05, opt_left_join_07).</p>
+	</li>
+	<li>
+	<p>Adjusted test core-2650 because of new clause in explained plan: &#39;FILTER (PRELIMINARY)&#39;. Related to old ticket GH-1708.</p>
+	</li>
+	<li>
+	<p>Simplified test CORE-6095 (COMMIT_RETAINING, &quot;New number &lt;NNN&gt;&quot;): trace parsing must be much simpler than it was initially made. No sens to take in account exact IDs of started transactions. Transaction that is started by Garbage Collector can appear in the trace log at any moment - no matter of starting 1st user transaction. Found since 5.0.0.733.</p>
+	</li>
+	<li>
+	<p>Fixed missed &#39;git reset --hard&#39; in the batch scenario that makes FB snapshots on Linux. Added sending to email info about every stage of building process, including final outcome (success or fail).</p>
+	</li>
+	<li>
+	<p>QA fbtest. FBT_RUN: lot of crashes when running tests on Windows, build 5.0.0.797 (gbak-related, messages: &quot;action cancelled by trigger (3)&quot;, &quot;cannot deactivate index used by a PRIMARY/UNIQUE constraint&quot; etc).</p>
+	</li>
+	<li>
+	<p>Regression in 5.0.0.807, raised on test for CORE-2477. Related wrong handling of dataset which has WHERE-filtering and is originated from derived table which, in turn, has OUTER JOIN.</p>
+	</li>
+	<li>
+	<p>LI-V3.0.11.33618 (SS), experimental build: crash FB was idle (no users activity).</p>
+	</li>
+	<li>3.0.11.33622, Windows: broken REPLICA, &quot;internal Firebird consistency check (cannot start garbage collector thread)&quot;.</li>
+</ul>
+
+<p><span style="color:#474747;font-size:15px;font-weight:bold;"><u>November 2022</u></span></p>
+
+<ul>
+	<li>NEW QA. Deep re-implementation of qa-rundaily batch scenario (for Windows): adaptation for new qa framework. Added coloring to cells in order to have ability to quickly detect crashes/bugchecks, encryption issues / performance problems etc. Changed parsing of results (now most info lives in XML). Annotations now are stored as varchar rather blobs (compress blob using LZMA, then convert it to base-64). Crashes and stack traces are uploaded together with HTML report. Most valuable info from stack trace is stored in the database (similar to annotations). Strict limitations on total size of uploaded dumps (this is checked on HTTP-server side by special script).</li>
+	<li>NEW QA. firebird-driver missed some functionality of Cursor object comparing to that was in FDB: fetchallmap(), fetchmanymap(), fetchonemap().</li>
+	<li>NEW QA. Feature request. XML-results of pytest: it will be useful to add CPU-time there.</li>
+	<li>QA fbtest, Windows only. All replication-related tests begin fail on Windows, since build 5.0.0.824. Only restart of machine did help. The reason remained uknown.</li>
+	<li>NEW QA. Trouble with parsing text from XML if it contains &quot;\&quot;, &quot;\a&quot;, &quot;\n&quot; etc. Final text became distorted. No solution with that.Python &quot;silently&quot; crashes when running pytest, error code: 0xc0000409 ( retcode = -1073740791 ), faulted ath:&nbsp; C:\Windows\System32\ucrtbase.dll.</li>
+	<li>Found the only &#39;workaround&#39; of that: adding re-connects to DB with results in several places.</li>
+	<li>NEW QA. Starting first probe runs of re-implemented qa_rundaily.bat. Fixed lot of minor errors, added diagnostic messages.</li>
+	<li>NEW QA. pytest returns code = 0 (zero) on Windows in case of INTERNALERROR (e.g. unavaliable server etc). No such problem on Linux.</li>
+	<li>QA fbtest. FB 4.0.3.2875, Classic: crash on test for CORE-4326.</li>
+	<li>NEW QA. &#39;pytest --junitxml&#39;: not all info is passed to XML from failed outcome (particularly, missed phrase &quot;SQLSTATE = 08006&quot;, so one can not &#39;guess&#39; that outcome could relate to either crash or network problems).</li>
+	<li>Creation of snapshot 5.0.0.838 could not be completed, error: &quot;/bin/sh: line 1: cmake: command not found&quot;. One need to install cmake since that date.</li>
+	<li>ISQL crashes on Windows during attempt to run tests against build 4.0.3.2861.</li>
+	<li>FBSVCMGR crashes on Windows during attempt to run tests against 3.0.11.33639</li>
+	<li>Test for CORE-6509 now leads to extremely huge memory consumption (190 Gb) both on FB 4.x and 5.x (Windows).</li>
+	<li>Memory grow was caused because of new algorithm that uses hash table for allocating page buffers. Test was excluded (temporary) from execution.</li>
+	<li>NEW QA. Implemented special script for extract most valuable (failed) frame info from Windows stack trace. Added code to store such text in the DB.</li>
+	<li>Failed to create build 4.0.3.2861 on Windows: &quot;src\jrd\btr.cpp(549): error C2065: &#39;MAXIMUM_SELECTIVITY&#39;: undeclared identifier&quot;.</li>
+	<li>Custom build 3.0.10.33606, Classic (Linux): frequent crashes.</li>
+	<li>Custom build 3.0.10.33622, SuperClassic (Windows), 900 attachments (production): FB works extremely slow. The reason can relate to missed cached info about tables cardinality. Got &quot;cannot find record back version (291)&quot;.</li>
+</ul>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<p><span style="color:#474747;font-size:15px;font-weight:bold;"><u style="line-height: 20.8px;">December 2022</u></span></p>
+
+<ul>
+	<li>
+	<p>NEW QA. Continued re-implementation of batch scenario for running tests. Investigated to apply pytest-xdist package (FAILED). Can not use &#39;trivial&#39; method when each major FB is checked separately (on Windows): fbguard allows to be launched only once.</p>
+	</li>
+	<li>
+	<p>Adjusted functional/isql/isql_02 to the output on recent FB version.</p>
+	</li>
+	<li>
+	<p>WI-T5.0.0.863 SS crached during run tests for core-0185.</p>
+	</li>
+	<li>
+	<p>Replication has trouble on experimental FB 3.x and 4.x if&nbsp; UPDATE statement changes PK-column which was declared as text based on UTF-8 charset *with* COLLATE clause (i.e. COLLATE UNICODE_CI or UNICODE_CI_AI): record with previous value of PK remain in replica DB together with new.</p>
+	</li>
+	<li>
+	<p>LI-V3.0.11.33618, SS, experimental build: crash at night (when almost zero activity). Again related to transactions pool (as explained by Alex).</p>
+	</li>
+	<li>
+	<p>QA-run can not be parallelized on Windows through several launches on diff major FB instances: fbguard requires to be run only once.Implementation of this task has to be deferred because of that.</p>
+	</li>
+	<li>
+	<p>Started full re-implementation of QA-run scenario for Linux. Lot of changes in .sh and .sql scripts have been done.</p>
+	</li>
+	<li>
+	<p>All replication-related tests again failed on Windows. The only way to &#39;solve&#39; this problem is still host restart. Actual reason remains unknown.</p>
+	</li>
+	<li>
+	<p>Message &quot;gbak: ERROR:message length error (encountered 32, expected 65568)&quot; can raise for table which record size is much less than 64K (Issue #7438)</p>
+	</li>
+	<li>
+	<p>NEW QA. Weird message &quot;invalid statement handle&quot; raises and is written to STDERR, although is considered as Python WARNING. Looks like related to non-releases resources that have been taken during creation of prepared statements. Found strange workaround: one need to make DB-connection at the same function as prepared statements (look very weird but 100% reproduced).</p>
+	</li>
+	<li>
+	<p>Permanent URLs to FB 4.x and 5.x on github can be obtained only if &quot;/tag&quot; substring will be replaced with &quot;/expanded_assets&quot;<br />
+	(because page is loaded by AJAX; thanks to Adriano for suggestion)</p>
+	</li>
+	<li>
+	<p>Several runs of new QA script on Linux. Got crashes, check that dump and stack trace avaliable for download when see QA site on http server.</p>
+	</li>
+	<li>
+	<p>NEW QA. Warning &quot;invalid statement handle&quot; (after Python make-all-reports script) can not be avoided and still raises after test finish.<br />
+	Decided to ignore it and continue work of script.</p>
+	</li>
+	<li>
+	<p>Made test for quick estimation of time that is spent on PREPARE (requested by Alexey Kovyazin). Ratio is about 23 / 13 (prepare on each iter vs prepare only once; checked for 10&#39;000; 100&#39;000 and 1&#39;000&#39;000 rows)</p>
+	</li>
+	<li>
+	<p>OLTP-EMUL, LI-V3.0.11.33648: crash during working phase (before run &#39;gfix -shut full- force 0 ...&#39;).</p>
+	</li>
+	<li>
+	<p>WI-V3.0.11.33639 SS, experimental build: crash related to ICryptKey::setSymmetricMade test for benchmark of filtering &#39;main&#39; table by its join with GTT ( instead of &quot;IN(...)&quot; ) vs join to MON$CONTEXT_VARIABLES (Alexey Kovyazin request). Results *strongly* depend on PLAN of execution.</p>
+	</li>
+</ul>
+</div>
+
+<ul>
+</ul>
+<em style="line-height: 20.8px;">Pavel Zotov</em><br />
+<em style="line-height: 20.8px;">Moscow, Russian Federation</em></div>
+
+<p>&nbsp;</p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

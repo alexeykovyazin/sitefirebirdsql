@@ -1,0 +1,207 @@
+---
+title: "Firebird: Jaybird 4.0.1 released"
+html_title: "Firebird: Jaybird 4.0.1 released"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Jaybird 4.0.1 released"
+menu_active: ""
+source_url: "/en/news/jaybird-4-0-1-released"
+source_format: new
+url: "/en/news/jaybird-4-0-1-released"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+ 
+    <section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/about-firebird/">About Firebird</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/news/">News &amp; Events</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Jaybird 4.0.1 released</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-8">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div class="post-categories d-flex justify-content-between align-content-center">
+                        <div class="categories-share">
+                            <ul>
+                                <li><i class="fas fa-calendar"></i> Aug 11, 2020</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="title">Jaybird 4.0.1 released</h3>
+                                            </div>
+                    <div class="post-text mt-30">
+                        Jaybird 4.0.1 has been released. Jaybird 4.0.1 is the first maintenance release of Jaybird 4, and introduces support for <code>INT128</code> (a new type in Firebird 4), improves support for the Firebird 4 <code>WITH TIME ZONE</code> types by adding support for <code>java.time.ZonedDateTime</code> and making some of the derivation rules more consistent with Firebird. It also provides some bug fixes and other changes.
+
+<p>The following has been changed or fixed since Jaybird 4.0.0</p>
+
+<ul>
+	<li>Fixed: Changes to the transaction configuration (transaction parameter buffer configuration) of one connection are no longer propagated to other connections with the same connection properties (<a href="http://tracker.firebirdsql.org/browse/JDBC-386" rel="nofollow">JDBC-386</a>)</li>
+	<li>Fixed: Search index of Javadoc in Java 11 version used incorrect links (<a href="http://tracker.firebirdsql.org/browse/JDBC-619" rel="nofollow">JDBC-619</a>)</li>
+	<li>Fixed: The cleanup of native resources didn&#39;t dispose the native library held by JNA, as a change in implementation no longer allowed directly access to the JNA <code>NativeLibrary</code> (<a href="http://tracker.firebirdsql.org/browse/JDBC-620" rel="nofollow">JDBC-620</a>)</li>
+	<li>Fixed: When updating a row through an updatable result set, selected but not updated blob fields were set to <code>NULL</code> (<a href="http://tracker.firebirdsql.org/browse/JDBC-623" rel="nofollow">JDBC-623</a>)</li>
+	<li>Added: Support for type <code>INT128</code> (reported as JDBC type <code>NUMERIC</code>) (<a href="http://tracker.firebirdsql.org/browse/JDBC-624" rel="nofollow">JDBC-624</a>)<br />
+	See also <a href="/file/documentation/drivers_documentation/java/4.0.1/release_notes.html#firebird-4-int128-support" rel="nofollow">Firebird 4 INT128 support</a>.</li>
+	<li>Added: A static utility method <code>FBDriver.normalizeProperties</code> which, given a JDBC url and a <code>Properties</code> object, returns a <code>Map<string, string=""><string, string=""></string,></string,></code> containing the merged properties normalized to common property name. (<a href="http://tracker.firebirdsql.org/browse/JDBC-627" rel="nofollow">JDBC-627</a>)</li>
+	<li>Fixed: Use of <code>isc_dpb_no_db_triggers</code> no longer logs a warning (<a href="http://tracker.firebirdsql.org/browse/JDBC-628" rel="nofollow">JDBC-628</a>)</li>
+	<li>Incompatible change: While making changes to time zone support, the API of <code>org.firebirdsql.gds.ng.tz.TimeZoneDatatypeCoder</code> was made almost entirely private. This should not affect normal user code.<br />
+	Although we try to avoid these types of incompatible changes in point releases, we explicitly allow them for the <code>org.firebirdsql.gds.ng</code> package and sub-packages.</li>
+	<li>Changed: conversions from <code>TIME WITH TIME ZONE</code> now use 2020-01-01 as base date for named zones (<a href="http://tracker.firebirdsql.org/browse/JDBC-629" rel="nofollow">JDBC-629</a>)</li>
+	<li>New feature: Added support for <code>java.time.ZonedDateTime</code> for the <code>WITH TIME ZONE</code> types (<a href="http://tracker.firebirdsql.org/browse/JDBC-630" rel="nofollow">JDBC-630</a>)</li>
+	<li>Fixed: <code>Connection.setNetworkTimeout</code> incorrectly used the provided <code>Executor</code> to set the timeout (<a href="https://github.com/FirebirdSQL/jaybird/blob/v4.0.1/tracker.firebirdsql.org/browse/JDBC-631">JDBC-631</a>)</li>
+</ul>
+
+<p>Jaybird 4 supports Firebird 2.5 and higher, on Java 7, 8, 11 and 14 (using the Java 11 version of the driver).</p>
+
+<div class="paragraph">
+<p>See also:</p>
+
+<ul>
+	<li><a href="/file/documentation/drivers_documentation/java/4.0.1/release_notes.html" rel="noopener" target="_blank">Jaybird 4.0.1 release notes</a></li>
+	<li><a href="/en/jdbc-driver/" rel="noopener">Jaybird downloads</a></li>
+	<li><a href="/file/documentation/drivers_documentation/java/4.0.1/release_notes.html#maven" rel="noopener" target="_blank">Instructions for Maven</a></li>
+</ul>
+</div>
+
+                    </div>
+                  	<div>
+                    	<div>
+  <iframe frameborder="0"
+    height="150" 
+    scrolling="no" 
+    src="https://firebirdfoundation.substack.com/embed" 
+    style="border:1px solid #EEE; background:white;" 
+    width="100%" 
+    allow="encrypted-media"
+    sandbox="allow-scripts allow-same-origin allow-forms"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>  
+                  	</div>
+                    <div class="post-tags">
+                        <ul>
+                            <li><a><i class="fa fa-share"></i> Share With:</a></li>
+                            <li style="cursor: pointer;"><a class="share-icon fb" data-url="/en/news/jaybird-4-0-1-released"><i class="fab fa-facebook-f"></i></a></li>
+                          
+                            <li style="cursor: pointer;"><a class="share-icon lin" data-url="/en/news/jaybird-4-0-1-released"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="post-reader-text post-reader-text-2 post-reader-text-3 pt-50">
+                    <div class="row">
+                                                    <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/firebird-3-0-6-sub-release-is-available">Firebird 3.0.6 sub-release is available</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                                                            <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/ngram-indexes-in-firebird-fast-substring-search-without-a-full-scan">VIDEO: NGRAM indexes in Firebird: fast substring search without a full scan</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-20">
+                <div class="all-post-sidebar">
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

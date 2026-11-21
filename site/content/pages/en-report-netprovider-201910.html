@@ -1,0 +1,150 @@
+---
+title: "Firebird: Developer's Report: Firebird ADO .NET Provider"
+html_title: "Firebird: Developer's Report: Firebird ADO .NET Provider"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Firebird ADO .NET Provider"
+menu_active: ""
+source_url: "/en/report-netprovider-201910"
+source_format: new
+url: "/en/report-netprovider-201910"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Firebird ADO .NET Provider</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">June to September 2019</span></strong><br />
+<br />
+<span style="color:#474747;font-size:15px;font-weight:bold;">Overview</span></div>
+
+<ul>
+	<li>Full IPv6 support.</li>
+	<li>Performance optimizations.</li>
+	<li>More SPB actions support.</li>
+	<li>48-bit transaction IDs.</li>
+</ul>
+<span style="color:#474747;font-size:15px;font-weight:bold;">Releases</span>
+
+<ul>
+	<li>
+	<p>6.7.0, 7.0.0, 7.1.0, 7.1.1</p>
+	</li>
+</ul>
+<span style="color:#474747;font-size:15px;font-weight:bold;">Tickets solved</span>
+
+<p><a href="http://tracker.firebirdsql.org/browse/DNET-899">DNET-899</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-898">DNET-898</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-897">DNET-897</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-896">DNET-896</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-895">DNET-895</a>,<br />
+<a href="http://tracker.firebirdsql.org/browse/DNET-893">DNET-893</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-892">DNET-892</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-891">DNET-891</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-887">DNET-887</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-886">DNET-886</a>,<br />
+<a href="http://tracker.firebirdsql.org/browse/DNET-884">DNET-884</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-883">DNET-883</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-880">DNET-880</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-875">DNET-875</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-868">DNET-868</a>,<br />
+<a href="http://tracker.firebirdsql.org/browse/DNET-866">DNET-866</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-865">DNET-865</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-864">DNET-864</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-782">DNET-782</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-772">DNET-772</a>,<br />
+<a href="http://tracker.firebirdsql.org/browse/DNET-706">DNET-706</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-676">DNET-676</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-646">DNET-646</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-643">DNET-643</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-642">DNET-642</a>,<br />
+<a href="http://tracker.firebirdsql.org/browse/DNET-633">DNET-633</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-585">DNET-585</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-581">DNET-581</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-576">DNET-576</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-561">DNET-561</a>,<br />
+<a href="http://tracker.firebirdsql.org/browse/DNET-376">DNET-376</a>, <a href="http://tracker.firebirdsql.org/browse/DNET-326">DNET-326</a><br />
+<br />
+<em>Jiri Cincura</em><br />
+<em>Brno, Czech Republic</em></p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

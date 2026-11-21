@@ -1,0 +1,139 @@
+---
+title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+html_title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Security and Design Enhancements"
+menu_active: ""
+source_url: "/en/report-core-security-201910"
+source_format: new
+url: "/en/report-core-security-201910"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Security and Design Enhancements</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <span style="color:#0686AD;font-size:16px;font-weight:bold;">June to September 2019</span>
+
+<ol>
+	<li><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">&nbsp;Added new datatype used as underlying datatype for Numeric(38) - </span><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">128-bit integer. It&#39;s fast replacement of decfloat previously used for </span><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">that purporse, and due to much better performance makes it possible to </span><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">use high precision numerics for intermediate and final results when&nbsp;</span></span></span><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">working with BIGINTs.</span></span></li>
+	<li><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">Fixed CORE-5696/CORE-5697: decfloat literals work wrong</span></span></li>
+	<li><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">Fixed CORE-6083: USING PLUGIN clause does not work in RECREATE USER</span></span></span></li>
+	<li><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">Fixed CORE-6061: Building with --with-builtin-tommath doesn&#39;t work</span></span></li>
+	<li><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">&nbsp;Fixed CORE-6078: Permissions for create or alter statements are not </span><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">checked</span></span></span></li>
+	<li><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">Fix for CORE-6072: make firebird always work with security database </span><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">from databases.conf</span></span></span></span></li>
+	<li><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">Fixed CORE-6091: Errors when processing correct SQL statements in </span><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">engine12 provider loaded by FB4 server</span></span></span></span></span></li>
+	<li><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">Fixed CORE-5784: Lock folder inizialization is not multi-process safe</span></span></span></span></span></span></li>
+	<li><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">Fixed CORE-6134: Win_Sspi in the list of auth plugins leads message </span><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">about failed login to be changed (from &#39;Your user name and password are&nbsp;</span><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">not defined...&#39; to &#39;Missing security context ...&#39;)</span></span></span></span></span></span></span></span></li>
+	<li><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">Implemented CORE-6048: Provide ability to see current state of DB </span><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">encryption</span></span></span></span></span></span></span></span></span></li>
+	<li><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">Fixed CORE-6143: Error &#39;Multiple maps found for ...&#39; is raised in </span><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">not appropriate case</span></span></span></span></span></span></span></span></span></span></li>
+	<li><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">Authentication block, received by client plugin from engine, might </span><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">contain trash</span></span></span></span></span></span></span></span></span></span></span></li>
+	<li><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">&nbsp;(not related with soft, but highly related with foundation) - </span><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">activity required to help RedSoft become our sponsor and be OK with </span>R<span style="font-family:arial,helvetica,sans-serif;"><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">ussian laws</span></span></span></span></span></span></span></span></span></span></span></span></span></li>
+</ol>
+<em>Alex Peshkov</em><br />
+<em>Yaroslavl, Russia</em>
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

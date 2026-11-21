@@ -1,0 +1,565 @@
+---
+title: "Firebird: Features"
+html_title: "Firebird: Features"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Features"
+menu_active: "/en/firebird-rdbms/"
+source_url: "/en/features/"
+source_format: new
+url: "/en/features/"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/documentation/">Documentation</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-rdbms/">Firebird RDBMS</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Features</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p>The open source Firebird&reg; relational database management system performs excellently and scales impressively, from an embedded, single-user model to enterprise-wide deployments with multiple 2Tb+Gb databases running with hundreds of simultaneous clients.<br />
+<br />
+<span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>Support of all major platforms and operation systems</strong></span><br />
+&nbsp;</p>
+
+<table border="0" cellpadding="5" cellspacing="5" width="100%">
+	<tbody>
+		<tr>
+			<td>
+			<p>Firebird supports a number of hardware and software platforms: Windows, Linux, MacOS, HP-UX, AIX, Solaris and more. It runs on at x386, x64 and PowerPC, Sparc and other hardware platforms, and supports an easy migration mechanism between these platforms.<br />
+			Firebird is included into the following Linux repositories: Fedora, OpenSuse, CentOS, Mandriva, Ubuntu.<img alt="OS" src="/img/about/features/features_0_OS_s.png" style="width: 320px; height: 300px;" /></p>
+			</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Multi-generation architecture</span></strong><br />
+<br />
+One of the key Firebird features is its multi-generational architecture, which enables the development and support of hybrid OLTP and OLAP applications. This makes a Firebird database capable of serving simultaneously as both an analytical and an operational data store, because readers do not block writers when accessing the same data under most conditions.<br />
+<br />
+<img alt="mga" height="209" src="/img/about/features/features_1_mga_small.png" width="650" /><br />
+<br />
+<br />
+<br />
+<span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>Powerful and developer-friendly SQL language</strong></span><br />
+<br />
+Firebird supports stored procedures and triggers, and has comprehensive SQL92 support.</p>
+
+<ul>
+	<li>High compatibility with ANSI SQL</li>
+	<li>Common Table Expressions (CTE)</li>
+	<li>Flexible transactions management</li>
+	<li>Full-blown stored procedures (selectable SP enables joins w/tables)</li>
+	<li>Cross-database queries</li>
+	<li>Active tables concept and events</li>
+	<li>User Defined Functions</li>
+</ul>
+
+<p><img alt="active tables" height="178" src="/img/about/features/features_2_active_tables_small.png" width="647" /><br />
+<br />
+<img alt="events" height="181" src="/img/about/features/features_3_events_small.png" width="647" /><br />
+<br />
+<span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>Logging and monitoring</strong></span><br />
+<br />
+Firebird offers Trace API and rich set of monitoring tables (MON$)</p>
+
+<ul>
+	<li>Real-time monitoring</li>
+	<li>SQL debugging</li>
+	<li>Audit
+	<ul>
+		<li>Events</li>
+		<li>Partial or full logging</li>
+		<li>Through remote connection</li>
+	</ul>
+	</li>
+</ul>
+
+<p><img alt="monitoring" height="366" src="/img/about/features/features_4_monitoring.png" width="647" />&nbsp;<br />
+<br />
+<span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>Security</strong></span><br />
+&nbsp;<br />
+<img alt="security" height="167" src="/img/about/features/features_4_security_small.png" width="647" /><br />
+<br />
+<span style="color: rgb(71, 71, 71); font-size: 16px;"><strong>Standard security</strong></span></p>
+
+<ul>
+	<li>Users and roles</li>
+	<li>GRANT/REVOKE on main operations</li>
+	<li>Database owner concept</li>
+</ul>
+
+<p><span style="color: rgb(71, 71, 71); font-size: 16px;"><strong>Windows Trusted Authentication</strong></span></p>
+
+<ul>
+	<li>Single-sign on for end-users</li>
+	<li>Integration with Windows domain/Active Directory security</li>
+</ul>
+
+<p><span style="color: rgb(71, 71, 71); font-size: 16px;"><strong>Network</strong></span></p>
+
+<ul>
+	<li>The only network port should be open (3050 by default, configurable)</li>
+	<li>Aliases (path to the database is not exposed)</li>
+</ul>
+
+<p><span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>Developer Tools</strong></span><br />
+&nbsp;</p>
+
+<table border="0" cellpadding="5" cellspacing="5" width="100%">
+	<tbody>
+		<tr>
+			<td><img alt="" height="300" src="/img/about/features/features_5_dev_tools_small.png" width="313" /></td>
+			<td>Firebird is supported by numerous database connectivity options:
+			<ul>
+				<li>Firebird.NET</li>
+				<li>JayBird (Java)</li>
+				<li>Delphi/C++ Builder drivers (Embarcadero Delphi/C++ Builder IDEs include dbExpress drivers to work with Firebird.)</li>
+				<li>FreePascal &amp; Lazarus</li>
+				<li>PHP for Firebird</li>
+				<li>FireRuby</li>
+				<li>and more!</li>
+			</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><br />
+<span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>More features</strong></span><br />
+<br />
+<span style="color: rgb(71, 71, 71); font-size: 16px;"><strong>True Open Source</strong></span><br />
+<br />
+Firebird is free for commercial and educational usage: no license fees, installation or activation restrictions. No double licensing - Firebird license is based on Mozilla Public License.<br />
+<br />
+<span style="color: rgb(71, 71, 71); font-size: 16px;"><strong>Deployment</strong></span></p>
+
+<ul>
+	<li>Embedded version (in dll) with multi-user support</li>
+	<li>Native Windows installer available, localized in most popular languages</li>
+	<li>Run as service or as application</li>
+	<li>RPM or tar.gz distributions available</li>
+	<li>Ability to create custom &ldquo;100% silent&rdquo; installers</li>
+	<li>Read-only deployments (database and server can be on CD, DVD, Blu-Ray, etc)</li>
+	<li>Small footprint (minimal installation is 4Mb, standard is 33Mb)</li>
+</ul>
+
+<p><span style="color: rgb(71, 71, 71); font-size: 16px;"><strong>Performance</strong></span></p>
+
+<ul>
+	<li>Choice of architectures to fit all needs &ndash; Embedded, SuperServer, SuperClassic and Classic</li>
+	<li>Multi-CPU and multi-core SMP scalability for SuperClassic and Classic architecures</li>
+	<li>Database up to 20 Terabytes supported</li>
+	<li>Thread-Safe Client Library</li>
+</ul>
+
+<p><span style="color: rgb(71, 71, 71); font-size: 16px;"><strong>Backup and restore</strong></span></p>
+
+<ul>
+	<li>Online backup &ndash; ability to create backup copy without stopping database</li>
+	<li>Online dump &ndash; ability to quickly create copy even for very big database</li>
+	<li>Incremental backup &ndash; partially supported Point-In-Time Recovery</li>
+</ul>
+
+<p><span style="color: rgb(71, 71, 71); font-size: 16px;"><strong>Full Text Search</strong></span></p>
+
+<ul>
+	<li>Integration with Sphinx, Full Text Search Engine</li>
+</ul>
+
+<p>High compatibility with industry standards on many fronts makes Firebird the obvious choice for developing interoperable applications for homogeneous and hybrid environments.<br />
+<br />
+The mix of high performance, small footprint, supreme scalability, silent and simple installation and 100% royalty-free deployment make Firebird a highly attractive choice for all types of software developers and vendors.<br />
+<br />
+It is used by approximately 1 million of software developers worldwide.<br />
+<br />
+<img alt="Firebird works" height="370" src="/img/about/features/features_6_firebird_works_small.png" width="647" /><br />
+&nbsp;</p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Documentation</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-rdbms/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird RDBMS</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-notes/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Notes</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/reference-manuals/" class="menulvl_3"><i class="fa fa-arrow-right"></i> All Reference Manuals</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/white-papers-presentations/" class="menulvl_3"><i class="fa fa-arrow-right"></i> White Papers &amp; Presentations</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/books/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Books</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/drivers-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Drivers Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-docs-and-articles/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Docs and Articles</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/external-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> External Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/licensing/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Licensing</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree bgLVL_3_sel bgLVL_3">
+      <a href="/en/features/" class="menulvl_3_sel"><i class="fa fa-arrow-right"></i> Features</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sql-conformance/" class="menulvl_3"><i class="fa fa-arrow-right"></i> SQL Conformance</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/historical-reference/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Historical Reference</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-doc/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-brand-faq/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Branding Policy</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Brand FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/logos/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Logos</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-and-other-databases/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird and other databases</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

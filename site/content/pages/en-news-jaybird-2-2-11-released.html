@@ -1,0 +1,205 @@
+---
+title: "Firebird: Jaybird 2.2.11 released"
+html_title: "Firebird: Jaybird 2.2.11 released"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Jaybird 2.2.11 released"
+menu_active: ""
+source_url: "/en/news/jaybird-2-2-11-released"
+source_format: new
+url: "/en/news/jaybird-2-2-11-released"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+ 
+    <section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/about-firebird/">About Firebird</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/news/">News &amp; Events</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Jaybird 2.2.11 released</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-8">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div class="post-categories d-flex justify-content-between align-content-center">
+                        <div class="categories-share">
+                            <ul>
+                                <li><i class="fas fa-calendar"></i> Aug 07, 2016</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="title">Jaybird 2.2.11 released</h3>
+                                            </div>
+                    <div class="post-text mt-30">
+                        The Firebird JDBC team is happy to announce the release of Jaybird 2.2.11.
+<p>The following has been changed or fixed in Jaybird 2.2.11:</p>
+
+<ul>
+	<li>Fixed: Dialect 1, <code>NUMERIC(15,2)</code> and <code>DatabaseMetadata.getColumn</code> returns <code>0</code> for <code>DECIMAL_DIGITS</code> (<a href="http://tracker.firebirdsql.org/browse/JDBC-426" target="_blank">JDBC-426</a>)</li>
+	<li>Updated error messages from latest Firebird 3 to add missing messages (<a href="http://tracker.firebirdsql.org/browse/JDBC-428" target="_blank">JDBC-428</a>)</li>
+	<li>Fixed: <code>ResultSet.getObject()</code> returns <code>byte[]</code> instead of <code>String</code> for <code>BLOB SUB_TYPE 1</code> when using <code>octetsAsBytes</code> (<a href="http://tracker.firebirdsql.org/browse/JDBC-431" target="_blank">JDBC-431</a>)</li>
+	<li>Improvement: Support Firebird 3 48-bit transaction ids. (<a href="http://tracker.firebirdsql.org/browse/JDBC-432" target="_blank">JDBC-432</a>)<br />
+	Note that <code>FBMaintenanceManager.commit/rollbackTransaction(long)</code> with longer than 32 bit transaction ids requires Firebird 3.0.1 because of <a href="http://tracker.firebirdsql.org/browse/CORE-5224" target="_blank">CORE-5224</a>.</li>
+	<li>Fixed: Batch insert with <code>setBinaryStream</code> inserts an empty <code>BLOB SUB_TYPE TEXT</code> (<a href="http://tracker.firebirdsql.org/browse/JDBC-433" target="_blank">JDBC-433</a>)<br />
+	This is the same issue as JDBC-312 that was fixed in Jaybird 2.2.4 for <code>BLOB SUB_TYPE BINARY</code>.</li>
+	<li>Changed locking to coarser blocks with - as far as possible - a single lock object per connection for all connection-derived objects (<a href="http://tracker.firebirdsql.org/browse/JDBC-435" target="_blank">JDBC-435</a>)<br />
+	This should prevent deadlocks on concurrent access as in some cases locks were obtained in different orders (eg (statement, connection), and (connection, statement)). The downside is reduced concurrency, but as using a connection from multiple threads concurrently is discouraged anyway, that is an acceptable price to pay.</li>
+</ul>
+See the <a href="/en/jdbc-driver">JDBC driver download page</a> for download links. The release is also available on maven, with a separate artifact for each supported Java version:
+
+<p>Groupid: <code>org.firebirdsql.jdbc</code>, artifactid: <code>jaybird-jdkXX</code> (where <code>XX</code> is <code>16</code>, <code>17</code> or <code>18</code>).<br />
+Version: <code>2.2.11</code></p>
+
+<p>For example:</p>
+
+<div class="sourceCode">
+<pre class="sourceCode xml">
+<code class="sourceCode xml"><span class="kw"><dependency></dependency></span>
+    <span class="kw"><groupid></groupid></span>org.firebirdsql.jdbc
+    <span class="kw"><artifactid></artifactid></span>jaybird-jdk18
+    <span class="kw"><version></version></span>2.2.11
+</code></pre>
+</div>
+
+                    </div>
+                  	<div>
+                    	<div>
+  <iframe frameborder="0"
+    height="150" 
+    scrolling="no" 
+    src="https://firebirdfoundation.substack.com/embed" 
+    style="border:1px solid #EEE; background:white;" 
+    width="100%" 
+    allow="encrypted-media"
+    sandbox="allow-scripts allow-same-origin allow-forms"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>  
+                  	</div>
+                    <div class="post-tags">
+                        <ul>
+                            <li><a><i class="fa fa-share"></i> Share With:</a></li>
+                            <li style="cursor: pointer;"><a class="share-icon fb" data-url="/en/news/jaybird-2-2-11-released"><i class="fab fa-facebook-f"></i></a></li>
+                          
+                            <li style="cursor: pointer;"><a class="share-icon lin" data-url="/en/news/jaybird-2-2-11-released"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="post-reader-text post-reader-text-2 post-reader-text-3 pt-50">
+                    <div class="row">
+                                                    <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/firebird-developers-day-2016-in-brazil-report">Firebird Developers Day 2016 in Brazil: Report</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                                                            <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/ngram-indexes-in-firebird-fast-substring-search-without-a-full-scan">VIDEO: NGRAM indexes in Firebird: fast substring search without a full scan</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-20">
+                <div class="all-post-sidebar">
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

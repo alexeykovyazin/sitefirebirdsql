@@ -1,0 +1,435 @@
+---
+title: "Firebird: Firebird Butler"
+html_title: "Firebird: Firebird Butler"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Firebird Butler"
+menu_active: "/en/firebird-rdbms/"
+source_url: "/en/firebird-butler-doc/"
+source_format: new
+url: "/en/firebird-butler-doc/"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/documentation/">Documentation</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Firebird Butler</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p style="text-align: justify;"><big>The Firebird Butler is a separate division under Firebird Project. The purpose of this division is to develop and provide solutions to various Firebird-related challenges faced by Firebird administrators and application developers, that are not (for practical reasons) addressed by the core Firebird distribution.</big></p>
+
+<p style="text-align: justify;"><big>The <strong>primary aim</strong> of <span class="tlid-translation translation" lang="en"><span title="">Firebird Butler&#39;s projects</span></span> is to create a development <strong>platform</strong> and a <strong>set of basic solutions</strong> to manage Firebird installations of <strong>any</strong> size, structure and complexity - with an emphasis on large corporate installations. However, the scope and ambitions of the Firebird Butler division are much broader, as we would like initiate development of the entire open source ecosystem of projects and other products, including commercial ones, in various languages. Projects could encompass not just the new services, but alternative implementations of the standard services as well. Moreover, the <a href="https://firebird-butler.readthedocs.io/en/latest/introduction.html#butler-platform-intro" target="_blank"><span class="std std-ref">Firebird Butler Development Platform</span></a> should become a solid foundation for development of any applications that uses Service Oriented Architecture and messaging.</big></p>
+
+<p><big>For a closer look at the project goals and strategies, please read the <a href="https://firebird-butler.readthedocs.io/en/latest/introduction.html" target="_blank"><span class="doc">Introduction to Firebird Butler</span></a>.</big></p>
+
+<h2><strong>Firebird Butler Specifications</strong></h2>
+
+<table border="1" cellpadding="1" cellspacing="1" class="Table" height="55" width="500">
+	<caption>Specifications for APIs, file formats, wire protocols, and processes.</caption>
+	<tbody>
+		<tr class="Table_Row_White">
+			<td><big>HTML</big></td>
+			<td><big>at <a href="https://firebird-butler.readthedocs.io/en/latest/specifications.html" target="_blank">readthedocs.io</a></big></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><big>Source</big></td>
+			<td><big>at <a href="https://github.com/FirebirdSQL/Butler" target="_blank">GitHub</a></big></td>
+		</tr>
+	</tbody>
+</table>
+
+<p><br />
+<big>The change process is <a href="https://firebird-butler.readthedocs.io/en/latest/rfc/1/C4.html" target="_blank"><span class="doc">C4</span></a> with a few modifications:</big></p>
+
+<ul class="simple">
+	<li><big>A specification is created and modified by pull requests according to C4.</big></li>
+	<li><big>Each specification has an editor who publishes the RFC to the <a class="reference external" href="https://github.com/FirebirdSQL/Butler" target="_blank">Butler repository</a> as needed.</big></li>
+	<li><big>Specification lifecycle SHOULD follow the lifecycle defined in <a href="https://firebird-butler.readthedocs.io/en/latest/rfc/2/COSS.html" target="_blank"><span class="doc">2/COSS</span></a></big></li>
+	<li><big>Non-cosmetic changes are allowed only on Raw and Draft specifications.</big></li>
+</ul>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Documentation</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-rdbms/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird RDBMS</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-notes/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Notes</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/reference-manuals/" class="menulvl_3"><i class="fa fa-arrow-right"></i> All Reference Manuals</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/white-papers-presentations/" class="menulvl_3"><i class="fa fa-arrow-right"></i> White Papers &amp; Presentations</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/books/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Books</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/drivers-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Drivers Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-docs-and-articles/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Docs and Articles</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/external-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> External Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/licensing/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Licensing</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/features/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Features</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sql-conformance/" class="menulvl_3"><i class="fa fa-arrow-right"></i> SQL Conformance</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/historical-reference/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Historical Reference</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree bgLVL_2_sel bgLVL_2">   
+      <a href="/en/firebird-butler-doc/" class="menulvl_2_sel"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-brand-faq/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Branding Policy</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Brand FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/logos/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Logos</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-and-other-databases/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird and other databases</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

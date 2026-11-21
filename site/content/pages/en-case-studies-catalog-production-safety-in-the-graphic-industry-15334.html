@@ -1,0 +1,176 @@
+---
+title: "Firebird: Production Safety in the Graphic Industry"
+html_title: "Firebird: Production Safety in the Graphic Industry"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Production Safety in the Graphic Industry"
+menu_active: ""
+source_url: "/en/case-studies-catalog/production-safety-in-the-graphic-industry-15334"
+source_format: new
+url: "/en/case-studies-catalog/production-safety-in-the-graphic-industry-15334"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+ 
+    <section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/case-studies/">Case Studies</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/case-studies-catalog/">Case Studies Catalog</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Production Safety in the Graphic Industry</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-8">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div class="post-categories d-flex justify-content-between align-content-center">
+                        <div class="categories-share">
+                            <ul>
+                                <li><i class="fas fa-calendar"></i> Jan 31, 2012</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="title">Production Safety in the Graphic Industry</h3>
+                                            </div>
+                    <div class="post-text mt-30">
+                        View this Case Study in PDF format:&nbsp; <a href="/file/case_studies/Production%20Safety%20in%20the%20Graphic%20Industry.pdf" target="_blank">English</a> | <a href="/file/case_studies/Production%20Safety%20in%20the%20Graphic%20Industry%20DE.pdf" target="_blank">Deutsch</a><br /> <br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Company Portrait</span></strong><br /> <br /> <table cellspacing="1" cellpadding="1" border="0" width="100%">     <tbody>         <tr>             <td>wobe-systems GmbH is a software development house for the graphics  industry. In particular the special requirements of commercial newspaper  production are covered by our products. Founded in 2001 wobe-systems  GmbH took over development of solutions formerly produced by wobe-team  GmbH (founded 1999) and has been steadily enhancing</td>             <td width="5">&nbsp;</td>             <td><img height="51" width="160" src="/img/case_studies/wobe-systems.png" alt="wobe-systems" /></td>         </tr>     </tbody> </table> the software since  then. We therefore can look back on more than a decade of successful  development with FirebirdSQL database.<br /> <br /> Our products for workflow management, quality assurance and integration with systems of various Press manufacturers, CTP platesetters and bending machines for printing plates are hosted on Microsoft Windows based servers. State of the art hardware is used on the server-side often including Microsoft Cluster technology, Direct Attached Storage (DAS), Storage Area Networks (SAN) or virtual environments.<br /> <br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Objectives</span></strong> <br /> <br /> Newspaper production requires processing a large amount of digital image  data within a short timeframe. To meet the objectives of handling for  instance large TIFF files with resolutions up to 2500dpi and sizes  ranging in the 1,5 square foot area in a bearable amount of time we  decided upon creating an architecture that allowed us to distribute the  computing<br /> <table cellspacing="1" cellpadding="1" border="0" width="100%">     <tbody>         <tr>             <td>processes on a scalable number of servers. As the net processing time per file was quite high we also needed a system that allowed parallel processing. In our architectural decisions we were faced with two key challenges:             <ul>                 <li>Problems storing files in the regular file system with parallel read/write access to the same file (especially writing) had to be avoided.</li>                 <li>Accessibility of production data and meta information throughout a LAN environment possibly having multiple segments.</li>             </ul>             Using the transaction system provided by database servers seemed a  natural choice for this type of requirements. The database was intended  not only to supply the storage of the meta information but also for the  binary data.</td>             <td width="10">&nbsp;</td>             <td><img height="284" width="400" src="/img/case_studies/Control-Client-Station-wobe-400px.jpg" alt="Control-Client-Station-wobe" /></td>         </tr>     </tbody> </table> <br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Solution</span></strong><br /> <br /> Two key requirements led to choosing Interbase and subsequently Firebird SQL as our core database engine: <ul>     <li>With  Interbase we were given the ability to process and store BLOBS (large  binary objects like image data) fast and reliably. At that time storing  files in the regular file system and giving access to them via network  shares was the preferred method of comparable software. Databases were  considered to be unsuitable for managing binary data. </li> </ul> <table cellspacing="0" cellpadding="0" border="0" width="100%">     <tbody>         <tr>             <td><div style="margin-left: 40px;">Our tests showed  that reading files from the database was not impacted by any performance  penalty compared to reading them directly from the file system. Write  throughput was slowed down only slightly. Thus the requirement of  network wide accessibility and transactional isolation as well as  durability could be met. A production database of 100 GB and more  containing BLOBs is nothing unusual at our customers sites.</div>             <ul>                 <li>Firebird  offered an event notification mechanism that allowed signaling  processing operations on the server to client applications. Implementing  automatic refreshes on the client side without constantly polling the  database was greatly simplified by this.</li>             </ul></td>             <td width="10">&nbsp;</td>             <td><img height="265" width="400" src="/img/case_studies/Control-Client-In-Production-400px.png" alt="Control-Client-In-Production" /></td>         </tr>     </tbody> </table> <br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Conclusion</span></strong><br /> <br /> Firebird SQL server is at the core of our system helping our customers swift and safely through their daily work.  Equipped with near zero administration and ample possibilities of scalability Firebird SQL database offers an operational reliability that does meet the requirements of industrial and time critical applications.<br /> <br /> It is well worthwhile to fund the Firebird Community instead of spending the same amount purely on licensing cost for deploying a database engine. Furthermore the organizational structure of the Firebird Foundation provides an important protection against change of licensing or even product abandonment.<br /> <br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Contact</span></strong><br /> <br /> Maik Wojcieszak, CDO<br /> <a href="mailto:mw@wobe-systems.com">mw@wobe-systems.com</a><br /> wobe-systems GmbH<br /> <a href="http://www.wobe-team.com" target="_blank">www.wobe-team.com</a><br /> <br />
+                    </div>
+                  	<div>
+                    	<div>
+  <iframe frameborder="0"
+    height="150" 
+    scrolling="no" 
+    src="https://firebirdfoundation.substack.com/embed" 
+    style="border:1px solid #EEE; background:white;" 
+    width="100%" 
+    allow="encrypted-media"
+    sandbox="allow-scripts allow-same-origin allow-forms"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>  
+                  	</div>
+                    <div class="post-tags">
+                        <ul>
+                            <li><a><i class="fa fa-share"></i> Share With:</a></li>
+                            <li style="cursor: pointer;"><a class="share-icon fb" data-url="/en/case-studies-catalog/production-safety-in-the-graphic-industry-15334"><i class="fab fa-facebook-f"></i></a></li>
+                          
+                            <li style="cursor: pointer;"><a class="share-icon lin" data-url="/en/case-studies-catalog/production-safety-in-the-graphic-industry-15334"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="post-reader-text post-reader-text-2 post-reader-text-3 pt-50">
+                    <div class="row">
+                                                    <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/case-studies-catalog/point-of-sale-systems-for-the-carwash-industry-12664">Point of Sale Systems for the Carwash Industry</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                                                            <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/case-studies-catalog/masa---statistical-analysis-and-plan-optimization-solution-for-industrial-plants-53264">MASA — Statistical analysis and plan optimization solution for industrial plants</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-20">
+                <div class="all-post-sidebar">
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

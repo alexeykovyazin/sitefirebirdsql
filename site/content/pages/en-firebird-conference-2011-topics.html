@@ -1,0 +1,526 @@
+---
+title: "Firebird: Firebird Conference 2011: Main Topics"
+html_title: "Firebird: Firebird Conference 2011: Main Topics"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Firebird Conference 2011: Main Topics"
+menu_active: "/en/community/"
+source_url: "/en/firebird-conference-2011-topics/"
+source_format: new
+url: "/en/firebird-conference-2011-topics/"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/community/">Community</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/events/">Events</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-conference-2011/">Firebird Conference 2011</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Firebird Conference 2011: Main Topics</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    Conference schedule (PDF)&nbsp;<a href="http://mindthebird.com/docs/firebird_conference_2011_schedule.pdf" target="_blank">is available here</a>.<br /> <br /> <table width="100%" border="0" class="Table">     <tbody>         <tr valign="top" class="Table_Row_White">             <td><img src="http://mindthebird.com/img/yemanov.jpg" alt="" />&nbsp;<br />             Dmitry Yemanov,<br />             Firebird lead architect</td>             <td><span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>Session 1: Review of Firebird Development for 2011/2012</strong></span><br />             <br />             This session will describe the development activities performed by the core team. The major part of the session will be dedicated to Firebird V3.0 development, what has been achieved to date and what is in the pipeline.<br />             <br />             Special attention will be paid to improvements in data access paths and the optimizer, including the new statistical information. The planned enhancements in the monitoring area will be described as well. Some other details will be unveiled in the subsequent sessions presented by Vlad Khorsun and Alex Peshkoff. <br />             <br />             The Firebird v2.5.1 point release will also be presented, as well as the schedule for maintenance releases for other older versions.<br />             <br />             <span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>Session 2: Understanding the lock manager internals via the fb_lock_print utility</strong></span> 	<br />             <br />             This session will provide a short introduction to the Firebird lock  manager and its usage patterns. It will describe how the lock manager  can affect the performance of highly loaded systems and outlines the  possible bottlenecks and other problems like unexpected lock-ups/freezes  that may require special analysis. The structure of the lock table will  also be explained.<br /><br />             It will also include a detailed description of the fb_lock_print  utility and its usage that will enable the research of issues that are  related to the lock manager. A few practical examples illustrating how  to analyze the utility output will be provided. This session is mainly  of interest to Classic Server users and DBAs.</td>         </tr>         <tr valign="top" class="Table_Row_Grey">             <td><img src="http://mindthebird.com/img/peshkoff.jpg" alt="" /><br />             Alexander Peshkov,<br />             Firebird core developer</td>             <td><span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>Firebird 3: provider-based architecture, plugins and OO approach to API</strong></span>             <br />             <br />             This session will be devoted to the architecture of Firebird 3:             <ul>                 <li>The Interface-based API of plugins, and its configuration (which can be done separately for each database)</li>                 <li>OSRI (Open Systems Relational Interface) implementation with plugins (<a href="http://www.ibphoenix.com/resources/documents/design/doc_33">more details</a> about OSRI)</li>                 <li>Non-SQL stored procedures and triggers with plugins</li>                 <li>Safe passwords and network encryption</li>                 <li>Trace plugin and more</li>             </ul>             <strong>Who would be interested in this topic?</strong> <br />             The plugins API in Firebird 3 is designed to significantly improve the capabilities of embedding external code.<br />             <br />             There will be areas of extension which will allow the following:             <ul>                 <li>external triggers and procedures (written in almost any programming language)</li>                 <li>custom trace plugins</li>                 <li>security plugins to implement custom users identification (biometrics, etc)</li>                 <li>traffic encryption using algorithms others than SHA1 and RC4</li>             </ul>             Special attention will be devoted to non-standard providers, such as  bridges to external (non-Firebird) databases or ODBC connection and  caching abilities.</td>         </tr>         <tr valign="top" class="Table_Row_White">             <td><img src="http://mindthebird.com/img/vlad_149.jpg" alt="" /><br />             Vlad Khorsun,<br />             Firebird core developer</td>             <td><span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>New features of SQL in Firebird </strong></span><br />             <br />             This session will focus on the new SQL language  possibilities implemented  in Firebird 2.5 and planned for Firebird 3.0.  Version 2.5 introduced a number of interesting things, such as  autonomous  transactions and queries to external databases, and version  3.0 will have even more interesting features for application developers.  <br />             <br />             Most of the time Firebird developers communicate with the  database  using SQL therefore new features and language extensions  should be interesting  to all. The SQL implementation in  Firebird has  always been convenient,  complete and rich and in version 3.0 we will  continue this tradition.<br />             <br />             In Firebird 3.0 we will add some features, such as window  (analytical) functions, PSQL functions, PSQL packages, the ability to  write external functions, stored procedures and triggers using C/C++,  Java, C# etc. In this session I will try to cover all the most important  capabailites and tell you more about what's new in SQL.<br />             <br />             Since snapshots of Firebird 3 are already available, anyone can now try  these new  features of SQL and use the conference to ask specific  questions of the developers.</td>         </tr>         <tr valign="top" class="Table_Row_Grey">             <td><img src="http://mindthebird.com/img/steinmaurer_thomas_149.jpg" alt="" /><br />             Thomas Steinmauer,<br />             SCCH</td>             <td><span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>Session1: Continuous Database Monitoring with the Trace API</strong>             </span>             <p>Beside improved SMP-support, an exciting new feature in  Firebird 2.5 is the new Audit and Trace Services API. This is a  completely new way for Firebird administrators and developers to monitor  their databases, because it gives you a server-side, configurable and  continuous stream of executed trace events, without adding proprietary  code into your client application.</p>             This session discusses the Audit and Trace Services API in  detail and shows real-world use cases for its usage including a product  demonstration of FB TraceManager V2.<br />             <br />             <span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>Session 2:&nbsp;Firebird meets NoSQL (Apache HBase) &mdash; A Case Study</strong></span><br />             <br />             Different application domains including sensor networks, social   networks, science, financial services, condition monitoring systems   demand the storage of a vast amount of data in the petabytes area.   Prominent candidates are Google, Facebook, Yahoo!, Amazon just to name a   few. <br />             <br />             This data volume can't be tackled with convential relational database   technologies anymore, either from a technical or licensing point of view   or both. It demands a scale-out environment, which allows reliable,   scalable and distributed processing. This trend in Big Data management   is more and more approached with NoSQL solutions like Apache HBase on   top of Apache Hadoop. <br />             <br />             This session discusses big data management and their scalability   challenges in general with a short introduction into Apache Hadoop/HBase   and a case study on the co-existence of Apache Hadoop/HBase with   Firebird in a sensor data aquisition system.</td>         </tr>         <tr valign="top" class="Table_Row_White">             <td><img src="http://mindthebird.com/img/makowski_149.jpg" alt="" /><br />             Philippe Makowski,<br />             IBPhoenix</td>             <td><span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>Session 1: Firebird and Linux             </strong>             </span>             <p>This talk will be about various way to setup Firebird  under Linux. We'll see that you can use project builds, integrated  distribution packages, build from source. We'll see pro and con for each  and differences. Under Linux you can make some parameters changes,  about your file system, your kernel, we'll see what point can be useful  to check or change for better performance.</p>             <span style="color: rgb(6, 134, 173); font-size: 16px;">             <strong>Session 2: Firebird 3.0 Window Functions</strong>             </span>             <p>Firebird 3.0 will have a new feature : Window functions A  window function in SQL:2008 is an aggregate function applied to a  partition of the result set. Those features will significantly enhance  the toolkit of OLAP users with Firebird</p></td>         </tr>         <tr valign="top" class="Table_Row_Grey">             <td><img src="http://mindthebird.com/img/pcisar_149.jpg" alt="" /><br />             Pavel Cisar,<br />             IBPhoenix</td>             <td><span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>Session 1: Tips for success: Common mistakes in application development with Firebird and how to avoid them</strong></span>             <p>There are many ways how application developers using  Firebird could paint themselves in the corner. Beside well-known design  and development errors, there are also subtle mistakes that could have  dire consequences.</p>             <p>This talk will guide you through twisted maze of design  and development decisions, pointing out the traps, hidden horrors and  dead-ends, and strategies how to avoid them.</p>             <p><span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>Session 2: Firebird Python Drivers: Current state and future</strong></span></p>             <p>This talk will update you on current state of Firebird  connectivity for Python (with a surprise!), and plans for future  development</p></td>         </tr>         <tr valign="top" class="Table_Row_White">             <td><img src="http://mindthebird.com/img/cincura_149.jpg" alt="" /><br />             Jiri Cincura,<br />             Firebird Project (.NET development)</td>             <td><span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>What is new in .NET provider (trace support, cancellation and more)             </strong>             </span>             <p>.NET driver for Firebird is trying to keep up with new  features added to Firebird server. In last year or so I created some  features specifically targeting Firebird 2.5, and also some important  bug fixes and optimizations.</p>             <p>This talk will uncover these new items and will shouw you how to use it (with some (maybe) interesting scenarios).</p></td>         </tr>         <tr valign="top" class="Table_Row_Grey">             <td><img src="http://mindthebird.com/img/StefanHeymann_149.jpg" alt="" /><br />             Stefan Heymann</td>             <td><span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>Character Sets and Unicode in Firebird             </strong>             </span>             <p>After a short introduction to the world of Character Sets  and Unicode, this session will show you how to bring it all to work in  Firebird.</p>             <p>You will learn what all those character sets and  collations are and how you can properly use them to get the right  characters into the database and onto your screen.</p></td>         </tr>     </tbody> </table> <br />
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Community</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-foundation/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Foundation</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/articles-of-association/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Articles of Association</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sponsors/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Sponsors</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+    
+ 
+ 
+    
+   <div class="menu-tree  bgLVL_4">   
+      <a href="/en/how-to-become-a-sponsor/" class="menulvl_4" ><i class="fa fa-arrow-right"></i> How to Become a Sponsor</a>          
+      
+   </div> 
+    
+
+
+  
+    
+ 
+ 
+    
+ 
+ 
+    
+   <div class="menu-tree  bgLVL_4">   
+      <a href="/en/donors/" class="menulvl_4" ><i class="fa fa-arrow-right"></i> Donors and Past Sponsors</a>          
+      
+   </div> 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/public-reports-documents/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Public Reports &amp; Documents</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-foundation-retrospective/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Foundation: a Retrospective</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-protection/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Protecting the Firebird Brand</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+    
+ 
+ 
+    
+   <div class="menu-tree  bgLVL_4">   
+      <a href="/en/branding-blacklist/" class="menulvl_4" ><i class="fa fa-arrow-right"></i> Branding Blacklist</a>          
+      
+   </div> 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/emberwings-magazine/" class="menulvl_2"><i class="fa fa-arrow-right"></i> EmberWings Magazine</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/news-portals/" class="menulvl_2"><i class="fa fa-arrow-right"></i> News Portals</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/blogs/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Blogs</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/regional-sites/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Regional Sites</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/mailing-lists/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Mailing Lists</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/events/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Events</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2019/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2019</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-performance-tour-2019/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Performance Tour 2018</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-tour-2017-optimization/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Tour 2017: Performance Optimization</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2016/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2016</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-2016-tour-big-databases/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 2015 Tour: Big Databases</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-tour-2015/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 2015 Spring Tour</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2014/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2014</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-tour-2013/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 2013 Tour</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2012/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2012</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2011/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2011</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-performance-webinar-26-nov-2024/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Performance Webinar (26-NOV-2024)</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

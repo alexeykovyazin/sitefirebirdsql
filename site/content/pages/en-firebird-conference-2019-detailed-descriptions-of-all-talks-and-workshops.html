@@ -1,0 +1,958 @@
+---
+title: "Firebird: Firebird Conference 2019: Detailed descriptions of all talks and workshops"
+html_title: "Firebird: Firebird Conference 2019: Detailed descriptions of all talks and workshops"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Firebird Conference 2019: Detailed descriptions of all talks and workshops"
+menu_active: "/en/community/"
+source_url: "/en/firebird-conference-2019-detailed-descriptions-of-all-talks-and-workshops"
+source_format: new
+url: "/en/firebird-conference-2019-detailed-descriptions-of-all-talks-and-workshops"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/community/">Community</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/events/">Events</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-conference-2019/">Firebird Conference 2019</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Firebird Conference 2019: Detailed descriptions of all talks and workshops</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><a href="/file/community/conference-2019/firebird_conference_2019.zip">Download all presentations of Firebird Conference 2019 (ZIP)</a></p>
+<table border="0" cellpadding="0" cellspacing="0" class="Table" width="100%">
+	<tbody>
+		<tr class="Table_Header">
+			<td>Speaker</td>
+			<td>Detailed Description</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td rowspan="3"><img alt="" src="/img/firebird conference/Dmitry_Yemanov.jpg" style="width: 125px; height: 175px;" /><br />
+			Dmitry Yemanov, Firebird Project</td>
+			<td><strong><a id="p1" name="p1"></a>Firebird on the road from v4 to v5</strong><br />
+			<br />
+			This talk describes the current state of the v4 development and reviews its key features (new data types, Batch API, timezones). Improvements not covered by other dedicated sessions of this conference will be presented with details.<br />
+			We&#39;ll also speak about future Firebird development, including the updated release plan and expected post-v4 features. Review of upcoming features for Firebird 5<br />
+			<br />
+			<a href="/file/community/conference-2019/1_firebird_on_the_road_from4_to_5.pdf">Download PDF</a><br />
+			<br />
+			<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/4NDGpwCTlEs" width="560"></iframe></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><strong><a id="p2" name="p2"></a>Replication in Firebird 4: Configuration and practical examples</strong><br />
+			<br />
+			Replication is a long-awaited feature that allows the creating of reliable high-performance database replicas without user-defined triggers and with full DDL support. This talk presents the replication subsystem architecture, possible replication modes, their impact on performance and available tuning options. We&#39;ll demonstrate how to set up a simple standby configuration and use it in practice.<br />
+			<br />
+			<a href="/file/community/conference-2019/9_basicreplication.pdf">Download PDF</a><br />
+			&nbsp;</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><strong><a id="w1" name="w1"></a>Advanced replication with Firebird 4</strong><br />
+			<br />
+			This session brings a level-up to your understanding of Firebird replication. We&#39;ll go through the new CDC API, abilities to create 3rd party replicators and external integration possibilities.<br />
+			Enhanced replication modes (multi-target, multi-source, multi-master) will be explained. And finally, replication is not limited to stand-by or load-balancing purposes, be prepared to learn about using replication for version migration, performance speed-up, etc. &nbsp;<br />
+			<br />
+			<a href="/file/community/conference-2019/10_advancedreplication.pdf">Download PDF</a><br />
+			&nbsp;<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/2TE6zhfudNw" width="560"></iframe></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td rowspan="2"><img alt="" src="/img/community/vlad_khorsun.png" style="width: 125px; height: 126px;" /><br />
+			Vlad Khorsun, Firebird Project</td>
+			<td><strong><a id="p3" name="p3"></a>New transactions&#39; features and changes in garbage collection&nbsp;in Firebird 4&nbsp;</strong><br />
+			<br />
+			Firebird 4 introduces the new transaction isolation mode - read committed read consistency, which will make garbage collection much more effective than before and reduce its impact on the database performance. In this talk, we will show how the new transaction feature work and what are practical recommendations to work with it in your applications and discuss the new parameter in firebird.conf.<br />
+			<br />
+			<a href="/file/community/conference-2019/2_newtransactionfeatures.pdf">Download PDF</a><br />
+			&nbsp;<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/1M4u7-5edz4" width="560"></iframe></td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><strong><a id="p4" name="p4"></a>Multithread sweep, backup and restore: implementation and performance test results&nbsp;</strong><br />
+			<br />
+			In this talk, we will discuss the implementation details of multi-thread features and show the performance test results achieved: sweep is 3-5 faster, backup is 4-6 times faster, and restore up to 2x time faster,<br />
+			<br />
+			<a href="/file/community/conference-2019/3_multithreadfeatures.pdf">Download PDF</a><br />
+			&nbsp;<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/OZbAjwf19dI" width="560"></iframe></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><img alt="" ms="" src="/img/community/vlad_khorsun.png" style="cursor: default; color: rgb(51, 51, 51); height: 126px; width: 125px;" trebuchet="" /><br />
+			Vlad Khorsun, Firebird Project, and<br />
+			<img alt="" src="/img/community/dmitry_kuzmenko_ibsurgeon.png" style="width: 125px; height: 134px;" /><br />
+			Dmitry Kuzmenko, IBSurgeon</td>
+			<td style="vertical-align: top;"><strong>Workshop &quot;All About Transactions&quot; (3 hours, in 2 parts)</strong><br />
+			<br />
+			Understanding transactions is crucial for every experienced Firebird developer to be able to create fast, scalable multi-user applications.<br />
+			In this workshop, we will go through the basics of transactions and in-depth details of their implementation, and we will also consider the impact that transactions have on database performance.<br />
+			The practical part of the workshop will include the demonstration of debugging methods, investigation of reasons for deadlocks, and best practices.<br />
+			<br />
+			<a href="/en/firebird-2019-conference-workshop-all-about-transactions">Please review the detailed outline of this workshop here</a>.<br />
+			<a href="/file/community/conference-2019/30_01Transactionbasics.pdf">Part 1: Transaction basics (PDF)</a><br />
+			<a href="/file/community/conference-2019/31_02Tipversionsandhowtransactions.pdf">Part 2: TIP, record versions and how transactions work (PDF)</a><br />
+			<a href="/file/community/conference-2019/32_03Transactions-internals.pdf">Part 3: Transactions internals (PDF)</a><br />
+			<a href="/file/community/conference-2019/33_04Garbagecollectionsweep.pdf">Part 4: Garbage collection and sweep (PDF)</a><br />
+			<a href="/file/community/conference-2019/34_05Transactionsinteractionandbestpractices.pdf">Part 5: Transactions interaction and best practices (PDF)</a><br />
+			</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><img alt="" src="/img/firebird conference/Dmitry_Yemanov.jpg" style="width: 125px; height: 175px;" /> Dmitry Yemanov, Firebird Project, <img alt="" src="/img/firebird conference/conference-2019/alexey_kovyazin_125.png" style="width: 125px; height: 117px;" /> Alexey Kovyazin, IBSurgeon</td>
+			<td style="vertical-align: top;"><strong>Workshop &quot;Optimization of SQL queries&quot; (3 hours, 2 parts)</strong><br />
+			<br />
+			In this workshop, we will go through a series of real-world examples of SQL queries and databases and discuss performance and indices statistics, interpretation of queries results, discover the costs for various operations (natural and index reads, sorts, composite index reads, etc) and how to estimate it, and perform various optimizations against queries - from the simple +0 tricks to changes of JOIN types and their order, discover the newest options, like HASH JOIN and REFETCH.<br />
+			For this workshop, we have developed a set of examples to demonstrate the most frequent situation in queries optimizations.<br />
+			<a href="/file/community/conference-2019/24_Workshop_part1_UnderstandingFirebirdplans.pdf">Part 1: Understanding Firebird plans (PDF)</a><br />
+			<a href="/file/community/conference-2019/25_Workshop_part2_joins.pdf">Part 2: Joins (PDF)</a><br />
+			<a href="/file/community/conference-2019/26_Workshop_part3_tips_tricks.pdf">Part 3: Tips and tricks (PDF)</a><br />
+			</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td rowspan="2"><img alt="" src="/img/firebird conference/conference-2019/peshkoff.jpg" style="width: 125px; height: 164px;" /><br />
+			Alex Peshkoff, Firebird Project,<br />
+			<img alt="" src="/img/firebird conference/conference-2019/alexey_kovyazin_125.png" style="width: 125px; height: 117px;" /><br />
+			Alexey Kovyazin, IBSurgeon</td>
+			<td style="vertical-align: top;"><strong>Workshop &quot;Database encryption&quot;</strong><br />
+			<br />
+			In this workshop, we will discuss how encryption works, how it is configured, how to pass the keys to the server, cross-server queries between encrypted databases, handling multiple encryption keys, and encryption&#39;s impact on the performance.<br />
+			We will consider several scenarios of encryption implementation in the real-world applications (SaaS, embedded applications, traditional applications, applications that connect several databases). Also, we will discuss how to do backups of encrypted databases, and what to do in case of the physical corruption of the database.<br />
+			<a href="/file/community/conference-2019/16_DatabaseEncryption.pdf">Download PDF</a><br />
+			</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td style="vertical-align: top;"><strong><a id="p5" name="p5"></a>&nbsp;Best practices in Firebird database security - from 2.5 to 4.0</strong><br />
+			<br />
+			Are you still using the only Firebird user in your database (hopefully, it is not SYSDBA)? If so, this session is what you need!<br />
+			We will go through practical examples in order to find the best way to implement database security on Firebird level. We will cover users, roles, RDB$ADMIN role with its tips and tricks, also we will consider&nbsp;GRANTED BY clause, how to use pseudo-tables with a list of users, and other things which can make Firebird security easy and useful.&nbsp;<br />
+			&nbsp;<br />
+			<a href="/file/community/conference-2019/12_BestPracticesSecurity.pdf">Download PDF</a><br />
+			</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td rowspan="3"><img alt="" ms="" src="/img/community/dmitry_kuzmenko_ibsurgeon.png" style="cursor: default; color: rgb(51, 51, 51); height: 134px; width: 125px;" trebuchet="" /><br />
+			Dmitry Kuzmenko, IBSurgeon</td>
+			<td><strong><a id="d1" name="d1"></a>Tips for effective development of Firebird database applications in Delphi/Lazarus</strong>
+			<ul>
+				<li>Components and drivers, application architecture</li>
+				<li>Unicode support, working with Unicode and non-Unicode databases</li>
+				<li>Working with components, different features, and specifics</li>
+				<li>Transaction management: best practices and worst mistakes, with focus on Firebird 4 changes</li>
+				<li>Queries, live datasets, 2-transactional components, caching results.</li>
+			</ul>
+			Guidlines and practical examples about connections, transactions, queries, and application resourses.</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><strong><a id="w7" name="w7"></a>HQbird 2020: new version of advanced Firebird distributive for big databases</strong><br />
+			<br />
+			This session will be devoted to the brief description of the most interesting features of HQbird:
+			<ul>
+				<li>Multi-thread sweep, backup and restore: up to 6x faster maintenance operations</li>
+				<li>Native replication for 2.5, 3.0 and 4.0</li>
+				<li>Speed-up heavy reports&nbsp;</li>
+				<li>Pool of Execute Statement On External</li>
+				<li>Performance monitoring reports</li>
+				<li>Control Center For Firebird</li>
+				<li>RSA security UDR, libCluster authentication plugin for ESOE, and other featires</li>
+			</ul>
+			<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/rkKeJJykn0A" width="560"></iframe><br />
+			<a href="/file/community/conference-2019/28_HQBird_2020.pdf">Download PDF</a><br />
+			</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><strong><a id="m1" name="m1"></a>Popular Firebird Myths</strong><br />
+			<br />
+			<a href="/file/community/conference-2019/29_PopularFirebirdMyths.pdf">Download PDF</a><br />
+			&nbsp;</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td rowspan="3"><img alt="" src="/img/firebird conference/Pavel_Cizar.jpg" style="width: 125px; height: 169px;" /><br />
+			Pavel Cisar, IBPhoenix</td>
+			<td><strong><a id="d4" name="d4"></a>The Firebird Butler, An Introduction</strong><br />
+			<br />
+			In January of this year, the Firebird project was expanded with a brand new division called Firebird Butler. The primary goal of this division is to create a whole new class of modern Firebird services. However, the focus, scope and usability of this division&#39;s projects go well beyond the scope defined.<br />
+			In this session, participants will learn about:
+			<ul>
+				<li>definition of problems to be solved within the new division</li>
+				<li>basic concepts of proposed solutions</li>
+				<li>organizational structure, work methodology, used technologies and projects of the new division</li>
+				<li>current status of individual projects and plans for their further development</li>
+			</ul>
+
+			<p><a href="/file/community/conference-2019/6_butlerintro.pdf">Download PDF</a></p>
+			</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><strong><a id="n4" name="n4"></a>Firebird Butler in Python part I., Introduction to Saturnin SDK</strong><br />
+			<br />
+			Saturnin is part of the new Firebird Butler division and aims to create a whole new class of modern Firebird services in Python.<br />
+			This session focuses on the reference implementation of the Firebird Butler development platform in Python, called the Saturnin SDK. It is intended for anyone who is interested in creating Butler services in Python or participating in the implementation of the Firebird Butler platform in other languages.<br />
+			In this session participants will learn about:
+			<ul>
+				<li>organizational structure, the methodology of work and used technologies of the Saturnin project</li>
+				<li>structure and individual parts of the Saturnin SDK library</li>
+				<li>use of the library for service, tools and application development, including practical examples</li>
+				<li>the current state of the library and the plan for its further development</li>
+			</ul>
+
+			<p><a href="/file/community/conference-2019/21_saturnin-sdk.pdf">Download PDF</a></p>
+
+			<p><strong><a id="n6" name="n6"></a>Firebird Butler in Python part II., Introduction to Saturnin</strong></p>
+
+			<p>Saturnin is part of the new Firebird Butler division and aims to create a whole new class of modern Firebird services in Python.<br />
+			This session focuses on the reference implementation of Firebird Butler services and tools in Python, using the Saturnin SDK. It is intended for anyone who is interested in using or creating Butler services in Python or participating in the implementation of Butler services in other languages.<br />
+			In this session participants will learn about:</p>
+
+			<ul>
+				<li>organizational structure, the methodology of work and technologies used</li>
+				<li>the basic concept of the project and the solutions developed</li>
+				<li>structure and individual parts of Saturnin, with a focus on the services being created</li>
+				<li>use of Saturnin services to create solutions, including practical examples</li>
+				<li>the current state of the project and the plan for its further development</li>
+			</ul>
+
+			<p><a href="/file/community/conference-2019/22_saturnin.pdf">Download PDF</a></p>
+			</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><strong><a id="d2" name="d2"></a>Python with Firebird: FDB driver 101</strong>
+			<p>The FDB library is not only a Firebird driver for Python, but also provides a number of add-on modules to build tools and applications, and as such is an important part of the Firebird project. In this session participants will learn about: - the history of the library - its use in the Firebird project and within IBPhoenix - with the concept, structure and capabilities of the library (in version 2) - ways to use the library to create tools and applications, including useful tips and tricks - plans for further development (for 2020 and in connection with the Firebird Butler a Saturnin projects)</p>
+
+			<p><a href="/file/community/conference-2019/4_pythonfdb101.pdf">Download PDF</a></p>
+			</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td rowspan="4"><img alt="" src="/img/firebird conference/Jiri_Cincura.jpg" style="width: 125px; height: 166px;" /><br />
+			Jiri&nbsp;Cincura, Firebird Project</td>
+			<td><strong><a id="w9" name="w9"></a>FbNetExternalEngine - running .NET code as a procedure, etc. in Firebird</strong><br />
+			<br />
+			Firebird 3 introduced plugins that allow you to execute any code and return some data back - triggers, stored procedures and functions to be precise. Similar to old UDFs, but as a plugin. The FbNetExternalEngine uses this and allows you to have a logic written in any .NET language, like C#, and use it as a function for example. So you have all the power of .NET ecosystem inside Firebird.<br />
+			<a href="/file/community/conference-2019/15_fbneeNET.pdf">Download PDF</a><br />
+			</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>
+			<div><strong><a id="d3" name="d3"></a>What&#39;s new in .NET driver for Firebird</strong></div>
+			<br />
+			Over the last few years and months, the .NET driver for Firebird was making a progress for more complete ADO.NET provider, with fewer bugs and more performance. In this session, I&#39;ll look at all the improvements and all the drivers (and possibilities) available.<br />
+			<a href="/file/community/conference-2019/5_whatsnewNET.pdf">Download PDF</a><br />
+			</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><strong><a id="d6" name="d6"></a>Using Firebird with .NET Core and Entity Framework Core</strong><br />
+			<br />
+			.NET Core run on Windows, Linux, and MacOS and so does Firebird. Why not take the advantage and create new applications on .NET Core, using Entity Framework Core, and as a storage use Firebird.<br />
+			<a href="/file/community/conference-2019/8_coreNET.pdf">Download PDF</a><br />
+			</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><strong><a id="n8" name="n8"></a>Comparing Firebird databases with FirebirdDbComparer</strong><br />
+			<br />
+			Managing changes in database structures are difficult. Especially if you have multiple versions up in the air. FirebirdDbComparer is a new library that allows you to do the compares, trying to create the script as a sane person would do. Either you can use it as a library and use it from within your application or as a standalone executable.<br />
+			<a href="/file/community/conference-2019/27_firebirddbcomparerNET.pdf">Download PDF</a><br />
+			</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td rowspan="2"><img alt="" src="/img/firebird conference/conference-2019/alexey_kovyazin_125.png" style="width: 125px; height: 117px;" /><br />
+			Alexey Kovyazin, IBSurgeon</td>
+			<td><strong><a id="n3" name="n3"></a>Tuning Linux and Firebird for 660Gb database and 1500 connections</strong><br />
+			<br />
+			The session will be devoted to the practical steps which were taken to optimize several real-world high-load systems, with databases size up to 660Gb and 1500 users in peak, running on Linux.<br />
+			We will also discuss the hardware choice and problems, related to Virtual Machines, popular mistakes in the setup of the high-performance system, reasons for various Firebird mistakes, and the logic behind the OS and firebird.conf settings.<br />
+			As a final step, we will present the check-list for building the high-performance system with Linux and Firebird.<br />
+			<a href="/file/community/conference-2019/20_tuninglinux.pdf">Download PDF</a><br />
+			</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><strong><a id="n2" name="n2"></a>Recovery of Firebird Databases</strong><br />
+			<br />
+			Despite the fact that Firebird 3 is much more stable than previous versions, database corruptions still happen: mostly caused by hardware crashes and by ransomware. This session will be devoted to the experience of IBSurgeon in recoveries of very big databases, ransomware-encrypted database, recovery of the databases encrypted by the encryption plugin, broken nbackup delta files, and other interesting cases.<br />
+			We will present the algorithm for the database recoveries with the standard tools (gfix, gbak) and with third-party recovery tools (IBSurgeon FirstAID).<br />
+			&nbsp;<br />
+			<a href="/file/community/conference-2019/19_recoveryfirebird.pdf">Download PDF</a><br />
+			</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><img alt="" src="/img/firebird conference/conference-2019/fb_hkl125.png" style="width: 125px; height: 146px;" /><br />
+			Holger Klemt, IBExpert</td>
+			<td><strong><a id="n1" name="n1"></a>Behind the scenes of a very big project&nbsp;</strong>
+			<ul>
+				<li>&nbsp;180 replicated database server nodes, 1.1 billion&nbsp;records, 2.5 million new daily records,&nbsp;350GB database size</li>
+				<li>&nbsp;Technologies we use: FB25, FB30, Windows, Linux, virtual machines</li>
+				<li>&nbsp;Hybrid Cloud Architecture, best of both worlds ...</li>
+				<li>&nbsp;Why not run everything in the cloud?</li>
+				<li>&nbsp;Hardware and Software we like to use</li>
+				<li>&nbsp;Synchronizing metadata and data for all these databases&nbsp;</li>
+				<li>&nbsp;How to process async multi-master replication requirements</li>
+				<li>&nbsp;Basics for database design&nbsp;</li>
+			</ul>
+			<br />
+			&nbsp;</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><img alt="" src="/img/firebird conference/conference-2019/fb_hkl125.png" style="width: 125px; height: 146px;" /><br />
+			Holger Klemt, IBExpert<br />
+			<img alt="" src="/img/firebird conference/conference-2019/fb_cdi125.png" style="width: 125px; height: 135px;" /><br />
+			Christian Diercks, IBExpert</td>
+			<td style="vertical-align: top;"><strong><a id="w3" name="w3"></a>Advanced IBExpert&nbsp;</strong><br />
+			<br />
+			See the possibilities in IBExpert for your daily administration work
+			<ul>
+				<li>IBExpert IDE features you might not know</li>
+				<li>Drag and drop&nbsp;</li>
+				<li>Debugging and logging, monitoring and trace API</li>
+				<li>Customizing the IDE, on connect scripting</li>
+				<li>The user database and what you can do with it</li>
+				<li>Interactive metadata and data comparer</li>
+				<li>Database inside, repair corrupt databases when Gfix etc fails</li>
+				<li>Running scripts from IDE, command line or DLL</li>
+				<li>New product: IBExpert Watchdog</li>
+			</ul>
+			</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><img alt="" src="/img/firebird conference/conference-2019/fb_hkl125.png" style="width: 125px; height: 146px;" /><br />
+			Holger Klemt, IBExpert<br />
+			<img alt="" src="/img/firebird conference/conference-2019/fb_fha125.png" style="width: 125px; height: 161px;" /><br />
+			Fikret Hasovic, IBExpert</td>
+			<td style="vertical-align: top;"><strong><a id="w5" name="w5"></a>Advanced IBExpert Scripting</strong><br />
+			<br />
+			&nbsp;How to automate your daily tasks with IBExpert tools and IBEblock scripting
+			<ul>
+				<li>Connect a script to ODBC and firebird, switching between connections</li>
+				<li>Advanced exception handling in IBEblock scripts</li>
+				<li>INSERTEX and EXPORT AS</li>
+				<li>Convert your database from any Charset to UTF8 or other using IBEblock scripting</li>
+				<li>Load and save blobs and files&nbsp;</li>
+				<li>Load data from internet urls and process&nbsp;</li>
+				<li>Ibec_RecompileTrigger, ibec_RecompileProcedure, ibec_CompareMetadata, ibec_ExtractMetadata</li>
+				<li>Ibec_CompareTables</li>
+				<li>OEM and IBExpert Server Tools licensing</li>
+			</ul>
+			</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td rowspan="2"><img alt="" src="/img/firebird conference/conference-2019/roman_simakov.png" style="width: 125px; height: 127px;" /><br />
+			Roman Simakov, RedSoft</td>
+			<td><strong><a id="n5" name="n5"></a>RedDatabase in the Enterprise: 3Tb database with 2000 connections with 99,9% availability</strong><br />
+			<br />
+			RedDatabase is an enterprise-ready database system. It is included in the list of software permitted to be used in Russian government systems and has a security certificate. There are a lot of installations in different types of information systems. This session will talk about several ones.<br />
+			The flagship project of Red Soft which uses RedDatabase is the information system of the Federal Bailiff Service (FBS).<br />
+			One of the important tasks for the FBS system is the exchange of documents with other services such as banks. Availability of the database must be at least 99.9%. In this talk, we will describe the design of the applications and databases.<br />
+			You will see the solutions for real-world problems on real-world examples:
+			<ul>
+				<li>database size is 3 TB</li>
+				<li>the database has tables with 12 columns and contains up to 1.5 billion records.</li>
+				<li>every day about 3 million new records are inserted or updated</li>
+				<li>each table has a foreign key with BIGINT data type. A query with search by this key takes less than 100 ms.</li>
+				<li>about 2000 clients concurrently use the database.</li>
+			</ul>
+			We will also describe several other solutions as well.<br />
+			<a href="/file/community/conference-2019/23_RedDatabaseEnterprise.pdf">Download PDF</a><br />
+			</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><strong><a id="w2" name="w2"></a>Overview of RedDatabase 4.0</strong><br />
+			<br />
+			RedDatabase is based on Firebird and is actively developed by the team at Red Soft.<br />
+			We try to keep versions in sync with Firebird by developing every branch in close collaboration with the Firebird Project team. A lot of RedDatabase features have already been ported into Firebird version 3.0 and 4.0. This session is devoted to the history of RedDatabase, and its development process. We will present new features that have been implemented in RedDatabase and are currently not available in Firebird. We will also present a draft of the RedDatabase 5.0 roadmap.<br />
+			<a href="/file/community/conference-2019/11_RedDatabaseOverview.pdf">Download PDF</a><br />
+			</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><img alt="" src="/img/firebird conference/conference-2019/dmitry_starodubov_redsoft.png" style="width: 125px; height: 152px;" /><br />
+			Dmitry Starodubov, RedSoft</td>
+			<td><strong><a id="w6" name="w6"></a>RedExpert - free cross-platform development tool (master-class)</strong><br />
+			<br />
+			Red Expert is a cross-platform GUI tool for the administration and development of RedDatabase and Firebird databases. It&rsquo;s distributed under a GPL 3.0 license and is free to use.<br />
+			Key features that will be shown:
+			<ul>
+				<li>Support for all RedDatabase and Firebird versions out-of-the-box</li>
+				<li>Ability to use different types of authentication: password (Legacy, SRP), GSS-API/Kerberos v5, multifactor (including X.509 certificate)</li>
+				<li>Development and execution of SQL commands</li>
+				<li>Formatting and autocompletion of SQL queries</li>
+				<li>Visual database design with a reverse engineering capability</li>
+				<li>Creation and modification of the database structure using graphical tools</li>
+				<li>Trace manager with the ability to format trace output as a table</li>
+				<li>User and Grant management</li>
+			</ul>
+			</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><img alt="" src="/img/firebird conference/conference-2019/zubov.jpg" style="width: 125px; height: 125px;" /><br />
+			Denis Zubov, Fast Report</td>
+			<td style="vertical-align: top;"><strong><a id="g3" name="g3"></a>Building E-commerce reporting application with Delphi+ FastReport VCL 6 + Firebird</strong><br />
+			<br />
+			We will learn how to create a simple application with FastReport VCL and learn how to use the report designer more efficiently.<br />
+			We will highlight the real problems you can face when developing applications with lots of data using an E-Commerce<br />
+			store as an example.</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><img alt="" src="/img/firebird conference/conference-2019/syrukh.jpg" style="width: 125px; height: 125px;" /><br />
+			Alexander Syrykh, Fast Report</td>
+			<td style="vertical-align: top;"><strong><a id="n7" name="n7"></a>Reasons to use FastReport 6 VCL in your project or how to migrate from other reporting generators</strong><br />
+			<br />
+			What&#39;s the difference between FastReport and other Delphi reporting solutions?<br />
+			How do you migrate from other reporting tools? We will answer all these questions in this session.</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><img alt="" src="/img/firebird conference/conference-2019/wiesek.png" style="width: 125px; height: 158px;" /><br />
+			Wiesław Poszewiecki, CloudaIDE</td>
+			<td><strong><a id="w8" name="w8"></a>Go to Web with CloudaIDE</strong><br />
+			<br />
+			Brief architecture and ideology reminder<br />
+			&nbsp; &nbsp; &bull; three tier JEE application design tool<br />
+			&nbsp; &nbsp; &bull; tasks of each tier, ways of accomplishment<br />
+			&nbsp; &nbsp; &bull; easy to grasp for database specialists<br />
+			New features since 2016:&nbsp;&nbsp;Changed licensing to free for all supported databases,&nbsp;Javascript Gateway, Way of inclusion of external Javascript libraries,&nbsp;Multi-language applications support,&nbsp;bidirectional (rtl,ltr) applications support, designer designs ltr, and the execution engine selects the direction, based on the browser locale, add hoc sorting of query results,&nbsp;CSV and HTML query results download,&nbsp;Teradata support<br />
+			Towards legacy applications migration<br />
+			Today in most of the cases the demand is for migration or extension of legacy applications. The design of new applications is very seldom met.<br />
+			&nbsp; &nbsp; &bull; Server side host command line execution (quasi CGI) allowing to integrate with any available programming language. This gives the possibility to save the development effort put into the design.<br />
+			&nbsp; &nbsp; &bull; &ldquo;Poor man&rsquo;s&rdquo; report server for almost any reporting tool.&nbsp;<br />
+			&nbsp; &nbsp; &bull; multi column primary keys<br />
+			&nbsp; &nbsp; &bull; lessening of primary key columns requirements.<br />
+			Towards SaaS model<br />
+			The ways of moving Single Business entity applications to separate multiple Business entity web application with CloudaIDE, allowing to offer solutions in SaaS model. Here I will talk about a simple method of &ldquo;multiplying&rdquo; an application. This can be accomplished by simple changes in database tables and indices design and introduction of a single session state parameter concentrating on Firebird implementation.<br />
+			<a href="/file/community/conference-2019/14_CloudaIDE2019.pdf">Download PDF</a><br />
+			</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td rowspan="2"><img alt="" src="/img/community/wharton.png" style="width: 100px; height: 114px;" /><br />
+			Jason Wharton, IBObjects</td>
+			<td><strong><a id="g1" name="g1"></a>An Introduction to IB Objects</strong><br />
+			<br />
+			Learn from the author of IBObjects how to use Firebird SQL using native Delphi/C++ Builder components to deliver highly functional applications.<br />
+			<a href="/file/community/conference-2019/17_IBObjectsIntroFirebird.pdf">Download PDF</a><br />
+			</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><strong><a id="g2" name="g2"></a>A deep dive into IB Objects</strong><br />
+			<br />
+			Learn some of the more advanced capabilities of IBO in order to get the most out of it.&nbsp; Subjects such as multi-threading, cached updates, transactions, buffer synchronization, etc.&nbsp; There will also be time made available for asking questions for those who wish to have a deeper understanding of how IBO works inside.<br />
+			<a href="/file/community/conference-2019/18_IBObjectsDeepDiveFirebird.pdf">Download PDF</a><br />
+			</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><img alt="" src="/img/firebird conference/Paul_Reeves.jpg" style="width: 125px; height: 172px;" /><br />
+			Paul Reeves, IBPhoenix</td>
+			<td style="vertical-align: top;"><strong><a id="w4" name="w4"></a>Fireswarm/Avalerion</strong><br />
+			<br />
+			FireSwarm is a multi-master replication system for clustering databases running under the Avalerion builds of Firebird 3 and higher on Windows. The cluster architecture is &quot;share-nothing&quot;, an environment in which copies of a database are distributed across multiple Avalerion host machines, each using its own resources, to provide scalability and high availability.<br />
+			&nbsp;<br />
+			<a href="/file/community/conference-2019/13_fireswarmavalerion.pdf">Download PDF</a><br />
+			</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><img alt="" src="/img/firebird conference/MartinKoeditz.jpg" style="width: 125px; height: 180px;" /><br />
+			Martin Koeditz, Firebird Project</td>
+			<td style="vertical-align: top;"><strong><a id="d5" name="d5"></a>PHP + Firebird</strong><br />
+			<br />
+			PHP is a popular language for web development, and in this session, we will discover how to configure Firebird driver for PHP, how to develop a basic PHP application, what frameworks are recommended and answer frequent questions about Firebird and PHP.&nbsp;<br />
+			&nbsp;<br />
+			<a href="/file/community/conference-2019/7_PHPandFirebird.pdf">Download PDF</a><br />
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Community</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-foundation/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Foundation</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/articles-of-association/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Articles of Association</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sponsors/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Sponsors</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+    
+ 
+ 
+    
+   <div class="menu-tree  bgLVL_4">   
+      <a href="/en/how-to-become-a-sponsor/" class="menulvl_4" ><i class="fa fa-arrow-right"></i> How to Become a Sponsor</a>          
+      
+   </div> 
+    
+
+
+  
+    
+ 
+ 
+    
+ 
+ 
+    
+   <div class="menu-tree  bgLVL_4">   
+      <a href="/en/donors/" class="menulvl_4" ><i class="fa fa-arrow-right"></i> Donors and Past Sponsors</a>          
+      
+   </div> 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/public-reports-documents/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Public Reports &amp; Documents</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-foundation-retrospective/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Foundation: a Retrospective</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-protection/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Protecting the Firebird Brand</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+    
+ 
+ 
+    
+   <div class="menu-tree  bgLVL_4">   
+      <a href="/en/branding-blacklist/" class="menulvl_4" ><i class="fa fa-arrow-right"></i> Branding Blacklist</a>          
+      
+   </div> 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/emberwings-magazine/" class="menulvl_2"><i class="fa fa-arrow-right"></i> EmberWings Magazine</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/news-portals/" class="menulvl_2"><i class="fa fa-arrow-right"></i> News Portals</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/blogs/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Blogs</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/regional-sites/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Regional Sites</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/mailing-lists/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Mailing Lists</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/events/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Events</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2019/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2019</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-performance-tour-2019/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Performance Tour 2018</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-tour-2017-optimization/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Tour 2017: Performance Optimization</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2016/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2016</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-2016-tour-big-databases/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 2015 Tour: Big Databases</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-tour-2015/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 2015 Spring Tour</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2014/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2014</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-tour-2013/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 2013 Tour</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2012/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2012</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2011/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2011</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-performance-webinar-26-nov-2024/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Performance Webinar (26-NOV-2024)</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

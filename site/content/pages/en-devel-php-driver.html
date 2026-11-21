@@ -1,0 +1,570 @@
+---
+title: "Firebird: PHP Driver"
+html_title: "Firebird: PHP Driver"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "PHP Driver"
+menu_active: "/en/development/"
+source_url: "/en/devel-php-driver/"
+source_format: new
+url: "/en/devel-php-driver/"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/development/">Development</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/drivers/">Drivers</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">PHP Driver</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <h2>Where to start with PHP and Firebird</h2>
+
+<ul>
+	<li><a href="https://github.com/FirebirdSQL/php-firebird/releases">https://github.com/FirebirdSQL/php-firebird/releases</a></li>
+	<li><a href="https://github.com/harrygulliford/laravel-firebird">Laravel Firebird</a></li>
+	<li><a href="/file/documentation/html/en/refdocs/fbdevgd30/firebird-30-developers-guide.html#fbdevgd30-php">Developing Web Applications with PHP and Firebird</a></li>
+	<li>Alternative object-oriented driver:&nbsp;<a href="https://github.com/mlazdans/firebird-php" target="_blank">https://github.com/mlazdans/firebird-php</a></li>
+</ul>
+
+<h3>History</h3>
+
+<p>The old iBase PHP driver for Firebird and, by tradition, InterBase 6, has languished for several years for lack of a developer to maintain it. It barely supports PHP 6 and has some bugs with PHP 7.</p>
+
+<h2>Revival 2019</h2>
+
+<table border="0" cellpadding="3" cellspacing="1" height="160" width="639">
+	<tbody>
+		<tr>
+			<td><img alt="Martin Koeditz" src="/img/community/MartinKoeditz.png" />
+			<div style="text-align: center;"><em>Martin Koeditz,<br />
+			developer</em></div>
+			</td>
+			<td>In 2019, the role of fixer and maintainer is in the process of being taken up by Martin Koeditz, with a set of bug fixes to do initially and then a longer period of catch-up. Martin is already well-known to German-speaking afficionados of Firebird, through his activities as a translator of the Firebird documentation and the <a href="https://firebirdforum.de">support forum</a> he manages for German speakers.<br />
+			Seed funding to support the revival has been made available, if needed, by the company <a href="https://kimdata.de">KIMData GmbH</a></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>News</h3>
+
+<table border="0" cellpadding="3" cellspacing="1" height="29" width="639">
+	<tbody>
+		<tr>
+			<td style="vertical-align: top;">2020-08-13</td>
+			<td>Added support for the boolean data type. Beta version is available at <a href="/en/php-driver/">download</a> section.</td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top;">2019-12-01</td>
+			<td>New PHP Driver Page&nbsp;<a href="https://github.com/FirebirdSQL/php-firebird">https://github.com/FirebirdSQL/php-firebird</a></td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top;">2019-06-07</td>
+			<td>Linux test kit was updated to address some incompatibilities.</td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top;">2019-05-31</td>
+			<td>Added PHP extension for 64 bit Linux for testing (link below).</td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top;">2019-05-16</td>
+			<td>Experimental versions of the PHP Interbase / Firebird driver with fixed bugs #72175 as described in <a href="https://bugs.php.net/bug.php?id=72175">https://bugs.php.net/bug.php?id=72175</a>. Volker Rehn has tested versions in 32 and 64 bit and reported no problem. Linux builds will follow shortly.<br />
+			<strong>Note</strong>, it is not the official PHP driver. Our own dedicated Firebird driver is under development, with test builds expected soon.<br />
+			&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top;">2019-05-06</td>
+			<td>In 2019, the PHP community decided to remove the PHP driver &quot;ibase&quot; from the kernel and outsource it to the PECL repository. With this step, we want to orient ourselves as the driver progresses primarily to the needs of the Firebird community.<br />
+			<br />
+			The move of the driver is currently not completed. Once this happens we will provide links and instructions for downloading and compiling the PHP driver.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>PHP Links</h3>
+
+<ul>
+	<li><a href="https://www.php.net/manual/en/book.ibase.php">Introduction to the PHP Firebird driver</a></li>
+</ul>
+
+<h3>Articles</h3>
+
+<ul>
+	<li>Lester Caine has pulled together a series of links to articles about <a href="https://lsces.uk/search/index.php?content_type_guid=bitpage&amp;highlight=firebird">using Firebird with the various PHP stacks</a> over many years. (Scroll down to the list of search results.)</li>
+	<li>An <a href="https://smallbrook.uk/ibtest.php">on-line test</a> using various Firebird commands with the older driver (use password <em>masterkey</em> to connect)</li>
+</ul>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Development</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/roadmap/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Server</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/roadmap-v6/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Roadmap</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-policy/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Policy</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/code-repository/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Code Repository</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/get-involved/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Get Involved</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/devel-qa/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Quality Assurance</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/devel-docs/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Documentation</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/devel-jdbc-driver/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Drivers</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-jdbc-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> JDBC Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-net-provider/" class="menulvl_3"><i class="fa fa-arrow-right"></i> .NET Provider</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-python-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Python Drivers and Libraries</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-odbc-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> ODBC Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree bgLVL_3_sel bgLVL_3">
+      <a href="/en/devel-php-driver/" class="menulvl_3_sel"><i class="fa fa-arrow-right"></i> PHP Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-dev/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/saturnin/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Saturnin</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/butlerjavasdk/" class="menulvl_3"><i class="fa fa-arrow-right"></i> ButlerJavaSDK</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/butler-sdk-for-free-pascal/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Butler SDK for Free Pascal</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/team-members/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Development Lab</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/team-members/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Team Members</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/contributors/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Contributors</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/developers-reports/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Developers Reports</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/issue-tracker/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Issue Tracker</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-mailing-lists/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Mailing Lists</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/project-structure/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Project Structure</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

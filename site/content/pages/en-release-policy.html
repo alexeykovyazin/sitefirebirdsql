@@ -1,0 +1,495 @@
+---
+title: "Firebird: Release Policy"
+html_title: "Firebird: Release Policy"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Release Policy"
+menu_active: "/en/development/"
+source_url: "/en/release-policy/"
+source_format: new
+url: "/en/release-policy/"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/development/">Development</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/devel-core/">Firebird Server</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Release Policy</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Versioning</span></strong><br /><br />Firebird version consists of four numbers, namely: <em>major version</em>, <em>minor version</em> and <em>release version</em>, followed by the <em>build number</em>. Firebird major and minor version numbers together uniquely identify the Firebird <em>version series</em>, i.e. binaries with their own set of features. Each of those version series is developed and maintained separately. Usually, the project increments the major version number only after noticeable amount of architectural changes or after a major ODS (database on-disk-structure) change which is incompatible with prior ones. The minor version number is incremented per every new feature set added into the same major version and the resulting binaries combine a new Firebird version series.<br /><br />The release number (aka <em>point release</em> or <em>maintenance release</em> number) generally represents a service pack, and is incremented per every set of bug fixes added into the particular version series. Point releases never contain new features, although they may include some minor improvements (usually in the performance and security areas). <strong>We highly recommend to upgrade to the latest point release of your version series as soon as it arrives!</strong><br /><br />Migration from one version series to another (e.g. 1.5 -&gt; 2.0 or 2.1 -&gt; 2.5) requires to recreate the database on a newer version (usually via the backup/restore cycle) in order to use all the new features. Migration to a newer point release (e.g. 2.1.3 -&gt;&nbsp;v2.1.4) doesn't require recreating the database, although in some cases it could be advised to do so (e.g. when some bugfix covers the ODS related database internals).<br /><br />The build number is incremented automagically per the every change committed into the source code repository, and thus it's useful to distinguish between different incarnations of the same Firebird version, usually between the official release and some snapshot build.<br /><br />Firebird <em>version string</em> consists of the aforementioned version number surrounded by some additional information. The prefix consists of two parts: unique platform identifier (Windows/Linux/etc)&nbsp;and the build type (stable/unstable). The suffix adds the textual representation of the release series and possibly some extra information (custom build tag, unstable mark, etc).<br /><br />Examples:<br /><ul><li><strong>WI-V2.1.4.18393 Firebird 2.1</strong></li><div>Windows, official final (V) release series 2.1, point release 4 (fourth service pack), build 18393</div><div>&nbsp;</div><li><strong>WI-T3.0.0.29316 Firebird 3.0 Unstable</strong></li><div>Windows, in-development (T) release series 3.0, point release 0, build 29316</div></ul><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Development Cycle</span></strong><br /><br />The project tries to balance between the feature based and time based release schedules. Each version to be developed has its primary and secondary goals assigned. It cannot be released without the primary goals achieved, but some of the secondary goals could be &quot;cut off&quot;, i.e. postponed to the next version series if the development process exceeds the reasonable time frame. The average period of the development cycle is two years.<br /><br />New version series start with collecting the requirements and agreeing on the desired features for this particular release. The version series enters the initial development stage and stays there until the primary features are draftly completed. During this time frame, unstable snapshot builds are being published and the early field testing is possible, tracking the found issues against the <em>initial version</em>.<br /><br />After that, the <em>Alpha</em> version is published, meaning that the project wants to involve wider audience to the field testing. Also, it usually means that the ODS&nbsp;is more or less stabilized and the subsequent builds can access the same database without unexpected issues. During the <em>Alpha</em> stage, the primary features are being finalized and secondary features are being developed or improved. There may be two or more <em>Alpha</em> versions released.<br /><br />As soon as all the primary features are implemented, the development switches to the <em>Beta</em> stage. This is coupled with a &quot;feature freeze&quot; mode, meaning that no new features are allowed and the team is focused on the bug fixing. There may be two or more <em>Beta</em> versions released, depending on the field testing results.<br /><br />Once all the known issues are fixed, the<em> Release Candidate</em> (RC) stage is entered. The version string gets prefixed with &quot;V&quot; instead of &quot;T&quot;, thus meaning being stable and nearly ready for production use. If there are no regressions reported during the fixed period of time (usually one month), the <em>RC</em> version gets renamed and becomes the <em>final release</em>. Otherwise, the known bugs get fixed and the new <em>RC</em> build gets published. This cycle is repeated until no new regressions are found.<br /><br /><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Maintenance Policy</span></strong><br /><br />While being primarily focused on the new development, the project also does its best in maintaining the already released version series. New point releases are produced regularly and incorporate fixes for all the known regressions and security issues. Every released package is tested by the project QA&nbsp;team to ensure that the priorly fixed issues would never strike back.<br /><br />The latest releases are maintained twice a year. Version series initially released more than 5 years ago get discontinued and are not maintained anymore. More maintenance details can be found in the <a href="/en/roadmap/">roadmap</a>.<br /><br />Besides the official releases, <a href="/en/snapshot-builds/">snapshot builds</a> for Windows and Linux platforms are published daily. They can be used to benefit from some fixed bug immediately, without waiting for the next point release. However, beware that point releases are not tested properly, so they would be used on your own risk.<br /><br />
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Development</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/roadmap/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Server</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/roadmap-v6/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Roadmap</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree bgLVL_3_sel bgLVL_3">
+      <a href="/en/release-policy/" class="menulvl_3_sel"><i class="fa fa-arrow-right"></i> Release Policy</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/code-repository/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Code Repository</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/get-involved/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Get Involved</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/devel-qa/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Quality Assurance</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/devel-docs/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Documentation</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/devel-jdbc-driver/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Drivers</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-jdbc-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> JDBC Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-net-provider/" class="menulvl_3"><i class="fa fa-arrow-right"></i> .NET Provider</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-python-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Python Drivers and Libraries</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-odbc-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> ODBC Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-php-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> PHP Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-dev/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/saturnin/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Saturnin</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/butlerjavasdk/" class="menulvl_3"><i class="fa fa-arrow-right"></i> ButlerJavaSDK</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/butler-sdk-for-free-pascal/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Butler SDK for Free Pascal</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/team-members/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Development Lab</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/team-members/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Team Members</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/contributors/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Contributors</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/developers-reports/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Developers Reports</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/issue-tracker/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Issue Tracker</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-mailing-lists/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Mailing Lists</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/project-structure/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Project Structure</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

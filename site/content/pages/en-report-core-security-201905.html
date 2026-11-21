@@ -1,0 +1,145 @@
+---
+title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+html_title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Security and Design Enhancements"
+menu_active: ""
+source_url: "/en/report-core-security-201905"
+source_format: new
+url: "/en/report-core-security-201905"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/archives/">Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/ff-reports-archives/">Developer Reports Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Security and Design Enhancements</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><span style="color:#0686AD;font-size:16px;font-weight:bold;">October 2018 to January 2019</span></p>
+
+<ol>
+	<li>FB4 Beta2 release including creation of chroot-ed environment for FB4 linux &#39;official&#39; builds.</li>
+	<li>Fixed mapping of non-utf8 user names (CORE-5926).</li>
+	<li>Fixed restore of encrypted databases on classic server (postfix for CORE-5808).</li>
+	<li>Fixed use of curvy brackets in regular expressions of trace configurartion (CORE-5907).</li>
+	<li>Implemented windows user group conversion to firebird role (CORE-5639).</li>
+	<li>Make WIN_SSPI plugin produce keys for wirecrypt plugin (CORE-5948).</li>
+	<li>Fixed CORE-5950: Deadlock when attaching to bugchecked database.</li>
+	<li>Fixed CORE-5966: Slow performance when executing SQL scripts as non-SYSDBA user (FB3 only).</li>
+	<li>Added buil-tin functions supporting various encryption algorithms (including RSA with keys generation and various symmetric cyphers, (CORE-5970).</li>
+	<li>Added wire crypt plugin using ChaCha cipher.</li>
+	<li>Fixed CORE-5973: Handling FP overflow in double precision value when converting from decfloat.</li>
+	<li>Fixed CORE-5939: Crash for &quot;gbak -se -b database nul&quot;.</li>
+	<li>Make codebase build using gcc 7 &amp; 8.</li>
+	<li>Fixed CORE-5985: Regression: ROLE does not passed in ES/EDS (specifying it in the statement is ignored).</li>
+	<li>Fixed bugs related to UDF deprecation (in backward compatibility UDR library &amp; DB upgrade script).</li>
+	<li>Regular documentation work.</li>
+</ol>
+
+<p><em>Alex Peshkov</em><br />
+<em>Yaroslavl, Russia</em></p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

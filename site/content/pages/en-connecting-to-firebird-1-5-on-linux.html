@@ -1,0 +1,406 @@
+---
+title: "Firebird: Connecting to Firebird 1.5 on Linux"
+html_title: "Firebird: Connecting to Firebird 1.5 on Linux"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Connecting to Firebird 1.5 on Linux"
+menu_active: "/en/firebird-rdbms/"
+source_url: "/en/connecting-to-firebird-1-5-on-linux"
+source_format: new
+url: "/en/connecting-to-firebird-1-5-on-linux"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/documentation/">Documentation</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-rdbms/">Firebird RDBMS</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/third-party-docs-and-articles/">Third-party Docs and Articles</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Connecting to Firebird 1.5 on Linux</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    Mark O'Donohue, February 14, 2005<br /> <br /> <em>    </em><strong>&quot;What causes a non-root user to be refused a connection?&quot; </strong><br /> <br /> Often users on remote client encounter problems with trying to connect to Firebird on Linux using a non-root user, although they can connect as root. Here I look at some of the questions people ask and try to explain the details you need.<br /> <br /> Assuming we are talking about these users using isql to get to the database, rather than an application connecting via a language interface such as the .NET provider, this condition occurs only for Classic and local access.<br /> <br /> There is a number of likely causes:<br /> <ol>     <li>user not in group firebird</li>     <li>user does not have physical write access to db file</li>     <li>and one extra point: remote access will need Firebird user name and password.</li> </ol> The reason root user works fine is that, as a *special* user, root has physical write access to both the /opt/firebird/* files and the database file, whereas a normal user doesn't.<br /> <br /> Let's look at the non-root users's problems now.<br /> <ol>     <li>User not in group firebird</li> </ol> <div style="margin-left: 40px;">You will see this error:<br /> <br /> <span style="font-family: Courier New;">$/opt/firebird/bin/isql<br /> SQL&gt; connect '/var/firebird/yourdb.fdb'; Statement failed, SQLCODE = -902<br /> operating system directive open failed</span><br /> <br /> This tells you that do not have the filesystem privileges to allow you *write* access to the /opt/firebird/* files.<br /> <br /> <strong>Solution</strong>: That user needs to be added to the firebird group.</div> <br /> <div align="right"><table width="94%" cellspacing="0" cellpadding="0" border="0" class="Table">     <tbody>         <tr class="Table_Row_White">             <td width="220"><span style="font-family: Courier New;">$groups</span></td>             <td>- will list the user groups</td>         </tr>         <tr class="Table_Row_Grey">             <td><span style="font-family: Courier New;">$usermod -G firebird &lt;username&gt;</span></td>             <td>- will add them. Be careful, as you need to format the command with any existing groups they are in as well. For example,<br />             <br />             <span style="font-family: Courier New;">      $usermod -G firebird,cdwriter,.. &lt;username&gt;</span><br />             <br />             For this, my suggestion is to use a GUI admin tool to add the user to the group.<br />             <br />             The user also needs to logoff and log back on for the new group add to take effect.</td>         </tr>     </tbody> </table></div>  <ol start="2">     <li><em> </em><strong>&quot;Some of the users were having the problem, even if they added the non-root user to the firebird user group.&quot;</strong></li> </ol> <div style="margin-left: 40px;">The user does not have write access to db file. The error you will see is:<br /> <br /> <span style="font-family: Courier New;">$/opt/firebird/bin/isql<br /> SQL&gt; connect '/var/firebird/yourdb.fdb'; <br /> Statement failed, SQLCODE = -551<br /> No permission for read-write access to database /var/firebird/yourdb.fdb</span><br /> <br /> You have write access to the /opt/firebird/* files, but no *write* access to the actual database file, usually indicating that the group write permission is missing:<br /> <br /> <span style="font-family: Courier New;">      -rw-r--r--  1 firebird firebird 29M Feb 14 12:54 /var/firebird/yourdb.fdb</span><br /> <br /> To add the missing group write permission:<br /> <br /> <span style="font-family: Courier New;">      $chmod ug+rw &lt;dbfile.fdb&gt;</span></div> <ol start="3">     <li>Remote access will need user name and password.</li> </ol> <div style="margin-left: 40px;">Do take note that any remote access, even by root user, will require user name and password. If you forget, you'll see this error:<br /> <br /> <span style="font-family: Courier New;">$ /opt/firebird/bin/isql<br /> Use CONNECT or CREATE DATABASE to specify a database <br /> SQL&gt; connect 'localhost:/var/firebird/yourdb.fdb';<br /> <br /> Statement failed, SQLCODE = -923<br /> Connection rejected by remote interface</span><br /> <br /> On Classic, the root local user can connect directly:<br /> <br /> <span style="font-family: Courier New;">        /opt/firebird/bin/isql /var/firebird/yourdb.fdb </span><br /> <br /> whereas, for Superserver, you will always need to do your local connection through localhost and will need the user name and password:<br /> <br /> <span style="font-family: Courier New;">        /opt/firebird/bin/isql localhost:/var/firebird/yourdb.fdb -u &lt;x&gt; -p &lt;y&gt;</span><br /> <br /> If you are calling isql directly from the Firebird bin directory, Windows users sometimes need to be reminded to use the &quot;dot-slash&quot; convention:<br /> <br /> <span style="font-family: Courier New;">       ./isql localhost:/var/firebird/yourdb.fdb -u &lt;x&gt; -p &lt;y&gt;</span></div> <br />
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Documentation</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-rdbms/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird RDBMS</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-notes/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Notes</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/reference-manuals/" class="menulvl_3"><i class="fa fa-arrow-right"></i> All Reference Manuals</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/white-papers-presentations/" class="menulvl_3"><i class="fa fa-arrow-right"></i> White Papers &amp; Presentations</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/books/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Books</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/drivers-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Drivers Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-docs-and-articles/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Docs and Articles</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/external-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> External Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/licensing/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Licensing</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/features/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Features</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sql-conformance/" class="menulvl_3"><i class="fa fa-arrow-right"></i> SQL Conformance</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/historical-reference/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Historical Reference</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-doc/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-brand-faq/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Branding Policy</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Brand FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/logos/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Logos</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-and-other-databases/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird and other databases</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

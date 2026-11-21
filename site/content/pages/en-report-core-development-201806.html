@@ -1,0 +1,269 @@
+---
+title: "Firebird: Developer's Report: Firebird Core Development"
+html_title: "Firebird: Developer's Report: Firebird Core Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Firebird Core Development"
+menu_active: ""
+source_url: "/en/report-core-development-201806"
+source_format: new
+url: "/en/report-core-development-201806"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/archives/">Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/ff-reports-archives/">Developer Reports Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Firebird Core Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">February to May 2018</span></strong></div>
+
+<h3><u>February 2018</u></h3>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>Fixed bug CORE-5760 : Server process crashes while restoring database</li>
+	<li>Return back lost checkouts at sorting module. It allows to handle AST requests during long sorts.</li>
+</ul>
+
+<h3><em>B3_0_Release</em></h3>
+
+<ul>
+	<li>Fixed bug CORE-5760 : Server process crashes while restoring database</li>
+	<li>Return back lost checkouts at sorting module. It allows to handle AST requests during long sorts.</li>
+</ul>
+
+<h3>B2_5_Release</h3>
+
+<ul>
+	<li>Backport fix for bug CORE-4565 : GDSCODE can have value = 0 in WHEN-section under some concurrent env., only in SC or CS (not in SS)</li>
+</ul>
+
+<h3><em>ExternalConnectionsPool</em></h3>
+
+<ul>
+	<li>Branch ExternalConnectionsPool is created</li>
+	<li>Initial implementation of external connections pool</li>
+</ul>
+
+<h3><u>March</u></h3>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>Fixed bug CORE-5776 : &quot;Input parameter mismatch&quot; error after altering external function into PSQL function</li>
+	<li>Fixed bug CORE-405 : Garbage vs indices/constraints</li>
+	<li>Avoid GetThreadId() which is not present in WinXP (see CORE-5772)</li>
+	<li>Fix thread priority for attachmentShutdownThread (it was run at lowest priority)</li>
+	<li>Fixed bug CORE-5773 : PSQL cursor doesn&#39;t see inserted record</li>
+	<li>Let SQL parser handle &#39;\r&#39;, &#39;\n&#39; and &#39;\r\n&#39; as end of line.</li>
+	<li>Let ExtDS preprocessor handle &#39;\r&#39;, &#39;\n&#39; and &#39;\r\n&#39; as end of line</li>
+</ul>
+
+<h3><em>B3_0_Release</em></h3>
+
+<ul>
+	<li>This should fix bug CORE-5702 : Firebird Handle Leak Windows</li>
+	<li>Fixed examples</li>
+	<li>Fixed bug CORE-5776 : &quot;Input parameter mismatch&quot; error after altering external function into PSQL function</li>
+	<li>Fixed bug CORE-405 : Garbage vs indices/constraints</li>
+	<li>Avoid GetThreadId() which is not present in WinXP (see CORE-5772)</li>
+	<li>Fix thread priority for attachmentShutdownThread (it was run at lowest priority)</li>
+	<li>Fixed bug CORE-5773 : PSQL cursor doesn&#39;t see inserted record</li>
+</ul>
+
+<h3><em>ExternalConnectionsPool</em></h3>
+
+<ul>
+	<li>Fixed crash when broken external connection is deleted.</li>
+	<li>Fixed bug when idle external connection is about to put into idle list again.</li>
+</ul>
+
+<h3><u>April</u></h3>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>Additional fix for bug CORE-5702 : Firebird Handle Leak Windows</li>
+	<li>Merge pull request #155 from abzalov/master</li>
+	<li>Missed piece for fix of CORE-5746: Remove the restriction on create/delete, enable/disable user indexes in the system tables</li>
+	<li>Create MonitoringData early to avoid races later. It fixed leakage of MonitoringData instance (and few related handles) when many</li>
+	<li>connections created simultaneously. See also CORE-5702.</li>
+	<li>Fixed small memory leak</li>
+	<li>Fixed leak of ThreadSync instance when module (for. ex. engine) is unloaded before worker threads gone.</li>
+	<li>Fixed rare deadlock when one thread is finishing, loaded modules run threadDetach() while another thread loaded some new module.</li>
+	<li>The deadlock is with windows loader lock and plugin&#39;s list mutex.</li>
+	<li>Avoid recursive locking of plugins list mutex. This fixed deadlock at PluginSet::next.</li>
+	<li>Fixed bug CORE-5436 : [FB3 SC] Server hangs (under load test)</li>
+	<li>Fixed two AV&#39;s <em>at </em>EDS subsystem. Allows to correctly free JTransaction after bugcheck.</li>
+</ul>
+
+<h3>B3_0_Release</h3>
+
+<ul>
+	<li>Additional fix for bug CORE-5702 : Firebird Handle Leak Windows</li>
+	<li>Let ExtDS preprocessor and SQL parser handle &#39;\r&#39;, &#39;\n&#39; and &#39;\r\n&#39; as end of line. It should fix bug CORE-5783 : execute statement</li>
+	<li>ignores the text of the SQL-query after a comment of the form &quot;-&quot;</li>
+	<li>Merge pull request #156 from abzalov/B3_0_Release</li>
+	<li>Create MonitoringData early to avoid races later. It fixed leakage of MonitoringData instance (and few related handles) when many</li>
+	<li>connections created simultaneously. See also CORE-5702.</li>
+	<li>Fixed small memory leak</li>
+	<li>Fixed leak of ThreadSync instance when module (for. ex. engine) is unloaded before worker threads gone.</li>
+	<li>Fixed rare deadlock when one thread is finishing, loaded modules run threadDetach() while another thread loaded some new module. The deadlock is with windows loader lock and plugin&#39;s list mutex.</li>
+	<li>Avoid recursive locking of plugins list mutex. This fixed deadlock at PluginSet::next.</li>
+	<li>Fixed bug CORE-5436 : [FB3 SC] Server hangs (under load test)</li>
+	<li>Fixed two AV&#39;s at EDS subsystem. Allows to correctly free JTransaction after bugcheck.</li>
+</ul>
+
+<h3><em>B2_5_Release</em></h3>
+
+<ul>
+	<li>Backport some fixes for AV&#39;s related with EDS</li>
+</ul>
+
+<h3><em>ExternalConnectionsPool</em></h3>
+
+<ul>
+	<li>Update the documentation</li>
+</ul>
+
+<h3><u>May</u></h3>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>This fixed deadlock on Windows when one thread unload some plugin(s) (due to shutdown, for ex.) and another thread run threadDetach()</li>
+	<li>Fixed bug CORE-5819 : Attachment might not gone after it was DELETEd FROM MON$ATTACHMENTS</li>
+	<li>This should fix bug CORE-5702 : Firebird Handle Leak Windows</li>
+	<li>Feature CORE-5832 : Implement way to reset user session environment to its initial (default) state</li>
+	<li>Update VIO_DEBUG code - mostly added relation id.</li>
+	<li>This should fix bug CORE-5837 : Inconsistent results when working with GLOBAL TEMPORARY TABLE ON COMMIT PRESERVE ROWS</li>
+</ul>
+
+<h3><em>B3_0_Release</em></h3>
+
+<ul>
+	<li>This fixed deadlock on Windows when one thread unload some plugin(s) (due to shutdown, for ex.) and another thread run threadDetach()</li>
+	<li>Fixed bug CORE-5819 : Attachment might not gone after it was DELETEd FROM MON$ATTACHMENTS</li>
+	<li>Update VIO_DEBUG code - mostly added relation id.</li>
+	<li>This should fix bug CORE-5837 : Inconsistent results when working with GLOBAL TEMPORARY TABLE ON COMMIT PRESERVE ROWS</li>
+</ul>
+
+<h3><em>ExternalConnectionsPool</em></h3>
+
+<ul>
+	<li>Introduced new system privilege MODIFY_EXT_CONN_POOL to manage pool properties.</li>
+	<li>Reset external connection before put it into pool.</li>
+	<li>Update the documentation.</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<div><em>Vladyslav Khorsun</em></div>
+
+<p><em>Dnetpropetrovsk, Ukraine</em></p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

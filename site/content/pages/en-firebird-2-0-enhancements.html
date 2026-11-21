@@ -1,0 +1,406 @@
+---
+title: "Firebird: Firebird 2.0 Enhancements"
+html_title: "Firebird: Firebird 2.0 Enhancements"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Firebird 2.0 Enhancements"
+menu_active: "/en/firebird-rdbms/"
+source_url: "/en/firebird-2-0-enhancements"
+source_format: new
+url: "/en/firebird-2-0-enhancements"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/documentation/">Documentation</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-rdbms/">Firebird RDBMS</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/white-papers-presentations/">White Papers &amp; Presentations</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Firebird 2.0 Enhancements</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    Released November 12, 2006<br /><br /><strong>Firebird 2.0 brings a large collection of long-awaited enhancements that significantly improve performance, security and support for international languages and realise some desirable new SQL language features. Under the surface, it also provides a much more robust code platform from which the re-architecting planned for Firebird 3.0 is proceeding.<br /></strong><br />Several limitations inherited from the legacy code have now gone, such as the 252-byte limit on index size and sub-optimal usage of index statistics that could throttle performance. Table size is no longer limited to 30 Gb.<br /><br />Indexing has undergone a thorough reworking to ramp up performance and reduce or eliminate the effects of poor selectivity.<br /><br />An important feature is the introduction of a new interface for plugging in international character sets, including enhanced Unicode support, along with a number of new and corrected collations.<br /><br />Firebird 2.0 now supports 64-bit platforms with released binaries available for AMD64 and Intel EM64T on Linux. Windows 64-bit builds are ready for testing and will follow in a sub-release.<br /><br />Several aspects of server security have received an intense makeover, with a large number of known vulnerabilities in the API being closed along the way.<br /><br />Porting of the Services API to Classic architecture is now complete. All Services API functions are now available on both Linux and Windows Classic servers, with no limitations.<br /><br /><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Language Enhancements<br /></span></strong><br />Many new additions have been made to the SQL language, including support for derived tables (SELECT ... FROM ( SELECT ... FROM)) with multiple layers of nesting and the ability to join nested sets, as defined by SQL200X.<br /><br />A new capability has been added to execute blocks of procedural SQL (PSQL) in dynamic SQL statements, by way of the new EXECUTE BLOCK syntax.<br /><br />An optional RETAIN clause is added to the DSQL ROLLBACK statement to make it consistent with COMMIT [RETAIN].<br /><br />All Firebird versions provide two transaction wait modes: NO WAIT (non-blocking, excepts immediately on conflict) and WAIT (blocking, waits until the conflicting transaction ends). A new feature extends the WAIT mode by allowing a finite interval of waiting and then reporting an error (isc_lock_timeout). Timeout intervals are specified per transaction and are available both in the API and via the LOCK TIMEOUT clause of the SET TRANSACTION statement.<br /><br />A reworking has been done to resolve problems with views that are implicitly updatable, but still have update triggers. This is an important change that will affect systems written to take advantage of the undocumented [mis]behaviour in previous versions.<br /><br />String search operators have been re-implemented and now work correctly with BLOBs of any size. Introduction of a single-pass Knuth-Morris-Pratt algorithm for pattern matching improves performance when complex patterns are used.<br /><br />From Firebird 1.0 onward, concatenation operations were checked for potential overflow at prepare time and would except if an overflow was possible according to the defined or declared lengths of the operands. Thus, an expression like &quot;CAST('qwe' AS VARCHAR(30000)) || CAST('rty' AS VARCHAR(30000))&quot; would cause an exception because 60000 bytes exceeds the string limit. Now, it will cause only a warning at prepare time and will succeed if the introduced run-time check on actual data detects an overflow.<br /><br />Some handy new extensions have been added to PSQL itself, including multiple explicit cursors which are also available within DSQL EXECUTE BLOCK statements.<br /><br />Invariant tracking in PSQL and request cloning logic were reworked to fix a number of performance and accuracy issues with recursive procedures.<br /><br /><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Security<br /></span></strong><br />Password encryption now uses a more secure password hash calculation algorithm (SHA-1), encryption becomes entirely server-based and password login is now required from any remote client, regardless of the user's platform privileges. Non-server access to security database is rejected: the server will refuse any access to the authentication database, even by the SYSDBA'S gsec utility, except through the Services API.<br /><br />The SYSDBA remains the keeper of the security database but users can now modify their own passwords by way of a view over the (new) underlying, protected RDB$USERS table.<br /><br />Attempts to get access to the server using brute-force techniques on accounts and passwords are now detected and locked out, with support for this protection built in to both the database and services API's.<br /><br /><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Network and Connection<br /></span></strong><br />Server redirection (&quot;multi-hop&quot;) capability, long disabled because of exposure to misuse, has been restored and made available via a configuration parameter for careful use by those who properly understand its implications.<br /><br />Firebird 2.0 replaces the former implementation of the local transport protocol on Windows (often referred to as IPC or IPServer) with a more robust new one, named XNET. It serves exactly the same goal, to provide an efficient way to connect to server located on the same machine as the connecting client without a remote node name in the connection string. The XNET implementation does not suffer the instability inherent in its predecessor. It works with the Classic server, it works for non-interactive services and terminal sessions and it eliminates lockups when a number of simultaneous connections are attempted. Slightly faster performance can be expected also.<br /><br />Under the WNET (a.k.a. NetBEUI) protocol, all previous Firebird versions performed remote requests in the context of the client security token. Since the server serves every connection according to its client security credentials, this means that, if the client machine is running some OS user from an NT domain, that user required appropriate permissions to access the physical database file, UDF libraries, etc., on the server filesystem. This situation-known as client impersonation-is contrary to proper protocol for a client-server setup with a protected database and is no longer supported. In Firebird 2.0, WNET connections behave the same way as TCP ones, presuming nothing with regard to the rights of OS users.<br /><br />Connection handling on POSIX Superserver has been improved and will now handle SIGTERM and SIGINT to shutdown all connections gracefully.<br /><br /><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Engine Internals<br /></span></strong><br />Firebird 2.0 introduces 40-bit (64-bit internally) record enumerators to overcome the ~30GB table size limit imposed by 32-bit record enumeration.<br /><br /><strong>Garbage collection:  </strong>Since Firebird 1.0 and earlier, the Superserver engine has performed background garbage collection, having abandoned the &quot;cooperative&quot; mechanism that drives GC in the Classic server environment. It has long been recognised that cooperative GC, if available, would be useful to Superserver for some conditions and configurations where waiting for background GC to finish a cycle causes peformance bottlenecks.<br /><br />    In Firebird 2.0 Superserver, both cooperative and background garbage collection are performed in combination, by default. To manage it, the new configuration parameter GCPolicy was introduced to make it possible to set GC to be only cooperative or only background. <br /><br />Lock contention in the lock manager and in the SuperServer thread pool manager has been reduced significantly and lock manager memory dumps now provide better information.<br /><br />Several debugging improvements have been added, including file name and line number being reported for BUGCHECK log messages, new thread-safe and signal-safe debug logging facilities and the ability to copy syslog messages to the user's tty.<br /><br />The root directory lookup path has changed so that server processes on Windows no longer use the Registry, although the command-line utilities still do check the Registry.<br /><br /><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">UDFs, Utilities and Command-line Tools<br /></span></strong><br />External functions now have the ability to signal SQL NULL via a NULL pointer and the native external function library ib_udf is upgraded to allow the string functions ASCII_CHAR, LOWER, LPAD, LTRIM, RPAD, RTIM, SUBSTR and SUBSTRLEN to return NULL and have it interpreted correctly.<br /><br />Many of the command-line tools have been refurbished and this release introduces the all-new incremental backup tools NBak and Nbackup.<br /><br />Single-user and full shutdown modes are made possible by the introduction of new [state] parameters for the gfix -shut and gfix -online commands.<br /><br />Known issues in previous versions of Firebird with gsec error reporting through the Services API are eliminated.<br /><br /><br />
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Documentation</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-rdbms/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird RDBMS</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-notes/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Notes</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/reference-manuals/" class="menulvl_3"><i class="fa fa-arrow-right"></i> All Reference Manuals</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/white-papers-presentations/" class="menulvl_3"><i class="fa fa-arrow-right"></i> White Papers &amp; Presentations</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/books/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Books</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/drivers-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Drivers Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-docs-and-articles/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Docs and Articles</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/external-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> External Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/licensing/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Licensing</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/features/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Features</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sql-conformance/" class="menulvl_3"><i class="fa fa-arrow-right"></i> SQL Conformance</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/historical-reference/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Historical Reference</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-doc/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-brand-faq/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Branding Policy</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Brand FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/logos/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Logos</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-and-other-databases/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird and other databases</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

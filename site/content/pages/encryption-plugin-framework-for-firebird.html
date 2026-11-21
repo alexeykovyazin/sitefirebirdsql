@@ -1,0 +1,312 @@
+---
+title: "Firebird: Encryption plugin framework for Firebird"
+html_title: "Firebird: Encryption plugin framework for Firebird"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Encryption plugin framework for Firebird"
+menu_active: "/en/shop/"
+source_url: "/encryption-plugin-framework-for-firebird"
+source_format: new
+url: "/encryption-plugin-framework-for-firebird"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/shop/">Shop</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/ibsurgeon-firebirdsql/">IBSurgeon</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Encryption plugin framework for Firebird</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p style="text-align: center;"><strong>Purchases through <a href="/en/shop/">FirebirdSQL shop</a> generate commissions that fund open source Firebird development.</strong></p>
+
+<table border="1" width="100%">
+	<tbody>
+		<tr>
+			<th>License: Encryption Plugin Framework for Firebird, Unlimited, permanent, per company, sources</th>
+		</tr>
+		<tr>
+			<td><strong>Price:</strong> <a href="https://store.payproglobal.com/checkout?products%5B1%5D%5Bid%5D=114881">EUR &euro;1699 / USD $1999</a><br />
+			<strong>Description:</strong> Unlimited permanent license per company for Encryption plugin framework, includes update for Firebird versions available at the purchase moment (currently 5.0, 4.0, 3.0). Shipped with sources and pre-built binaries.</td>
+		</tr>
+	</tbody>
+</table>
+
+<table border="1" width="100%">
+	<tbody>
+		<tr>
+			<th>License: Encryption Plugin Framework for Firebird, Unlimited, permanent, per company, sources+Consulting</th>
+		</tr>
+		<tr>
+			<td><strong>Price:</strong> <a href="https://store.payproglobal.com/checkout?products%5B1%5D%5Bid%5D=114882">EUR &euro;2149/ USD $2499</a><br />
+			<strong>Description:</strong> Unlimited permanent license per company for Encryption plugin framework, includes update for Firebird versions available at the purchase moment (currently 5.0, 4.0, 3.0). Shipped with sources and pre-built binaries. Includes implementation consulting for 1 client application.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Encryption Plugin Framework For Firebird (Vendor:&nbsp;IBSurgeon)</h2>
+
+<p>The IBSurgeon&#39;s Encryption Plugin Framework for Firebird is a comprehensive solution that provides fast and easy implementation of transparent, strong encryption for Firebird databases. Built on AES256 cryptography with optional Windows Crypto API support, this framework enables secure database protection while maintaining compatibility with existing applications and development tools.</p>
+
+<h3>Key Features</h3>
+
+<h4>Strong Encryption Technology</h4>
+
+<p>The framework uses AES256 cryptography to encrypt data at the page level, providing military-grade security for sensitive database information. Other cryptography methods such as DPAPI can be implemented. The plugin encrypts only user data including records, BLOBs, index keys, and sources of stored procedures and triggers, while leaving Firebird system pages unencrypted to maintain optimal performance.</p>
+
+<h4>Transparent Operation</h4>
+
+<p>Database encryption and decryption do not require exclusive access to the database. End-user applications can continue working with the database while encryption or decryption processes are running.</p>
+
+<h4>Platform and Version Support</h4>
+
+<p>The framework supports:</p>
+
+<ul>
+	<li>Firebird versions 3.0.3+, 4.0.x, and 5.0.x</li>
+	<li>Windows 32-bit and 64-bit platforms</li>
+	<li>Linux 32-bit and 64-bit platforms</li>
+	<li>Pre-built binaries available for immediate use</li>
+	<li>Full source code included for customization</li>
+</ul>
+
+<h4>Enhanced Backup and Restore</h4>
+
+<p>Includes a modified gbak.exe utility that supports encryption for both databases and backup files. This ensures data remains protected throughout the entire backup and restore process. The enhanced gbak supports:</p>
+
+<ul>
+	<li>Encrypted backup creation using the same key as database encryption</li>
+	<li>Restore from encrypted backup files</li>
+	<li>Key specification through files (-KEYFILE) or explicit values (-KEY)</li>
+	<li>Named key support (-KEYNAME) for organized key management</li>
+</ul>
+
+<h3>Client-Side KeyHolder Support</h3>
+
+<p>There is client-side KeyHolder functionality, allowing fbclient.dll to load keys from KeyHolder.conf on the client side. This enables transparent and secure connections for developer tools, Firebird command-line utilities, and other applications without requiring key exchange support modifications.</p>
+
+<h3>Recovery and Debugging Tools</h3>
+
+<p>The framework includes specialized tools for handling encrypted database corruption:</p>
+
+<ul>
+	<li>Low-level decryption tool for corrupted encrypted databases</li>
+	<li><a href="/firstaid">IBSurgeon FirstAID</a> recovery tool license included (for 10 databases in Unlimited license)</li>
+	<li>Support for recovery operations on encrypted databases</li>
+</ul>
+
+<h3>Implementation Process</h3>
+
+<h4>Database Phase Implementation</h4>
+
+<p>The database-side implementation involves four simple steps:</p>
+
+<ol>
+	<li>Copy plugin files (dbcrypt.dll, keyholder.dll) and configuration files to the Firebird folder</li>
+	<li>Generate encryption keys as needed using the included tools</li>
+	<li>Encrypt the database using the SQL command: <code>ALTER DATABASE ENCRYPT WITH [plugin_name] KEY [key_name]</code></li>
+	<li>Verify that standard Firebird tools (gbak, gfix, isql) work properly with the encrypted database</li>
+</ol>
+
+<h4>Application Integration</h4>
+
+<p>For end-user applications, integration requires minimal code changes:</p>
+
+<ul>
+	<li>Embed key initialization code before establishing database connections</li>
+	<li>Use provided examples for various programming languages (Delphi, Lazarus, PHP, .NET, Java)</li>
+	<li>Three simple function calls enable encrypted connections: fbcrypt_init(), fbcrypt_key(), and fbcrypt_callback()</li>
+	<li>Remove server-side KeyHolder.conf to enforce application-level key management</li>
+</ul>
+
+<h4>Key Management</h4>
+
+<p>The framework supports flexible key management approaches:</p>
+
+<ul>
+	<li><strong>Server-side keys:</strong> Keys stored in KeyHolder.conf for transparent access</li>
+	<li><strong>Application-provided keys:</strong> Keys transmitted from client applications for enhanced security</li>
+	<li><strong>Named key system:</strong> Multiple keys can be managed with descriptive names</li>
+	<li><strong>Customizable storage:</strong> Keys can be retrieved from secure sources like DPAPI or custom mechanisms</li>
+</ul>
+
+<h4>Security Features</h4>
+
+<h4>Data Protection</h4>
+
+<p>The framework protects sensitive data from unauthorized access by encrypting all user-generated content while maintaining system performance through selective encryption of only necessary database components.</p>
+
+<h4>Access Control</h4>
+
+<p>Encrypted databases can only be accessed by designated applications that possess the correct encryption keys. Standard database tools and unauthorized applications cannot access encrypted database content without proper key configuration.</p>
+
+<h4>Development Environment Support</h4>
+
+<p>Maintains the ability for developers and system administrators to access encrypted databases through their preferred development and administration tools when operating in trusted environments with proper key configuration.</p>
+
+<h3>Programming Language Support</h3>
+
+<p>The framework includes detailed implementation examples and libraries for:</p>
+
+<ul>
+	<li><strong>Delphi:</strong> Complete example application with full source code</li>
+	<li><strong>Lazarus:</strong> Cross-platform Pascal development support</li>
+	<li><strong>PHP:</strong> Web application integration examples</li>
+	<li><strong>.NET:</strong> Microsoft .NET framework compatibility</li>
+	<li><strong>Java:</strong> Enterprise Java application support</li>
+</ul>
+
+<h3>Demo and Trial Version</h3>
+
+<p>A fully functional time-limited demo version is available that includes:</p>
+
+<ul>
+	<li>Complete AES256 encryption plugin (trial license valid until October 2025)</li>
+	<li>Example client applications with full source code</li>
+	<li>Performance testing capabilities for existing databases</li>
+	<li>Step-by-step implementation guides</li>
+	<li>Support for both server-side and client-side key management testing</li>
+</ul>
+
+<h2>Licensing Options</h2>
+
+<h3>Unlimited License</h3>
+
+<ul>
+	<li>Unlimited redistribution rights for business applications owned by the licensee</li>
+	<li>Full source code included</li>
+	<li>Pre-built binaries for all supported platforms</li>
+	<li>Implementation technical support for one application</li>
+	<li>FirstAID recovery tool license included (version 2021+)</li>
+</ul>
+
+<h3>Unlimited License with Consulting</h3>
+
+<ul>
+	<li>All features of the Unlimited License</li>
+	<li>Professional implementation consulting services</li>
+	<li>Engineering support for integration assistance</li>
+	<li>Custom implementation guidance</li>
+</ul>
+
+<h3>Technical Requirements</h3>
+
+<ul>
+	<li><strong>Firebird:</strong> Version 3.0.3 or higher (supports 3.x, 4.x, 5.x)</li>
+	<li><strong>Development:</strong> Visual Studio 2010 for custom binary compilation</li>
+	<li><strong>CPU:</strong> SSE2 instruction set support required, AES instruction set optional but beneficial</li>
+	<li><strong>Linux:</strong> libtommath libraries and GLIBC_2.14+ required</li>
+	<li><strong>Architecture:</strong> 32-bit and 64-bit support for Windows and Linux</li>
+</ul>
+
+<h3>Integration with HQbird</h3>
+
+<p>For users of <a href="/hqbird">HQbird</a> 2022 and later versions, the encryption plugin files are already included, eliminating the need for separate downloads. The framework integrates seamlessly with HQbird&#39;s enhanced Firebird distribution for enterprise-grade database management with built-in encryption capabilities.</p>
+
+<p>&nbsp;</p>
+
+<p><em>Remember that purchasing services and products in Firebird SQL shop directly funds the development of free open source Firebird SQL.</em></p>
+
+<p>&nbsp;</p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

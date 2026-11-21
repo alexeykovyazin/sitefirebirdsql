@@ -1,0 +1,203 @@
+---
+title: "Firebird: Developer's Report: DSQL/INTL Development"
+html_title: "Firebird: Developer's Report: DSQL/INTL Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: DSQL/INTL Development"
+menu_active: ""
+source_url: "/en/report-core-dsql-202006"
+source_format: new
+url: "/en/report-core-dsql-202006"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: DSQL/INTL Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">February to May 2020</span></strong>
+
+<h3>May 2020</h3>
+<u>trunk</u>
+
+<ul>
+	<li>Finished fix for CORE-6271 - Bind time with time zone to legacy produces wrong values.</li>
+	<li>Added tzdata directory to MacOS package.</li>
+	<li>Fixed x86 Linux build in x64 OS.</li>
+	<li>Fixed Travis (Ubuntu Xenial) build</li>
+	<li>Improvement CORE-6308 - Make it possible to update list of time zones (names and ids) without source code recompilation.</li>
+	<li>Fixed CORE-6310 - Varchar length limit is not enforced when assigning string with trailing spaces in MBCS.</li>
+	<li>Fixed CORE-6314 - Assigning RDB$DB_KEY to MBCS CHAR/VARCHAR does not enforce the target limit.</li>
+	<li>Fixed CORE-6318 - CAST(&#39;NOW&#39; as TIME) raises exception.</li>
+</ul>
+<u>3.0 branch</u>
+
+<ul>
+	<li>Backport fix for Travis (Ubuntu Xenial) build.</li>
+	<li>Backported fix for CORE-6310 - Varchar length limit is not enforced when assigning string with trailing spaces in MBCS.</li>
+	<li>Backported fix for CORE-6314 - Assigning RDB$DB_KEY to MBCS CHAR/VARCHAR does not enforce the target limit.</li>
+	<li>Fixed CORE-6317 - Server is crashing on long GRANT statement.</li>
+</ul>
+
+<h3>April</h3>
+<u>trunk</u>
+
+<ul>
+	<li>Fixed CORE-6281 - Invalid timestamp errors with RDB$TIME_ZONE_UTIL.TRANSITIONS.&nbsp;</li>
+	<li>Fixed CORE-6282 - Change type of MON$ATTACHMENTS.MON$IDLE_TIMER and MON$STATEMENTS.MON$STATEMENT_TIMER to TIMESTAMP WITH TIME ZONE.</li>
+	<li>Fixed CORE-6280 - MERGE statement loses parameters in WHEN (NOT) MATCHED clause that will never be matched, crashes server in some situations.</li>
+	<li>Started fix for CORE-6271 - Bind time with time zone to legacy produces wrong values.</li>
+	<li>Fixed CORE-6289 - Put RDB$ prefix in RDB$TIME_ZONE_UTIL.TRANSITIONS input/output parameters.</li>
+	<li>Added tzdata directory to Linux package and build option to configure its static location.</li>
+</ul>
+<u>3.0 branch</u>
+
+<ul>
+	<li>Improvement CORE-6274 - Increase parse speed of long queries.</li>
+	<li>Backported fix for CORE-6280 - MERGE statement loses parameters in WHEN (NOT) MATCHED clause that will never be matched, crashes server in some situations.</li>
+	<li>Fixed CORE-6290 - Hex number used at end of statement (for exame with CREATE DOMAIN ... DEFAULT) may read invalid memory and produce wrong values or exceptions.</li>
+</ul>
+
+<h3>March</h3>
+<u>trunk</u>
+
+<ul>
+	<li>Investigating CORE-6133 - Metadata script extracted using ISQL is invalid/incorrect when table has COMPUTED BY field with COLLATION.</li>
+	<li>Reviewing and testing PR #243 about CORE-5972 - Fix working external triggers with computed fields.</li>
+	<li>Fixed CORE-6262 - SHOW DOMAIN/TABLE does not display character set of system objects.</li>
+	<li>Frontported fix for CORE-6246 - Problem with too many number of columns in resultset.</li>
+</ul>
+<u>3.0 branch</u>
+
+<ul>
+	<li>Shrink MacOS pkg size not including three copies of each ICU library.</li>
+	<li>Backported fix for CORE-6233 - Wrong dependencies of stored function on view after backup and restore.</li>
+	<li>Fixed CORE-6246 - Problem with too many number of columns in resultset.</li>
+</ul>
+
+<h3>February</h3>
+<u>trunk</u>
+
+<ul>
+	<li>Improvement CORE-6239 - Procedures and EXECUTE BLOCK without RETURNS should not be allowed to use SUSPEND.</li>
+	<li>Fixed CORE-6241 - Values greater than number of days between 01.01.0001 and 31.12.9999 (=3652058) can be added or subtracted from DATE.</li>
+	<li>Fixed CORE-6243 - Regression: v4 Beta 1 rejects POSITION element of v2.5 defined SQL2003 CREATE TRIGGER syntax. Unzip tzdata with unzip utility in Windows.</li>
+	<li>Investigating CORE-6240.</li>
+	<li>Reviewing branch none_gmt_fallback.</li>
+	<li>Fixed regression with conversion from hex literal in string to number.</li>
+</ul>
+<u>3.0 branch</u>
+
+<ul>
+	<li>Started work on CORE-6246 - Problem with too many number of columns in resultset.</li>
+	<li>Fixed CORE-6250 - Signature mismatch when creating package body on identical packaged procedure header.</li>
+	<li>Fixed CORE-6251 - Regression: crash when built-in function LEFT() or RIGHT() missed 2nd argument (number of characters to be taken).</li>
+	<li>Shrink MacOS pkg size not including three copies of each ICU library.</li>
+</ul>
+<em>Adriano dos Santos Fernandes</em>
+
+<div><em>Sao Paulo, Brazil</em></div>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,186 @@
+---
+title: "Firebird: Developer's Report: QA Stress Testing & Development"
+html_title: "Firebird: Developer's Report: QA Stress Testing & Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: QA Stress Testing & Development"
+menu_active: ""
+source_url: "/en/report-qa3-202112"
+source_format: new
+url: "/en/report-qa3-202112"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: QA Stress Testing &amp; Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><span style="font-weight: bold; color: rgb(6, 134, 173); font-size: 16px;">September to December 2021</span><br style="line-height: 20.8px;" />
+<br style="line-height: 20.8px;" />
+<span style="color:#474747;font-size:15px;font-weight:bold;"><u style="line-height: 20.8px;">December 2021</u></span></p>
+
+<ul>
+	<li>Created / modified QA tests for 6 tracker tickets</li>
+	<li>Trace block parser (aux Python script): refactored in order to increase performance</li>
+	<li>New QA: several iterations with opening multiple cursors on each step: issuing &quot;delete from mon$attachments ...&quot; (by separate SYSDBA attachment) leads to exception only in first iteration</li>
+	<li>Refactoring of aux script for trace block analyzing: extract and accumulate statistics about idle state of attachments</li>
+	<li>Bugcheck encountered when attempted to create test for gh-7070: &quot;decompression overran buffer (179), file: sqz.cpp line: 293&quot; (got in WI-V4.0.1.2691; WI-T5.0.0.347)</li>
+	<li>New QA: additional reports about tests runs outcome</li>
+</ul>
+
+<p><span style="color:#474747;font-size:15px;font-weight:bold;"><u>November 2021</u></span></p>
+
+<ul>
+	<li>Created / modified QA tests for ~20 tracker tickets</li>
+	<li>Found / reported bugs:</li>
+	<li>Found way how to make time-related comparison much more accurate, fully re-implemented several tests appropriately (psutil package must be installed)</li>
+	<li>Analyzed IBE-setup_benchmark ( https://ibexpert.com/benchmark/setup_benchmark.exe )</li>
+	<li>Refactored script for building FB snapshots on Windows test server</li>
+	<li>Implemented test for check performance of string-comparison operators (&quot;&gt;=&quot;, &quot;&lt;=&quot;, STARTING WITH, LIKE &#39;
+	<p>%&#39;, SIMILAR TO ...), related to #6915</p>
+	</li>
+	<li>New QA framework: upgraded firebird-driver to 1.3.3 and pytest 0.2.0, run all ISQL-based tests on official releases of FB 3.0.7, 4.0.0 and fresh snapshot of 4.0.1</li>
+	<li>Run multiple tests related to performance of search operations against columns with single-byte character sets</li>
+	<li>Scrollable cursors: made basic tests, created test for automated generation of actions with evaluating expected results and compare actual outcome with this result</li>
+</ul>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>October 2021</u></span></div>
+
+<ul>
+	<li>Created / modified QA tests for 14 tracker tickets</li>
+	<li>Found / reported bugs: <span class="opened-by">#6989, #6998</span></li>
+	<li>OLTP-EMUL, workload by 20 sessions, applied to DB that involved in replication schema: crash when replica-DB is subject of loop &quot;shutdown / online / shutdown/ ...&quot;</li>
+	<li>OLTP-EMUL, work under replication: reproduced crash described in fb-devel vol 186 issue 3&quot; (&quot;read errno during replicaton&quot;)</li>
+	<li>firebird-driver (new QA): detected regression in 4.0.1.2602 vs 4.0.1.2592. Unable to connect using Python v.3.9.4 / and FB Driver v. 1.3.2, got: &quot;SQLCODE: -904 / invalid database handle (no active connection)&quot;</li>
+	<li>OLTP-EMUL: validated replication schema &quot;one master - many replicas&quot; (async)</li>
+	<li>Refactored aux script for detect missing FB tests runs</li>
+	<li>Refactored qa_rundaily.bat: added check for results of security DB initialization</li>
+	<li>firebird-driver / pytest (new QA): could not get result on firebird-driver v 1.3.4 and pytest-6.2.4: got &quot;TypeError: isql_act() got an unexpected&quot;</li>
+</ul>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>September 2021</u></span></div>
+
+<ul>
+	<li>Created / modified QA tests for ~30 tracker tickets</li>
+	<li>Found / reported bugs: <span class="opened-by">#6946, #6947, #6966</span></li>
+	<li>OLTP-EMUL: add support of FB major family 5.0</li>
+	<li>firebird-driver (new QA), v1.2.1: cannot establish connection to FB 5.x (any protocol); problems with usage on FB 3.x and 4.x when selected protocol = XNET</li>
+	<li>firebird-driver (new QA): found minor inaccuracy in the documentation related to con.info</li>
+	<li>firebird.driver: discussed ability to obtain current DB encryption state WITHOUT querying mon$database.mon$crypt_state and mon$crypt_page columns; discussed ability to use customized DPB</li>
+	<li>firebird.driver (new QA): cannot obtain name of the key which was used to encrypt DB</li>
+	<li>firebird.driver (new QA): cannot obtain fb_info_tra_snapshot_number</li>
+	<li>firebird.driver (new QA): could not connect to FB 5.x, got (rarely) crash in one of Python libraries, strange output in console</li>
+	<li>OLTP-EMUL, FB 4.0.1.2585 and 5.0.0.192, Windows: tested replication between two different machines, workload = 20 sessions. Got bugcheck (wrong record length) followed by &quot;Segment N replication failure at offset M + PK violation&quot;.</li>
+	<li>firebird.driver (new QA): weird behaviour with INT128 datatype in FB 4.x: can not use it in DML; can get Python AV (failed unit: DLLs\libffi-7.dll )</li>
+	<li>Misc improvements in fbt-cross-report</li>
+</ul>
+<br />
+<em style="line-height: 20.8px;">Pavel Zotov</em><br />
+<em style="line-height: 20.8px;">Moscow, Russian Federation</em></div>
+
+<p>&nbsp;</p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

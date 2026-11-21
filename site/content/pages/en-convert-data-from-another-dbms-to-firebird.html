@@ -1,0 +1,406 @@
+---
+title: "Firebird: Convert Data from another DBMS to Firebird"
+html_title: "Firebird: Convert Data from another DBMS to Firebird"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Convert Data from another DBMS to Firebird"
+menu_active: "/en/firebird-rdbms/"
+source_url: "/en/convert-data-from-another-dbms-to-firebird"
+source_format: new
+url: "/en/convert-data-from-another-dbms-to-firebird"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/documentation/">Documentation</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-rdbms/">Firebird RDBMS</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/white-papers-presentations/">White Papers &amp; Presentations</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Convert Data from another DBMS to Firebird</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    September 22, 2006<br /> Henrique Netzka [henrique AT vetorsistemas DOT com DOT br] describes a technique he has developed to convert data from another DBMS to Firebird.<br /> <br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Abstract</span></strong><br /> <br /> When we need to convert data between two databases, being Firebird the destination, it's pretty common to use the Firebird's EXTERNAL FILE resource (here referenced as EF), in order to make the whole process quicker and easier. For example, if we wanted to convert a Clients           data table from a dBase-format file into a Firebird database, we'd use a EF to intermediate the conversion: a software would be responsible for reading the dBase table and store the data in a plain-text file as fixed-length text fields (CHAR-like); then the file would be linked to a Firebird DB as an EF table; the data finally would be inserted into the real tables, the ones inside the DB and with the straight field types.<br /> <br /> Although, those who work with this method know that it's far away from that easy. There's a big issue with this whole process, which would be the type casts and other treatments that the last step would require: you'd have each row (of the EF table) filled with CHAR values, but in your REAL table you'd have INTEGERs, VARCHARs, DATEs, NUMERICs and so on.<br /> <br /> This article, then, will introduce you to a new way to do it all. We won't ignore the three steps described above (recording the data to a file; loading into a EF table; importing data to a real table), but we'll skip the hard and boring step of converting the fields from CHAR to other types. We'll write BINARY, native-formatted files (instead of plain-text files) and, by doing it, we'll reduce significantly the time of the conversion process.<br /> <br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">The research and this article</span></strong><br /> <br /> For me to figure all this out, I've used the reverse-engineering method. I created a new and clear EF table, inserted one record and studied what it had really stored in the file. Also I've had to use some of the informations provided by the IBPhoenix and FirebirdSQL.org sites.<br /> <br /> It's important for you to realize that the code presented here isn't as good as it can get. You shall consider that we're under didactic circumstances, and sometimes it isn't interesting to have a optimized code. Even so, there's a lot of optimizations, and the code as it is presented here works pretty fast.<br /> <br /> There's also a couple of fields that isn't covered by this article. Although, feel free to implement it on your own. : )<br /> <br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">The way<br /> </span></strong><br /> It's up to you to choose the better (and faster) way of storing a file. Here, the way presented is using the TStringList class, which already implements the SaveToFile procedure.<br /> <br /> Nevertheless, all you'll need is to stack the records and store it into a physical file.<br /> <br /> Using this file, you'll create your EF table inside a Firebird database, and then simply import the data into your definitive table. Also, because we'll use a StringList, we'll have to create a double-char column in the end of the table definition. It'll be responsible to store the CR and LF characters, added by the TStringList object, granting that the data will fit perfectly inside our EF table.<br /> <br /> <strong><span style="color: rgb(71, 71, 71); font-size: 16px;">Understanding it and working with the TIBRecord class<br /> </span></strong><br /> To the conversion method, then, we'll define a new class: the TIBRecord. It's a quite simple class that works just like a stream: it has an internal buffer (but this one is static-sized) and an integer pointer to the actual position of it. As you append stuff to the record, it'll increase the pointer and store the new information.<br /> <br /> Here, the record size may be up to 4096 (4k). If you'll need a bigger record (remember: record = row), all you have to do is increase the FLine's size.<br /> <br /> <span style="font-family: Courier New;"> TIBRecord = class<br /> private<br /> <div style="margin-left: 40px;">FLine: array[1..4096] of Char;<br /> FPos: Integer;<br /> function GetLine: String;</div> protected <div style="margin-left: 40px;">procedure CheckOffset(ANextSize: Integer; AChar: Boolean = False);</div> public <div style="margin-left: 40px;">procedure AppendInteger(AValor: Integer);<br /> procedure AppendSmallInt(AValor: SmallInt);<br /> procedure AppendFloat(AValor: Int64); overload;<br /> procedure AppendFloat(AValor: Integer); overload;<br /> procedure AppendDate(AValor: TDate);<br /> procedure AppendTimeStamp(AValor: TDateTime);<br /> procedure AppendChar(AValor: String; ASize: Integer);<br /> procedure AppendVarChar(AValor: String; ASize: Integer);<br /> <br /> procedure Reset;<br /> <br /> constructor Create;<br /> <br /> property Line: String read GetLine;<br /> property Pos: Integer read FPos write FPos;</div> end;<br /> </span> <br /> The first thing you'll have to do in order to use the class is (obviously) declare a variable of its type and create it in your conversion process (as shown below):<br /> <br /> <span style="font-family: Courier New;">Var<br /> <div style="margin-left: 40px;">IBRec: TIBRecord;<br /> strArquivo: TStringList;</div> begin <div style="margin-left: 40px;">(...)<br /> IBRec := TIBRecord.Create;<br /> strFile := TStringList.Create;<br /> (...)</div> end; <br /> </span> <br /> Then, to build a record, make use of the AppendXXXX functions. They'll do all the job for you, and all you'll have to do is pass the correct value to them. In the end, to get the record's value, read the Line property; to begin another one, use the Reset procedure.<br /> <br /> <span style="font-family: Courier New;"> (...)<br /> while (not EOF) do<br /> begin<br /> <div style="margin-left: 40px;">IBRec.Reset;<br /> IBRec.AppendInteger(dbTabela.FieldByName('Code').AsInteger);<br /> IBRec.AppendVarchar(dbTabela.FieldByName('Name').AsString, 40);<br /> <br /> strFile.Add(IBRec.Line);<br /> <br /> Next;</div> end;<br /> <br /> strFile.SaveToFile('\ExternalFileTable.Ext');<br /> (...)<br /> </span> <br /> Once you have the file stored, create your EXTERNAL FILE table:<br /> <br /> <span style="font-family: Courier New;"> CREATE TABLE <br /> <div style="margin-left: 40px;">TableName</div> EXTERNAL FILE <br /> <div style="margin-left: 40px;">'\ExternalFileTable.Ext'</div> (<br /> <div style="margin-left: 40px;">Code INTEGER, <br /> Name VARCHAR(40),<br /> DELIMIT CHAR(2)</div> );<br /> </span> <br /> Remember: if you're using the TStringList method, you'll have to keep a CHAR(2) field in the end of the table (as shown above). They'll store the CR and LF chars.<br /> <br /> <strong><span style="color: rgb(71, 71, 71); font-size: 16px;"> Class implementation</span></strong><br /> <br /> Finally, here we get the implementation of each class' function, and some relevant comments (please, read the comments).<br /> <br /> <span style="font-family: Courier New;"> procedure TIBRecord.AppendChar(AValor: String; ASize: Integer);<br /> var<br /> <div style="margin-left: 40px;">Tam: Integer;</div> begin<br /> <div style="margin-left: 40px;">CheckOffset(ASize, True);<br /> <br /> Tam := Min(Length(AValor), ASize);<br /> <br /> SetLength(AValor, ASize); <br /> FillChar(FLine[FPos], ASize, #32); <br /> CopyMemory(@FLine[FPos], PChar(AValor), Tam);<br /> <br /> Inc(FPos, ASize);</div> end;<br /> <br /> procedure TIBRecord.AppendDate(AValor: TDate);<br /> Var<br /> <div style="margin-left: 40px;">dAux: Integer;<br /> BaseDate: TDate;<br /> <br /> buf: array[1..4] of Byte;</div> begin<br /> <div style="margin-left: 40px;">CheckOffset(4);<br /> <br /> BaseDate := -15018; // = 17/11/1858<br /> <br /> dAux := Trunc(AValor - BaseDate);<br /> <br /> buf[1] := dAux and 255;<br /> buf[2] := ((dAux AND (255 SHL 8)) SHR 8);<br /> buf[3] := ((dAux AND (255 SHL 16)) SHR 16);<br /> buf[4] := ((dAux AND (255 SHL 24)) SHR 24);<br /> <br /> CopyMemory(@FLine[FPos], @buf, 4);<br /> Inc(FPos, 4);</div> end;<br /> <br /> { This function appends a NUMERIC field in the record. PAY ATTENTION: the value MUST be passed as an INTEGER. Consider, for example, a $1,99 price; you'll have to pass this value as &ldquo;199&rdquo;, and not 1,99. A easy way to get it would be using something like: Trunc(1,99 * 100) }<br /> <br /> procedure TIBRecord.AppendFloat(AValor: Int64);<br /> var<br /> <div style="margin-left: 40px;">buf: array[1..8] of Byte;</div> begin<br /> <div style="margin-left: 40px;">CheckOffset(8);<br /> <br /> buf[1] := AValor and 255;<br /> buf[2] := ((AValor AND (Int64(255) SHL 8)) SHR 8);<br /> buf[3] := ((AValor AND (Int64(255) SHL 16)) SHR 16);<br /> buf[4] := ((AValor AND (Int64(255) SHL 24)) SHR 24);<br /> buf[5] := ((AValor AND (Int64(255) SHL 32)) SHR 32);<br /> buf[6] := ((AValor AND (Int64(255) SHL 40)) SHR 40);<br /> buf[7] := ((AValor AND (Int64(255) SHL 48)) SHR 48);<br /> buf[8] := ((AValor AND (Int64(255) SHL 56)) SHR 56);<br /> <br /> CopyMemory(@FLine[FPos], @buf, 8);<br /> Inc(FPos, 8);</div> end;<br /> <br /> procedure TIBRecord.AppFloat(AValor: Integer);<br /> begin<br /> <div style="margin-left: 40px;">AppFloat(Int64(AValor));</div> end;<br /> <br /> // Remember: Firebird's INTEGER is 32 bits, just as Delphi's<br /> <br /> procedure TIBRecord.AppendInteger(AValor: Integer);<br /> var<br /> <div style="margin-left: 40px;">buf: array[1..4] of Byte;</div> begin<br /> <div style="margin-left: 40px;">CheckOffset(4);<br /> <br /> buf[1] := (AValor and 255);<br /> buf[2] := ((AValor and (255 shl 8)) shr 8);<br /> buf[3] := ((AValor and (255 shl 16)) shr 16);<br /> buf[4] := ((AValor and (255 shl 24)) shr 24);<br /> <br /> CopyMemory(@FLine[FPos], @buf, 4);<br /> Inc(FPos, 4);</div> end;<br /> <br /> // Smallint, also like Delphi's; 16 bits.<br /> <br /> procedure TIBRecord.AppendSmallInt(AValor: SmallInt);<br /> var<br /> <div style="margin-left: 40px;">buf: array[1..2] of Byte;</div> begin<br /> <div style="margin-left: 40px;">CheckOffset(2);<br /> <br /> buf[1] := (AValor and 255);<br /> buf[2] := ((AValor and (255 shl 8)) shr 8);<br /> <br /> CopyMemory(@FLine[FPos], @buf, 2);<br /> Inc(FPos, 2);</div> end;<br /> <br /> // Timestamp fields; the HOUR part is NOT implemented<br /> <br /> procedure TIBRecord.AppTimeStamp(AValor: TDateTime);<br /> // base: 1858-11-17 01:24:08.456<br /> Var<br /> <div style="margin-left: 40px;">BaseDate: TDateTime;<br /> dAux: Integer;<br /> <br /> buf: array[1..8] of Byte;</div> begin<br /> <div style="margin-left: 40px;">CheckOffset(8);<br /> <br /> BaseDate := -15018;//EncodeDateTime(1858, 11, 17, 1, 24, 08, 456);  <br /> <br /> // date<br /> dAux := Trunc(AValor - BaseDate);<br /> <br /> buf[1] := dAux and 255;<br /> buf[2] := ((dAux AND (255 SHL 8)) SHR 8);<br /> buf[3] := ((dAux AND (255 SHL 16)) SHR 16);<br /> buf[4] := ((dAux AND (255 SHL 24)) SHR 24);<br /> <br /> ZeroMemory(@buf[5], 4);<br /> <br /> CopyMemory(@FLine[FPos], @buf, 8);<br /> Inc(FPos, 8);</div> end;<br /> <br /> procedure TIBRecord.AppendVarChar(AValor: String; ASize: Integer);<br /> var<br /> <div style="margin-left: 40px;">Tam: Integer;</div> begin<br /> <div style="margin-left: 40px;">Tam := Min(Length(AValor), ASize);<br /> <br /> CheckOffset(ASize + 2);<br /> <br /> SetLength(AValor, ASize); <br /> <br /> FLine[FPos] := Chr(Lo(Tam));<br /> FLine[FPos+1] := Chr(Hi(Tam));<br /> Inc(FPos, 2);<br /> <br /> FillChar(FLine[FPos], ASize, #0); <br /> CopyMemory(@FLine[FPos], PChar(AValor), Tam);<br /> <br /> Inc(FPos, ASize);</div> end;<br /> <br /> { Not everytime the next field begins right in the end of the last; eventually, some bytes must be nulled between two fields. This function will be responsible for that... }<br /> <br /> procedure TIBRecord.CheckOffset(ANextSize: Integer; AChar: Boolean);<br /> begin<br /> <div style="margin-left: 40px;">if ((FPos and 3) &lt;&gt; 1) then<br /> begin<br /> <div style="margin-left: 40px;">if (((FPos + ANextSize) and 3) &lt;&gt; 1) then<br /> begin<br /> <div style="margin-left: 40px;">if (ANextSize &gt;= 4) then<br /> begin<br /> <div style="margin-left: 40px;">if not AChar and ((ANextSize = 4) or ((ANextSize and 7) = 0)) then <br /> begin<br />        <div style="margin-left: 40px;">while ((FPos and 3) &lt;&gt; 1) do // (M&uacute;ltiplos de 4) + 1<br />                  <div style="margin-left: 40px;">Inc(FPos);</div></div> end<br /> else<br />        <div style="margin-left: 40px;">while ((FPos and 1) &lt;&gt; 1) do // (M&uacute;ltiplos de 2) + 1<br />                   <div style="margin-left: 40px;">Inc(FPos);</div></div></div> end;</div> end;</div> end;</div> end; <br /><br /> constructor TIBRecord.Create;<br /> begin<br /> <div style="margin-left: 40px;">Reset;</div> end;<br /> <br /> function TIBRecord.GetLine: String;<br /> begin<br /> <div style="margin-left: 40px;">SetLength(Result, Pred(FPos));<br /> CopyMemory(@Result[1], @FLine, Pred(FPos));</div> end;<br /> <br /> procedure TIBRecord.Reset;<br /> begin<br /> <div style="margin-left: 40px;">FPos := 1;<br /> ZeroMemory(@FLine, Length(FLine));</div> end;<br /> </span><br />
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Documentation</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-rdbms/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird RDBMS</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-notes/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Notes</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/reference-manuals/" class="menulvl_3"><i class="fa fa-arrow-right"></i> All Reference Manuals</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/white-papers-presentations/" class="menulvl_3"><i class="fa fa-arrow-right"></i> White Papers &amp; Presentations</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/books/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Books</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/drivers-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Drivers Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-docs-and-articles/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Docs and Articles</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/external-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> External Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/licensing/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Licensing</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/features/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Features</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sql-conformance/" class="menulvl_3"><i class="fa fa-arrow-right"></i> SQL Conformance</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/historical-reference/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Historical Reference</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-doc/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-brand-faq/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Branding Policy</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Brand FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/logos/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Logos</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-and-other-databases/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird and other databases</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

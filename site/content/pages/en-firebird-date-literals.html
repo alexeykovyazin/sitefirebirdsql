@@ -1,0 +1,745 @@
+---
+title: "Firebird: Firebird Date Literals"
+html_title: "Firebird: Firebird Date Literals"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Firebird Date Literals"
+menu_active: "/en/firebird-rdbms/"
+source_url: "/en/firebird-date-literals"
+source_format: new
+url: "/en/firebird-date-literals"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/documentation/">Documentation</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-rdbms/">Firebird RDBMS</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/reference-manuals/">All Reference Manuals</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Firebird Date Literals</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    Excerpt from Chapter 10 of The Firebird Book &copy; Helen Borrie 2004<br />
+<br />
+Table 10-1. Elements of Date Literals<br />
+<br />
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="Table">
+    <tbody>
+        <tr class="Table_Header">
+            <td>Element</td>
+            <td>Representing</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>CC</td>
+            <td>Century. First two digits of a year segment (e.g., 20 for the twenty-first century).</td>
+        </tr>
+        <tr class="Table_Row_Grey">
+            <td>YY</td>
+            <td>Year in century. Firebird always stores the full year value if the year  is entered without the CC segment, using a &quot;sliding window&quot; algorithm  (see below) to determine which century to store.</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>MM</td>
+            <td>Month, evaluating to an integer in the range 1 to 12. In some formats, two digits are required.</td>
+        </tr>
+        <tr class="Table_Row_Grey">
+            <td>MMM</td>
+            <td>Month, one of <span style="font-family: Courier New;">[JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV,  DEC]</span>. English month names fully spelled out (correctly) are also valid.</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>DD</td>
+            <td>Day of the month, evaluating to an integer in the range 1 to 31. In some  formats, two digits are required. An invalid day-of-month number for  the given month will cause an error.</td>
+        </tr>
+        <tr class="Table_Row_Grey">
+            <td>HH</td>
+            <td>Hours, evaluating to an integer in the range 00 to 23. Two digits are required when storing a time portion.</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>NN</td>
+            <td>Minutes, evaluating to an integer in the range 00 to 59. Two digits are required when storing a time portion.</td>
+        </tr>
+        <tr class="Table_Row_Grey">
+            <td>SS</td>
+            <td>Whole seconds, evaluating to an integer in the range 00 to 59. Two digits are required when storing a time portion.</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>nnnn</td>
+            <td>Ten-thousandths of a second in the range 0 to 9999. Optional for time  portions; defaults to 0000. If used, four digits are required.</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+The recognized formats are described in Table 10-2.<br />
+<br />
+Table 10-2. Recognized Date and Time Literal Formats<br />
+<br />
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="Table">
+    <tbody>
+        <tr class="Table_Header">
+            <td>Format</td>
+            <td>Dialect 3 DATE</td>
+            <td>Dialect 3 TIMESTAMP</td>
+            <td>Dialect 1 DATE</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>'CCYY-MM-DD' or 'YY-MM-DD'</td>
+            <td>Stores date only</td>
+            <td>Stores the date and a time portion of 00:00:00</td>
+            <td>Stores the date and a time portion of 00:00:00</td>
+        </tr>
+        <tr class="Table_Row_Grey">
+            <td>'MM/DD/CCYY' or 'MM/DD/YY'</td>
+            <td>As above</td>
+            <td>As above</td>
+            <td>As above</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>'DD.MM.CCYY' or 'DD.MM.YY'</td>
+            <td>As above</td>
+            <td>As above</td>
+            <td>As above</td>
+        </tr>
+        <tr class="Table_Row_Grey">
+            <td>'DD-MMM-CCYY' or 'DD-MMM-YY'</td>
+            <td>As above</td>
+            <td>As above</td>
+            <td>As above</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>'DD,MMM,CCYY' or 'DD,MMM,YY'</td>
+            <td>As above</td>
+            <td>As above</td>
+            <td>As above</td>
+        </tr>
+        <tr class="Table_Row_Grey">
+            <td>'DD MMM CCYY' or 'DD MMM YY'</td>
+            <td>As above</td>
+            <td>As above</td>
+            <td>As above</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>'DDMMMCCYY' or 'DDMMMYY'</td>
+            <td>As above</td>
+            <td>As above</td>
+            <td>As above</td>
+        </tr>
+        <tr class="Table_Note">
+            <td colspan="4">Case-insensitive English month names fully spelled out are also valid in  the MMM element. Correct spelling is shown in Table 10-3.</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>'CCYY-MM-DD HH:NN:SS.nnnn' or 'YY-MM-DD HH:NN:SS.nnnn' (&quot;.nnnn&quot; element is optional)</td>
+            <td>Stores date only; may need to be CAST as date. Time portion is not stored.</td>
+            <td>Stores date and time</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr class="Table_Row_Grey">
+            <td>'MM/DD/CCYYHH:NN:SS.nnnn'or 'MM/DD/YY HH:NN:SS.nnnn'</td>
+            <td>As above</td>
+            <td>As above</td>
+            <td>As above</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>'DD.MM.CCYYHH:NN:SS.nnnn'or 'DD.MM.YY HH:NN:SS.nnnn'</td>
+            <td>As above</td>
+            <td>As above</td>
+            <td>As above</td>
+        </tr>
+        <tr class="Table_Row_Grey">
+            <td>'DD-MMM-CCYY HH:NN:SS.nnnn' or 'DD-MMM-YY HH:NN:SS.nnnn'</td>
+            <td>As above</td>
+            <td>As above</td>
+            <td>As above</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+The dialect 3 TIMESTAMP type and the dialect 1 DATE type accept both date and time parts in a date literal. A date literal submitted without a time part will be stored with a time part equivalent to '00:00:00'.<br />
+<br />
+The dialect 3 DATE type accepts only the date part. The TIME data type accepts only the time part.<br />
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Firebird's &quot;Sliding Century Window&quot;</span></strong><br />
+<br />
+Whether the year part of a DATE or TIMESTAMP literal is submitted in SQL as CCYY or YY, Firebird always stores the full year value. It applies an algorithm in order to deduce the CC (century) part, and it always includes the century part when it retrieves date types. Client applications are responsible for displaying the year as two or four digits.<br />
+<br />
+To deduce the century, Firebird uses a sliding window algorithm. Its effect is to interpret a two-digit year value as the nearest year to the current year, in a range spanning the preceding 50 years and the succeeding 50 years.<br />
+<br />
+For example, if the current year were 2004, two-digit year values would be interpreted as shown in Table 10-3.<br />
+<br />
+Table 10-3. Deduction of Year from Two-Digit Year if Current Year is 2004<br />
+<br />
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="Table">
+    <tbody>
+        <tr class="Table_Header">
+            <td>Two-Digit Year</td>
+            <td>Becomes Year</td>
+            <td>Deduced From</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>98</td>
+            <td>1998</td>
+            <td>(2004 &ndash; 1998 = 6) &lt; ( 2098 &ndash; 2004 = 94)</td>
+        </tr>
+        <tr class="Table_Row_Grey">
+            <td>00</td>
+            <td>2000</td>
+            <td>(2004 &ndash; 2000 = 4) &lt; (2100 &ndash; 2004 = 96)</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>45</td>
+            <td>2045</td>
+            <td>(2004 &ndash; 1945 = 55) &gt; (2045 &ndash; 2004 = 41)</td>
+        </tr>
+        <tr class="Table_Row_Grey">
+            <td>50</td>
+            <td>2050</td>
+            <td>(2004 &ndash; 1950 = 54) &gt; (2050 &ndash; 2004 = 46)</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>54</td>
+            <td>1954</td>
+            <td>(2004 &ndash; 1954 = 50) = (2054 &ndash; 2004 = 50) &Dagger;</td>
+        </tr>
+        <tr class="Table_Row_Grey">
+            <td>55</td>
+            <td>1955</td>
+            <td>(2004 &ndash; 1955 = 49) &lt; (2055 &ndash; 2004 = 51)</td>
+        </tr>
+    </tbody>
+</table>
+<div style="color: rgb(86, 86, 86); font-size: 11px; padding: 10px 15px 10px 25px;">&Dagger; The apparent equivalence of this comparison could be misleading. However, 1954 is closer to 2004 than is 2054 because all dates between 1954 and 1955 are closer to 2004 than all dates between 2054 and 2055.</div>
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Separators in Non-U.S. Dates<br />
+</span></strong><br />
+Nothing causes more confusion for international users than Firebird's restricting the use of the forward slash character (/) to only the U.S. 'MM/DD/CCYY' format. Although almost all other countries use 'DD/MM/CCYY', Firebird will either record the wrong date or throw an exception with the date literal using the 'DD/MM/CCYY' convention.<br />
+<br />
+For example, the date literal '12/01/2004' will always be stored with meaning &quot;December 1, 2004&quot; and '14/01/2004' will cause an out-of-range exception because there is no month 14.<br />
+<br />
+Note that Firebird does not honor the Windows or Linux date locale format when interpreting date literals. Its interpretation of all-number date formats is decided by the separator character. When dot (.) is used as separator, Firebird interprets it as the non-U.S. notation DD.MM, whereas with any other separator it assumes the U.S. MM/DD notation. Outside the U.S. date locale, your applications should enforce or convert locale-specific DD/MM/CCYY date input to a literal that replaces the forward slash with a period (dot) as the separator. 'DD.MM.CCYY' is valid. Other date literal formats may be substituted.<br />
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">White Space in Date Literals</span></strong><br />
+<br />
+Spaces or tabs can appear between elements. A date part must be separated from a time part by at least one space.<br />
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Quoting of Date Literals</span></strong><br />
+<br />
+Date literals must be enclosed in single quotes (ASCII 39). Only single quotes are valid.<br />
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Month Literals</span></strong><br />
+<br />
+Table 10-4. Month Literals with Correct English Spellings<br />
+<br />
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="Table">
+    <tbody>
+        <tr class="Table_Header">
+            <td width="150">Cardinal Number</td>
+            <td>Abbreviation</td>
+            <td>Full Month Name</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>--</td>
+            <td>Case-Insensitive</td>
+            <td>Case-Insensitive</td>
+        </tr>
+        <tr class="Table_Row_Grey">
+            <td>01</td>
+            <td>JAN</td>
+            <td>January</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>02</td>
+            <td>FEB</td>
+            <td>February</td>
+        </tr>
+        <tr class="Table_Row_Grey">
+            <td>03</td>
+            <td>MAR</td>
+            <td>March</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>04</td>
+            <td>APR</td>
+            <td>April</td>
+        </tr>
+        <tr class="Table_Row_Grey">
+            <td>05</td>
+            <td>MAY</td>
+            <td>May</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>06</td>
+            <td>JUN</td>
+            <td>June</td>
+        </tr>
+        <tr class="Table_Row_Grey">
+            <td>07</td>
+            <td>JUL</td>
+            <td>July</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>08</td>
+            <td>AUG</td>
+            <td>August</td>
+        </tr>
+        <tr class="Table_Row_Grey">
+            <td>09</td>
+            <td>SEP</td>
+            <td>September</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>10</td>
+            <td>OCT</td>
+            <td>October</td>
+        </tr>
+        <tr class="Table_Row_Grey">
+            <td>11</td>
+            <td>NOV</td>
+            <td>November</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>12</td>
+            <td>DEC</td>
+            <td>December</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Examples of Date Literals<br />
+</span></strong><br />
+The twenty-fifth (25) day of the sixth month (June) in the year 2004 can be represented in all of the following ways:<br />
+<br />
+<span style="font-family: Courier New;">'25.6.2004' '06/25/2004' 'June 25, 2004'<br />
+<br />
+'25.jun.2004' '6,25,2004' '25,jun,2004'<br />
+<br />
+'25jun2004' '6-25-04' 'Jun 25 04'<br />
+<br />
+'25 jun 2004' '2004 June 25' '20040625'<br />
+<br />
+'25-jun-2004' '2004-jun-25' '20040625'<br />
+<br />
+'25 JUN 04' '2004-06-25' '2004,25,06'</span><br />
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Predefined Date Literals</span></strong><br />
+<br />
+Firebird supports a group of &quot;predefined&quot; date literals&mdash;single-quoted English words that Firebird captures or calculates and interprets in the context of an appropriate date/time type. The words 'TODAY', 'NOW', 'YESTERDAY', and 'TOMORROW' are interpreted as shown in Table 10-5.<br />
+<br />
+Table 10-5. Predefined Date Literals<br />
+<br />
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="Table">
+    <tbody>
+        <tr class="Table_Header">
+            <td>Date Literal</td>
+            <td>Dialect 3 Type</td>
+            <td>Dialect 1 Type</td>
+            <td>Meaning</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>'NOW'</td>
+            <td>TIMESTAMP</td>
+            <td>DATE</td>
+            <td>Server date and time that was current at the start of the DML operation.  'NOW' will be cast and stored correctly in dialect 3 DATE, TIME, and  TIMESTAMP fields and in dialect 1 DATE fields. Like the equivalent  context variable CURRENT_TIMESTAMP, it always stores the subsecond  portion as '.0000'. &dagger;</td>
+        </tr>
+        <tr class="Table_Row_Grey">
+            <td>'TODAY'</td>
+            <td>DATE</td>
+            <td>DATE stored with a time part equivalent to '00:00:00'</td>
+            <td>Server date that was current at the start of the operation. If midnight  is passed during the operation, the date does not change. Equivalent to  the dialect 3 CURRENT_DATE context variable. Not valid in fields of TIME  type.</td>
+        </tr>
+        <tr class="Table_Row_White">
+            <td>'TOMORROW'</td>
+            <td>DATE</td>
+            <td>DATE stored with a time part equivalent to '00:00:00'</td>
+            <td>Server date that was current at start of the operation, plus 1 day. If  midnight is passed during the operation, the date from which the  'TOMORROW' date is calculated does not change. Not valid in fields of  TIME type.</td>
+        </tr>
+        <tr class="Table_Row_Grey">
+            <td>'YESTERDAY'</td>
+            <td>DATE</td>
+            <td>DATE stored with a time part equivalent to '00:00:00'</td>
+            <td>Server date that was current at start of the operation, minus 1 day. If  midnight is passed during the operation, the date from which the  'YESTERDAY ' date is calculated does not change. Not valid in fields of  TIME type.</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Documentation</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-rdbms/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird RDBMS</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-notes/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Notes</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/reference-manuals/" class="menulvl_3"><i class="fa fa-arrow-right"></i> All Reference Manuals</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/white-papers-presentations/" class="menulvl_3"><i class="fa fa-arrow-right"></i> White Papers &amp; Presentations</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/books/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Books</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/drivers-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Drivers Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-docs-and-articles/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Docs and Articles</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/external-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> External Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/licensing/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Licensing</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/features/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Features</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sql-conformance/" class="menulvl_3"><i class="fa fa-arrow-right"></i> SQL Conformance</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/historical-reference/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Historical Reference</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-doc/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-brand-faq/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Branding Policy</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Brand FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/logos/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Logos</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-and-other-databases/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird and other databases</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

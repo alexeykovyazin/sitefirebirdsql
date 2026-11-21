@@ -1,0 +1,406 @@
+---
+title: "Firebird: How we installed InterBase 6 on Red Hat 6.2 & 7"
+html_title: "Firebird: How we installed InterBase 6 on Red Hat 6.2 & 7"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "How we installed InterBase 6 on Red Hat 6.2 & 7"
+menu_active: "/en/firebird-rdbms/"
+source_url: "/en/how-we-installed-interbase-6-on-red-hat-6-2-7"
+source_format: new
+url: "/en/how-we-installed-interbase-6-on-red-hat-6-2-7"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/documentation/">Documentation</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-rdbms/">Firebird RDBMS</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/third-party-docs-and-articles/">Third-party Docs and Articles</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">How we installed InterBase 6 on Red Hat 6.2 & 7</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <a href="mailto:zamana@zip.net">C. R. Zamana</a> and others describe how they did their IB 6 installations<br /><br /><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Red Hat 6.2</span></strong><br /><br />Installing IB on Linux is very easy, or, at least if compared to Oracle  <br /><br />Well, this is My Installation (TM):<br /><br />Login as &quot;root&quot;.<br />   <ol><li>Create the user/group &quot;interbase&quot;</li><li>Install the package:</li></ol><div style="margin-left: 80px;">rpm -ivh InterBaseSS_...</div><ol start="3"><li>Add the &quot;/opt/interbase/bin&quot; to your PATH ( in /etc/profile, for example )</li><li>Add the &quot;localhost&quot; to your /etc/hosts.equiv ( create it if necessary )</li><li>Change the ownership of your IB installation:</li></ol><div style="margin-left: 40px;">chown -R interbase.interbase /opt/interbase</div><ol start="6"><li>Add the following line to your /etc/rc.d/rc.local to get the IB running when you reboot your machine:</li></ol><div style="margin-left: 80px;">/bin/su - interbase -c&quot;/opt/interbase/bin/ibmgr -start &gt; /dev/null&quot;</div><ol start="7"><li>Enjoy.</li></ol><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Red Hat 7</span></strong><br /><br />Extra notes posted to newsgroup by <a href="mailto:jakel@ecweb.cl">Jos&eacute; Antonio Akel S</a>, forwarded by Frank Schlottmann-G&ouml;dde:<br /><br />Here are all the tips to get it working on Red Hat 7:<br /><br />   <ol><li>First, you have to install an older version of libncurses: libncurses.so.3 You can grab them from an older RedHat 6.x box, or from the RedHat FTP site.</li><li>Install the update for glibc. You can download it from the RedHat FTP site also.</li><li>If you are installing the Classic Server:  since RedHat 7 comes with xinetd instead of inetd, you need to add the file</li></ol><div style="margin-left: 80px;">/etc/xinetd.d/ibase<br />&nbsp;</div><div style="margin-left: 40px;">and put the following lines on it:</div><div style="margin-left: 80px;"><span style="font-family: Courier New;">----Start--------<br />service gds_db<br />{<br />socket_type     = stream             wait            = no<br />user            = root<br />server          = /usr/local/sbin/gds_inet_server<br />log_on_failure  += USERID<br />}<br />----End---------</span></div><ol start="4"><li>If you are installing the Super Server:</li></ol><div style="margin-left: 80px;">restart xinetd (/etc/init.d/xinted restart)</div><ol start="5"><li>Add the line &quot;localhost&quot; to the file &quot;/etc/hosts.equiv&quot;. If the file doesn't exist, create it.</li><li>Start the server doing</li></ol><div style="margin-left: 80px;">/opt/interbase/bin/ibguard &amp;</div><ol start="7"><li>To connect, you should check that you are using the correct user/password:</li></ol><div style="margin-left: 80px;">/opt/interbase/bin/isql 'calama://database/dbecweb.gdb' -u sysdba -p masterkey<br />&nbsp;</div><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">MORE NOTES FOR INSTALLING WITH xinetd</span></strong><br /><br />Mark O'Donohue, one of the Firebird Admins, emailed <a href="http://www.interbase2000.org/Ivo.Panacek@regionet.cz">Ivo Panacek (Czechoslovakia)</a> and Ivo sent some Redhat 7.0 xinetd scripts, with permission to use them at the Firebird project. You can get them by going to the notes on <a href="http://tracker.firebirdsql.org" target="_blank">Firebird bug report list Bug #12433</a>.<br /><br />In summary, xinetd and inetd store config entries in DIFFERENT PLACES... Ivo wrItes: I'm switching to 7.0 on my workstations (home+office) mainly because my video card (Matrox G400 on both) work MUCH better under XFree4.0.1.<br /><br />Difference between inetd and xinetd is simple: entries are not just lines in /etc/inetd.conf but files in /etc/xinet.d directory. So life with xinetd is more simple. You need just add two files on proper place and rpm --erase removes them itself. No patching in %post and %postun sections. Maybe it would be better to create separate RPM for RedHat 6.x and for RedHat 7.x.<br /><br />
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Documentation</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-rdbms/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird RDBMS</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-notes/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Notes</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/reference-manuals/" class="menulvl_3"><i class="fa fa-arrow-right"></i> All Reference Manuals</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/white-papers-presentations/" class="menulvl_3"><i class="fa fa-arrow-right"></i> White Papers &amp; Presentations</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/books/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Books</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/drivers-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Drivers Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-docs-and-articles/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Docs and Articles</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/external-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> External Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/licensing/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Licensing</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/features/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Features</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sql-conformance/" class="menulvl_3"><i class="fa fa-arrow-right"></i> SQL Conformance</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/historical-reference/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Historical Reference</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-doc/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-brand-faq/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Branding Policy</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Brand FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/logos/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Logos</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-and-other-databases/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird and other databases</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,1364 @@
+---
+title: "Firebird: Firebird 1.5 Character Sets & Collations"
+html_title: "Firebird: Firebird 1.5 Character Sets & Collations"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Firebird 1.5 Character Sets & Collations"
+menu_active: "/en/firebird-rdbms/"
+source_url: "/en/firebird-1-5-character-sets-collations"
+source_format: new
+url: "/en/firebird-1-5-character-sets-collations"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/documentation/">Documentation</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-rdbms/">Firebird RDBMS</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/reference-manuals/">All Reference Manuals</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Firebird 1.5 Character Sets &amp; Collations</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    &nbsp;
+<table border="0" cellpadding="0" cellspacing="0" class="Table" width="100%">
+	<tbody>
+		<tr class="Table_Header">
+			<td>ID</td>
+			<td>Name</td>
+			<td width="70">Bytes<br />
+			per Char</td>
+			<td>Collation</td>
+			<td>Language</td>
+			<td>Aliases</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>2</td>
+			<td>ASCII</td>
+			<td>1</td>
+			<td>ASCII</td>
+			<td>English</td>
+			<td>ASCII7, USASCII</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>56</td>
+			<td>BIG_5</td>
+			<td>2</td>
+			<td>BIG_5</td>
+			<td>Chinese, Vietnamese, Korean</td>
+			<td>BIG5, DOS_950, WIN_950</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>50</td>
+			<td>CYRL</td>
+			<td>1</td>
+			<td>CYRL</td>
+			<td>Russian</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>50</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_RUS</td>
+			<td>Dbase Russian</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>50</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PDOX_CYRL</td>
+			<td>Paradox Russian</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>10</td>
+			<td>DOS437</td>
+			<td>1</td>
+			<td>DOS437</td>
+			<td>English (USA)</td>
+			<td>DOS_437</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>10</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_DEU437</td>
+			<td>DBase German</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>10</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_ESP437</td>
+			<td>DBase Spanish</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>10</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_FRA437</td>
+			<td>DBase French</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>10</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_FIN437</td>
+			<td>DBase Finnish</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>10</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_ITA437</td>
+			<td>DBase Italian</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>10</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_NLD437</td>
+			<td>DBase Dutch</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>10</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_SVE437</td>
+			<td>DBase Swedish</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>10</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_UK437</td>
+			<td>DBase English (UK)</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>10</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_US437</td>
+			<td>DBase English (USA)</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>10</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PDOX_ASCII</td>
+			<td>Paradox ASCII code page</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>10</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PDOX_SWEDFIN</td>
+			<td>Paradox Swedish/Finnish code pages</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>10</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PDOX_INTL</td>
+			<td>Paradox International English code page</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>9</td>
+			<td>DOS737</td>
+			<td>1</td>
+			<td>DOS737</td>
+			<td>Greek</td>
+			<td>DOS_737</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>15</td>
+			<td>DOS775</td>
+			<td>1</td>
+			<td>DOS775</td>
+			<td>Baltic</td>
+			<td>DOS_775</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>11</td>
+			<td>DOS850</td>
+			<td>1</td>
+			<td>DOS850</td>
+			<td>Latin I (no Euro symbol)</td>
+			<td>DOS_850</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>11</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_DEU850</td>
+			<td>German</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>11</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_ESP850</td>
+			<td>Spanish</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>11</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_FRA850</td>
+			<td>French</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>11</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_FRC850</td>
+			<td>French (Canada)</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>11</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_ITA850</td>
+			<td>Italian</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>11</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_NLD850</td>
+			<td>Dutch</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>11</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_PTB850</td>
+			<td>Portuguese (Brazil)</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>11</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_SVE850</td>
+			<td>Swedish</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>11</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_UK850</td>
+			<td>English (UK)</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>11</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_US850</td>
+			<td>English (USA)</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>45</td>
+			<td>DOS852</td>
+			<td>1</td>
+			<td>DOS852</td>
+			<td>Latin II</td>
+			<td>DOS_852</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>45</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_CSY</td>
+			<td>DBase Czech</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>45</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_PLK</td>
+			<td>DBase Polish</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>45</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_SLO</td>
+			<td>DBase Slovene</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>45</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PDOX_PLK</td>
+			<td>Paradox Polish</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>45</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PDOX_HUN</td>
+			<td>Paradox Hungarian</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>45</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PDOX_SLO</td>
+			<td>Paradox Slovene</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>45</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PDOX_CSY</td>
+			<td>Paradox Czech</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>46</td>
+			<td>DOS857</td>
+			<td>1</td>
+			<td>DOS857</td>
+			<td>Turkish</td>
+			<td>DOS_857</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>46</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_TRK</td>
+			<td>DBase Turkish</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>16</td>
+			<td>DOS858</td>
+			<td>1</td>
+			<td>DOS858</td>
+			<td>Latin I + Euro symbol</td>
+			<td>DOS_858</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>13</td>
+			<td>DOS860</td>
+			<td>1</td>
+			<td>DOS860</td>
+			<td>Portuguese</td>
+			<td>DOS_860</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>13</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_PTG860</td>
+			<td>DBase Portuguese</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>47</td>
+			<td>DOS861</td>
+			<td>1</td>
+			<td>DOS861</td>
+			<td>Icelandic</td>
+			<td>DOS_861</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>47</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PDOX_ISL</td>
+			<td>Paradox Icelandic</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>17</td>
+			<td>DOS862</td>
+			<td>1</td>
+			<td>DOS862</td>
+			<td>Hebrew</td>
+			<td>DOS_862</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>14</td>
+			<td>DOS863</td>
+			<td>1</td>
+			<td>DOS863</td>
+			<td>French (Canada)</td>
+			<td>DOS_863</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>14</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_FRC863</td>
+			<td>DBase French (Canada)</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>18</td>
+			<td>DOS864</td>
+			<td>1</td>
+			<td>DOS864</td>
+			<td>Arabic</td>
+			<td>DOS_864</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>12</td>
+			<td>DOS865</td>
+			<td>1</td>
+			<td>DOS865</td>
+			<td>Nordic</td>
+			<td>DOS_865</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>12</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_DAN865</td>
+			<td>DBase Danish</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>12</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DB_NOR865</td>
+			<td>DBase Norwegian</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>12</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PDOX_NORDAN4</td>
+			<td>Paradox Norwegian &amp; Danish</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>48</td>
+			<td>DOS866</td>
+			<td>1</td>
+			<td>DOS866</td>
+			<td>Russian</td>
+			<td>DOS_866</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>49</td>
+			<td>DOS869</td>
+			<td>1</td>
+			<td>DOS869</td>
+			<td>Modern Greek</td>
+			<td>DOS_869</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>6</td>
+			<td>EUCJ_0208</td>
+			<td>2</td>
+			<td>EUCJ_0208</td>
+			<td>EUC Japanese</td>
+			<td>EUCJ</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>57</td>
+			<td>GB_2312</td>
+			<td>2</td>
+			<td>GB_2312</td>
+			<td>Simplified Chinese (Hong Kong, PRC)</td>
+			<td>DOS_936, GB2312, WIN_936</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>21</td>
+			<td>ISO8859_1</td>
+			<td>1</td>
+			<td>ISO8859_1</td>
+			<td>Latin 1</td>
+			<td>ANSI, ISO88591, LATIN1</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>21</td>
+			<td>--</td>
+			<td>--</td>
+			<td>FR_CA</td>
+			<td>French (Canada)</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>21</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DA_DA</td>
+			<td>Danish</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>21</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DE_DE</td>
+			<td>German</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>21</td>
+			<td>--</td>
+			<td>--</td>
+			<td>ES_ES</td>
+			<td>Spanish</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>21</td>
+			<td>--</td>
+			<td>--</td>
+			<td>FI_FI</td>
+			<td>Finnish</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>21</td>
+			<td>--</td>
+			<td>--</td>
+			<td>FR_FR</td>
+			<td>French</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>21</td>
+			<td>--</td>
+			<td>--</td>
+			<td>IS_IS</td>
+			<td>Icelandic</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>21</td>
+			<td>--</td>
+			<td>--</td>
+			<td>IT_IT</td>
+			<td>Italian</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>21</td>
+			<td>--</td>
+			<td>--</td>
+			<td>NO_NO</td>
+			<td>Norwegian</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>21</td>
+			<td>--</td>
+			<td>--</td>
+			<td>DU_NL</td>
+			<td>Dutch</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>21</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PT_PT</td>
+			<td>Portuguese</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>21</td>
+			<td>--</td>
+			<td>--</td>
+			<td>SV_SV</td>
+			<td>Swedish</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>21</td>
+			<td>--</td>
+			<td>--</td>
+			<td>EN_UK</td>
+			<td>English (UK)</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>21</td>
+			<td>--</td>
+			<td>--</td>
+			<td>EN_US</td>
+			<td>English (USA)</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>22</td>
+			<td>ISO8859_2</td>
+			<td>1</td>
+			<td>ISO8859_2</td>
+			<td>Latin 2 &mdash;&nbsp; Central European (Croatian, Czech, Hungarian, Polish, Romanian, Serbian, Slovakian, Slovenian)</td>
+			<td>ISO-8859-2, ISO88592, LATIN2</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>22</td>
+			<td>--</td>
+			<td>--</td>
+			<td>CS_CZ</td>
+			<td>Czech</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>22</td>
+			<td>--</td>
+			<td>--</td>
+			<td>ISO_HUN</td>
+			<td>Hungarian</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>23</td>
+			<td>ISO8859_3</td>
+			<td>1</td>
+			<td>ISO8859_3</td>
+			<td>Latin3 &mdash; Southern European (Maltese, Esperanto)</td>
+			<td>ISO-8859-3, ISO88593, LATIN3</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>34</td>
+			<td>ISO8859_4</td>
+			<td>1</td>
+			<td>ISO8859_4</td>
+			<td>Latin 4 &mdash; Northern European (Estonian, Latvian, Lithuanian, Greenlandic, Lappish)</td>
+			<td>ISO-8859-4, ISO88594, LATIN4</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>35</td>
+			<td>ISO8859_5</td>
+			<td>1</td>
+			<td>ISO8859_5</td>
+			<td>Cyrillic (Russian)</td>
+			<td>ISO-8859-5, ISO88595</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>36</td>
+			<td>ISO8859_6</td>
+			<td>1</td>
+			<td>ISO8859_6</td>
+			<td>Arabic</td>
+			<td>ISO-8859-6, ISO88596</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>37</td>
+			<td>ISO8859_7</td>
+			<td>1</td>
+			<td>ISO8859_7</td>
+			<td>Greek</td>
+			<td>ISO-8859-7, ISO88597</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>38</td>
+			<td>ISO8859_8</td>
+			<td>1</td>
+			<td>ISO8859_8</td>
+			<td>Hebrew</td>
+			<td>ISO-8859-8, ISO88598</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>39</td>
+			<td>ISO8859_9</td>
+			<td>1</td>
+			<td>ISO8859_9</td>
+			<td>Latin 5</td>
+			<td>ISO-8859-9, ISO88599, LATIN5</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>40</td>
+			<td>ISO8859_13</td>
+			<td>1</td>
+			<td>ISO8859_13</td>
+			<td>Latin 7 &mdash; Baltic Rim</td>
+			<td>ISO-8859-13, ISO885913, LATIN7</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>44</td>
+			<td>KSC_5601</td>
+			<td>2</td>
+			<td>KSC_5601</td>
+			<td>Korean (Unified Hangeul)</td>
+			<td>DOS_949, KSC5601, WIN_949</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>44</td>
+			<td>--</td>
+			<td>--</td>
+			<td>KSC_DICTIONARY</td>
+			<td>Korean &mdash; dictionary order collation</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>19</td>
+			<td>NEXT</td>
+			<td>1</td>
+			<td>NEXT</td>
+			<td>NeXTSTEP encoding</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>19</td>
+			<td>--</td>
+			<td>--</td>
+			<td>NXT_US</td>
+			<td>English (USA)</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>19</td>
+			<td>--</td>
+			<td>--</td>
+			<td>NXT_FRA</td>
+			<td>French</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>19</td>
+			<td>--</td>
+			<td>--</td>
+			<td>NXT_ITA</td>
+			<td>Italian</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>19</td>
+			<td>--</td>
+			<td>--</td>
+			<td>NXT_ESP</td>
+			<td>Spanish</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>19</td>
+			<td>--</td>
+			<td>--</td>
+			<td>NXT_DEU</td>
+			<td>German</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>0</td>
+			<td>NONE</td>
+			<td>1</td>
+			<td>NONE</td>
+			<td>Codepage-neutral. Uppercasing limited to ASCII codes 97-122</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>1</td>
+			<td>OCTETS</td>
+			<td>1</td>
+			<td>OCTETS</td>
+			<td>Binary character</td>
+			<td>BINARY</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>5</td>
+			<td>SJIS_0208</td>
+			<td>2</td>
+			<td>SJIS_0208</td>
+			<td>Japanese</td>
+			<td>SJIS</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>3</td>
+			<td>UNICODE_FSS</td>
+			<td>3</td>
+			<td>UNICODE_FSS</td>
+			<td>UNICODE</td>
+			<td>SQL_TEXT, UTF-8, UTF8, UTF_FSS</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>51</td>
+			<td>WIN1250</td>
+			<td>1</td>
+			<td>WIN1250</td>
+			<td>ANSI &mdash; Central European</td>
+			<td>WIN_1250</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>51</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PXW_PLK</td>
+			<td>Polish</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>51</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PXW_HUN</td>
+			<td>Hungarian</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>51</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PXW_CSY</td>
+			<td>Czech</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>51</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PXW_HUNDC</td>
+			<td>Hungarian &mdash; dictionary sort</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>51</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PXW_SLOV</td>
+			<td>Slovene</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>52</td>
+			<td>WIN1251</td>
+			<td>1</td>
+			<td>WIN1251</td>
+			<td>ANSI &mdash; Cyrillic</td>
+			<td>WIN_1251</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>52</td>
+			<td>--</td>
+			<td>--</td>
+			<td>WIN1251_UA</td>
+			<td>Ukrainian</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>52</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PXW_CYRL</td>
+			<td>Paradox Cyrillic (Russian)</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>53</td>
+			<td>WIN1252</td>
+			<td>1</td>
+			<td>WIN1252</td>
+			<td>ANSI &mdash; Latin I</td>
+			<td>WIN_1252</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>53</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PXW_SWEDFIN</td>
+			<td>Swedish &amp; Finnish</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>53</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PXW_NORDAN4</td>
+			<td>Norwegian &amp; Danish</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>53</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PXW_INTL</td>
+			<td>English (International)</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>53</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PXW_INTL850</td>
+			<td>Paradox Multi-lingual Latin I</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>53</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PXW_SPAN</td>
+			<td>Paradox Spanish</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>54</td>
+			<td>WIN1253</td>
+			<td>1</td>
+			<td>WIN1253</td>
+			<td>ANSI Greek</td>
+			<td>WIN_1253</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>54</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PXW_GREEK</td>
+			<td>Paradox Greek</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>55</td>
+			<td>WIN1254</td>
+			<td>1</td>
+			<td>WIN1254</td>
+			<td>ANSI Turkish</td>
+			<td>WIN_1254</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>55</td>
+			<td>--</td>
+			<td>--</td>
+			<td>PXW_TURK</td>
+			<td>Paradox Turkish</td>
+			<td>--</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>58</td>
+			<td>WIN1255</td>
+			<td>1</td>
+			<td>WIN1255</td>
+			<td>ANSI Hebrew</td>
+			<td>WIN_1255</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>59</td>
+			<td>WIN1256</td>
+			<td>1</td>
+			<td>WIN1256</td>
+			<td>ANSI Arabic</td>
+			<td>WIN_1256</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td>60</td>
+			<td>WIN1257</td>
+			<td>1</td>
+			<td>WIN1257</td>
+			<td>ANSI Baltic</td>
+			<td>WIN_1257</td>
+		</tr>
+	</tbody>
+</table>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Documentation</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-rdbms/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird RDBMS</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-notes/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Notes</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/reference-manuals/" class="menulvl_3"><i class="fa fa-arrow-right"></i> All Reference Manuals</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/white-papers-presentations/" class="menulvl_3"><i class="fa fa-arrow-right"></i> White Papers &amp; Presentations</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/books/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Books</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/drivers-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Drivers Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-docs-and-articles/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Docs and Articles</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/external-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> External Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/licensing/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Licensing</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/features/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Features</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sql-conformance/" class="menulvl_3"><i class="fa fa-arrow-right"></i> SQL Conformance</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/historical-reference/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Historical Reference</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-doc/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-brand-faq/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Branding Policy</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Brand FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/logos/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Logos</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-and-other-databases/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird and other databases</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,176 @@
+---
+title: "Firebird: Jaybird 2.2.1 Release"
+html_title: "Firebird: Jaybird 2.2.1 Release"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Jaybird 2.2.1 Release"
+menu_active: ""
+source_url: "/en/news/jaybird-2-2-1-release-18820"
+source_format: new
+url: "/en/news/jaybird-2-2-1-release-18820"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+ 
+    <section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/about-firebird/">About Firebird</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/news/">News &amp; Events</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Jaybird 2.2.1 Release</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-8">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div class="post-categories d-flex justify-content-between align-content-center">
+                        <div class="categories-share">
+                            <ul>
+                                <li><i class="fas fa-calendar"></i> Sep 30, 2012</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="title">Jaybird 2.2.1 Release</h3>
+                                            </div>
+                    <div class="post-text mt-30">
+                        The Firebird JDBC team is happy to announce the release of <a href="/en/jdbc-driver/">Jaybird 2.2.1</a>.<br /><br />This release contains the following fixes:<br /><ul><li>Fixed: <span style="font-family: Courier New;">UnsatisfiedLinkError in libjaybird22(_x64).so undefined symbol: _ZTVN10__cxxabiv117__class_type_infoE</span> on Linux (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-259">JDBC-259</a>)</li><li>Added connection property <span style="font-family: Courier New;">columnLabelForName</span> for backwards compatible behavior of <span style="font-family: Courier New;">ResultSetMetaData#getColumnName(int) </span>and compatibility with bug in <span style="font-family: Courier New;">com.sun.rowset.CachedRowSetImpl</span> (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-260">JDBC-260</a>)</li></ul> <div style="margin-left: 40px;">Set property to <span style="font-family: Courier New;">true </span>for backwards compatible behavior (<span style="font-family: Courier New;">getColumnName()</span> returns the column label); don't set the property or set it to false for JDBC-compliant behavior (recommended).</div> <ul><li>Fixed: <span style="font-family: Courier New;">setString(column, null) on &ldquo;? IS (NOT) NULL&rdquo;</span> condition does not set parameter to <span style="font-family: Courier New;">NULL </span>(<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-264">JDBC-264</a>)</li><li>The <span style="font-family: Courier New;">charSet </span>connection property now accepts all aliases of the supported Java character sets (eg instead of only <span style="font-family: Courier New;">Cp1252</span> now <span style="font-family: Courier New;">windows-1252</span> is also accepted) (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-267">JDBC-267</a>)</li><li>Fixed: values of <span style="font-family: Courier New;">charSet</span> property are case-sensitive (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-268">JDBC-268</a>)</li><li>Fixed: setting a parameter as <span style="font-family: Courier New;">NULL </span>with the native protocol does not work when Firebird describes the parameter as not nullable (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-271">JDBC-271</a>)</li></ul> The release is also available on maven(*): <div style="margin-left: 40px;"><span style="font-family: Courier New;">&lt;groupId&gt;org.firebirdsql.jdbc&lt;/groupId&gt; <br /> &lt;artifactId&gt;jaybird-jdkXX&lt;/artifactId&gt; <br /> &lt;version&gt;2.2.1&lt;/version&gt;</span></div><br />The artifactId depends on your target Java version: jaybird-jdk15, jaybird-jdk16 or jaybird-jdk17.<br />
+                    </div>
+                  	<div>
+                    	<div>
+  <iframe frameborder="0"
+    height="150" 
+    scrolling="no" 
+    src="https://firebirdfoundation.substack.com/embed" 
+    style="border:1px solid #EEE; background:white;" 
+    width="100%" 
+    allow="encrypted-media"
+    sandbox="allow-scripts allow-same-origin allow-forms"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>  
+                  	</div>
+                    <div class="post-tags">
+                        <ul>
+                            <li><a><i class="fa fa-share"></i> Share With:</a></li>
+                            <li style="cursor: pointer;"><a class="share-icon fb" data-url="/en/news/jaybird-2-2-1-release-18820"><i class="fab fa-facebook-f"></i></a></li>
+                          
+                            <li style="cursor: pointer;"><a class="share-icon lin" data-url="/en/news/jaybird-2-2-1-release-18820"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="post-reader-text post-reader-text-2 post-reader-text-3 pt-50">
+                    <div class="row">
+                                                    <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/firebird-conference-talks-list-18811">Firebird Conference Talks List</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                                                            <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/ngram-indexes-in-firebird-fast-substring-search-without-a-full-scan">VIDEO: NGRAM indexes in Firebird: fast substring search without a full scan</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-20">
+                <div class="all-post-sidebar">
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

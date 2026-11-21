@@ -1,0 +1,406 @@
+---
+title: "Firebird: Ann Harrison's Reminiscences on InterBase's Beginnings"
+html_title: "Firebird: Ann Harrison's Reminiscences on InterBase's Beginnings"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Ann Harrison's Reminiscences on InterBase's Beginnings"
+menu_active: "/en/firebird-rdbms/"
+source_url: "/en/ann-harrison-s-reminiscences-on-interbase-s-beginnings"
+source_format: new
+url: "/en/ann-harrison-s-reminiscences-on-interbase-s-beginnings"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/documentation/">Documentation</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-rdbms/">Firebird RDBMS</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/historical-reference/">Historical Reference</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Ann Harrison's Reminiscences on InterBase's Beginnings</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    InterBase started in the shower. Specifically in the blue-tiled walk-in shower at 297 Reedy Meadow Road, Groton, Massachusetts, USA. There, looking through the shower window into the woods, Jim Starkey had the &quot;Eureka&quot; that eventually became InterBase.<br /><br />The chance to write a relational database drew Jim to DEC in the mid-seventies, but the prevailing wisdom said that only network databases could support commercial applications. That misconception took four years to dispel, during which Jim designed and wrote Datatrieve, a relational query language that ran on flat files and DBMS-32. Datatrieve users wanted more flexibility, better concurrency control, and atomic transactions.<br /><br />When DEC finally embraced relational technology, Jim was still in charge of Datatrieve, so another group began designing what became Rdb. They debated the meaning of &quot;relational&quot; and the meaning of &quot;database.&quot; They scoured the literature and held wonderful discussions about degrees of consistency and predicate locking and shadowing techniques. But they didn't start coding.<br /><br /><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Shadowing in the Shower</span></strong><br /><br />Jim got impatient, and began playing with shadowing, which he saw as a way to provide a repeatable read without blocking updates. Then, one morning in the shower, he realized that the shadows could be also prevent update conflicts and undo failed transactions. The multi-generational database revealed itself in that shower.<br /><br />Intrigued, Jim began serious work on the database called jrd. DEC's management discovered that it had two relational database projects, the real one and jrd. The database wars broke out.<br /><br />Those were dark years, full of internecine politics and flaming email. Jim, Don DePalma, and I decided there had to be a better way. We learned that Apollo Computer, a local workstation company, wanted a private-label database. Apollo's management liked the jrd model, so Jim moved into the second-floor spare room and started coding. The initial capitalization was $243.50 for a comfortable chair and two filing cabinets to hold up the door that served as a desk.<br /><br />When Apollo contract was signed, eight months after we started negotiations, money started to flow in. Don and I joined Jim in the very very hot second-floor spare room. Jim coded; Don wrote the manuals; and I did some of everything. The cats slept on the computers, sprinkling cat hair and dander all through the machines. Apollo field service came by weekly to vacuum.<br /><br />Dave Root left Apollo and became the fourth founder. Every company should include one sane adult. The four of us overflowed the spare room, so the company spilled out onto the balcony.<br /><br />Then we began to have customers and potential customers, and meetings and mailings. The guestroom became the copy center and mailroom. The living room was for conferences. We all cooked in the kitchen and ate in the dining room. The coffeepot sat beside my sink in the master bath. We weren't working at home anymore, we were living at work.<br /><br />That winter, the driveway was a luge run for Saabs, icy, twisty, and lined with trees. Our first non-Apollo customer arrived from Santa Barbara California in February and slid into the front yard, barely upright. He signed the contract anyway.<br /><br />Groton Database Systems moved out of the house and into an office over a dry cleaner. I got my bathroom back.<br /><br />&quot;Groton Database Systems&quot; is an inspired name, inspired by our failure to find any other name that passed trademark search. We were naive new entrepreneurs, so each time we thought of a name, we asked our lawyer &quot;is this OK?&quot; Later we learned that the right question is &quot;can you defend us if we use this?&quot; That sophistication let us change the name to InterBase, a change encouraged by the person who answered the phone &quot;Rrrrotten Database Systems.&quot;<br /><br /><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Concept: Simplicity</span></strong><br /><br />What were we trying to do? Build a relational database that didn't get in the way. One that was simple to install, required little or no administration, and would work inside applications.<br /><br />We all had experience with network databases: IDMS, Seed, DBMS-32. To use a network database, you really had to love tuning, tweaking, studying, and fondling your database. InterBase was for the rest of us, who want to get on with our real jobs.<br /><br />The multi-generational architecture &mdash; Jim's shadowing Eureka &mdash; eliminated problems that other databases stumbled over. A reader could create a large, consistent report while others continued to update the same data. Transaction rollback was simple; even crash recovery was automatic.<br /><br />Crash recovery was essential, because we ran the company on InterBase, from accounting, sales, code management, everything. Electrical failures were common: from overloaded circuits, from August thunderstorms, and from accidentally unplugging a machine by tripping over the power cord. Database recovery was as important to us as to any of our customers.<br /><br />InterBase was a good product and most of our customers were very happy. The company grew to seven people and expanded into two more suites over the former dry cleaners, now a donut shop. Our insurance carrier didn't like the donut shop at all, but it smelled better than the cleaners.<br /><br /><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Unique Charm</span></strong><br /><br />The space had its own unique charm. In places, the floor sagged alarmingly, and creaked if anyone stepped on it. None of the corners was square. We had so many computers, and of course old computers were so much bigger and hotter than machines today, that we ran the air conditioners year round. In the spring and fall they'd ice up, so we kept a few hair dryers around to melt the ice so we could get cool again.<br /><br />After a few winter months, the gas company sent us an estimated bill for $350. Our bills had been between one and two dollars because we heated the space with computers rather than gas. Mass Gas was convinced we were stealing from them. They replaced the meter twice, and still got absurdly low readings. Eventually the meter reader came up to our office agreed that the computers produced a lot of heat.<br /><br />We fought with purchasing departments and accounts payable because our customers were generally large companies, unused to dealing with very small companies. Some could only pay for support renewal if we sent out a box with a bill of materials labelled &quot;support renewal.&quot; I have no idea how those companies bent their rules to pay phone bills.<br /><br />One of our customers was an obscure subsection of the US Army Food Service. Their programmers wanted a training course. We rented a conference room in a local hotel and made ourselves look presentable. The two men arrived, with payment for the course in traveler's checks, foreign traveler's checks. They wouldn't talk about their application or even what role they filled in feeding the Army. Probably none.<br /><br />Looking presentable was not something we did often or well. Don eventually convinced Jim that our utilities should be &quot;dressed for success&quot;: the names Dudley (for DDL utility), Burp (backup and restore program), and Alice (all else) had to go. When visitors were expected, we made an effort, but it didn't go very deep. A banker came by about an equipment loan I was trying to arrange. Some bright spark pointed out all these computers, none over two years old &quot;and every one obsolete.&quot; Oh well, there were other banks.<br /><br /><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">'Support Critical'</span></strong><br /><br />Support was a critical part of our business; when a company buys a database, it invests much more than the cost of the software. Word of mouth was our best advertising, and we worked to help customers succeed. Most questions were resolved over the phone.<br /><br />Then a large California aerospace company had a problem we couldn't diagnose remotely. Records disappeared from the database, randomly, but much too often. The engineer was sure it wasn't his program; he said he'd bet his life on it. Jim flew out with a source kit, built a debugging system, and traced the problem back to a delete statement. That company became a major customer, despite the opinion of their purchasing department that we were small and flaky.<br /><br />Could a company like InterBase start today? Probably not; certainly not a company that built a relational database. Expectations rose as prices dropped. We were able to sell a database with a few command line tools for thousands of dollars a seat in 1986. Today, customers expect a suite of design tools, analysis tools, rad tools, and management tools, all with well-designed GUIs. And they expect to pay less than a hundred dollars a seat.<br /><br />InterBase grew out of its own revenues for five years, giving us some business experience before we faced investors. Even though the market is much larger, getting the attention of enough customers to prevent starvation requires a large budget. Starting without investment &mdash; or a big trust fund &mdash; simply is not feasible today. Even then, companies with financial resources did better than bootstrap companies.<br /><br />Sybase was founded within days of Groton Database Systems with tens of millions in venture capital. They got more press and sold more software. But we had a lot of fun. Just lucky I guess.<br />
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Documentation</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-rdbms/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird RDBMS</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-notes/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Notes</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/reference-manuals/" class="menulvl_3"><i class="fa fa-arrow-right"></i> All Reference Manuals</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/white-papers-presentations/" class="menulvl_3"><i class="fa fa-arrow-right"></i> White Papers &amp; Presentations</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/books/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Books</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/drivers-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Drivers Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-docs-and-articles/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Docs and Articles</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/external-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> External Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/licensing/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Licensing</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/features/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Features</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sql-conformance/" class="menulvl_3"><i class="fa fa-arrow-right"></i> SQL Conformance</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/historical-reference/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Historical Reference</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-doc/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-brand-faq/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Branding Policy</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Brand FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/logos/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Logos</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-and-other-databases/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird and other databases</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

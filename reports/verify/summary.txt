@@ -1,0 +1,14 @@
+pages scanned: 1227, files reached: 8088, links: 408070 (external/skipped: 104611)
+broken links: 3 (in site pages: 0, in copied files: 3; unique targets: 3)
+bad files (manifest): 0
+orphan files: 0, 0.0 MB (documents: 0)
+orphan pages (no inbound link): 0
+
+orphan files by top dir:
+
+orphan files by extension:
+
+top broken targets:
+     1  /file/documentation/release_notes/html/images/rlsnotes/rlsnotes30/interfaces_hierarchy.png
+     1  /file/documentation/html/en/images/refdocs/fbdevgd30/fbdevgd30_mvc_002_en.png
+     1  /file/documentation/papers_presentations/html/forum/tf.tpl/default/default.css

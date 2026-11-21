@@ -1,0 +1,595 @@
+---
+title: "Firebird: JDBC Driver"
+html_title: "Firebird: JDBC Driver"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "JDBC Driver"
+menu_active: "/en/server-packages/"
+source_url: "/en/jdbc-driver/"
+source_format: new
+url: "/en/jdbc-driver/"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/downloads/">Downloads</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/connectivity/">Connectivity</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">JDBC Driver</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Firebird JDBC Driver Downloads</span></strong></p>
+
+<ul>
+	<li><a href="#jaybird6">Jaybird 6</a></li>
+	<li><a href="#jaybird5">Jaybird 5</a></li>
+</ul>
+
+<p><strong><span style="color: rgb(6, 134, 173); font-size: 16px;"><span style="color:#0686AD;font-size:16px;font-weight:bold;"><a id="jaybird6" name="jaybird6">Jaybird 6</a></span></span></strong></p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="Table" width="100%">
+	<thead>
+		<tr class="Table_Header">
+			<td>Release Date</td>
+			<td>File Name</td>
+			<td>Description</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="Table_Subtitle">
+			<td colspan="3"><span style="color:#474747;font-size:15px;font-weight:bold;">Jaybird 6.0.7</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>October11, 2026</td>
+			<td><a download="" href="https://github.com/FirebirdSQL/jaybird/releases/download/v6.0.7/jaybird-6.0.7.zip">jaybird-6.0.7.zip</a></td>
+			<td>Jaybird 6.0.7 for Java 17 and higher / JDBC 4.3 - 4.5</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Jaybird 6.0.7&nbsp;is the seventh maintenance release of Jaybird 6.</p>
+
+<p>See <a href="/docs/drivers/java/6.0.x/release_notes.html">the full release notes</a> for more information.</p>
+
+<p>The release is also available on Maven:</p>
+
+<p>groupId: <code>org.firebirdsql.jdbc</code><br />
+artifactid: <code>jaybird</code><br />
+version: <code>6.0.7</code></p>
+
+<p>Additional resources:</p>
+
+<ul>
+	<li><a href="/docs/drivers/java/6.0.x/docs/">Jaybird 6.0.x javadoc</a></li>
+	<li><a href="/docs/drivers/java/faq.html">Jaybird Frequently Asked Questions</a></li>
+	<li><a href="https://firebirdsql.github.io/jaybird-manual/jaybird_manual.html" target="_blank">Jaybird JDBC Driver Java Programmer&#39;s Manual</a></li>
+</ul>
+
+<p>Documentation for older versions (no longer supported):</p>
+
+<ul>
+	<li>Jaybird 4.0.x: <a href="/docs/drivers/java/4.0.x/release_notes.html">release notes</a>, <a href="/docs/drivers/java/4.0.x/docs/">javadoc</a></li>
+	<li>Jaybird 3.0.x: <a href="/docs/drivers/java/3.0.x/release_notes.html">release notes</a>, <a href="/docs/drivers/java/3.0.x/docs/">javadoc</a></li>
+	<li>Jaybird 2.2.x: <a href="/docs/drivers/java/2.2.x/release_notes.html">release notes</a>, <a href="/docs/drivers/java/2.2.x/docs/">javadoc</a></li>
+</ul>
+
+<h2><code><span style="color:#474747;font-size:15px;font-weight:bold;">About Jaybird 6</span></code></h2>
+
+<p>Jaybird 6 is &mdash; from a JDBC perspective &mdash; an incremental change from Jaybird 5. However, internally, Jaybird underwent some major changes, the biggest was splitting off the native and embedded protocols to a separate plugin artifact (<code>jaybird-native</code>).</p>
+
+<p>The main new features are:</p>
+
+<ul>
+	<li>Minimum supported Java version is Java 17.<br />
+	See <a href="/docs/drivers/java/6.0.x/release_notes.html#java-support">Java support</a> for more information.</li>
+	<li>Minimum supported Firebird version is Firebird 3.0.<br />
+	See <a href="/docs/drivers/java/6.0.x/release_notes.html#firebird-support">Firebird support</a> for more information.</li>
+	<li>The pure Java protocol &mdash; by default &mdash; no longer connects to Firebird 2.5 and older, as those versions are not supported.<br />
+	See <a href="/docs/drivers/java/6.0.x/release_notes.html#unsupported-protocol">Pure Java will not connect to unsupported Firebird versions by default</a> for more information.</li>
+	<li>The native and embedded protocols have been moved to a separate artifact, jaybird-native.<br />
+	See <a href="/docs/drivers/java/6.0.x/release_notes.html#native-plugin">NATIVE and EMBEDDED support moved to a separate artifact</a> for more information.</li>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html#ooremote-removed">OOREMOTE (OpenOffice/LibreOffice protocol) removed</a></li>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html#modules">Modularization of Jaybird</a></li>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html#create-database-if-not-exist">Connection property createDatabaseIfNotExist</a></li>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html#report-actual-pid">Report actual process ID (pid)</a></li>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html#logging">Logging facade removed</a></li>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html#chacha64">Support for ChaCha64 wire encryption</a></li>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html#package-metadata">Opt-in feature for package information in DatabaseMetaData</a></li>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html#async-fetch">Asynchronous fetching</a></li>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html#blob-performance">Blob performance improvements</a></li>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html#allow-tx-stmts">Support for executing transaction management statements</a></li>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html#wire-buffer-sizes">Configurable buffer sizes for the wire protocol</a></li>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html#event-manager-broken-connection">Broken connection detection for event manager</a></li>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html#native-library-path">Connection property to specify native library path</a></li>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html#client-info">Rewritten client info properties support</a></li>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html#timestamp-localdate-localtime">TIMESTAMP fields now accept LocalDate and LocalTime</a></li>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html#no-close-after-last">ResultSet in auto-commit no longer closed after last row</a></li>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html#scroll-rs-update-behavior">Changes to behaviour of updatable scrollable result sets</a></li>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html#custom-socket-factory">Custom socket factory for pure Java connections</a></li>
+	<li>&hellip;​ and <a href="/docs/drivers/java/6.0.x/release_notes.html#other-fixes-and-changes">other fixes and changes</a></li>
+</ul>
+
+<p>Upgrading from Jaybird 5 should be straightforward, but please make sure to read <a href="/docs/drivers/java/6.0.x/release_notes.html#compatibility-changes">Compatibility changes</a> before using Jaybird 6. If you&rsquo;re using Jaybird with the native or embedded connections, you will need to make some additional changes. See also <a href="/docs/drivers/java/6.0.x/release_notes.html#upgrading-from-jaybird-5-to-jaybird-6">Upgrading from Jaybird 5 to Jaybird 6</a>.</p>
+
+<p>Bug reports about undocumented changes in behavior are appreciated. Feedback can be sent to the <a href="https://groups.google.com/g/firebird-java">Firebird-java mailing list</a> or reported on the issue tracker <a href="https://github.com/FirebirdSQL/jaybird/issues">https://github.com/FirebirdSQL/jaybird/issues</a>.</p>
+
+<p>See also the full <a href="/docs/drivers/java/6.0.x/release_notes.html">Jaybird 6 release notes</a>.</p>
+
+<p><strong><span style="color: rgb(6, 134, 173); font-size: 16px;"><span style="color:#0686AD;font-size:16px;font-weight:bold;"><a id="jaybird5" name="jaybird5">Jaybird 5</a></span></span></strong></p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="Table" width="100%">
+	<thead>
+		<tr class="Table_Header">
+			<td>Release Date</td>
+			<td>File Name</td>
+			<td>Description</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="Table_Subtitle">
+			<td colspan="3"><span style="color:#474747;font-size:15px;font-weight:bold;">Jaybird 5.0.13</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>August 21, 2026</td>
+			<td><a download="" href="https://github.com/FirebirdSQL/jaybird/releases/download/v5.0.13/jaybird-5.0.13.java11.zip">jaybird-5.0.13.java11.zip</a></td>
+			<td>Jaybird 5.0.13 for Java 11 and higher / JDBC 4.3 - 4.5</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>August 21, 2026</td>
+			<td><a download="" href="https://github.com/FirebirdSQL/jaybird/releases/download/v5.0.13/jaybird-5.0.13.java8.zip">jaybird-5.0.13.java8.zip</a></td>
+			<td>Jaybird 5.0.13 for Java 8 / JDBC 4.2</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><strong>Jaybird 5.0.13</strong>&nbsp;released.</p>
+
+<p>Jaybird 5.0.13 is the thirteenth maintenance release of Jaybird 5.</p>
+
+<p>See <a href="/docs/drivers/java/5.0.x/release_notes.html">the full release notes</a> for more information.</p>
+
+<p>The release is also available on maven(*):</p>
+
+<p>groupId: <code>org.firebirdsql.jdbc</code><br />
+artifactid: <code>jaybird</code><br />
+version: <code>5.0.13.java11*</code></p>
+
+<p>* The <code>version</code> depends on your target Java version: <code>5.0.13.java11</code> for Java 11 and higher, <code>5.0.13.java8</code> for Java 8.</p>
+
+<p>Additional resources:</p>
+
+<ul>
+	<li><a href="/docs/drivers/java/5.0.x/docs/">Jaybird 5.0.x javadoc</a></li>
+	<li><a href="/docs/drivers/java/faq.html">Jaybird Frequently Asked Questions</a></li>
+	<li><a href="https://firebirdsql.github.io/jaybird-manual/jaybird_manual.html" target="_blank">Jaybird JDBC Driver Java Programmer&#39;s Manual</a></li>
+</ul>
+
+<h2><code><span style="color:#474747;font-size:15px;font-weight:bold;">About Jaybird 5</span></code></h2>
+
+<p>Jaybird 5 is &mdash; from a JDBC perspective &mdash; an incremental change from Jaybird 4. However, internally, Jaybird underwent some major changes, the biggest was the removal of JCA (Java Connector Architecture) support.</p>
+
+<p>The main new features are:</p>
+
+<div class="ulist">
+<ul>
+	<li><a href="/docs/drivers/java/5.0.x/release_notes.html#java-7-support-dropped">Java 7 support dropped</a></li>
+	<li><a href="/docs/drivers/java/5.0.x/release_notes.html#jca-removed">Java Connector Architecture (JCA) support removed</a></li>
+	<li><a href="/docs/drivers/java/5.0.x/release_notes.html#wirecrypt-chacha">ChaCha wire protocol encryption support</a> (Java 11 and higher only)</li>
+	<li><a href="/docs/drivers/java/5.0.x/release_notes.html#properties-changed">Changes to properties</a></li>
+	<li><a href="/docs/drivers/java/5.0.x/release_notes.html#unify-db-address">Unification of database and service addressing</a></li>
+	<li><a href="/docs/drivers/java/5.0.x/release_notes.html#jdbc-url-syntax">Changes to JDBC URL syntax</a></li>
+	<li><a href="/docs/drivers/java/5.0.x/release_notes.html#local-protocol-removed">Removal of LOCAL protocol implementation</a></li>
+	<li><a href="/docs/drivers/java/5.0.x/release_notes.html#stream-blobs-default">Stream blobs are now the default</a></li>
+	<li><a href="/docs/drivers/java/5.0.x/release_notes.html#generated-keys-parser-replaced">New parser for generated keys handling</a> (back-ported to Jaybird 4.0.8)</li>
+	<li><a href="/docs/drivers/java/5.0.x/release_notes.html#server-batch-updates">Firebird 4.0 server-side batch updates</a></li>
+	<li><a href="/docs/drivers/java/5.0.x/release_notes.html#multirow-returning">Firebird 5.0 multi-row RETURNING support</a></li>
+	<li><a href="/docs/drivers/java/5.0.x/release_notes.html#embedded-locator-service-provider">Firebird Embedded locator service provider (experimental)</a></li>
+	<li><a href="/docs/drivers/java/5.0.x/release_notes.html#table-statistics-manager">Table statistics of a connection (experimental)</a></li>
+</ul>
+</div>
+
+<p>Upgrading from Jaybird 4 to 5 should be simple, but please make sure to read <a href="/docs/drivers/java/5.0.x/release_notes.html#compatibility-changes">Compatibility changes</a> before using Jaybird 5. See also <a href="/docs/drivers/java/5.0.x/release_notes.html#upgrading-from-jaybird-4-to-jaybird-5">Upgrading from Jaybird 4 to Jaybird 5</a>.</p>
+
+<p>Bug reports about undocumented changes in behavior are appreciated. Feedback can be sent to the Firebird-java mailing list or reported on the issue tracker <a href="https://github.com/FirebirdSQL/jaybird/issues" target="_blank">https://github.com/FirebirdSQL/jaybird/issues</a>.</p>
+
+<p>See also the full <a href="/docs/drivers/java/5.0.x/release_notes.html">Jaybird 5 release notes</a>.</p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Downloads</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/server-packages/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Server Packages</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-5-0-4/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 5.0</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-4-0-7/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 4.0</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-3-0-14/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 3.0</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/docker/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Docker Images</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/snapshot-builds/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Snapshot Builds</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/discontinued-versions/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Discontinued Versions</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/connectivity/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Connectivity</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree bgLVL_3_sel bgLVL_3">
+      <a href="/en/jdbc-driver/" class="menulvl_3_sel"><i class="fa fa-arrow-right"></i> JDBC Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/net-provider/" class="menulvl_3"><i class="fa fa-arrow-right"></i> .NET Provider</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+    
+ 
+ 
+    
+   <div class="menu-tree  bgLVL_4">   
+      <a href="/en/additional-downloads/" class="menulvl_4" ><i class="fa fa-arrow-right"></i> Additional Downloads</a>          
+      
+   </div> 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/python-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Python Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/odbc-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> ODBC Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/php-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> PHP Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-dwn/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/sphinx-full-text-search/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Other Downloads</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/full-text-search-udr/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Full Text Search UDR</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sphinx-full-text-search/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Sphinx Full Text Search</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-tools/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Tools &amp; Drivers</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,1209 @@
+---
+title: "Firebird: Writing custom providers for Firebird"
+html_title: "Firebird: Writing custom providers for Firebird"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Writing custom providers for Firebird"
+menu_active: "/en/firebird-rdbms/"
+source_url: "/writing-custom-providers-for-firebird"
+source_format: new
+url: "/writing-custom-providers-for-firebird"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/documentation/">Documentation</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-rdbms/">Firebird RDBMS</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/third-party-docs-and-articles/">Third-party Docs and Articles</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Writing custom providers for Firebird</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <h1>Writing custom providers for Firebird to access external databases (ODBC, MySQL)</h1>
+
+<p><strong>Author:</strong> Simonov Denis</p>
+
+<p><strong>Version:</strong> 1.0 by 2025-06-25</p>
+
+<ul>
+	<li><a href="#preface">Preface</a></li>
+	<li><a href="#how-did-it-all-start">1. How did it all start?</a></li>
+	<li><a href="#how-can-the-functionality-of-eds-be-extended">2. How can the functionality of EDS be extended?</a></li>
+	<li><a href="#extension-of-the-eds-mechanism">3. Extension of the EDS mechanism</a></li>
+	<li><a href="#plugin-type-provider">4. Plugin type Provider</a></li>
+	<li><a href="#provider-implementation">5. Provider implementation</a></li>
+	<li><a href="#what-provider-implementations-exist">6. What provider implementations exist?</a></li>
+	<li><a href="#examples-of-work">7. Examples of work</a></li>
+	<li><a href="#what-are-the-problems-with-existing-implementations">8. What are the problems with existing implementations?</a></li>
+	<li><a href="#conclusion">9. Conclusion</a></li>
+</ul>
+
+<div>
+<p><strong>Dedication:</strong></p>
+
+<p>This material is sponsored and created with the sponsorship and support of IBSurgeon <a href="https://www.ib-aid.com">https://www.ib-aid.com</a>, vendor of <a href="/hqbird">HQbird </a>(advanced distribution of Firebird) and supplier of performance optimization, migration and technical support services for Firebird.</p>
+
+<p>The material is licensed under Public Documentation License <a href="/file/documentation/html/en/licenses/pdl/public-documentation-license.html">https://www.firebirdsql.org/file/documentation/html/en/licenses/pdl/public-documentation-license.html</a></p>
+</div>
+
+<h2 id="preface">Preface</h2>
+
+<p>Starting with Firebird 3.0, you can write various extensions (plugins) for Firebird SQL. The simplest extension is an external procedure/function (UDR) (see article <a href="/file/documentation/html/en/firebirddocs/udr-pascal/udr-pascal.html">Writing UDF in Pascal</a>). UDR is not a Firebird plugin in the true sense of the word, but it allows you to significantly expand the capabilities of the DBMS. However, Firebird engine has more capabilities to extend the funcionality with various plugins.</p>
+
+<p>Firebird has the following types of plugins (<code>IPluginManager</code> class constants):</p>
+
+<ul>
+	<li><code>TYPE_PROVIDER</code> &mdash; providers;</li>
+	<li><code>TYPE_AUTH_SERVER</code> &mdash; server-side authentication;</li>
+	<li><code>TYPE_AUTH_CLIENT</code> &mdash; client-side authentication;</li>
+	<li><code>TYPE_AUTH_USER_MANAGEMENT</code> &mdash; user management;</li>
+	<li><code>TYPE_EXTERNAL_ENGINE</code> &mdash; external engines. They are intermediaries between the code of external stored procedures/functions/triggers written in any programming language and Firebird. Examples of such plugins are <code>udr_engine</code> for interaction with UDRs written in C++/Delphi or <code>libfbjava</code> for UDRs in Java;</li>
+	<li><code>TYPE_TRACE</code> &mdash; tracing plugin;</li>
+	<li><code>TYPE_WIRE_CRYPT</code> &mdash; network traffic encryption;</li>
+	<li><code>TYPE_DB_CRYPT</code> &mdash; database encryption;</li>
+	<li><code>TYPE_KEY_HOLDER</code> &mdash; key holder for the database encryption plugin;</li>
+	<li><code>TYPE_REPLICATOR</code> &mdash; replicator plugin.</li>
+</ul>
+
+<p>In this article we will look at perhaps the most complex and interesting type of plugin &mdash; providers.</p>
+
+<h2 id="how-did-it-all-start">1. How did it all start?</h2>
+
+<p>In 2023 I started to work on development of plugin for&nbsp;<a href="/hqbird">HQbird </a>to access databases of other DBMSs (not Firebird) via <code>EXECUTE STATEMENT ON EXTERNAL DATA SOURCE</code> (hereinafter EDS). Vlad Khorsun, core developer of Firebird, was the consulant of this project.</p>
+
+<p>Currently, in HQbird 2024, two plugins are available for Firebird 4.0 and 5.0: <code>MySQLEngine</code> and <code>ODBCEngine</code>. <code>MySQLEngine</code> was created first and was a test horse, the main efforts were focused on <code>ODBCEngine</code>.</p>
+
+<h2 id="how-can-the-functionality-of-eds-be-extended">2. How can the functionality of EDS be extended?</h2>
+
+<p>There are two options:</p>
+
+<ul>
+	<li>Extend the EDS mechanism in the Firebird core;</li>
+	<li>Implement one of the Firebird plugins.</li>
+</ul>
+
+<p>I&#39;ll be straight with you - no matter which route you take, you&#39;re going to need to dig into the Firebird source code. There&#39;s just no way around it, because you won&#39;t find this stuff documented anywhere else.</p>
+
+<p>First, let&#39;s consider the first option.</p>
+
+<h2 id="extension-of-the-eds-mechanism">3. Extension of the EDS mechanism</h2>
+
+<p>The EDS implementation is located in the directory <code>/src/jrd/extds/</code>. The <code>EXECUTE STATEMENT</code> mechanism itself can be extended starting from Firebird 2.5. For this purpose, the so-called EDS Providers were invented. There are two EDS providers in Firebird:</p>
+
+<ul>
+	<li>Provider <strong>Firebird</strong>. <code>EXECUTE STATEMENT</code> is used to access external Firebird databases.</li>
+	<li>Provider <strong>Internal</strong>. <code>EXECUTE STATEMENT</code> is used to access the current database.</li>
+</ul>
+
+<p>The code provides the ability to add new providers (see <code>/src/jrd/extds/ExtDS.cpp</code>).</p>
+
+<pre>
+void Manager::addProvider(Provider* provider)
+{
+    // TODO: if\when usage of user providers will be implemented,
+    // need to check provider name for allowed chars (file system rules ?)
+    // ...
+}
+    </pre>
+
+<p>Although these providers are hidden from you, you can explicitly specify the provider to use in the <code>EXECUTE STATEMENT ON EXTERNAL</code> connection string.</p>
+
+<pre>
+SQL = &#39;SELECT MON$ATTACHMENT_NAME FROM MON$ATTACHMENTS&#39;;
+
+FOR
+  EXECUTE STATEMENT :SQL
+  ON EXTERNAL &#39;Firebird::inet://localhost/ext_db&#39;
+  AS USER &#39;SYSDBA&#39; PASSWORD &#39;masterkey&#39;
+  INTO NAME
+DO SUSPEND;
+-- returns ext_db
+
+FOR
+  EXECUTE STATEMENT :SQL
+  ON EXTERNAL &#39;Internal::inet://localhost/ext_db&#39;
+  AS USER &#39;SYSDBA&#39; PASSWORD &#39;masterkey&#39;
+  INTO NAME
+DO SUSPEND;
+-- returns self_db (connection string is ignored)
+    </pre>
+
+<p>So, if we plan to extend the EDS ODBC provider mechanism, <code>EXECUTE STATEMENT ON EXTERNAL</code> would look like this:</p>
+
+<pre>
+FOR
+  EXECUTE STATEMENT :SQL
+  ON EXTERNAL &#39;ODBC::<conn_string>&#39;
+  AS USER &#39;user&#39; PASSWORD &#39;secret&#39;
+  INTO NAME
+DO SUSPEND;
+    </conn_string></pre>
+
+<p>This is possible, but there are significant drawbacks to this approach:</p>
+
+<ul>
+	<li>EDS Provider data is not implemented as plugins (dynamic libraries), which means that modification of Firebird engine source codes is required.</li>
+	<li>The solution is much more difficult to maintain. Manual porting of functionality to new versions is required, for example, when Firebird 6.0 is released and later.</li>
+</ul>
+
+<p>However, having studied the features of <code>EXECUTE STATEMENT ON EXTERNAL</code>, one can note an important detail &mdash; the <code>Firebird::</code> provider works through the usual Firebird API, which is used in applications, i.e. EDS acts as a regular client. And this leads to another thought: what if the API of an external data source is wrapped in the API used to access the Firebird DB?</p>
+
+<h2 id="plugin-type-provider">4. Plugin type Provider</h2>
+
+<p>If you carefully study the existing Firebird documentation, you will find that for these purposes, starting with Firebird 3.0, a special type of plugins called Provider (not to be confused with EDS Provider) has been provided. A brief description of what it is can be found in <code>doc/README.providers.html</code>.</p>
+
+<p>A Provider plugin provides a single API for interacting with Firebird. It does not matter how the physical interaction occurs over the network or directly with the Firebird engine.</p>
+
+<p>Where do you encounter providers? Open <code>firebird.conf</code> and you will see the following line there:</p>
+
+<pre>
+Providers = Remote, Engine13, Loopback    </pre>
+
+<p>The <code>Remote</code> provider is responsible for interaction over the network, and <code>Engine13</code> is the core for interaction with ODS13, used directly when working in embedded mode. Providers are tried sequentially, and the one that does not refuse to work is the active one.</p>
+
+<p>Perhaps the most well-known example that demonstrates the work of providers is the configuration:</p>
+
+<pre>
+Providers = Remote,Engine13,Engine12,Loopback    </pre>
+
+<p>This configuration allows Firebird 5.0 to work with both native ODS 13.1 databases and ODS 12.0 (Firebird 3.0) databases.</p>
+
+<p>If we provide Firebird API for working with MySQL or ODBC with the help of our provider, the configuration can be as follows:</p>
+
+<pre>
+Providers = Remote,Engine13,ODBCEngine,Loopback
+Providers = ODBCEngine,Remote,Engine13,Loopback
+Providers = MySQLEngine,Remote,Engine13,Loopback
+    </pre>
+
+<h2 id="provider-implementation">5. Provider implementation</h2>
+
+<p>Now let&#39;s talk directly about the implementation of our own providers. What API interfaces need to be implemented?</p>
+
+<ul>
+	<li><code>IProvider</code></li>
+	<li><code>IAttachment</code></li>
+	<li><code>ITransaction</code></li>
+	<li><code>IStatement</code></li>
+	<li><code>IResultSet</code></li>
+	<li><code>IBlob</code></li>
+</ul>
+
+<p>Please note that not all methods of these interfaces need to be implemented. We will implement only those that are required for <code>EXECUTE STATEMENT ON EXTERNAL</code> to work, and we will make stubs for the rest.</p>
+
+<p>In addition to the provider itself, its factory must be implemented. You can take a look at the factory implementation and provider registration using the example of EngineXX providers in <code>/src/jrd/jrd.cpp</code> (<code>.h</code>).</p>
+
+<pre>
+namespace {
+
+template <class p="">
+class Factory : public IPluginFactoryImpl<factory<p>, CheckStatusWrapper&gt;
+{
+public:
+    // IPluginFactory implementation
+    IPluginBase* createPlugin(CheckStatusWrapper* status, IPluginConfig* factoryParameter)
+    {
+        try {
+            IPluginBase* p = new P(factoryParameter);
+            p-&gt;addRef();
+            return p;
+        }
+        catch (const std::exception&amp; e) {
+            Firebird::setStatusError(status, e.what());
+        }
+        return nullptr;
+    }
+};
+
+static Factory<odbcengine::odbcprovider> engineFactory;
+
+} // namespace
+
+void registerEngine(IPluginManager* iPlugin)
+{
+    UnloadDetectorHelper* module = getUnloadDetector();
+    module-&gt;setCleanup(shutdownBeforeUnload);
+    module-&gt;setThreadDetach(threadDetach);
+    iPlugin-&gt;registerPluginFactory(IPluginManager::TYPE_PROVIDER, ODBC_ENGINE_NAME, &amp;engineFactory);
+    module-&gt;registerMe();
+}
+
+extern &quot;C&quot; FB_DLL_EXPORT void FB_PLUGIN_ENTRY_POINT(IMaster * master)
+{
+    CachedMasterInterface::set(master);
+    registerEngine(PluginManagerInterfacePtr());
+}
+    </odbcengine::odbcprovider></factory<p></class></pre>
+
+<h3>5.1. Implementation of the IProvider interface</h3>
+
+<p>What needs to be implemented in the <code>IProvider</code> interface (<code>ODBCProvider</code>, <code>MySQLProvider</code>)?</p>
+
+<p>The <code>IProvider</code> interface has the following functions:</p>
+
+<ul>
+	<li><code>IAttachment* attachDatabase(...)</code> (mandatory)</li>
+	<li><code>IAttachment* createDatabase(...)</code> (throw error <code>isc_unavailable</code>)</li>
+	<li><code>IService* attachServiceManager(...)</code> (throw error <code>isc_unavailable</code>)</li>
+	<li><code>void shutdown(...)</code> (not required)</li>
+	<li><code>void setDbCryptCallback(...)</code> (not required)</li>
+</ul>
+
+<p>In this interface, the main thing is to implement the <code>IProvider::attachDatabase</code> method. It should do the following:</p>
+
+<ul>
+	<li>Analyze the connection string and extract the prefix in it</li>
+	<li>If the prefix matches our prefix, then create a connection to the DB, otherwise throw the <code>isc_unavailable</code> error.</li>
+	<li>The prefix is necessary to quickly determine whether to make a connection attempt, which may not be cheap, or let the next provider try to connect to the DB.</li>
+	<li>The following prefixes are provided:
+	<ul>
+		<li>For ODBC, this is: <code>:odbc:</code> or <code>odbc://</code></li>
+		<li>For MySQL, this is: <code>:mysql:</code> or <code>mysql://</code></li>
+	</ul>
+	</li>
+</ul>
+
+<p>Here is a small fragment of this function:</p>
+
+<pre>
+IAttachment* ODBCProvider::attachDatabase(CheckStatusWrapper* status, const char* fileName,
+    unsigned dpbLength, const unsigned char* dpb)
+{
+    debug_print_call();
+
+    status-&gt;clearException();
+
+    std::string dbFileName(fileName);
+
+    auto poviderPos = dbFileName.find(&quot;:odbc:&quot;);
+    std::string connStr;
+    if (poviderPos == 0) {
+        connStr = dbFileName.substr(6);
+    }
+    else if (poviderPos = dbFileName.find(&quot;odbc://&quot;); poviderPos == 0) {
+        connStr = dbFileName.substr(7);
+    }
+    else {
+        // It is important to set the error with the status isc_unavailable
+        // to pass control to the next provider
+        const ISC_STATUS statusVector[] = {
+            isc_arg_gds, isc_unavailable,
+            isc_arg_end
+        };
+
+        status-&gt;setErrors(statusVector);
+        return nullptr;
+    }
+
+    ....
+}
+    </pre>
+
+<p>The functions <code>IProvider::createDatabase</code> and <code>IProvider::attachServiceManager</code> are not needed for EDS to function, but they still need to be implemented and the <code>isc_unavailable</code> error thrown in them. This is necessary so that the work of provider chains is not interrupted.</p>
+
+<h3>5.2. Implementation of the IAttachment interface</h3>
+
+<p>The following methods must be implemented in the <code>IAttachment</code> interface (<code>MySQLAttachment</code>, <code>ODBCAttachment</code>):</p>
+
+<ul>
+	<li><code>void getInfo(status, ...)</code></li>
+	<li><code>ITransaction* startTransaction(status, ...)</code></li>
+	<li><code>IBlob* createBlob(status, ...)</code></li>
+	<li><code>IBlob* openBlob(status, ...)</code></li>
+	<li><code>IStatement* prepare(status, ...)</code></li>
+	<li><code>ITransaction* execute(status, ...)</code></li>
+	<li><code>IResultSet* openCursor(status, ...)</code> &mdash; this method is never called in EDS as it always executes prepared statements only</li>
+	<li><code>void detach(status)</code></li>
+	<li><code>void dropDatabase(status)</code> &mdash; in theory, this method is not needed, but sometimes the control flow gets into it, so we simply call <code>IProvider::detach</code> in it.</li>
+</ul>
+
+<h4>5.2.1. Implementation of IAttachment::getInfo</h4>
+
+<p>In this method, you need to return a response for requests with the <code>isc_info_db_sql_dialect</code> and <code>fb_info_features</code> tags. The <code>fb_info_features</code> tag is used to return the supported functionality of your provider. The possible values are described by the following enumeration:</p>
+
+<pre>
+enum info_features // response to fb_info_features
+{
+    fb_feature_multi_statements = 1, // Multiple prepared statements in single attachment
+    fb_feature_multi_transactions= 2, // Multiple concurrent transaction in single attachment
+    fb_feature_named_parameters= 3, // Query parameters can be named
+    fb_feature_session_reset= 4, // ALTER SESSION RESET is supported
+    fb_feature_read_consistency= 5, // Read consistency TIL is supported
+    fb_feature_statement_timeout= 6, // Statement timeout is supported
+    fb_feature_statement_long_life = 7, // Prepared statements are not dropped on transaction end
+    fb_feature_max // Not really a feature. Keep this last.
+};
+    </pre>
+
+<h4>5.2.2. Implementation of IAttachment::startTransaction</h4>
+
+<p>The <code>IAttachment::startTransaction</code> function should do the following:</p>
+
+<ul>
+	<li>Should return an <code>ITransaction</code> instance, even if transactions are not supported.</li>
+	<li>Increments the internal transaction counter.</li>
+	<li>Should process the Transaction Parameter Buffer (tpb). Namely, set the transaction parameters in the target driver (isolation level, read/write mode, parameters for waiting for locks to be resolved, etc.) according to the Firebird parameters.</li>
+</ul>
+
+<p>The following methods should be implemented in the <code>ITransaction</code> interface itself:</p>
+
+<ul>
+	<li><code>void commit(status)</code></li>
+	<li><code>void commitRetaining(status)</code></li>
+	<li><code>void rollback(status)</code></li>
+	<li><code>void rollbackRetaining(status)</code></li>
+</ul>
+
+<p>There is one peculiarity here. When a transaction is completed, it is necessary to free the resources associated with it, for example, BLOBs. We will return to this peculiarity later.</p>
+
+<h4>5.2.3. Implementation of IAttachment::prepare</h4>
+
+<p>The <code>IAttachment::prepare</code> function should do the following:</p>
+
+<ul>
+	<li>Create and return an instance of the <code>IStatement</code> interface;</li>
+	<li>Prepare the query</li>
+	<li>Determine what type the query is: <code>isc_info_sql_stmt_select</code>, <code>isc_info_sql_stmt_ddl</code>, <code>isc_info_sql_stmt_exec_procedure</code>, <code>isc_info_sql_stmt_insert</code>.</li>
+	<li>Prepare the query flags:
+	<ul>
+		<li><code>IStatement::FLAG_HAS_CURSOR</code> &mdash; if it is a cursor</li>
+		<li><code>IStatement::FLAG_REPEAT_EXECUTE</code> &mdash; if there are input parameters</li>
+	</ul>
+	</li>
+	<li>Prepare input and output messages</li>
+</ul>
+
+<p>When preparing input and output messages, you should determine what Firebird data type corresponds to the type from your provider and vice versa.</p>
+
+<table border="1">
+	<caption><strong>Table 1. Data type matching</strong></caption>
+	<tbody>
+		<tr>
+			<th>Firebird</th>
+			<th>MySQL</th>
+			<th>ODBC</th>
+		</tr>
+		<tr>
+			<td><code>VARCHAR(N)</code>, size &lt; 32765 bytes</td>
+			<td><code>VARCHAR(N)</code>, <code>BIT(N)</code></td>
+			<td><code>SQL_VARCHAR</code>, <code>SQL_WVARCHAR</code></td>
+		</tr>
+		<tr>
+			<td><code>CHAR(N)</code>, size &lt; 32767 bytes</td>
+			<td><code>CHAR(N)</code>, <code>BIT(N)</code></td>
+			<td><code>SQL_CHAR</code>, <code>SQL_WCHAR</code></td>
+		</tr>
+		<tr>
+			<td><code>VARBINARY(N)</code>, size &lt; 32765 bytes</td>
+			<td><code>VARBINARY(N)</code></td>
+			<td><code>SQL_VARBINARY</code></td>
+		</tr>
+		<tr>
+			<td><code>BINARY(N)</code>, size &lt; 32767 bytes</td>
+			<td><code>BINARY(N)</code></td>
+			<td><code>SQL_BINARY</code></td>
+		</tr>
+		<tr>
+			<td><code>SMALLINT</code> (for unsigned <code>INTEGER</code>)</td>
+			<td><code>TINYINT</code>, <code>SMALLINT</code>, <code>YEAR</code></td>
+			<td><code>SQL_TINYINT</code>, <code>SQL_SMALLINT</code></td>
+		</tr>
+		<tr>
+			<td><code>INTEGER</code> (for unsigned <code>BIGINT</code>)</td>
+			<td><code>MEDIUMINT</code>, <code>INTEGER</code></td>
+			<td><code>SQL_INTEGER</code></td>
+		</tr>
+		<tr>
+			<td><code>BIGINT</code> (for unsigned <code>VARCHAR(20)</code>)</td>
+			<td><code>BIGINT</code></td>
+			<td><code>SQL_BIGINT</code></td>
+		</tr>
+		<tr>
+			<td><code>FLOAT</code></td>
+			<td><code>FLOAT</code></td>
+			<td><code>SQL_REAL</code></td>
+		</tr>
+		<tr>
+			<td><code>DOUBLE PRECISION</code></td>
+			<td><code>DOUBLE</code></td>
+			<td><code>SQL_DOUBLE</code>, <code>SQL_FLOAT</code></td>
+		</tr>
+		<tr>
+			<td><code>DATE</code></td>
+			<td><code>DATE</code></td>
+			<td><code>SQL_TYPE_DATE</code></td>
+		</tr>
+		<tr>
+			<td><code>TIME</code></td>
+			<td><code>TIME</code></td>
+			<td><code>SQL_TYPE_TIME</code></td>
+		</tr>
+		<tr>
+			<td><code>TIMESTAMP</code></td>
+			<td><code>TIMESTAMP</code>, <code>DATETIME</code></td>
+			<td><code>SQL_TYPE_TIMESTAMP</code></td>
+		</tr>
+		<tr>
+			<td><code>VARCHAR(N)</code>, where N = precision + 2</td>
+			<td><code>DECIMAL</code></td>
+			<td><code>SQL_DECIMAL</code>, <code>SQL_NUMERIC</code></td>
+		</tr>
+		<tr>
+			<td><code>BLOB SUB_TYPE TEXT</code></td>
+			<td><code>TINYTEXT</code>, <code>TEXT</code>, <code>MEDIUMTEXT</code>, <code>LONGTEXT</code>, <code>JSON</code></td>
+			<td><code>SQL_LONGVARCHAR</code>, <code>SQL_WLONGVARCHAR</code></td>
+		</tr>
+		<tr>
+			<td><code>BLOB SUB_TYPE 0</code></td>
+			<td><code>TYNYBLOB</code>, <code>BLOB</code>, <code>MEDIUMBLOB</code>, <code>LONGBLOB</code></td>
+			<td><code>SQL_LONGVARBINARY</code></td>
+		</tr>
+		<tr>
+			<td><code>BINARY(16)</code></td>
+			<td><code>SQL_GUID</code></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td><code>BOOLEAN</code></td>
+			<td><code>SQL_BIT</code></td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>5.3. Implementation of the IStatement interface</h3>
+
+<p>The following methods must be implemented in the <code>IStatement</code> (<code>MySQLStatement</code>, <code>ODBCStatement</code>) interface:</p>
+
+<ul>
+	<li><code>void getInfo(status, ...)</code></li>
+	<li><code>void free(status)</code></li>
+	<li><code>ISC_UINT64 getAffectedRecords(status)</code></li>
+	<li><code>IMessageMetadata* getOutputMetadata(status)</code></li>
+	<li><code>IMessageMetadata* getInputMetadata(status)</code></li>
+	<li><code>unsigned getType(status)</code></li>
+	<li><code>ITransaction* execute(status, ...)</code></li>
+	<li><code>IResultSet* openCursor(status, ...)</code></li>
+	<li><code>unsigned getFlags(status)</code></li>
+	<li><code>unsigned int getTimeout(status)</code></li>
+	<li><code>void setTimeout(status, timeout)</code></li>
+</ul>
+
+<p>The <code>IStatement::getOutputMetadata</code>, <code>IStatement::getInputMetadata</code>, <code>IStatement::getType</code> and <code>IStatement::getFlags</code> methods simply return the prepared values of the class fields, since the flags, type and input and output metadata were prepared during the execution of <code>IAttachment::prepare</code>.</p>
+
+<h4>5.3.1. Implementation of IStatement::execute</h4>
+
+<p>The <code>IStatement::execute</code> method does the following:</p>
+
+<ul>
+	<li>Convert input parameters to the required types</li>
+	<li>Copy input parameters of type BLOB</li>
+	<li>Execute the query</li>
+	<li>Convert output parameters to the required types</li>
+	<li>Copy output parameters of some types to BLOB</li>
+</ul>
+
+<h4>5.3.2. Implementation of IStatement::openCursor</h4>
+
+<p>The <code>IStatement::openCursor</code> method does the following:</p>
+
+<ul>
+	<li>Convert input parameters to the required types</li>
+	<li>Copy input parameters of type BLOB</li>
+	<li>Execute the query</li>
+	<li>Create and return an instance of <code>IResultSet</code></li>
+</ul>
+
+<h3>5.4. Implementation of the IResultSet interface</h3>
+
+<p>The following methods must be implemented in the <code>IResultSet</code> (<code>MySQLResultSet</code>, <code>ODBCResultSet</code>) interface:</p>
+
+<ul>
+	<li><code>int fetchNext(Status* status, void* message)</code></li>
+	<li><code>IMessageMetadata* getMetadata(Status* status)</code></li>
+	<li><code>void close(Status* status)</code></li>
+	<li><code>void setDelayedOutputFormat(Status* status, IMessageMetadata* format)</code></li>
+</ul>
+
+<p>The methods <code>IResultSet::fetchFirst</code>, <code>IResultSet::fetchPrior</code>, <code>IResultSet::fetchLast</code>, <code>IResultSet::fetchAbsolute</code> and <code>IResultSet::fetchRelative</code> are never called inside the EDS subsystem, so we simply create stubs for them.</p>
+
+<h4>5.4.1. Implementation of IStatement::fetchNext</h4>
+
+<p>The <code>IStatement::fetchNext</code> method should do the following:</p>
+
+<ul>
+	<li>Move to the next record in the cursor</li>
+	<li>Convert output parameters to the required types</li>
+	<li>Copy output parameters of some types to BLOB</li>
+	<li>Return <code>IStatus::RESULT_OK</code> if the cursor record was successfully fetched and <code>IStatus::RESULT_NO_DATA</code> if the cursor has run out of records.</li>
+</ul>
+
+<h4>5.4.2. Implementation of IStatement::setDelayedOutputFormat</h4>
+
+<p>The <code>IStatement::setDelayedOutputFormat</code> method is intended to set the output message for the cursor. In principle, the cursor output message could be created in the constructor, but the EDS implementation still calls <code>IStatement::setDelayedOutputFormat</code> and could potentially overwrite our message.</p>
+
+<h3>5.5. Implementation of the IBlob interface</h3>
+
+<p>The following methods must be implemented in the <code>IBlob</code> (<code>MySQLBlob</code>, <code>ODBCBlob</code>) interface:</p>
+
+<ul>
+	<li><code>int getSegment(Status* status, ...)</code></li>
+	<li><code>void putSegment(Status* status, ...)</code></li>
+	<li><code>void close(Status* status)</code></li>
+	<li><code>void cancel(Status* status)</code></li>
+	<li><code>void seek(Status* status, int mode, int offset)</code></li>
+</ul>
+
+<p>Features of the <code>IBlob</code> implementation:</p>
+
+<ul>
+	<li>The contents of the BLOB type are stored in memory at the <code>IAttachment</code> level</li>
+	<li>BLOBs have an identifier of the <code>ISC_QUAD</code> type. It is formed as follows:
+	<ul>
+		<li><code>gds_quad_high</code> &mdash; transaction number (incremented in <code>IAttachment::startTransaction</code>)</li>
+		<li><code>gds_quad_low</code> &mdash; BLOB number inside the transaction (increment)</li>
+	</ul>
+	</li>
+	<li>Creation of a new BLOB instance is done by the <code>IBlob* IAttachment::createBlob(status, ...)</code> method. This method is called both to return fields of some types mapped to BLOB inside the provider, and on the Firebird side in the EDS implementation when passing input parameters of the BLOB type.</li>
+	<li>Opening an existing BLOB instance by its identifier is done by the <code>IBlob* IAttachment::openBlob(status, ...)</code> method</li>
+	<li>When a transaction is completed (<code>ITransaction::commit</code>, <code>ITransaction::rollback</code>), the contents of BLOBs that belong to this transaction must be cleared.</li>
+</ul>
+
+<h4>5.5.1. Optimizing BLOB lifetime</h4>
+
+<p>When investigating the operation of <code>EXECUTE STATEMENT ON EXTERNAL</code>, the following was discovered:</p>
+
+<ul>
+	<li>BLOB contents are always completely copied between EDS and the provider (no segment forwarding);</li>
+	<li>EDS implements only one-way cursors</li>
+</ul>
+
+<p>This led me to the idea that the lifetime of BLOBs in memory can be reduced. That is, the contents of BLOB fields of cursors only need to be stored until the next call to the <code>IResultSet::fetchNext</code> method, after which old BLOBs can be cleared. This allowed us to reduce the memory consumption of the provider when fetching cursors with BLOB fields.</p>
+
+<p>That&#39;s all about the implementation.</p>
+
+<h2 id="what-provider-implementations-exist">6. What provider implementations exist?</h2>
+
+<p>There are the following implementations of access to external databases via EDS:</p>
+
+<ul>
+	<li>ODBCEngine, MySQLEngine (HQbird)</li>
+	<li>jdbc_provider (Red Database)</li>
+	<li>Magpie (ODBC Dmitry Sibiryakov)</li>
+</ul>
+
+<h2 id="examples-of-work">7. Examples</h2>
+
+<p>Now let&#39;s look at examples of accessing the database via MySQL and ODBC.</p>
+
+<p>You can download the trial version of HQbird for Windows at <a href="/hqbird">https://firebirdsql.org/hqbird</a>&nbsp;</p>
+
+<p>Install HQbird by checking the ODBCEngine and MySQLEngine boxes in the installer.</p>
+
+<p>ODBCEngine and MySQLEngine plugins starting with Firebird 4.0 and higher.</p>
+
+<p>Edit the <code>firebird.conf</code> file by changing the <code>Providers</code> configuration parameter as follows</p>
+
+<pre>
+Providers = MySQLEngine,Remote,Engine13,Loopback
+    </pre>
+
+<p>Now you can execute SQL query against your MariaDB or MySQL database:</p>
+
+<pre>
+dsn_mysql = &#39;mysql://host=localhost;port=3306;database=employees&#39;;
+
+for
+  execute statement (q&#39;{
+select
+  emp_no, birth_date,
+  first_name, last_name,
+  gender, hire_date
+from employees
+where emp_no = ?
+}&#39;) (10020)
+  on external dsn_mysql
+  as user &#39;root&#39; password &#39;sa&#39;
+  into
+    emp_no, birth_date, first_name, last_name, gender, hire_date
+do
+  suspend;
+    </pre>
+
+<p>The same, but using named parameters:</p>
+
+<pre>
+dsn_mysql = &#39;mysql://host=localhost;port=3306;database=employees&#39;;
+
+for
+  execute statement (q&#39;{
+select
+  emp_no, birth_date,
+  first_name, last_name,
+  gender, hire_date
+from employees
+where emp_no = :emp_no
+}&#39;) (emp_no := 10020)
+  on external dsn_mysql
+  as user &#39;root&#39; password &#39;sa&#39;
+  into
+  emp_no, birth_date, first_name, last_name, gender, hire_date
+do
+  suspend;
+    </pre>
+
+<p>If you need access via ODBC, edit the <code>firebird.conf</code> file and change the <code>Providers</code> configuration parameter as follows:</p>
+
+<pre>
+Providers = ODBCEngine,Remote,Engine13,Loopback
+    </pre>
+
+<p>Now you can execute SQL query against MariaDB or MySQL database via ODBC interface:</p>
+
+<pre>
+conn_str = &#39;odbc://DRIVER={MariaDB ODBC 3.1 Driver};SERVER=server;PORT=3306;DATABASE=test;CHARSET=utf8mb4&#39;;
+
+sql = Q&#39;{
+SELECT
+  id, title,
+  body, bydate
+FROM article
+}&#39;;
+
+for execute statement (:sql)
+    on external :conn_str
+    as user &#39;root&#39; password &#39;play&#39;
+    into id, title, body, bydate
+do
+  suspend;
+    </pre>
+
+<p>ODBC with named parameters:</p>
+
+<pre>
+xConnStr = &#39;odbc://DRIVER={MariaDB ODBC 3.1 Driver};SERVER=server;PORT=3306;DATABASE=test;TCPIP=1;CHARSET=utf8mb4&#39;;
+
+xSQL = &#39;
+SELECT
+  CODE_SEX, NAME, NAME_EN
+FROM sex
+WHERE CODE_SEX = :A_CODE_SEX
+&#39;;
+
+for
+  execute statement (:xSQL) (A_CODE_SEX := xCODE_SEX)
+  on external xConnStr
+  as user &#39;test&#39; password &#39;12345&#39;
+  into CODE_SEX, NAME, NAME_EN
+do
+  suspend;
+    </pre>
+
+<p>Using the ODBC interface you can execute SQL queries to any database for which an ODBC driver exists.</p>
+
+<h2 id="what-are-the-problems-with-existing-implementations">8. What are the problems with existing implementations?</h2>
+
+<ul>
+	<li>Prefix in connection string depends on configuration</li>
+	<li>Passing authentication parameters depending on configuration</li>
+	<li>Handling connection errors</li>
+	<li>Not all DBMS can return input parameter types</li>
+	<li>Named parameters are processed only for SQL operators whose syntax is similar to Firebird</li>
+	<li>CALL operator does not work with stored procedures that return a data set</li>
+	<li>It is necessary to ensure that the encoding of string parameters matches</li>
+</ul>
+
+<p>Let&#39;s take a closer look at why this happens.</p>
+
+<h3>8.1. Prefixes in the connection string</h3>
+
+<p>What are prefixes in the connection string for?</p>
+
+<ul>
+	<li>Providers try to open a connection in the order specified in the <code>Provider</code> parameter (<code>firebird.conf</code>)</li>
+	<li>If the connection attempt fails, the next provider is tried</li>
+	<li>Trying to establish a connection may not be cheap</li>
+	<li>The prefix in the connection string allows you to quickly determine whether the provider is suitable or not</li>
+</ul>
+
+<p>We have two types of prefixes in the current implementation:</p>
+
+<ul>
+	<li>For ODBC it is: <code>:odbc:</code> or <code>odbc://</code></li>
+	<li>For MySQL it is: <code>:mysql:</code> or <code>mysql://</code></li>
+</ul>
+
+<p>Each prefix has its advantages and disadvantages.</p>
+
+<p>A more familiar URL like prefix requires that our provider be specified before the <code>Remote</code> provider, i.e.</p>
+
+<pre>
+Providers = ODBCEngine,Remote,Engine13,Loopback
+    </pre>
+
+<p>A provider whose connection string prefix begins with a colon can be specified anywhere before the Loopback provider. A colon before and after the prefix prevents this prefix from being interpreted as a host name.</p>
+
+<p>In addition, the order of providers affects how authentication parameters are passed. If a connection string prefix beginning with a colon is used, the user name must be passed in the connection string, and not using the <code>USER</code> keyword (EDS). In this case, <code>NULL</code> is passed in <code>USER</code>.</p>
+
+<p>The reason: if a user name is passed and the host is not specified in the connection string, EDS considers this to be a Firebird database located on the current server, and therefore tries to apply Firebird authentication to it. That is, the user is looked up in <code>security.db</code> (see <code>/src/jrd/extds/ValidatePassword.cpp</code>).</p>
+
+<h3>8.2. Handling connection errors</h3>
+
+<p>Another problem is getting a connection error. The algorithm for enumerating providers works in such a way that if the connection attempt is unsuccessful, then we move on to the next provider. In this case, the real error that occurs during the connection attempt is lost. Instead, an error from the last provider in the list is returned.</p>
+
+<p>The following solution (a hack) was invented:</p>
+
+<ul>
+	<li>The connection string prefix is checked, and if it does not match, then we throw the error <code>isc_unavailable</code>;</li>
+	<li>If the connection string prefix matches, then we try to connect to the database;</li>
+	<li>If an error occurs during the connection to the database, then an instance of a pseudo-connection is created, called <code>ErrorAttachment</code> (inherited from <code>IAttachment</code>);</li>
+	<li>When an instance of this connection is created, the original error is saved in it;</li>
+	<li>The error is thrown when calling any method of this connection.</li>
+</ul>
+
+<h3>8.3. Not all DBMS can return input parameter types</h3>
+
+<p>The next big problem is that not all DBMSs can return the types of input parameters when preparing a SQL query. For example:</p>
+
+<ul>
+	<li>MySQL API has the function <code>mysql_stmt_param_count</code> to return the number of input parameters;</li>
+	<li>The function for describing input parameters <code>mysql_stmt_param_metadata</code> is just a stub without implementation.</li>
+</ul>
+
+<p>A hack: use the largest capacity type for the parameter &mdash; <code>VARCHAR(32765)</code>.</p>
+
+<p>Another example from ODBCEngine:</p>
+
+<ul>
+	<li>ODBC has the function <code>SQLDescribeParam</code></li>
+	<li>Not all drivers return a real description of the parameter. For example, <strong>myodbc</strong> returns <code>VARCHAR(255)</code> for all parameters</li>
+</ul>
+
+<h3>8.4. Named parameters cannot be used with all queries</h3>
+
+<p>Named parameters can only be used with SQL queries whose syntax is similar to Firebird&#39;s.</p>
+
+<p>Take a look on the following example:</p>
+
+<pre>
+dsn_mysql = &#39;mysql://host=localhost;port=3306;database=employees&#39;;
+
+execute statement
+  (&#39;CALL sp_conn_audit(:A_CONN_ID, :A_USER, :A_DT)&#39;)
+  (
+    A_CONN_ID := current_connection,
+    A_USER := current_user,
+    A_DT := localtimestamp
+  )
+on external dsn_mysql
+as user &#39;root&#39; password &#39;sa&#39;;
+    </pre>
+
+<p>Running this example will produce the following error:</p>
+
+<pre>
+Statement failed, SQLSTATE = 42000
+Execute statement error at isc_dsql_prepare :
+335544382 : You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server
+version for the right syntax to use near &#39;:A_CONN_ID, :A_USER, :A_DT)&#39; at line 1
+Statement : CALL sp_conn_audit(:A_CONN_ID, :A_USER, :A_DT)
+Data source : Firebird::mysql://host=localhost;port=3306;database=employees
+-At block line: 7, col: 3
+    </pre>
+
+<p>The reason is that the SQL query pre-parser for extracting named parameters in <code>EXECUTE STATEMENT</code> does not know the syntax of calling a stored procedure via the <code>CALL</code> statement. This will be fixed in Firebird 6.0, which supports such syntax.</p>
+
+<h2 id="conclusion">9. Conclusion</h2>
+
+<p class="whitespace-normal break-words">Firebird&#39;s functionality can be significantly extended through the implementation of custom plugins, enabling the addition of numerous useful features.</p>
+
+<p class="whitespace-normal break-words">&nbsp;</p>
+
+<p class="whitespace-normal break-words" style="text-align: center;">Please send feedback and questions to support@ib-aid.com.</p>
+
+<p>&nbsp;</p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Documentation</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-rdbms/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird RDBMS</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-notes/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Notes</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/reference-manuals/" class="menulvl_3"><i class="fa fa-arrow-right"></i> All Reference Manuals</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/white-papers-presentations/" class="menulvl_3"><i class="fa fa-arrow-right"></i> White Papers &amp; Presentations</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/books/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Books</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/drivers-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Drivers Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-docs-and-articles/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Docs and Articles</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/external-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> External Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/licensing/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Licensing</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/features/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Features</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sql-conformance/" class="menulvl_3"><i class="fa fa-arrow-right"></i> SQL Conformance</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/historical-reference/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Historical Reference</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-doc/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-brand-faq/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Branding Policy</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Brand FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/logos/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Logos</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-and-other-databases/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird and other databases</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

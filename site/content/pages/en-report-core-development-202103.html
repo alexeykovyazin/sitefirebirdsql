@@ -1,0 +1,182 @@
+---
+title: "Firebird: Developer's Report: Core Coding and Development"
+html_title: "Firebird: Developer's Report: Core Coding and Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Coding and Development"
+menu_active: ""
+source_url: "/en/report-core-development-202103"
+source_format: new
+url: "/en/report-core-development-202103"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Coding and Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">January to March 2021</span></strong></div>
+
+<h4><u>January 2021</u></h4>
+
+<p><em>master</em></p>
+
+<ul>
+	<li>Fixed bug CORE-6458 : Impossible to cancel query.</li>
+	<li>Windows only: let isql handle Ctrl+C signal even if it was disabled by parent process.</li>
+	<li>Added missed checkout when external connection is reset.</li>
+	<li>Changed type of RDB$CONFIG.RDB$CONFIG_NAME to VARCHAR(63) CHARACTER SET ASCII.</li>
+	<li>Improvement CORE-6469 : Provide ability to see in the trace log actions related to session management (e.g. ALTER SESSION RESET).</li>
+	<li>Additional fix for CORE-6469 : Trace manager must correctly handle NULL transaction in event_dsql_execute().</li>
+	<li>Fixed bug CORE-6475 :&nbsp; Memory leak when running EXECUTE STATEMENT with named parameters. Also, added check for parameter name length not exceeding MAX_SQL_IDENTIFIER_LEN (it is anyway limited at the SQL\BLR parsers level).</li>
+	<li>Avoid recursive calls in memory pool printing code.</li>
+</ul>
+<em>B3_0_Release</em>
+
+<ul>
+	<li>This should avoid hangup\crash when engine shutdown was not complete within the allowed timeout.</li>
+	<li>Avoid recursive calls in memory pool printing code.</li>
+</ul>
+<u>February</u>
+
+<p><em>master</em></p>
+
+<ul>
+	<li>Fixed bug CORE-2032 : Stored procedure recursively called by calculated field fails after reconnect.</li>
+	<li>Frontported fix for bug CORE-6477 : Rare race condition in Plugin Manager could lead to the server crash. This should avoid hangup\crash when engine shutdown was not complete within the allowed timeout.</li>
+	<li>This should fix bug CORE-6488 : Event delivery could be missed when local (XNET) protocol is used.</li>
+	<li>Update list of known services.</li>
+	<li>Fixed bug with index names patterns in online validation service, found by Ivan Přenosil in fb-devel.</li>
+</ul>
+<em>TempTableDirectory (PR 311)</em>
+
+<ul>
+	<li>Introduce new setting TempTableDirectory as discussed in fb-devel, see also CORE-1241</li>
+	<li>New setting TempTableDirectory. Used to set directory where engine should put data of temporary tables and temporary blobs.</li>
+	<li>Let include file name into error message when creation of temp file failed.</li>
+</ul>
+<em>B3_0_Release</em>
+
+<ul>
+	<li>Fixed bug CORE-2032 : Stored procedure recursively called by calculated field fails after reconnect.</li>
+	<li>This should fix bug CORE-6477 : Rare race condition in Plugin Manager could lead to the server crash.</li>
+	<li>This should fix bug CORE-6488 : Event delivery could be missed when local (XNET) protocol is used.</li>
+	<li>Update list of known services.</li>
+</ul>
+<u>March</u>
+
+<p><em>master</em></p>
+
+<ul>
+	<li>Fixed bug CORE-6526 : AV in engine when StatementTimeout is active for user statement and some internal DSQL statement was executed as part of overall execution process.</li>
+	<li>core-5515 (PR 311) : Fix for bug CORE-5515 #314</li>
+	<li>Enforce equal binary layout of event_t structure for both 32 and 64-bit platforms as its instances is used in shared memory. It fixed bug CORE-5515 : When 32bit and 64bit FB 3 servers run on one Windows machine concurrently, Firebird services freeze several minutes after first disconnect.</li>
+	<li>Use correct type for event handle and remove few unneeded casts.</li>
+	<li>Added check for correct version of shared memory used in MappingIpc.</li>
+	<li>Work in progress: started to work on mt-issues within page cache for the next Firebird version.</li>
+</ul>
+<em>Vladyslav Khorsun</em><br />
+<em>Dnetpropetrovsk, Ukraine</em>
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

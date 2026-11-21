@@ -1,0 +1,253 @@
+---
+title: "Firebird: Firebird news digest: drivers (Jaybird, Node.js), FBSimCity and Electric Firebird"
+html_title: "Firebird: Firebird news digest: drivers (Jaybird, Node.js), FBSimCity and Electric Firebird"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Firebird news digest: drivers (Jaybird, Node.js), FBSimCity and Electric Firebird"
+menu_active: ""
+source_url: "/en/news/firebird-news-digest-drivers-jaybird-node-js-fbsimcity-and-electric-firebird"
+source_format: new
+url: "/en/news/firebird-news-digest-drivers-jaybird-node-js-fbsimcity-and-electric-firebird"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+ 
+    <section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/about-firebird/">About Firebird</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/news/">News &amp; Events</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Firebird news digest: drivers (Jaybird, Node.js), FBSimCity and Electric Firebird</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-8">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div class="post-categories d-flex justify-content-between align-content-center">
+                        <div class="categories-share">
+                            <ul>
+                                <li><i class="fas fa-calendar"></i> Aug 22, 2026</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="title">Firebird news digest: drivers (Jaybird, Node.js), FBSimCity and Electric Firebird</h3>
+                                            </div>
+                    <div class="post-text mt-30">
+                        <h3 data-pm-slice="1 1 []"><strong>Jaybird 6.0.6 and Jaybird 5.0.13 released</strong></h3>
+
+<p>Jaybird 6.0.6 and Jaybird 5.0.13 have been released, providing bug fixes. Jaybird is the Firebird JDBC driver.<br />
+More details <a href="/en/news/jaybird-6-0-6-and-jaybird-5-0-13-released" rel="noopener noreferrer nofollow" target="_blank">here</a>.</p>
+
+<h3><strong>node-firebird (Pure JS Driver)</strong></h3>
+
+<p>This driver has now surpassed 1 million downloads per year!</p>
+
+<ul>
+	<li>
+	<p>Roadmap and Repository Updates: <a href="https://github.com/hgourvest/node-firebird/blob/master/ROADMAP.md" rel="noopener noreferrer nofollow" target="_blank">https://github.com/hgourvest/node-firebird/blob/master/ROADMAP.md</a></p>
+	</li>
+	<li>
+	<p>Context on the Roadmap: <a href="https://mapopa.blogspot.com/2026/07/node-firebird-catches-up-roadmap.html" rel="noopener noreferrer nofollow" target="_blank">https://mapopa.blogspot.com/2026/07/node-firebird-catches-up-roadmap.html</a></p>
+	</li>
+	<li>
+	<p>v2.6.0 Release and Milestone: <a href="https://mapopa.blogspot.com/2026/07/announcing-node-firebird-v260.html" rel="noopener noreferrer nofollow" target="_blank">https://mapopa.blogspot.com/2026/07/announcing-node-firebird-v260.html</a></p>
+	</li>
+</ul>
+
+<p><a href="https://github.com/hgourvest/node-firebird/" rel="noopener noreferrer nofollow" target="_blank">Repository on GitHib</a></p>
+
+<h3><strong>node-firebird-driver</strong></h3>
+
+<p>The latest updates focus mainly on expanding connectivity options and introducing a new pure Node.js implementation. <a href="https://github.com/asfernandes/node-firebird-drivers/blob/master/CHANGELOG.md" rel="noopener noreferrer nofollow" target="_blank">Key changes</a> include:</p>
+
+<ul>
+	<li>
+	<p>Aug 9, 2026 &mdash; Fix #174: support for offset-based time zones.</p>
+	</li>
+	<li>
+	<p>Aug 8, 2026 &mdash; Feature #172: added a <code>ConnectOptions</code> option for the Firebird 6 schema search path.</p>
+	</li>
+	<li>
+	<p>May 4, 2026 &mdash; Feature #166: introduced a pure Node.js driver implementation that works independently of the native <code>fbclient</code> library. Release details: <a href="https://asfernandes.github.io/2026/05/04/node-firebird-driver-wire" rel="noopener noreferrer nofollow" target="_blank">https://asfernandes.github.io/2026/05/04/node-firebird-driver-wire</a></p>
+	</li>
+	<li>
+	<p>Feb 21, 2026 &mdash; Feature #165: added <code>charSetForNONE</code> as a new connection option.</p>
+	</li>
+	<li>
+	<p>Jan 29, 2026 &mdash; Feature #163: added a <code>type</code> property to the <code>Statement</code> interface.</p>
+	</li>
+	<li>
+	<p>Dec 31, 2025 &mdash; Feature #162: added <code>setDatabaseReadWriteMode</code> as a connection option, for better control over database access modes.</p>
+	</li>
+</ul>
+
+<p><a href="https://github.com/asfernandes/node-firebird-drivers" rel="noopener noreferrer nofollow" target="_blank">Repository on GitHub</a></p>
+
+<h3><strong>React Native Firebird Driver</strong></h3>
+
+<p>This package uses the <code>node-firebird-driver</code> interfaces and provides its own JSI/native implementation. It requires a bare React Native app or a development-client app using the New Architecture; it does not support iOS or Expo Go in this version.<br />
+<a href="https://github.com/asfernandes/react-native-firebird" rel="noopener noreferrer nofollow" target="_blank">Repository on GitHub</a></p>
+
+<h3>Experiments</h3>
+
+<h4><strong>Electric Firebird</strong></h4>
+
+<p>Electric Firebird (<a href="https://github.com/mariuz/electric-firebird" rel="noopener noreferrer nofollow" target="_blank">mariuz/electric-firebird</a> on GitHub) compiles the Firebird database engine to WebAssembly, following the same approach PGlite used for PostgreSQL. The goal is to let Firebird run both server-side (in Node.js) and fully client-side in the browser, with no server round-trip needed for queries.</p>
+
+<h4><strong>FBSimCity</strong></h4>
+
+<p>FBSimCity is an explorable isometric city where every building represents a real Firebird subsystem, and every glowing particle represents a query traveling through the system &mdash; in through the client harbor, through the SQL translator, into the relational engine, and back home carrying results.</p>
+
+<ul>
+	<li>
+	<p>Live: <a href="https://mariuz.github.io/FBSimCity/" rel="noopener noreferrer nofollow" target="_blank">https://mariuz.github.io/FBSimCity/</a></p>
+	</li>
+	<li>
+	<p>Source: <a href="https://github.com/mariuz/FBSimCity" rel="noopener noreferrer nofollow" target="_blank">https://github.com/mariuz/FBSimCity</a> (MIT license, plain HTML/JS, no build step)</p>
+	</li>
+</ul>
+
+<p><strong>Purpose of the FBSimCity project</strong><br />
+It is aimed at engineers who know SQL but have never seen what happens underneath it (i.e., &ldquo;under the hood&rdquo;).<br />
+Please note: this is a model, not an emulator. No SQL is actually parsed, and no Firebird code runs in the browser.</p>
+
+                    </div>
+                  	<div>
+                    	<div>
+  <iframe frameborder="0"
+    height="150" 
+    scrolling="no" 
+    src="https://firebirdfoundation.substack.com/embed" 
+    style="border:1px solid #EEE; background:white;" 
+    width="100%" 
+    allow="encrypted-media"
+    sandbox="allow-scripts allow-same-origin allow-forms"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>  
+                  	</div>
+                    <div class="post-tags">
+                        <ul>
+                            <li><a><i class="fa fa-share"></i> Share With:</a></li>
+                            <li style="cursor: pointer;"><a class="share-icon fb" data-url="/en/news/firebird-news-digest-drivers-jaybird-node-js-fbsimcity-and-electric-firebird"><i class="fab fa-facebook-f"></i></a></li>
+                          
+                            <li style="cursor: pointer;"><a class="share-icon lin" data-url="/en/news/firebird-news-digest-drivers-jaybird-node-js-fbsimcity-and-electric-firebird"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="post-reader-text post-reader-text-2 post-reader-text-3 pt-50">
+                    <div class="row">
+                                                    <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/jaybird-6-0-6-and-jaybird-5-0-13-released">Jaybird 6.0.6 and Jaybird 5.0.13 released</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                                                            <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/ngram-indexes-in-firebird-fast-substring-search-without-a-full-scan">VIDEO: NGRAM indexes in Firebird: fast substring search without a full scan</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-20">
+                <div class="all-post-sidebar">
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

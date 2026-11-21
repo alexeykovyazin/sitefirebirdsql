@@ -1,0 +1,185 @@
+---
+title: "Firebird: Developer's Report: QA Stress Testing & Development"
+html_title: "Firebird: Developer's Report: QA Stress Testing & Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: QA Stress Testing & Development"
+menu_active: ""
+source_url: "/en/report-qa3-202101"
+source_format: new
+url: "/en/report-qa3-202101"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: QA Stress Testing &amp; Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <span style="font-weight: bold; color: rgb(6, 134, 173); font-size: 16px;">September to December 2020</span><br style="line-height: 20.8px;" />
+<br style="line-height: 20.8px;" />
+<span style="color:#474747;font-size:15px;font-weight:bold;"><u style="line-height: 20.8px;">December 2020</u></span>
+<ul>
+	<li>Created / modified QA tests for 15 tracker tickets</li>
+	<li>Found / reported bugs: CORE-6460</li>
+	<li>OLTP-EMUL: reworked CONNECT/DISCONNECT triggers because of new system variable RESETTING</li>
+	<li>OLTP-EMUL: developed reports for estimating efficiency of ExtConnPool usage</li>
+	<li>Reported test for CORE-2668 hanging on build 3.0.8.33400 (Classic)</li>
+	<li>OLTP-EMUL: re-implemented exceptions handling block</li>
+	<li>Refactored several tests after noticing false failures on build 4.0.0.2298 (related to the results ordering)</li>
+</ul>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>November 2020</u></span></div>
+
+<ul>
+	<li>Created / modified QA tests for ~50 tracker tickets</li>
+	<li>Found / reported bugs: CORE-6441, CORE-6445, CORE-6447, CORE-6450, CORE-6453</li>
+	<li>OLTP-EMUL: updated table fb_errors with actual gdscodes and messages text</li>
+	<li>Reported build 4.0.0.2260 crash while executing &quot;ALTER EXTERNAL CONNECTIONS POOL CLEAR ALL&quot;</li>
+	<li>fbt_cross_report: changed SIMILAR-TO pattern for detect message about possible FB crash</li>
+	<li>OLTP-EMUL, regular launches on POSIX host: multiple crashes since build 4.0.0.2271</li>
+	<li>OLTP-EMUL: deep rework related to test External Connections Pool feature</li>
+	<li>OLTP-EMUL: reported two crashes on build 3.0.8.33392 (SS, Linux)</li>
+	<li>Investigated how different context variables from the SYSTEM namespace affects the performance</li>
+	<li>OLTP-EMUL: reported several crashes on build 4.0.0.2272</li>
+</ul>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>October 2020</u></span></div>
+
+<ul>
+	<li>Created / modified QA tests for ~20 tracker tickets</li>
+	<li>Found / reported bugs: CORE-6414, CORE-6415</li>
+	<li>OLTP-EMUL: checked build 33357 (compiled with gcc 4.8.3)</li>
+	<li>OLTP-EMUL: reported crashing build 4.0.0.2214 SS when changing DB state to full shutdown + several runs testing the fix</li>
+	<li>Refactored auxiliary script that runs .fbt-tests</li>
+	<li>CORE-5302: reported performance regression since Jan-2020</li>
+	<li>Refactored script that checks FB crashes on Windows (watch4dumps.bat)</li>
+	<li>Read consistency / statement-level restarts: started to implement tests which use PSQL</li>
+	<li>Reported crash on FB 3.x and 4.x when PSQL code contains infinite loop of SP calls</li>
+	<li>Reported unexpected SQLSTATE while running test for CORE-5685</li>
+	<li>Implemented test checking presence of all necessary files inside the snapshot build</li>
+	<li>Reported failed tests for CORE-3639 and CORE-6285</li>
+	<li>OLTP-EMUL: reported crash on build 4.0.0.2228, related to setLockAttachment</li>
+</ul>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>September 2020</u></span>
+
+<ul>
+	<li>Created / modified QA tests for 7 tracker tickets</li>
+	<li>Found / reported bugs: CORE-6411</li>
+	<li>Refactored tests functional/transactions/read-consist-sttm-restart*</li>
+	<li>fbt-cross-report: implemented new report that shows distribution of known (standard) FB errors per tests/builds</li>
+	<li>Fixed script that makes FB snapshot builds</li>
+	<li>Reported fbt-run hanging on 4.0.0.2194 Classic during test for CORE-4298</li>
+	<li>Reported several crashes for OLTP-EMUL when DB is in backup-lock state</li>
+	<li>Reported crashing build 4.0.0.2195 when ran .sql with mon$ queries</li>
+	<li>Tested VARCHAR vs BLOB network transmission performance, with/without WireCompression</li>
+	<li>Finished creation of SQL-related tests for check statement-level restart</li>
+	<li>OLTP-EMUL: several changes / improvements</li>
+</ul>
+<br />
+<em style="line-height: 20.8px;">Pavel Zotov</em></div>
+<em style="line-height: 20.8px;">Moscow, Russian Federation</em><br style="line-height: 20.8px;" />
+&nbsp;
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

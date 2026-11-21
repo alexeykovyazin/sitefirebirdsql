@@ -1,0 +1,259 @@
+---
+title: "Firebird: Developer's Report: Firebird Core Development"
+html_title: "Firebird: Developer's Report: Firebird Core Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Firebird Core Development"
+menu_active: ""
+source_url: "/en/report-core-development-201705"
+source_format: new
+url: "/en/report-core-development-201705"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/archives/">Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/ff-reports-archives/">Developer Reports Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Firebird Core Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">January to April 2017</span></strong><br />
+<u>January</u><br />
+<em>master</em></div>
+
+<ul>
+	<li>Improvement CORE-5434 : Read-only transactions in SuperServer could avoid immediate write of Header and TIP pages after change</li>
+	<li>Fixed bug CORE-5422 : Decompression overran buffer after rollback</li>
+	<li>Improvement CORE-4563 : Add support for Windows 8/2012 fast/low-latency &quot;TCP Loopback Fast Path&quot; functionality</li>
+	<li>CORE-5459 : Make validation detect and fix data page error when DP marked as secondary contains primary record version(s).</li>
+	<li>Fixed bug CORE-5464 : AV in fbclient when reading blob stored in incompatible encoding</li>
+	<li>Fixed regression: performance penalty when check access rights of user with super privileges granted (such as SYSDBA, DBO, etc)</li>
+</ul>
+
+<div><em>B3_0_Release</em></div>
+
+<ul>
+	<li>Fixed bug CORE-5422 : Decompression overran buffer after rollback</li>
+	<li>CORE-5459 : Make validation detect and fix data page error when DP marked as secondary contains primary record version(s).</li>
+	<li>Fixed bug CORE-5464 : AV in fbclient when reading blob stored in incompatible encoding</li>
+	<li>Improvement CORE-5434 : Read-only transactions in SuperServer could avoid immediate write of Header and TIP pages after change</li>
+</ul>
+
+<div><em>B2_5_Release</em></div>
+
+<ul>
+	<li>Fixed bug CORE-5422 : Decompression overran buffer after rollback</li>
+	<li>Improvement CORE-4563 : Add support for Windows 8/2012 fast/low-latency &quot;TCP Loopback Fast Path&quot; functionality</li>
+</ul>
+
+<p><u>February</u></p>
+
+<div><em>master</em></div>
+
+<ul>
+	<li>Fixed bug CORE-5448 : FB3 - crash (consistency check) when creating view on table which has column with character set none, database default charset is utf8, and utf8 default collation is &#39;unicode&#39;</li>
+	<li>Fixed bug CORE-5476 : Trace shows info only after 2nd (repeated) .sql run (FB must be restarted before this)</li>
+	<li>Fixed bug CORE-5477 : Trace duplicates asci_char(13) in its output (Windows only)</li>
+	<li>Improvement CORE-5475 : Provide ability to filter out info and warnings from trace log, and</li>
+	<li>Improvement CORE-4486 : Trace: provide filter to INCLUDE / EXCLUDE errors by their mnemonical names</li>
+	<li>Also, fix text alignment issue in detailed per-table perf stats</li>
+	<li>Fixed bug CORE-5470 : Trace INCLUDE_FILTER with [[:WHITESPACE:]]+ does not work when statement contains newline is issued</li>
+	<li>Make name of shared memory for users map dependent on the engine version to avoid confusion when different engines running at the same time</li>
+	<li>New feature CORE-5488 : Timeouts for running SQL statements and idle connections</li>
+</ul>
+
+<div><em>B3_0_Release</em></div>
+
+<ul>
+	<li>Fixed bug CORE-5448 : FB3 - crash (consistency check) when creating view on table which has column with character set none, database default charset is utf8, and utf8 default collation is &#39;unicode&#39;</li>
+	<li>Fixed bug CORE-5470 : Trace INCLUDE_FILTER with [[:WHITESPACE:]]+ does not work when statement contains newline is issued</li>
+	<li>Fixed bug CORE-5477 : Trace duplicates asci_char(13) in its output (Windows only)</li>
+	<li>Backport improvement CORE-5475 : Provide ability to filter out info and warnings from trace log, and</li>
+	<li>Backport improvement CORE-4486 : Trace: provide filter to INCLUDE / EXCLUDE errors by their mnemonical names</li>
+</ul>
+
+<div><em>B2_5_Release</em></div>
+
+<ul>
+	<li>Add fb_shutdown() call to the isql and gpre. It allows isql_embed and grpe_embed to avoid 3 sec delay on exit.</li>
+	<li>Fixed bug CORE-5419 : Index garbage collection on varchar column causes server to hang</li>
+	<li>Fixed bug CORE-5477 : Trace duplicates asci_char(13) in its output (Windows only)</li>
+	<li>Fixed bug CORE-5470 : Trace INCLUDE_FILTER with [[:WHITESPACE:]]+ does not work when statement contains newline is issued</li>
+	<li>Backport improvement CORE-5475 : Provide ability to filter out info and warnings from trace log, and timeouts</li>
+	<li>Documentation for statement-level timeouts</li>
+	<li>Correct evaluation of statement level timeout</li>
+	<li>Documentation for idle connection timeouts.</li>
+	<li>Corrections and additions in docs for statement-level timeouts.</li>
+	<li>Fixed minor discrepancies between docs and implementation.</li>
+	<li>Fixed mistake in logic</li>
+	<li>Fixed mistake in docs noted by Denis Simonov</li>
+	<li>Finally merge branch timeouts into master</li>
+</ul>
+
+<div><u>March</u><br />
+<em>master</em></div>
+
+<ul>
+	<li>Ignore trailing zero&#39;s in password buffer just read from VARBINARY column. It fixes bug when accounts created by legacy user manager wrongly declined by the server.</li>
+	<li>Fixed bug CORE-5498 : Cannot create connection for DB Events</li>
+	<li>Merge pull request #87 from redsoftbiz/win9x_removal: Remove Windows 9X support</li>
+	<li>Fixed bug CORE-5415 : [security3.fdb] wrong page type page 22 is of wrong type (expected pointer, found index root)</li>
+	<li>Fixed bug CORE-5508 : Problem with establishing connect using client 3.0.2.32708 to server 4.0.0.572</li>
+	<li>Update docs after fix for CORE-5508</li>
+	<li>Refactoring: make class Printer ready for usage not only in btr.cpp</li>
+	<li>Reimplement broken blob filter for rdb$format</li>
+</ul>
+
+<p><em>B3_0_Release</em></p>
+
+<ul>
+	<li>Fixed bug CORE-5498 : Cannot create connection for DB Events</li>
+	<li>Fixed bug CORE-5415 : [security3.fdb] wrong page type page 22 is of wrong type (expected pointer, found index root)</li>
+</ul>
+
+<div><em>B2_5_Release</em></div>
+
+<ul>
+	<li>Fixed bug CORE-5415 : [security3.fdb] wrong page type page 22 is of wrong type (expected pointer, found index root)</li>
+</ul>
+
+<div><em>New branch cch-protect</em><em> </em></div>
+
+<ul>
+	<li>Introduced ability to write-protect page buffers memory while it&#39;s not changed explicitly. It allows to find a bugs related to the page buffers memory corruption, such as CORE-5415.</li>
+</ul>
+
+<div><u>April</u><br />
+<em>master</em></div>
+
+<ul>
+	<li>Fixed memory leak in fbintl</li>
+	<li>Fixed bug CORE-5416 : FB does not release memory after load tests</li>
+	<li>Fixed bug CORE-5521 : Race condition between event notification and event registration</li>
+	<li>Fixed bug CORE-5516 : Firebird service crashes when stopping</li>
+	<li>Fixed bug CORE-5528 : internal Firebird consistency check (limbo impossible (184), file: vio.cpp line: 2379)</li>
+</ul>
+
+<div><em>B3_0_Release</em></div>
+
+<ul>
+	<li>Fixed memory leak in fbintl</li>
+	<li>Fixed bug CORE-5416 : FB does not release memory after load tests</li>
+	<li>Fixed bug CORE-5521 : Race condition between event notification and event registration</li>
+	<li>Fixed bug CORE-5516 : Firebird service crashes when stopping</li>
+	<li>Fixed bug CORE-5528 : internal Firebird consistency check (limbo impossible (184), file: vio.cpp line: 2379)</li>
+</ul>
+
+<div><em>B2_5_Release</em></div>
+
+<ul>
+	<li>Fixed bug CORE-5521 : Race condition between event notification and event registration</li>
+	<li>Fixed bug bug CORE-5522 : Engine could freeze up to 2 minutes and raise deadlock error when updating RDB$INDICES if it contains backversions</li>
+	<li>Fixed bug CORE-5528 : internal Firebird consistency check (limbo impossible (184), file: vio.cpp line: 2379)</li>
+</ul>
+
+<p><em>Vladyslav Khorsun</em><br />
+<em>Dnetpropetrovsk, Ukraine</em></p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

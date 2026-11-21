@@ -1,0 +1,159 @@
+---
+title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+html_title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Security and Design Enhancements"
+menu_active: ""
+source_url: "/en/report-core-security-202003"
+source_format: new
+url: "/en/report-core-security-202003"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Security and Design Enhancements</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <span style="color:#0686AD;font-size:16px;font-weight:bold;">October 2019 to January 2020</span>
+
+<h4><u>New features</u></h4>
+
+<ol>
+	<li><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size: 9pt; color: rgb(0, 0, 0); background-color: transparent;">&nbsp;</span></span>Added SET BIND statement - universal tool to solve datatype compatibility issues at client side</li>
+	<li>Added wire crypt plugin using ChaCha cipher<br />
+	-- Added various ways to get infomation about wire crypt plugin name:variable in rdb$get_context(), field in mon$attachments and tag in Attachment::getInfo()</li>
+	<li>Ensured correctness of firebird.pas with timezone support</li>
+	<li>Make it possible to use database encryption key (known to the client) in any connection to the server without modifications of end-user software</li>
+</ol>
+
+<h4><u>Bugfixing</u></h4>
+
+<ol>
+	<li>Fixed CORE-6000: Make gbak&#39;s command line switch &quot;-fe(tch_password) ...&quot; work correctly when run as service.</li>
+	<li>Fixed CORE-6163: Generator pages are not encrypted</li>
+	<li>Fixed CORE-6186: Original content of column which is involved into ENCRYPT() is displayed as distorted view after this call</li>
+	<li>Fixed CORE-6203: Segfault when using non-default authentication plugin</li>
+	<li>Fixed CORE-6141: fbsvcmgr action_repair rpr_list_limbo_trans does not show list of transactions in LIMBO state</li>
+	<li>Fixed CORE-6212: Authentication plugin on server may get garbage data from client instead empty packet</li>
+	<li>Fixed CORE-6208: Grant lost in security.db after backup/restore cycle</li>
+	<li>Fixed CORE-6221: Posssible memory leak due to incorrect allocFunc() for zlib</li>
+	<li>Fixed CORE-6227: isc_info_svc_user_dbpath always returns alias of main security database instead one actually used by services connection</li>
+	<li>Fixed CORE-6218: COUNT(DISTINCT <decfloat_field>) leads FB to crash when there are duplicate values of this field</decfloat_field></li>
+	<li>Fixed CORE-6238: DECFLOAT: subtraction Num1 - Num2 leads to &quot;Decimal float overflow&quot; if Num2 is specified in scientific notation and less than max double ( 1.7976931348623157e308 )</li>
+	<li>Fixed CORE-6237: Fixed performance issue with SRP plugin (added connections cache)</li>
+	<li>Disable simultaneous access (in posix-only, not documented) to read-only database from multiple processes in SS mode that caused a number of bugs inside engine</li>
+	<li>Use correct error codes if double precision value had been overflown when casting to it from DECFLOAT</li>
+</ol>
+
+<h4><u>Misc.</u></h4>
+
+<ol>
+	<li>FBTCS support (make tests match FB4 reality)</li>
+	<li>Built of 3.0.5 src, linux &amp; android packages.</li>
+</ol>
+<em>Alex Peshkov</em><br />
+<em>Yaroslavl, Russia</em>
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

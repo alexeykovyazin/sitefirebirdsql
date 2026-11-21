@@ -1,0 +1,235 @@
+---
+title: "Firebird: Developer's Report: Firebird INTL/DSQL Development"
+html_title: "Firebird: Developer's Report: Firebird INTL/DSQL Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Firebird INTL/DSQL Development"
+menu_active: ""
+source_url: "/en/report-core-dsql-201710"
+source_format: new
+url: "/en/report-core-dsql-201710"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/archives/">Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/ff-reports-archives/">Developer Reports Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Firebird INTL/DSQL Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">May to September 2017</span></strong>
+<h3>September</h3>
+
+<div><u>Trunk</u></div>
+
+<ul>
+	<li>Moving libtomcrypt to extern.</li>
+	<li>Improvement CORE-5606 - Add expression index name to exception message if computation failed.</li>
+	<li>Working in CORE-5611 - Higher memory consumption for prepared statements in FB3.</li>
+</ul>
+
+<div><br />
+<u>FB/Java</u></div>
+
+<ul>
+	<li>Finished rework on security to have less exposure to call user methods with elevated privileges.</li>
+</ul>
+
+<h3>August</h3>
+
+<div><u>Trunk</u></div>
+
+<ul>
+	<li>Verifying security bug CORE-5518.</li>
+	<li>Reviewing FB 4 release notes.</li>
+	<li>Verifying CORE-5592 - Problem with INSERT (...) RETURNING (...) and using dbExpress with Delphi.</li>
+	<li>Writing examples for window function frames to the release notes.</li>
+	<li>Verifying bug CORE-5595.</li>
+	<li>Verifying bug CORE-5592.</li>
+</ul>
+
+<div><u>FB/Java</u></div>
+
+<ul>
+	<li>Fixes for the Linux installer.</li>
+	<li>Fix #10 - error when calling Java function inside default connection of other Java function.</li>
+	<li>Started rework on security to have less exposure to call user methods with elevated privileges.</li>
+</ul>
+
+<h3>July</h3>
+
+<div><u>Trunk</u></div>
+
+<ul>
+	<li>Finished work on Improvement CORE-5380 - Allow subroutines to call others subroutines and themself recursively.</li>
+	<li>Fixed CORE-5580 - Signature of packaged functions is not checked for mismatch with [NOT] DETERMINISTIC attribute.</li>
+	<li>Improvement CORE-4436 - Support for different hash algorithms in HASH system function.</li>
+</ul>
+
+<div><u>3.0 branch</u></div>
+
+<ul>
+	<li>Fixed problem with UDRCPP and MSVC official build.</li>
+	<li>Backported fix for CORE-5580 - Signature of packaged functions is not checked for mismatch with [NOT] DETERMINISTIC attribute.</li>
+	<li>Testing CORE-5578 - Creating a field with BOOLEAN type corrupts the table.</li>
+	<li>Fixed CORE-5570 - Negative infinity (double) shown incorrectly without sign in isql.</li>
+</ul>
+
+<h3>June</h3>
+<u>Trunk</u>
+
+<ul>
+	<li>Finished fix for CORE-5545 - Wrong syntax with CREATE TRIGGER ... ON used with POSITION.</li>
+	<li>Fixed errors and some warnings with the clang release build.</li>
+	<li>Set writable permission for employee.fdb in the Linux install, otherwise it&#39;s unusable.</li>
+	<li>Avoid method calls in NULL objects.</li>
+	<li>Improvement CORE-5563 - Use exception instead bugcheck for EVL_expr.</li>
+	<li>Fixed assertion with CREATE COLLATION.</li>
+	<li>Started working on Improvement CORE-5380 - Allow subroutines to call others subroutines and themself recursively.</li>
+	<li><u>3.0 branch</u>
+	<ul>
+		<li>Fixed CORE-5567 - Direct system table modifications are not completely prohibited.</li>
+		<li>Fixed CORE-5569 - ISQL incorrectly pads UNICODE_FSS/UTF8 columns when they use a collation.</li>
+	</ul>
+	<u>FB/Java</u>
+
+	<ul>
+		<li>Pull request #11 - Store internal context data and implementation in LIFO stack.</li>
+	</ul>
+
+	<h3>May</h3>
+	<u>Trunk</u>
+
+	<ul>
+		<li>Fixed problem with SHOW DOMAIN and SHOW PACKAGE with names greater than 31 characters.</li>
+		<li>Updated TCS tests.</li>
+		<li>Fix show/extract of NUMERIC fields in dialect 1 databases.</li>
+		<li>Working on base transaction snapshot</li>
+		<li>Started fix Fixed CORE-5545 - Wrong syntax with CREATE TRIGGER ... ON</li>
+	</ul>
+
+	<table>
+	</table>
+	used with POSITION.<u>3.0 branch</u>
+
+	<ul>
+		<li>Fixed CORE-5533 - Crash on 3.0 and 4.0 when DB contains database-level trigger.</li>
+		<li>Fixed CORE-5535 - Garbage value in RDB$FIELD_SUB_TYPE in RDB$FUNCTION_ARGUMENTS after altering function.</li>
+		<li>Fixed CORE-5542 - Database-level triggers related to TRANSACTION events (i.e. start, commit and rollback) do not take in account their</li>
+		<li>POSITION index (when more than one trigger for the same event type is defined).</li>
+		<li>Backported fix for CORE-5526 - External routines receives parameters with incorrect length or datatype.</li>
+		<li>Backported fix for CORE-5527 - External routines does not receive default values for they output parameters.</li>
+		<li>Fixed CORE-5550 - Computed decimal field in a view has wrong RDB$FIELD_PRECISION.</li>
+	</ul>
+	<em>Adriano dos Santos Fernandes</em>
+
+	<div><em>Sao Paulo, Brazil</em></div>
+
+	<table>
+	</table>
+	</li>
+</ul>
+</div>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

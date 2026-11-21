@@ -1,0 +1,158 @@
+---
+title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+html_title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Security and Design Enhancements"
+menu_active: ""
+source_url: "/en/report-core-security-201701"
+source_format: new
+url: "/en/report-core-security-201701"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/archives/">Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/ff-reports-archives/">Developer Reports Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Security and Design Enhancements</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">September to December 2016</span></strong><br />
+Prepared 2 presentations (DB encryption &amp; tuning firebird server for use with multiple security databases) for conference in Prague.<br />
+Checked &amp; committed a number pull requests, most are ports to various platforms.<br />
+<br />
+<span style="color:#474747;font-size:15px;font-weight:bold;">Various enhancements &amp; optimizations</span></p>
+
+<ul>
+	<li>Implemented CORE-5204: create an option in the installer to install in different locations than /opt/firebird</li>
+	<li>Added SQL SECURITY clause to various DDL statements (with Roman Simakov)</li>
+	<li>Implemented CORE-5374: Make database name available to crypt plugin</li>
+	<li>Added check for access rights to BLOBs (with Dmitry Starodubov)</li>
+	<li>Performance optimization - avoid additional database attachment from security objects mapping code</li>
+</ul>
+
+<p><span style="color:#474747;font-size:15px;font-weight:bold;">Fixed bugs</span></p>
+
+<ul>
+	<li>Fixed CORE-5326: encrypting a database crashes host process when background encryption gets ready while no connection is established to that database.</li>
+	<li>Fixed CORE-5355: XpbBuilder fails to create new TPB</li>
+	<li>Fixed CORE-5359: MessageMetadata&#39;s getScale returns int and MetadataBuilder&#39;s setScale want unsigned</li>
+	<li>Fixed CORE-5379: Regression service API for isc_spb_sts_table</li>
+	<li>Fixed CORE-5384: Plugin manager fails to provide appropriate config information when name of configuration file is set in plugins.conf</li>
+	<li>Fixed CORE-5428: Rare segfault when preparing request working with a table with triggers</li>
+	<li>Fixed CORE-5429: Segfault when attachment is abandoned for some reason during sweep thread startup</li>
+	<li>Fixed CORE-5425: Server hangs under load test</li>
+</ul>
+
+<p><span style="color:#474747;font-size:15px;font-weight:bold;">New features in FB4</span></p>
+
+<ul>
+	<li>Numerics with precision longer than 18 digits (CORE-4409) - review in separate branch on github, implemented as new datatype decfloat using open source IBM&#39;s library for high precision calculations (released under ICU license), needs sorting on decfloat fields.</li>
+	<li>Batch API operations (CORE-820) - in progress, needs final decision on API calls.</li>
+</ul>
+
+<p><em>Alex Peshkov</em><br />
+<em>Yaroslavl, Russia</em></p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

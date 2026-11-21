@@ -1,0 +1,142 @@
+---
+title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+html_title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Security and Design Enhancements"
+menu_active: ""
+source_url: "/en/report-core-security-201906"
+source_format: new
+url: "/en/report-core-security-201906"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Security and Design Enhancements</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <span style="color:#0686AD;font-size:16px;font-weight:bold;">February to May 2019</span>
+
+<ol>
+	<li>Implemented CORE-4726: REcreate user &lt;user_name&gt; password &lt;user_pwd&gt;</li>
+	<li>Implemented CORE-6049: Builtin functions converting binary string to hexadecimal representation and vice versa</li>
+	<li>Implemented CORE-6069: Show OS-specific error when entrypont is not found in dynamic library</li>
+	<li>Linux installer enhancements (better tommath support, replication support)</li>
+	<li>Android port enhancements - make FB binaries support more Android devices (use of PIE format)</li>
+	<li>Fixed CORE-5888: Firebird server on Android has problem with numerics</li>
+	<li>Fixed CORE-6009: Files /tmp/firebird/fb_trace_* get unexpectedly lost</li>
+	<li>Fixed CORE-6015: Segfault when using expression index with complex expression</li>
+	<li>Fixed CORE-6027: Server hang on new attachment right after trace session stop</li>
+	<li>Fixed CORE-6028: Trigger on system table restored in FB3 database and can&#39;t be deleted</li>
+	<li>Fixed CORE-6031: Little memory leak in isc_attach_database</li>
+	<li>Fixed CORE-6038: Srp user manager sporadically creates users which can not attach</li>
+	<li>Fixed CORE-6045: Segmentation fault in fbtracemgr when closing it using ctrl-C</li>
+	<li>Fixed CORE-6064: Segfaults when procedures are permanently created, altered and dropped</li>
+	<li>Fixed CORE-6071:&nbsp; Restore of encrypted backup of database with SQL dialect 1 fails</li>
+	<li>Took care about fbtcs tests suite to make it match actual engine state.</li>
+</ol>
+<em>Alex Peshkov</em><br />
+<em>Yaroslavl, Russia</em>
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

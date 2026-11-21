@@ -1,0 +1,672 @@
+---
+title: "Firebird: Is Firebird 4 slower than Firebird 3? No, it is not."
+html_title: "Firebird: Is Firebird 4 slower than Firebird 3? No, it is not."
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Is Firebird 4 slower than Firebird 3? No, it is not."
+menu_active: "/en/firebird-rdbms/"
+source_url: "/en/is-firebird-4-slower-than-firebird-3-no-it-is-not/"
+source_format: new
+url: "/en/is-firebird-4-slower-than-firebird-3-no-it-is-not/"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/documentation/">Documentation</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-rdbms/">Firebird RDBMS</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/white-papers-presentations/">White Papers &amp; Presentations</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Is Firebird 4 slower than Firebird 3? No, it is not.</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p>As you know, Firebird Project devotes a lot of effort to QA and performance testing: we have several test servers to run functional and performance tests every day, with results publicly available at <a href="https://www.firebirdtest.com">www.firebirdtest.com</a>. The official open-source Firebird performance load test, <a href="https://github.com/FirebirdSQL/oltp-emul">Firebird OLTP-EMUL</a>, is also running as a part of the testing suite, and its results are also <a href="http://www.firebirdtest.com/oltp-emul/">available </a>for the public. QA tests confirm that Firebird 4 release has no performance problems, and any such problem during the snapshot phase is addressed and resolved as soon as possible.&nbsp;</p>
+
+<p>Some days ago one of the vendors of management tool for Firebird has disclosed the document with results of Firebird performance testing, which indicates that Firebird 4 performance is worse than Firebird 3. Since it was a public announcement, not an inquiry to the development team, we have decided to do the investigation and publish its results.&nbsp;The investigation team included Vlad Khorsun, Firebird core developer, Pavel Zotov, Firebird QA, and volunteer Alexey Kovyazin from IBSurgeon.&nbsp;</p>
+
+<p>The result of the test was the following:</p>
+
+<p><img alt="wrong performance test results" src="/img/test/htest1.png" style="width: 620px; height: 219px;" /></p>
+
+<p>As you can see, it indicates that Firebird 4 is significantly slower than Firebird 3. <strong>These numbers (the measurement units are not important for the understanding) contradict the Firebird QA team results and the experience of leading Firebird providers</strong>.</p>
+
+<p>Let&rsquo;s find out the reason.</p>
+
+<p>We have downloaded the test and checked its contents. Inside the test there are Firebird files from the following versions:</p>
+
+<ul>
+	<li>Firebird 2.5.9.27139, 32 bit</li>
+	<li>Firebird 3.0.5.33220, 32 bit</li>
+	<li>Firebird 4.0.0.2496, 64 bit</li>
+</ul>
+
+<p>As you can see, Firebird 2.5 and Firebird 3.0 are 32 bit, while Firebird 4 is 64 bit. Of course, this is not correct, for the accurate comparison, it is necessary to use the same bitness. Also, to be noted, Firebird 3 version is old.</p>
+
+<p>Essentially, the tool creates a database and metadata in it, populates it with data, does some operations, measures the time to perform the operations, and repeats this process several times.</p>
+
+<p>We started the test and received the following results &ndash; <be> for Firebird 3.0.5 32bit:</be></p>
+
+<p><img alt="wrong test result 305" src="/img/test/htest2_305.PNG" style="width: 551px; height: 875px;" /></p>
+
+<p>For Firebird 4 64 bit:</p>
+
+<p><img alt="wrong test result 400" src="/img/test/htest3_400.PNG" /></p>
+
+<p>As you can see, according to this test, Firebird 4 shows lower results than Firebird 3.</p>
+
+<p>How to figure out why the performance is low? The first places to check for the performance problems are always firebird.conf and firebird.log.</p>
+
+<p>We can see that in this test the Firebird configuration is not tuned at all, only the port number was changed, all other parameters are commented &ndash; i.e., they have default values. Also, as you will see below, the test overrides the default value of DBDefaultCachePages in the header page of the database.</p>
+
+<p>In Firebird 4, the default configuration means that the value for the parameter ReadConsistency is set to 1 (enabled).</p>
+
+<p>In this mode, Firebird tries to repeat the query from the update conflict up to 10 times (see below for details).</p>
+
+<p>In the firebird.log we have seen the following message:</p>
+
+<pre>
+Update conflict: unable to get a stable set of rows in the source tables
+	after 10 attempts of restart.
+	Query:
+execute procedure CREATE_100_ORDERS(9)
+</pre>
+
+<p>It means that something wrong is with the business logic of the test, so ReadConsistency cannot process the updates conflicts properly.</p>
+
+<p>To quickly check this assumption, we have set ReadConsistency=0 in firebird.conf, in order to use the old logic of update conflicts resolution, and started the test again:</p>
+
+<p><img alt="test result corrected" src="/img/test/htest4_readconsistency0.png" /></p>
+
+<p>As you can see, the result of the test for Firebird 4 now is higher than Firebird 3.</p>
+
+<h3>Why ReadConsistency has shown bad results in this particular situation?</h3>
+
+<p>ReadConsistency is the newest addition to the engine in the Firebird 4. Among other things, it decreases the number of update conflicts &ndash; for this, it automatically restarts the failed query in order to resolve the conflict (see details in <a href="/file/documentation/release_notes/html/en/4_0/rlsnotes40.html#rnfb40-engine-trans-commit-order ">Release Notes of Firebird 4)</a></p>
+
+<p>For the majority of real-world applications, this algorithm demonstrates very good results while being 100% transparent for the user, and significantly decreasing the number of update conflicts.</p>
+
+<p>We have checked the metadata of the test database and found that ReadConsistency does not work well in this test due to the fact that the implementation of updates is done in an unusual, pure artificial way.</p>
+
+<p>In short - IDs of selling products inside the order are changing randomly and independently of input parameters for each run of the creation procedure.</p>
+
+<p>Let&rsquo;s take a closer look on the procedure CREATE_100_ORDERS. In this procedure, the new order is created (with INSERT INTO ORDERS) and then several random (from 1 to 6) order lines are inserted into ORDERLINE.</p>
+
+<pre>
+ALTER PROCEDURE CREATE_100_ORDERS (THREAD_ID INTEGER)
+AS 
+declare variable I numeric(18,0);
+declare variable IX numeric(18,0);
+declare variable IZ double precision;
+declare variable PP numeric(18,2);
+declare variable XID numeric(18,0);
+declare variable XORDERDATE date;
+declare variable XCUSTOMER_ID numeric(18,0);
+declare variable XNETAMOUNT numeric(12,2);
+declare variable XTAX numeric(12,2);
+declare variable XTOTALAMOUNT numeric(12,2);
+declare variable YID numeric(18,0);
+declare variable YORDERS_ID numeric(18,0);
+declare variable YPRODUCT_ID numeric(18,0);
+declare variable YQUANTITY smallint;
+declare variable YORDERDATE date;
+declare variable CNT integer;
+declare variable MIN_CUSTOMER_ID numeric(18,0);
+declare variable MAX_CUSTOMER_ID numeric(18,0);
+declare variable MIN_PRODUCT_ID numeric(18,0);
+declare variable MAX_PRODUCT_ID numeric(18,0);
+declare variable STT time;
+declare variable STTX integer;
+begin
+ stt=current_timestamp;
+  cnt=gen_id(cnt,0);
+  i=100;
+  iz=cnt/730;
+  select min(id) from product into min_product_id;
+  select max(id) from product into max_product_id;
+  select min(id) from customer into min_customer_id;
+  select max(id) from customer into max_customer_id;
+
+  while (i&gt;0) do
+  begin
+    xid=gen_id(id,1);
+    xORDERDATE=current_date-(i/iz)-cast((rand()*3) as integer);
+    xcustomer_id
+=cast((rand()*(max_customer_id-min_customer_id)+min_customer_id) as integer);
+    xNETAMOUNT=0;
+    xtax=0;
+    xTOTALAMOUNT=0;
+ /*   UPDATE OR */ INSERT INTO 
+ORDERS(ID, ORDERDATE, CUSTOMER_ID, NETAMOUNT, TAX, TOTALAMOUNT, THREAD_ID) 
+VALUES (:XID, :XORDERDATE, :XCUSTOMER_ID, :XNETAMOUNT, :XTAX, :XTOTALAMOUNT, :THREAD_ID);
+
+    ix=cast((rand()*5)+1 as integer);
+    while (ix&gt;0) do
+    begin
+
+      yid=gen_id(id,1);
+      yorders_id=xid;
+
+      yproduct_id=cast((rand()*(max_product_id-min_product_id)+min_product_id) as integer);
+
+      yquantity=cast((rand()*3)+1 as integer);
+      yorderdate=xorderdate;
+
+      INSERT INTO 
+ORDERLINE(ID, ORDERS_ID, PRODUCT_ID, QUANTITY, ORDERDATE)
+      VALUES (:yID, :yORDERS_ID, :yPRODUCT_ID, :yQUANTITY, :yORDERDATE);
+
+      select product.price from product where product.id= :yproduct_id into pp;
+
+      xNETAMOUNT=xNETAMOUNT+(yquantity*pp);
+
+      ix=ix-1;
+    end
+    xTAX=xNETAMOUNT*.16;
+    xTOTALAMOUNT=xNETAMOUNT+xtax;
+    UPDATE ORDERS 
+SET NETAMOUNT = :xNETAMOUNT,TAX = :xTAX, TOTALAMOUNT = :xTOTALAMOUNT
+    WHERE (ID = :xID); 
+
+    i=i-1;  
+  end
+  sttx=(cast(current_timestamp as time)-stt)*1000; 
+end ^
+</pre>
+
+<p>The ID of the product for each order line is generated randomly with the following statement &ndash; as you can see, it does not depend on the input parameters of the procedure, and changes every time the procedure run:</p>
+
+<p><strong>yproduct_id=cast((rand()*(max_product_id-min_product_id)+min_product_id) as integer);</strong></p>
+
+<p>Inserting into ORDERLINE starts trigger ORDERLINE_AI1. This triggers updates table INVENTORY. The update (as any update) sometimes can cause the update conflict on changing the quantity in INVENTORY (when the other thread creates the order line for the same product).</p>
+
+<p>With the ReadConsistency=1, for transactions with Read Committed Read Consistency (which are default in this mode), Firebird tries to repeat the failing query later to resolve the conflict.</p>
+
+<p>So, when Firebird encounters an exception from the update conflict, it keeps all locks for changed data, and after some repeats the failed query &ndash; i.e., procedure CREATE_100_ORDERS.</p>
+
+<p>It means that creating 100 orders with 1..6 order lines in each, will produce, approximately, ~300-350 records updates in INVENTORY, and, if any of the updates will produce the update conflict, all changes in the frames of the transaction will be put on hold, and marked as locked for updates due to unfinished Read Committed Read Consistency transaction.</p>
+
+<p>The idea is simple &ndash; Firebird waits a moment until the conflicting transaction will finish its job, and repeat the attempt to write changes of [not-yet] failed transaction.</p>
+
+<p>It will be 100% fine in the real-world system with real business logic, but in this test, the second repetition of the stored procedure generates different IDs for order lines (for the same input parameters).</p>
+
+<p>As a result, more and more records are being locked, and chances to have update conflict grow. When it is done by 10 threads, the chances to have update conflict are very high, and overall speed decreases a lot.</p>
+
+<p>So, due to the random changes of inserted IDs in each execution of this procedure, ReadConsistency mode did not work well.</p>
+
+<p>As you can suppose, there are several ways to improve the situation (besides the switching ReadConsistency off to use the traditional logic of updates conflicts resolution) &ndash; use the same IDs for the products for order lines, or create orders one by one, to reduce the chance of potential updates conflict, or use other techniques.</p>
+
+<h3>Conclusion</h3>
+
+<ol>
+	<li>Firebird 4 does not have performance problems, and actually demonstrates better results than Firebird 3. The Firebird QA team tracks and publishes all performance problems and regressions. The demonstrated problem is caused by the non-optimal, artificial business logic of the test and improper configuration of Firebird.</li>
+	<li>We suggest to the vendor immediately revoke the wrong testing results and corresponding &ldquo;white papers&rdquo;, because they are wrong and misleading.</li>
+	<li>In order to perform the thorough measurement of Firebird performance, we recommend using the official Firebird-OLTPEMUL test. We recommend avoiding non-open-source performance tests.</li>
+</ol>
+
+<h2>More problems were found with the test</h2>
+
+<p>However, this is not the only concern about this test, there are other things suggesting that the test is not credible by design, and cannot be used to measure and compare Firebird performance:</p>
+
+<h3>1) The wrong understanding of disk IO principles in Firebird</h3>
+
+<p>From the descriptions of the test from the vendor&rsquo;s page (selection in bold is ours):</p>
+
+<p><i>Drive Test </i></p>
+
+<p><i>The&nbsp;Drive Test&nbsp;is simply creating a benchmark database from a script. Within the&nbsp;Drive Test&nbsp;we changed the value of the so-called cache buffers (DefaultDBCachePages in firebird.conf) to 50, the smallest value possible. Then a stored procedure is executed inside the database to generate a lot of test data. In the&nbsp;Drive Test&nbsp;approximately 850,000 operations (i.e. INSERT, UPDATE, DELETE, SELECT statements) are carried out. <b>This really measures the speed of the drive, because of the low-level of cache that is being used</b>, is responsible for making a lot of I/O operations on the external drive. </i></p>
+
+<p>The idea to use 50 Page Buffers to measure &ldquo;the speed of the drive&rdquo; is wrong.</p>
+
+<p>With default configuration of firebird.conf, the following parameter is enabled with the following default values:</p>
+
+<p>#FileSystemCacheThreshold = 64K&nbsp; # in firebird 3<br />
+#UseFileSystemCache = true&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # in firebird 4</p>
+
+<p>If FileSystemCacheThreshold&gt;PageBuffers (in Firebird 3) or UseFileSystemCache = true, the operating system file cache will be used for all IO operations, so the measurement in this test is done on the logical IO level. The logical IO touches the disk subsystem only when OS will decide to do it (and this depends on OS and drive settings, like nobarrier on Linux). So, in fact, the test measures the speed of interchange with the file system cache.</p>
+
+<p>However, you may see that performance with a low number of pages in Firebird cache is actually low: due to the extremely low cache, the number of cache synchronization reads and writes becomes very high.<br />
+Firebird needs for its performance the following minimal set of pages in the cache: the header page, transactions pages with transactions numbers from OIT to Next (minimum 1 page), pointer pages and index root pages for system tables, and for users tables that are in use.</p>
+
+<p>The lack of room in the page cache of Firebird leads to the intensive exchange between Firebird Page Buffers and File System cache: it increases the overhead due to constant copying of pages between Firebird cache and operating system&rsquo;s file cache, but it does not demonstrate the disk capabilities.</p>
+
+<h4>What is the valid way to measure disk performance for Firebird?</h4>
+
+<p>First of all, it is necessary to disable the usage of the file cache of the operating system, for this it is necessary to set FileSystemCacheThreshold=1 (in Firebird 3) or UseFileSystemCache=false (in Firebird 4).</p>
+
+<p>Second, it is necessary to set some reasonable values for Page Buffers, starting from 256 for Classic/SuperClassic and 8192 for SuperServer 3+ (yes, these are default values for Firebird 3+, and they were set to these values intentionally).</p>
+
+<p>Third, the database should be big enough to completely load the cache of the disk subsystem, to have different pages in the cache. Even cheap RAID can have 1-2Gb of internal cache.</p>
+
+<p>Ideally, database size should be bigger than RAM size and should be 2-3 bigger than Page Buffers, the optimal amount is ~50Gb for 32Gb of RAM.</p>
+
+<p>Is it possible to load modern hardware with a 55Mb database from this test? Definitely, no, because the total size of unique pages inside the device&rsquo;s cache must be more than the device&rsquo;s cache size.</p>
+
+<p>If the test updates the same small set of pages multiple times, generating visually big traffic, it will be mostly treated as the activity inside the device&#39;s cache, and, as a result, the real device IO will be much less than IO generated by the application.</p>
+
+<p><i>The performance results without file cache of the operating system are much worse, so there is no practical reason to use Firebird without file cache.<br />
+In general, to test pure disk speed, it is necessary to use specialized tools like CrystalDiskMark. </i></p>
+
+<p>The official Firebird way to measure performance is to run the Firebird-OLTPEMUL test (open-source, available in <a href="https://github.com/FirebirdSQL/oltp-emul">Firebird GitHub</a>), but it has a bit complex setup, requires a pre-built database (from 50Gb), and requires a long time (3h30minutes) to fully load the system to be measured. As a result, it gives a lot of details about performance, as well as an overall score. See the current results of <a href="https://www.firebirdtest.com/oltp-emul/">OLTP-EMUL</a> here.</p>
+
+<p>If somebody is really interested to investigate the performance of the disk from the Firebird point of view, run the OLTP-EMUL test with file cache enabled/disabled (with the appropriate parameters in firebird.conf).</p>
+
+<p>The quick and practical estimation of the reading capabilities of the disk subsystem with file cache can be done with gstat &ndash; the standard command line from Firebird distribution.</p>
+
+<p>Gstat always uses file cache: to see the disk performance from the Firebird point of view is to run the gstat tool with -r switch and measure the time to gather the statistics, then divide database size to the seconds. This approach makes sense for databases larger than RAM.</p>
+
+<p>The quick estimation of writing capabilities can be done with a simple <a href="https://ib-aid.com/en/simple-insert-update-delete-test-for-firebird/">INSERT/UPDATE/DELETE test</a> from IBSurgeon (it is an open-source SQL script and with the table of detailed results). Please note, its test results also depend on the operating system file cache settings.</p>
+
+<h3>2) Wrong configuration of Firebird</h3>
+
+<p>From the test description:</p>
+
+<p><i>CPU Test </i></p>
+
+<p><i>This category calculates the percentage value for multi-threaded CPU tests with 5000 pages cache result to better see the advantages when using Firebird 3. This means that it no longer needs any operations on the disk. You will see a much faster result. The&nbsp;Thread Test, the multi-threaded line - with this one 10 parallel threads are always executed, which means it generates several thousand new orders inside the Demo database simultaneously. The&nbsp;Threads&nbsp;value here is the most important value, when you later have to check whether the server is really fast. Only this&nbsp;Threads&nbsp;value is recalculated to the&nbsp;Thread Test. </i></p>
+
+<p>The choice of 5000 buffers to test CPU capabilities from the Firebird way is bad.</p>
+
+<p>For 3.0 SuperServer: 5000 page buffers * 16K Page size = ~77 Mb<br />
+For 4.0 SuperServer: 5000 page buffers * 32K Page size = ~155 Mb</p>
+
+<p>For the 55Mb database in the test, it should be enough to put all pages into the cache, so this setting is Ok but definitely misleading &ndash; hopefully, nobody has used 5000 as a production setting, because such cache size is low for SuperServer: even the default value is 8192 page buffers, and optimized values for modern real-life servers can be 1...5Millions.</p>
+
+<p>For Classic/SuperClassic Page Buffers value 5000 is bad &ndash; after 2048 buffers per connection, the cost of synchronization of pages in separate caches of connections quickly grows.</p>
+
+<p>The Classic/SuperClassic uses a completely different memory allocation strategy, and 5000 cache per connection reduces the performance a lot.</p>
+
+<h4>3) Different page sizes</h4>
+
+<p>From the test description:</p>
+
+<p><i>Since September 2021 the benchmark now uses the latest Firebird versions 2.5.9 and 3.0.7, and can also use Firebird 4.0.0 with the 32K page size. </i></p>
+
+<p>It is wrong to use different page sizes for Firebird 3 and Firebird 4. The page size should be the same for the correct comparison, because it has an effect on indices depth, data distribution on data pages, and - the size of Firebird cache will be twice bigger for Firebird 4.</p>
+
+<p><b>As a short summary, we believe that test is not credible and does not deserve any more attention from Firebird development and QA team.</b></p>
+
+<p>&nbsp;</p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Documentation</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-rdbms/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird RDBMS</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-notes/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Notes</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/reference-manuals/" class="menulvl_3"><i class="fa fa-arrow-right"></i> All Reference Manuals</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/white-papers-presentations/" class="menulvl_3"><i class="fa fa-arrow-right"></i> White Papers &amp; Presentations</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/books/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Books</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/drivers-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Drivers Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-docs-and-articles/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Docs and Articles</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/external-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> External Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/licensing/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Licensing</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/features/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Features</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sql-conformance/" class="menulvl_3"><i class="fa fa-arrow-right"></i> SQL Conformance</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/historical-reference/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Historical Reference</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-doc/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-brand-faq/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Branding Policy</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Brand FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/logos/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Logos</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-and-other-databases/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird and other databases</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

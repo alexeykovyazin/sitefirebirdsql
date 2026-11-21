@@ -1,0 +1,809 @@
+---
+title: "Firebird: Firebird 2015 Spring Tour"
+html_title: "Firebird: Firebird 2015 Spring Tour"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Firebird 2015 Spring Tour"
+menu_active: "/en/community/"
+source_url: "/en/firebird-tour-2015/"
+source_format: new
+url: "/en/firebird-tour-2015/"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/community/">Community</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/events/">Events</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Firebird 2015 Spring Tour</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p>We invite all Firebird developers and administrators to 1-day seminar in the frames of Firebird 2015 Tour. Firebird 2015 Tour is devoted to the SQL performance optimization: SQL plans, queries and database statistics, queries tuning techniques, etc.</p>
+
+<div>&nbsp;</div>
+
+<div>Firebird 2015 Tour is organized by <a href="http://www.ib-aid.com">IBSurgeon </a>and &nbsp;<a href="http://ibphoenix.com">IBPhoenix</a>, with support of Firebird Developers core team.</div>
+
+<div>&nbsp;</div>
+
+<div>Locations and dates of Firebird 2015 Tour (see details in the appropriate sections below):</div>
+
+<ul>
+	<li>April 24 &mdash;&nbsp;Seligenstadt, Germany (finished)</li>
+	<li>May 19 &mdash;&nbsp;Prague, Czech Republic (finished)</li>
+	<li>June 5 &mdash;&nbsp;Moscow, Russia&nbsp;</li>
+</ul>
+
+<h2><strong><span style="color:#0686AD;font-size:16px;">Firebird 2015 Tour seminar detailed schedule</span></strong></h2>
+
+<h3><strong><span style="color:#474747;font-size:15px;">Introduction</span></strong></h3>
+
+<div>What is performance? How to measure performance? Errorneus performance measurement &mdash;&nbsp;by utilization (CPU/HDD). Bottlenecks.&nbsp;</div>
+
+<h3><strong><span style="color:#474747;font-size:15px;">Performance of SELECT queries</span></strong></h3>
+
+<div>&nbsp;How query is executed:</div>
+
+<ul>
+	<li>&nbsp;Client-server approach</li>
+	<li>&nbsp;Prepare</li>
+	<li>&nbsp;Plan generation</li>
+	<li>&nbsp;Execution</li>
+	<li>&nbsp;Fetches</li>
+	<li>&nbsp;Buffering</li>
+</ul>
+
+<h3>&nbsp;Performance execution statistics counters</h3>
+
+<ul>
+	<li>&nbsp;Reads, Writes, Fetches, Time</li>
+	<li>&nbsp;Database cache, Disk, CPU</li>
+	<li>&nbsp;How garbage impacts on queries execution</li>
+	<li>&nbsp;Cache hits (Classic vs SuperServer</li>
+</ul>
+Balancing between bottlenecks
+
+<ul>
+	<li>&nbsp;Moved to SSD &mdash;&nbsp;CPU increased</li>
+	<li>&nbsp;Where CPU is used: fetches, BLOBS reading-allocating, etc.</li>
+</ul>
+
+<h3>&nbsp;Access methods/data paths</h3>
+
+<ul>
+	<li>&nbsp;NATURAL scan</li>
+	<li>&nbsp;INDEX search
+	<ul>
+		<li>&nbsp;How indices work: B-Trees, record pointers</li>
+		<li>&nbsp;Indices direction</li>
+		<li>&nbsp;Examples</li>
+	</ul>
+	</li>
+	<li>&nbsp;Forced INDEX usage</li>
+	<li>&nbsp;Bit merge of indices</li>
+	<li>&nbsp;Table cardinality, index selectivity</li>
+	<li>&nbsp;Turning off indices in WHERE</li>
+	<li>&nbsp;Index ORDER</li>
+	<li>&nbsp;SORT
+	<ul>
+		<li>&nbsp;Firebird.conf settings</li>
+	</ul>
+	</li>
+	<li>&nbsp;Differences between index ORDER and SORT</li>
+	<li>&nbsp;Turning off indices in ORDER BY, GROUP BY</li>
+	<li>&nbsp;Plans in stored procedures</li>
+	<li>&nbsp;Plans in VIEWs&nbsp;</li>
+</ul>
+
+<h3>&nbsp;Queries tuning</h3>
+
+<ul>
+	<li>&nbsp;PLAN &mdash;&nbsp;how to read and understand it</li>
+	<li>&nbsp;Firebird optimizer tweaks</li>
+	<li>&nbsp;WHERE FIELD IN (X1, X2, X3..</li>
+	<li>&nbsp;LIKE, CONTAINING, STARTING WITH</li>
+	<li>&nbsp;JOIN
+	<ul>
+		<li>&nbsp;Implicit, explicit</li>
+		<li>&nbsp;Wrong JOINS</li>
+		<li>&nbsp;LEFT, RIGHT</li>
+		<li>&nbsp;Self-JOINS</li>
+	</ul>
+	</li>
+	<li>&nbsp;UPDATE+SELECT&nbsp;</li>
+	<li>&nbsp;MAX, MIN, COUNT, AVG, SUM</li>
+	<li>&nbsp;IN
+	<ul>
+		<li>&nbsp;Exists</li>
+		<li>&nbsp;Merge</li>
+	</ul>
+	</li>
+	<li>&nbsp;WHERE (X and Y) or (K and N)&nbsp;</li>
+</ul>
+
+<h3>&nbsp;Tracking slow and resource-consuming queries through the MON$ and Trace API</h3>
+
+<ul>
+	<li>&nbsp;What are MON$ and Trace</li>
+	<li>&nbsp;MON$ tables fields &mdash;&nbsp;what they mean</li>
+	<li>&nbsp;TraceAPI parameters and output</li>
+	<li>&nbsp;Tools</li>
+</ul>
+
+<h3>&nbsp;Performance of INSERT queries</h3>
+
+<ul>
+	<li>&nbsp;How INSERT works
+	<ul>
+		<li>&nbsp;Database structure: pointer pages, data pages, index pages</li>
+		<li>&nbsp;Inserting in dynamics &mdash;&nbsp;inserting 1 record leads to changes at several database pages</li>
+		<li>&nbsp;Triggers fire &mdash;&nbsp;BEFORE/AFTER</li>
+		<li>&nbsp;How BLOBs are inserted &mdash;&nbsp;database structure, temporary BLOBs</li>
+		<li>&nbsp;Transactions start/end</li>
+	</ul>
+	</li>
+	<li>&nbsp;How indices, triggers and database structure affect INSERT performance
+	<ul>
+		<li>&nbsp;Indices insert/update performance &mdash;&nbsp;VARCHAR (GUID) vs INT64</li>
+		<li>&nbsp;Triggers</li>
+		<li>&nbsp;Database structure
+		<ul>
+			<li>&nbsp;Page size &mdash;&nbsp;data pages sizes, pointer pages (fixed bug in 254, 3.0)</li>
+			<li>&nbsp;Cache size</li>
+			<li>&nbsp;BLOBS vs long VARCHARs</li>
+			<li>&nbsp;Page size limit</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li>&nbsp;Transactions commits &mdash;&nbsp;1/1000/5000/100000
+	<ul>
+		<li>&nbsp;Orphan pages due to rollbacks</li>
+		<li>&nbsp;Forced roll back/savepoint rollback (50000 records) &ndash; NO_AUTO_UNDO</li>
+	</ul>
+	</li>
+	<li>&nbsp;Typical errors which lead to slow INSERTs&nbsp;</li>
+	<li>&nbsp;INSERTS to External tables and between External to Internal.</li>
+	<li>&nbsp;How GBAK does inserts
+	<ul>
+		<li>&nbsp;Option &ndash;O &mdash;&nbsp;commit after each table</li>
+	</ul>
+	</li>
+	<li>Summary</li>
+</ul>
+
+<h3>&nbsp;Performance of UPDATE and DELETE queries</h3>
+
+<ul>
+	<li>&nbsp;How UPDATE works
+	<ul>
+		<li>&nbsp;Record versions , delta versions</li>
+		<li>&nbsp;Update and indices</li>
+		<li>&nbsp;Record chains &mdash;&nbsp;depends on OIT-OST
+		<ul>
+			<li>&nbsp;Important to keep all writeable transactions short</li>
+		</ul>
+		</li>
+		<li>&nbsp;SAVEPOINTS</li>
+	</ul>
+	</li>
+	<li>&nbsp;How DELETE works
+	<ul>
+		<li>&nbsp;Delete stub</li>
+		<li>&nbsp;Delete and indices</li>
+	</ul>
+	</li>
+	<li>&nbsp;How indices, triggers and database structure affect UPDATE and DELETE performance
+	<ul>
+		<li>&nbsp;Updates in indices (keys)
+		<ul>
+			<li>&nbsp;&nbsp;Index pages restructring</li>
+		</ul>
+		</li>
+		<li>&nbsp;Update Conflicts, transactions and their resolution, DELETE, SELECT WITH LOCK</li>
+	</ul>
+	</li>
+	<li>&nbsp;Real-life example of UPDATEs algorithm without conflicts</li>
+	<li>&nbsp;UPDATE+SELECT, MERGE</li>
+</ul>
+
+<h3>&nbsp;Multi-user performance optimisation</h3>
+
+<ul>
+	<li>&nbsp;Locks, mutexes and resource races</li>
+	<li>&nbsp;Lock print analysys</li>
+	<li>&nbsp;Selecting Firebird architectures and tuning their parameters for multi-user environments</li>
+</ul>
+&nbsp;
+
+<div><strong><span style="color:#0686AD;font-size:16px;">Locations details for Firebird 2015 Tour&nbsp;</span></strong></div>
+
+<h2><strong><span style="color:#474747;font-size:15px;">April 24, Seligenstadt, Germany</span></strong></h2>
+
+<div>Seminar will take place in Hotel Columbus (www.hotel-columbus.de/contact.php/), April 24, 2015.</div>
+
+<div>&nbsp;</div>
+
+<div>Important! All topics are presented in <strong>English</strong>!</div>
+
+<div>&nbsp;</div>
+
+<div>Seminar&#39;s schedule:&nbsp;</div>
+
+<ul>
+	<li>9-30 &mdash;&nbsp;10-00 Registration</li>
+	<li>10-00 &mdash;&nbsp;17-00 Seminar (with Lunch and Coffee breaks)</li>
+</ul>
+
+<div>Attendee&#39;s package includes seminar&rsquo;s materials (PDFs), lunch and coffee breaks.</div>
+
+<div>&nbsp;</div>
+
+<div>Seminar already finished.</div>
+
+<h2><strong><span style="color:#474747;font-size:15px;">May 19, Prague, Czech Republic</span></strong></h2>
+
+<div>Seminar will take place in Hotel Extoll Inn (http://extolinn.cz/en/contact.htm), &nbsp;May 19, 2015.</div>
+
+<div>&nbsp;</div>
+
+<div>Important! All topics are presented in <strong>English</strong>!</div>
+
+<div>&nbsp;</div>
+
+<div>Seminar&#39;s &nbsp;schedule:</div>
+
+<ul>
+	<li>9-30 &mdash;&nbsp;10-00 Registration</li>
+	<li>10-00 &mdash;&nbsp;17-00 Seminar (with Lunch and Coffee breaks)</li>
+</ul>
+
+<div>Attendee&#39;s package includes seminar&rsquo;s materials, lunch and coffee breaks.</div>
+
+<div>&nbsp;</div>
+
+<div>Seminar already finished.</div>
+
+<div>&nbsp;</div>
+
+<div><span style="color:#474747;font-size:15px;font-weight:bold;">June 5, Moscow, Russia</span></div>
+
+<div>&nbsp;</div>
+
+<div>Seminar will take place in TechnoPark &laquo;Slava&raquo;&nbsp;(www.technopark-slava.ru/contacts ), June 5, 2015.</div>
+
+<div>&nbsp;</div>
+
+<div>Important! All topics are presented in <strong>Russian</strong>!</div>
+
+<div>&nbsp;</div>
+
+<div>Seminar&#39;s &nbsp;schedule:</div>
+
+<ul>
+	<li>9-30 &mdash;&nbsp;10-00 Registration</li>
+	<li>10-00 &mdash;&nbsp;17-00 Seminar (with Lunch and Coffee breaks)</li>
+</ul>
+
+<div>Attendee&#39;s package includes seminar&rsquo;s materials and coffee breaks.</div>
+
+<div>&nbsp;</div>
+
+<div>Registration fee is <a href="https://secure.shareit.com/shareit/checkout.html?productid=300604678">EUR 45</a>&nbsp;(roubles 2800).</div>
+
+<div>&nbsp;</div>
+
+<div>Для получения российского счета на оплату напишите <a href="mailto:sales@ibase.ru">sales@ibase.ru</a>.<br />
+&nbsp;</div>
+
+<div><span style="color:#0686AD;font-size:16px;font-weight:bold;">Questions?&nbsp;</span></div>
+
+<div>&nbsp;</div>
+
+<div>Please feel free to ask all questions at <a href="mailto:firebird2015@ib-aid.com">firebird2015@ib-aid.com</a>.<br />
+&nbsp;</div>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Community</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-foundation/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Foundation</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/articles-of-association/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Articles of Association</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sponsors/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Sponsors</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+    
+ 
+ 
+    
+   <div class="menu-tree  bgLVL_4">   
+      <a href="/en/how-to-become-a-sponsor/" class="menulvl_4" ><i class="fa fa-arrow-right"></i> How to Become a Sponsor</a>          
+      
+   </div> 
+    
+
+
+  
+    
+ 
+ 
+    
+ 
+ 
+    
+   <div class="menu-tree  bgLVL_4">   
+      <a href="/en/donors/" class="menulvl_4" ><i class="fa fa-arrow-right"></i> Donors and Past Sponsors</a>          
+      
+   </div> 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/public-reports-documents/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Public Reports &amp; Documents</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-foundation-retrospective/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Foundation: a Retrospective</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-protection/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Protecting the Firebird Brand</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+    
+ 
+ 
+    
+   <div class="menu-tree  bgLVL_4">   
+      <a href="/en/branding-blacklist/" class="menulvl_4" ><i class="fa fa-arrow-right"></i> Branding Blacklist</a>          
+      
+   </div> 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/emberwings-magazine/" class="menulvl_2"><i class="fa fa-arrow-right"></i> EmberWings Magazine</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/news-portals/" class="menulvl_2"><i class="fa fa-arrow-right"></i> News Portals</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/blogs/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Blogs</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/regional-sites/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Regional Sites</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/mailing-lists/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Mailing Lists</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/events/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Events</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2019/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2019</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-performance-tour-2019/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Performance Tour 2018</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-tour-2017-optimization/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Tour 2017: Performance Optimization</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2016/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2016</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-2016-tour-big-databases/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 2015 Tour: Big Databases</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree bgLVL_3_sel bgLVL_3">
+      <a href="/en/firebird-tour-2015/" class="menulvl_3_sel"><i class="fa fa-arrow-right"></i> Firebird 2015 Spring Tour</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2014/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2014</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-tour-2013/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 2013 Tour</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2012/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2012</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2011/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2011</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-performance-webinar-26-nov-2024/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Performance Webinar (26-NOV-2024)</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,175 @@
+---
+title: "Firebird: Developer's Report: QA Stress Testing & Tools Development"
+html_title: "Firebird: Developer's Report: QA Stress Testing & Tools Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: QA Stress Testing & Tools Development"
+menu_active: ""
+source_url: "/en/report-qa3-201802"
+source_format: new
+url: "/en/report-qa3-201802"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/archives/">Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/ff-reports-archives/">Developer Reports Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: QA Stress Testing &amp; Tools Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><span style="font-weight: bold; color: rgb(6, 134, 173); font-size: 16px;">October 2017 - January 2018</span><br style="line-height: 20.8px;" />
+<br style="line-height: 20.8px;" />
+<span style="color:#474747;font-size:15px;font-weight:bold;"><u style="line-height: 20.8px;">January 2018</u></span></p>
+
+<ul style="line-height: 20.8px;">
+	<li>Found / reported bugs: CORE-5706,&nbsp;CORE-5724</li>
+	<li>Created / modified QA tests for 9&nbsp;tracker tickets</li>
+	<li>Failed restore always sends error messages to STDOUT rather than to STDERR</li>
+	<li>Fixed tests with false negative results</li>
+	<li>Nbackup: unable to establish new attachments when delta is merged into main DB file</li>
+	<li>OLTP-EMUL: resumed refactoring in order to reduce occurences of pending request count entries</li>
+	<li>OLTP-EMUL, 300 attachments, 2.5.8 SC: database file remain opened by several fb_smp_server processes after closing all sessions</li>
+	<li>Tested asynchronous replication under load</li>
+</ul>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>December 2017</u></span></div>
+
+<ul style="line-height: 20.8px;">
+	<li>Found / reported bugs: CORE-5680, CORE-5684</li>
+	<li>Created / modified QA tests for 9 tracker tickets</li>
+	<li>fb_lock_print sends error message(s) &quot;Unable to open the database file&quot; / &quot;Unable to access lock table&quot; to STDOUT rather than STDERR</li>
+	<li>Parameter &quot;log_errors = true&quot; in the &quot;Service&quot; section of trace config did not lead to logging of restore error</li>
+	<li>CREATE DATABASE failed if user/password are specified after &#39;default character set&#39; clause</li>
+	<li>Command &quot;SHOW USERS&quot; does not display authentification plugin that was used for creating of each user</li>
+	<li>Collected backtraces for long connection attempts under load</li>
+</ul>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>November 2017</u></span></div>
+
+<ul style="line-height: 20.8px;">
+	<li>Found / reported bugs: CORE-5664, CORE-5667</li>
+	<li>Created / modified QA tests for 11&nbsp;tracker tickets&nbsp;</li>
+	<li>Got &quot;335544382 : request size limit exceeded&quot; error when tried to execute &quot;select from rdb$database LEFT JOIN <nested-view>&quot; and nested depth is 5</nested-view></li>
+	<li>Implemented auxiliary batch for generate DDL with a lot of master-child relations (&quot;star&quot; schema) and query using LEFT JOINS</li>
+	<li>Tested asynchronous replication under load</li>
+</ul>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;"><span style="color: rgb(71, 71, 71); font-size: 15px; font-weight: bold;"><u>October 2017</u></span></div>
+
+<ul style="line-height: 20.8px;">
+	<li>Found / reported bugs: CORE-5640, CORE-5641, CORE-5643</li>
+	<li>Created / modified QA tests for 5 tracker tickets</li>
+	<li>Tested external connection pool per Vlad&#39;s request</li>
+	<li>Started implementing script that measures&nbsp;time to establish new connection and dumps backtraces</li>
+	<li>Found too slow (&gt; 5s) connect to database when there are more than 1000+ attachments</li>
+	<li>OLTP-EMUL, 30 sessions&nbsp;(Win 8.1, 12 Gb RAM): too slow running &quot;nbackup -N&quot; when delta is more than 200 Mb</li>
+</ul>
+<br />
+<em style="line-height: 20.8px;">Pavel Zotov</em></div>
+
+<p><em style="line-height: 20.8px;">Moscow, Russian Federation</em><br style="line-height: 20.8px;" />
+&nbsp;</p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,193 @@
+---
+title: "Firebird: Firebird security alert for all old versions"
+html_title: "Firebird: Firebird security alert for all old versions"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Firebird security alert for all old versions"
+menu_active: ""
+source_url: "/en/news/firebird-securty-alert-for-all-old-versions"
+source_format: new
+url: "/en/news/firebird-securty-alert-for-all-old-versions"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+ 
+    <section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/about-firebird/">About Firebird</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/news/">News &amp; Events</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Firebird security alert for all old versions</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-8">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div class="post-categories d-flex justify-content-between align-content-center">
+                        <div class="categories-share">
+                            <ul>
+                                <li><i class="fas fa-calendar"></i> Aug 08, 2025</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="title">Firebird security alert for all old versions</h3>
+                                            </div>
+                    <div class="post-text mt-30">
+                        <p data-pm-slice="1 1 []">The Firebird Project has discovered critical security issues in older versions of all supported releases. If your version is equal to or less than the specified versions (with build numbers) 3.0.13.33809, 4.0.6.3203, or 5.0.3.1651, you need to upgrade to the latest Firebird releases (3.0.13.33818, 4.0.6.3221, 5.0.3.1683, available at <a href="/en/server-packages/">www.firebirdsql.org</a>). To emphasize: if you have versions like 3.0.10, 4.0.4, 2.5.8, or 5.0.2, you are in the danger zone. In other words - ALL Firebird versions except the latest releases of 5.0, 4.0, 3.0. (All versions also incldes 2.5, 2.1, 2.0, 1.5. 1.0).&nbsp;</p>
+
+<p>A zero-day vulnerability was found in all versions of Firebird with version numbers less than 3.0.13.33809, 4.0.6.3203, and 5.0.3.1651 (this means that current releases on www.firebirdsql.org have this issue fixed).&nbsp;</p>
+
+<p>A malicious user can cause a DoS attack on a Firebird server by sending a specific sequence of bytes&mdash;no login/password for the server is needed. To exploit the vulnerability, it is sufficient to send a set of bytes to the Firebird port, so we recommend upgrading as soon as possible.</p>
+
+<p>Special note for users of vanilla 2.5: version 2.5 also suffers from this problem, but since it has not been supported by the Firebird Project since 2019, there will be no fix for vanilla Firebird 2.5, so you need to upgrade as soon as possible.</p>
+
+<h2>What to do</h2>
+
+<p>1. Check version of your Firebird: for this run in command line some tool with option -z (from your installation), for example, gstat.exe -z and check the full version. On Windows you can also do right-click on firebird.exe and see tab &quot;Details&quot;.</p>
+
+<p>2. If you are running the latest released version - i.e., equal or higher than 3.0.13.33818, 4.0.6.3221, 5.0.3.1683, &nbsp;<strong>you are safe</strong>. If it is less - you are in danger, so plan upgrade to <a href="/en/server-packages/">the latest Firebird release</a> asap.</p>
+
+<p>3. If you are using non-safe old version, make sure that port 3050 is available only for trusted clients connections. Plan upgrade asap.</p>
+
+<p>Do you need help? Contact <a href="mailto:ak@firebirdsql.org?subject=Firebird security alert question" rel="noopener noreferrer nofollow" target="_blank">ak@firebirdsql.org</a> with any questions.</p>
+
+                    </div>
+                  	<div>
+                    	<div>
+  <iframe frameborder="0"
+    height="150" 
+    scrolling="no" 
+    src="https://firebirdfoundation.substack.com/embed" 
+    style="border:1px solid #EEE; background:white;" 
+    width="100%" 
+    allow="encrypted-media"
+    sandbox="allow-scripts allow-same-origin allow-forms"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>  
+                  	</div>
+                    <div class="post-tags">
+                        <ul>
+                            <li><a><i class="fa fa-share"></i> Share With:</a></li>
+                            <li style="cursor: pointer;"><a class="share-icon fb" data-url="/en/news/firebird-securty-alert-for-all-old-versions"><i class="fab fa-facebook-f"></i></a></li>
+                          
+                            <li style="cursor: pointer;"><a class="share-icon lin" data-url="/en/news/firebird-securty-alert-for-all-old-versions"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="post-reader-text post-reader-text-2 post-reader-text-3 pt-50">
+                    <div class="row">
+                                                    <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/happy-25th-anniversary-firebird">Happy 25th Anniversary, Firebird!</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                                                            <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/ngram-indexes-in-firebird-fast-substring-search-without-a-full-scan">VIDEO: NGRAM indexes in Firebird: fast substring search without a full scan</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-20">
+                <div class="all-post-sidebar">
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

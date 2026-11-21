@@ -1,0 +1,158 @@
+---
+title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+html_title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Security and Design Enhancements"
+menu_active: ""
+source_url: "/en/report-core-security-202006"
+source_format: new
+url: "/en/report-core-security-202006"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Security and Design Enhancements</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><span style="color:#0686AD;font-size:16px;font-weight:bold;">February to May 2020</span></p>
+
+<p><u>Improvements</u></p>
+
+<ol>
+	<li>Implemented CORE-6268: Add methods to set various names (field, relation, etc.) in metadata builder</li>
+	<li>Implemented CORE-6279: Put options in user management statements in any order</li>
+</ol>
+
+<p><u>Bug-fixing</u></p>
+
+<ol>
+	<li>Fixed CORE-6189: Building bundled libtommath fails</li>
+	<li>Fixed CORE-6260: Warnings not always displayed in ISQL</li>
+	<li>Fixed CORE-6248: A number of errors when database name is longer than 255 symbols</li>
+	<li>Fixed CORE-6219: DECFLOAT values and queries with ORDER BY and/or windowed (analitical) functions failed</li>
+	<li>Fixed CORE-6265: mapping rules destroyed by backup / restore</li>
+	<li>Postfix for CORE-6110: always store strings in local StatusVector&#39;s memory, i.e. no lost string args</li>
+	<li>Output hex constants from IDL as hex in C++/Pascal, avoiding for example -1 instead 0xFFFFFFFF</li>
+	<li>Fixed CORE-6264: gbak with PIPE to stdout: invalid content if use &#39;-se <host>:service_mgr&#39; command switch</host></li>
+	<li><host>Fixed CORE-6230: Unable to connec with database if security.db reference is removed from databases.conf file</host></li>
+	<li><host>Fixed CORE-5364: gfix -online normal <db> (being issued in window #1) does not produce error when there is sysdba attachment in window #2</db></host></li>
+	<li>Fixed unregistered bug: error handling in main server loop was broken</li>
+	<li>Fixed CORE-6283: isNullable() in message metadata, returned by metadata builder, does not match with datatype set by setType() in metadata Improved gbak code to ensure better compatibility with engine</li>
+	<li>Improvements for older engines are also included though full compatibility is still missing.</li>
+	<li>Fixed CORE-6294: Negative 128-bit integer constants are not accepted in DEFAULT clause</li>
+	<li>Fixed tests in TCS 16.Partial fix for CORE-6157: Firebird.pas : avoid use of awk and grep to build target</li>
+</ol>
+<u>Documentation &amp; examples</u>
+
+<ol>
+	<li>Added missing methods/interfaces to documentation</li>
+	<li>Added a sample of authentication plugin based on shared secret key, that plugin makes it not needed to pass login/password in execute statement on external when installed on all servers involved in data exchange</li>
+	<li>Reworked posix build &amp; install scripts to work with new schema of placing sample lugins into binary packages.</li>
+	<li>Added sample of changing returned by engine metadata and using changed metadata to execute statements.</li>
+</ol>
+<em>Alex Peshkov</em><br />
+<em>Yaroslavl, Russia</em>
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

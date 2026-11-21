@@ -1,0 +1,151 @@
+---
+title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+html_title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Security and Design Enhancements"
+menu_active: ""
+source_url: "/en/report-core-security-202301"
+source_format: new
+url: "/en/report-core-security-202301"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Security and Design Enhancements</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <h2><span style="color:#2980b9;">January 2022 to January 2023</span></h2>
+
+<p>Completed tasks:</p>
+
+<ol>
+	<li>Improved security in users mapping cache - cache was not flashed when database dropped and recreated, therefore old settings might affect new clean database, also new setting from restored database did not take effect.</li>
+	<li>Fixed issues related with batch network protocol, related first of all with errors-return.</li>
+	<li>Fixed very old problem with incorrect uppercasing of extremely specific (like abc&quot;def - i.e. double-quote in the middle) user names.</li>
+	<li>Fixed &#39;order by&#39; for big (&gt;34 digits) int128 values when index on that field is used.</li>
+	<li>A few fixes for &#39;-icu&#39; switch in gfix utility.</li>
+	<li>Improved services manager when working with long text lines without timeout (needed for some trace plugins).</li>
+	<li>Fixed a number of hangs/segfaults/memleaks, including caused by MT races. (There was a lot of them - people started active use of FB4 in production and as always that manifests hidden problems.)</li>
+	<li>Make trace report a reason of failed DB attachment as early as possible.</li>
+	<li>Fixed conflict between MON$ and DB encryption thread - currently one can use MON$DATABASE to monitor encryption progress.</li>
+	<li>Make ability to add comment to mapping (&#39;COMMENT ON MAPPING ... IS ...&#39;).</li>
+	<li>Fixed snapshots in Classic / SuperClassic on Linux.</li>
+	<li>Enabled trace of events in system attachments.</li>
+	<li>Fixed Solaris port.</li>
+	<li>Fixed client side aliases in databases.conf (worked long ago in aliases.conf).</li>
+	<li>Watched for fbtcs correctness.</li>
+</ol>
+
+<p>Ongoing task</p>
+
+<ul>
+	<li>shared metadata cache, unfortunately slow progress, first of all due to many errors to fix.</li>
+</ul>
+
+<p><em>Alex Peshkov</em><br />
+<em>Yaroslavl, Russia</em></p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

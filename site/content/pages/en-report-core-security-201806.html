@@ -1,0 +1,162 @@
+---
+title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+html_title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Security and Design Enhancements"
+menu_active: ""
+source_url: "/en/report-core-security-201806"
+source_format: new
+url: "/en/report-core-security-201806"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/archives/">Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/ff-reports-archives/">Developer Reports Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Security and Design Enhancements</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">February to May 2018</span></strong></p>
+
+<h3>New version development (Firebird 4)</h3>
+
+<ul>
+	<li>Rewritten gbak using OO API (makes it possible to use wide records &gt; 64K).</li>
+	<li>Improve gbak&#39;s restore performance over network using batch interface (2X in average on a real database, 5X on a special sample).</li>
+	<li>Added an example of accessing DECFLOAT data in UDR</li>
+	<li>Make gbak create encrypted backups of encrypted databases (using by default same plugin &amp; key), added to gbak internal zip compression (CORE-5808).</li>
+</ul>
+
+<h3>Bugfixing</h3>
+
+<ul>
+	<li>Fixed CORE-5742: Incorrect error message in iSQL when trying to create database with wrong password</li>
+	<li>Fixed CORE-5757: deadlock with events</li>
+	<li>Fixed CORE-5762: Wrong transaction number in RDB$PAGES relation may cause infinite recusrion in engine and segfault</li>
+	<li>Fixed CORE-5765: Missing directives in Firebird.pas</li>
+	<li>Fixed CORE-5772: Client hangs when working with events under high load</li>
+	<li>Fixed CORE-5780: Server hangs when client tries to send too long DB encryption key(s)</li>
+	<li>Fixed CORE-5699: DECFLOAT should not through exceptions when +/-NaN, +/-sNaN and +/-Infinity is used in comparisons</li>
+	<li>Fixed CORE-5791: ODS for windows builds and linux-x64 (on the one side) and linux-x86 (on the other side) does not match</li>
+	<li>Fixed CORE-5796: gstat may produce faulty report about presence of some none-encrypted pages in database</li>
+	<li>Fixed CORE-5815: Server hangs for 60/120 seconds if client exits during database encryption key transfer callback</li>
+	<li>Fixed CORE-5822: Wrong error returned to client when WireCrypt=Disabled is used</li>
+	<li>Fixed CORE-5829: gsec does not release user manager plugin</li>
+	<li>Fixed CORE-5830: Encryption Interface crashes Firebird process when attachmebt which started encryption is gone</li>
+	<li>Fixed CORE-5824: Segmentation fault due to races during service thread completion</li>
+	<li>Fixed CORE-5831: Not user friendly output of gstat at encrypted database</li>
+</ul>
+
+<h3>Miscellaneous</h3>
+
+<ul>
+	<li>Keep FBTCS in sync with development.</li>
+</ul>
+
+<p><em>Alex Peshkov</em><br />
+<em>Yaroslavl, Russia</em><br />
+&nbsp;</p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,163 @@
+---
+title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+html_title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Security and Design Enhancements"
+menu_active: ""
+source_url: "/en/report-core-security-202108"
+source_format: new
+url: "/en/report-core-security-202108"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Security and Design Enhancements</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <h3>April to August 2021</h3>
+<u><strong>FB4 issues:</strong></u>
+
+<ul>
+	<li>Fixed CORE-6521: CAST of Infinity values to FLOAT doesn&#39;t work</li>
+	<li>Postfix for CORE-6542: fixed build with some more ICU versions. Also changed related solution in isql.</li>
+	<li>Fixed CORE-6504: Provide same results for date arithmetics when date is changed by values near +/-max(bigint)</li>
+	<li>Fixed CORE-6541. Restore backup on RawDevice&nbsp; (error during &quot;open O_CREAT&quot; operation for file &quot;/dev/sda1&quot;)</li>
+	<li>Added dedicated method to close Batch interface with errors check</li>
+	<li>Implemented Batch::cancel() over the wire</li>
+	<li>Implemented #6780: added post-install script for Android to create architecture-specific files after cross build</li>
+	<li>Fixed #6797: Functions DECRYPT and RSA_DECRYPT return VARCHAR CHARACTER SET NONE instead of VARBINARY (VARCHAR CHARACTER SET OCTETS)</li>
+	<li>Fixed #6805: RDB$TYPES has incorrect entries for RDB$TYPE 28 and 29 in RDB$TYPE_NAME column.</li>
+	<li>Fixed 6806: Rename RSA_SIGN and RSA_VERIFY</li>
+	<li>Fixed 6808:&nbsp; Segfault in encrypt/decrypt functions when their first argument is NULL</li>
+	<li>Fixed 6810: Use precise limit of salt length when signing messages and verifying the sign</li>
+	<li>Fixed 6816: Illegal output length in base64/hex_encode/decode functions</li>
+	<li>Fixed 6812: BASE64_ENCODE and HEX_ENCODE can exceed maximum widths for VARCHAR</li>
+</ul>
+<u><strong>FB5 (and 4.0.1) issues</strong></u>:
+
+<ul>
+	<li>Fixed 6809: Integer hex-literal support for INT128</li>
+	<li>Fixed #6832: Segfault using &quot;commit retaining&quot; with GTT</li>
+	<li>Fixed #6836: fb_shutdown() does not wait for self completion in other thread</li>
+	<li>Fixed #6817: -fetch_password &lt;passwordfile&gt; does not work with gfix</li>
+	<li>Fixed #6858: RSA_DECRYPT() can not decrypt data if it relates to BLOB type</li>
+	<li>Fixed #6830: An attempt to destroy busy rel_drop_mutex failed</li>
+	<li>Fixed #6220: slow performance when executing SQL scripts as non-SYSDBA user (used for &gt;2 years in IBP)</li>
+	<li>Fixed #6889: no permision check while ALTER USER SET TAGS</li>
+	<li>Fixed #6896: Client forcing server to encryption</li>
+	<li>Fixed #6860: Create user statement fails with SQLSTATE = HY000 when using DataTypeCompatibility</li>
+	<li>Fixed #6845: Result type of AVG over BIGINT column results in type INT128</li>
+	<li>Fixed #6874: Literal 65536 (interpreted as int) can not be multiplied by itself w/o cast if result more than 2^63-1</li>
+	<li>Implemented #6897: Current user name and role from IAttachment::getInfo()</li>
+	<li>Fixed #6900: IBatch add method fails silently when a server-side buffer is exceeded</li>
+	<li>Fixed #6886: Differerent interfaces behaviour depending upon source of interface</li>
+	<li>Implemented #6929: Support of PKCS v.1.5 padding in RSA functions, needed for backward compatibility with old systems.</li>
+	<li>Fixed #6930: Segfault when calling crypto functions</li>
+	<li>Fixed #1210: I/O error during &quot;open&quot; operation for file &quot;/tmp/firebird/fb_trace_XXXXXX&quot;</li>
+</ul>
+<em>Alex Peshkov<br />
+Yaroslavl, Russia</em>
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

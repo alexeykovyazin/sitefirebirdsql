@@ -1,0 +1,75 @@
+---
+title: "Firebird: More information about differences between Firebird and PostgreSQL"
+html_title: "Firebird: More information about differences between Firebird and PostgreSQL"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "More information about differences between Firebird and PostgreSQL"
+menu_active: "/en/firebird-rdbms/"
+source_url: "/more-information-about-differences-between-firebird-and-postgresql"
+source_format: new
+url: "/more-information-about-differences-between-firebird-and-postgresql"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/documentation/">Documentation</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-and-other-databases/">Firebird and other databases</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/migrating-from-firebird-to-postgresql-what-can-go-wrong/">Migrating from Firebird to PostgreSQL. What can go wrong?</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">More information about differences between Firebird and PostgreSQL</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-12">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p>Here we have a collection of additions to the main article &quot;Migration from Firebird to PostgreSQL. What can go wrong?&quot;, sent by community:</p>
+
+<h3>Transactions handling</h3>
+
+<p>Another important aspect is transaction handling. It&rsquo;s not only that PostgreSQL supports only one transaction per connection, but also that whenever an error occurs during a transaction, it is automatically rolled back. For example, if there&rsquo;s a key violation error, the transaction is rolled back immediately.</p>
+
+<p>In Firebird, however, we can handle an error, fix it within the same transaction, and continue without rolling everything back. This is a great feature, especially when importing large amounts of data, because it makes the process much easier.</p>
+
+<h3>Firebird Embedded Usage</h3>
+
+<p>Firebird offers an embedded mode that allows the database engine to run directly within an application or tool, eliminating the need for a separate server instance. In this configuration, the engine operates &quot;inside&quot; the host application by loading the Firebird engine as a dynamic link library (DLL). This means the host application&mdash;whether it&#39;s a Firebird utility like <span class="highlight">gbak.exe</span> or a custom user application&mdash;directly loads and uses the database engine DLL within its own process space.</p>
+
+<p>This embedded approach provides significant advantages for database operations such as backup and restore procedures. For instance, you can use <span class="highlight">gbak.exe</span> to perform complete database backups and restorations without requiring a running Firebird server instance, making it ideal for standalone applications, development environments, or scenarios where a full server deployment isn&#39;t necessary.</p>
+
+<p>&nbsp;</p>
+
+<h4>Acknowledgements</h4>
+
+<p>We would like to thank community members which have sent their additions: Karol Bieniaszewski, Rodrigo Cantu.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

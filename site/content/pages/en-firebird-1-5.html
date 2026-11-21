@@ -1,0 +1,694 @@
+---
+title: "Firebird: Firebird 1.5"
+html_title: "Firebird: Firebird 1.5"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Firebird 1.5"
+menu_active: "/en/server-packages/"
+source_url: "/en/firebird-1-5/"
+source_format: new
+url: "/en/firebird-1-5/"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/downloads/">Downloads</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/server-packages/">Server Packages</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/discontinued-versions/">Discontinued Versions</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Firebird 1.5</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <big><p>Do you use Firebird? Become the <a href="/en/donate">Firebird Supporter now!</a></p></big>
+<p>Looking for the latest Firebird? Go to the <a href="/en/firebird-5-0/">Firebird 5.0 download page</a>.</p>
+
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody>
+		<tr>
+			<td align="center" width="14%"><a class="osicons" href="#Win32"><img alt="Windows" height="30" src="/img/downloads/Windows_30_30.png" width="30" /><br />
+			<strong>Win32</strong></a></td>
+			<td align="center" width="14%"><a class="osicons" href="#Linux"><img alt="Linux" height="30" src="/img/downloads/Linux_30_30.png" width="30" /><br />
+			<strong>Linux</strong></a></td>
+			<td align="center" width="14%"><a class="osicons" href="#MacOSX"><img alt="" height="30" src="/img/downloads/Finder_30_30.png" width="30" /><br />
+			<strong>MacOSX</strong></a></td>
+			<td align="center" width="14%"><a class="osicons" href="#Solaris"><img alt="solaris" height="30" src="/img/downloads/solaris_30.png" width="61" /><br />
+			<strong>Solaris</strong></a></td>
+			<td align="center" width="14%"><a class="osicons" href="#HP-UX"><img alt="hp-ux" height="30" src="/img/downloads/hp-ux_30.jpg" width="52" /><br />
+			<strong>HP-UNIX</strong></a></td>
+			<td align="center" width="14%"><a class="osicons" href="#FreeBSD"><img alt="FreeBSD" height="30" src="/img/downloads/freebsd_30_30.png" width="31" /><br />
+			<strong>FreeBSD</strong></a></td>
+			<td align="center" width="14%"><a class="osicons" href="#AIX"><img alt="AIX" height="30" src="/img/downloads/aix_30_30.png" width="30" /><br />
+			<strong>AIX</strong></a></td>
+		</tr>
+	</tbody>
+</table>
+
+<div style="color: rgb(86, 86, 86); font-size: 11px; padding: 10px 15px 10px 25px;"><br />
+NOTE: Windows Vista CAUTION<br />
+If you are installing either of these old versions onto Windows Vista, the installer option to install the Control Panel applet must be DISABLED to avoid having it break the Control Panel on your Vista system.</div>
+
+<p><br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Final release: v.1.5.6 (End of Series)</span></strong><br />
+&nbsp;</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="Table" width="100%">
+	<tbody>
+		<tr class="Table_Header">
+			<td width="115">Release Date</td>
+			<td width="230">File Name</td>
+			<td width="50">Size</td>
+			<td>Description</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="4"><a class="osicons" href="#Win32"><img alt="Windows" height="30" src="/img/downloads/Windows_30_30.png" width="30" /></a> Win32 Superserver and Classic <a name="Win32"></a></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>October 08, 2009</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-win32/1.5.6-Release/Firebird-1.5.6.5026-0-Win32.exe/download">Firebird-1.5.6.5026-0-Win32.exe</a></td>
+			<td>3 MB</td>
+			<td>Official Windows Setup and Installer for Classic and Superserver</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>October 08, 2009</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-win32/1.5.6-Release/Firebird-1.5.6.5026-0_win32.zip/download">Firebird-1.5.6.5026-0_win32.zip</a></td>
+			<td>4 MB</td>
+			<td>Superserver and Classic for Windows, zipped archive with folders structure</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>October 08, 2009</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-win32/1.5.6-Release/Firebird-1.5.6.5026-0_embed_win32.zip/download">Firebird-1.5.6.5026-0_embed_win32.zip</a></td>
+			<td>2 MB</td>
+			<td>Embedded Server for Windows</td>
+		</tr>
+		<tr class="Table_Subsubtitle">
+			<td colspan="4">Debug Kits</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>October 08, 2009</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-win32/1.5.6-Release/Firebird-1.5.6.5026-0-Win32_pdb.exe/download">Firebird-1.5.6.5026-0-Win32_pdb.exe</a></td>
+			<td>4 MB</td>
+			<td>Windows Setup and Installer for Classic and Superserver Debug Build</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>October 08, 2009</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-win32/1.5.6-Release/Firebird-1.5.6.5026-0_win32_pdb.zip/download">Firebird-1.5.6.5026-0_win32_pdb.zip</a></td>
+			<td>6 MB</td>
+			<td>Windows Superserver and Classic Debug Build</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>October 08, 2009</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-win32/1.5.6-Release/Firebird-1.5.6.5026-0_embed_win32_pdb.zip/download">Firebird-1.5.6.5026-0_embed_win32_pdb.zip</a></td>
+			<td>3 MB</td>
+			<td>Embedded Server Debug Build for Windows</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="4"><a class="osicons" href="#Linux_x86"><img alt="Linux" height="30" src="/img/downloads/Linux_30_30.png" width="30" /></a> Linux <a name="Linux"></a></td>
+		</tr>
+		<tr class="Table_Subsubtitle">
+			<td colspan="4">Classic for Linux</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>October 08, 2009</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-linux-i386/1.5.6-Release/FirebirdCS-1.5.6.5026-0.i686.rpm/download">FirebirdCS-1.5.6.5026-0.i686.rpm</a></td>
+			<td>4 MB</td>
+			<td>Classic for Linux (.rpm)</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>October 08, 2009</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-linux-i386/1.5.6-Release/FirebirdCS-1.5.6.5026-0.i686.tar.gz/download">FirebirdCS-1.5.6.5026-0.i686.tar.gz</a></td>
+			<td>4 MB</td>
+			<td>Classic for Linux, compressed tarball</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>October 08, 2009</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-linux-i386/1.5.6-Release/FirebirdCS-debuginfo-1.5.6.5026-0.i686.tar.gz/download">FirebirdCS-debuginfo-1.5.6.5026-0.i686.tar.gz</a></td>
+			<td>16 MB</td>
+			<td>Debug Build, Classic for Linux, compressed tarball</td>
+		</tr>
+		<tr class="Table_Subsubtitle">
+			<td colspan="4">Superserver for Linux (old threading model)</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>October 08, 2009</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-linux-i386/1.5.6-Release/FirebirdSS-1.5.6.5026-0.i686.rpm/download">FirebirdSS-1.5.6.5026-0.i686.rpm</a></td>
+			<td>4 MB</td>
+			<td>Superserver for Linux (.rpm)</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>October 08, 2009</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-linux-i386/1.5.6-Release/FirebirdSS-1.5.6.5026-0.i686.tar.gz/download">FirebirdSS-1.5.6.5026-0.i686.tar.gz</a></td>
+			<td>4 MB</td>
+			<td>Superserver for Linux, compressed tarball</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>October 08, 2009</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-linux-i386/1.5.6-Release/FirebirdSS-debuginfo-1.5.6.5026-0.i686.tar.gz/download">FirebirdSS-debuginfo-1.5.6.5026-0.i686.tar.gz</a></td>
+			<td>16 MB</td>
+			<td>Debug Build, Superserver for Linux, compressed tarball</td>
+		</tr>
+		<tr class="Table_Subsubtitle">
+			<td colspan="4">Superserver for Linux (NPTL threading model)</td>
+		</tr>
+		<tr class="Table_Note">
+			<td colspan="4">DO NOT USE IF YOUR KERNEL DOES NOT SUPPORT NPTL THREADING!!! To test, run the command &quot;getconf GNU_LIBPTHREAD_VERSION&quot;. If it doesn&#39;t return something like &quot;NPTL 2.n.n&quot; but something like &quot;linuxthreads-0.nn&quot; then you must use the kit for the old threading model.</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>October 08, 2009</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-linux-i386/1.5.6-Release/FirebirdSS-1.5.6.5026-0.nptl.i686.rpm/download">FirebirdSS-1.5.6.5026-0.nptl.i686.rpm</a></td>
+			<td>4 MB</td>
+			<td>Superserver for Linux built in an NPTL kernel (.rpm)</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>October 08, 2009</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-linux-i386/1.5.6-Release/FirebirdSS-1.5.6.5026-0.nptl.i686.tar.gz/download">FirebirdSS-1.5.6.5026-0.nptl.i686.tar.gz</a></td>
+			<td>4 MB</td>
+			<td>Superserver for Linux built in an NPTL kernel, compressed tarball</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>October 08, 2009</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-linux-i386/1.5.6-Release/FirebirdSS-debuginfo-1.5.6.5026-0.nptl.i686.tar.gz/download">FirebirdSS-debuginfo-1.5.6.5026-0.nptl.i686.tar.gz</a></td>
+			<td>16 MB</td>
+			<td>Debug Build, Superserver for Linux, built in an NPTL kernel, compressed tarball</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="4"><a class="osicons" href="#MacOSX"><img alt="" height="30" src="/img/downloads/Finder_30_30.png" width="30" /></a> Superserver &amp; Classic for MacOSX <a name="MacOSX"></a></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>October 08, 2009</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-MacOS-X_darwin/1.5.6-Release/FirebirdSS-1.5.6-5026-powerpc.pkg.zip/download">FirebirdSS-1.5.5-5026-powerpc.pkg.zip</a></td>
+			<td>5.3 MB</td>
+			<td>Superserver for MacOSX 10.2 + (PPC)</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>October 08, 2009</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-MacOS-X_darwin/1.5.6-Release/FirebirdCS-1.5.6-5026-powerpc.pkg.zip/download">FirebirdCS-1.5.5-5026-powerpc.pkg.zip</a></td>
+			<td>4.9 MB</td>
+			<td>Classic for MacOSX 10.2 + (PPC)</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>October 08, 2009</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-MacOS-X_darwin/1.5.6-Release/FirebirdSS-1.5.6-5026-i386.pkg.zip/download">FirebirdSS-1.5.6-5026-i386.pkg.zip</a></td>
+			<td>5.5 MB</td>
+			<td>Superserver for MacOSX 10.4 + (x86)</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>October 08, 2009</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-MacOS-X_darwin/1.5.6-Release/FirebirdCS-1.5.6-5026-i386.pkg.zip/download">FirebirdCS-1.5.6-5026-i386.pkg.zip</a></td>
+			<td>5 MB</td>
+			<td>Classic for MacOSX 10.4 + (x86)</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="4">Latest Source</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>October 08, 2009</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird/1.5.6-Release/firebird-1.5.6.5026.tar.bz2/download" target="_blank">firebird-1.5.6.5026.tar.bz2</a></td>
+			<td>5.2 MB</td>
+			<td>Сompressed tarball</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="4"><a class="osicons" href="#HP-UX"><img alt="hp-ux" height="30" src="/img/downloads/hp-ux_30.jpg" width="52" /></a> Older ports for Classic &amp; Superserver for HP-UX 11<a name="HP-UX"></a></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>December 04, 2006</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-hpux/1.5.3-Release/FirebirdCS-1.5.3.4870-2-HPUX11.tar.gz/download">FirebirdCS-1.5.3.4870-2-HPUX11.tar.gz</a></td>
+			<td>9.4 MB</td>
+			<td>V1.5.3 Classic for HP-UX 11 32-bit, compressed tarball</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>November 27, 2006</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-hpux/1.5.3-Release/FirebirdSS-1.5.3.4870-0-HPUX11.tar.gz/download">FirebirdSS-1.5.3.4870-0-HPUX11.tar.gz</a></td>
+			<td>6.1 MB</td>
+			<td>V1.5.3 Superserver for HP-UX 11 32-bit, compressed tarball</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="4"><a class="osicons" href="#Solaris"><img alt="solaris" height="30" src="/img/downloads/solaris_30.png" width="61" /></a> Older ports for Classic &amp; Superserver for Sun Solaris Intel &amp; Sparc <a name="Solaris"></a></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>August 10, 2006</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-solaris-x86/1.5.3-Release/Firebird-CS-1.5.3.4870-0-Solaris-i386.pkg.tar.Z/download">Firebird-CS-1.5.3.4870-0-Solaris-i386.pkg.tar.Z</a></td>
+			<td>4.3 MB</td>
+			<td>V1.5.3 Classic for Sun Solaris Intel, compressed tarball</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>August 10, 2006</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-solaris-x86/1.5.3-Release/Firebird-SS-1.5.3.4870-0-Solaris-i386.pkg.tar.Z/download">Firebird-SS-1.5.3.4870-0-Solaris-i386.pkg.tar.Z</a></td>
+			<td>5.3 MB</td>
+			<td>V1.5.3 Superserver for Sun Solaris Intel, compressed tarball</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>November 28, 2005</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-solaris-sparc/1.5.2-Release/FirebirdCS-1.5.2.4731-0.Solaris-Sparc.pkg.gz/download">FirebirdCS-1.5.2.4731-0.Solaris-Sparc.pkg.gz</a></td>
+			<td>12 MB</td>
+			<td>V1.5.2 Classic for Sun Solaris Sparc, compressed tarball</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="4"><img alt="FreeBSD" height="30" src="/img/downloads/freebsd_30_30.png" width="31" /> Older Classic Ports for FreeBSD <a name="FreeBSD"></a></td>
+		</tr>
+		<tr class="Table_Note">
+			<td colspan="4">NOTE: The FreeBSD Ports Tree has also had the Firebird port updated to 1.5.2, so the FreeBSD 4.11 CDs should contain a Firebird 1.5.2 package. This also means you can roll your own package from the Ports Tree, as was done to build the packages below.</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>January 11, 2005</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-freebsd-i386/1.5.2-Release/firebird-1.5.2-fbsd48.tgz/download">firebird-1.5.2-fbsd48.tgz</a></td>
+			<td>3.5 MB</td>
+			<td>V1.5.2 Classic for FreeBSD/i386 4.8 /4.9 /4.10 /4.11 /4-stable, compressed tarball</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>January 11, 2005</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-freebsd-i386/1.5.2-Release/firebird-1.5.2-fbsd53.tbz/download">firebird-1.5.2-fbsd53.tbz</a></td>
+			<td>2.3 MB</td>
+			<td>V1.5.2 Classic for FreeBSD/i386 5.3, compressed tarball</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>January 04, 2005</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-freebsd-i386/1.5.2-Release/firebird-1.5.2-fbsd521.tbz/download">firebird-1.5.2-fbsd521.tbz</a></td>
+			<td>2.2 MB</td>
+			<td>V1.5.2 Classic for FreeBSD/i386 5.2.1, compressed tarball</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="4"><img alt="AIX" height="30" src="/img/downloads/aix_30_30.png" width="30" /> Older Classic Port for AIX-PPC <a name="AIX"></a></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>November 22, 2006</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-aix-ppc/1.5.3-Release/FirebirdCS-1.5.3.ppc.tar.gz/download">FirebirdCS-1.5.3.ppc.tar.gz</a></td>
+			<td>4.6 MB</td>
+			<td>V1.5.3 Classic for AIX-PPC, compressed tarball</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="4">Miscellaneous</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>April 09, 2003</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-addons/FbConfigManager%20for%20v1.5/FbConfigManager.zip/download">FbConfigManager.zip</a></td>
+			<td>229 KB</td>
+			<td>Firebird Configuration Manager tool for manipulating the Firebird V1.5 Configuration file. Work in progress.</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>2004</td>
+			<td><a href="http://www.ibphoenix.com/resources/documents/development/doc_35">Tracking Down Crashes on Win32 Systems</a></td>
+			<td>&nbsp;</td>
+			<td>Notes by Nickolay Samofatov on using the debug builds to identify the cause of an engine crash.</td>
+		</tr>
+	</tbody>
+</table>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Downloads</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/server-packages/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Server Packages</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-5-0-4/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 5.0</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-4-0-7/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 4.0</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-3-0-14/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 3.0</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/docker/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Docker Images</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/snapshot-builds/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Snapshot Builds</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/discontinued-versions/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Discontinued Versions</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/connectivity/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Connectivity</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/jdbc-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> JDBC Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/net-provider/" class="menulvl_3"><i class="fa fa-arrow-right"></i> .NET Provider</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+    
+ 
+ 
+    
+   <div class="menu-tree  bgLVL_4">   
+      <a href="/en/additional-downloads/" class="menulvl_4" ><i class="fa fa-arrow-right"></i> Additional Downloads</a>          
+      
+   </div> 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/python-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Python Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/odbc-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> ODBC Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/php-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> PHP Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-dwn/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/sphinx-full-text-search/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Other Downloads</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/full-text-search-udr/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Full Text Search UDR</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sphinx-full-text-search/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Sphinx Full Text Search</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-tools/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Tools &amp; Drivers</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

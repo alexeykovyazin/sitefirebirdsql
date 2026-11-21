@@ -1,0 +1,237 @@
+---
+title: "Firebird: Developer's Report: Firebird Core Development & Coordination"
+html_title: "Firebird: Developer's Report: Firebird Core Development & Coordination"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Firebird Core Development & Coordination"
+menu_active: ""
+source_url: "/en/report-core-coordination-202112"
+source_format: new
+url: "/en/report-core-coordination-202112"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Firebird Core Development &amp; Coordination</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><strong style="line-height: 20.8px;"><span style="color: rgb(6, 134, 173); font-size: 16px;">September to December 2021</span></strong><br style="line-height: 20.8px;" />
+&nbsp;</p>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><strong><u>December 2021</u></strong></span></div>
+
+<div style="line-height: 20.8px;">&nbsp;</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">New development:</div>
+
+<ul>
+	<li style="line-height: 20.8px;">#7049: Make savepoint statements pure DSQL, without being backed by BLR</li>
+	<li style="line-height: 20.8px;">WIP: ResultSet::getInfo() implementation</li>
+	<li style="line-height: 20.8px;">WIP: IN (list<list>) optimization</list></li>
+</ul>
+
+<div style="line-height: 20.8px;">Bugfixing:</div>
+
+<div style="line-height: 20.8px;">
+<div>
+<ul>
+	<li>#7070: Error &#39;BLOB is not found&#39; while replication converts INSERT into UPDATE for a conflicting record</li>
+	<li>#7057: Client-side positioned updates work wrongly with scrollable cursors</li>
+	<li>#7056: Fetching from a scrollable cursor may overwrite user-specified buffer and corrupt memory</li>
+	<li>#7052: Races between transactions on the primary side may cause update conflicts while applying journals to the replica</li>
+</ul>
+
+<div style="line-height: 20.8px;">
+<div>
+<div style="line-height: 20.8px;">Other:</div>
+
+<ul>
+	<li>v4.0.1 release notes</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<strong style="color: rgb(71, 71, 71); font-size: 15px;"><u>November 2021</u></strong><br />
+&nbsp;
+<div style="line-height: 20.8px;">New Developement:
+<ul>
+	<li>#7051: Network support for bi-directional cursors</li>
+	<li>WIP: IN (list<list>) optimization</list></li>
+</ul>
+Bugfixing:
+
+<div style="line-height: 20.8px;">
+<ul>
+	<li>#7048: Incorrect releasing of user savepoint (older savepoints become inaccessible)</li>
+	<li>#7034: Scroll cursor server crash</li>
+	<li>#7033: BlockReader misses sanity checks</li>
+	<li>#6995: Unexpected string truncation error after restore (postfix)</li>
+</ul>
+
+<div style="line-height: 20.8px;">
+<div>
+<div style="line-height: 20.8px;">
+<div>
+<div style="line-height: 20.8px;">Other:</div>
+
+<ul>
+	<li>v3.0.8 release notes</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<span style="color:#474747;font-size:15px;font-weight:bold;"><u>October 2021</u></span></div>
+</div>
+</div>
+
+<div style="line-height: 20.8px;">
+<div>&nbsp;</div>
+
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">New Developement:
+<div>
+<ul>
+	<li>Restore simpler signature for node methods</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div>
+<div style="line-height: 20.8px;">Bugfixing:</div>
+
+<ul>
+	<li class="commit-title">#7015: Applier may crash if replication block contain no savepoint operations</li>
+	<li class="commit-title">#6995: Unexpected string truncation error after restore</li>
+	<li class="commit-title">#6989: Invalid message in replication.log (and possibly crash in the case of synchronous replication) when the target DB has no its replica flag set</li>
+	<li class="commit-title"><span class="f1-light color-fg-muted">#6727: </span><span class="js-issue-title markdown-title">Synchronous replication to localhost hang on disconnect (postfix)</span></li>
+	<li class="commit-title">Return NULL (as documented) instead of empty string from <span class="pl-s">REPLICA_MODE </span>for non-replica databases</li>
+	<li class="commit-title">Fixed double release of the attachment (postfix for #6886 by Alex)</li>
+</ul>
+<span style="color:#474747;font-size:15px;font-weight:bold;"><u>September 2021</u></span>
+
+<div>&nbsp;</div>
+Bugfixing:
+
+<ul>
+	<li class="commit-title">#6975: Crash or hang while shutting down the replica database if segments are being applied</li>
+	<li class="commit-title">#6934: SQL SECURITY DEFINER does not affect the ownership of created DDL objects</li>
+	<li class="commit-title">#6856: Fixed permissions and ownership during DDL replication</li>
+	<li class="commit-title">Fixed races after renaming on Classic. Mark the segment as full immediately after filling (frontported)</li>
+</ul>
+</div>
+</div>
+
+<p>&nbsp;</p>
+
+<p><em>Dmitry Yemanov</em><br />
+<em style="line-height: 20.8px;">Penza, Russia</em></p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

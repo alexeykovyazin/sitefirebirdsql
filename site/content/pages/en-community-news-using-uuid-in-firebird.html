@@ -1,0 +1,216 @@
+---
+title: "Firebird: Using UUID in Firebird"
+html_title: "Firebird: Using UUID in Firebird"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Using UUID in Firebird"
+menu_active: ""
+source_url: "/en/community-news/using-uuid-in-firebird"
+source_format: new
+url: "/en/community-news/using-uuid-in-firebird"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+ 
+    <section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/about-firebird/">About Firebird</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/community-news/">Community News</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Using UUID in Firebird</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-8">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div class="post-categories d-flex justify-content-between align-content-center">
+                        <div class="categories-share">
+                            <ul>
+                                <li><i class="fas fa-calendar"></i> Jun 19, 2026</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="title">Using UUID in Firebird</h3>
+                                            </div>
+                    <div class="post-text mt-30">
+                        <p>Universally Unique Identifiers (UUIDs) are widely used as primary keys in distributed systems &mdash; they eliminate the need for a central ID generator and allow records to be created independently across multiple nodes. However, implementation choices have a major impact on performance. This article provides a comprehensive guide to working with UUIDs in Firebird, covering storage strategies, key generation options, and their measurable effect on index efficiency, insert throughput, and query performance.</p>
+
+<p><strong>Storage: Binary vs. String</strong></p>
+
+<p>The first and most impactful decision is how to store a UUID. The recommended type is <code>BINARY(16)</code> &mdash; compact and efficient. Storing UUIDs as <code>CHAR(36)</code> strings uses more than twice the space per value, and the penalty compounds at the index level: in benchmarks on 1 million rows, a string UUID index required writing <strong>2,356 pages</strong> during creation versus only <strong>1,257 pages</strong> for the binary equivalent. String indexes also have worse tree depth and clustering factor, directly affecting query performance.</p>
+
+<p><strong>UUID Version 4 vs. UUID Version 7</strong></p>
+
+<p>Firebird&#39;s built-in <code>GEN_UUID()</code> produces UUID v4 &mdash; fully random values. Random UUIDs cause significant B-tree fragmentation because new keys are inserted at arbitrary positions. UUID v7 is time-ordered, making it monotonically increasing within a server instance. This has major practical consequences, backed by benchmark data:</p>
+
+<ul>
+	<li><strong>Bulk insert</strong> of 1M rows: UUID v4 took <strong>12.0 sec</strong>, UUID v7 took <strong>7.4 sec</strong> &mdash; roughly <strong>1.6&times; faster</strong>.</li>
+	<li><strong>Full index scan</strong> over 1M rows: UUID v4 took <strong>1.19 sec</strong>, UUID v7 took <strong>0.57 sec</strong> &mdash; nearly <strong>2&times; faster</strong>, comparable to scanning a <code>BIGINT</code> key.</li>
+	<li><strong>Index creation</strong>: UUID v7 required 25% fewer leaf pages than UUID v4, resulting in a shallower, more cache-friendly structure.</li>
+</ul>
+
+<p>The root cause is the clustering factor: UUID v4 indexes have near-worst-case clustering (ratio &asymp; 1.0), meaning every sorted access causes random I/O. UUID v7 achieves a clustering ratio of ~0.60, significantly reducing page reads for range scans and ordered queries.</p>
+
+<p><strong>Additional Benefits of UUID v7</strong></p>
+
+<p>Because UUID v7 encodes a millisecond timestamp in its high bits, a descending index on a UUID v7 column can meaningfully return the most recently inserted records &mdash; something semantically impossible with UUID v4. Firebird 6.0 supports <code>GEN_UUID(7)</code> natively; in Firebird 5.0, UUID v7 can be generated on the application side or via an external UDR.</p>
+
+<p><strong>Key Recommendations</strong></p>
+
+<ul>
+	<li>Store UUIDs as <code>BINARY(16)</code>, never as <code>CHAR(36)</code>.</li>
+	<li>Prefer UUID v7 over v4 &mdash; it dramatically reduces index fragmentation and improves insert and scan performance. D.Simonov will release UDR to generate UUID v7 very soon.</li>
+	<li>UUID v7 is a viable distributed alternative to sequential <code>BIGINT</code> keys, with only ~20% insert overhead and no need for a centralized sequence.</li>
+</ul>
+
+<p>Recommended reading for developers designing Firebird schemas for distributed or replicated environments.</p>
+
+<p>Read article in PDF ou HTML in</p>
+
+<ul>
+	<li>English: <a href="https://ib-aid.com/download/docs/2026/UUID/fb_uuid_en.pdf">PDF&nbsp;</a> or <a href="https://ib-aid.com/download/docs/2026/UUID/fb_uuid_en.html">HTML&nbsp;</a></li>
+	<li>Portuguese: <a href="https://ib-aid.com/download/docs/2026/UUID/fb_uuid_pt-br.pdf">PDF</a> or <a href="https://ib-aid.com/download/docs/2026/UUID/fb_uuid_pt-br.html">HTML</a></li>
+	<li>Russian: <a href="https://ib-aid.com/download/docs/2026/UUID/fb_uuid_ru.pdf">PDF</a> or <a href="https://ib-aid.com/download/docs/2026/UUID/fb_uuid_ru.html">HTML</a>&nbsp;</li>
+	<li>(German version will be ready soon).</li>
+</ul>
+
+                    </div>
+                  	<div>
+                    	<div>
+  <iframe frameborder="0"
+    height="150" 
+    scrolling="no" 
+    src="https://firebirdfoundation.substack.com/embed" 
+    style="border:1px solid #EEE; background:white;" 
+    width="100%" 
+    allow="encrypted-media"
+    sandbox="allow-scripts allow-same-origin allow-forms"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>  
+                  	</div>
+                    <div class="post-tags">
+                        <ul>
+                            <li><a><i class="fa fa-share"></i> Share With:</a></li>
+                            <li style="cursor: pointer;"><a class="share-icon fb" data-url="/en/community-news/using-uuid-in-firebird"><i class="fab fa-facebook-f"></i></a></li>
+                          
+                            <li style="cursor: pointer;"><a class="share-icon lin" data-url="/en/community-news/using-uuid-in-firebird"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="post-reader-text post-reader-text-2 post-reader-text-3 pt-50">
+                    <div class="row">
+                                                    <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/community-news/25-april-2026-firebird-vip-seminar-in-sao-paulo-brazil-in-portuguese">25-April-2026 - Firebird VIP Seminar in Sao Paulo, Brazil (in Portuguese)</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                                                            <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/community-news/ides-and-tools-for-firebird">IDEs and tools for Firebird</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-20">
+                <div class="all-post-sidebar">
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

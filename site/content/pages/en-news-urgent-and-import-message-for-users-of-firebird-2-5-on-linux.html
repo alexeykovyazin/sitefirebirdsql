@@ -1,0 +1,238 @@
+---
+title: "Firebird: Urgent and Important Message For Users of Firebird 2.5 on Linux"
+html_title: "Firebird: Urgent and Important Message For Users of Firebird 2.5 on Linux"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Urgent and Important Message For Users of Firebird 2.5 on Linux"
+menu_active: ""
+source_url: "/en/news/urgent-and-import-message-for-users-of-firebird-2-5-on-linux/"
+source_format: new
+url: "/en/news/urgent-and-import-message-for-users-of-firebird-2-5-on-linux/"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+ 
+    <section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/about-firebird/">About Firebird</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/news/">News &amp; Events</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Urgent and Important Message For Users of Firebird 2.5 on Linux</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-8">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div class="post-categories d-flex justify-content-between align-content-center">
+                        <div class="categories-share">
+                            <ul>
+                                <li><i class="fas fa-calendar"></i> Apr 11, 2024</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="title">Urgent and Important Message For Users of Firebird 2.5 on Linux</h3>
+                                            </div>
+                    <div class="post-text mt-30">
+                        <p>We&#39;ve identified an issue where the latest <strong>libpthread </strong>library versions are not compatible with Firebird 2.5 (including the latest available release of vanilla version 2.5.9.27139 and HQbird 2.5 till the version 2.5.9.27173).<br />
+<br />
+This incompatibility may cause Firebird 2.5 to crash during certain operations on newer Linux distributions. The error occurs frequently in architectures SuperServer and SuperClassic, and less frequently, in Classic.<br />
+<br />
+<strong>Immediate Action Required:</strong><br />
+To prevent any impact on Firebird 2.5, please follow the guidance provided below.<br />
+<br />
+<strong>Assessing Your System:</strong><br />
+Determining which Linux distributions are impacted is difiicult since libpthread updates can be applied to older operating system versions, potentially introducing the issue to Firebird. It means that any update of OS can bring the problem to your system, even if you are running old version. It means that you need to test your instance of OS.<br />
+<br />
+<strong>Testing for Compatibility:</strong><br />
+We&#39;ve developed a command-line application to test whether libpthread is compatible with Firebird 2.5.<br />
+<br />
+<strong>Download Instructions:</strong><br />
+&bull;&nbsp; The binary for the test application can be downloaded from the following link: <a href="https://ib-aid.com/download/libpthread/pthr-tst">www.ib-aid.com/download/libpthread/pthr-tst</a><br />
+&bull;&nbsp; The source code for the test application is also available at this link: <a href="http://ib-aid.com/download/libpthread/test.cpp">www.ib-aid.com/download/libpthread/test.cpp</a><br />
+<br />
+<strong>Execution Guide:</strong><br />
+Execute the test application in your terminal as outlined in the instructions below to perform the compatibility check.<br />
+<br />
+For the Operating System with old libptread (i.e., it is compatible with 2.5)<span style="white-space: pre-wrap"> &nbsp;</span></p>
+
+<pre>
+wget https://ib-aid.com/download/libpthread/pthr-tst
+chmod +x pthr-tst
+</pre>
+
+<pre>
+# ./pthr-tst 
+Set signals
+Sigenv works 
+</pre>
+
+<p>For the Operating System with new libptread (i.e., not compatible with 2.5):</p>
+
+<pre>
+# ./pthr-tst
+Set signals
+Segmentation fault</pre>
+
+<h2>What to do next in short-term</h2>
+
+<p><strong>For Firebird 2.5 vanilla users:</strong><br />
+If you have made the test and found that libpthread is not compatible with Firebird 2.5, change the architecture to Classic (make sure to do not confuse the configuration!), and then plan to reinstall your Linux Operating System to the old version with compatible libpthread, which does not have this problem - as soon as possible.</p>
+
+<p>If you have made the test and did not encounter the problem with libpthread, there is no direct danger at the moment. Make this test after each OS update.<br />
+<br />
+Please note that Firebird 2.5 is discontinued version, and Firebird Project will not release fix for vanilla version of 2.5.<br />
+<br />
+<strong>For user of commercial versions </strong><br />
+Contact your vendor to receive a fix.</p>
+
+<h2>What to do next in long-term? Upgrade!</h2>
+
+<p>Take this as a final notice that you need to upgrade to Firebird 5.0. The version 2.5 was good and stable, but it originates from 2010, the majority of products released in that year already retired.<br />
+<br />
+There are enough material to perform upgrade in the smooth and easy way, see for details <a href="https://ib-aid.com/download/docs/fb5migrationguide.html">Practical Migration Guide to Firebird 5</a>.<br />
+&nbsp;</p>
+
+<h2>Questions?</h2>
+
+<p>Please feel free to ask any questions: ak@firebirdsql.org</p>
+
+                    </div>
+                  	<div>
+                    	<div>
+  <iframe frameborder="0"
+    height="150" 
+    scrolling="no" 
+    src="https://firebirdfoundation.substack.com/embed" 
+    style="border:1px solid #EEE; background:white;" 
+    width="100%" 
+    allow="encrypted-media"
+    sandbox="allow-scripts allow-same-origin allow-forms"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>  
+                  	</div>
+                    <div class="post-tags">
+                        <ul>
+                            <li><a><i class="fa fa-share"></i> Share With:</a></li>
+                            <li style="cursor: pointer;"><a class="share-icon fb" data-url="/en/news/urgent-and-import-message-for-users-of-firebird-2-5-on-linux"><i class="fab fa-facebook-f"></i></a></li>
+                          
+                            <li style="cursor: pointer;"><a class="share-icon lin" data-url="/en/news/urgent-and-import-message-for-users-of-firebird-2-5-on-linux"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="post-reader-text post-reader-text-2 post-reader-text-3 pt-50">
+                    <div class="row">
+                                                    <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/firebird-6-roadmap-is-published">Firebird 6 Roadmap is Published!</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                                                            <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/ngram-indexes-in-firebird-fast-substring-search-without-a-full-scan">VIDEO: NGRAM indexes in Firebird: fast substring search without a full scan</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-20">
+                <div class="all-post-sidebar">
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

@@ -1,0 +1,176 @@
+---
+title: "Firebird: Delta Quadrant: Horizons. All you need to conquer the galaxy"
+html_title: "Firebird: Delta Quadrant: Horizons. All you need to conquer the galaxy"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Delta Quadrant: Horizons. All you need to conquer the galaxy"
+menu_active: ""
+source_url: "/en/case-studies-catalog/delta-quadrant-horizons-all-you-need-to-conquer-the-galaxy-9976"
+source_format: new
+url: "/en/case-studies-catalog/delta-quadrant-horizons-all-you-need-to-conquer-the-galaxy-9976"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+ 
+    <section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/case-studies/">Case Studies</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/case-studies-catalog/">Case Studies Catalog</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Delta Quadrant: Horizons. All you need to conquer the galaxy</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-8">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div class="post-categories d-flex justify-content-between align-content-center">
+                        <div class="categories-share">
+                            <ul>
+                                <li><i class="fas fa-calendar"></i> Apr 06, 2011</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="title">Delta Quadrant: Horizons. All you need to conquer the galaxy</h3>
+                                            </div>
+                    <div class="post-text mt-30">
+                        <a href="/file/case_studies/Delta%20Quadrant%20Horizons.pdf" target="_blank">View this Case Study in PDF format</a><br /> <table width="100%" cellspacing="1" cellpadding="1" border="0">     <tbody>         <tr>             <td>&ldquo;When we created this game, it was a small project and we did not expect more than a hundred players. When we decided to publish this game in social networks, we moved our code from Firebird 2.1 to Firebird 2.5, and it just worked for thousands of players, without having to rewrite the code drastically.&rdquo; &mdash; Alexandru Bargan, CEO of Nebuloasa SRL, Lead Game Designer and Lead Programmer of the &ldquo;Delta Quadrant: Horizons&rdquo; project.</td>             <td><img width="120" height="120" src="/img/case_studies/DQ-Team-logo.png" alt="DQ Team logo" /></td>         </tr>     </tbody> </table> <br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Company information</span></strong><br /><br />Nebuloasa SRL, also known as &ldquo;DQ Team&rdquo;, is a small privately-owned  company, founded in 2005. It is focused on custom-built flexible IT  solutions for other companies, including governmental institutes, TV  companies, banks and others.<br /><br /><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Business challenge</span></strong><br /> <br />   &ldquo;Delta Quadrant: Horizons&rdquo; is a web hosted, turn-based 4X strategy game. It was developed as a &ldquo;testing ground&rdquo; for some technologies from the web 2.0 era. It was never intended to support more than one hundred players at a time, so nearly all the game logic (98% of the code) was written in Firebird's Procedural SQL.<br /><br />When the company decided to make it available for social networks, we thought we would first have to rewrite all the code using popular NoSQL solutions, like in-memory databases. We also expected to need multiple databases and support for cross-database queries.<br /><br />&ldquo;It was a challenge. You have only two choices in our industry &mdash; you meet users' needs or you are out of the market. This project was meant to show whether we can use Firebird for social networks or not.&rdquo; &mdash; Sergey Mereutsa, Technical Director of Nebuloasa SRL, Software Architect in the &ldquo;Delta Quadrant: Horizons&rdquo; project.<br /><br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Solution</span></strong><br /> <br />   We decided instead to try rewriting only a small part of the code in our stored procedures, and change the Firebird version from 2.1 to 2.5 to enable cross-database queries. This took a total of less than 2 weeks.  Changing images sizes, and redesigning it to fit in the iframe offered by the social networks, have taken a bit more than a month.  The result we have obtained is a fully scalable online game engine which can serve up to 10,000 players per game galaxy, with three galaxies hosted simultaneously per physical server. <br /><br />&ldquo;Delta Quadrant: Horizons&rdquo; is now available in Facebook, Odnoklassniki.ru, VKontakte.ru, and as a standalone game at <a href="http://www.dqhorizons.com/" target="_blank">http://www.dqhorizons.com/</a><br /><div style="text-align: right;"><br /><img width="493" height="100" src="/img/case_studies/DQ-Horizons.png" alt="DQ Horizons" /></div><br /><strong><span style="color: rgb(6, 134, 173); font-size: 16px;"> </span></strong><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Technical details</span></strong><br /> <br />Game server characteristics: 4-core Xeon with 16GB RAM &amp; 64-bit Debian Linux.<br />Database Engine: Firebird version 2.5.<br />Database size: Approximately 1GB per galaxy database, with 6,000+ active players. <br />Database complexity: 89 tables and 403 stored procedures.<br />Largest table:  Approximately 5 million records at the end of a game round.<br />Average number of concurrent users per server: 300.<br />Average CPU usage: 25% (of each of the four cores &mdash; or 100% of 400% max).<br />  <br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Contacts</span></strong><br /> <br />&ldquo;NEBULOASA&rdquo; SRL,<br />63/3, A. Russo Street,<br />Apt. 52,<br />Chisinau,<br />Republic of Moldova, MD 2044<br /> <a href="http://www.dqteam.com" target="_blank">www.dqteam.com</a><br />office@dqteam.com<br /><br />
+                    </div>
+                  	<div>
+                    	<div>
+  <iframe frameborder="0"
+    height="150" 
+    scrolling="no" 
+    src="https://firebirdfoundation.substack.com/embed" 
+    style="border:1px solid #EEE; background:white;" 
+    width="100%" 
+    allow="encrypted-media"
+    sandbox="allow-scripts allow-same-origin allow-forms"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>  
+                  	</div>
+                    <div class="post-tags">
+                        <ul>
+                            <li><a><i class="fa fa-share"></i> Share With:</a></li>
+                            <li style="cursor: pointer;"><a class="share-icon fb" data-url="/en/case-studies-catalog/delta-quadrant-horizons-all-you-need-to-conquer-the-galaxy-9976"><i class="fab fa-facebook-f"></i></a></li>
+                          
+                            <li style="cursor: pointer;"><a class="share-icon lin" data-url="/en/case-studies-catalog/delta-quadrant-horizons-all-you-need-to-conquer-the-galaxy-9976"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="post-reader-text post-reader-text-2 post-reader-text-3 pt-50">
+                    <div class="row">
+                                                    <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/case-studies-catalog/document-management-solutions-for-businesses-9892">Document Management Solutions for Businesses</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                                                            <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/case-studies-catalog/masa---statistical-analysis-and-plan-optimization-solution-for-industrial-plants-53264">MASA — Statistical analysis and plan optimization solution for industrial plants</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-20">
+                <div class="all-post-sidebar">
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

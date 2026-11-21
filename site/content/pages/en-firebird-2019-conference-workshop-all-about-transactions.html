@@ -1,0 +1,671 @@
+---
+title: "Firebird: Firebird 2019 Conference: Workshop \"All About Transactions\""
+html_title: "Firebird: Firebird 2019 Conference: Workshop \"All About Transactions\""
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Firebird 2019 Conference: Workshop \"All About Transactions\""
+menu_active: "/en/community/"
+source_url: "/en/firebird-2019-conference-workshop-all-about-transactions"
+source_format: new
+url: "/en/firebird-2019-conference-workshop-all-about-transactions"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/community/">Community</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/events/">Events</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-conference-2019/">Firebird Conference 2019</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Firebird 2019 Conference: Workshop &quot;All About Transactions&quot;</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p>The workshop &quot;All About Firebird Transactions&quot; will take place on the 2nd day of the <a href="/en/firebird-conference-2019/">Firebird Conference 2019</a>, the duration of the workshop will be 3 hours.</p>
+
+<table align="right" border="0" cellpadding="0" cellspacing="0" class="Table" width="40%">
+	<tbody>
+		<tr class="Table_Row_Grey">
+			<td colspan="2"><strong>Workshop speakers</strong></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><img alt="Vlad Khorsun" src="/img/community/vlad_khorsun.png" style="height: 100%;" /></td>
+			<td>Vlad Khorsun - Firebird core developer, responsible (along with other things) for the implementation of transactions in the engine.</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><img alt="Dmitry Kuzmenko" src="/img/community/dmitry_kuzmenko_ibsurgeon.png" style="height: 100%;" /></td>
+			<td>Dmitry Kuzmenko - lead developer and trainer at IBSurgeon. Dmitry has more than 25 years of the experience with InterBase and Firebird, with a focus on the database performance and applications development.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><big>Understanding transactions is crucial for every experienced Firebird developer to be able to create fast, scalable multi-user applications. </big></p>
+
+<p><big>In this workshop, we will go through the basics of transactions and in-depth details of their implementation, and we will also consider the impact that transactions have on database performance. </big></p>
+
+<p><big>The practical part of the workshop will include the demonstration of the debugging methods, investigation of deadlock reasons, and best practices for the various tasks.</big><br />
+&nbsp;</p>
+
+<p><strong>Attention! Before the workshop: it is recommended to attend the presentation &quot;New transactions&#39; features in Firebird 4&quot; at the Day 1, and read these introductory articles (<a href="https://ib-aid.com/en/transactions-in-firebird-acid-isolation-levels-deadlocks-and-update-conflicts-resolution/">1st</a>, <a href="https://ib-aid.com/en/how-to-track-deadlocks-in-firebird/">2nd</a>), as well as take a look on <a href="https://ib-aid.com/download/conferences/firebirdconf2014/03_ibsurgeon_how_transactions_work.pdf?n=1">this presentation</a>.</strong></p>
+
+<p>Below you can find the detailed topics for the workshop &quot;All About Firebird Transactions&quot;:</p>
+
+<h3>1. Transaction basics</h3>
+
+<ul>
+	<li>What is ACID</li>
+	<li>Transaction parameters
+	<ul>
+		<li>read only\write</li>
+		<li>wait and nowait</li>
+	</ul>
+	</li>
+	<li>What is a deadlock</li>
+	<li>Isolation levels of transactions:
+	<ul>
+		<li>snapshot</li>
+		<li>read committed rec version | no rec version | read consistency</li>
+		<li>snapshot table stability</li>
+	</ul>
+	</li>
+</ul>
+
+<h3>2. Transaction inventory page, versions and how transactions work in the multi-generation database.</h3>
+
+<ul>
+	<li>Managing transaction: SET TRANSACTION and TPB parameters</li>
+	<li>Some undocumented parameters</li>
+	<li>Who create transactions
+	<ul>
+		<li>Application</li>
+		<li>System transaction (tx #0)</li>
+		<li>Garbage collector</li>
+		<li>Autonomous transactions</li>
+		<li>Triggers ON CONNECT\ON DISCONNECT</li>
+	</ul>
+	</li>
+	<li>Versioning basics
+	<ul>
+		<li>How versions are being created</li>
+		<li>States of transaction in Firebird (active, committed, rolled back, limbo)</li>
+		<li>Visibility of record versions in transactions</li>
+		<li>Key differences between Read Committed and Snapshot</li>
+		<li>Triggers for transactions start and stop</li>
+		<li>Context variables at the transaction&rsquo;s level</li>
+	</ul>
+	</li>
+</ul>
+
+<h3>3. Inside Firebird transactions: what happens inside the engine during transactions&rsquo; start, commit, rollback.</h3>
+
+<ul>
+	<li>What happens at transactions&rsquo; start&nbsp;</li>
+	<li>Global transaction markers (OAT, OST, OIT) and their meaning</li>
+	<li>Autosweep</li>
+	<li>What happens at transaction commit</li>
+	<li>How DWF works</li>
+	<li>DDL queries</li>
+	<li>Dispatching events</li>
+	<li>Flush of dirty pages</li>
+	<li>TIP processing</li>
+	<li>What happens at rollback</li>
+	<li>Standard rollback with cache flush</li>
+	<li>Forces rollback without cache flush</li>
+	<li>Rollback transactions with undo-log</li>
+	<li>Rollback without undo-log</li>
+	<li>What is retaining</li>
+	<li>Auto-commit</li>
+	<li>Managing memory for transactions</li>
+	<li>Temporary BLOBs</li>
+	<li>Undo-log</li>
+	<li>Local TIP and related issues</li>
+</ul>
+
+<h3>4. Transactions interaction and best practices for application development. Conflicts between transactions.</h3>
+
+<ul>
+	<li>Transactions interactions types</li>
+	<li>Templates for transaction usage in application development</li>
+	<li>Scenarios breakdown: Readers and Readers, Readers and Writers, Writers and Writers</li>
+	<li>Best practices
+	<ul>
+		<li>Dictionaries</li>
+		<li>Splitting read and write transactions</li>
+		<li>Locking record with empty Update</li>
+		<li>Locking with SELECT WITH LOCK</li>
+		<li>Reports</li>
+		<li>Serialization: how to build effective queues</li>
+	</ul>
+	</li>
+</ul>
+
+<h3>5. Garbage collection mechanism and sweep in details</h3>
+
+<ul>
+	<li>Types of garbage collection: cooperative, background, background</li>
+	<li>Why do we need to sweep?</li>
+	<li>How sweep works</li>
+	<li>Differences between sweep and garbage collection</li>
+	<li>Autosweep: pro and contras</li>
+	<li>Examples of application design mistakes which lead to excessive garbage</li>
+</ul>
+
+<h3>6. Practical transactions management</h3>
+
+<ul>
+	<li>How to manage transactions lifetime in various drivers</li>
+	<li>How to implement edit dialogs in an effective and safe way</li>
+	<li>Commit retaining</li>
+	<li>When garbage collection does not work?</li>
+	<li>Transaction markers dynamics analysis - how to identify sweep</li>
+	<li>How to determine the number of garbage versions</li>
+	<li>How to find long transactions with MON$ tables</li>
+	<li>Transactions monitoring with MON$ and TraceAPI.</li>
+	<li>How to track deadlocks</li>
+	<li>Legacy applications: workarounds for error in transactions management</li>
+</ul>
+
+<h2><a href="/en/firebird-conference-2019/">Register to Firebird Conference 2019 now</a>!</h2>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Community</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-foundation/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Foundation</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/articles-of-association/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Articles of Association</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sponsors/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Sponsors</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+    
+ 
+ 
+    
+   <div class="menu-tree  bgLVL_4">   
+      <a href="/en/how-to-become-a-sponsor/" class="menulvl_4" ><i class="fa fa-arrow-right"></i> How to Become a Sponsor</a>          
+      
+   </div> 
+    
+
+
+  
+    
+ 
+ 
+    
+ 
+ 
+    
+   <div class="menu-tree  bgLVL_4">   
+      <a href="/en/donors/" class="menulvl_4" ><i class="fa fa-arrow-right"></i> Donors and Past Sponsors</a>          
+      
+   </div> 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/public-reports-documents/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Public Reports &amp; Documents</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-foundation-retrospective/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Foundation: a Retrospective</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-protection/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Protecting the Firebird Brand</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+    
+ 
+ 
+    
+   <div class="menu-tree  bgLVL_4">   
+      <a href="/en/branding-blacklist/" class="menulvl_4" ><i class="fa fa-arrow-right"></i> Branding Blacklist</a>          
+      
+   </div> 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/emberwings-magazine/" class="menulvl_2"><i class="fa fa-arrow-right"></i> EmberWings Magazine</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/news-portals/" class="menulvl_2"><i class="fa fa-arrow-right"></i> News Portals</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/blogs/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Blogs</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/regional-sites/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Regional Sites</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/mailing-lists/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Mailing Lists</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/events/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Events</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2019/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2019</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-performance-tour-2019/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Performance Tour 2018</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-tour-2017-optimization/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Tour 2017: Performance Optimization</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2016/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2016</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-2016-tour-big-databases/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 2015 Tour: Big Databases</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-tour-2015/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 2015 Spring Tour</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2014/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2014</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-tour-2013/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 2013 Tour</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2012/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2012</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-conference-2011/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Conference 2011</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-performance-webinar-26-nov-2024/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Performance Webinar (26-NOV-2024)</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

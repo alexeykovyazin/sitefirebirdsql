@@ -1,0 +1,190 @@
+---
+title: "Firebird: Developer's Report: Core Coding and Development"
+html_title: "Firebird: Developer's Report: Core Coding and Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Coding and Development"
+menu_active: ""
+source_url: "/en/report-core-development-202003"
+source_format: new
+url: "/en/report-core-development-202003"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Coding and Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">October 2019 to January 2020</span></strong></div>
+
+<h4><u>October 2019</u></h4>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>Fixed crash reported by Mark in fb-devel (fbclient.dll on Windows 64 bit broken)</li>
+</ul>
+
+<h4><u>November 2019</u></h4>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>Fixed bug CORE-6182 : ExtConnPoolLifeTime acts as countdown for activity in MOST RECENT database (of several) rather then separate for each of used databases. <em>The real problem is inside TimerControl implementation in Firebird. </em></li>
+	<li>Let external transaction run with CONCURRENCY isolation mode if local transaction runs with READ COMMITED READ CONSISTENCY isolation and such isolation mode is not supported by external data source.</li>
+	<li>Allow to reuse external connection if external data source doesn&#39;t support ALTER SESSION RESET statement.<br />
+	Update documentation.</li>
+</ul>
+
+<h3><em>B3_0_Release</em></h3>
+
+<ul>
+	<li>Fixed bug CORE-6182 : Problem inside TimerControl implementation in Firebird.</li>
+</ul>
+
+<h4><u>December 2019</u></h4>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>Implement CORE-4463: Windows implementation for CORE-4462 (Make it possible to restore compressed .nbk files without explicitly<br />
+	decompressing them).</li>
+	<li>Let logAndDie() call abort() on all platforms. It prevent hung when process exits (instead of aborts) and tries to release resources.<br />
+	Fixed bug CORE-6206 : VARCHAR of insufficient length used for set bind of decfloat to varchar.</li>
+	<li>Windows projects for chacha crypt plugin.</li>
+	<li>Windows file description : Let&#39;s use something meaningful at version info&#39;s &quot;File Description&quot; field.</li>
+</ul>
+
+<h3>B3_0_Release</h3>
+
+<ul>
+	<li>Implement CORE-4463: Windows implementation for CORE-4462 (Make it possible to restore compressed .nbk files without explicitly decompressing them).</li>
+	<li>Let logAndDie() call abort() on all platforms. It prevent hung when process exits (instead of aborts) and tries to release resources</li>
+	<li>Fixed bug CORE-6204 : FB crash because TraceSvcJrd::checkPrivileges can pass NULL in &#39;alias&#39;</li>
+</ul>
+
+<h3>B2_5_Release</h3>
+
+<ul>
+	<li>Let logAndDie() call abort() on all platforms. It prevent hung when process exits (instead of aborts) and tries to release resources</li>
+</ul>
+
+<h4><u>January 2020</u></h4>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>Fixed bug CORE-6231 : access violation on shutdown of xnet connection to local database when events have been registered&nbsp; Call of TimeZoneUtil::initTimeZoneEnv() is moved to the InitPrefix::init() to avoid too early initialization of default config file on Windows.</li>
+	<li>Fixed bug CORE-6231 : access violation on shutdown of xnet connection to local database when events have been registered</li>
+</ul>
+
+<h4>Work in progress during October-January:</h4>
+
+<ul>
+	<li>better query restart logic, see branch query_restart2</li>
+</ul>
+<em>Vladyslav Khorsun</em><br />
+<em>Dnetpropetrovsk, Ukraine</em>
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

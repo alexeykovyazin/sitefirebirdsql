@@ -1,0 +1,169 @@
+---
+title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+html_title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Security and Design Enhancements"
+menu_active: ""
+source_url: "/en/report-core-security-201802"
+source_format: new
+url: "/en/report-core-security-201802"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/archives/">Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/ff-reports-archives/">Developer Reports Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Security and Design Enhancements</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">October 2017 to January 2018</span></strong></p>
+
+<h3>New version development</h3>
+
+<ol>
+	<li>Implemented interface Batch helping (except other features) to efficiently implement JDBC prepared statement batches. This is part of Firebird 4 Roadmap.</li>
+	<li>Use Batch in gbak utility (feature pending review, present in separate branch &#39;gbak&#39;). Makes DB restore over the wire approximately 2 times faster - highly depends upon database structure, on test data restore runs 6 times faster in Batch case.</li>
+</ol>
+
+<h3>Improvements</h3>
+
+<ol>
+	<li>CORE-5712 Access to the name of DB encryption key from Attachment::getInfo()</li>
+	<li>CORE-5629 Added current timestamp to gstat output.</li>
+</ol>
+
+<h3>Bugfixing &amp; support</h3>
+
+<ol>
+	<li>Fixed CORE-5641: Segfault when exiting classic server with running sweep thread. (Appears that&#39;s not last segfault in this place on FB 2.5.)</li>
+	<li>Fixed CORE-5640: New connections to database are slow when multiple connects happen at the same moment to superclassic.</li>
+	<li>Fixed CORE-5649: isc_add_user / isc_modify_user produce unusable user record</li>
+	<li>Fixed CORE-5650: Segfault when procedure dropped on classic server</li>
+	<li>Fixed CORE-5643: Memory leak on linux under high load in munmap() call.</li>
+	<li>Fixed CORE-5651: Problem migrating users to V3.0 when login contains special symbols.</li>
+	<li>Fixed CORE-5518: Firebird fbudf remote ode Execution. Rewritten remaining samples (still making sense with new set of builtin functions) from UDF to UDR. Deprecated UDFs in FB4. Disable UDF in FB4 in default config.</li>
+	<li>Fixed CORE-5630: Can&#39;t create the shadow file during DB restore.</li>
+	<li>Fixed CORE-5624: Using backslash (&#39;\&#39;) in alias on linux does not work.</li>
+	<li>Fixed CORE-5686: Firebird 3.0.2 allows any protocol version &gt;= 10 to connect, including interbase protocol 14.</li>
+	<li>Fixed CORE-5673: Error message from engine is lost on first command in encrypted database.</li>
+	<li>Fixed CORE-5339: Assertion in createDatabase() when doing overwrite check.</li>
+	<li>Fixed CORE-5425: Server hangs under load test in plugin manager.</li>
+	<li>Fixed CORE-5649: isc_add_user / isc_modify_user calls produce unusable user record.</li>
+	<li>Fixed CORE-5735: Additional keyholder opens unauthorized connections to encrypted database.</li>
+	<li>Fixed CORE-5745: GRANT privileges error during database restore as non-SYSDBA user.</li>
+</ol>
+
+<h3>Miscellaneous</h3>
+
+<ol>
+	<li>Fixed branches 2.5 &amp; 3.0 to be buildable with gcc6.</li>
+	<li>Fixed android build of FB4.</li>
+	<li>Built packages for 2.5.8 &amp; 3.0.3,</li>
+</ol>
+
+<p><em>Alex Peshkov</em><br />
+<em>Yaroslavl, Russia</em></p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

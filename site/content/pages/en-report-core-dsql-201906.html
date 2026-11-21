@@ -1,0 +1,208 @@
+---
+title: "Firebird: Developer's Report: INTL/DSQL Development"
+html_title: "Firebird: Developer's Report: INTL/DSQL Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: INTL/DSQL Development"
+menu_active: ""
+source_url: "/en/report-core-dsql-201906"
+source_format: new
+url: "/en/report-core-dsql-201906"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: INTL/DSQL Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">February to May 2019</span></strong>
+
+<h3>May 2019</h3>
+<u>trunk</u>
+
+<ul>
+	<li>Finished Improvement CORE-6058 - Change behavior of skipped and repeated wall times within time zones.</li>
+	<li>Fixed CORE-6056 - Overflow warings in some collations.</li>
+	<li>Investigating CORE-6036 and CORE-6023</li>
+	<li>Working on Custom aggregate functions (CORE-1326).</li>
+	<li>Refactor public headers.</li>
+	<li>Fixed CORE-6068 - Server hangs when compiling big package with error.</li>
+	<li>Simplify FirebirdApiPointers struct.</li>
+</ul>
+<u>3.0 branch</u>
+
+<ul>
+	<li>Fixed CORE-6065 - Windows kits does have incomplete include headers directory.</li>
+	<li>Make it possible to build with VS 2017/2019 (with VS 2015 compiler installed).</li>
+</ul>
+
+<h3>April</h3>
+<u>trunk</u>
+
+<ul>
+	<li>Finished Improvement CORE-6032 - Add DPB properties for time zone bind and decfloat configuration.</li>
+	<li>Fixed CORE-6040 - Metadata script extracted using ISQL is invalid/incorrect when table has COMPUTED BY field.</li>
+	<li>Fixed CORE-6044 - ISQL issues with increased identifier length.</li>
+	<li>Fixed CORE-6046 - Incorrect time zone parsing reads garbage in memory.</li>
+	<li>Improve some error names/constants.</li>
+	<li>Finished work on Windows build with MSBuild.</li>
+	<li>Verifying tickets CORE-4718, CORE-6047 and CORE-6053.</li>
+	<li>Verifying invalid/ambiguous timestamps with time zone.</li>
+	<li>Change RDB$TRANSACTIONS.RDB$TIMESTAMP and RDB$BACKUP_HISTORY.RDB$TIMESTAMP to TIMESTAMP WITH TIME ZONE.</li>
+	<li>Started Improvement CORE-6058 - Change behavior of skipped and repeated wall times within time zones.</li>
+</ul>
+<u>3.0 branch</u>
+
+<ul>
+	<li>Backported fix for CORE-6040 - Metadata script extracted using ISQL is invalid/incorrect when table has COMPUTED BY field.</li>
+</ul>
+
+<h3>March</h3>
+<u>trunk</u>
+
+<ul>
+	<li>Task CORE-6016 - Rename RDB$GET_CONTEXT(&#39;SYSTEM&#39;, &#39;SNAPSHOT_CN&#39;) to RDB$GET_CONTEXT(&#39;SYSTEM&#39;, &#39;SNAPSHOT_NUMBER&#39;).</li>
+	<li>Finished CORE-6018 - Make it possible to start multiple transactions (possibly in different attachments) using the same initial transaction snapshot.</li>
+	<li>Research alignment issues for the API.</li>
+	<li>Reimplement previous NodeRefImpl checks while simplifying code also<br />
+	removing NodeRef.</li>
+	<li>Fix TCS tests.</li>
+	<li>Fixed CORE-6033 - SUBSTRING(CURRENT_TIMESTAMP) does not work.</li>
+	<li>Fixed CORE-6034 - The original time zone should be set to the current time zone at routine invocation.</li>
+	<li>Started Improvement CORE-6032 - Add DPB properties for time zone bind and decfloat configuration.</li>
+</ul>
+<u>3.0 branch</u>
+
+<ul>
+	<li>Backport AppVeyor improvements.</li>
+	<li>Fixed CORE-6026 - Alignment issue with FB_MESSAGE C++ macro (as well UDR macros) and BIGINT/DECFLOAT types in Linux 32-bits</li>
+</ul>
+
+<h3>February</h3>
+<u>trunk</u>
+
+<ul>
+	<li>Release Notes review.</li>
+	<li>Testing replication.</li>
+	<li>Started CORE-6018 - Make it possible to start multiple transactions (possibly in different attachments) using the same initial transaction<br />
+	snapshot.</li>
+	<li>Started work on Windows build with MSBuild.</li>
+	<li>Started CORE-6017 - Add transaction info fb_info_tra_snapshot_number.</li>
+	<li>AppVeyor Linux build.</li>
+</ul>
+<u>3.0 branch</u>
+
+<ul>
+	<li>Backported fix for CORE-5972 - External engine trigger crashing server if table have computed field.</li>
+</ul>
+
+<div><em>Adriano dos Santos Fernandes<br />
+Sao Paulo, Brazil</em></div>
+
+<table>
+</table>
+</div>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

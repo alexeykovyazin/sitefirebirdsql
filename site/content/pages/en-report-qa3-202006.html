@@ -1,0 +1,184 @@
+---
+title: "Firebird: Developer's Report: QA Stress Testing & Development"
+html_title: "Firebird: Developer's Report: QA Stress Testing & Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: QA Stress Testing & Development"
+menu_active: ""
+source_url: "/en/report-qa3-202006"
+source_format: new
+url: "/en/report-qa3-202006"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: QA Stress Testing &amp; Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <span style="font-weight: bold; color: rgb(6, 134, 173); font-size: 16px;">February to May 2020</span><br style="line-height: 20.8px;" />
+<br style="line-height: 20.8px;" />
+<span style="color:#474747;font-size:15px;font-weight:bold;"><u style="line-height: 20.8px;">May 2020</u></span>
+
+<ul>
+	<li>Created / modified QA tests for 6 tracker tickets</li>
+	<li>Migrated 4 tests from GTCS</li>
+	<li>Found / reported bugs: CORE-6297</li>
+	<li>OLTP-EMUL, 4.x Classic and SuperClassic: command to change DB state to full shutdown can hang</li>
+	<li>Found problem in FDB driver: delay for 5 seconds can occur after closing connection</li>
+	<li>FB 4.x (builds 1969 and 1970) crashed several times while running tests for CORE-4571 and CORE-5034</li>
+	<li>Implemented test for new metadata storage mechanism (requested by Alex Peshkov)</li>
+	<li>CORE-6309 still has a problems when we want to retrieve info about ~255 limbo transactions</li>
+	<li>OLTP-EMUL: compared memory consumption on standard and special build (with new metadata storage)</li>
+	<li>Refactored several QA batch files</li>
+	<li>OLTP-EMUL improvements</li>
+</ul>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>April 2020</u></span></div>
+
+<ul>
+	<li>Created / modified QA tests for &gt;30 tracker tickets</li>
+	<li>Migrated 18 tests from GTCS</li>
+	<li>Found / reported bugs: CORE-6290, CORE-6291</li>
+	<li>Reported regressions for CORE-1313, CORE-2031, CORE-2068, CORE-5034</li>
+	<li>Refactored test that checks &#39;CREATE OR ALTER USER ... TAGS (...)&#39;</li>
+	<li>Reported bug in the new sorting method (experimental build)</li>
+	<li>Discussed issues re. &quot;ALTER DOMAIN ADD &lt;new_constraint&gt; DROP CONSTRAINT&quot; -- different behaviour between v3 and v2.5</li>
+	<li>Reported bugchecks due to ODS changes (new RDB$ tables added)</li>
+	<li>OLTP-EMUL, 3.0.6.33289 CS: command to shutdown DB does not return to OS</li>
+	<li>OLTP-EMUL, 4.x CS / SC: unexpected violations of CHECK constraint</li>
+	<li>fbt-cross-report: changes in code that generates HTML report</li>
+</ul>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>March 2020</u></span></div>
+
+<ul>
+	<li>Created / modified QA tests for 18 tracker tickets</li>
+	<li>Started migration of GTCS test to FBT (~60 tests completed)</li>
+	<li>Found / reported bugs: CORE-6264</li>
+	<li>Updated FDB driver on the QA servers after a bugfix</li>
+	<li>Reported crashes for CORE-6015</li>
+	<li>Reported WI-V3.0.6.33259 SC freezing in production</li>
+	<li>Reported&nbsp;bugcheck &quot;record disappeared (186)&quot; for WI-V3.0.6.33259</li>
+</ul>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>February 2020</u></span></div>
+
+<ul>
+	<li>Created / modified QA tests for 23 tracker tickets</li>
+	<li>Found / reported bugs: CORE-6241, CORE-6247, CORE-6248, CORE-6251</li>
+	<li>OLTP-EMUL: changes for generating and uploading HTML report when running on Linux</li>
+	<li>OLTP-EMUL: generated etalone databases for regular runs</li>
+	<li>Reported crash discovered with WI-3.0.5.33212, SS</li>
+	<li>fbt-cross-report: further steps in order to reduce size of generated html</li>
+	<li>Reported regressions for&nbsp;CORE-1760, CORE-4310, CORE-5545</li>
+	<li>Reported crash discovered with LI-V3.0.5.33187 SS</li>
+	<li>fbt-cross-report: refactoring</li>
+</ul>
+<br />
+<em style="line-height: 20.8px;">Pavel Zotov</em></div>
+<em style="line-height: 20.8px;">Moscow, Russian Federation</em><br style="line-height: 20.8px;" />
+&nbsp;
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

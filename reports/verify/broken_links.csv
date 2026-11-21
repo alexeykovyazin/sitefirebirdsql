@@ -1,0 +1,4 @@
+source_type,source,link,reason,resolved
+copied-file,/file/documentation/html/en/refdocs/fbdevgd30/firebird-30-developers-guide.html,../../images/refdocs/fbdevgd30/fbdevgd30_mvc_002_en.png,missing,/file/documentation/html/en/images/refdocs/fbdevgd30/fbdevgd30_mvc_002_en.png
+copied-file,/file/documentation/papers_presentations/html/FB15_New.html,./forum/tf.tpl/default/default.css,missing,/file/documentation/papers_presentations/html/forum/tf.tpl/default/default.css
+copied-file,/file/documentation/release_notes/html/en/3_0/rlsnotes30.html,../../images/rlsnotes/rlsnotes30/interfaces_hierarchy.png,missing,/file/documentation/release_notes/html/images/rlsnotes/rlsnotes30/interfaces_hierarchy.png

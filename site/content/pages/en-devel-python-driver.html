@@ -1,0 +1,575 @@
+---
+title: "Firebird: Python Drivers and Libraries"
+html_title: "Firebird: Python Drivers and Libraries"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Python Drivers and Libraries"
+menu_active: "/en/development/"
+source_url: "/en/devel-python-driver/"
+source_format: new
+url: "/en/devel-python-driver/"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/development/">Development</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/drivers/">Drivers</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Python Drivers and Libraries</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p style="text-align: justify;"><span style="color:#0686AD;font-size:16px;font-weight:bold;">The firebird-driver</span></p>
+
+<div style="text-align: justify;">The <strong><code class="xref py py-obj docutils literal notranslate"><span class="pre">firebird-driver</span></code></strong> package provides <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">Python Database API 2.0</a>-compliant driver. In addition to the minimal feature set of the standard Python DB API, this driver also exposes the new (interface-based) client API introduced in Firebird 3, and number of additional extensions and enhancements for convenient use of Firebird RDBMS.
+
+<ul>
+	<li>firebird-driver is implemented in Python on top of Firebird client library using ctypes.</li>
+	<li>firebird-driver works with Firebird 3.0 and newer, and requires Python 3.11+.</li>
+	<li>firebird-driver is free &ndash; covered by a permissive MIT license that both commercial and noncommercial users should find agreeable.</li>
+	<li>firebird-driver was developed as replacement for (legacy) FDB&nbsp;driver.</li>
+	<li>firebird-driver is available at <a href="https://pypi.org/project/firebird-driver/"><strong>Python Package Index</strong></a> and could be installed via <em>pip</em>.</li>
+	<li>firebird-driver source code is available at <a href="https://github.com/FirebirdSQL/python3-driver"><strong>GitHub</strong></a>.</li>
+</ul>
+<br />
+<span style="color:#0686AD;font-size:16px;font-weight:bold;">The firebird-lib</span><br />
+<br />
+The <strong><code class="xref py py-obj docutils literal notranslate"><span class="pre">firebird-lib</span></code></strong> package provides extensions to <a class="reference external" href="https://pypi.org/project/firebird-driver/">firebird-driver.</a>
+
+<p>This package provides modules for:</p>
+
+<ul>
+	<li>Work with Firebird database schema.</li>
+	<li>Work with Firebird monitoring tables.</li>
+	<li>Processing output from gstat Firebird utility.</li>
+	<li>Processing Firebird server log.</li>
+	<li>Processing output from Firebird server trace &amp; audit sessions.</li>
+</ul>
+
+<ul>
+	<li>firebird-lib works with Firebird 3.0 and newer, and requires Python 3.11+.</li>
+	<li>firebird-lib is free &ndash; covered by a permissive MIT license that both commercial and noncommercial users should find agreeable.</li>
+	<li>firebird-lib is available at <a href="https://pypi.org/project/firebird-lib/"><strong>Python Package Index</strong></a> and could be installed via <em>pip</em>.</li>
+	<li>firebird-lib source code is available at <a href="https://github.com/FirebirdSQL/python3-lib"><strong>GitHub</strong></a>.</li>
+</ul>
+<span style="color:#0686AD;font-size:16px;font-weight:bold;">The firebird-base</span>
+
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">firebird-base</span></code> package provides common Python 3 modules used by <a class="reference external" href="/">Firebird Project</a> in various development projects. However, these modules have general applicability outside the scope of development for Firebird RDBMS.</p>
+
+<p>Topic covered by <code class="xref py py-obj docutils literal notranslate"><span class="pre">firebird-base</span></code> package:</p>
+
+<ul>
+	<li>General data types like <code class="xref py py-obj docutils literal notranslate"><span class="pre">singletons</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sentinels</span></code> and objects with identity.</li>
+	<li>Unified system for data conversion from/to string.</li>
+	<li><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataList</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">Registry</span></code> collection types with advanced data-processing cappabilities.</li>
+	<li>Work with structured binary buffers.</li>
+	<li>Global registry of Google <code class="xref py py-obj docutils literal notranslate"><span class="pre">protobuf</span></code> messages and enumerations.</li>
+	<li>Extended configuration system based on <code class="xref py py-obj docutils literal notranslate"><span class="pre">ConfigParser</span></code>.</li>
+	<li>Context-based logging.</li>
+	<li>Trace/audit for class instances.</li>
+	<li>General &ldquo;hook&rdquo; mechanism.</li>
+</ul>
+
+<ul>
+	<li>firebird-base requires Python 3.11+.</li>
+	<li>firebird-base is free &ndash; covered by a permissive MIT license that both commercial and noncommercial users should find agreeable.</li>
+	<li>firebird-base is available at <a href="https://pypi.org/project/firebird-base/"><strong>Python Package Index</strong></a> and could be installed via <em>pip</em>.</li>
+	<li>firebird-base source code is available at <a href="https://github.com/FirebirdSQL/python3-base"><strong>GitHub</strong></a>.</li>
+</ul>
+<br />
+<span style="color:#0686AD;font-size:16px;font-weight:bold;">The FDB</span><br />
+<br />
+The FDB package provides Python Database API 2.0-compliant driver for the open source relational database Firebird&reg;. In addition to the minimal feature set of the standard Python DB API, FDB also exposes the entire native (old-style) client API of the database engine and number of additional extensions and enhancements for convenient use of Firebird.</div>
+
+<ul>
+	<li>FDB is implemented in Python on top of Firebird client library using ctypes.</li>
+	<li>FDB works with Firebird 2.0 and newer, Python 2.7+ and 3.0+.</li>
+	<li>FDB is free &ndash; covered by a permissive BSD-style license that both commercial and noncommercial users should find agreeable.</li>
+	<li>FDB was developed as replacement for (no longer maintained)&nbsp;<a href="https://sourceforge.net/projects/kinterbasdb/">KInterbasDB</a>&nbsp;driver.</li>
+	<li>FDB is available at <a href="https://pypi.org/project/fdb/"><strong>Python Package Index</strong> </a>and could be installed via <em>pip</em>.</li>
+	<li>FDB source code is available at <a href="https://github.com/FirebirdSQL/fdb"><strong>GitHub</strong></a>.</li>
+</ul>
+
+<p><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Contacts</span></strong><br />
+<br />
+Pavel Cisar: <a href="mailto:rrokytskyy@users.sourceforge.net">pcisar at&nbsp;</a><a href="mailto:pcisar@users.sourceforge.net" target="_blank">users.sourceforge.net</a><br />
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Resources</span></strong></p>
+
+<ul>
+	<li style="margin-top: 2px;"><a href="http://tech.groups.yahoo.com/group/firebird-python/messages" target="_blank">Firebird-Python discussion</a></li>
+</ul>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Development</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/roadmap/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Server</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/roadmap-v6/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Roadmap</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-policy/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Policy</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/code-repository/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Code Repository</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/get-involved/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Get Involved</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/devel-qa/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Quality Assurance</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/devel-docs/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Documentation</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/devel-jdbc-driver/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Drivers</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-jdbc-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> JDBC Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-net-provider/" class="menulvl_3"><i class="fa fa-arrow-right"></i> .NET Provider</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree bgLVL_3_sel bgLVL_3">
+      <a href="/en/devel-python-driver/" class="menulvl_3_sel"><i class="fa fa-arrow-right"></i> Python Drivers and Libraries</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-odbc-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> ODBC Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-php-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> PHP Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-dev/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/saturnin/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Saturnin</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/butlerjavasdk/" class="menulvl_3"><i class="fa fa-arrow-right"></i> ButlerJavaSDK</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/butler-sdk-for-free-pascal/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Butler SDK for Free Pascal</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/team-members/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Development Lab</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/team-members/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Team Members</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/contributors/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Contributors</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/developers-reports/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Developers Reports</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/issue-tracker/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Issue Tracker</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-mailing-lists/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Mailing Lists</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/project-structure/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Project Structure</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

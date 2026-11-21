@@ -1,0 +1,185 @@
+---
+title: "Firebird: Developer's Report: INTL/DSQL Development"
+html_title: "Firebird: Developer's Report: INTL/DSQL Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: INTL/DSQL Development"
+menu_active: ""
+source_url: "/en/report-core-dsql-201802"
+source_format: new
+url: "/en/report-core-dsql-201802"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/archives/">Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/ff-reports-archives/">Developer Reports Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: INTL/DSQL Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">October 2017 to January 2018</span></strong>
+<h3>January 2018</h3>
+<u>trunk</u>
+
+<ul>
+	<li>Fixed UDR compatibility functions for databases with UTF8 as default charset.</li>
+	<li>Continued work on time zone support.</li>
+	<li>Fixed CORE-5719 - FB &gt;= 3 crashes when restoring backup made by FB 2.5.</li>
+	<li>Fixed CORE-5717 - Reject non-constant date/time/timestamp literals (branch work/time-zone-support).</li>
+</ul>
+<u>3.0 branch</u>
+
+<ul>
+	<li>Fixed CORE-5706 - Trace config with misplaced &quot;{&quot; lead firebird to crash.</li>
+	<li>Fixed CORE-5713 - Field alias disapears in complex query.</li>
+</ul>
+
+<h3>December 2017</h3>
+<u>trunk</u>
+
+<ul>
+	<li>Continued work on time zone support.</li>
+</ul>
+
+<h3>November 2017</h3>
+<u>trunk</u>
+
+<ul>
+	<li>Finished feature CORE-5620 - Builtin functions FIRST_DAY and LAST_DAY.</li>
+	<li>Improvement CORE-5647 - Increase number of formats/versions of views from 255 to 32K.</li>
+	<li>Started work on time zone support.</li>
+	<li>Finished fix for CORE-5611 - Higher memory consumption for prepared statements in FB3.</li>
+	<li>Finished fix for CORE-5646 - Parse error when compiling a statement causes memory leak until attachment is disconnected.</li>
+</ul>
+
+<h3>October 2017</h3>
+<u>trunk</u>
+
+<ul>
+	<li>Working in CORE-5611 - Higher memory consumption for prepared statements in FB3.</li>
+	<li>Verifying pull request #111 - Do not scan function if compiling not needed.</li>
+	<li>Fixed CORE-5638 - Wrong result with index on case-insensitive collation using NUMERIC-SORT.</li>
+	<li>Started feature CORE-5620 - Add builtin functions LAST_DAY and FIRST_DAY.</li>
+	<li>Working in CORE-5646 - Parse error when compiling a statement causes memory leak until attachment is disconnected.</li>
+</ul>
+<u>3.0 branch</u>
+
+<ul>
+	<li>Backported fix for CORE-5638 - Wrong result with index on case-insensitive collation using NUMERIC-SORT.</li>
+	<li>Fixed CORE-5645 - Wrong transaction can be passed to external engine.</li>
+</ul>
+<u>other</u>
+
+<ul>
+	<li>Analyzed fbtcs migration to git.</li>
+</ul>
+<em>Adriano dos Santos Fernandes</em>
+
+<div><em>Sao Paulo, Brazil</em></div>
+
+<table>
+</table>
+</div>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

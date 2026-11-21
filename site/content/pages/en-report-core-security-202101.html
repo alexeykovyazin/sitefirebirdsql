@@ -1,0 +1,157 @@
+---
+title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+html_title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Security and Design Enhancements"
+menu_active: ""
+source_url: "/en/report-core-security-202101"
+source_format: new
+url: "/en/report-core-security-202101"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Security and Design Enhancements</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><span style="color:#0686AD;font-size:16px;font-weight:bold;">September to December 2020</span></p>
+
+<p>Most of the September quarter 2020 was dedicated to polishing of FB4 preparing for RC1.<br />
+<br />
+<u>Bug Fixes, a few also backported to FB3</u>:</p>
+
+<ol>
+	<li>Fixed CORE-6398: Error converting string with hex representation of integer to smallint</li>
+	<li>Fixed CORE-6396: Unknown tag (0) in isc_svc_query() results</li>
+	<li>Fixed CORE-6412: Firebird is freezing when trying to manage users via triggers</li>
+	<li>Fixed CORE-6425: Exception in client library in IAttachment::createBatch()</li>
+	<li>Make sample of key holder plugin partially usable when chaining plugins</li>
+	<li>Fixed issues with security database name configuration parameter related to RDB$CONFIG table</li>
+	<li>Fixed CORE-6432: Possible buffer overflow in client library in Attachment::getInfo() call</li>
+	<li>Security issue -&nbsp; avoid negative offsets (i.e. getting out of allocated buffer) in case of malformed network packet</li>
+	<li>Fixed CORE-6433: Server crash when calling UDR from execute statement</li>
+	<li>Fixed CORE-6441: Srp plugin keeps connection after database has been removed for ~10 seconds.</li>
+	<li>Fixed CORE-6450: Races in cache of opened security databases</li>
+	<li>Fixed CORE-5197: Segfault when process exits with active sweep thread</li>
+	<li>Fixed CORE-6023: FB4 unable to overwrite older ods database</li>
+</ol>
+<u>Generic cleanup and tests</u>:
+
+<ol>
+	<li>Code cleanup: avoid various gcc warnings.</li>
+	<li>Code cleanup: removed dispose() and release() from most of interfaces implementations.</li>
+	<li>Fixed some tests in TCS</li>
+</ol>
+<u>Porting issues, mostly FB3</u>:
+
+<ol>
+	<li>Fixed ARM64/linux build.</li>
+	<li>Fixed arm-32 (Raspberry Pi, linux) build.</li>
+	<li>Fixed android (NDK 13) build.</li>
+</ol>
+<em>Alex Peshkov</em><br />
+<em>Yaroslavl, Russia</em>
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

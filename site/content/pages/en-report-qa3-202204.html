@@ -1,0 +1,467 @@
+---
+title: "Firebird: Developer's Report: QA Stress Testing & Development"
+html_title: "Firebird: Developer's Report: QA Stress Testing & Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: QA Stress Testing & Development"
+menu_active: ""
+source_url: "/en/report-qa3-202204"
+source_format: new
+url: "/en/report-qa3-202204"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: QA Stress Testing &amp; Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><span style="font-weight: bold; color: rgb(6, 134, 173); font-size: 16px;">January to April 2022</span></p>
+
+<div style="line-height: 20.8px;">
+<ul>
+</ul>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>January 2022</u></span></div>
+
+<ul>
+	<li>
+	<p>Adjusted three QA tests.</p>
+	</li>
+	<li>
+	<p>Non-ascii characters in message &quot;INET/inet_error ... user = &ntilde;&egrave;&ntilde;&ograve;&aring;&igrave;&agrave;&quot; (last word is in Russian, encoded in cp1251) when Windows is localized. At the same time, messages with names of metadata objects (say, trigger for disconnect) are encoded in utf-8. As result, firebird.log contains messages in different encodings.<br />
+	New QA is affected: lot of UnicodeDecode errors when reading firebird.log. Created ticket #7102.</p>
+	</li>
+	<li>
+	<p>FB service can not be stopped in correct way (e.g. via NET STOP) if first attachment waits for record updating and second tries to delete first attachment via &#39;DELETE FROM MON$STATEMENTS&#39;. Created ticket #7103.</p>
+	</li>
+	<li>New QA: launched firebird-qa tests suite agains FB 4.0.0 Release, eight runs. Problems with localized messages in firebird.log when they are encoded in single-byte codepage (e.g win1251): lot of fails with &quot;UnicodeDecodeError: &#39;ascii&#39; codec can&#39;t decode byte ... ordinal not in range(128)&quot;.</li>
+	<li>New QA: issues/questions about pytest work:
+	<ul>
+		<li>inconvenient names of temporary folders (they do not relate to the names of executing tests);</li>
+		<li>temporary folder must be cleaned manually every time before tests are launched if we use &quot;--basetemp=&quot; command switch;</li>
+		<li>messages in the &quot;short test summary info&quot; have very small limit (80 chars) for their width.</li>
+	</ul>
+	</li>
+</ul>
+
+<p style="margin-left: 40px;">Discussed with pcisar.</p>
+
+<ul>
+	<li>New QA: made several corrections in &#39;core.py&#39; (suggested by P.Cisar) and repeated runs against FB 4.0.0.</li>
+	<li>Unicoderelated error message was replaced with another one (also about unicode-decoding problem).</li>
+	<li>New QA: found test which caused appearance of non-ascii message in the firebird.log and further this was the reason for lot of failed tests which read firebird.log. Reproduced problem related to &#39;delete from mon$statements&#39; when it was issued to stop connect that performed &#39;longish fetches&#39; (this problem raises in the test for core-3977).</li>
+	<li>Problem with FB 5.0.0.369 Classic after WNET protocol was cuted-off: attempt to establish connection to security database leads to extremely high growth of firebird.log&nbsp; (it was infinitely fulfilled with billions of messages like &quot;INET/select_wait: found &quot;not a socket&quot; socket : NNN&quot;).</li>
+	<li>New QA: run tests against FB 4.0.1 on Windows 10 and Linux (CentOS-7) in order to verify whether crash occurs or no (discussed with P.Cisar).</li>
+	<li>New QA: run again tests with using FB driver 1.4.2 and new option: &quot;encoding_errors = ignore&quot; (against FB 4.0.1).</li>
+	<li>QA fbtest, FB WI-5.0.0.372, SS, Server hanged while performed test for core-5087.</li>
+	<li>WI-V3.0.8.33501, SuperServer, experimental build: database health is OK but server hanged during any request to one of user tables (&quot;SR_BASE&quot;), also hanged when issued query to mon$transactions. Problem seems to be similar to that was encountered for this client in aug-2021 (related to algorithm of cardinality estimation).</li>
+	<li>WI-V3.0.8.33501, SuperServer, experimental build: memory consumption growth, without clear reason.</li>
+	<li>New QA: resumed comparison of old and new frameworks against FB 4.0.1 Release, implemented auxiliary scripts for this task.</li>
+	<li>Problems with plain-text comparison after recent changes in qa-plugin. Output needs to be redirected to structured XM files (firebird-qa command options: &quot;--junitxml&quot;, fbtest &quot;--xunit&quot;).</li>
+	<li>New QA: implemented auxiliary script for comparison of XML files that contain outcomes of firebird-qa and fbtest runs.</li>
+	<li>Several parameters in firebird.conf must differ from their default values.</li>
+	<li>LI-V4.0.1.2719, Classic: again crash without dump creation (client detached just before its process crashed), on executing test for CORE-4735 (similar to crashes on 4.0.0.2417, Classic).</li>
+	<li>WI-V3.0.8.33501, SuperServer, experimental build: can not create dump when some connection queries mon$transactions (same as on WI-V3.0.7.33358), got: &quot;WriteFullMemory virtual memory layout changed, retries 5&quot;.</li>
+	<li>Implemented auxiliary test related to usage of UNIQUE index when data is skewed and this index contains lot of NULL keys. Discussed with FB team heuristics which can force optimizer to choose or avoid usage of UNIQUE index when filter expression includes NULLs (when data is skewed and &quot;is null&quot; returns almost all set of rows).</li>
+	<li>LI-V3.0.8.33540, SuperServer, experimental build. Crashes with creation truncated dump when FB daemon is restarted by systemctl (reason remains unknown: lot of free disk space presents). Size of dumps varies in large scope.</li>
+	<li>LI-V3.0.8.33540, SuperServer: mapping must be re-created after changing DB state to full shutdown and bring online after that (otherwise got &quot;Missing security context required for ...&quot; on every ESOE call).</li>
+</ul>
+<span style="color:#474747;font-size:15px;font-weight:bold;"><u>February 2022</u></span>
+
+<div style="line-height: 20.8px;">
+<ul>
+	<li>
+	<p>OLTP-EMUL, LI-V4.0.1.2721, SS: crash after ~20 minutes since test start (100 attachments).</p>
+	</li>
+	<li>
+	<p>New QA: discussed current state of terminal output ( &quot;opt-out&quot; feature ) and &quot;--skip-deselected&quot; command switch.</p>
+	</li>
+	<li>
+	<p>Implemented first draft for parsing XML results of firebird-qa run and compare with fbtest outcome (using xmltodict package).</p>
+	</li>
+	<li>
+	<p>New QA: discussed list of attributes which can be added beyond currently avaliable set to XML output.</p>
+	</li>
+	<li>
+	<p>OLTP-EMUL, LI-V3.0.9.33557, SS: crash after ~15 minutes since test start (100 attachments). Broken MemBlock pool.</p>
+	</li>
+	<li>
+	<p>New QA: re-implemented auxiliary script for parsing XML files with results of firebird-qa run (made this script independent on appearance of new nested levels and attributes; use recursive calls).</p>
+	</li>
+	<li>
+	<p>New QA: completed firebird-qa runs on Windows-10 (both FB 3.0.8 and 4.0.1) and CentOS-7. Have still ~15 tests with [X]Failed state on Windows (and ~6 Failed on CentOS).</p>
+	</li>
+	<li>
+	<p>New QA. Finally completed comparison of outcomes firebird-qa and fbt_run, got &#39;baseline&#39; for 3.0.8 Release and 4.0.1 Release.</p>
+	</li>
+	<li>
+	<p>A fbtest, $(DATABASE_LOCATION) macros: trailing slash missed on CentOS-7 (but present on Debian and Windows).<br />
+	Fixed after Pavel&#39;s suggestion to correct fbtest.py, function Runner._set_tempdir().</p>
+	</li>
+	<li>
+	<p>QA fbtest, Windows only: problem since 5.0.0.402 with loading encryption plugin provided by IBSurgeon (got gdscode = 335545004), appears on initial phase when trying to connect to Services API.</p>
+	</li>
+	<li>
+	<p>QA fbtest runs, Linux only: could not make any test, got &quot;No entry for terminal type &quot;xterm&quot;; using dumb terminal settings&quot; on attempt to run SQL statements using PIPE mechanism (no problem when doing that via &quot;IN <script.sql>").</p>
+	</li>
+	<li>
+	<p>Updated auxiliary script "QA-get-missed-runs.sh": added check for difference between Linux and Windows snapshots that are published on official FB site.</p>
+	</li>
+	<li>
+	<p>QA fbtest, LI-V4.0.1.2726, SS: fbt_run hanged on core-6316 and core-5431. Gathered dump and stack trace, sent reports to FB team.</p>
+	</li>
+	<li>
+	<p>QA fbtest, Linux, 5.0.0.404: several tests failed on Windows with unexpected execution plan (but remained OK on Linux). Sent list to FB team.</p>
+	</li>
+	<li>
+	<p>New QA. Dealing with tests having "FIXME: see notes" mark. Searched for reason of fail for test for core-2940, FB 3.0.8, Windows only<br />
+	(additional query in the trace was found, exists only in FB 3.0.8; leads to excessive "+ 1 records fetched" in the trace log).</p>
+	</li>
+	<li>
+	<p>Re-implemented tests for core-3598, core-4172. Discussed with pcisar (letters since 18.2.2022) Changed code in order to avoid fail on Windows.</p>
+	</li>
+	<li>
+	<p>OLTP-EMUL: checked non-standard build FB 5.x, use new parameter in config: PrefetchFlags, got results for UseFileSystemCache = true / false (Vlad's request).</p>
+	</li>
+	<li>
+	<p>QA fbtest, Windows, 4.0.1.2729, Classic: hanged test CORE-6324; gathered dump and stack trace, sent report to FB team.</p>
+	</li>
+	<li>
+	<p>OLTP-EMUL, 4.0.1.2728, experimental build (with prefetch features): crash just after test start, reproducible; hanged last attachmend on test finish.</p>
+	</li>
+	<li>
+	<p>New QA: problem with pytest when ran  FB 4.0.1 Classic on Linux (CentOS-7): it hanged on final stage.</p>
+	</li>
+	<li>
+	<p>ISQL considers passing command via PIPE mechanism as interactive way, but only on Windows. This was changed in FB 4.x but remains on FB 3.x. This explains why several new tests (from firebird-qa suite) fails only on FB 3.0.8 when running on Windows.</p>
+	</li>
+	<li>
+	<p>Resumed search of reason why dumps can be truncated (while having lot of disk space; CentOS-7, FB 3.x, experimental build; discussed with alex et al) Several tests need to be changed because of different way of launching child FB process (example: "functional.session.ext-conn-pool-01").</p>
+	</li>
+	<li>
+	<p>Resumed investigation of problem with missed forward slach in some cases of $(DATABASE_LOCATION) usage.</p>
+	</li>
+	<li>
+	<p>Implemented / refactored /adjusted  .fbt for GH-issues: 4498 0733 4928; functional/basic/db_* (6 tests)</p>
+	</li>
+	<li>Checked / refactored /adjusted  tests from NEW-QA suite: 4498 0733 ; functional/basic/db_02, db_03</li>
+</ul>
+</div>
+
+<ul>
+</ul>
+
+<p><span style="color:#474747;font-size:15px;font-weight:bold;"><u>March 2022</u></span></p>
+
+<ul>
+	<li>
+	<p>New QA: outcome of test can depend on presense of running trace session (additional query to RDB$USER_PRIVILEGES is done by act.isql()).</p>
+	</li>
+	<li>
+	<p>Fixed in #7139 ("With multiple trace sessions user may receive trace events related to engine's requests").</p>
+	</li>
+	<li>
+	<p>Excessive query "SELECT CURRENT_USER, CURRENT_ROLE FROM RDB$DATABASE" is performed if commands pass to ISQL using PIPE mechanism, only on Windows.</p>
+	</li>
+	<li>
+	<p>New QA: resumed investigation of  hanging FB 4.0.1.2692, Classic when test session is about to finish (pytest + firebird-qa plugin, using firebird-driver).</p>
+	</li>
+	<li>
+	<p>New QA: baseline for 4.x must be shifted to recently released 4.0.1.</p>
+	</li>
+	<li>
+	<p>Created aux script for quick (and rough) estimation of total number of data pages that were allocated for tables (through number of pointer pages divided by 4.5;  blobs can not be taken in account by this way). This can be useful when DB size is extremely high. Discussed with dimitr. New QA: trace option 'LOG_INIT_FINI' can be assumed as FALSE in all practical cases (both for DB and Services section).</p>
+	</li>
+	<li>
+	<p>New QA: info about ServerMode, protocol and whether we are in embedded mode or no - all these can be obtain from rdb$config in FB 4.x, no need to create attachment to employee. In FB 3.x may be query to security.db is better because it always avaliable and we always can change RemoteAccess to 'true' (in databases.conf) before tests session start.</p>
+	</li>
+	<li>
+	<p>New QA, adjusting 'FIXME' tests. Worked with test for core-4743: connect to DB using non-ascii user name. Problem relates to FB client on Windows when it works ni 'pseudo-unicode' code page (65001) and needs to pass non-ascii strings to server. Need to use somewhat like 'utf8params' that was in FBT suite (but missed in pytest firebird-qa plugin).</p>
+	</li>
+	<li>
+	<p>Snapshot 3.0.10.33570 was created only on Linux, failed on Windows.</p>
+	</li>
+	<li>
+	<p>New QA, adjusting 'FIXME' tests. Worked with test for core-5972: could not reproduce problem described in the NOTES sesion<br />
+	("Fails on Windows 3.0.8 due to malformed error message"), test passed on Windows-10.</p>
+	</li>
+	<li>
+	<p>New QA, adjusting 'FIXME' tests. Worked with test for core-6237 ("Performance problem when using SRP plugin", gh-6481).<br />
+	Charts based on MEDIAN values looks very strange on Windows (no entropy, no randomness; very strong magnutides of peak values comparing to average, etc.</p>
+	</li>
+	<li>
+	<p>Wirecrypt must be set to 'disabled'. Discussed with FB team.</p>
+	</li>
+	<li>
+	<p>New QA, adjusting 'FIXME' tests. Worked with test for core-6248: can not create DB file if total length of its path is 250.<br />
+	Fails with "UnicodeDecodeError ... invalid continuation byte" when length = 249. No such problem on FBT suite.</p>
+	</li>
+	<li>
+	<p>New QA, several tests suffer because of  ISQL "SET BAIL ON" problem on Windows when commands come from PIPE. Ticket #7173. Implemented auxiliary script for parsing firebird.log and make different levels of aggregation of all messages (including network-related problems). QA fbtest. Test for core-2879 gets stuck on FB-5, Windows (builds 5.0.0.435 and 5.0.0.437).</p>
+	</li>
+	<li>
+	<p>Lot of runtime errors while running FBT-suite on 5.0.0.437. Sent report to FB team.</p>
+	</li>
+	<li>
+	<p>QA fbtest. Failed test "blob-not-found-in-rw-replica-if-target-row-exists" on 4.0.2.2744 SS (Windows). Sent report to dimitr.</p>
+	</li>
+	<li>
+	<p>Regression in WI-T5.0.0.435 : issuing create or alter user ... + commit leads to strange "record not found for user: ..." if AUTODDL = OFF and we create TWO users (no such problem on 4.0.0.426).</p>
+	</li>
+	<li>
+	<p>Debug messages in firebird.log ("DEBUG_LCK_LIST: irsb_nav_btr_gc_lock && !irsb_nav_page") may lead this file to grow up to dozen gigabytes.</p>
+	</li>
+	<li>
+	<p>Changes in FB 5.x 18.03.2022 leads to SQLSTATE = 42000 (-object TABLE "TEST" is in use). Detected when run test of CORE-3557 (since build 5.0.0.435).</p>
+	</li>
+	<li>
+	<p>Test for CORE-3323 (Ability to cancel waiting in lock manager) fails on ES/EDS, 5.0.0.437, Classic (Windows): "Execute statement error at attach" instead "... at isc_dsql" appeared in diff log. New QA: re-implemented test for core-6411.</p>
+	</li>
+	<li>
+	<p>New QA. Continued work with re-implementing test for CORE-6411. Creationg table with lot of columns (more than implementation limit) and attempt to commit leads such DDL to be performed too long (several seconds, while number of indexed reads is about 8000 for each of five RDB tables).</p>
+	</li>
+	<li>
+	<p>QA fbtest. Three crashes when run FBT suite on Linux, 5.0.0.439, Classic.</p>
+	</li>
+	<li>
+	<p>LINUX, 5.0.0.439, SuperServer: crash while executing test for CORE-4337, then 60+ runtime errors caused by unable DB.</p>
+	</li>
+	<li>
+	<p>Several ISQL hanged during parallel inserting data (used BULK INSERT feature; protocol = XNET).</p>
+	</li>
+	<li>
+	<p>QA fbtest. FB 5.0.0.445, Lnux & Windows: several tests failed from FBT suite, all related to OUTER JOINS.</p>
+	</li>
+	<li>
+	<p>FB 4.0.1.2733 Classic (special build): problem "MappingIpc: Cannot initialize the shared memory region" when DB state is changed from normal to "-shut single -force 0" and this command is issued in several cmd windows (after running IBEScript with performing complex sql script and using XNET protocol for connection).</p>
+	</li>
+	<li>
+	<p>FB 4.x and 5.x, Windows: trace log contains question marks instead of non-ascii user name in additional ("service") query to RDB$USER_PRIVILEGES table.</p>
+	</li>
+	<li>
+	<p>WI-V4.0.2.2737: problem with UDR libcrypto when delaring DDL of crypto_decode_base64(), relates to<br />
+	CRYPTO_RSA_SIGN function: "SQLSTATE = HY000 / Error importing private RSA key: Invalid input packet".</p>
+	</li>
+	<li>
+	<p>FB 4.0.1.2736 Classic (special build): connection can be lost when use XNET protocol and infinite batch with loop for execution of complex SQL and  "-shut single -force 0". Got: "Error writing data to the connection. / send_packet/send"</p>
+	</li>
+	<li>
+	<p>QA fbtest. Implemented / refactored /adjusted tests from FBT suite: functional/basic/db_* (2 tests); CORE-4928 3557 6444  3188 5075 2879</p>
+	</li>
+	<li>
+	<p>Checked / refactored /adjusted  tests from NEW-QA suite: 2940 3598 4172 4928 3557 6444 6411 ; functional/basi/db/test_23, test_26</p>
+	</li>
+	<li>
+	<p>Changes in auxiliary QA-scripts (.sh, .bat)</p>
+	</li>
+</ul>
+
+<p><span style="color:#474747;font-size:15px;font-weight:bold;"><u style="line-height: 20.8px;">April 2022</u></span></p>
+
+<ul>
+	<li>
+	<p>QA fbtest. FB 5.0.0.451: many tests failed from FBT suite, related to OUTER JOINS and join transformations.</p>
+	</li>
+	<li>
+	<p>New QA: re-implemented test for CORE-6469, found problem with mapping from Win_Sspi context variable  CURRENT_USER remained SYSDBA (instead of current Windows admin) if SQL script contains CONNECT statement.</p>
+	</li>
+	<li>
+	<p>New QA. Problem with evaluation of  values with extremely low magnitude, like exp(-744.0346068132731393): results in FB 4.0.1 is zero<br />
+	(rather than in FB 3.0.8). Problem also can appear if CPU manufacturer is AMD. Removed test functional/datatypes/dp-single-bit-in-representation that manupulated with such values.</p>
+	</li>
+	<li>
+	<p>QA fbtest. LI-T5.0.0.455: lot of crashes while running FBT suite (both SS and CS; perhaps, related to core_4731).</p>
+	</li>
+	<li>
+	<p>New QA: verified result of  functional.gtcs.test_time_zone, could not reproduce fail described in its code. Test passes OK, removed 'FIXME' mark from it.</p>
+	</li>
+	<li>
+	<p>New QA. Problem with investigating reason of some fails: trace does not show attempts to login without passing name/password pair  (which leads to  "missing secur context" record in firebird.log). Added ticket #7165.</p>
+	</li>
+	<li>
+	<p>QA fbtest. FB 5.0.0.457: about 10 SQL-related tests failed because of changes in their execution PLAN.</p>
+	</li>
+	<li>
+	<p>New QA and QA fbtest. Changed 10 SQL-related tests to make them pass in FB 5.x (since 5.0.0.457): tables with equal number of rows (or empty) now are specified in the HASH JOIN exactly as they are in the query text.</p>
+	</li>
+	<li>
+	<p>QA fbtest. WI-4.0.2.2750, Classic: fbt_run hanged on test for core-6412.</p>
+	</li>
+	<li>
+	<p>QA fbtest. FB 5.0.0.467: three tests failed, all relate to COMPUTED-BY indexes (core-1173, -4673, -5118).</p>
+	</li>
+	<li>
+	<p>New QA. Problem with re-implementing test for #5063: user with non-ascii name can not be specified in the CONNECT operator on Windows ("SQLSTATE = 28000 / Your user name ..."), although it for sure present in the security.db and can be specifies in the ISQL cmmand "-user ... " switch.</p>
+	</li>
+	<li>
+	<p>New QA. Completed re-implementing almost all tests marked as  'FIXME: see notes' from 'bugs/' folder. Checked all of them on Windows and Linux. Three tests remain non-changed (deferred): core-6237, -6248 and -6272.</p>
+	</li>
+	<li>
+	<p>QA fbtest. 5.0.0.471, Classic, Linux: crash probably on test for CORE-3732. No dump because client detached before his server process crashed. The same when tested 5.0.0.475, probably on test for CORE-2875. Updated QA_rundaily sripts (.sh and .bat): one need to take in account timestamp of last change in FBT_REPO on every checking of FB major (3.x, 4.x, 5.x), not at the start of this loop.</p>
+	</li>
+	<li>
+	<p>Implemented SQL queries in order to verify new features of FB 5.x optimizer (requested by dimitr).</p>
+	</li>
+	<li>
+	<p>Applying of MIN()OVER() to dataset that is issued by LATERAL sub-query unexpectedly produces NULLS.</p>
+	</li>
+	<li>
+	<p>Implemented new queries that will be used for additional optimizer testing. Applying backup/restore to database leads to changing execution plan because of changed data pages number. NOT ALL queries were affected because of b/r (though they should also be).</p>
+	</li>
+	<li>
+	<p>Re-implemented test for #897, because it behave differently on Linux vs Windows.</p>
+	</li>
+	<li>
+	<p>Old problem was (again) encountered: attempt to connect to non-existing DB can be watched in a trace log only when trace uses local protocol for connecting to Services API ( #6514; 2020 ).</p>
+	</li>
+	<li>
+	<p> New QA. Resolved problem in the test for CORE-6272 (one need to use "encoding =  locale.getpreferredencoding()" when running act.trace(). New argument a'la "errors = 'ignore'" can be used to act.trace() launch.</p>
+	</li>
+	<li>
+	<p>New QA. Adapted functional\gtcs\test_dsql_domain_22.py to be able work on localized Windows box.</p>
+	</li>
+	<li>
+	<p>OLTP-EMUL: crash of LI-V3.0.10.33577, SS during test run. Related to IndexTableScan. Problems with many tests since 5.0.0.477, issuing: "COLLATION UNICODE for CHARACTER SET UTF8 is not installed" ("An ICU library with collation version 153.88 is required").</p>
+	</li>
+	<li>
+	<p>QA fbtest. Linux, 5.0.0.477 SuperServer: lot of crashes during fbt_run work.</p>
+	</li>
+	<li>
+	<p>Refactored auxiliary batch scenario that must watch for dumps: problem found when there is at least one dump with name that contain parenthesis (e.g. "firebird.exe(1).9424.dmp). </p>
+	</li>
+	<li>
+	<p>Applying of NBACKUP - L /  NBACKUP -N can extremely increase attach /  detach time of connection (20 ms for attach;  1 ms for detach).</p>
+	</li>
+	<li>
+	<p>Refactored watch4dumps and qa_rundaily batches: applying ROBOCOPY for remove all empty sub-directories.</p>
+	</li>
+	<li>
+	<p>OLTP-EMUL: crash of LI-V4.0.2.2761, SS during test run. Related to IndexTableScan (as it was also on 3.0.10.33577).</p>
+	</li>
+	<li>
+	<p>New QA. Name of application that makes connect to Services API may absent in the trace log.</p>
+	</li>
+	<li>
+	<p>3.0.8.33501 SS, Windows (experimental build): could not change DB state to full shutdown when running heavy DML on *another* (temporary created) database and let it work during ~10 hours. Could not stop FB service also.</p>
+	</li>
+	<li>
+	<p>New QA and QA fbtest. Implemented / refactored /adjusted  tests from FBT suite:<br />
+	- COREs: 3553 3834 4492 4528 4809 6444 5598 1885 6336 4452 4418 ;<br />
+	- functional/arno.optimizer/opt_mixed_joins* (4 tests);<br />
+	- functional/basic/isql ;<br />
+	- functional/basic/db</p>
+	</li>
+</ul>
+
+<p><em style="line-height: 20.8px;">Pavel Zotov</em><br />
+<em style="line-height: 20.8px;">Moscow, Russian Federation</em></p>
+</div>
+</p>
+	</li>
+</ul>
+</div>
+</div>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

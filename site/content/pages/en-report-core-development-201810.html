@@ -1,0 +1,269 @@
+---
+title: "Firebird: Developer's Report: Firebird Core Development"
+html_title: "Firebird: Developer's Report: Firebird Core Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Firebird Core Development"
+menu_active: ""
+source_url: "/en/report-core-development-201810"
+source_format: new
+url: "/en/report-core-development-201810"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/archives/">Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/ff-reports-archives/">Developer Reports Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Firebird Core Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">June to September 2018</span></strong></div>
+
+<h3><u>June 2018</u></h3>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>Make ALTER SESSION RESET throws isc_ses_reset_err when active transaction(s) present in current connection.</li>
+	<li>CORE-5832 : Implement way to reset user session environment to its initial (default) state</li>
+	<li>Fixed bug CORE-5843 : Wrong handling of failures of TRANSACTION START trigger</li>
+	<li>Another fix for bug CORE-5436 : [FB3 SC] Server hangs (under load test)</li>
+	<li>Reworked fix for bug CORE-5843 : Wrong handling of failures of TRANSACTION START trigger.</li>
+	<li>More strict fix for bug CORE-5436 : [FB3 SC] Server hangs (under load test)</li>
+	<li>Initial implementation of external connections pool</li>
+	<li>Fixed crash when broken external connection is deleted.</li>
+	<li>Fixed bug when idle external connection is about to put into idle list again.</li>
+	<li>Introduced new system privilege MODIFY_EXT_CONN_POOL to manage pool properties.</li>
+	<li>Update the documentation.</li>
+	<li>Fixed bug CORE-5847 : &quot;Malformed string&quot; instead of key value in PK violation error message</li>
+	<li>Add sha2 into Windows builds (vc10, vc12 and vc14)</li>
+	<li>Fixed crash when no object for grant\revoke operation.</li>
+	<li>Prevent AV when thread detaches and no modules was loaded</li>
+	<li>Fixed bug CORE-5863 : Classic process crashes when client disconnected.</li>
+</ul>
+
+<h3><em>B3_0_Release</em></h3>
+
+<ul>
+	<li>Another fix for bug CORE-5436 : [FB3 SC] Server hangs (under load test)</li>
+	<li>Backport fix for bug CORE-5843 : Wrong handling of failures of TRANSACTION START trigger</li>
+	<li>More strict fix for bug CORE-5436 : [FB3 SC] Server hangs (under load test)</li>
+	<li>Fixed bug CORE-5847 : &quot;Malformed string&quot; instead of key value in PK violation error message</li>
+	<li>Add sha2 into Windows builds (vc10, vc12 and vc14)</li>
+	<li>Fixed crash when no object for grant\revoke operation.</li>
+	<li>Prevent AV when thread detaches and no modules was loaded</li>
+	<li>Fixed bug CORE-5863 : Classic process crashes when client disconnected.</li>
+</ul>
+
+<h3>B2_5_Release</h3>
+
+<ul>
+	<li>Backport fix for bug CORE-5847 : &quot;Malformed string&quot; instead of key value in PK violation error message</li>
+</ul>
+
+<h3><u>July</u></h3>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>Fixed bug CORE-5863 : Classic process crashes when client disconnected</li>
+	<li>Fixed potential crash in wnet\xnet code (see fix for CORE-5863).</li>
+	<li>Partial fix for bug CORE-5869 : Sweep can&#39;t move OIT value over 2^32, when Next already greater than 2^32 (4&#39;294&#39;967&#39;296)</li>
+	<li>Fixed bug CORE-5870 : ISQL&#39;s &quot;show database&quot; command works wrong with 64-bit numbers</li>
+	<li>Fixed bug CORE-5872 : Database validation reports false errors &quot;Record XXX has bad transaction&quot; and\or &quot;Record XXX is wrong length&quot; when record transaction number is greater than 2^32</li>
+	<li>Fixed assertion when run test bugs.core_0805 in Classic mode</li>
+	<li>Fixed memory corruption found when run test bugs.5674 in Classic mode using debug build.</li>
+	<li>Fixed crash when run test bugs.core_5329 in Classic mode using debug build.</li>
+	<li>Correct condition when mapped file of monitoring data should be removed.</li>
+	<li>Fixed bug CORE-5844 : Firebird freeze for new connections</li>
+	<li>Merge pull request #105 from red-soft-ru/read_consistency</li>
+	<li>Restore old pre-committed logic when working with GTT&#39;s in RCRO transactions.</li>
+</ul>
+
+<h3><em>B3_0_Release</em></h3>
+
+<ul>
+	<li>Fixed bug CORE-5863 : Classic process crashes when client disconnected</li>
+	<li>Fixed bug CORE-5869 : Sweep can&#39;t move OIT value over 2^32, when Next already greater than 2^32 (4&#39;294&#39;967&#39;296)</li>
+	<li>Fixed bug CORE-5870 : ISQL&#39;s &quot;show database&quot; command works wrong with 64-bit numbers<br />
+	Fixed bug CORE-5872 : Database validation reports false errors &quot;Record XXX has bad transaction&quot; and\or &quot;Record XXX is wrong length&quot; when record transaction number is greater than 2^32</li>
+	<li>Fixed memory corruption found when run test bugs.5674 in Classic mode using debug build.</li>
+	<li>Correct condition when mapped file of monitoring data should be removed.</li>
+	<li>Fixed bug CORE-5844 : Firebird freeze for new connections</li>
+</ul>
+
+<h3><u>August</u></h3>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>Added missed record into RDB$TYPES</li>
+	<li>Update MSVC builds</li>
+	<li>Let trace plugin know about read consistency transactions</li>
+	<li>Avoid double delete of ThreadSync object</li>
+	<li>Fix incorrect reference counting for EventManager object.</li>
+	<li>Forward-ported: Avoid race condition (with AV) when YEvents object references is released concurrently.</li>
+	<li>Avoid race condition in cancel_operation() when client connection breaks immediately after op_detach.</li>
+	<li>Avoid crash due to executing already unloaded code (in attachmentShutdownThread).</li>
+	<li>Fixed bug CORE-5902 : Add Firebird Event fails with error &quot;While isc_que_events - Failed to establish a secondary connection for event processing.&quot;</li>
+	<li>Fixed bug CORE-5898 : ROLE not passed in EXECUTE STATEMENT ... ON EXTERNAL</li>
+	<li>Merge pull request #167 from red-soft-ru/fix_mon: Restored accidentally deleted field MON$RECORD_IMGC</li>
+	<li>Add intermediate GC to the VIO_writelock</li>
+	<li>Request while running in autonomous read-committed read consistency transaction should start own snapshot.</li>
+	<li>Fixed crash when not fully initialized attachment killed by DBA.</li>
+</ul>
+
+<h3>B3_0_Release</h3>
+
+<ul>
+	<li>Clear events of dead process, not our own</li>
+	<li>Avoid double delete of ThreadSync object</li>
+	<li>Fix incorrect reference counting for EventManager object.</li>
+	<li>Avoid race condition (with AV) when YEvents object references is released concurrently</li>
+	<li>Avoid race condition in cancel_operation() when client connection breaks immediately after op_detach.</li>
+	<li>Avoid crash due to executing already unloaded code (in attachmentShutdownThread).<br />
+	Fixed bug CORE-5902 : Add Firebird Event fails with error &quot;While isc_que_events - Failed to establish a secondary connection for event processing.&quot;</li>
+	<li>Fixed bug CORE-5898 : ROLE not passed in EXECUTE STATEMENT ... ON EXTERNAL</li>
+	<li>Fixed crash when not fully initialized attachment killed by DBA.</li>
+	<li>Unify memory allocation in verb_post.</li>
+</ul>
+
+<h3><u>September</u></h3>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>MSVC15 (VS 2017) build</li>
+	<li>Fixed VS 2017 Appveyor build</li>
+	<li>Implement sub-task CORE-5913 : Add context variables with compression and encryption status of current connection</li>
+	<li>Rename MON$CONNECTION_COMPRESSED and MON$CONNECTION_ENCRYPTED to MON$WIRE_COMPRESSED and MON$WIRE_ENCRYPTED</li>
+	<li>to be inline with config settings (WireCompression and WireCrypt) and context variables (WIRE_COMPRESSED and WIRE_ENCRYPTED)</li>
+	<li>Fixed bug CORE-5911 : Connection could hung after no activity for 60 seconds</li>
+	<li>Additional fix for bug CORE-5436 : [FB3 SC] Server hangs (under load test)</li>
+	<li>Fixed bug with GTT in read-only transactions found by fbtcs test ISC_ER43_TRAN</li>
+	<li>Improvement CORE-5921 : Provide information about Global Commit Number, Commit Number of currently used database snapshot (if any)</li>
+	<li>and Commit Numbers assigned to the committed transactions.</li>
+	<li>Update documentation</li>
+	<li>Fixed bugcheck &quot;Incorrect snapshot deallocation - too few slots&quot;, see CORE-5930</li>
+</ul>
+
+<h3><em>B3_0_Release</em></h3>
+
+<ul>
+	<li>Fixed bug CORE-5911 : Connection could hung after no activity for 60 seconds</li>
+	<li>Additional fix for bug CORE-5436 : [FB3 SC] Server hangs (under load test)</li>
+	<li>Implement sub-task CORE-5913 : Add context variables with compression and encryption status of current connection</li>
+</ul>
+
+<h3><em>B2_5_Release</em></h3>
+
+<ul>
+	<li>This should fix bug CORE-5910 : Server crash after kill in EDS manager destructor</li>
+</ul>
+
+<div><em>Vladyslav Khorsun</em></div>
+
+<p><em>Dnetpropetrovsk, Ukraine</em></p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

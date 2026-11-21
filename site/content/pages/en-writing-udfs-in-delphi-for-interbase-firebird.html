@@ -1,0 +1,406 @@
+---
+title: "Firebird: Writing UDF's in Delphi for Interbase/Firebird"
+html_title: "Firebird: Writing UDF's in Delphi for Interbase/Firebird"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Writing UDF's in Delphi for Interbase/Firebird"
+menu_active: "/en/firebird-rdbms/"
+source_url: "/en/writing-udfs-in-delphi-for-interbase-firebird"
+source_format: new
+url: "/en/writing-udfs-in-delphi-for-interbase-firebird"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/documentation/">Documentation</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-rdbms/">Firebird RDBMS</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/white-papers-presentations/">White Papers &amp; Presentations</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Writing UDF's in Delphi for Interbase/Firebird</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    Gerhardus Geldenhuis describes how he taught himself to write UDFs, using the resources available around the community web sites<br /> <br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">First things first</span></strong><br /> <br /> This document is a summary of my experiences and the functions I wrote. It is not intended to be a complete guide to writing UDF's but merely an introduction. If you have something to add please feel free to do so I can be contacted at <a href="mailto:flooder@global.co.za">flooder@global.co.za</a>. If you find any errors I would also appreciate you letting me know. <em>Please include UDFPAPER somewhere in the subject line when sending a email it helps me to filter and respond timely.<br /> </em><br /> Before jumping in and writing code start reading first. This is what should be read without exception:<br /> <ul>     <li>Interbase 6.0 Language Reference</li>     <li>InterBase 6.0 Developer&rsquo;s Guide</li> </ul> This is what I think should also be read about or have some knowledge about, depending on the function you want to write:<br /> <ul>     <li>Pointers</li>     <li>Var Parameters</li>     <li>PChars</li>     <li>Threads</li> </ul> I am assuming you are using at least Delphi4 hopefully Delphi5. Also IB6 or FB1.<br /> <br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">The stuph that matters</span></strong><br /> <br /> Lets assume that IB can't add two numbers together so we must write a function that does that.<br /> <br /> Create a new dll project. If your dll is only chatting with IB then you can ignore the ShareMem clause, because IB uses PChars.<br /> <br /> You can write the function code directly in the dll but it is more ordered to write it in a unit and include the unit in the uses clause, it makes it easier when your dll start containing 20+ functions.<br /> <br /> Here is some sample code:<br /> <br /> <span style="font-family: Courier New;"> library Project1;<br /> uses<br /> <div style="margin-left: 40px;">Unit1 in 'Unit1.pas';</div> exports <br /> <div style="margin-left: 40px;">AddFunction;</div> begin<br /> end. </span><br /> <br /> Here is the code for <span style="font-family: Courier New;">unit 1</span>.<br /> <br /> <span style="font-family: Courier New;">unit Unit1;<br /> interface<br /> <div style="margin-left: 40px;">function AddFunction(var Width,Height:Integer):Integer;stdcall;</div> implementation <div style="margin-left: 40px;">function AddFunction(var Width,Height:Integer):Integer;<br /> begin<br /> <div style="margin-left: 40px;">Result:=Width+Height;</div> end;</div> end. </span><br /> <br /> That is all there is to it basically. It is very important to remember that all parameters passed from IB is passed by reference hence the use of var parameters. Another important thing to remember is that pchar is already a reference so it should not be passed as a var parameter that would result in a pointer to a pointer to data, a recipe for disaster. If you don't want to use the var parameter your code will look like this. There is two versions of <span style="font-family: Courier New;">AddFunction</span><br /> <br /> <span style="font-family: Courier New;"> unit Unit1;<br /> interface<br /> <div style="margin-left: 40px;">type<br /> <div style="margin-left: 40px;">PInteger = ^Integer;</div> function AddFunction(Width,Height:PInteger):Integer;stdcall;</div> implementation<br /> <div style="margin-left: 40px;">function AddFunction(Width,Height:PInteger):Integer;<br /> begin<br /> <div style="margin-left: 40px;">Result:=Width^+Height^;</div> end;<br /> function AddFunction(Width,Height:Integer):Integer;<br /> var<br /> <div style="margin-left: 40px;">K,J:^Integer;</div> begin<br /> <div style="margin-left: 40px;">K:=Pointer(Width);<br /> J:=Pointer(Height);<br /> Result:=K^+J^;</div> end;</div> end. </span> <br /> <br /> <span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>How do I import it?<br /> </strong></span><br /> To import a function is actually the easiest part. Firstly again, read the documentation. Here is the script for importing the function.<br /> <br /> <span style="font-family: Courier New;"> declare external function f_AddFunction<br /> <div style="margin-left: 40px;">Integer, Integer<br /> returns<br /> Integer by value<br /> entry_point 'AddFunction' module_name 'Project1.dll';</div> </span> <br /> Just a few things to take note of:<br /> <ul>     <li>The function name and the entry point can be the same.</li>     <li>You can return either <em>by value</em> or <em>by reference</em> in which case you must make the result of your function of a pointer type.</li>     <li>I have not done it by reference so I cannot give you an example it is probably very much the same as the second example. Eg:</li> </ul> <span style="font-family: Courier New;"> <div style="margin-left: 40px;">AddFunction(Width,Height:PInteger):PInteger;<br /> begin<br /> <div style="margin-left: 40px;">Result^:=Width^+Height^;</div> end;</div> </span> <br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Using PChars<br /> </span></strong><br /> Using PChars is actually not that difficult. I did not use it extensively so this is not a complete example but it will get you underway.<br /> <br /> <span style="font-family: Courier New;">  unit Unit1; <br /> interface<br /> <div style="margin-left: 40px;">uses <div style="margin-left: 40px;">SysUtils;</div> type<br /> <div style="margin-left: 40px;">PInteger = ^Integer;</div> function AddFunction(var Width,Height:Integer;Operation:PChar):Double;stdcall;</div> implementation<br /> <div style="margin-left: 40px;">function AddFunction(var Width,Height:Integer;Operation:PChar):Double;<br /> var<br /> <div style="margin-left: 40px;">S:String;</div> begin<br /> <div style="margin-left: 40px;">S:=Trim(UpperCase(String(Operation)));<br /> Result:=0;<br /> if S = 'DIVIDE' then <div style="margin-left: 40px;">Result:=Width/Height</div> else<br /> <div style="margin-left: 40px;">if S = 'MULTIPLY' then<br /> <div style="margin-left: 40px;">Result:=Width*Height;</div></div></div> end;</div> end. </span> <br /> <br /> When you pass pchars its is better to remove spaces depending on what you are going to do. This gave me some trouble until I realised that there were extra unwanted spaces in the variable. Also <span style="font-family: Courier New;">mystring:=String(ThePCharVariable)</span> is the correct and new way to cast pchars according to the Delphi help file. Please read it for further information.<br /> <br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">How do I import it?<br /> </span></strong><br /> PChars is also very easy here is the script for the procedure.<br /> <br /> <span style="font-family: Courier New;"> declare external function f_AddFunction<br /> <div style="margin-left: 40px;">Integer, Integer, CString(15)<br /> returns<br /> Double Precision by value<br /> entry_point 'AddFunction' module_name 'Project1.dll';</div> </span> <br /> Just a few things to take note of:<br /> <ul>     <li>The length of CString must be the same value as the maximum size of the field which value you will use to send data with. If you know 100% that you will never send a string longer than x characters then make it x characters.</li> </ul>  <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Things<br /> </span></strong> <ul>     <li>The compiler of IB also uses the <span style="font-family: Courier New;">stdcall</span> calling convention so that is the right one to use</li>     <li><span style="font-family: Courier New;">Near</span>, <span style="font-family: Courier New;">far</span> and <span style="font-family: Courier New;">export</span> have no effect so don't use it.</li>     <li>When you loose a connection while debugging(calling the procedure) it means your dll has raised an exeption or performed an illegal operation. It basically means your not yet finished coding.</li>     <li>The dll should be placed under the UDF directory of IB, otherwise you need to specify it in the startup files of IB. See the Language Reference</li>     <li>Corresponding Types</li> </ul><table width="200" cellspacing="1" cellpadding="1" border="1" align="center"><tbody><tr><td><strong>Delphi</strong></td><td><strong>Interbase</strong></td></tr><tr><td>Integer</td><td>Integer</td></tr><tr><td>PChar</td><td>Char or VarChar</td></tr><tr><td>Double</td><td>Double Precision</td></tr></tbody></table><br />      <ul><li>When changing the parameters of a procedure after you have imported it and then dropping it andre importingg it can create problems. The best solution for me was to remove all reference to the UDF then to drop it and then re importing it.</li>     <li>Remember to copy the dll to the UDF directory after compiling. When IB is using the UDF, Windows will not let you copy the dll exit all relevant programs or disconnectt and then copy the file.</li>     <li>You don't need to re-import a UDF after compiling and copying a dll.</li> </ul>  <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Debugging<br /> </span></strong><br /> A stupid mistake I made during debugging was to use MessageDlg. It works but if your server is not very near you will need to run to it everytime, to press Ok. Also it effectively halts your session because it waits for the UDF to exit and it will not do so until you press OK or any of the other buttons you specified.<br /> <br /> I used a textfile with great success. Here is a code snippet of how you might do it. If the procedure is called multiple times in succesion it you should not call rewrite but append to add the data to the end. Remember to check for file existence when appending.<br /> <br /> <span style="font-family: Courier New;"> unit Unit1;<br /> interface<br /> <div style="margin-left: 40px;">uses<br /> <div style="margin-left: 40px;">SysUtils;</div> type<br /> <div style="margin-left: 40px;">PInteger = ^Integer;</div> function AddFunction(var Width,Height:Integer;Operation:PChar):Double;stdcall;</div> implementation<br /> <div style="margin-left: 40px;">function AddFunction(var Width,Height:Integer;Operation:PChar):Double;<br /> var<br /> <div style="margin-left: 40px;">S:String;<br /> K:TextFile;</div> begin<br /> <div style="margin-left: 40px;">try<br /> <div style="margin-left: 40px;">AssignFile(K,'C:\ProgramFiles\Borland\Interbase\UDF\Debug.txt');<br /> Rewrite(K);<br /> Writeln(K,'In Width:'+IntToStr(Width));<br /> //or<br /> Writeln(K,Width);<br /> Writeln(K,String(Operation));</div> finally<br /> <div style="margin-left: 40px;">CloseFile(K);</div> end;//try finally<br /> S:=Trim(UpperCase(String(Operation)));<br /> Result:=0;<br /> if S = 'DIVIDE' then<br /> <div style="margin-left: 40px;">Result:=Width/Height</div> else<br /> <div style="margin-left: 40px;">if S = 'MULTIPLY' then<br /> <div style="margin-left: 40px;">Result:=Width*Height;</div></div></div> end;</div> end.<br /> </span><br /> <span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>Opinions<br /> </strong></span> <ul>     <li>I use UDF's when I need to do a lot of calculations between <span style="font-family: Courier New;">Double Precision</span> and <span style="font-family: Courier New;">Integer</span> because <em>in Delphi you dont need to cast the whole time</em>.</li>     <li>When a double value in Delphi is very very very small it will be 0 in IB even if passing it as <span style="font-family: Courier New;">Double Precision</span>. I have not confirmed this conclusively so it is an opinion.</li> </ul>  <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Further reference and reading<br /> </span></strong><br /> Most of these sites have sections where you can join mailinglists for further information. Mailinglist is a very valuable place to get help. Just dont be lazy, try to find the answer yourself first, and then if that did not succeed ask your question clearly and tell what have tried already.<br /> <ul>     <li>Mers.com</li>     <li><a href="http://www.ibphoenix.com/">IB Phoenix</a></li>     <li><a href="http://www.ibobjects.com/">IBObjects</a></li> </ul>  <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Thanks<br /> </span></strong> <ul>     <li><a href="http://www.interbaseworkbench.com/">Interbase Workbench</a> my exclusive tool for modifying/creating my databases!</li>     <li><a href="http://www.interbaseworkbench.com/">IB Expert</a> for a very nice procedure debugging tool.</li>     <li>Thanks to the help of the people at ib-support@egroups.com.</li>     <li>Thanks to <a href="mailto:gdeatz@hlmdd.com">Gregory Deatz</a> programmer of FreeUDFLib for making his code open so I could study it to see how things were done.</li>     <li>Thanks to <a href="http://www.ibobjects.com/">IBObjects</a> for the best way to access Interbase/Firebird.</li> </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Documentation</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-rdbms/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird RDBMS</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-notes/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Notes</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/reference-manuals/" class="menulvl_3"><i class="fa fa-arrow-right"></i> All Reference Manuals</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/white-papers-presentations/" class="menulvl_3"><i class="fa fa-arrow-right"></i> White Papers &amp; Presentations</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/books/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Books</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/drivers-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Drivers Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-docs-and-articles/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Docs and Articles</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/external-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> External Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/licensing/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Licensing</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/features/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Features</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sql-conformance/" class="menulvl_3"><i class="fa fa-arrow-right"></i> SQL Conformance</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/historical-reference/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Historical Reference</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-doc/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-brand-faq/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Branding Policy</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Brand FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/logos/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Logos</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-and-other-databases/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird and other databases</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

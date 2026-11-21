@@ -1,0 +1,497 @@
+---
+title: "Firebird: Building the code on Windows"
+html_title: "Firebird: Building the code on Windows"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Building the code on Windows"
+menu_active: "/en/development/"
+source_url: "/en/building-the-code-windows/"
+source_format: new
+url: "/en/building-the-code-windows/"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/development/">Development</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/devel-core/">Firebird Server</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/get-involved/">Get Involved</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/building-the-code/">Building the Code</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Building the code on Windows</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    Last Update: Aug 25 2010<br /> Author: Blas Rodriguez Somoza <a href="">blas@puertareal.com</a><br /> Updated by: Popa Adrian Marius (mapopa at gmail.com) <h3><span style="color: rgb(6, 134, 173); font-size: 16px;">0. Introduction</span></h3> <blockquote> <p>There are three VisualStudio builds: msvc8, msvc9 and msvc10. The msvc8 build is used as the official build for Firebird 2.x and msvc10 is used as the official build for Firebird 3.0.</p> <p>Under the directory where you put Firebird sources you will see the following directories</p> <ul>     <li>builds     <ul>         <li>mac_os_x (Mac os X build scripts)</li>         <li>posix (Posix build scripts)</li>         <li>win32 (Msvc build scripts)</li>         <li>.....</li>     </ul></li>     <li>doc     <ul>         <li>sql.extensions</li>     </ul></li>     <li>src     <ul>         <li>....</li>     </ul></li>     <li>lang_helpers     <ul>         <li>....</li>     </ul></li>     <li>examples     <ul>         <li>....</li>     </ul></li> </ul> <p>After you build Firebird you also will see the following temporary directories</p> <ul>     <li>gen (cpp files generated from epp, exe and fdb's.)</li>     <li>temp (compiler temporary)</li>     <li>output_Win32 (build output)</li> </ul> </blockquote> <h3><span style="color: rgb(6, 134, 173); font-size: 16px;">1. TODO</span></h3> <blockquote>  </blockquote> <h3><span style="color: rgb(6, 134, 173); font-size: 16px;">2. Prerrequisites</span></h3> <blockquote> <p>To prepare the standard msvc build of FB you need:</p> <ul>     <li>Microsoft VisualStudio 8 (2005) or greater</li>     <li>sed unix utility</li> </ul> <p>If you intend to prepare an installable build, you will need <a href="http://www.jrsoftware.org/isdl.php">innosetup 5</a></p> <p>To download the utilities use the following links</p> <ul>     <li>Innosetup (Note: This is the classic version, not the new unicode version.) <a href="http://www.jrsoftware.org/download.php/is.exe">http://www.jrsoftware.org/download.php/is.exe</a></li>     <li>Innosetup pack <a href="http://files.jrsoftware.org/ispack/ispack-5.3.10.exe">http://files.jrsoftware.org/ispack/ispack-5.3.10.exe</a></li>     <li>Sed <a href="http://gnuwin32.sourceforge.net/packages/sed.htm">http://gnuwin32.sourceforge.net/packages/sed.htm</a></li> </ul> </blockquote> <h3><span style="color: rgb(6, 134, 173); font-size: 16px;">2. Installing the utilities</span></h3> <blockquote> <h4><span style="color: rgb(71, 71, 71); font-size: 15px;">2.1. Visual Studio</span></h4> <ol>     <li>Install VisualStudio 20xx</li>     <li>You can compile it with <a href="http://www.microsoft.com/express/downloads/#Visual_Studio_2008_Express_Downloads">Visual C++ 2008 Studio Express</a> but it will not be able to build the <a href="http://firebird.1100200.n4.nabble.com/building-head-with-visual-studio-2008-vc9-td1127168.html">control panel applet</a> but for the Firebird server and the rest of utilities building is ok</li> </ol> <h4><span style="color: rgb(71, 71, 71); font-size: 15px;">2.2. Sed</span></h4> <ol>     <li class="level1"><div class="li">Download <a href="http://sourceforge.net/projects/gnuwin32/files/sed/4.2-1/sed-4.2-1-setup.exe/download" class="urlextern" title="http://sourceforge.net/projects/gnuwin32/files/sed/4.2-1/sed-4.2-1-setup.exe/download" rel="nofollow">Sed setup</a> from <a href="http://gnuwin32.sourceforge.net/packages/sed.htm" class="urlextern" title="http://gnuwin32.sourceforge.net/packages/sed.htm" rel="nofollow">GnuWin32 project</a> I had to run the setup and i extract into c:\gnuwin32</div></li>     <li class="level1"><div class="li">Add sed c:\gnuwin32\bin to the PATH environment variable , test it from a new console if it works by typing sed it should show you something abut gnu sed help</div></li> </ol> <h4><span style="color: rgb(71, 71, 71); font-size: 15px;">2.3. Inno setup</span></h4> <ol>     <li>Run the Installer for Innosetup 5 that you downloaded from above  setup-5.3.xx.exe</li>     <li>Run the Innosetup pack Installer ispack-5.3.10.exe  with the default options (next, next, next)</li> </ol> </blockquote> <h3><span style="color: rgb(6, 134, 173); font-size: 16px;">4. Building</span></h3><blockquote><h4><span style="color: rgb(71, 71, 71); font-size: 15px;">4.1. Standard build</span></h4> <ol>     <li>Eliminate the fb2control from firebird3 solution if you are using Visual Studio Express (doesn't support MFC) and it's only the control pannel applet and try to build it, it should give you no errors when you build the solution.</li>     <li>Open a command line window.</li>     <li>Go to the builds\win32 directory.</li>     <li>Run the following batches in order (your version of VisualStudio is detected automatically)     <ol>         <li>make_icu.bat [DEBUG] [CLEAN]</li>         <li>make_boot.bat [DEBUG] [CLEAN]</li>         <li>make_all.bat [DEBUG] [CLEAN]</li>     </ol></li> </ol> <ul>     <p>After the build finish, an output directory with the binaries is created below your firebird3 directory.</p>     <li>To make a clean build from scratch after making changes to the code use the clean_all.bat script</li> </ul> <h4><span style="color: rgb(71, 71, 71); font-size: 15px;">4.2. Parser rebuild</span></h4> <p>If you change parser.y you will need to rebuild parser.cpp, to do so use parse.bat</p> <h4><span style="color: rgb(71, 71, 71); font-size: 15px;">4.3. Examples build</span></h4> <p>The examples build prepare two databases that will be needed to compile the examples in a distribution. If you intend to prepare a distribution then run the examples batch before:</p> <ol>     <li>make_examples.bat</li> </ol> <h4><span style="color: rgb(71, 71, 71); font-size: 15px;">4.4. Installer build</span></h4> <p>Remember, you need sed and innosetup in the path to build the installer</p> <ul>     <li>Open a command line window.</li>     <li>Go to the builds\install\arch-specific\win32 directory.</li>     <li>The batch to build the installer is<br />     BuildExecutableInstall.bat [DEBUG] [CS]<br />     Where DEBUG means if the build is a debug one or not and CS means classic server installer.</li>     <li>After you start the batch, you will get a InnoSetup window. To build the install exe select the option compile, and a new exe will appear in builds/win32/install_image</li> </ul> <h4><span style="color: rgb(71, 71, 71); font-size: 15px;">4.5. Building samples</span></h4> <p>After the standard build is finished, an output directory with the same structure as the installed FB directory is created.</p> <p>If you want to build the examples just cd to firebird3\output\examples\build_win32 and run run_all.bat</p> <p>Run_all.bat calls four other bats to make the example sets. Any example set can be build independently with its make_XXX script.</p> <p>The example sets are:</p> <ul>     <li>api (API Interface)</li>     <li>dyn (embedded dynamic SQL)</li>     <li>stat (embedded static SQL)</li>     <li>udf (User defined functions)</li> </ul> </blockquote>
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Development</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/roadmap/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Server</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/roadmap-v6/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Roadmap</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-policy/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Policy</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/code-repository/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Code Repository</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/get-involved/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Get Involved</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/devel-qa/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Quality Assurance</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/devel-docs/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Documentation</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/devel-jdbc-driver/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Drivers</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-jdbc-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> JDBC Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-net-provider/" class="menulvl_3"><i class="fa fa-arrow-right"></i> .NET Provider</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-python-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Python Drivers and Libraries</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-odbc-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> ODBC Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-php-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> PHP Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-dev/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/saturnin/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Saturnin</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/butlerjavasdk/" class="menulvl_3"><i class="fa fa-arrow-right"></i> ButlerJavaSDK</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/butler-sdk-for-free-pascal/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Butler SDK for Free Pascal</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/team-members/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Development Lab</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/team-members/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Team Members</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/contributors/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Contributors</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/developers-reports/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Developers Reports</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/issue-tracker/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Issue Tracker</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-mailing-lists/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Mailing Lists</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/project-structure/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Project Structure</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

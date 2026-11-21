@@ -1,0 +1,242 @@
+---
+title: "Firebird: Developer's Report: Firebird Core Development"
+html_title: "Firebird: Developer's Report: Firebird Core Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Firebird Core Development"
+menu_active: ""
+source_url: "/en/report-core-development-201802"
+source_format: new
+url: "/en/report-core-development-201802"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/archives/">Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/ff-reports-archives/">Developer Reports Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Firebird Core Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">October 2017 to January 2018</span></strong><br />
+<u>October 2017</u><br />
+<em>master</em></div>
+
+<ul>
+	<li>Update MSVC14 build</li>
+	<li>Improvement CORE-5648 : Avoid serialization of isc_attach_database calls issued by EXECUTE STATEMENT implementation</li>
+	<li>Fixed bug CORE-5600 : Invalid blob id when add a new blob column of type text and update another field</li>
+</ul>
+
+<div><em>B3_0_Release</em></div>
+
+<ul>
+	<li>Improvement CORE-5648 : Avoid serialization of isc_attach_database calls issued by EXECUTE STATEMENT implementation</li>
+	<li>Fixed bug CORE-5600 : Invalid blob id when add a new blob column of type text and update another field</li>
+	<li>Fixed bug CORE-5615 : Firebird 3 crashing randomly</li>
+</ul>
+
+<div><u>November 2017</u><br />
+<em>master</em></div>
+
+<ul>
+	<li>Fixed bug CORE-5615 : Firebird 3 crashing randomly</li>
+	<li>Update Windows build (CORE-5657)</li>
+	<li>Improvement CORE-5660 : Make flash of big number of dirty pages faster</li>
+	<li>Fixed PSV-Studio warnings</li>
+	<li>Fixed bug CORE-5667 : Regression in 3.0+: message &quot;CTE &#39;X&#39; has cyclic dependencies&quot; appear when &#39;X&#39; is alias for resultset and there is previous CTE part with the same name &#39;X&#39; in the query</li>
+</ul>
+
+<div><em>B3_0_Release</em></div>
+
+<ul>
+	<li>Backported from master:</li>
+</ul>
+
+<div style="margin-left: 80px;">Refactoring: make class Printer ready for usage not only in btr.cpp<br />
+Reimplement broken blob filter for rdb$format</div>
+
+<ul>
+	<li>Improvement CORE-5660 : Make flash of big number of dirty pages faster</li>
+	<li>Fixed PSV-Studio warnings</li>
+	<li>Fixed bug CORE-5667 : Regression in 3.0+: message &quot;CTE &#39;X&#39; has cyclic dependencies&quot; appear when &#39;X&#39; is alias for resultset and there is previous CTE part with the same name &#39;X&#39; in the query</li>
+</ul>
+
+<div><u>December 2017</u><br />
+<em>master</em></div>
+
+<ul>
+	<li>Merge pull request #113 from red-soft-ru/fix_CORE_5618</li>
+</ul>
+
+<div style="margin-left: 40px;">&nbsp;&nbsp; CORE-5618 : Part of the pages of the second level blobs is not released when deleting relations</div>
+
+<ul>
+	<li>Improvement CORE-5674 : Allow unused Common Table Expressions</li>
+	<li>Fixed bug CORE-5655 : isc_info_sql_relation_alias reports incorrect alias for CTE or nested queries</li>
+	<li>Fixed bug CORE-5681 : AV when external statement is executed and local transaction is rolled back</li>
+	<li>Fixed bug CORE-5685 : Sometime it is impossible to cancel\kill connection executing external query.</li>
+	<li>Implement fb_cancel_abort option at engine and unify handling of network errors a bit.</li>
+	<li>Avoid releasing of port reference - it prevents AV in client code.</li>
+	<li>Allow XNET server to detect forced disconnect of XNET client when both client and server are at the same process.</li>
+</ul>
+
+<div><em>B3_0_Release</em></div>
+
+<ul>
+	<li>Merge pull request #113 from red-soft-ru/fix_CORE_5618</li>
+</ul>
+
+<div style="margin-left: 40px;">&nbsp;&nbsp; CORE-5618 : Part of the pages of the second level blobs is not released when deleting relations</div>
+
+<ul>
+	<li>Improvement CORE-5674 : Allow unused Common Table Expressions</li>
+	<li>Fixed bug CORE-5655 : isc_info_sql_relation_alias reports incorrect alias for CTE or nested queries</li>
+	<li>Fixed bug CORE-5681 : AV when external statement is executed and local transaction is rolled back</li>
+	<li>Fixed bug CORE-5685 : Sometime it is impossible to cancel\kill connection executing external query.</li>
+	<li>Implement fb_cancel_abort option at engine and unify handling of network errors a bit.</li>
+	<li>Avoid releasing of port reference - it prevents AV in client code.</li>
+	<li>Allow XNET server to detect forced disconnect of XNET client when both client and server are at the same process.</li>
+</ul>
+
+<div><em>B2_5_Release</em></div>
+
+<ul>
+	<li>Improvement CORE-5674 : Allow unused Common Table Expressions</li>
+	<li>Fixed bug CORE-5655 : isc_info_sql_relation_alias reports incorrect alias for CTE or nested queries.</li>
+	<li>Fixed bug CORE-5681 : AV when external statement is executed and local transaction is rolled back</li>
+	<li>Fixed bug CORE-5685 : Sometime it is impossible to cancel\kill connection executing external query</li>
+	<li>Backport fix: Fixed race condition when many attachments creates event session at the same moment</li>
+</ul>
+
+<div><u>January 2018</u><br />
+<em>master</em></div>
+
+<ul>
+	<li>Update MSVC10 build</li>
+	<li>Fixed bug CORE-5695 : Position function does not consider the collation for blob</li>
+	<li>Fixed bug CORE-5694 : Duplicate values in columns with a unique constraint</li>
+	<li>Improvement CORE-5703 : When database validation fixes &quot;orphan page&quot; errors it also should adjust &quot;lowest free page&quot; marker &nbsp;&nbsp; (pip_min) on corresponding PIP, if necessary</li>
+	<li>Improvement CORE-5704 : Avoid UPDATE of RDB$DATABASE by ALTER DATABASE statement when possible</li>
+	<li>Bug CORE-5707 : Begin and end of physical backup in the same transaction could crash engine</li>
+	<li>Fixed bug CORE-5720 : Sweep in Firebird 3 in CS mode could run too slow when there is big load on server</li>
+	<li>Improvement CORE-5727 : Make faster engine response on cancel\shutdown signals when scanning long list of pointer pages</li>
+</ul>
+
+<div><em>B3_0_Release</em></div>
+
+<ul>
+	<li>Fixed bug CORE-5695 : Position function does not consider the collation for blob</li>
+	<li>Fixed bug CORE-5694 : Duplicate values in columns with a unique constraint</li>
+	<li>Improvement CORE-5703 : When database validation fixes &quot;orphan page&quot; errors it also should adjust &quot;lowest free page&quot; marker (pip_min) on corresponding PIP, if necessary</li>
+	<li>Improvement CORE-5704 : Avoid UPDATE of RDB$DATABASE by ALTER DATABASE statement when possible</li>
+	<li>Bug CORE-5707 : Begin and end of physical backup in the same transaction could crash engine</li>
+	<li>Fixed bug CORE-5720 : Sweep in Firebird 3 in CS mode could run too slow when there is big load on server</li>
+	<li>Improvement CORE-5727 : Make faster engine response on cancel\shutdown signals when scanning long list of pointer pages</li>
+</ul>
+
+<div><em>Vladyslav Khorsun</em></div>
+
+<p><em>Dnetpropetrovsk, Ukraine</em></p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

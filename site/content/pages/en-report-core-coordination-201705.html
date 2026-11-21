@@ -1,0 +1,220 @@
+---
+title: "Firebird: Developer's Report: Firebird Core Development & Coordination"
+html_title: "Firebird: Developer's Report: Firebird Core Development & Coordination"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Firebird Core Development & Coordination"
+menu_active: ""
+source_url: "/en/report-core-coordination-201705"
+source_format: new
+url: "/en/report-core-coordination-201705"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/archives/">Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/ff-reports-archives/">Developer Reports Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Firebird Core Development &amp; Coordination</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><strong style="line-height: 20.8px;"><span style="color: rgb(6, 134, 173); font-size: 16px;">February 2017 to April 2017</span></strong><br style="line-height: 20.8px;" />
+&nbsp;</p>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><strong><u>April 2017</u></strong></span></div>
+
+<div style="line-height: 20.8px;">&nbsp;</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Built-in replication:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">Attempted to make journal rewind (e.g. after shutdown) more reliable</li>
+	<li style="line-height: 20.8px;">Fixup access mode for the archive segments</li>
+	<li style="line-height: 20.8px;">Fixed non-working auto-sweep</li>
+	<li style="line-height: 20.8px;">Fixed possible memory corruption</li>
+	<li style="line-height: 20.8px;">Better error diagnostics logged</li>
+</ul>
+</div>
+
+<div style="line-height: 20.8px;">
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;"><strong style="color: rgb(71, 71, 71); font-size: 15px;"><u>March 2017</u></strong></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div>&nbsp;</div>
+
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Built-in replication:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">Fixed segment truncation problem on Windows</li>
+	<li style="line-height: 20.8px;">Improved monitoring/cancellation reaction time</li>
+	<li style="line-height: 20.8px;">Improved reliability a bit (protect from the counter wrap-around)</li>
+	<li style="line-height: 20.8px;">Fixed memory leak</li>
+</ul>
+
+<div style="line-height: 20.8px;"><span style="line-height: 1.6;">v3 bugfixing:</span></div>
+</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<ul>
+	<li style="line-height: 20.8px;">CORE-5489: Bad performance for NULLs filtering inside a navigational index scan</li>
+	<li style="line-height: 20.8px;">Yet another attempt to address CORE-5456 / CORE-5457</li>
+	<li style="line-height: 20.8px;">Make lock key prints a bit more user-friendly</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div><span style="color:#474747;font-size:15px;font-weight:bold;"><u>February 2017</u></span></div>
+
+<div>&nbsp;</div>
+
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Built-in replication:</div>
+
+<ul style="line-height: 20.8px;">
+	<li>Better tolerance to primary key updates</li>
+	<li>Fixed record refetch bug leading to wrong records being updated/deleted</li>
+	<li>Fixed dead record versions being read before index GC happens</li>
+	<li>Fix bug with delete from master having cascade FKs</li>
+	<li>Preserve actual replication status after error</li>
+	<li>Added verbose logging</li>
+</ul>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">v3 bugfixing:</div>
+</div>
+</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<ul>
+	<li style="line-height: 20.8px;">CORE-5481:&nbsp;Available indices are not used in some cases if ORDER BY expression is a filtered one</li>
+	<li>CORE-5457: Bugcheck 167 (invalid SEND request)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div>
+<div><br />
+<em>Dmitry Yemanov</em></div>
+</div>
+</div>
+
+<p><em style="line-height: 20.8px;">Penza, Russia</em></p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

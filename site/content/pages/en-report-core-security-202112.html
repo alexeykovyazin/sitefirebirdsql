@@ -1,0 +1,193 @@
+---
+title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+html_title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Security and Design Enhancements"
+menu_active: ""
+source_url: "/en/report-core-security-202112"
+source_format: new
+url: "/en/report-core-security-202112"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Security and Design Enhancements</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <h3>September to December 2021</h3>
+
+<h4>1. FB4 Activities:</h4>
+
+<ul>
+	<li>Released firebird 4.0.1, ensured stable android build process for arm64.</li>
+</ul>
+
+<h4>2. Bugfixes:</h4>
+
+<ul>
+	<li>
+	<div>Fixed #6945: Segfault in batch interface when gbak restores DB with a lot of blobs over the wire</div>
+	</li>
+	<li>
+	<div>Fixed #6967: PIO_read / PIO_write may falsely return success in a case when block was read / written incompletely</div>
+	</li>
+	<li>
+	<div>Fixed #6978: FB4 build fails on big endian</div>
+	</li>
+	<li>
+	<div>Fixed #6947: Query to mon$ tables does not return data when the encryption/decryption thread is running</div>
+	</li>
+	<li>
+	<div>Fixed #7036: Unexpected messages &#39;Missing security context ...&#39; in firebird.log</div>
+	</li>
+	<li>
+	<div>Fixed #7025: Results of negation must be the same for each datatype (smallint / int /bigint / int128) when argument is least possible value for this type ixed #7043: Wrong message when user has no access to /tmp/firebird</div>
+	</li>
+	<li>
+	<div>Fixed #6966: Status vector for execute statement(<empty_string>) is unstable if another execute block with correct statement was executed before. Affects only LINUX builds in Classic mode.</empty_string></div>
+	</li>
+	<li>
+	<div>Fixed #6963: grant references not working</div>
+	</li>
+	<li>
+	<div>Fixed #7060: Deadlock when execute test for CORE-4337</div>
+	</li>
+	<li>
+	<div>Fixed #7065: Connection hangs after delivery of 2**32 - 1 packets when encypting wire with chacha plugin</div>
+	</li>
+	<li>
+	<div>Fixed #7066: Server may send incorrect specific data to client when establishing encrypted connection</div>
+	</li>
+	<li>
+	<div>Fixed #7067: Deadlock when using not initialized security database</div>
+	</li>
+	<li>
+	<div>Fixed #7069: Errors in chacha plugin displayed incorrectly</div>
+	</li>
+	<li>
+	<div>Fixed #7080: Executing batch crashes server</div>
+	</li>
+</ul>
+
+<h4>3. New features &amp; enhancements:</h4>
+
+<ul>
+	<li>Implemented #6954: fb_info_protocol_version support</li>
+	<li>Implemented #6959: add IBatch::getInfo() call</li>
+	<li>Enhancement: Enhanced control on the size of available batch buffers when restoring database ensures never getting isc_batch_too_big error</li>
+</ul>
+
+<h4>4. Big work in progress</h4>
+
+<ul>
+	<li>Shared (between SS attachments) metadata cache, done in 2021 - ensured correct encapsulation of metadata cache (making it easier t move between attachment / database level).<br />
+	N.B. done in separate git branch &quot;metacache&quot;.</li>
+</ul>
+
+<p><em>Alex Peshkov<br />
+Yaroslavl, Russia</em></p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

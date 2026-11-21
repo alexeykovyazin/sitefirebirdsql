@@ -1,0 +1,159 @@
+---
+title: "Firebird: Developer's Report: QA Stress Testing & Development"
+html_title: "Firebird: Developer's Report: QA Stress Testing & Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: QA Stress Testing & Development"
+menu_active: ""
+source_url: "/en/report-qa3-202301"
+source_format: new
+url: "/en/report-qa3-202301"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: QA Stress Testing &amp; Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><span style="font-weight: bold; color: rgb(6, 134, 173); font-size: 16px;">January 2023</span></p>
+
+<ul>
+	<li>Implemented / refactored /adjusted 10 tests from FBT suite.</li>
+	<li>Lot of changes in QA-rundaily .sh / .bat scenarios after regular jobs started.</li>
+	<li>Fully re-implemented Python script that makes final HTML report to uploading to HTTP server.</li>
+	<li>NEW QA. LI-5.0.0.884: hangs on blob_not_found_in_rw_replica_if_target_row_exists.py test detected.NEW QA: several crashes when running tests on Linux (CentOS-7), builds: 5.0.0.863, .865, .877, .884, .888; 4.0.3.2885.</li>
+	<li>NEW QA. LI-5.0.0.865, CS: hangs on test read_consist_sttm_restart_on_update_04.py.</li>
+	<li>NEW QA. LINUX, 4.0.3.2878 SS: crash on replication-related &quot;test shutdown during applying segments leads to crash.py&quot;.</li>
+	<li>NEW QA. It will be useful to see in cross-report details info about crashes occurred for last 30 runs.</li>
+	<li>NEW QA. Detected hang at final point of tests session when ran pytest on Linux, 4.0.3.2885, experimental build. May relate to #7359.</li>
+	<li>NEW QA. Questions about how trace API is used in the firebird-qa. Discussed with pcisar et al, letters 09.01.23 &hellip;18.01.23</li>
+	<li>Discussed way to obtain failed thread details from stack-trace on Windows (in order to put this info in detalization page for error outcome of some test if it caused by FB crash).</li>
+	<li>Attributes &#39;no-reserve&#39; and default sweep (20000) are &#39;silently&#39; added to DB header after b/r if source DB was in read-only mode. Created ticket gh-7453.</li>
+	<li>NEW QA. LI-5.0.0.907, CS, crashed when performing functional.replication.test_ddl_triggers_must_not_fire_on_replica</li>
+	<li>Disabled functional/basic/db_01 ... db_31 in fbtest and in new qa framework after discussion with dimitr.</li>
+	<li>Discussed with dimitr needed corrections in the test for core-5061 (plan length exceeded 64K after adding details in recent FB snapshots).</li>
+	<li>Test shutdown_during_applying_segments_leads_to_crash.py caused crash with weird message in gdb: &quot;PC register is not available&quot;.</li>
+	<li>Updated QA plugin to version 0.17.2, checked again set of tests on Linux which caused pytest to hang (FB 4.x).</li>
+	<li>NEW QA. Started regular runs of cron jobs on Linux CentOS-7, with uploading final reports on http server (FB 5.x, 4.x and 3.x).</li>
+	<li>Miscelaneous corrections of batch scenario.</li>
+	<li>Failed to create snapshot WI-4.0.3.2885 (experimental build) with &quot;keyholder.dll : fatal error LNK1120: 2 unresolved externals&quot;.</li>
+	<li>Two ISQL processes crashed during perform test for CORE-5275 (LI-5.0.0.916, SS), appear only in NEW QA.</li>
+	<li>NEW QA, script for creating html report: misc improvements related to interface (tooltips etc)</li>
+	<li>NEW QA, LI-5.0.0.917 SS: hanging test read_consist_sttm_restart_max_limit (no such problem in old fbtest suite).</li>
+	<li>Linux Debian-10: upgraded Python to 3.10 in order to create virtual env for starting NEW QA together with old FBT (that uses Python-2.7), decided that they will work together for several months.</li>
+	<li>Problem with build LI-4.0.3.2891 on CentOS-7 (&quot;cannot create /chroot/.../gen/Firebird--.tar.xz: Directory nonexistent&quot;).</li>
+	<li>OLTP-EMUL, LI-3.0.11.33657 SS: crash after 15 minutes of work.</li>
+	<li>Collation based on ICU prevents DB migration to another host with another ICU version. Created ticket #7463</li>
+	<li>NEW QA and olf fbtest jobs, working together since 27.01.2023. Schedule must be changed in order to have all results during ~12&hellip;14 hours. Job &#39;increment build number&#39; must be done about midnight because of this.</li>
+	<li>Snapshot 4.0.3.2891 (experimental build) could not be created if standard FB 4.x is running at this time: problem with access to shmem file (&quot;Wrong file for memory mapping, see details in firebird.log&quot;).</li>
+	<li>Tested special build with fix of problem when record length exceeds 64K but this limit is pretty far from sum of formats:<br />
+	&quot;gbak: ERROR:message length error (encountered 32, expected 65568)&quot;, requested by Alex&nbsp; (&#39;wideburp&#39;).</li>
+	<li>OLTP-EMUL, LI-V4.0.3.2890 SS: crash after 15 minutes of work.</li>
+</ul>
+
+<div style="line-height: 20.8px;"><em style="line-height: 20.8px;">Pavel Zotov</em><br />
+<em style="line-height: 20.8px;">Moscow, Russian Federation</em></div>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

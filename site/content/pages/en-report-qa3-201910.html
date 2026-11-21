@@ -1,0 +1,155 @@
+---
+title: "Firebird: Developer's Report: QA Stress Testing & Development"
+html_title: "Firebird: Developer's Report: QA Stress Testing & Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: QA Stress Testing & Development"
+menu_active: ""
+source_url: "/en/report-qa3-201910"
+source_format: new
+url: "/en/report-qa3-201910"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: QA Stress Testing &amp; Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <span style="font-weight: bold; color: rgb(6, 134, 173); font-size: 16px;">June to September 2019</span><br style="line-height: 20.8px;" />
+<br style="line-height: 20.8px;" />
+<span style="color:#474747;font-size:15px;font-weight:bold;"><u style="line-height: 20.8px;">August-September</u></span>
+
+<ul>
+	<li><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">Created / modified QA tests for </span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">20</span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">&nbsp;tracker tickets</span></li>
+	<li><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">Found / reported bugs: CORE-6134, CORE-6139, CORE-6141</span></li>
+	<li><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">Reported that </span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">q</span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">uery involv</span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">ing</span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; "> huge table (</span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">&gt;</span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; "> 500 million rows) can work too long</span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; "> before reacting on the statement cancellation via MON$STATEMENTS</span></li>
+	<li><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">Several changes in the script that daily runs QA tests</span></li>
+	<li><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">SIMILAR TO problems </span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">were </span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">detected on several tests after FB4 started us</span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">ing</span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; "> &#39;re2&#39; library</span></li>
+	<li><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">Reported that </span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">ALTER VIEW </span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">executed</span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; "> </span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">in a loop </span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">lead</span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">s</span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; "> to huge memory consumption</span></li>
+</ul>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>July</u></span></div>
+
+<ul>
+	<li><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">Created / modified QA tests for </span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">27</span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">&nbsp;tracker tickets</span></li>
+	<li><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">Found / reported bugs: CORE-6103</span></li>
+	<li><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">Deep refactoring of batches making snapshot builds and QA runs</span></li>
+	<li><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">Investigated problem with non-linear growth of restore for </span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">large</span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; "> database (650 </span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">GB</span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">)</span></li>
+</ul>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>June</u></span></div>
+
+<ul>
+	<li><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">Created / modified QA tests for </span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">13</span><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">&nbsp;tracker tickets</span></li>
+	<li><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">Found / reported bugs: CORE-6080</span></li>
+	<li><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">OLTP-EMUL: attempt to refactore client-order procedure, reduce lock-contention in XQD* tables</span></li>
+	<li><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">Minor OLTP-EMUL adjustments</span></li>
+	<li><span style="FONT-FAMILY:'Calibri' ; FONT-SIZE:11pt; COLOR:#000000 ; BACKGROUND-COLOR:transparent ; ">Reported (with stack dumps) a number of server crashes</span></li>
+</ul>
+
+<div style="line-height: 20.8px;"><em style="line-height: 20.8px;">Pavel Zotov</em></div>
+<em style="line-height: 20.8px;">Moscow, Russian Federation</em><br style="line-height: 20.8px;" />
+&nbsp;
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

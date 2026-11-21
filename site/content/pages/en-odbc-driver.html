@@ -1,0 +1,1074 @@
+---
+title: "Firebird: ODBC Driver"
+html_title: "Firebird: ODBC Driver"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "ODBC Driver"
+menu_active: "/en/server-packages/"
+source_url: "/en/odbc-driver/"
+source_format: new
+url: "/en/odbc-driver/"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/downloads/">Downloads</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/connectivity/">Connectivity</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">ODBC Driver</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <h2>ODBC driver</h2>
+
+<p><strong>Download new driver binaries and sources from <a href="https://github.com/FirebirdSQL/firebird-odbc-driver">Firebird ODBC Github</a> (and don&#39;t forget to give a star to the project)!</strong></p>
+
+<p>This version is a rework of v2 to implement modern Firebird Object-Oriented API inside an ODBC driver. In addition it contains a fixpack for many known issues, see <a href="https://github.com/FirebirdSQL/firebird-odbc-driver/blob/master/ChangeLog_v3.0">ChangeLog_v3.0</a> for details.</p>
+
+<p>Please note that v3.0 driver is intended to work only with Firebird clients from version 3.0 and later (i.e., 3.0, 4.0, 5.0 at the moment). If you have fbclient.dll from 2.5 or some older version, it is incompatible.</p>
+
+<p>The Windows build is adapted to the modern versions of Visual Studio, the project is located in Builds/MsVc2022.win folder and can be opened/compiled with Visual Studio 2022 or later.</p>
+
+<p>The Windows build key features are:</p>
+
+<ul>
+	<li>Dll name was changed to FirebirdODBC.dll;</li>
+	<li>Driver name was changed to &quot;Firebird ODBC Driver&quot;;</li>
+	<li>The new driver will be installed in a separate folder ({Program Files}\Firebird\Firebird_ODBC_3 actually) and can be safely uninstalled if necessary.</li>
+	<li>If you want to create a DSN using the new driver edition, you should select &quot;Firebird ODBC Driver&quot;. Your DSNs associated with the current driver version (&quot;Firebird/Interbase(r) driver&quot;) will continue to work and will not be affected by installing a new driver.</li>
+</ul>
+
+<p>You can see more details here:&nbsp;<a href="https://github.com/FirebirdSQL/firebird-odbc-driver/wiki">https://github.com/FirebirdSQL/firebird-odbc-driver/wiki</a></p>
+
+<p>The Linux build is located in Builds/Gcc.lin folder, see Builds/Gcc.lin/readme.linux for details.</p>
+
+<p>Please report all issues to <a href="https://github.com/FirebirdSQL/firebird-odbc-driver/issues">https://github.com/FirebirdSQL/firebird-odbc-driver/issues</a></p>
+
+<p>&nbsp;</p>
+
+<p><strong>Old version (2.5) - for Firebird 2.5 and older</strong></p>
+
+<p>&nbsp;</p>
+
+<ul>
+</ul>
+
+<table border="0" cellpadding="1" cellspacing="1" class="Table" width="100%">
+	<tbody>
+		<tr class="Table_Header">
+			<td width="110">Release Date</td>
+			<td width="200">File Name</td>
+			<td width="50">Size</td>
+			<td>Description</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="4" width="110">Version 2.0.5 Release</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">May 18, 2017</td>
+			<td width="200"><a class="name" href="https://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.5-Release/changes-v20.log/download" target="_blank" title="Click to download changes-v20.log">changes-v20.log</a></td>
+			<td width="50">48 KB</td>
+			<td>What&#39;s New, Log file, Text</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">May 18, 2017</td>
+			<td width="200"><a href="https://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.5-Release/OdbcJdbc-src-2.0.5.156.tar.gz/download" target="_blank">OdbcJdbc-src-2.0.5.156.tar.gz</a></td>
+			<td width="50">1.4 MB</td>
+			<td>Source code</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">May 18, 2017</td>
+			<td width="200"><a href="https://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.5-Release/Firebird_ODBC_2.0.5.156_Win32.exe/download" target="_blank">Firebird_ODBC_2.0.5.156_Win32.exe</a></td>
+			<td width="50">1.0 MB</td>
+			<td>Windows 32-bit Full Install</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">May 18, 2017</td>
+			<td width="200"><a href="https://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.5-Release/Firebird_ODBC_2.0.5.156_x64.exe/download" target="_blank">Firebird_ODBC_2.0.5.156_x64.exe</a></td>
+			<td width="50">1.6 MB</td>
+			<td>Windows 64-bit Full Install</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">May 18, 2017</td>
+			<td width="200"><a href="https://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.5-Release/OdbcFb_DLL_2.0.5.156_Win32.zip/download" target="_blank">OdbcFb_DLL_2.0.5.156_Win32.zip</a></td>
+			<td width="50">1.3 MB</td>
+			<td>Win 32-bit DLL</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">May 18, 2017</td>
+			<td width="200"><a href="https://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.5-Release/OdbcFb_DLL_2.0.5.156_x64.zip/download" target="_blank">OdbcFb_DLL_2.0.5.156_x64.zip</a></td>
+			<td width="50">1.7 MB</td>
+			<td>Win 64-bit DLL</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">May 18, 2017</td>
+			<td width="200"><a href="https://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.5-Release/OdbcFb-LIB-2.0.5.156.i686.gz/download" target="_blank">OdbcFb-LIB-2.0.5.156.i686.gz</a></td>
+			<td width="50">309 KB</td>
+			<td>Linux x86 Library</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">May 18, 2017</td>
+			<td width="200"><a href="https://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.5-Release/OdbcFb-LIB-2.0.5.156.amd64.gz/download" target="_blank">OdbcFb-LIB-2.0.5.156.amd64.gz</a></td>
+			<td width="50">348 KB</td>
+			<td>Linux&nbsp; AMD64 Library</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="4" width="110">Version 2.0.4 Release</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">March 9, 2016</td>
+			<td width="200"><a class="name" href="https://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.4-Release/changes-v20.log/download" target="_blank" title="Click to download changes-v20.log">changes-v20.log</a></td>
+			<td width="50">46 KB</td>
+			<td>What&#39;s New, Log file, Text</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">March 9, 2016</td>
+			<td width="200"><a href="https://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.4-Release/OdbcJdbc-src-2.0.4.155.tar.gz/download" target="_blank">OdbcJdbc-src-2.0.4.155.tar.gz</a></td>
+			<td width="50">1.4 MB</td>
+			<td>Source code</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">March 9, 2016</td>
+			<td width="200"><a href="https://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.4-Release/Firebird_ODBC_2.0.4.155_Win32.exe/download" target="_blank">Firebird_ODBC_2.0.4.155_Win32.exe</a></td>
+			<td width="50">1.0 MB</td>
+			<td>Windows 32-bit Full Install</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">March 9, 2016</td>
+			<td width="200"><a href="https://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.4-Release/Firebird_ODBC_2.0.4.155_x64.exe/download" target="_blank">Firebird_ODBC_2.0.4.155_x64.exe</a></td>
+			<td width="50">1.6 MB</td>
+			<td>Windows 64-bit Full Install</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">March 9, 2016</td>
+			<td width="200"><a href="https://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.4-Release/OdbcFb_DLL_2.0.4.155_Win32.zip/download" target="_blank">OdbcFb_DLL_2.0.4.155_Win32.zip</a></td>
+			<td width="50">1.3 MB</td>
+			<td>Win 32-bit DLL</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">March 9, 2016</td>
+			<td width="200"><a href="https://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.4-Release/OdbcFb_DLL_2.0.4.155_x64.zip/download" target="_blank">OdbcFb_DLL_2.0.4.155_x64.zip</a></td>
+			<td width="50">1.7 MB</td>
+			<td>Win 64-bit DLL</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">March 9, 2016</td>
+			<td width="200"><a href="https://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.4-Release/OdbcFb-LIB-2.0.4.155.i686.gz/download" target="_blank">OdbcFb-LIB-2.0.4.155.i686.gz</a></td>
+			<td width="50">309 KB</td>
+			<td>Linux x86 Library</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">March 9, 2016</td>
+			<td width="200"><a href="https://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.4-Release/OdbcFb-LIB-2.0.4.155.amd64.gz/download" target="_blank">OdbcFb-LIB-2.0.4.155.amd64.gz</a></td>
+			<td width="50">347 KB</td>
+			<td>Linux&nbsp; AMD64 Library</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="4" width="110">Version 2.0.3 Release</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">November 26, 2014</td>
+			<td width="200"><a class="name" href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.3-Release/changes-v20.log/download" target="_blank" title="Click to download changes-v20.log">changes-v20.log</a></td>
+			<td width="50">45 KB</td>
+			<td>What&#39;s New, Log file, Text</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">November 26, 2014</td>
+			<td width="200"><a href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.3-Release/OdbcJdbc-src-2.0.3.154.tar.gz/download" target="_blank">OdbcJdbc-src-2.0.3.154.tar.gz</a></td>
+			<td width="50">1.1 MB</td>
+			<td>Source code</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">November 26, 2014</td>
+			<td width="200"><a href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.3-Release/Firebird_ODBC_2.0.3.154_Win32.exe/download" target="_blank">Firebird_ODBC_2.0.3.154_Win32.exe</a></td>
+			<td width="50">1.0 MB</td>
+			<td>Windows 32-bit Full Install</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">November 26, 2014</td>
+			<td width="200"><a href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.3-Release/Firebird_ODBC_2.0.3.154_x64.exe/download" target="_blank">Firebird_ODBC_2.0.3.154_x64.exe</a></td>
+			<td width="50">1.6 MB</td>
+			<td>Windows 64-bit Full Install</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">November 26, 2014</td>
+			<td width="200"><a href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.3-Release/OdbcFb_DLL_2.0.3.154_Win32.zip/download" target="_blank">OdbcFb_DLL_2.0.3.154_Win32.zip</a></td>
+			<td width="50">1.3 MB</td>
+			<td>Win 32-bit DLL</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">November 26, 2014</td>
+			<td width="200"><a href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.3-Release/OdbcFb_DLL_2.0.3.154_x64.zip/download" target="_blank">OdbcFb_DLL_2.0.3.154_x64.zip</a></td>
+			<td width="50">1.7 MB</td>
+			<td>Win 64-bit DLL</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">November 26, 2014</td>
+			<td width="200"><a href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.3-Release/OdbcFb-LIB-2.0.3.154.i686.gz/download" target="_blank">OdbcFb-LIB-2.0.3.154.i686.gz</a></td>
+			<td width="50">1.0 MB</td>
+			<td>Linux x86 Library</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">November 26, 2014</td>
+			<td width="200"><a href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.3-Release/OdbcFb-LIB-2.0.3.154.amd64.gz/download" target="_blank">OdbcFb-LIB-2.0.3.154.amd64.gz</a></td>
+			<td width="50">1.4 MB</td>
+			<td>Linux&nbsp; AMD64 Library</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="4" width="110">Version 2.0.2 Release</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">July 08, 2013</td>
+			<td width="200"><a class="name" href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.2-Release/changes-v20.log/download" target="_blank" title="Click to download changes-v20.log">changes-v20.log</a></td>
+			<td width="50">44.3 KB</td>
+			<td>What&#39;s New, Log file, Text</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">July 08, 2013</td>
+			<td width="200"><a class="name" href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.2-Release/OdbcFb-Source-2.0.2.153.gz/download" target="_blank" title="Click to download OdbcFb-Source-2.0.2.153.gz">OdbcFb-Source-2.0.2.153.gz</a></td>
+			<td width="50">1.5 MB</td>
+			<td>Source code</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">July 08, 2013</td>
+			<td width="200"><a class="name" href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.2-Release/Firebird_ODBC_2.0.2.153_Win32.exe/download" target="_blank" title="Click to download Firebird_ODBC_2.0.2.153_Win32.exe">Firebird_ODBC_2.0.2.153_Win32.exe</a></td>
+			<td width="50">10.0 MB</td>
+			<td>Windows 32-bit Full Install</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">July 08, 2013</td>
+			<td width="200"><a class="name" href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.2-Release/Firebird_ODBC_2.0.2.153_x64.exe/download" target="_blank" title="Click to download Firebird_ODBC_2.0.2.153_x64.exe">Firebird_ODBC_2.0.2.153_x64.exe</a></td>
+			<td width="50">1.6 MB</td>
+			<td>Windows 64-bit Full Install</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">July 08, 2013</td>
+			<td width="200"><a class="name" href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.2-Release/OdbcFb_DLL_2.0.2.153_Win32.zip/download" target="_blank" title="Click to download OdbcFb_DLL_2.0.2.153_Win32.zip">OdbcFb_DLL_2.0.2.153_Win32.zip</a></td>
+			<td width="50">1.3 MB</td>
+			<td>Win 32-bit DLL</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">July 08, 2013</td>
+			<td width="200"><a class="name" href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.2-Release/OdbcFb_DLL_2.0.2.153_x64.zip/download" target="_blank" title="Click to download OdbcFb_DLL_2.0.2.153_x64.zip">OdbcFb_DLL_2.0.2.153_x64.zip</a></td>
+			<td width="50">1.7 MB</td>
+			<td>Win 64-bit DLL</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">July 08, 2013</td>
+			<td width="200"><a class="name" href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.2-Release/OdbcFb-LIB-2.0.2.153.i686.gz/download" target="_blank" title="Click to download OdbcFb-LIB-2.0.2.153.i686.gz">OdbcFb-LIB-2.0.2.153.i686.gz</a></td>
+			<td width="50">306.4 KB</td>
+			<td>Linux x86 Library</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">July 08, 2013</td>
+			<td width="200"><a class="name" href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.2-Release/OdbcFb-LIB-2.0.2.153.amd64.gz/download" target="_blank" title="Click to download OdbcFb-LIB-2.0.2.153.amd64.gz">OdbcFb-LIB-2.0.2.153.amd64.gz</a></td>
+			<td width="50">344.0 KB</td>
+			<td>Linux&nbsp; AMD64 Library</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="4" width="110">Version 2.0.1 Release</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">March 19, 2012</td>
+			<td width="200"><a href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.1-Release/changes-v20.log/download">changes-v20.log</a></td>
+			<td width="50">42.2 KB</td>
+			<td>What&#39;s New, Log file, Text</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">March 19, 2012</td>
+			<td width="200"><a class="name" href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.1-Release/OdbcFb-Source-2.0.1.152.tar.gz/download" title="Click to download OdbcFb-Source-2.0.1.152.tar.gz">OdbcFb-Source-2.0.1.152.tar.gz</a></td>
+			<td width="50">4.5 MB</td>
+			<td>Source code</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">March 19, 2012</td>
+			<td width="200"><a class="name" href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.1-Release/Firebird_ODBC_2.0.1.152_Win32.exe/download" title="Click to download Firebird_ODBC_2.0.1.152_Win32.exe">Firebird_ODBC_2.0.1.152_Win32.exe</a></td>
+			<td width="50">989.7 KB</td>
+			<td>Windows 32-bit Full Install</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">March 19, 2012</td>
+			<td width="200"><a class="name" href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.1-Release/Firebird_ODBC_2.0.1.152_x64.exe/download" title="Click to download Firebird_ODBC_2.0.1.152_x64.exe">Firebird_ODBC_2.0.1.152_x64.exe</a></td>
+			<td width="50">1.5 MB</td>
+			<td>Windows 64-bit Full Install</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">March 19, 2012</td>
+			<td width="200"><a class="name" href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.1-Release/OdbcFb_DLL_2.0.1.152_Win32.zip/download" title="Click to download OdbcFb_DLL_2.0.1.152_Win32.zip">OdbcFb_DLL_2.0.1.152_Win32.zip</a></td>
+			<td width="50">1.3 MB</td>
+			<td>Win 32-bit DLL</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">March 19, 2012</td>
+			<td width="200"><a class="name" href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.1-Release/OdbcFb_DLL_2.0.1.152_x64.zip/download" title="Click to download OdbcFb_DLL_2.0.1.152_x64.zip">OdbcFb_DLL_2.0.1.152_x64.zip</a></td>
+			<td width="50">1.7 MB</td>
+			<td>Win 64-bit DLL</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">March 19, 2012</td>
+			<td width="200"><a class="name" href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.1-Release/OdbcFb-LIB-2.0.1.152.i686.gz/download" title="Click to download OdbcFb-LIB-2.0.1.152.i686.gz">OdbcFb-LIB-2.0.1.152.i686.gz</a></td>
+			<td width="50">306.9 KB</td>
+			<td>Linux x86 Library</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">March 19, 2012</td>
+			<td width="200"><a class="name" href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.1-Release/OdbcFb-LIB-2.0.1.152.amd64.tar.gz/download" title="Click to download OdbcFb-LIB-2.0.1.152.amd64.tar.gz">OdbcFb-LIB-2.0.1.152.amd64.tar.gz</a></td>
+			<td width="50">344.3 KB</td>
+			<td>Linux&nbsp; AMD64 Library</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="4" width="110">Version 2.0 Release<br />
+			from Alexander Potapchenko</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">April 04, 2011</td>
+			<td width="200"><a href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0-Release/changes-v20.log">changes-v20.log</a></td>
+			<td width="50">38 KB</td>
+			<td>What&#39;s New, Log file, Text</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">April 04, 2011</td>
+			<td width="200"><a href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0-Release/OdbcFb-Source-2.0.0151.tar.gz">OdbcFb-Source-2.0.0151.tar.gz</a></td>
+			<td width="50">1.4 MB</td>
+			<td>Source code</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">April 04, 2011</td>
+			<td width="200"><a href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0-Release/Firebird_ODBC_2.0.0.151_Win32.exe">Firebird_ODBC_2.0.0.151_Win32.exe</a></td>
+			<td width="50">966 KB</td>
+			<td>Windows 32-bit Full Install</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">April 04, 2011</td>
+			<td width="200"><a href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0-Release/Firebird_ODBC_2.0.0.151_x64.exe">Firebird_ODBC_2.0.0.151_x64.exe</a></td>
+			<td width="50">1.5 MB</td>
+			<td>Windows 64-bit Full Install</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">April 04, 2011</td>
+			<td width="200"><a href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0-Release/OdbcFb_DLL_2-0-0151_Win32.zip">OdbcFb_DLL_2-0-0151_Win32.zip</a></td>
+			<td width="50">1.3 MB</td>
+			<td>Win 32-bit DLL</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">April 04, 2011</td>
+			<td width="200"><a href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0-Release/OdbcFb_DLL_2-0-0151_x64.zip">OdbcFb_DLL_2-0-0151_x64.zip</a></td>
+			<td width="50">1.7 MB</td>
+			<td>Win 64-bit DLL</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td width="110">April 04, 2011</td>
+			<td width="200"><a href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0-Release/OdbcFb-LIB-2.0.0151.i686.gz">OdbcFb-LIB-2.0.0151.i686.gz</a></td>
+			<td width="50">307 KB</td>
+			<td>Linux x86 Library</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td width="110">April 04, 2011</td>
+			<td width="200"><a href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0-Release/OdbcFb-LIB-2.0.0151.amd64.tar.gz">OdbcFb-LIB-2.0.0151.amd64.tar.gz</a></td>
+			<td width="50">344 KB</td>
+			<td>Linux&nbsp; AMD64 Library</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="4">Version 2.0 Release Candidate 2 (RC2)<br />
+			from Alexander Potapchenko</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>November 16, 2010</td>
+			<td><a href="/file/downloads/odbc/changes-v20.log">changes-v20.log</a></td>
+			<td>38 KB</td>
+			<td>What&#39;s New, Log file, Text</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>November 16, 2010</td>
+			<td><a href="/file/downloads/odbc/OdbcFb-Source-RC2-2_0_0150_tar.gz">OdbcFb-Source-RC2-2.0.0150.tar.gz</a></td>
+			<td>2 MB</td>
+			<td>Source code</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>November 16, 2010</td>
+			<td><a href="/file/downloads/odbc/Firebird_ODBC_2_0_0_150_Win32.exe">Firebird_ODBC_2.0.0.150_Win32.exe</a></td>
+			<td>966 KB</td>
+			<td>Windows 32-bit Full Install</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>November 16, 2010</td>
+			<td><a href="/file/downloads/odbc/Firebird_ODBC_2_0_0_150_x64.exe">Firebird_ODBC_2.0.0.150_x64.exe</a></td>
+			<td>2 MB</td>
+			<td>Windows 64-bit Full Install</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>November 16, 2010</td>
+			<td><a href="/file/downloads/odbc/OdbcFb_DLL_RC2_2-0-0150_Win32.zip">OdbcFb_DLL_RC2_2-0-0150_Win32.zip</a></td>
+			<td>2 MB</td>
+			<td>Win 32-bit DLL</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>November 16, 2010</td>
+			<td><a href="/file/downloads/odbc/OdbcFb_DLL_RC2_2-0-0150_x64.zip">OdbcFb_DLL_RC2_2-0-0150_x64.zip</a></td>
+			<td>2 MB</td>
+			<td>Win 64-bit DLL</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>November 16, 2010</td>
+			<td><a href="/file/downloads/odbc/OdbcFb-LIB-RC2-2_0_0150_i686_tar.gz">OdbcFb-LIB-RC2-2.0.0150.i686.tar.gz</a></td>
+			<td>299 KB</td>
+			<td>Linux x86 Library</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>November 16, 2010</td>
+			<td><a href="/file/downloads/odbc/OdbcFb-LIB-RC2-2_0_0150_amd64_tar.gz">OdbcFb-LIB-RC2-2.0.0150.amd64.tar.gz</a></td>
+			<td>335 KB</td>
+			<td>Linux&nbsp; AMD64 Library</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="4">Version 2.0 Release Candidate 1 (RC1)<br />
+			First V.2 release candidate from Alexander Potapchenko</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>November 19, 2008</td>
+			<td>changes-v20.log</td>
+			<td>36 KB</td>
+			<td>What&#39;s New, Log file, Text</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>November 19, 2008</td>
+			<td><a href="/file/downloads/odbc/OdbcFb-Source-RC1-2_0_0148_tar.gz">OdbcFb-Source-RC1-2.0.0148.tar.gz</a></td>
+			<td>2 MB</td>
+			<td>Source code</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>November 19, 2008</td>
+			<td><a href="/file/downloads/odbc/Firebird_ODBC_2_0_0_148_win32.exe">Firebird_ODBC_2.0.0.148_win32.exe</a></td>
+			<td>545 KB</td>
+			<td>Windows 32-bit Full Install</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>November 19, 2008</td>
+			<td><a href="/file/downloads/odbc/Firebird_ODBC_2_0_0_148_x64.exe">Firebird_ODBC_2.0.0.148_x64.exe</a></td>
+			<td>783 KB</td>
+			<td>Windows 64-bit Full Install</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>November 19, 2008</td>
+			<td><a href="/file/downloads/odbc/OdbcFb_DLL_RC1_2-0-0148_Win32.zip">OdbcFb_DLL_RC1_2-0-0148_Win32.zip</a></td>
+			<td>297 KB</td>
+			<td>Win 32-bit DLL</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>November 19, 2008</td>
+			<td><a href="/file/downloads/odbc/OdbcFb_DLL_RC1_2-0-0148_x64.zip">OdbcFb_DLL_RC1_2-0-0148_x64.zip</a></td>
+			<td>351 KB</td>
+			<td>Win 64-bit DLL</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>November 19, 2008</td>
+			<td><a href="/file/downloads/odbc/OdbcFb-LIB-RC1-2_0_0148_i686_tar.gz">OdbcFb-LIB-RC1-2.0.0148.i686.tar.gz</a></td>
+			<td>248 KB</td>
+			<td>Linux x86 Library</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>November 19, 2008</td>
+			<td><a href="/file/downloads/odbc/OdbcFb-LIB-RC1-2_0_0148_amd64_tar.gz">OdbcFb-LIB-RC1-2.0.0148.amd64.tar.gz</a></td>
+			<td>284 KB</td>
+			<td>Linux&nbsp; AMD64 Library</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="4">Version 2.0 Beta</td>
+		</tr>
+		<tr class="Table_Note">
+			<td colspan="4">Please regard this set as superseded. It will be removed when the Release Candidate cycle is completed.</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>September 5, 2007</td>
+			<td>v2-0-beta.log</td>
+			<td>28 KB</td>
+			<td>What&#39;s New, Log file, Text</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>September 5, 2007</td>
+			<td>Firebird_ODBC_2.0.0-Win32.exe</td>
+			<td>501 KB</td>
+			<td>Windows 32-bit Full Install</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>September 5, 2007</td>
+			<td>OdbcFb32_DLL_Beta_2-0-0144.zip</td>
+			<td>248 KB</td>
+			<td>Windows 32-bit DLLs</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>September 5, 2007</td>
+			<td>OdbcFb32_Source_Beta_2-0-0144.zip</td>
+			<td>1060 KB</td>
+			<td>Windows 32-bit Source code</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>September 5, 2007</td>
+			<td>OdbcFb32-beta-2.0.0144.tar.gz</td>
+			<td>433 KB</td>
+			<td>Linux x86 Shared Libraries</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>September 5, 2007</td>
+			<td>OdbcFb32-beta-2.0.0144-src.tar.gz</td>
+			<td>811 KB</td>
+			<td>Linux x86 Source code</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="4">Version 1.x Beta, Most Recent</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>June 6, 2006</td>
+			<td><a href="http://www.ibphoenix.com/downloads/odbc/OdbcJdbc_DLL_Beta_1-3.zip">OdbcJdbc_DLL_Beta_1-3.zip</a></td>
+			<td>217 KB</td>
+			<td>Windows 32-bit DLLs</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>June 6, 2006</td>
+			<td><a href="http://www.ibphoenix.com/downloads/odbc/OdbcJdbc_Source_Beta_1-3.zip">OdbcJdbc_Source_Beta_1-3.zip</a></td>
+			<td>255 KB</td>
+			<td>Windows 32-bit Source code</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>June 6, 2006</td>
+			<td><a href="http://www.ibphoenix.com/downloads/odbc/OdbcJdbc-beta-1.3.0096.tar.gz">OdbcJdbc-beta-1.3.0096.tar.gz</a></td>
+			<td>969 KB</td>
+			<td>Linux x86 Shared libraries</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>June 6, 2006</td>
+			<td><a href="http://www.ibphoenix.com/downloads/odbc/OdbcJdbc-beta-1.3.0096-src.tar.gz">OdbcJdbc-beta-1.3.0096-src.tar.gz</a></td>
+			<td>736 KB</td>
+			<td>Linux x86 Source code</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="4">Version 1.2</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>September 5, 2004</td>
+			<td><a href="http://www.ibphoenix.com/downloads/odbc/OdbcJdbc_dll-1-2-1.zip">OdbcJdbc_dll-1-2-1.zip</a></td>
+			<td>197 KB</td>
+			<td>Windows 32-bit DLLs</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>September 5, 2004</td>
+			<td><a href="http://www.ibphoenix.com/downloads/odbc/OdbcJdbc_Source-1-2-1.zip">OdbcJdbc_Source-1-2-1.zip</a></td>
+			<td>255 KB</td>
+			<td>Windows 32-bit Source code</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>September 5, 2004</td>
+			<td>v1-2-1-beta.log</td>
+			<td>21 KB</td>
+			<td>Change log, Text</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>August 26, 2004</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/1.2-Release/Firebird_ODBC_1.2.0.69-Win32.exe/download">Firebird_ODBC_1.2.0.69-Win32.exe</a></td>
+			<td>596 KB</td>
+			<td>Windows 32-bit full install</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>August 26, 2004</td>
+			<td>v1-2-1-beta.log</td>
+			<td>243 KB</td>
+			<td>Linux x86 Full install</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>August 26, 2004</td>
+			<td><a href="http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/1.2-Release/OdbcJdbc_1.2.0.69.src.tar.gz/download">OdbcJdbc_1.2.0.69.src.tar.gz</a></td>
+			<td>347 KB</td>
+			<td>Linux x86 Source code</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="4">Supporting Documentation</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>November 25, 2017</td>
+			<td><a href="/en/drivers-documentation#odbc">Firebird ODBC/JDBC Driver Manual</a><br />
+			(in Documentation Library)</td>
+			<td>&nbsp;</td>
+			<td>On-line, PDF (824 Kb) and CHM (in zipfile, 845 Kb) (English)</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>December 23, 2004</td>
+			<td><a href="http://www.ibphoenix.com/downloads/odbc/OdbcJdbcHtmlHelp.zip">OdbcJdbcHtmlHelp.zip</a></td>
+			<td>22 KB</td>
+			<td>Windows HTML Help Files (English)</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>December 23, 2004</td>
+			<td><a href="http://www.ibphoenix.com/downloads/odbc/OdbcJdbcHtmlHelpEs.zip">OdbcJdbcHtmlHelpEs.zip</a></td>
+			<td>15 KB</td>
+			<td>Windows HTML Help Files (Spanish)</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>December 23, 2004</td>
+			<td><a href="http://www.ibphoenix.com/downloads/odbc/OdbcJdbcHtmlHelpPt.zip">OdbcJdbcHtmlHelpPt.zip</a></td>
+			<td>16 KB</td>
+			<td>Windows HTML Help Files (Portuguese)</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>December 23, 2004</td>
+			<td><a href="http://www.ibphoenix.com/downloads/odbc/OdbcJdbcHtmlHelpRu.zip">OdbcJdbcHtmlHelpRu.zip</a></td>
+			<td>168 KB</td>
+			<td>Windows HTML Help Files (Russian)</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>December 23, 2004</td>
+			<td><a href="http://www.ibphoenix.com/downloads/odbc/OdbcJdbcHtmlHelpUk.zip">OdbcJdbcHtmlHelpUk.zip</a></td>
+			<td>170 KB</td>
+			<td>Windows HTML Help Files (Ukrainian)</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>February 22, 2003</td>
+			<td><a href="http://www.ibphoenix.com/downloads/OdbcJdbc_Examples.zip">OdbcJdbc_Examples.zip</a></td>
+			<td>27 KB</td>
+			<td>Use SQLPutData and SQLGetData, SQLBindCol, SQLBindParam (for blob TEXT and blob BLR), insert procedure, select data from procedure (suspend), select data from execute procedure (1 row). Using multiple threads over a single connection. Two phase commit.</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>December 17, 2003</td>
+			<td><a href="http://www.ibphoenix.com/downloads/OdbcJdbc_ExamplesAdo.zip">OdbcJdbc_ExamplesAdo.zip</a></td>
+			<td>7 KB</td>
+			<td>This sample demonstrates the use of ADO from VBScript and HTML, and shows how VBScript and HTML on the client can be used to build a two tier web application for an Intranet.</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>October 17, 2007</td>
+			<td><a href="http://firebirdnews.org/?p=1324">Installing Firebird ODBC driver on Ubuntu Linux from Source</a></td>
+			<td>&nbsp;</td>
+			<td>Detailed how-to by Marius Popa</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Developers</span></strong><br />
+<br />
+If you are considering helping with development, you can check out the latest sources from the <a href="https://github.com/FirebirdSQL" target="_blank">Firebird project on GitHub</a>, project <a href="https://github.com/FirebirdSQL/firebird-odbc-driver" target="_blank">firebird-odbc-driver</a>. You don&#39;t have to be a Firebird project member to download the code with anonymous access.</p>
+
+<ul>
+	<li>The firebird-odbc-driver project is viewable in a web browser <a href="https://github.com/FirebirdSQL/firebird-odbc-driver" target="_blank">here</a>.</li>
+	<li>To download the source you need to have a git client. Use the following command:</li>
+</ul>
+
+<pre style="margin-left: 40px;">
+git clone git@github.com:FirebirdSQL/firebird-odbc-driver.git</pre>
+
+<p style="margin-left: 40px;">or</p>
+
+<pre style="margin-left: 40px;">
+git clone https://github.com/FirebirdSQL/firebird-odbc-driver.git
+</pre>
+
+<ul>
+	<li>You can also fork the project on GitHub</li>
+	<li>There is an MSVC workspace for building the driver for Win32. Make OdbcJdbcSetup the active project and do a build all. There are also make files for other platforms (e.g. Linux and FreeBSD).</li>
+</ul>
+
+<p><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Support and Development list</span></strong><br />
+<br />
+Subscribe to the <a href="https://lists.sourceforge.net/lists/listinfo/firebird-odbc-devel">firebird-odbc-devel list server</a> dedicated to the discussion of driver development and usage issues.<br />
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Open Source Licensing</span></strong><br />
+<br />
+The driver source is available under the Initial Developers Public Licence (IDPL), a variant of the InterBase Public Licence (IPL) that is a variant of the Mozilla Public License 1.1. To read the licences, click <a href="/en/licensing/">here</a>.<br />
+&nbsp;</p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Downloads</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/server-packages/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Server Packages</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-5-0-4/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 5.0</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-4-0-7/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 4.0</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-3-0-14/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird 3.0</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/docker/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Docker Images</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/snapshot-builds/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Snapshot Builds</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/discontinued-versions/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Discontinued Versions</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/connectivity/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Connectivity</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/jdbc-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> JDBC Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/net-provider/" class="menulvl_3"><i class="fa fa-arrow-right"></i> .NET Provider</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+    
+ 
+ 
+    
+   <div class="menu-tree  bgLVL_4">   
+      <a href="/en/additional-downloads/" class="menulvl_4" ><i class="fa fa-arrow-right"></i> Additional Downloads</a>          
+      
+   </div> 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/python-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Python Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree bgLVL_3_sel bgLVL_3">
+      <a href="/en/odbc-driver/" class="menulvl_3_sel"><i class="fa fa-arrow-right"></i> ODBC Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/php-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> PHP Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-dwn/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/sphinx-full-text-search/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Other Downloads</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/full-text-search-udr/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Full Text Search UDR</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sphinx-full-text-search/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Sphinx Full Text Search</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-tools/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Tools &amp; Drivers</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

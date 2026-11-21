@@ -1,0 +1,16 @@
+raw/
+public/
+site/public/
+site/resources/_gen/
+site/static/assets-local/
+.hugo_build.lock
+*.log
+.env
+secrets/
+node_modules/
+
+# Documents removed from the site (Firebird Foundation), kept local only
+private/
+
+# Very old files removed from the site, kept local only
+veryold/

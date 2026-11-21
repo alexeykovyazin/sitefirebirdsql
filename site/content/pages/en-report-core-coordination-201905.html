@@ -1,0 +1,326 @@
+---
+title: "Firebird: Developer's Report: Firebird Core Development & Coordination"
+html_title: "Firebird: Developer's Report: Firebird Core Development & Coordination"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Firebird Core Development & Coordination"
+menu_active: ""
+source_url: "/en/report-core-coordination-201905"
+source_format: new
+url: "/en/report-core-coordination-201905"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/archives/">Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/ff-reports-archives/">Developer Reports Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Firebird Core Development &amp; Coordination</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><strong style="line-height: 20.8px;"><span style="color: rgb(6, 134, 173); font-size: 16px;">October 2018 to January 2019</span></strong><br style="line-height: 20.8px;" />
+&nbsp;</p>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><strong><u>January 2019</u></strong></span></div>
+
+<div style="line-height: 20.8px;">&nbsp;</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">New development:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">Completed refactoring the replication support and merged it into v4</li>
+</ul>
+</div>
+
+<div style="line-height: 20.8px;">
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Bugfixing:</div>
+</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">Fixed missing monitoring for the crypt thread</li>
+	<li style="line-height: 20.8px;">Fixed monitoring for non-privileged users</li>
+	<li style="line-height: 20.8px;">Avoid infinite loops during inner join optimizations</li>
+	<li style="line-height: 20.8px;">Fixed the database left attached (and the engine not unloaded) after error thrown from the beginning of the attach process</li>
+	<li style="line-height: 20.8px;">Fixed CORE-2440, CORE-5118, CORE-5900 (expression indices contain NULL keys after restore)</li>
+	<li style="line-height: 20.8px;">Fixed unreliable check for view vs table</li>
+</ul>
+</div>
+</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;"><strong style="color: rgb(71, 71, 71); font-size: 15px;"><u>December 2018</u></strong></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div>&nbsp;</div>
+
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Bugfixing:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">Attempted to fix DDL replication by regular user and ADMIN role</li>
+</ul>
+</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>November 2018</u></span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div>&nbsp;</div>
+
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">New development:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">Improve diagnostics for unexpectedly disabled&nbsp;replication</li>
+</ul>
+</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Bugfixing:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">Fixed MSVC12 build issues</li>
+	<li>Fixed CORE-5070, CORE-5795, CORE-5845, CORE-5965 (optimization issues with compound indices vs ORDER BY)</li>
+	<li>Fixed CORE-5395: Invalid data type for negation</li>
+</ul>
+<span style="color: rgb(71, 71, 71); font-size: 15px; font-weight: bold;"><u>October 2018</u></span></div>
+</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div>&nbsp;</div>
+
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Bugfixing:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">Fixed possible corruption of the monitoring shared data</li>
+	<li style="line-height: 20.8px;">Reworked solution for CORE-5612</li>
+	<li style="line-height: 20.8px;">Fixed the regression I introduced priorly</li>
+	<li style="line-height: 20.8px;">Fixed server crash while preparing a query with both DISTINCT/ORDER BY and non-field expression in the select list</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Other:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">Backported CORE-5434 (RO transactions could avoid force-writing TIP and header pages)</li>
+</ul>
+</div>
+</div>
+<br />
+<em>Dmitry Yemanov</em></div>
+</div>
+
+<p><em style="line-height: 20.8px;">Penza, Russia</em><br />
+&nbsp;</p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

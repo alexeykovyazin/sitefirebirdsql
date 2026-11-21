@@ -1,0 +1,176 @@
+---
+title: "Firebird: Developer's Report: QA Stress Testing & Development"
+html_title: "Firebird: Developer's Report: QA Stress Testing & Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: QA Stress Testing & Development"
+menu_active: ""
+source_url: "/en/report-qa3-202109"
+source_format: new
+url: "/en/report-qa3-202109"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: QA Stress Testing &amp; Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <span style="font-weight: bold; color: rgb(6, 134, 173); font-size: 16px;">April to August 2021</span><br style="line-height: 20.8px;" />
+<br style="line-height: 20.8px;" />
+<span style="color:#474747;font-size:15px;font-weight:bold;"><u style="line-height: 20.8px;">August 2021</u></span>
+
+<ul>
+	<li>Created / modified QA tests for ~20 tracker tickets</li>
+	<li>FB QA, new framework: learned documentation, ran first probe scripts, checked avaliable features of the &#39;firebird.driver&#39; package</li>
+	<li>Replication: continued work with prototype of test that applies DDL of OLTP-EMUL and verify it on the replica db</li>
+</ul>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>July 2021</u></span></div>
+
+<ul>
+	<li>Created / modified QA tests for ~30 tracker tickets</li>
+	<li>Found / reported bugs: #6884</li>
+	<li>Implemented test that repeats all DDL actions of OLTP-EMUL</li>
+	<li>Created auxiliary script for memory monitoring during fbtest work</li>
+</ul>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>June 2021</u></span></div>
+
+<ul>
+	<li>Created / modified QA tests for ~20 tracker tickets</li>
+	<li>Found / reported bugs: #6854, #6861, #6862, #6868, #6869, #6873, #6874, #6875, #6877</li>
+	<li>Refactored QA_rundaily.bat to support replication</li>
+	<li>Reported missing plugin\engine13.pdb in Windows v5 snapshots</li>
+</ul>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>May 2021</u></span></div>
+
+<ul>
+	<li>Created / modified QA tests for ~50 tracker tickets</li>
+	<li>Found / reported bugs: #6790, #6802, #6807, #6821, #6829, #6831</li>
+	<li>Re-enabled tests for CORE-3058 and CORE-1544 for regular runs</li>
+	<li>First test runs with pytest and new firebird-driver</li>
+	<li>Created SQL-prototype for covering all possible cases for #3106 and #3810 (optimization of NULLs search in indexes)</li>
+	<li>Found problems related to recently committed #6748</li>
+	<li>Discussed with P. Cisar the missing information in the new pytest system</li>
+	<li>Lot of changes in the qa-rundaily and fbt-cross-report scripts because new major FB version (5.x) appeared</li>
+	<li>Scratch for design HTML page with overall results for all FB versions and OS</li>
+</ul>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>April 2021</u></span></div>
+
+<ul>
+	<li>Created / modified QA tests for ~60 tracker tickets</li>
+	<li>Found / reported bugs: CORE-6531, CORE-6532, CORE-6535, #6821</li>
+	<li>Checked ability to establish connection using INET, WNET and XNET from client 3.0.7 to server 4.0 (and vice versa)</li>
+	<li>Multiple QA runs, regressions are reported to developers</li>
+	<li>Found problem with obtaining info from mon$ tables when user has non-ascii name</li>
+</ul>
+<br />
+<em style="line-height: 20.8px;">Pavel Zotov</em></div>
+<em style="line-height: 20.8px;">Moscow, Russian Federation</em><br style="line-height: 20.8px;" />
+&nbsp;
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,176 @@
+---
+title: "Firebird: Point of Sale Systems for the Carwash Industry"
+html_title: "Firebird: Point of Sale Systems for the Carwash Industry"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Point of Sale Systems for the Carwash Industry"
+menu_active: ""
+source_url: "/en/case-studies-catalog/point-of-sale-systems-for-the-carwash-industry-12664"
+source_format: new
+url: "/en/case-studies-catalog/point-of-sale-systems-for-the-carwash-industry-12664"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+ 
+    <section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/case-studies/">Case Studies</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/case-studies-catalog/">Case Studies Catalog</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Point of Sale Systems for the Carwash Industry</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-8">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div class="post-categories d-flex justify-content-between align-content-center">
+                        <div class="categories-share">
+                            <ul>
+                                <li><i class="fas fa-calendar"></i> Sep 17, 2011</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="title">Point of Sale Systems for the Carwash Industry</h3>
+                                            </div>
+                    <div class="post-text mt-30">
+                        <a href="/file/case_studies/Point%20of%20Sale%20Systems%20-%20Carwash%20Industry.pdf" target="_blank">View this Case Study in PDF format</a><br /> <br /><div style="text-align: right;"><img width="384" height="80" alt="DRBSystems" src="/img/case_studies/DRBSystems80px.jpg" /></div><br />                            <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Company Information</span></strong><br /><br />  DRB Systems is the leading provider of vertical market software (Point  of Sale &amp; Tunnel Control systems) for the carwash industry in the  United States. Founded in 1984, we installed over 2400 MS DOS based POS  systems (CarWatch) and nearly as many DOS based tunnel control systems  (TunnelWatch) before replacing those products with MS Windows based  systems beginning in the late 1990's.<br /><br />We currently have almost 1500  Windows based POS systems installed, supporting many different terminal  types (from very simple, waterproof &quot;keypad terminals&quot;, through  conventional touch-screen computer and Windows Mobile based terminals,  to sophisticated self-pay terminals with touch screens, cash and coin  acceptors and dispensers, credit card and barcode readers, gift card  dispensers, receipt printers, gate control systems, etc.  Our Windows  products are built with Delphi, and use Firebird (currently 2.1, in  Classic mode) as their database engine.<br /><br /><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Problem Description</span></strong> <br /> <br /><table width="100%" cellspacing="1" cellpadding="1" border="0"><tbody><tr><td>When we first started selling our SiteWatch product, it was built on  Interbase 5.6. (Firebird didn't exist yet.) While it wasn't particularly  expensive (especially compared to alternatives like Oracle and MS SQL  Server), reporting and tracking license sales was a time consuming task,  and it required ongoing &quot;maintenance&quot; fees in order to get upgrades  without re-buying the product.<br /><br />Worse, as our product's feature set  grew, and along with it the number of tables, stored procedures, custom  UDFs, and overall data manipulation, we began having serious stability  problems.<br /><br />Upgrading our customer base to InterBase 6.5 would have  cost over $100,000, and if that did not solve the problems, we'd have  had to spend <em>another </em>$100,000+ to upgrade to 7.0 when it came out, or even migrate to some other database (at <em>much </em>higher costs, given the fact that we were already reliant on its stored procedure, trigger and event capabilities.)<br />&nbsp;</td><td width="10">&nbsp;</td><td><img width="216" height="250" alt="DRBSystemsCollage" src="/img/case_studies/DRBSystemsCollage250px.jpg" /></td></tr></tbody></table><br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Solution</span></strong><br /> <br /> After our chief architect did an experimental project with Firebird 1.0, we realized that we could get almost the same improvements as those in IB 6.5, along with the benefit of access to source code if we needed it, for over $100,000 less. :-)  If <em>that </em>didn't solve our stability problems, at least we wouldn't have wasted all that money finding out, so we migrated our Windows POS system to Firebird (with version 1.5, by that time.)<br /><br />The port was very straightforward &mdash; Firebird is (even now in version 2.5) highly compatible with InterBase. As the number of sites that were upgraded to the Firebird based versions grew as a percentage of the overall installed base, our customers' stability problems shrank in proportion.  Compared to InterBase 5.6, Firebird 1.5 was a <em>rock</em>.  Databases still occasionally became corrupted, but in most cases the reasons can be traced back to hardware problems, not just internal bugs in the engine.  Meanwhile, Firebird maintains all of InterBase's advantages over other commercial products &mdash; tiny footprint, simple administration, low complexity, powerful, easy to use stored procedure and trigger language, extensibility through User Defined Functions (writeable in Delphi, of course!), etc.<br /><br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Conclusions</span></strong><br /> <br />At this point, our entire customer base is running on at least Firebird  1.5, with most on either 2.0 or 2.1. Modification of our SiteWatch  system to use Firebird version 2.5 will begin soon, to take advantage of  the performance improvements we'll get from the new &quot;Super Classic&quot;  architecture.<br /><br /><table width="100%" cellspacing="1" cellpadding="1" border="0"><tbody><tr><td>Up to now, our experience with Firebird has been very  positive. Database corruption problems are rare, especially considering  the large number of installed systems, most running on aging PCs in the  back offices of the carwash locations.  Performance is good even for the  largest databases. (Some chain customers have DBs in the 40-50 Gigabyte  range). Performance is <em>excellent </em>when the database file is stored on a Solid State Drive.  And the performance to <em>price </em>ratio  is outstanding :-).<br /><br />Although we don't pay for individual licenses (and  don't have to keep track of them either), we do help sponsor the  Firebird foundation (and you should too, if you're making money using  this product) &mdash; but that's a small fraction of what the license costs  would be for <em>any </em>other alternative DBMS with similar performance and capabilities.</td><td width="10">&nbsp;</td><td><img width="400" height="300" alt="DRBSystemsClassic" src="/img/case_studies/DRBSystemsClassic300px.jpg" /></td></tr></tbody></table><br /> <strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Contact Info</span></strong><br /><br />Steve Summers, Chief Architect <br /> <a href="mailto:sesummers@drbsystems.com">sesummers@drbsystems.com</a><br /> DRB Systems, Inc.  <br /> <a href="http://www.drbsystems.com" target="_blank">www.drbsystems.com</a><br /><br />
+                    </div>
+                  	<div>
+                    	<div>
+  <iframe frameborder="0"
+    height="150" 
+    scrolling="no" 
+    src="https://firebirdfoundation.substack.com/embed" 
+    style="border:1px solid #EEE; background:white;" 
+    width="100%" 
+    allow="encrypted-media"
+    sandbox="allow-scripts allow-same-origin allow-forms"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>  
+                  	</div>
+                    <div class="post-tags">
+                        <ul>
+                            <li><a><i class="fa fa-share"></i> Share With:</a></li>
+                            <li style="cursor: pointer;"><a class="share-icon fb" data-url="/en/case-studies-catalog/point-of-sale-systems-for-the-carwash-industry-12664"><i class="fab fa-facebook-f"></i></a></li>
+                          
+                            <li style="cursor: pointer;"><a class="share-icon lin" data-url="/en/case-studies-catalog/point-of-sale-systems-for-the-carwash-industry-12664"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="post-reader-text post-reader-text-2 post-reader-text-3 pt-50">
+                    <div class="row">
+                                                    <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/case-studies-catalog/medical-analytical-system-for-moscow-city-hospital-31-12651">Medical Analytical System for Moscow City Hospital #31</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                                                            <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/case-studies-catalog/masa---statistical-analysis-and-plan-optimization-solution-for-industrial-plants-53264">MASA — Statistical analysis and plan optimization solution for industrial plants</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-20">
+                <div class="all-post-sidebar">
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

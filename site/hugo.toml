@@ -1,0 +1,21 @@
+baseURL = "https://firebirdsql.org/"
+locale = "en"
+title = "Firebird"
+disableKinds = ["taxonomy", "term", "RSS"]
+enableRobotsTXT = false
+disableHugoGeneratorInject = true
+timeout = "300s"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[sitemap]
+  changeFreq = "weekly"
+
+[outputs]
+  home = ["HTML"]
+  section = ["HTML"]
+  page = ["HTML"]
+
+[security]
+  allowContent = ["text/html", "text/markdown", "text/org", "text/asciidoc", "text/rst", "text/pandoc"]

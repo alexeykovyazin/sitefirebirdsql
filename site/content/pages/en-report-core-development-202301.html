@@ -1,0 +1,183 @@
+---
+title: "Firebird: Developer's Report: Core Coding and Development"
+html_title: "Firebird: Developer's Report: Core Coding and Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Coding and Development"
+menu_active: ""
+source_url: "/en/report-core-development-202301"
+source_format: new
+url: "/en/report-core-development-202301"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Coding and Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <h2><span style="color:#2980b9;">January to December 2022</span></h2>
+
+<h3>Bugs fixed</h3>
+
+<ul>
+	<li>#7109 : Content of DB file can be overwritten with zero characters in some (rare) cases.</li>
+	<li>#7103 : FB service hangs and can not be stopped after several &#39;DELETE FROM MON$STATEMENTS&#39; being issued in order to stop ES/EDS which waits record for updating.</li>
+	<li>#7119 : Database statistics service could not find existing table(s)</li>
+	<li>#7134 : Firebird 4: Database page errors directly after gbak, which disappear after some calls of gfix</li>
+	<li>#7128 : Incorrect error message with isc_sql_interprete()</li>
+	<li>#7146 : Index is corrupted after multiple record updates</li>
+	<li>Attempt to fix recent crashes in oltp-emul test.</li>
+	<li>gbak backup could hung when Ctrl-C pressed.</li>
+	<li>Corrections for &quot;Windows instance conflict&quot; handling</li>
+	<li>Fixed AV and other issues found by FBT test bugs.core_6353.</li>
+	<li>#7239 : Connect using XNET protocol shows different exception if DB is in shutdown state (comparing to INET)</li>
+	<li>#7256 : Inconsistent conversion of non-TEXT blobs in BLOB_APPEND</li>
+	<li>#7271 : Sporadic crash on 3.0.10.33106</li>
+	<li>7276 : Firebird 4 literal containing crashes server</li>
+	<li>Fixed stack overflow reason as shown by failed fbt test for core-4653.</li>
+	<li>Avoid too early kill of probably working (not hung) thread.</li>
+	<li>#7314 : Multitreaded activating indices restarts server process</li>
+	<li>Better error handling at transaction start.</li>
+	<li>#7379: BLOB_APPEND with existing blob accepts malformed string, and #7380: Aliased blob variable with less restrictions makes text blob accept malformed string through BLOB_APPEND</li>
+	<li>#7385: Broken lock of statements cache during multithreaded index activation</li>
+</ul>
+
+<h3>Maintenance</h3>
+
+<ul>
+	<li>Maintain Windows build system<br />
+	- Fixed build with MSVC 17.1<br />
+	- Don&#39;t generate browse info by MSVC build. It saves 15-20% of build time on Windows.<br />
+	- Use correct Windows SDK version</li>
+	<li>Adjust debug messages to avoid false failures of some fbt tests.</li>
+	<li>#7161 : Update zlib to 1.2.12</li>
+	<li>Update ISQL&#39;s &quot;HELP SET&quot; command.</li>
+	<li>Restore correct order of trace events when attempt to attach failed.</li>
+	<li>Change names of global shared memory areas (currently trace and mappings) to avoid conflicts with FB4.</li>
+	<li>#7232 : Unify init\check methods for shared memory and avoid duplicating of type/version usage in code.</li>
+</ul>
+
+<h3>New features and improvements</h3>
+
+<ul>
+	<li>#7212 : Parallel backup, restore and sweep.&nbsp; Also including:<br />
+	- optimize concurrent bulk inserts to not fight for the same data page,<br />
+	- optimize concurrent bulk inserts of blobs,<br />
+	- DIRECT_IO for restore.</li>
+	<li>#7213 : Use Windows private namespace for kernel objects used in server-to-server IPC.</li>
+	<li>#6983, #7216 : New built-in function BLOB_APPEND</li>
+	<li>#6730 : Trace: provide ability to see STATEMENT RESTART events (or their count).</li>
+	<li>#7208 : Trace: provide performance statistics for DDL statements.</li>
+	<li>#7218 : Let isql show per-table run-time statistics.</li>
+	<li>#7186 : FB4 Nbackup RDB$BACKUP_HISTORY issue</li>
+	<li>#7259 : Remove TcpLoopbackFastPath and use of SIO_LOOPBACK_FAST_PATH</li>
+	<li>Validation of condition indices.</li>
+	<li>#7339 : Hash table based on lock-free list for page cache.</li>
+</ul>
+
+<p><em>Vladyslav Khorsun</em><br />
+<em>Dnetpropetrovsk, Ukraine</em></p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

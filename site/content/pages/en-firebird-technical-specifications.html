@@ -1,0 +1,619 @@
+---
+title: "Firebird: Firebird Technical Specifications"
+html_title: "Firebird: Firebird Technical Specifications"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Firebird Technical Specifications"
+menu_active: "/en/firebird-rdbms/"
+source_url: "/en/firebird-technical-specifications"
+source_format: new
+url: "/en/firebird-technical-specifications"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/documentation/">Documentation</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-rdbms/">Firebird RDBMS</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/reference-manuals/">All Reference Manuals</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Firebird Technical Specifications</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p>Updated June 27, 2023.<br />
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Database Limits</span></strong><br />
+&nbsp;</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="Table" width="100%">
+	<tbody>
+		<tr class="Table_Header">
+			<td width="250">Item</td>
+			<td>Actual for Firebird 4.0</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>Maximum size of database</td>
+			<td>128 TB (2<sup>32</sup> x <em>page size</em>)</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Maximum number of tables</td>
+			<td>32,768</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>Maximum size of one table</td>
+			<td>~18 TB</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Maximum size of external table file</td>
+			<td>Unlimited</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>Maximum number of rows per table</td>
+			<td>&lt; 2<sup>40</sup></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>Maximum row size</td>
+			<td>64 KB</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Maximum database page size</td>
+			<td>32 KB</td>
+		</tr>
+		<tr class="Table_Note">
+			<td colspan="2">NOTE: Page size (PAGE_SIZE) can be 4096, 8192, 16384 or 32768.</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>Maximum number of columns per table</td>
+			<td>Depends on data types used. (Example: 16,384 INTEGER (4-byte) values per row.)</td>
+		</tr>
+		<tr class="Table_Note">
+			<td colspan="2">NOTE: 8-byte ID is stored for each BLOB or ARRAY reference; size of BLOB or ARRAY data is not counted in row size.</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>Maximum number of indexes per table</td>
+			<td>A few hundreds. Depends on the database page size and index types (single-segment or compound).</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Maximum size (total width) of index key</td>
+			<td>~8 KB (1/4 of <em>page size</em>)</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>Maximum number of indexes per database</td>
+			<td>Unlimited</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Maximum transaction id</td>
+			<td>48-bit (~2.8 * 10<sup>14</sup>)</td>
+		</tr>
+		<tr class="Table_Note">
+			<td colspan="2">NOTE: When the maximum transaction id has been reached, the database must be marked read-only and a <em>gbak</em> backup and restore is required.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Data Type Specifics</span></strong><br />
+&nbsp;</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="Table" width="100%">
+	<tbody>
+		<tr class="Table_Header">
+			<td width="100">Name</td>
+			<td width="70">Size</td>
+			<td width="150">Range/Precision</td>
+			<td>Description</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>Varchar(n)</td>
+			<td>1 to 32765 bytes</td>
+			<td>n chars</td>
+			<td>Variable length char or text string. NB, multi-byte character sets reduce number of possible characters proportionately.</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Char(n)</td>
+			<td>1 to 32767 bytes</td>
+			<td>n chars</td>
+			<td>Fixed length char or text string, padded with spaces. NB, multi-byte character sets reduce number of possible characters proportionately.</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>Boolean</td>
+			<td>8 bits</td>
+			<td>--</td>
+			<td>Boolean</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>SmallInt</td>
+			<td>16 bits</td>
+			<td>-2<sup>15</sup> to 2<sup>15</sup>-1</td>
+			<td>Signed short (word)</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>Integer</td>
+			<td>32 bits</td>
+			<td>-2<sup>31</sup> to 2<sup>31</sup>-1</td>
+			<td>Signed long (longword)</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>BigInt</td>
+			<td>64 bits</td>
+			<td>-2<sup>63</sup> to 2<sup>63</sup>-1</td>
+			<td>Signed long long (quadword)</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>Int128</td>
+			<td>128 bits</td>
+			<td>-2<sup>127</sup> to 2<sup>127</sup>-1</td>
+			<td>Int128</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Float (Real)</td>
+			<td>32 bits</td>
+			<td>3.4 x 10<sup>-38</sup> to 3.4 x 10<sup>38</sup></td>
+			<td>Accurate to 7 decimal digits</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>Double Precision</td>
+			<td>64 bits</td>
+			<td>1.7 x 10<sup>-308</sup> to 1.7 x 10<sup>308</sup></td>
+			<td>Accurate to 15 decimal digits</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Timestamp</td>
+			<td>&nbsp;64 bits<br />
+			(2 X 32 bits)</td>
+			<td>1 Jan 1 CE to 31 Dec 9999 CE</td>
+			<td>Includes time and date as two 32-bit structures</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>Timestamp With Time Zone</td>
+			<td>96 bits</td>
+			<td>1 Jan 1 CE to 31 Dec 9999 CE with offset in minutes</td>
+			<td>Includes time and data as two 32-bit structures, and offset or timezone id as 16-bit structure (and 16-bit padding)</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Date</td>
+			<td>32 bits</td>
+			<td>1 Jan 1 CE to 31 Dec 9999 CE</td>
+			<td>Date only. Time part is not stored.</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>Time</td>
+			<td>32 bits</td>
+			<td>0:00 to 23:59.9999</td>
+			<td>Number of fractions (100 microseconds) since midnight</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Time With Time Zone</td>
+			<td>64 bits</td>
+			<td>0:00 to 23:59.9999 with offset in minutes</td>
+			<td>Number of fractions (100 microseconds) since midnight, and offset or timezone id as 16-bit structure (and 16-bit padding)</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>BLOB</td>
+			<td>Variable</td>
+			<td>--</td>
+			<td>Stores data of variable indeterminate size, some functionality not available for blobs of 4GB and larger, maximum size depends on page size (less than 4GB for page size 4096, more than 128GB for page size 16384)</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Numeric (<em>precision, scale</em>)</td>
+			<td>Variable<br />
+			(16, 32, 64 or 128 bits)</td>
+			<td>specifies exactly precision digits of precision (max 38)</td>
+			<td>Example: Numeric(10,3) holds numbers accurately in the following format: ppppppp.sss</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>Decimal (<em>precision, scale</em>)</td>
+			<td>Variable<br />
+			(16, 32, 64 or 128 bits)</td>
+			<td>specifies at least precision digits of precision (max 38)</td>
+			<td>Example: Decimal(10,3) holds numbers accurately in the following format: ppppppp.sss</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Decfloat (<em>precision</em>)</td>
+			<td>64 bit or 128 bit</td>
+			<td>precision 16: 1 x 10<sup>-398</sup> to 9.9..9 x 10<sup>384</sup><br />
+			precision 34: 1 x 10<sup>-6176</sup> to 9.9..9 x 10<sup>6144</sup></td>
+			<td>Decimal floating point number</td>
+		</tr>
+	</tbody>
+</table>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                  	<div class="most-share-post">
+  <div class="section-title">
+    <h5 class="title">Featured Products</h5>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item" style="padding-left: 0;">
+      <h6 class="title"><a href="/en/featured-products/book-secrets-of-firebird-sql-optimizer">Book: Secrets of Firebird SQL Optimizer</a></h6>
+      <p><a href="/en/featured-products/book-secrets-of-firebird-sql-optimizer"><img src="/img/pages/2025/12/15/book-secrets-of-firebird-sql-optimizer/book-secrets-of-firebird-sql-optimizer.png" alt="Book: Secrets of Firebird SQL Optimizer"></a></p>
+      <p></p>
+    </div>
+      <div class="most-share-post-item" style="padding-left: 0;">
+      <h6 class="title"><a href="/en/featured-products/book-detailed-new-features-of-firebird-5-2nd-edition">Book: Detailed new features of Firebird 5, 2nd edition</a></h6>
+      <p><a href="/en/featured-products/book-detailed-new-features-of-firebird-5-2nd-edition"><img src="/img/pages/2025/9/18/book-detailed-new-features-of-firebird-5-2nd-edition/book-detailed-new-features-of-firebird-5-2nd-edition.png" alt="Book: Detailed new features of Firebird 5, 2nd edition"></a></p>
+      <p>The second edition of must-have book for Firebird SQL database developers who want to use the full potential of Firebird 5.</p>
+    </div>
+  
+</div>
+
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Documentation</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-rdbms/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird RDBMS</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-notes/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Notes</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/reference-manuals/" class="menulvl_3"><i class="fa fa-arrow-right"></i> All Reference Manuals</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/white-papers-presentations/" class="menulvl_3"><i class="fa fa-arrow-right"></i> White Papers &amp; Presentations</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/books/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Books</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/drivers-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Drivers Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-docs-and-articles/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Docs and Articles</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/external-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> External Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/licensing/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Licensing</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/features/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Features</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sql-conformance/" class="menulvl_3"><i class="fa fa-arrow-right"></i> SQL Conformance</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/historical-reference/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Historical Reference</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-doc/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-brand-faq/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Branding Policy</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Brand FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/logos/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Logos</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-and-other-databases/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird and other databases</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+                  
+                  
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

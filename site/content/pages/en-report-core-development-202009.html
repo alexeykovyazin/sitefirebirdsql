@@ -1,0 +1,212 @@
+---
+title: "Firebird: Developer's Report: Core Coding and Development"
+html_title: "Firebird: Developer's Report: Core Coding and Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Coding and Development"
+menu_active: ""
+source_url: "/en/report-core-development-202009"
+source_format: new
+url: "/en/report-core-development-202009"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Coding and Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">June to August 2020</span></strong></div>
+
+<h4><u>June 2020</u></h4>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>Fixed bug CORE-2274 : MERGE non-standard behaviour, accepts multiple matches</li>
+	<li>Correct BLR printer for blr_marks</li>
+	<li>Let TouchFile store full path to the file, not pointer to the on-stack variable.</li>
+	<li>Additional fix for CORE-2274 : MERGE non-standard behaviour, accepts multiple matches.&nbsp;</li>
+	<li>Take into account naturally updatable VIEW WITH CHECK OPTION.</li>
+	<li>Fixed assert in Statement::freeClientData().</li>
+	<li>Fixed AV (pure virtual call) in EDS::Transaction::rollback when engine shuts down.</li>
+	<li>CLOOP: Generate correct VERSION numbers at implementation section.</li>
+	<li>Fixed unregistered bug : connection timeout doesn&#39;t work for INET if remote side is not answered on op_connect packet</li>
+	<li>Fixed random conversion errors (FBT test &quot;functional.gtcs.cast-datatypes&quot; failed sometimes)</li>
+	<li>Global cache of system privs names should not use per-dbb dictionary.</li>
+	<li>Fixed one more case of bug CORE-5087 : Database shutdown can cause server crash if multiple attachments run EXECUTE STATEMENT</li>
+	<li>Merge pull request #274 from aafemt/postfix_622</li>
+	<li>Move public declarations from ntrace.h into firebird/Interface.h.</li>
+	<li>Let trace plugin show ROLE used when service attachment was established.</li>
+</ul>
+
+<h3><em>B3_0_Release</em></h3>
+
+<ul>
+	<li>&nbsp;Fixed assert in Statement::freeClientData().</li>
+	<li>Fixed bug CORE-6319 : NBACKUP locks db file on error</li>
+	<li>Backport fix for bug CORE-6296 : Many connections results in poor performance</li>
+	<li>Fixed unregistered bug : connection timeout doesn&#39;t work for INET if remote side is not answered on op_connect packet</li>
+	<li>Support for blr_marks BLR code from FB4. It allows to ignore blr_marks in case of its presence in downgraded database.</li>
+	<li>Fixed random conversion errors (FBT test &quot;functional.gtcs.cast-datatypes&quot; failed sometimes)</li>
+	<li>Fixed one more case of bug CORE-5087 : Database shutdown can cause server crash if multiple attachments run EXECUTE STATEMENT</li>
+	<li>Move public declarations from ntrace.h into firebird/Interface.h.</li>
+	<li>Move declarations into namespace, force zero-based enum as Dmitry suggested</li>
+</ul>
+
+<h3><em>B2_5_Release</em></h3>
+
+<ul>
+	<li>Fixed random conversion errors (FBT test &quot;functional.gtcs.cast-datatypes&quot; failed sometimes)</li>
+</ul>
+
+<h4><u>July</u></h4>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>Fixed bug CORE-6346 : New connection to the server hangs</li>
+	<li>Additional fix for bug CORE-6253 : Crash caused by the locked fb_lock file</li>
+	<li>Calls of ITransaction::validate() is moved out of attachment context to avoid potential deadlocks.</li>
+	<li>Fixed bug CORE-6347 : New connections to database server sometimes stall, when there is existing connection to database.</li>
+	<li>Fixed bug CORE-6364 : Wrong reference counting in UDR trigger sample</li>
+</ul>
+
+<h3><em>B3_0_Release</em></h3>
+
+<ul>
+	<li>Fixed bug CORE-6346 : New connection to the server hangs</li>
+	<li>Additional fix for bug CORE-6253 : Crash caused by the locked fb_lock file</li>
+	<li>Fixed bug CORE-6347 : New connections to database server sometimes stall, when there is existing connection to database.</li>
+	<li>Fixed bug CORE-6364 : Wrong reference counting in UDR trigger sample</li>
+</ul>
+
+<h4><u>August</u></h4>
+
+<h3><em>master</em></h3>
+
+<ul>
+	<li>Fixed bug CORE-6346 : New connection to the server hangs</li>
+	<li>Additional fix for bug CORE-6253 : Crash caused by the locked fb_lock file</li>
+	<li>Calls of ITransaction::validate() is moved out of attachment context to avoid potential deadlocks.</li>
+	<li>Fixed bug CORE-6347 : New connections to database server sometimes stall, when there is existing connection to database.</li>
+	<li>Fixed bug CORE-6364 : Wrong reference counting in UDR trigger sample</li>
+</ul>
+
+<h3><em>B3_0_Release</em></h3>
+
+<ul>
+	<li>Fixed bug CORE-6346 : New connection to the server hangs</li>
+	<li>Additional fix for bug CORE-6253 : Crash caused by the locked fb_lock file</li>
+	<li>Fixed bug CORE-6347 : New connections to database server sometimes stall, when there is existing connection to database.</li>
+	<li>Fixed bug CORE-6364 : Wrong reference counting in UDR trigger sampleFixed bug CORE-6379 : Bugcheck 179</li>
+	<li>Fixed assert, it could be triggered by test for CORE-6379</li>
+	<li>Fixed bug CORE-6351 : Computed field could be wrongly evaluated as NULL</li>
+	<li>Merge pull request #278 from red-soft-ru/fb4_empty_trace_config</li>
+	<li>Additional protection against empty configuration file of audit trace session</li>
+	<li>Merge pull request #272 from aafemt/cloop_build</li>
+</ul>
+<em>Vladyslav Khorsun</em><br />
+<em>Dnetpropetrovsk, Ukraine</em>
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

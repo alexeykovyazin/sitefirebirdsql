@@ -1,0 +1,205 @@
+---
+title: "Firebird: Developer's Report: Firebird ADO .NET Provider"
+html_title: "Firebird: Developer's Report: Firebird ADO .NET Provider"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Firebird ADO .NET Provider"
+menu_active: ""
+source_url: "/en/report-netprovider-202301"
+source_format: new
+url: "/en/report-netprovider-202301"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Firebird ADO .NET Provider</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><span style="color:#0686AD;font-size:16px;font-weight:bold;">January 2022 to January 2023 </span></p>
+
+<div><span style="color:#474747;font-size:15px;font-weight:bold;">Overview</span></div>
+
+<ul>
+	<li>Support for new .NET datatypes</li>
+	<li>Improvement for logging</li>
+	<li>Batching support for Firebird 4</li>
+	<li>Entity Framework Core 6 support</li>
+	<li>More Firebird 4 (and 5) features supported</li>
+</ul>
+
+<p><span style="color:#474747;font-size:15px;font-weight:bold;">Releases</span></p>
+
+<ul>
+	<li>9.0.0</li>
+	<li>9.1.0</li>
+</ul>
+
+<p><span style="color:#474747;font-size:15px;font-weight:bold;">Tickets solved</span></p>
+
+<p>[#1089](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1089">https://github.com/FirebirdSQL/NETProvider/issues/1089</a>)<br />
+[#1088](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1088">https://github.com/FirebirdSQL/NETProvider/issues/1088</a>)<br />
+[#1086](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1086">https://github.com/FirebirdSQL/NETProvider/issues/1086</a>)<br />
+[#1085](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1085">https://github.com/FirebirdSQL/NETProvider/issues/1085</a>)<br />
+[#1082](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1082">https://github.com/FirebirdSQL/NETProvider/issues/1082</a>)<br />
+[#1077](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1077">https://github.com/FirebirdSQL/NETProvider/issues/1077</a>)<br />
+[#1074](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1074">https://github.com/FirebirdSQL/NETProvider/issues/1074</a>)<br />
+[#1073](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1073">https://github.com/FirebirdSQL/NETProvider/issues/1073</a>)<br />
+[#1072](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1072">https://github.com/FirebirdSQL/NETProvider/issues/1072</a>)<br />
+[#1071](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1071">https://github.com/FirebirdSQL/NETProvider/issues/1071</a>)<br />
+[#1070](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1070">https://github.com/FirebirdSQL/NETProvider/issues/1070</a>)<br />
+[#1066](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1066">https://github.com/FirebirdSQL/NETProvider/issues/1066</a>)<br />
+[#1065](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1065">https://github.com/FirebirdSQL/NETProvider/issues/1065</a>)<br />
+[#1064](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1064">https://github.com/FirebirdSQL/NETProvider/issues/1064</a>)<br />
+[#1057](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1057">https://github.com/FirebirdSQL/NETProvider/issues/1057</a>)<br />
+[#1056](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1056">https://github.com/FirebirdSQL/NETProvider/issues/1056</a>)<br />
+[#1055](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1055">https://github.com/FirebirdSQL/NETProvider/issues/1055</a>)<br />
+[#1054](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1054">https://github.com/FirebirdSQL/NETProvider/issues/1054</a>)<br />
+[#1053](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1053">https://github.com/FirebirdSQL/NETProvider/issues/1053</a>)<br />
+[#1051](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1051">https://github.com/FirebirdSQL/NETProvider/issues/1051</a>)<br />
+[#1050]<a href="https://github.com/FirebirdSQL/NETProvider/issues/1050">https://github.com/FirebirdSQL/NETProvider/issues/1050</a>)<br />
+[#1049](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1049">https://github.com/FirebirdSQL/NETProvider/issues/1049</a>)<br />
+[#1048](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1048">https://github.com/FirebirdSQL/NETProvider/issues/1048</a>)<br />
+[#1044](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1044">https://github.com/FirebirdSQL/NETProvider/issues/1044</a>)<br />
+[#1042](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1042">https://github.com/FirebirdSQL/NETProvider/issues/1042</a>)<br />
+[#1041](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1041">https://github.com/FirebirdSQL/NETProvider/issues/1041</a>)<br />
+[#1040](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1040">https://github.com/FirebirdSQL/NETProvider/issues/1040</a>)<br />
+[#1039](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1039">https://github.com/FirebirdSQL/NETProvider/issues/1039</a>)<br />
+[#1037](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1037">https://github.com/FirebirdSQL/NETProvider/issues/1037</a>)<br />
+[#1035](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1035">https://github.com/FirebirdSQL/NETProvider/issues/1035</a>)<br />
+[#1033](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1033">https://github.com/FirebirdSQL/NETProvider/issues/1033</a>)<br />
+[#1032](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1032">https://github.com/FirebirdSQL/NETProvider/issues/1032</a>)<br />
+[#1031](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1031">https://github.com/FirebirdSQL/NETProvider/issues/1031</a>)<br />
+[#1030](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1030">https://github.com/FirebirdSQL/NETProvider/issues/1030</a>)<br />
+[#1029](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1029">https://github.com/FirebirdSQL/NETProvider/issues/1029</a>)<br />
+[#1028](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1028">https://github.com/FirebirdSQL/NETProvider/issues/1028</a>)<br />
+[#1027](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1027">https://github.com/FirebirdSQL/NETProvider/issues/1027</a>)<br />
+[#1026](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1026">https://github.com/FirebirdSQL/NETProvider/issues/1026</a>)<br />
+[#1025](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1025">https://github.com/FirebirdSQL/NETProvider/issues/1025</a>)<br />
+[#1024](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1024">https://github.com/FirebirdSQL/NETProvider/issues/1024</a>)<br />
+[#1020](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1020">https://github.com/FirebirdSQL/NETProvider/issues/1020</a>)<br />
+[#1019](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1019">https://github.com/FirebirdSQL/NETProvider/issues/1019</a>)<br />
+[#1007](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1007">https://github.com/FirebirdSQL/NETProvider/issues/1007</a>)<br />
+[#978](<a href="https://github.com/FirebirdSQL/NETProvider/issues/978">https://github.com/FirebirdSQL/NETProvider/issues/978</a>)<br />
+[#922](<a href="https://github.com/FirebirdSQL/NETProvider/issues/922">https://github.com/FirebirdSQL/NETProvider/issues/922</a>)<br />
+[#886](<a href="https://github.com/FirebirdSQL/NETProvider/issues/886">https://github.com/FirebirdSQL/NETProvider/issues/886</a>)<br />
+[#878](<a href="https://github.com/FirebirdSQL/NETProvider/issues/878">https://github.com/FirebirdSQL/NETProvider/issues/878</a>)<br />
+[#871](<a href="https://github.com/FirebirdSQL/NETProvider/issues/871">https://github.com/FirebirdSQL/NETProvider/issues/871</a>)<br />
+[#870](<a href="https://github.com/FirebirdSQL/NETProvider/issues/870">https://github.com/FirebirdSQL/NETProvider/issues/870</a>)<br />
+[#869](<a href="https://github.com/FirebirdSQL/NETProvider/issues/869">https://github.com/FirebirdSQL/NETProvider/issues/869</a>)<br />
+[#862](<a href="https://github.com/FirebirdSQL/NETProvider/issues/1037">https://github.com/FirebirdSQL/NETProvider/issues/862</a>)<br />
+[#861](<a href="https://github.com/FirebirdSQL/NETProvider/issues/861">https://github.com/FirebirdSQL/NETProvider/issues/861</a>)<br />
+[#852](<a href="https://github.com/FirebirdSQL/NETProvider/issues/852">https://github.com/FirebirdSQL/NETProvider/issues/852</a>)<br />
+[#836](<a href="https://github.com/FirebirdSQL/NETProvider/issues/836">https://github.com/FirebirdSQL/NETProvider/issues/836</a>)<br />
+[#835](<a href="https://github.com/FirebirdSQL/NETProvider/issues/835">https://github.com/FirebirdSQL/NETProvider/issues/835</a>)<br />
+[#833](<a href="https://github.com/FirebirdSQL/NETProvider/issues/833">https://github.com/FirebirdSQL/NETProvider/issues/833</a>)<br />
+[#832](<a href="https://github.com/FirebirdSQL/NETProvider/issues/832">https://github.com/FirebirdSQL/NETProvider/issues/832</a>)<br />
+[#735](<a href="https://github.com/FirebirdSQL/NETProvider/issues/735">https://github.com/FirebirdSQL/NETProvider/issues/735</a>)<br />
+[#590](<a href="https://github.com/FirebirdSQL/NETProvider/issues/590">https://github.com/FirebirdSQL/NETProvider/issues/590</a>)<br />
+[#291](<a href="https://github.com/FirebirdSQL/NETProvider/issues/291">https://github.com/FirebirdSQL/NETProvider/issues/291</a>)</p>
+
+<p><em>Jiri Cincura</em><br />
+<em>Brno, Czech Republic</em></p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,217 @@
+---
+title: "Firebird: Developer's Report: Firebird Core Development & Coordination"
+html_title: "Firebird: Developer's Report: Firebird Core Development & Coordination"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Firebird Core Development & Coordination"
+menu_active: ""
+source_url: "/en/report-core-coordination-202211"
+source_format: new
+url: "/en/report-core-coordination-202211"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Firebird Core Development &amp; Coordination</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><strong style="line-height: 20.8px;"><span style="color: rgb(6, 134, 173); font-size: 16px;">January 2022 to November 2022</span></strong><br style="line-height: 20.8px;" />
+&nbsp;</p>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">New development:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;"><bdi class="js-issue-title markdown-title">Inline minor ODS upgrade</bdi> <span class="f1-light color-fg-muted">(#7397</span>)</li>
+	<li style="line-height: 20.8px;">More cursor-related details in the plan output (#7441)</li>
+	<li style="line-height: 20.8px;">Support for partial indices (#7257)</li>
+	<li style="line-height: 20.8px;">Transform OUTER joins into INNER ones if the WHERE condition violates the outer join rules (#6992)</li>
+	<li style="line-height: 20.8px;">Cost-based choice between nested loop join and hash join (#7331)</li>
+	<li style="line-height: 20.8px;">Improved record compression (denser encoding of repeating bytes and less blocks) (#7302)</li>
+	<li style="line-height: 20.8px;">Avoid data retrieval if the WHERE clause always evaluates to FALSE (#1708)</li>
+	<li style="line-height: 20.8px;">Allow FB-known macros in replication.conf (#7294)</li>
+	<li style="line-height: 20.8px;">ResultSet::getInfo() implementation (#7083)</li>
+	<li style="line-height: 20.8px;">Enable merge joins. Implement a cost-based choice between hash and merge joins.</li>
+</ul>
+</div>
+
+<div style="line-height: 20.8px;">
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Bugfixing:</div>
+</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">Fix invariants optimization involving views (#7388, #7390)</li>
+	<li style="line-height: 20.8px;">Query with SP doesn&#39;t accept explicit plan (#3812)</li>
+	<li style="line-height: 20.8px;">Dummy (always true) conditions may change the join order (#6941)</li>
+	<li style="line-height: 20.8px;">Server crashes when working with DSQL savepoints (#7288)</li>
+	<li style="line-height: 20.8px;">Multi-way hash/merge joins are impossible for expression-based keys (#7164)</li>
+	<li style="line-height: 20.8px;">Replication not restarting after network failure (#7150)</li>
+	<li style="line-height: 20.8px;">Bad plan (HASH instead of JOIN) is chosen for some inner joins (#7137)</li>
+	<li style="line-height: 20.8px;">Bad execution plan if some stream depends on multiple streams via a function (#3357)</li>
+	<li style="line-height: 20.8px;">RDB$INDICES information stored inconsistently after a CREATE INDEX (#4085)</li>
+	<li style="line-height: 20.8px;">Fixed regressions spotted by the QA suite</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">Other:</div>
+
+<ul style="line-height: 20.8px;">
+	<li style="line-height: 20.8px;">Cleanup: remove the WNET protocol (#7082)</li>
+	<li style="line-height: 20.8px;">Heavy optimizer refactoring</li>
+	<li>v3.0.9, v3.0.10 and v4.0.2 releases (documentation and management)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;"><br />
+<em>Dmitry Yemanov</em></div>
+</div>
+</div>
+</div>
+</div>
+
+<p><em style="line-height: 20.8px;">Penza, Russia</em><br />
+&nbsp;</p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,164 @@
+---
+title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+html_title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Security and Design Enhancements"
+menu_active: ""
+source_url: "/en/report-core-security-201810/"
+source_format: new
+url: "/en/report-core-security-201810/"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/archives/">Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/ff-reports-archives/">Developer Reports Archives</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Security and Design Enhancements</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">June to September 2018</span></strong></p>
+
+<ol>
+	<li>Support ARM (ie android) builds to make them follow toolchains development.</li>
+	<li>Followed changing rules of ICU usage - added one more way to load it (required for some ICU builds sonce ICU 5.2.1).</li>
+	<li>Security: Replacement of use of SHA-1 in the SRP Client Proof with SHA-256, applied browser-style patch adopted to correctly serve firebird needs.</li>
+	<li>CORE-5593: System function RDB$ROLE_IN_USE cannot take long role names with lower-case letters</li>
+	<li>CORE-5855: Latest builds of Firebird 4.0 cannot backup DB with generators which contains space in the names</li>
+	<li>Took care about presence of firebird snapshots for linux</li>
+	<li>CORE-5865: Alignment error on x86_64 (prevented builds on MacOS, including OpenOffice build)</li>
+	<li>CORE-5881, 5793: Fixed diagnostics when using DB encryption in various places</li>
+	<li>CORE-5876: Provide name of UDF function for &quot;arithmetic exception, numeric overflow, or string truncation&quot;</li>
+	<li>CORE-5883: Services version 1 support removed, no need to provide magic string &#39;service_mgr&#39; any more</li>
+	<li>CORE-5884: Make work initial global mapping from DB-bounded (like SRP or legacy) plugin</li>
+	<li>CORE-5891: Hang in users mapping code after death of classic server&#39;s process</li>
+	<li>CORE-5893: Gbak may crash database when mixing alias with full database name (using alias &amp; fullname as backup name)</li>
+	<li>CORE-5899: Memory leak in GBAK code when used as service</li>
+	<li>CORE-5900: When during server shutdown users still try to attach all threads were getting banned (due to multiple login errors caused by unable security database) which cause unwanted delays in shutdown process</li>
+	<li>CORE-5886: Nbackup does not work after 32K of backups iterations</li>
+	<li>CORE-5904: An attempt to create global mapping with long (&gt; SQL identifier length) FROM field fails</li>
+	<li>CORE-5860: Support auth_plugin_list dpb/spb item from application to client</li>
+	<li>Avoid races in YValve when destroying related objects from different threads</li>
+	<li>CORE-5908: Enhance dynamic libraries loading related error messages</li>
+	<li>Make FBTCS tests stay actual when changing our codebase</li>
+	<li>CORE-5918: Memory pool statistics was not accurate</li>
+	<li>CORE-5907: Could not launch trace if its &#39;database&#39; section contains curvy brackets (sometimes needed in regexp)</li>
+	<li>CORE-5927: With some non-standard authentication plugins providing correct crypt key wire anyway remained not encrypted</li>
+	<li>CORE-5928: Make it possible for AuthClient plugin to access authentication block from DPB (useful for Execute statement on external)</li>
+</ol>
+
+<h3>According to roadmap of FB4</h3>
+
+<ul>
+	<li>Calculations with enhanced precision:<br />
+	Unclear error message when inserting value exceeding max of dec_fixed decimal</li>
+	<li>Batch operations:<br />
+	Fixed a number of memory leaks related with batch interface<br />
+	Make it possible to use batch interface from ISC API based applications (sample provided)</li>
+</ul>
+
+<p><em>Alex Peshkov</em><br />
+<em>Yaroslavl, Russia</em></p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

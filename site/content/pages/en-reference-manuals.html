@@ -1,0 +1,841 @@
+---
+title: "Firebird: All Reference Manuals"
+html_title: "Firebird: All Reference Manuals"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "All Reference Manuals"
+menu_active: "/en/firebird-rdbms/"
+source_url: "/en/reference-manuals"
+source_format: new
+url: "/en/reference-manuals"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/documentation/">Documentation</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-rdbms/">Firebird RDBMS</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">All Reference Manuals</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p>&nbsp;</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="Table" width="100%">
+	<tbody>
+		<tr class="Table_Header">
+			<td width="360">Online Documentation</td>
+			<td width="280">Downloadable Version</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="2" width="280">Current Versions</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/file/documentation/html/en/firebirddocs/qsg5/firebird-5-quickstartguide.html">Firebird 5 Quick Start Guide</a> (English)</td>
+			<td><a href="/file/documentation/pdf/en/firebirddocs/qsg5/firebird-5-quickstartguide.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/docs/html/en/refdocs/fbconf/firebird-configuration-reference.html">Firebird Configuration Reference</a> - <a href="/docs/chunk/en/refdocs/fbconf/firebird-configuration-reference.html">multi-page</a> (English)</td>
+			<td><a href="/docs/pdf/en/refdocs/fbconf/firebird-configuration-reference.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/html/en/refdocs/fblangref60/firebird-60-language-reference.html" id="fblangref60" name="fblangref60">Firebird 6.0 Language Reference</a> - <a href="/file/documentation/chunk/en/refdocs/fblangref60/firebird-60-language-reference.html">multi-page</a> (English, Firebird 6.0 is in development)</td>
+			<td><a href="/file/documentation/pdf/en/refdocs/fblangref60/firebird-60-language-reference.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/file/documentation/html/en/refdocs/fblangref50/firebird-50-language-reference.html" id="fblangref50" name="fblangref50">Firebird 5.0 Language Reference</a> - <a href="/file/documentation/chunk/en/refdocs/fblangref50/firebird-50-language-reference.html">multi-page</a> (English)</td>
+			<td><a href="/file/documentation/pdf/en/refdocs/fblangref50/firebird-50-language-reference.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/html/en/refdocs/fblangref40/firebird-40-language-reference.html" id="fblangref40" name="fblangref40">Firebird 4.0 Language Reference</a> - <a href="/file/documentation/chunk/en/refdocs/fblangref40/firebird-40-language-reference.html">multi-page</a> (English)</td>
+			<td><a href="/file/documentation/pdf/en/refdocs/fblangref40/firebird-40-language-reference.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/file/documentation/html/de/refdocs/fblangref40/firebird-40-sprachreferenz-de.html">Firebird 4.0 Sprachreferenz</a> (German)</td>
+			<td><a href="/file/documentation/pdf/de/refdocs/fblangref40/firebird-40-sprachreferenz-de.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/html/en/firebirddocs/qsg3/firebird-3-quickstartguide.html">Firebird 3 Quick Start Guide</a></td>
+			<td><a href="/file/documentation/pdf/en/firebirddocs/qsg3/firebird-3-quickstartguide.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/file/documentation/html/en/refdocs/fblangref30/firebird-30-language-reference.html" id="fblangref30" name="fblangref30">Firebird 3.0 Language Reference</a> - <a href="/file/documentation/chunk/en/refdocs/fblangref30/firebird-30-language-reference.html">multi-page</a> (English)</td>
+			<td><a href="/file/documentation/pdf/en/refdocs/fblangref30/firebird-30-language-reference.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/html/de/refdocs/fblangref30/firebird-30-sprachreferenz.html">Firebird 3.0 Sprachreferenz</a> (German)</td>
+			<td><a href="/file/documentation/pdf/de/refdocs/fblangref30/firebird-30-sprachreferenz.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Firebird 5.0 Language Reference (Russian)</td>
+			<td><a href="/file/documentation/pdf/ru/firebird-50-language-reference-ru.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>Firebird 4.0 Language Reference (Russian)</td>
+			<td><a href="/file/documentation/pdf/ru/firebird-40-language-reference-ru.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Firebird 3.0 Language Reference (Russian)</td>
+			<td><a href="/file/documentation/pdf/ru/firebird-30-language-reference-ru.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White" tr="">
+			<td>Firebird 3.0 Developer&#39;s Guide (Russian)</td>
+			<td><a href="/file/documentation/pdf/ru/firebird-30-developer-guide-ru.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/file/documentation/html/en/refdocs/fbdevgd30/firebird-30-developers-guide.html" id="fbdevgd30" name="fbdevgd30">Firebird 3.0 Developer&#39;s Guide</a> (English)</td>
+			<td><a href="/file/documentation/pdf/en/refdocs/fbdevgd30/firebird-30-developers-guide.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>
+			<div>Sample project sources:</div>
+
+			<div style="margin-left: 40px;">Database (<a href="/file/documentation/examples/en/fbdevgd30/db_2_5.zip">Fb 2.5</a> or <a href="/file/documentation/examples/en/fbdevgd30/db_3_0.zip">Fb 3.0</a>)<br />
+			<a href="/file/documentation/examples/en/fbdevgd30/FireDacEx.zip">FireDac (Delphi)</a><br />
+			<a href="/file/documentation/examples/en/fbdevgd30/FBFormAppExample.zip">Microsoft Entity Framework/ADO.NET</a><br />
+			<a href="/file/documentation/examples/en/fbdevgd30/FBMVCExample.zip">Microsoft Entity Framework/MVC</a><br />
+			<a href="/file/documentation/examples/en/fbdevgd30/phpfbexample.zip">PHP</a><br />
+			<a href="/file/documentation/examples/en/fbdevgd30/fbjavaex.zip">Java/jOOQ/Spring MVC</a> Updated 2018-10-21<br />
+			<a href="/file/documentation/examples/en/fbdevgd30/AllProjects.zip">All Projects</a> Updated 2018-10-21</div>
+			</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/file/documentation/html/en/refdocs/fblangref25/firebird-25-language-reference.html" id="fblangref25" name="fblangref25">Firebird 2.5 Language Reference</a> - <a href="/file/documentation/chunk/en/refdocs/fblangref25/firebird-25-language-reference.html">multi-page</a> (English)</td>
+			<td><a href="/file/documentation/pdf/en/refdocs/fblangref25/firebird-25-language-reference.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/html/de/refdocs/fblangref25/firebird-25-sprachreferenz.html">Firebird 2.5 Language Reference (German)</a></td>
+			<td><a href="/file/documentation/pdf/de/refdocs/fblangref25/firebird-25-sprachreferenz.pdf">PDF</a>&nbsp;available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Firebird 2.5 Language Reference (Russian)</td>
+			<td><a href="/file/documentation/reference_manuals/Firebird_Language_Reference_RUS.pdf">PDF</a>&nbsp;available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/reference_manuals/user_manuals/html/qsg25.html">Firebird 2.5 Quick Start Guide</a></td>
+			<td><a href="/file/documentation/reference_manuals/user_manuals/Firebird-2.5-QuickStart.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/file/documentation/reference_manuals/reference_material/html/langrefupd25.html">Firebird 2.5 Language Reference Update</a><br />
+			Firebird 2.5 Language Reference Update (Russian)</td>
+			<td><a href="/file/documentation/reference_manuals/reference_material/Firebird-2.5-LangRef-Update.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/reference_material/Firebird-2_5-LangRef-Update-Russian.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="2">Firebird Command Line Tools</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/html/en/firebirddocs/isql/firebird-isql.html">Firebird&#39;s isql Interactive SQL Utility</a></td>
+			<td><a href="/file/documentation/pdf/en/firebirddocs/isql/firebird-isql.pdf">PDF</a>&nbsp;available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/file/documentation/html/en/firebirddocs/gsec/firebird-gsec.html">Firebird&#39;s gsec User Management Utility</a></td>
+			<td><a href="/file/documentation/pdf/en/firebirddocs/gsec/firebird-gsec.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/html/en/firebirddocs/gbak/firebird-gbak.html">Firebird&#39;s gbak Backup and Restore Utility</a><br />
+			<a href="/file/documentation/html/de/firebirddocs/gbak/firebird-gbak-de.html">Firebird&#39;s gbak Backup and Restore Utility (German)</a></td>
+			<td><a href="/file/documentation/pdf/en/firebirddocs/gbak/firebird-gbak.pdf">PDF</a> available<br />
+			<a href="/file/documentation/pdf/de/firebirddocs/gbak/firebird-gbak-de.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/file/documentation/html/en/firebirddocs/nbackup/firebird-nbackup.html">Firebird&#39;s nbackup tool</a><br />
+			<a href="/file/documentation/html/de/firebirddocs/nbackup/firebird-nbackup-de.html">Firebird&#39;s nbackup tool (German)</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/fr/nbackup-fr.html">Firebird&#39;s nbackup tool (French)</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/nl/nbackup-nl.html">Firebird&#39;s nbackup tool (<span class="example">Dutch</span>)</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/ru/nbackup-ru.html">Firebird&#39;s nbackup tool (Russian)</a></td>
+			<td><a href="/file/documentation/pdf/en/firebirddocs/nbackup/firebird-nbackup.pdf">PDF</a> available<br />
+			<a href="/file/documentation/pdf/de/firebirddocs/nbackup/firebird-nbackup-de.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Firebird-nbackup-French.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Firebird-nbackup-Dutch.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Firebird-nbackup-Russian.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/html/en/firebirddocs/gstat/firebird-gstat.html">Firebird&#39;s gstat Database Statistics Reporting Tool</a><br />
+			<a href="/file/documentation/html/de/firebirddocs/gstat/firebird-gstat-de.html">Firebird&#39;s gstat Database Statistics Reporting Tool (German)</a></td>
+			<td><a href="/file/documentation/pdf/en/firebirddocs/gstat/firebird-gstat.pdf">PDF</a> available<br />
+			<a href="/file/documentation/pdf/de/firebirddocs/gstat/firebird-gstat-de.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/file/documentation/html/en/firebirddocs/gfix/firebird-gfix.html">Firebird&#39;s gfix Database Housekeeping Utility</a></td>
+			<td><a href="/file/documentation/pdf/en/firebirddocs/gfix/firebird-gfix.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/html/en/firebirddocs/fbmgr/firebird-fbmgr.html">Firebird&#39;s fbmgr SuperServer Manager</a></td>
+			<td><a href="/file/documentation/pdf/en/firebirddocs/fbmgr/firebird-fbmgr.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/file/documentation/html/en/firebirddocs/gsplit/firebird-gsplit.html">Firebird&#39;s gsplit Backup File Splitting Filter</a></td>
+			<td><a href="/file/documentation/pdf/en/firebirddocs/gsplit/firebird-gsplit.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/html/en/firebirddocs/fb-shell-scripts/firebird-shell-scripts.html">Firebird Shell Scripts</a><br />
+			<a href="/file/documentation/html/de/firebirddocs/fb-shell-scripts/firebird-shell-scripts-de.html">Firebird Shell Scripts (German)</a></td>
+			<td><a href="/file/documentation/pdf/en/firebirddocs/fb-shell-scripts/firebird-shell-scripts.pdf">PDF</a> available<br />
+			<a href="/file/documentation/pdf/de/firebirddocs/fb-shell-scripts/firebird-shell-scripts-de.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/file/documentation/reference_manuals/user_manuals/html/pt_br/fbutils-pt_br.html">Firebird command-line utilities (Brazilian Portuguese)</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/ru/fbutils-ru.html">Firebird command-line utilities (Russian)</a></td>
+			<td><a href="/file/documentation/reference_manuals/user_manuals/Firebird-Commandline-Brazilian-Portuguese.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Firebird-Commandline-Russian.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="2">Various User Manuals</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/reference_manuals/user_manuals/html/ubusetup.html">Setting up Firebird on Ubuntu Linux</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/it/ubusetup-it.html">Setting up Firebird on Ubuntu Linux (Italian)</a></td>
+			<td><a href="/file/documentation/reference_manuals/user_manuals/Firebird-on-Ubuntu.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Firebird-on-Ubuntu-Italian.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/file/documentation/html/en/firebirddocs/generatorguide/firebird-generator-guide.html">Firebird Generator Guide</a><br />
+			<a href="/file/documentation/html/de/firebirddocs/generatorguide/firebird-generatoren-ratgeber.html">Firebird Generator Guide (German)</a><br />
+			<a href="/file/documentation/html/ru/firebirddocs/generatorguide/firebird-generator-guide-ru.html">Firebird Generator Guide (Russian)</a></td>
+			<td><a href="/file/documentation/pdf/en/firebirddocs/generatorguide/firebird-generator-guide.pdf">PDF</a> available<br />
+			<a href="/file/documentation/pdf/de/firebirddocs/generatorguide/firebird-generatoren-ratgeber.pdf">PDF</a> available<br />
+			<a href="/file/documentation/pdf/ru/firebirddocs/generatorguide/firebird-generator-guide-ru.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/html/en/firebirddocs/nullguide/firebird-null-guide.html">Firebird Null Guide</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/es/nullguide-es.html">Firebird Null Guide (Spanish)</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/fr/nullguide-fr.html">Firebird Null Guide (French)</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/it/nullguide-it.html">Firebird Null Guide (Italian)</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/ru/nullguide-ru.html">Firebird Null Guide (Russian)</a></td>
+			<td><a href="/file/documentation/pdf/en/firebirddocs/nullguide/firebird-null-guide.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Firebird-Null-Guide-Spanish.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Firebird-Null-Guide-French.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Firebird-Null-Guide-Italian.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Firebird-Null-Guide-Russian.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/file/documentation/reference_manuals/user_manuals/html/migration-mssql.html">MS SQL to Firebird Migration Guide</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/ru/migration-mssql-ru.html">MS SQL to Firebird Migration Guide (Russian)</a></td>
+			<td><a href="/file/documentation/reference_manuals/user_manuals/MSSQL-to-Firebird.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/MSSQL-to-Firebird-Russian.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/html/en/firebirddocs/fbmetasecur/firebird-metadata-security.html">Firebird File and Metadata Security</a><br />
+			<a href="/file/documentation/html/de/firebirddocs/fbmetasecur/firebird-metadata-security-de.html">Firebird File and Metadata Security (German)</a><br />
+			<a href="/file/documentation/html/pt_BR/firebirddocs/fbmetasecur/firebird-metadata-security-pt_br.html">Firebird File and Metadata Security (Brazilian Portuguese)</a><br />
+			<a href="/file/documentation/html/ru/firebirddocs/fbmetasecur/firebird-metadata-security-ru.html">Firebird File and Metadata Security (Russian)</a></td>
+			<td><a href="/file/documentation/pdf/en/firebirddocs/fbmetasecur/firebird-metadata-security.pdf">PDF</a>&nbsp;available<br />
+			<a href="/file/documentation/pdf/de/firebirddocs/fbmetasecur/firebird-metadata-security-de.pdf">PDF</a>&nbsp;available<br />
+			<a href="/file/documentation/pdf/pt_BR/firebirddocs/fbmetasecur/firebird-metadata-security-pt_br.pdf">PDF</a>&nbsp;available<br />
+			<a href="/file/documentation/pdf/ru/firebirddocs/fbmetasecur/firebird-metadata-security-ru.pdf">PDF</a>&nbsp;available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Using ZeBeDee with Firebird</td>
+			<td><a href="/file/documentation/reference_manuals/user_manuals/Firebird_ZeBeDee.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>Embedded SQL Guide for RM/Cobol</td>
+			<td><a href="/file/documentation/reference_manuals/user_manuals/EmbeddedSQL.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/file/documentation/html/en/firebirddocs/ufb/using-firebird.html">Using Firebird (work in progress)</a></td>
+			<td><a href="/file/documentation/pdf/en/firebirddocs/ufb/using-firebird.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/html/en/firebirddocs/udr-pascal/udr-pascal.html">Writing Firebird UDRs in Pascal</a><br />
+			<a href="/file/documentation/html/ru/firebirddocs/udr-pascal/udr-pascal.html">Writing Firebird UDRs in Pascal (Russian)</a></td>
+			<td><a href="/file/documentation/pdf/en/firebirddocs/udr-pascal/udr-pascal.pdf" target="_blank">PDF</a> available<br />
+			<a href="/file/documentation/pdf/ru/firebirddocs/udr-pascal/udr-pascal.pdf" target="_blank">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="2">Reference Material</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/en/firebird-technical-specifications">Firebird Database Limits</a></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Firebird 2.1 Error Codes</td>
+			<td><a href="/file/documentation/reference_manuals/reference_material/Firebird-2.1-ErrorCodes.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/en/firebird-date-literals">Firebird Date Literals</a></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="https://collation-charts.org/">Locale/Collation Charts (A. Barkov, MariaDB)</a></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/en/sql-conformance/">Firebird SQL Conformance</a></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/en/iso-9075-sql-standard-keywords-reserved-words">ISO 9075 SQL Standard Keywords/Reserved Words</a></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/html/en/firebirddocs/firebirdinternals/firebird-internals.html">Firebird Internals (Work In Progress)</a></td>
+			<td><a href="/file/documentation/pdf/en/firebirddocs/firebirdinternals/firebird-internals.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/file/documentation/html/en/firebirddocs/wireprotocol/firebird-wire-protocol.html">Firebird Wire Protocol</a></td>
+			<td><a href="/file/documentation/pdf/en/firebirddocs/wireprotocol/firebird-wire-protocol.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/html/en/firebirddocs/fbcache/firebird-cache.html">Firebird Cache</a><br />
+			<a href="/file/documentation/html/de/firebirddocs/fbcache/firebird-cache-de.html">Firebird Cache (German)</a></td>
+			<td><a href="/file/documentation/pdf/en/firebirddocs/fbcache/firebird-cache.pdf">PDF</a> available<br />
+			<a href="/file/documentation/pdf/de/firebirddocs/fbcache/firebird-cache-de.pdf" target="_blank">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="2">Firebird Licenses</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/en/interbase-public-license/">InterBase Public License</a></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/en/initial-developer-s-public-license-version-1-0/">Initial Developer&#39;s Public License</a></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/en/public-documentation-license/">Public Documentation License</a><br />
+			<a href="/file/documentation/reference_manuals/firebird_licenses/html/licenses-pdl-fr.html">Public Documentation License (French)</a></td>
+			<td><a href="/file/documentation/pdf/en/licenses/pdl/public-documentation-license.pdf">PDF</a> available<br />
+			&nbsp;</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="2">Legacy Versions (no longer supported)</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/file/documentation/reference_manuals/user_manuals/html/qsg2.html">Firebird 2.0 and 2.1 Quick Start Guide</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/it/qsg2-it.html">Firebird 2.0 and 2.1 Quick Start Guide (Italian)</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/de/qsg2-de.html">Firebird 2.0 and 2.1 Quick Start Guide (German)</a></td>
+			<td><a href="/file/documentation/reference_manuals/user_manuals/Firebird-2-QuickStart.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Firebird-2-QuickStart-Italian.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Firebird-2-QuickStart-German.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/release_notes/html/install210.html" target="_blank">Firebird 2 Migration &amp; Installation Notes v. 2.0.x and 2.1</a></td>
+			<td><a href="/file/documentation/release_notes/Firebird-2.1.5-Installation.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/file/documentation/reference_manuals/reference_material/html/langrefupd21.html">Firebird 2.1 Language Reference Update</a></td>
+			<td><a href="/file/documentation/reference_manuals/reference_material/Firebird-2.1-LangRef-Update.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/reference_manuals/reference_material/html/langrefupd20.html">Firebird 2.0 Language Reference Update</a></td>
+			<td><a href="/file/documentation/reference_manuals/reference_material/Firebird-2.0-LangRef-Update.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Firebird 2.0 Error Codes</td>
+			<td><a href="/file/documentation/reference_manuals/reference_material/Firebird-2.0-ErrorCodes.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="http://www.topicscape.com/InterBase_Firebird_migration/IB2FB.php">Migrating from InterBase 6.01 to Firebird 1.5 and 2.0 (third-party HOWTO)</a></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/file/documentation/reference_manuals/reference_material/html/langrefupd15.html">Firebird 1.5 Language Reference Update</a></td>
+			<td><a href="/file/documentation/reference_manuals/reference_material/Firebird-1.5-LangRef-Update.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/reference_manuals/user_manuals/html/qsg15.html">Firebird 1.5 Quick Start Guide</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/es/qsg15-es.html">Firebird 1.5 Quick Start Guide (Spanish)</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/fr/qsg15-fr.html">Firebird 1.5 Quick Start Guide (French)</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/ja/qsg15-ja.html">Firebird 1.5 Quick Start Guide (Japanese)</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/ru/qsg15-ru.html">Firebird 1.5 Quick Start Guide (Russian)</a></td>
+			<td><a href="/file/documentation/reference_manuals/user_manuals/Firebird-1.5-QuickStart.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Firebird-1.5-QuickStart-Spanish.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Firebird-1.5-QuickStart-French.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Firebird-1.5-QuickStart-Japanese.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Firebird-1.5-QuickStart-Russian.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Firebird 1.5 Error Codes</td>
+			<td><a href="/file/documentation/reference_manuals/reference_material/Firebird-1.5-ErrorCodes.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/en/	firebird-1-5-character-sets-collations">Firebird 1.5 Character Sets &amp; Collations</a></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/file/documentation/reference_manuals/user_manuals/html/ibfbcoex.html">Coexistence of Firebird 1.5 and InterBase</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/pt_br/ibfbcoex-pt_br.html">Coexistence of Firebird 1.5 and InterBase (Brazilian Portuguese)</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/ru/ibfbcoex-ru.html">Coexistence of Firebird 1.5 and InterBase (Russian)</a></td>
+			<td><a href="/file/documentation/reference_manuals/user_manuals/Coexistence-Firebird-InterBase.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Coexistence-Firebird-InterBase-Brazilian-Portuguese.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Coexistence-Firebird-InterBase-Russian.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/reference_manuals/user_manuals/html/qsg10.html">Firebird 1.0 Quick Start Guide</a></td>
+			<td><a href="/file/documentation/reference_manuals/user_manuals/Firebird-1.0-QuickStart.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="2">InterBase 6.0 Manuals</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>API Guide</td>
+			<td><a href="http://www.ibphoenix.com/files/60ApiGuide.zip" target="_blank">ZIP</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Data Definition Guide</td>
+			<td><a href="http://www.ibphoenix.com/files/60DataDef.zip" target="_blank">ZIP</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>Developers Guide</td>
+			<td><a href="http://www.ibphoenix.com/files/60DevGuide.zip" target="_blank">ZIP</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Embedded SQL Guide</td>
+			<td><a href="http://www.ibphoenix.com/files/60EmbedSQL.zip" target="_blank">ZIP</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>Language Reference</td>
+			<td><a href="http://www.ibphoenix.com/files/60LangRef.zip" target="_blank">ZIP</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td>Operations Guide</td>
+			<td><a href="http://www.ibphoenix.com/files/60OpGuide.zip" target="_blank">ZIP</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>Full Set, cross-indexed</td>
+			<td><a href="http://www.ibphoenix.com/files/60All.zip" target="_blank">ZIP</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="http://www.ibphoenix.com/files/60sqlref.html">IB 6.0 SQL Reference (not included in full set)</a></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr class="Table_Subtitle">
+			<td colspan="2"><a id="docwriters" name="docwriters">Manuals for Firebird Docwriters</a></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td>Intro to Writing Firebird Docs (conference session)</td>
+			<td><a href="/file/documentation/reference_manuals/user_manuals/Writing-Firebird-Docs-Intro.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_Grey">
+			<td><a href="/file/documentation/html/en/firebirddocs/docbuildhowto/firebird-docbuilding-howto.html">Firebird Docbuilding Howto </a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/es/docbuildhowto-es.html">Firebird Docbuilding Howto (Spanish)</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/it/docbuildhowto-it.html">Firebird Docbuilding Howto (Italian)</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/pt_br/docbuildhowto-pt_br.html">Firebird Docbuilding Howto (Brazilian Portuguese)</a></td>
+			<td><a href="/file/documentation/pdf/en/firebirddocs/docbuildhowto/firebird-docbuilding-howto.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Firebird-Docbuilding-Howto-Spanish.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Firebird-Docbuilding-Howto-Italian.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Firebird-Docbuilding-Howto-Brazilian-Portuguese.pdf">PDF</a> available</td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td><a href="/file/documentation/html/en/firebirddocs/docwritehowto/firebird-docwriting-guide.html">Firebird Docwriting Guide</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/de/docwritehowto-de.html">Firebird Docwriting Guide (German)</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/it/docwritehowto-it.html">Firebird Docwriting Guide (Italian)</a><br />
+			<a href="/file/documentation/reference_manuals/user_manuals/html/pt_br/docwritehowto-pt_br.html">Firebird Docwriting Guide (Brazilian Portuguese)</a></td>
+			<td><a href="/file/documentation/pdf/en/firebirddocs/docwritehowto/firebird-docwriting-guide.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Firebird-Docwriting-Guide-German.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Firebird-Docwriting-Guide-Italian.pdf">PDF</a> available<br />
+			<a href="/file/documentation/reference_manuals/user_manuals/Firebird-Docwriting-Guide-Brazilian-Portuguese.pdf">PDF</a> available</td>
+		</tr>
+		<tr>
+			<td><a id="doclibs" name="doclibs"></a>Docwriters&#39; Tools Downloads (.zip files)</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+			<div style="margin-left: 40px;"><a href="/file/downloads/doclibs/ALLJARS.ZIP">ALLJARS.zip</a></div>
+			</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+			<div style="margin-left: 40px;"><a href="/file/downloads/doclibs/docbook-dtd.zip">docbook-dtd.zip</a></div>
+			</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+			<div style="margin-left: 40px;"><a href="/file/downloads/doclibs/docbook-stylesheets.zip">docbook-stylesheets.zip</a></div>
+			</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Documentation</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-rdbms/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird RDBMS</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-notes/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Notes</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree bgLVL_3_sel bgLVL_3">
+      <a href="/en/reference-manuals/" class="menulvl_3_sel"><i class="fa fa-arrow-right"></i> All Reference Manuals</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/white-papers-presentations/" class="menulvl_3"><i class="fa fa-arrow-right"></i> White Papers &amp; Presentations</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/books/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Books</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/drivers-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Drivers Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-docs-and-articles/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Docs and Articles</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/external-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> External Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/licensing/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Licensing</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/features/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Features</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sql-conformance/" class="menulvl_3"><i class="fa fa-arrow-right"></i> SQL Conformance</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/historical-reference/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Historical Reference</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-doc/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-brand-faq/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Branding Policy</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Brand FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/logos/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Logos</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-and-other-databases/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird and other databases</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

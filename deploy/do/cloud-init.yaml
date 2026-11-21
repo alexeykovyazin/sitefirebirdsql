@@ -1,0 +1,60 @@
+#cloud-config
+# Droplet fb-web-1: nginx static host for firebirdsql.org (see PLAN.md, stage 0).
+package_update: true
+package_upgrade: true
+# nginx from the official nginx.org mainline repo (not the older Ubuntu package).
+apt:
+  sources:
+    nginx.list:
+      source: "deb [signed-by=$KEY_FILE] http://nginx.org/packages/mainline/ubuntu $RELEASE nginx"
+      keyid: 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62
+packages:
+  - nginx
+  - certbot
+  - python3-certbot-nginx
+  - rsync
+  - fail2ban
+  - unattended-upgrades
+  - rclone
+
+users:
+  - default
+  - name: deploy
+    shell: /bin/bash
+    groups: [www-data]
+    sudo: "ALL=(ALL) NOPASSWD: /usr/bin/systemctl reload nginx, /usr/sbin/nginx -t"
+    ssh_authorized_keys:
+      - __DEPLOY_PUBKEY__
+
+ssh_pwauth: false
+disable_root: false
+
+write_files:
+  - path: /etc/apt/preferences.d/99nginx
+    content: |
+      Package: *
+      Pin: origin nginx.org
+      Pin: release o=nginx
+      Pin-Priority: 900
+  - path: /etc/ssh/sshd_config.d/10-hardening.conf
+    content: |
+      PasswordAuthentication no
+      KbdInteractiveAuthentication no
+      PermitRootLogin prohibit-password
+
+runcmd:
+  - fallocate -l 2G /swapfile && chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile
+  - echo '/swapfile none swap sw 0 0' >> /etc/fstab
+  - sysctl -w vm.swappiness=10 && echo 'vm.swappiness=10' > /etc/sysctl.d/99-swap.conf
+  - mkdir -p /srv/firebirdsql/releases /srv/firebirdsql/assets /var/www/certbot
+  - chown -R deploy:www-data /srv/firebirdsql
+  # nginx.org layout -> Debian-style layout used by deploy/nginx/*.conf and certbot.
+  - mkdir -p /etc/nginx/sites-available /etc/nginx/sites-enabled
+  - rm -f /etc/nginx/conf.d/default.conf
+  - sed -i 's/^user .*;/user www-data;/' /etc/nginx/nginx.conf
+  - grep -q sites-enabled /etc/nginx/nginx.conf || sed -i 's|^\(\s*\)include /etc/nginx/conf.d/\*.conf;|&\n\1include /etc/nginx/sites-enabled/*;|' /etc/nginx/nginx.conf
+  - grep -q worker_rlimit_nofile /etc/nginx/nginx.conf || sed -i '/^worker_processes/a worker_rlimit_nofile 8192;' /etc/nginx/nginx.conf
+  - nginx -t && systemctl enable nginx && systemctl restart nginx
+  - systemctl enable --now fail2ban
+  - systemctl restart ssh
+  - curl -sSL https://repos.insights.digitalocean.com/install.sh | bash

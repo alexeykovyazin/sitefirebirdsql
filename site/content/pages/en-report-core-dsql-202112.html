@@ -1,0 +1,308 @@
+---
+title: "Firebird: Developer's Report: DSQL/INTL Development and General Coding"
+html_title: "Firebird: Developer's Report: DSQL/INTL Development and General Coding"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: DSQL/INTL Development and General Coding"
+menu_active: ""
+source_url: "/en/report-core-dsql-202112"
+source_format: new
+url: "/en/report-core-dsql-202112"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: DSQL/INTL Development and General Coding</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">September to December 2021</span></strong></p>
+
+<h3>December 2021</h3>
+
+<p><u>master branch</u></p>
+
+<ul>
+	<li>Finished reworking the profiler as plugin as well bugfixes.</li>
+	<li>Finished work in Docker build for Linux.</li>
+	<li>Finished work in Docker build for Windows.</li>
+	<li>Fixed #7077 - EXECUTE BLOCK (without RETURNS) do not work with batches.</li>
+</ul>
+
+<p><u>v4 branch</u></p>
+
+<ul>
+	<li>Fixed #7062 - Creation of expression index does not release its statement correctly.</li>
+	<li>Fixed #7064 - Linear regression functions aren&#39;t implemented correctly.</li>
+	<li>Fixed #7088 - MacOS UDR and Legacy_UserManager plugins not working due to not exported entry point.</li>
+</ul>
+
+<p><u>v3 branch</u></p>
+
+<ul>
+	<li>#7041 - Helping with MacOS M1 port.</li>
+	<li>Fixed #7084 - Creating unique constraints on MacOS fails on larger tables.</li>
+	<li>Backported fix for #7088 - MacOS UDR and Legacy_UserManager plugins not working due to not exported entry point.</li>
+</ul>
+
+<h3>November</h3>
+
+<p><u>master branch</u></p>
+
+<ul>
+	<li>
+	<div>Continued work in Docker build for Linux.</div>
+	</li>
+	<li>
+	<div>Fixed #7037 - Build problem when using both --with-builtin-tommath and --with-builtin-tomcrypt.</div>
+	</li>
+	<li>
+	<div>Discussions about Unicode and character contractions. Continued reworking the profiler as plugin as well bugfixes.</div>
+	</li>
+	<li>
+	<div>Improvement #7038 - Improve performance of STARTING WITH with insensitive collations.</div>
+	</li>
+	<li>
+	<div>Discussion about request ID and MON$STATEMENTS.</div>
+	</li>
+	<li>
+	<div>Fixed #7045 - International characters in table or alias names causes queries of MON$STATEMENTS to fail.</div>
+	</li>
+	<li>
+	<div>Added table MON$COMPILED_STATEMENTS and columns MON$STATEMENTS.MON$COMPILED_STATEMENT_ID and MON$CALL_STACK.MON$COMPILED_STATEMENT_ID.</div>
+	</li>
+</ul>
+
+<p><u>V.4 branch</u></p>
+
+<ul>
+	<li>Backported Windows build for Visual Studio 2019 and 2022 using project files as VS 2017.</li>
+</ul>
+
+<h3>October</h3>
+
+<p><u>master branch</u></p>
+
+<ul>
+	<li>
+	<div>Private discussions about Unicode and character contractions.</div>
+	</li>
+	<li>
+	<div>Finished working in introducing the external memory pool to avoid problems with destructors of external library.</div>
+	</li>
+	<li>
+	<div>Started reworking the profiler as plugin as well bugfixes.</div>
+	</li>
+	<li>
+	<div>Fixed #7018 - Problems with windows frames.</div>
+	</li>
+	<li>
+	<div>Postfix for #6815 - fix request counters.</div>
+	</li>
+	<li>
+	<div>Started work in Docker build for Windows.</div>
+	</li>
+	<li>
+	<div>Started work in Docker build for Linux.</div>
+	</li>
+	<li>
+	<div>Remove remains of help.fdb after QLI removal.</div>
+	</li>
+	<li>
+	<div>Windows build for Visual Studio 2019 and 2022 using project files as VS 2017.</div>
+	</li>
+	<li>
+	<div>GitHub Actions build for Visual Studio 2019 and 2022.</div>
+	</li>
+</ul>
+
+<p><u>V.4 branch</u></p>
+
+<ul>
+	<li>Fixed tzdata update job.</li>
+	<li>Backported fix for #7018 - Problems with windows frames.</li>
+</ul>
+
+<h3>September</h3>
+
+<p><u>Master branch</u></p>
+
+<ul>
+	<li>
+	<div>Finished feature #6681 - Support for WHEN NOT MATCHED BY SOURCE for MERGE statement [CORE6448].</div>
+	</li>
+	<li>
+	<div>Fixed #6942 - Incorrect singleton error with MERGE and RETURNING.</div>
+	</li>
+	<li>
+	<div>Added ObjectsArray iterator for usage with std algorithms.</div>
+	</li>
+	<li>
+	<div>Rework messages processing, simplifying the build and avoiding store generated files in git.</div>
+	</li>
+	<li>
+	<div>Discussion: Profiler plugin API.</div>
+	</li>
+	<li>
+	<div>Verifying crash reported by LibreOffice.</div>
+	</li>
+	<li>
+	<div>Windows build: Avoid wipe out others path because of spaces in path.</div>
+	</li>
+	<li>
+	<div>Fixed Windows empbuild build in DEBUG configuration.</div>
+	</li>
+	<li>
+	<div>Started work in introducting the external memory pool to avoid problems with destructors of external library.</div>
+	</li>
+	<li>
+	<div>Fixed AppVeyor x86 build.</div>
+	</li>
+	<li>
+	<div>Avoid possible buffer overflow in system blob filter.</div>
+	</li>
+	<li>
+	<div>Reviewed and applied PR #6964 - add --with-system-re2 configure option for using system-wide libre2.</div>
+	</li>
+	<li>
+	<div>Private discussions about Unicode and character contractions.</div>
+	</li>
+	<li>
+	<div>Improve build of external projects using same tools and flags specified by user in POSIX.</div>
+	</li>
+	<li>
+	<div>Reviewed PR #6972 - add --with-system-boost configure option for using system-wide boost headers.</div>
+	</li>
+	<li>
+	<div>Cleanup: get rid of unused variables.</div>
+	</li>
+	<li>
+	<div>Reviewed #6983 - New built-in function BLOB_APPEND.</div>
+	</li>
+	<li>
+	<div>Fixed tzdata update job.</div>
+	</li>
+</ul>
+
+<p><u>v4 branch</u></p>
+
+<ul>
+	<li>
+	<div>Automate tzdata-update job also for v4 branch.</div>
+	</li>
+</ul>
+
+<p><u>V.3 branch</u></p>
+
+<ul>
+	<li>
+	<div>Fixed #6987 - DATEDIFF does not support fractional value for MILLISECOND.</div>
+	</li>
+</ul>
+
+<div><em>Adriano dos Santos Fernandes </em></div>
+
+<div><em>Sao Paulo, Brazil</em></div>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,185 @@
+---
+title: "Firebird: Download"
+html_title: "Firebird: Download"
+description: "Firebird SQL: The true open-source relational database"
+menu_active: ""
+source_url: "/download-file"
+source_format: download
+url: "/download-file/"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item active">Download</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div class="thank-you-container">
+                        <h1>Thank You for Choosing Firebird!</h1>
+                        
+                        <p>Thanks for trusting Firebird for your database needs!</p>
+
+                        <div class="download-fallback">
+                            <p>If your download didn't start automatically, click the link below:</p>
+                            <a href="#" id="fb-download-link" class="direct-download-link" download>
+                                Download Firebird Directly
+                            </a>
+                        </div>
+                    </div>
+                  
+                  <br />
+                  <p>
+                    <span style="color: rgb(0, 0, 0); font-size: 18px;">
+                      <span style="font-weight: bold;">Subscribe to Firebird news now!&nbsp;</span>
+                    </span>
+                    <br />
+                    
+                    <div>
+  <iframe frameborder="0"
+    height="150" 
+    scrolling="no" 
+    src="https://firebirdfoundation.substack.com/embed" 
+    style="border:1px solid #EEE; background:white;" 
+    width="100%" 
+    allow="encrypted-media"
+    sandbox="allow-scripts allow-same-origin allow-forms"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+                    
+                    <!-- <iframe frameborder="0" height="150" scrolling="no" src="https://firebirdfoundation.substack.com/embed" style="border:1px solid #EEE; background:white;" width="480"></iframe> -->
+                    <br />
+You don&#39;t want to miss an important news about the new release, must-have update, right?<br />
+Please note that you&#39;ll have to confirm your subscription by clicking a confirmation link in the automatic registration email.
+                  	</p>
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+
+(function() {
+
+    var fileUrl = (function () {
+        var u = new URLSearchParams(location.search).get('file') || '';
+        try { var h = new URL(u).hostname; } catch (e) { return ''; }
+        // Only known download hosts: no open redirect.
+        var ok = /(^|\.)(github\.com|githubusercontent\.com|sourceforge\.net|firebirdsql\.org)$/.test(h);
+        if (ok) { var a = document.getElementById('fb-download-link'); if (a) a.href = u; }
+        return ok ? u : '';
+    })();
+
+    
+    function initDownload() {
+        if (fileUrl) {
+            setTimeout(function() {
+                window.location.href = fileUrl;
+            }, 1000);
+        }
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initDownload);
+    } else {
+        initDownload();
+    }
+    
+})();
+
+</script>
+
+

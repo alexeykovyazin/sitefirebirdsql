@@ -1,0 +1,220 @@
+---
+title: "Firebird: Jaybird 2.2.5 Released"
+html_title: "Firebird: Jaybird 2.2.5 Released"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Jaybird 2.2.5 Released"
+menu_active: ""
+source_url: "/en/news/jaybird-2-2-5-released-38183"
+source_format: new
+url: "/en/news/jaybird-2-2-5-released-38183"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+ 
+    <section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/about-firebird/">About Firebird</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/news/">News &amp; Events</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Jaybird 2.2.5 Released</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-8">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div class="post-categories d-flex justify-content-between align-content-center">
+                        <div class="categories-share">
+                            <ul>
+                                <li><i class="fas fa-calendar"></i> Apr 27, 2014</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="title">Jaybird 2.2.5 Released</h3>
+                                            </div>
+                    <div class="post-text mt-30">
+                        <!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:View>Normal</w:View>
+  <w:Zoom>0</w:Zoom>
+  <w:PunctuationKerning />
+  <w:ValidateAgainstSchemas />
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:BreakWrappedTables />
+   <w:SnapToGridInCell />
+   <w:WrapTextWithPunct />
+   <w:UseAsianBreakRules />
+   <w:DontGrowAutofit />
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]-->  <p class="MsoNormal"><span lang="EN-US" style="mso-ansi-language:EN-US">The Firebird JDBC team is happy to announce the release of </span><span lang="NL"><a href="/en/jdbc-driver/"><span lang="EN-US" style="mso-ansi-language:EN-US">Jaybird 2.2.5</span></a></span><span lang="EN-US" style="mso-ansi-language:EN-US">.</span></p>  <p class="MsoNormal"><span lang="EN-US" style="mso-ansi-language:EN-US">This release contains the following fixes:</span></p>        <ul><li><span lang="NL">Fixed: </span><span lang="NL" style="font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-bidi-font-family:Mangal">getCrossReference</span><span lang="NL"> broken by changes of <a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-331">JDBC-331</a> (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-335">JDBC-335</a></span><span lang="NL">)</span></li><li>Added: basic support for Java 8 <span style="font-family: Courier New;">java.time</span> in<span lang="NL" style="font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-bidi-font-family:Mangal"> PreparedStatement.setObject()</span><span lang="NL"> and </span><span lang="NL" style="font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-bidi-font-family:Mangal">ResultSet.updateObject()</span> (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-339">JDBC-339</a>)</li></ul><div style="margin-left: 40px;"><span lang="NL">As part of this change the supported sub-second precision for </span><span lang="NL" style="font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-bidi-font-family:
+Mangal">java.sql.Timestamp</span><span lang="NL"> has been increased from 1 millisecond to the maximum Firebird precision of 100 microseconds (or 0.1 millisecond).</span></div><ul><li><span style="mso-list:Ignore"><span style="font:7.0pt &quot;Times New Roman&quot;"> </span></span><span lang="EN-US" style="mso-ansi-language:EN-US">Fixed: Deadlocks and other thread safety issues with classes in </span><span lang="EN-US" style="font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-bidi-font-family:
+Mangal;mso-ansi-language:EN-US">org.firebirdsql.pool</span><span lang="EN-US" style="mso-ansi-language:EN-US"> (</span><span lang="NL"><a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-341"><span lang="EN-US" style="mso-ansi-language:EN-US">JDBC-341</span></a></span><span lang="EN-US" style="mso-ansi-language:EN-US">)</span></li></ul><span lang="EN-US" style="mso-ansi-language:EN-US">The release is also available on maven(*): </span> <div style="margin-left: 40px;"><span style="font-family: Courier New;">&lt;groupId&gt;org.firebirdsql.jdbc&lt;/groupId&gt; <br /> &lt;artifactId&gt;jaybird-jdkXX&lt;/artifactId&gt; <br /> &lt;version&gt;2.2.5&lt;/version&gt;</span></div> <p class="MsoBodyText"><span lang="EN-US" style="mso-ansi-language:EN-US">*The artifactId depends on your target Java version: jaybird-jdk15, jaybird-jdk16</span><span lang="EN-US" style="mso-ansi-language:EN-US"><span lang="EN-US" style="mso-ansi-language:EN-US">, jaybird-jdk17</span> or jaybird-jdk18.</span></p><div><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]--><!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--></div>
+                    </div>
+                  	<div>
+                    	<div>
+  <iframe frameborder="0"
+    height="150" 
+    scrolling="no" 
+    src="https://firebirdfoundation.substack.com/embed" 
+    style="border:1px solid #EEE; background:white;" 
+    width="100%" 
+    allow="encrypted-media"
+    sandbox="allow-scripts allow-same-origin allow-forms"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>  
+                  	</div>
+                    <div class="post-tags">
+                        <ul>
+                            <li><a><i class="fa fa-share"></i> Share With:</a></li>
+                            <li style="cursor: pointer;"><a class="share-icon fb" data-url="/en/news/jaybird-2-2-5-released-38183"><i class="fab fa-facebook-f"></i></a></li>
+                          
+                            <li style="cursor: pointer;"><a class="share-icon lin" data-url="/en/news/jaybird-2-2-5-released-38183"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="post-reader-text post-reader-text-2 post-reader-text-3 pt-50">
+                    <div class="row">
+                                                    <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/firebird-tour-moscow-june-4-2014-38180">Firebird Tour: Moscow, June 4, 2014</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                                                            <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/ngram-indexes-in-firebird-fast-substring-search-without-a-full-scan">VIDEO: NGRAM indexes in Firebird: fast substring search without a full scan</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-20">
+                <div class="all-post-sidebar">
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

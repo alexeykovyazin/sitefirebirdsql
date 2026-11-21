@@ -1,0 +1,409 @@
+---
+title: "Firebird: Some Stored Procedures to Massage Dates"
+html_title: "Firebird: Some Stored Procedures to Massage Dates"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Some Stored Procedures to Massage Dates"
+menu_active: "/en/firebird-rdbms/"
+source_url: "/en/some-stored-procedures-to-massage-dates"
+source_format: new
+url: "/en/some-stored-procedures-to-massage-dates"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/documentation/">Documentation</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-rdbms/">Firebird RDBMS</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/white-papers-presentations/">White Papers &amp; Presentations</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Some Stored Procedures to Massage Dates</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    from Markus Ostenried<br /> <br /> I've translated some procedures from RxLib and the <strong>Jedi Code Library</strong>:<span style="font-family: Courier New;"> JclDateTime.pas</span> to SQL. Works fine for me. Maybe someone else can benefit from them, too. Or report me some unknown bugs :-)<br /> <br /> The HTML below uses the &lt;pre&gt; &amp; &lt;/pre&gt; tags to preformat the text and avoid embedded HTML tags. If you save the page source, you will be able to copy/paste the code sections directly into a fresh text file.  <br />  <pre>
+<span style="font-family: Courier New;">CREATE PROCEDURE  PROC_INCDATE( IN_DATE      TIMESTAMP<br />                              , IN_SECONDS  INTEGER<br />                              , IN_MINUTES  INTEGER<br />                              , IN_HOURS    INTEGER<br />                              , IN_DAYS     INTEGER<br />                              , IN_MONTHS   INTEGER<br />                              , IN_YEARS    INTEGER )<br />                      RETURNS ( OUT_RESULT  TIMESTAMP )<br />AS<br />DECLARE VARIABLE var_SecondsOfTime INTEGER;<br />DECLARE VARIABLE var_Time          TIME;<br />DECLARE VARIABLE var_Day           INTEGER;<br />DECLARE VARIABLE var_Month         INTEGER;<br />DECLARE VARIABLE var_Year          INTEGER;<br />DECLARE VARIABLE var_ModHour       INTEGER;<br />DECLARE VARIABLE var_ModMonth      INTEGER;<br />DECLARE VARIABLE var_DaysPerMonth  INTEGER;<br />BEGIN<br />   IF (IN_SECONDS IS NULL) THEN IN_SECONDS = 0;<br />   IF (IN_MINUTES IS NULL) THEN IN_MINUTES = 0;<br />   IF (IN_HOURS   IS NULL) THEN IN_HOURS   = 0;<br />   IF (IN_DAYS    IS NULL) THEN IN_DAYS    = 0;<br />   IF (IN_MONTHS  IS NULL) THEN IN_MONTHS  = 0;<br />   IF (IN_YEARS   IS NULL) THEN IN_YEARS   = 0;<br /><br />   /* function IncTime(ADateTime: TDateTime; Hours, Minutes, */<br />   /*   Seconds, MSecs: Integer): TDateTime;  */<br />   /* Result := ADateTime + (Hours div 24) + (((Hours mod 24) */<br />   /*   * 3600000 + Minutes * 60000 + Seconds * 1000 + MSecs) / MSecsPerDay); */<br /><br />   var_Time = CAST(in_Date AS TIME);<br />   var_SecondsOfTime = EXTRACT(HOUR   FROM var_Time)*60*60 +<br />                       EXTRACT(MINUTE FROM var_Time)*60 +<br />                       EXTRACT(SECOND FROM var_Time) +<br />                       in_Hours*60*60 + in_Minutes*60 + in_Seconds;<br />   in_Days = in_Days + CAST( var_SecondsOfTime/(24*60*60) - 0.49 AS INTEGER );<br /><br />   EXECUTE PROCEDURE PROC_MODULUS( var_SecondsOfTime, 86400 ) <br />                RETURNING_VALUES ( var_SecondsOfTime );<br />   var_Time = CAST( '00:00' AS TIME );<br />   var_Time = var_Time + var_SecondsOfTime;<br /><br />   EXECUTE PROCEDURE PROC_DecodeDate( in_Date ) <br />     RETURNING_VALUES ( var_Year ,var_Month, var_Day );<br />   var_Year = var_Year + in_Years;<br />   var_Year = var_Year + CAST(in_Months/12-0.49 AS INTEGER);<br /><br />   EXECUTE PROCEDURE PROC_MODULUS( in_Months, 12 ) RETURNING_VALUES ( var_ModMonth );<br />   var_Month = var_Month + var_ModMonth;<br /><br />   IF (var_Month &lt; 1) THEN <br />   BEGIN<br />     var_Month = var_Month + 12;<br />     var_Year = var_Year - 1;<br />   END<br />   ELSE<br />   IF (var_Month &gt; 12) THEN <br />   BEGIN<br />     var_Month = var_Month - 12;<br />     var_Year = var_Year + 1;<br />   END<br /><br />   EXECUTE PROCEDURE PROC_DAYSOFMONTH( var_Year, var_Month ) <br />                    RETURNING_VALUES ( var_DaysPerMonth );<br />   IF (var_Day &gt; var_DaysPerMonth) THEN <br />   BEGIN<br />     EXECUTE PROCEDURE PROC_DAYSOFMONTH( var_Year, var_Month ) <br />                    RETURNING_VALUES ( var_Day );<br />   END<br /><br />   EXECUTE PROCEDURE PROC_EncodeDate( var_Year, var_Month, var_Day ) <br />                   RETURNING_VALUES ( out_Result );<br />   out_Result = out_Result + in_Days;<br />   out_Result = CAST(out_Result AS DATE) + var_Time;<br /><br />/*<br />function IncDate(ADate: TDateTime; Days, Months, Years: Integer): TDateTime;<br />var<br />   D, M, Y: Word;<br />   Day, Month, Year: Longint;<br />begin<br />   DecodeDate(ADate, Y, M, D);<br />   Year := Y;<br />   Month := M;<br />   Day := D;<br />   Inc(Year, Years);<br />   Inc(Year, Months div 12);<br />   Inc(Month, Months mod 12);<br />   if Month &lt; 1 then begin<br />     Inc(Month, 12);<br />     Dec(Year);<br />   end<br />   else if Month &gt; 12 then begin<br />     Dec(Month, 12);<br />     Inc(Year);<br />   end;<br />   if Day &gt; DaysPerMonth(Year, Month) then<br />     Day := DaysPerMonth(Year, Month);<br />   Result := EncodeDate(Year, Month, Day) + Days + Frac(ADate);<br />end;<br />*/<br />END<br /><br />CREATE PROCEDURE  PROC_MODULUS( DIVIDEND  INTEGER<br />                              , DIVISOR   INTEGER )<br />                      RETURNS ( RESULT  INTEGER )<br />AS<br />BEGIN<br />   /* This procedure calculates the modulus of two numbers */<br />   IF(Dividend = 0) THEN Result = 0;<br />   ELSE<br />     Result = Dividend-(CAST((Dividend / Divisor)-0.49 AS INTEGER)*Divisor);<br />   /* Suspend;  Ed.- this isn't recommended */<br />END<br /><br />CREATE PROCEDURE  PROC_DECODEDATE( ADATE  TIMESTAMP )<br />                         RETURNS ( AYEAR  INTEGER<br />                                , AMONTH  INTEGER<br />                                , ADAY    INTEGER )<br />AS<br />BEGIN<br />   AYear  = Extract (Year from ADate);<br />   AMonth = Extract (Month from ADate);<br />   ADay   = Extract (Day from ADate);<br />   Suspend;<br />END<br /><br />CREATE PROCEDURE  PROC_ENCODEDATE( AYEAR  INTEGER<br />                                 , AMONTH INTEGER<br />                                 , ADAY   INTEGER )<br />                         RETURNS ( RESULT DATE )<br />AS<br />BEGIN<br />   Result = cast( ADay || '.' || AMonth || '.' || AYear as DATE);<br />   suspend;<br />END<br /><br />CREATE PROCEDURE  PROC_DAYSOFMONTH( AYEAR  INTEGER<br />                                  , AMONTH INTEGER )<br />                          RETURNS ( RESULT INTEGER )<br />AS<br />DECLARE VARIABLE WorkDate   DATE;<br />BEGIN<br />   Result = 31;<br />   WHILE (Result &gt; 28 AND WorkDate IS NULL) DO<br />   BEGIN<br />     EXECUTE PROCEDURE Proc_EncodeDate(AYear, AMonth, Result) <br />                      RETURNING_VALUES(WorkDate);<br />     WHEN ANY DO Result = Result -1;<br />   END<br />END<br /></span></pre><br /> Below is an SP for calculating Easter Sunday.<br /><br /> <pre>
+<span style="font-family: Courier New;">CREATE PROCEDURE  PROC_EASTERSUNDAY( IN_YEAR  INTEGER )<br />                           RETURNS ( OUT_DATE  DATE )<br />AS<br />DECLARE VARIABLE var_Month  INTEGER;<br />DECLARE VARIABLE var_Day    INTEGER;<br />DECLARE VARIABLE var_Moon   INTEGER;<br />DECLARE VARIABLE var_Epact  INTEGER;<br />DECLARE VARIABLE var_Sunday INTEGER;<br />DECLARE VARIABLE var_Gold   INTEGER;<br />DECLARE VARIABLE var_Cent   INTEGER;<br />DECLARE VARIABLE var_Corx   INTEGER;<br />DECLARE VARIABLE var_Corz   INTEGER;<br />DECLARE VARIABLE var_Tmp    INTEGER;<br />BEGIN<br />   /*{ The Golden Number of the year in the 19 year Metonic Cycle: }*/<br />   EXECUTE PROCEDURE PROC_MODULUS( :in_Year, 19 ) RETURNING_VALUES ( :var_Gold );<br />   var_Gold = var_Gold + 1;<br />   /*{ Calculate the Century: }*/<br />   var_Cent = CAST(in_Year/100-0.49 AS INTEGER) + 1;<br />   /*{ Number of years in which leap year was dropped in order... }*/<br />   /*{ to keep in step with the sun: }*/<br />   var_Corx = (3 * var_Cent);<br />   var_Corx = CAST(var_Corx/4-0.49 AS INTEGER) - 12;<br />   /*{ Special correction to syncronize Easter with moon's orbit: }*/<br />   var_Corz = (8 * var_Cent + 5);<br />   var_Corz = CAST(var_Corz/25-0.49 AS INTEGER) - 5;<br />   /*{ Find Sunday: }*/<br />   var_Sunday = (5 * in_Year);<br />   var_Sunday = CAST(var_Sunday/4-0.49 AS INTEGER) - var_Corx - 10;<br />   /*{ Set Epact - specifies occurrence of full moon: }*/<br />   var_Epact = (11 * var_Gold + 20 + var_Corz - var_Corx);<br /><br />   EXECUTE PROCEDURE PROC_MODULUS( :var_Epact, 30 ) RETURNING_VALUES ( :var_Epact );<br />   if (var_Epact &lt; 0) then begin<br />     var_Epact = var_Epact + 30;<br />   end<br />   if (((var_Epact = 25) and (var_Gold &gt; 11)) or (var_Epact = 24)) then begin<br />     var_Epact = var_Epact + 1;<br />   end<br />   /*{ Find Full Moon: }*/<br />   var_Moon = 44 - var_Epact;<br />   if (var_Moon &lt; 21) then begin<br />     var_Moon = var_Moon + 30;<br />   end<br />   /*{ Advance to Sunday: }*/<br />   var_Tmp = var_Sunday + var_Moon;<br /><br />   EXECUTE PROCEDURE PROC_MODULUS( :var_Tmp, 7 ) RETURNING_VALUES ( :var_Tmp );<br />   var_Moon = var_Moon + 7 - var_Tmp;<br />   if (var_Moon &gt; 31) then begin<br />     var_Month = 4;<br />     var_Day = var_Moon - 31;<br />   end else begin<br />     var_Month = 3;<br />     var_Day = var_Moon;<br />   end<br /><br />   EXECUTE PROCEDURE PROC_EncodeDate( :in_Year, :var_Month, :var_Day ) <br />                   RETURNING_VALUES ( :out_DATE );<br />   Suspend;<br />END<br /></span></pre><br /> This SP calculates the German &quot;Feiertage&quot; (feast days).<br /><br />  <pre>
+<span style="font-family: Courier New;">CREATE PROCEDURE  PROC_CALCFEIERTAGE( IN_START  DATE<br />                                     , IN_STOP  DATE )<br />                            RETURNS ( OUT_START TIMESTAMP<br />                                    , OUT_STOP  TIMESTAMP<br />                                    , OUT_NAME  VARCHAR(50) )<br />AS<br />DECLARE VARIABLE var_Year     INTEGER;<br />DECLARE VARIABLE var_StopYear INTEGER;<br />DECLARE VARIABLE var_Ostern   DATE;<br />BEGIN<br />   /* returns german &quot;Feiertage&quot; which are in range of the input params */<br />   /* author: Markus Ostenried, chef_007@gmx.net, markus@authentic-media.com */<br /><br />   var_Year     = EXTRACT( YEAR FROM in_Start );<br />   var_StopYear = EXTRACT( YEAR FROM in_Stop  );<br />   WHILE (var_Year &lt;= var_StopYear) DO BEGIN<br /><br />     /* Neujahr */<br />     out_Start = CAST('01.01.' || var_Year || ' 00:00:00' AS TIMESTAMP);<br />     out_Stop  = CAST(out_Start  AS DATE) + CAST('23:59:59' AS TIME);<br />     IF (NOT (out_STOP &lt; in_START) AND NOT (out_START &gt; in_STOP)) THEN BEGIN<br />       OUT_NAME = 'Neujahr';<br />       Suspend;<br />     END<br /><br />     /* Heilige drei Koenige */<br />     out_Start = CAST('06.01.' || var_Year || ' 00:00:00' AS TIMESTAMP);<br />     out_Stop  = CAST(out_Start  AS DATE) + CAST('23:59:59' AS TIME);<br />     IF (NOT (out_STOP &lt; in_START) AND NOT (out_START &gt; in_STOP)) THEN BEGIN<br />       OUT_NAME = 'Heilige drei Koenige';<br />       Suspend;<br />     END<br /><br />     /* Maifeiertag */<br />     out_Start = CAST('01.05.' || var_Year || ' 00:00:00' AS TIMESTAMP);<br />     out_Stop  = CAST(out_Start  AS DATE) + CAST('23:59:59' AS TIME);<br />     IF (NOT (out_STOP &lt; in_START) AND NOT (out_START &gt; in_STOP)) THEN BEGIN<br />       OUT_NAME = 'Maifeiertag';<br />       Suspend;<br />     END<br /><br />     /* Tag der dt. Einheit */<br />     out_Start = CAST('03.10.' || var_Year || ' 00:00:00' AS TIMESTAMP);<br />     out_Stop  = CAST(out_Start  AS DATE) + CAST('23:59:59' AS TIME);<br />     IF (NOT (out_STOP &lt; in_START) AND NOT (out_START &gt; in_STOP)) THEN BEGIN<br />       OUT_NAME = 'Tag der dt. Einheit';<br />       Suspend;<br />     END<br /><br />     /* 1. Weihnachtsfeiertag */<br />     out_Start = CAST('25.12.' || var_Year || ' 00:00:00' AS TIMESTAMP);<br />     out_Stop  = CAST(out_Start  AS DATE) + CAST('23:59:59' AS TIME);<br />     IF (NOT (out_STOP &lt; in_START) AND NOT (out_START &gt; in_STOP)) THEN BEGIN<br />       OUT_NAME = '1. Weihnachtsfeiertag';<br />       Suspend;<br />     END<br /><br />     /* 2. Weihnachtsfeiertag */<br />     out_Start = CAST('26.12.' || var_Year || ' 00:00:00' AS TIMESTAMP);<br />     out_Stop  = CAST(out_Start  AS DATE) + CAST('23:59:59' AS TIME);<br />     IF (NOT (out_STOP &lt; in_START) AND NOT (out_START &gt; in_STOP)) THEN BEGIN<br />       OUT_NAME = '2. Weihnachtsfeiertag';<br />       Suspend;<br />     END<br /><br />     EXECUTE PROCEDURE PROC_EASTERSUNDAY( var_Year ) <br />                       RETURNING_VALUES ( var_Ostern );<br /><br />     /* Ostersonntag */<br />     out_Start = CAST(var_Ostern AS DATE) + CAST('00:00:00' AS TIME);<br />     out_Stop  = CAST(out_Start  AS DATE) + CAST('23:59:59' AS TIME);<br />     IF (NOT (out_STOP &lt; in_START) AND NOT (out_START &gt; in_STOP)) THEN BEGIN<br />       OUT_NAME = 'Ostersonntag';<br />       Suspend;<br />     END<br /><br />     /* Ostermontag */<br />     out_Start = CAST(var_Ostern AS DATE) + 1 + CAST('00:00:00' AS TIME);<br />     out_Stop  = CAST(out_Start  AS DATE) + CAST('23:59:59' AS TIME);<br />     IF (NOT (out_STOP &lt; in_START) AND NOT (out_START &gt; in_STOP)) THEN BEGIN<br />       OUT_NAME = 'Ostermontag';<br />       Suspend;<br />     END<br /><br />     /* Aschermittwoch */<br />     out_Start = CAST(var_Ostern AS DATE) - 46 + CAST('00:00:00' AS TIME);<br />     out_Stop  = CAST(out_Start  AS DATE) + CAST('23:59:59' AS TIME);<br />     IF (NOT (out_STOP &lt; in_START) AND NOT (out_START &gt; in_STOP)) THEN BEGIN<br />       OUT_NAME = 'Aschermittwoch';<br />       Suspend;<br />     END<br /><br />     /* Karfreitag */<br />     out_Start = CAST(var_Ostern AS DATE) - 2 + CAST('00:00:00' AS TIME);<br />     out_Stop  = CAST(out_Start  AS DATE) + CAST('23:59:59' AS TIME);<br />     IF (NOT (out_STOP &lt; in_START) AND NOT (out_START &gt; in_STOP)) THEN BEGIN<br />       OUT_NAME = 'Karfreitag';<br />       Suspend;<br />     END<br /><br />     /* Christi Himmelfahrt */<br />     out_Start = CAST(var_Ostern AS DATE) + 39 + CAST('00:00:00' AS TIME);<br />     out_Stop  = CAST(out_Start  AS DATE) + CAST('23:59:59' AS TIME);<br />     IF (NOT (out_STOP &lt; in_START) AND NOT (out_START &gt; in_STOP)) THEN BEGIN<br />       OUT_NAME = 'Christi Himmelfahrt';<br />       Suspend;<br />     END<br /><br />     /* Pfingstsonntag */<br />     out_Start = CAST(var_Ostern AS DATE) + 49 + CAST('00:00:00' AS TIME);<br />     out_Stop  = CAST(out_Start  AS DATE) + CAST('23:59:59' AS TIME);<br />     IF (NOT (out_STOP &lt; in_START) AND NOT (out_START &gt; in_STOP)) THEN BEGIN<br />       OUT_NAME = 'Pfingstsonntag';<br />       Suspend;<br />     END<br /><br />     /* Pfingstmontag */<br />     out_Start = CAST(var_Ostern AS DATE) + 50 + CAST('00:00:00' AS TIME);<br />     out_Stop  = CAST(out_Start  AS DATE) + CAST('23:59:59' AS TIME);<br />     IF (NOT (out_STOP &lt; in_START) AND NOT (out_START &gt; in_STOP)) THEN BEGIN<br />       OUT_NAME = 'Pfingstmontag';<br />       Suspend;<br />     END<br /><br />     /* Fronleichnam */<br />     out_Start = CAST(var_Ostern AS DATE) + 60 + CAST('00:00:00' AS TIME);<br />     out_Stop  = CAST(out_Start  AS DATE) + CAST('23:59:59' AS TIME);<br />     IF (NOT (out_STOP &lt; in_START) AND NOT (out_START &gt; in_STOP)) THEN BEGIN<br />       OUT_NAME = 'Fronleichnam';<br />       Suspend;<br />     END<br /><br />     var_Year = var_Year + 1;<br />   END<br /><br />/*<br />   http://www.weltzeituhr.com/infos/kirchliche_feiertage.htm<br />   Aschermittwoch      : 46 Tage vor Ostersonntag<br />   Karfreitag          :  2 Tage vor Ostersonntag<br />   Christi Himmelfahrt : 39 Tage nach Ostersonntag<br />   Pfingstsonntag      : 49 Tage nach Ostersonntag<br />   Fronleichnam        : 60 Tage nach Ostersonntag<br />*/<br /><br />END<br /></span></pre>
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Documentation</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-rdbms/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird RDBMS</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-notes/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Notes</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/reference-manuals/" class="menulvl_3"><i class="fa fa-arrow-right"></i> All Reference Manuals</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/white-papers-presentations/" class="menulvl_3"><i class="fa fa-arrow-right"></i> White Papers &amp; Presentations</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/books/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Books</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/drivers-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Drivers Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-docs-and-articles/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Docs and Articles</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/external-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> External Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/licensing/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Licensing</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/features/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Features</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sql-conformance/" class="menulvl_3"><i class="fa fa-arrow-right"></i> SQL Conformance</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/historical-reference/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Historical Reference</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-doc/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-brand-faq/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Branding Policy</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Brand FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/logos/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Logos</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-and-other-databases/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird and other databases</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

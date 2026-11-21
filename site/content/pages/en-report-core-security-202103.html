@@ -1,0 +1,151 @@
+---
+title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+html_title: "Firebird: Developer's Report: Core Security and Design Enhancements"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Security and Design Enhancements"
+menu_active: ""
+source_url: "/en/report-core-security-202103"
+source_format: new
+url: "/en/report-core-security-202103"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Security and Design Enhancements</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <span style="color:#0686AD;font-size:16px;font-weight:bold;">January to March 2021</span>
+
+<h4>First 2 big jobs:</h4>
+1. Took care about Android build. Main changes:
+
+<ul>
+	<li>use standard (at least documented by Google) way to build tasks with own build system, that simplifies changing NDK versions</li>
+	<li>added ICU to our build for android cause one supported by Google in Android is broken</li>
+	<li>support both arm32/arm64 android builds for both FB3/FB4.</li>
+</ul>
+2. (together with Paul Beach) - sandboxed build for MacOS, cross-build for Mac M1.
+
+<h4>And next some regular fixes:</h4>
+
+<ol>
+	<li>Fixed CORE-6498: Firebird server stops to listen to new connections after error in nbackup service</li>
+	<li>Fixed CORE-6468: Wire compression causes sporadic &quot;Error reading data from the connection.&quot; errors.</li>
+	<li>Fixed CORE-6501: Segfault when shutting down database which got encrypted by another process</li>
+	<li>Fixed CORE-6509: Segfault when gfix requests for database page buffer more memory than available from OS</li>
+	<li>Fixed CORE-6503: Attempt to create database with page_size &gt;= 65536 makes DB with actual page size = 4k or 8k, but not 32k as it would be</li>
+	<li>Fixed CORE-6499: Regression: gstat with switch -t executed via services using old python driver fails with &quot;found unknown switch&quot; error&nbsp;</li>
+	<li>Fixed CORE-6479: COMMENT ON USER can only apply comment on user defined by the default usermanager plugin</li>
+	<li>Fixed CORE-6489: User without ALTER ANY ROLE privilege can use COMMENT ON ROLE</li>
+	<li>Fixed CORE-6446: CLOOP envelopes is wrong in IStatus</li>
+	<li>Fixed CORE-6516: Protect included tomcrypt library from being overwritten by system package</li>
+	<li>Fixed CORE-6525: Segfaults in fbclient when receiving invalid / unexpected data from server</li>
+</ol>
+
+<p><em>Alex Peshkov<br />
+Yaroslavl, Russia</em></p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

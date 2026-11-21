@@ -1,0 +1,248 @@
+---
+title: "Firebird: Developer's Report: Firebird Core Development & Coordination"
+html_title: "Firebird: Developer's Report: Firebird Core Development & Coordination"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Firebird Core Development & Coordination"
+menu_active: ""
+source_url: "/en/report-core-coordination-202109"
+source_format: new
+url: "/en/report-core-coordination-202109"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Firebird Core Development &amp; Coordination</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <strong style="line-height: 20.8px;"><span style="color: rgb(6, 134, 173); font-size: 16px;">April to August 2021</span></strong><br style="line-height: 20.8px;" />
+&nbsp;
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><strong><u>August 2021</u></strong></span></div>
+
+<div style="line-height: 20.8px;">&nbsp;</div>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">New development:</div>
+
+<ul>
+	<li style="line-height: 20.8px;">WIP: Better optimization of EXISTS/IN subqueries</li>
+</ul>
+
+<div style="line-height: 20.8px;">Bugfixing:</div>
+
+<div style="line-height: 20.8px;">
+<div>
+<ul>
+	<li>#6935: SQL SECURITY DEFINER has inconsistent behaviour if the object owner is non-privileged</li>
+	<li>#6907: Failed DDL commands can be replicated</li>
+	<li>#6909: Some updates can crash Firebird server on replica side</li>
+	<li>Fixed target length when dbkey is converted into a string</li>
+</ul>
+</div>
+</div>
+<strong style="color: rgb(71, 71, 71); font-size: 15px;"><u>July 2021</u></strong><br />
+&nbsp;
+<div style="line-height: 20.8px;">New Developement:
+<ul>
+	<li>WIP: Better optimization of EXISTS/IN subqueries</li>
+</ul>
+Bugfixing:
+
+<div style="line-height: 20.8px;">
+<ul>
+	<li>#6893: Problem with replication of BLOB segments longer than 32KB</li>
+</ul>
+<span style="color:#474747;font-size:15px;font-weight:bold;"><u>June 2021</u></span></div>
+</div>
+</div>
+
+<div style="line-height: 20.8px;">
+<div>&nbsp;</div>
+
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">New Developement:
+<div>
+<ul>
+	<li>WIP: Better optimization of EXISTS/IN subqueries</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div>
+<div style="line-height: 20.8px;">Bugfixing:</div>
+
+<ul>
+	<li class="commit-title">#6853: Asynchronous replication leaks file handles</li>
+	<li class="commit-title">#6850: Database-level and DDL triggers are executed at the replica side</li>
+	<li class="commit-title">#6849: Conflicting INSERT propagated into a read-write replica may cause duplicate records to appear</li>
+	<li class="commit-title">#6848: Generator values may not replicate after commit</li>
+	<li class="commit-title">#6838: Deleting multiple rows from a view with triggers may cause triggers to fire just once</li>
+</ul>
+<span style="color:#474747;font-size:15px;font-weight:bold;"><u>May 2021</u></span>
+
+<div>&nbsp;</div>
+
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">New Developement:
+<div>
+<ul>
+	<li>Misc initial settings for v5 (package and the security database names, changelog, etc)</li>
+	<li>Allow replication for a freshly created database</li>
+	<li>Allow multiple appliers per attachment</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div style="line-height: 20.8px;">Bugfixing:</div>
+
+<ul>
+	<li class="commit-title">#6795: Replication gets stuck on an empty blob</li>
+	<li class="commit-title">Fixed partially released external triggers</li>
+	<li class="commit-title">Fixed dsc::isNumeric() method to cover also INT128</li>
+	<li class="commit-title">Fixed leaked Y-handle</li>
+	<li class="commit-title">Fixed races after journal renaming on Classic</li>
+	<li class="commit-title">Validate user-specified GUIDs instead of silently ignoring them</li>
+</ul>
+
+<div style="line-height: 20.8px;">Other:</div>
+
+<ul>
+	<li>Renamed replication &#39;log&#39; to &#39;journal&#39;</li>
+	<li>v4 release notes</li>
+</ul>
+<span style="color:#474747;font-size:15px;font-weight:bold;"><u>April 2021</u></span>
+
+<div>&nbsp;</div>
+
+<div>
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;">New Developement:
+<div>
+<ul>
+	<li>#6767: A way for a replication plugin to refuse attachment</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div style="line-height: 20.8px;">Bugfixing:</div>
+
+<ul>
+	<li class="commit-title">#6778: Inconsistent cursor-driven deletion</li>
+	<li class="commit-title">CORE-6539: Replication plugin can crash engine returning nullptr from startTransaction() method</li>
+	<li class="commit-title">CORE-6534: Hash join cannot match records using some TIME ZONE / DECFLOAT keys</li>
+</ul>
+</div>
+</div>
+<em>Dmitry Yemanov</em><br />
+<em style="line-height: 20.8px;">Penza, Russia</em>
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

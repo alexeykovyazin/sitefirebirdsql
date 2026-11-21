@@ -1,0 +1,279 @@
+---
+title: "Firebird: Migration Framework for Firebird"
+html_title: "Firebird: Migration Framework for Firebird"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Migration Framework for Firebird"
+menu_active: "/en/shop/"
+source_url: "/migration-framework-for-firebird"
+source_format: new
+url: "/migration-framework-for-firebird"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/shop/">Shop</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/ibsurgeon-firebirdsql/">IBSurgeon</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Migration Framework for Firebird</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p style="text-align: center;"><strong>Purchases through <a href="/en/shop/">FirebirdSQL shop</a> generate commissions that fund open source Firebird development.</strong></p>
+
+<table border="1" width="100%">
+	<tbody>
+		<tr>
+			<th>License: Migration Framework for 5 databases</th>
+		</tr>
+		<tr>
+			<td><strong>Price:</strong> <a href="https://store.payproglobal.com/checkout?products%5B1%5D%5Bid%5D=114887">EUR &euro;340 / USD $395</a><br />
+			<strong>Description:</strong> Migrate 5 databases.</td>
+		</tr>
+	</tbody>
+</table>
+
+<table border="1" width="100%">
+	<tbody>
+		<tr>
+			<th>License: Migration Framework for 500 databases</th>
+		</tr>
+		<tr>
+			<td><strong>Price:</strong> <a href="https://store.payproglobal.com/checkout?products%5B1%5D%5Bid%5D=114888">EUR &euro;2350 / USD $2999</a><br />
+			<strong>Description:</strong>&nbsp;Migrate 500 databases.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Migration Framework for Firebird (Vendor: IBSurgeon)</h2>
+
+<p>The Migration Framework is a comprehensive tool designed to automate the migration of Firebird databases between different versions. It performs the complete backup/restore process, recompiles objects, and adapts them to the new version, eliminating the need for manual database administration during migration.</p>
+
+<h3>Key Features</h3>
+
+<h4>Automated Migration Process</h4>
+
+<p>The framework converts Firebird/HQBird databases to the desired version through an automated six-step process:</p>
+
+<ol>
+	<li>Execute pre-migration scripts</li>
+	<li>Upgrade databases through backup/restore</li>
+	<li>Upgrade database dialect</li>
+	<li>Replace double quotes for dialect 3 compatibility</li>
+	<li>Execute post-migration scripts</li>
+	<li>Recompile all database objects</li>
+</ol>
+
+<h4>Platform Compatibility</h4>
+
+<p>Compatible with Windows operating systems and can run separately or integrated with HQBird v2024. Linux support is approved for Ubuntu 22 and above.</p>
+
+<h4>Version Support</h4>
+
+<p>Supports migration between Firebird versions 2.5, 3.0, 4.0, and 5.0. Can handle databases files (usual extension .FDB) and backup files (FBK).</p>
+
+<h4>Batch Processing</h4>
+
+<p>Processes multiple databases simultaneously in a single migration run. Successfully migrated databases are automatically moved to designated &quot;OK&quot; folders for easy identification.</p>
+
+<h4>Script Execution</h4>
+
+<p>Supports custom SQL scripts execution before and after migration:</p>
+
+<ul>
+	<li><strong>Pre-scripts:</strong> Execute before backup on source databases</li>
+	<li><strong>Post-scripts:</strong> Execute after restore but before recompilation</li>
+	<li><strong>Selective execution:</strong> Scripts can target specific databases using database name declarations</li>
+	<li><strong>Alphabetical ordering:</strong> Scripts execute in alphabetical order for predictable sequence</li>
+</ul>
+
+<h4>Object Recompilation</h4>
+
+<p>Automatically recompiles (recreates) all database objects (procedures, triggers, functions) to ensure compatibility with the target version. Identifies and reports syntax errors that require manual correction.</p>
+
+<h4>Dialect Migration</h4>
+
+<p>Handles migration from Firebird dialect 1 to dialect 3, including:</p>
+
+<ul>
+	<li>Automatic correction of current_date to localtimestamp usage</li>
+	<li>Optional replacement of double quotes with single quotes in PSQL code</li>
+</ul>
+
+<h4>Security Database Migration</h4>
+
+<p>Special handling for security database migration from Firebird 2.5 to 3.0+ with new SRP authentication method. Automatically generates new passwords for users (original passwords cannot be recovered).</p>
+
+<h4>Performance Options</h4>
+
+<p>When using HQBird binaries or Firebird 5.0+, supports multi-threaded backup and restore operations using the &quot;-par N&quot; parameter to specify the number of CPU cores to utilize.</p>
+
+<h4>UDF Support</h4>
+
+<p>Handles User Defined Functions (UDFs) during migration. Requires 64-bit UDF libraries for compatibility with the 64-bit distributed binaries.</p>
+
+<h4>Logging</h4>
+
+<p>Generates detailed logs for the entire migration process:</p>
+
+<ul>
+	<li>Individual backup logs for each database</li>
+	<li>Individual restore logs for each database</li>
+	<li>Complete migration process log (migra.log)</li>
+	<li>Error identification with searchable tags (#ERROR# or #ERRO#)</li>
+	<li>Recompilation results and summary reports</li>
+</ul>
+
+<h3>Installation Options</h3>
+
+<h4>HQBird Integration</h4>
+
+<p>Can be installed in C:\HQBird\Migr to use existing HQBird Firebird binaries. Both source and target versions must be installed via HQBird.</p>
+
+<h4>Standalone Installation</h4>
+
+<p>Can be installed separately in C:\Migrate or /opt/migrate with embedded Firebird binaries included in the FB folder structure.</p>
+
+<h3>Configuration</h3>
+
+<p>All settings are managed through a conf.ini configuration file with sections for:</p>
+
+<ul>
+	<li><strong>Authentication:</strong> Database user credentials (typically SYSDBA)</li>
+	<li><strong>Parameters:</strong> Migration process control flags</li>
+	<li><strong>Charset settings:</strong> Character set configuration for scripts and connections</li>
+	<li><strong>Backup/Restore options:</strong> Custom gbak parameters</li>
+	<li><strong>Version specification:</strong> Source and target Firebird versions</li>
+	<li><strong>Language settings:</strong> Brazilian Portuguese or English interface</li>
+</ul>
+
+<h3>Folder Structure</h3>
+
+<ul>
+	<li><strong>IN:</strong> Source database files (.FDB or .FBK)</li>
+	<li><strong>OUT:</strong> Converted database files</li>
+	<li><strong>IN/OK and OUT/OK:</strong> Successfully migrated databases</li>
+	<li><strong>SCRIPTS/PRE:</strong> Pre-migration SQL scripts</li>
+	<li><strong>SCRIPTS/POS:</strong> Post-migration SQL scripts</li>
+	<li><strong>FB:</strong> Embedded Firebird binaries (standalone installation)</li>
+</ul>
+
+<h3>Licensing</h3>
+
+<p>The framework allows a limited number of free conversions for evaluation. Full licensing is available for purchase, with registration handled automatically after first purchase. Updates are checked automatically and available through the official website.</p>
+
+<h3>Basic Usage Steps</h3>
+
+<ol>
+	<li>Download and install the application</li>
+	<li>Add source databases to the &quot;IN&quot; subfolder</li>
+	<li>Configure settings in conf.ini file</li>
+	<li>Run the Migrate.exe executable</li>
+	<li>Analyze generated logs</li>
+	<li>Retrieve successfully converted databases from &quot;/OUT/OK&quot; folder</li>
+</ol>
+
+<p>&nbsp;</p>
+
+<p><em>Remember that purchasing services and products in Firebird SQL shop directly funds the development of free open source Firebird SQL.</em></p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

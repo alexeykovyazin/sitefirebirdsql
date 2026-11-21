@@ -1,0 +1,231 @@
+---
+title: "Firebird: Jaybird 6.0.6 and Jaybird 5.0.13 released"
+html_title: "Firebird: Jaybird 6.0.6 and Jaybird 5.0.13 released"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Jaybird 6.0.6 and Jaybird 5.0.13 released"
+menu_active: ""
+source_url: "/en/news/jaybird-6-0-6-and-jaybird-5-0-13-released"
+source_format: new
+url: "/en/news/jaybird-6-0-6-and-jaybird-5-0-13-released"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+ 
+    <section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/about-firebird/">About Firebird</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/news/">News &amp; Events</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Jaybird 6.0.6 and Jaybird 5.0.13 released</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-8">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div class="post-categories d-flex justify-content-between align-content-center">
+                        <div class="categories-share">
+                            <ul>
+                                <li><i class="fas fa-calendar"></i> Aug 21, 2026</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="title">Jaybird 6.0.6 and Jaybird 5.0.13 released</h3>
+                                            </div>
+                    <div class="post-text mt-30">
+                        <p>We are happy to announce the release of Jaybird 6.0.6 and Jaybird 5.0.13, providing bug fixes. Jaybird is the Firebird JDBC driver.</p>
+
+<h2>Changes</h2>
+
+<p>The following was fixed or changed in Jaybird 6.0.6:</p>
+
+<ul>
+	<li>Two system properties were added to disable forced close of a connection after fatal errors (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/893/hovercard" data-id="3433945183" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/893" href="https://github.com/FirebirdSQL/jaybird/issues/893" target="_blank">#893</a>)</li>
+	<li>Fixed: Legacy authentication fails with non-ASCII characters in password (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/858/hovercard" data-id="2966291709" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/858" href="https://github.com/FirebirdSQL/jaybird/issues/858" target="_blank">#858</a>)</li>
+	<li>Fixed: Off-by-one error in default value for <code>maxInlineBlobSize</code> (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/937/hovercard" data-id="4296182138" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/937" href="https://github.com/FirebirdSQL/jaybird/issues/937" target="_blank">#937</a>)</li>
+	<li>Fixed: <code>NullPointerException</code> on authentication failure with non-existent user and single plugin in <code>AuthServer</code> (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/940/hovercard" data-id="4371303524" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/940" href="https://github.com/FirebirdSQL/jaybird/issues/940" target="_blank">#940</a>)</li>
+	<li>Improvement: Support customization of service requests in service managers (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/946/hovercard" data-id="4775279280" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/946" href="https://github.com/FirebirdSQL/jaybird/issues/946" target="_blank">#946</a>)</li>
+	<li>Dependency update: updated <code>net.java.dev.jna:jna-jpms</code> from 5.18.1 to 5.19.1 (used by <code>jaybird-native</code>) (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/951/hovercard" data-id="4801320282" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/951" href="https://github.com/FirebirdSQL/jaybird/issues/951" target="_blank">#951</a>)</li>
+	<li>Added <code>TransactionState.ABORTED_UNKNOWN</code> (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/955/hovercard" data-id="5028937119" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/955" href="https://github.com/FirebirdSQL/jaybird/issues/955" target="_blank">#955</a>)</li>
+	<li>Dependency update: updated <code>org.bouncycastle:bcprov-jdk18on</code> from 1.83 to 1.85.2 (used by <code>chacha64-plugin</code>) (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/957/hovercard" data-id="5201390720" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/957" href="https://github.com/FirebirdSQL/jaybird/issues/957" target="_blank">#957</a>)</li>
+	<li>The GPG key used to sign releases on Maven Central and GitHub was changed to key-id 373F 65A9 F373 1D5C (fingerprint 8372 B5DA 39C9 2FE1 DB4B BB62 373F 65A9 F373 1D5C). This is a 4096-bit key, where the previous one was 2048 bit.</li>
+</ul>
+
+<p>The following was fixed or changed in Jaybird 5.0.13:</p>
+
+<ul>
+	<li>Fixed: Legacy authentication fails with non-ASCII characters in password (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/931/hovercard" data-id="4164657920" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/931" href="https://github.com/FirebirdSQL/jaybird/issues/931" target="_blank">#931</a>)</li>
+	<li>Two system properties were added to disable forced close of a connection after fatal errors (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/934/hovercard" data-id="4200147990" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/934" href="https://github.com/FirebirdSQL/jaybird/issues/934" target="_blank">#934</a>)</li>
+	<li>Fixed: Off-by-one error in default value for <code>maxInlineBlobSize</code> (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/939/hovercard" data-id="4300725626" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/939" href="https://github.com/FirebirdSQL/jaybird/issues/939" target="_blank">#939</a>)</li>
+	<li>Improvement: Support customization of service requests in service managers (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/947/hovercard" data-id="4775283106" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/947" href="https://github.com/FirebirdSQL/jaybird/issues/947" target="_blank">#947</a>)</li>
+	<li>Dependency update: updated <code>net.java.dev.jna:jna</code> from 5.18.1 to 5.19.1 (used by native and embedded) (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/952/hovercard" data-id="4801326414" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/952" href="https://github.com/FirebirdSQL/jaybird/issues/952" target="_blank">#952</a>)</li>
+	<li>Made changes to address various potentially confusing warnings and errors logged during finalization (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/953/hovercard" data-id="5017944412" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/953" href="https://github.com/FirebirdSQL/jaybird/issues/953" target="_blank">#953</a>)</li>
+	<li>The GPG key used to sign releases on Maven Central and GitHub was changed to key-id 373F 65A9 F373 1D5C (fingerprint 8372 B5DA 39C9 2FE1 DB4B BB62 373F 65A9 F373 1D5C). This is a 4096-bit key, where the previous one was 2048 bit.</li>
+</ul>
+
+<p>Bug reports about undocumented changes in behavior are appreciated. Feedback can be sent to <a href="https://groups.google.com/g/firebird-java" target="_blank">Firebird-java</a> or reported on the issue tracker <a href="https://github.com/FirebirdSQL/jaybird/issues" target="_blank">https://github.com/FirebirdSQL/jaybird/issues</a>.</p>
+
+<h2>Jaybird 6.0.6</h2>
+
+<p>Jaybird 6 supports Firebird 3.0, Firebird 4.0, and Firebird 5.0, on Java 17, Java 21, Java 25, and Java 26.</p>
+
+<p>See also:</p>
+
+<ul>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html">Jaybird 6 release notes</a></li>
+	<li><a href="/en/jdbc-driver/">Jaybird downloads</a></li>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html?v=6.0.6#maven">Instructions for Maven</a></li>
+</ul>
+
+<h2>Jaybird 5.0.13</h2>
+
+<p>Jaybird 5 supports Firebird 2.5,&nbsp;Firebird 3.0, Firebird 4.0, and Firebird 5.0, on Java 8, Java 11, Java 17, Java 21, Java 25, and Java 26 (support for Java 11 and higher using the Java 11 version of the driver).&nbsp;</p>
+
+<p>See also:</p>
+
+<ul>
+	<li><a href="/docs/drivers/java/5.0.x/release_notes.html">Jaybird 5 release notes</a></li>
+	<li><a href="/en/jdbc-driver/">Jaybird downloads</a></li>
+	<li><a href="/docs/drivers/java/5.0.x/release_notes.html#maven">Instructions for Maven</a></li>
+</ul>
+
+                    </div>
+                  	<div>
+                    	<div>
+  <iframe frameborder="0"
+    height="150" 
+    scrolling="no" 
+    src="https://firebirdfoundation.substack.com/embed" 
+    style="border:1px solid #EEE; background:white;" 
+    width="100%" 
+    allow="encrypted-media"
+    sandbox="allow-scripts allow-same-origin allow-forms"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>  
+                  	</div>
+                    <div class="post-tags">
+                        <ul>
+                            <li><a><i class="fa fa-share"></i> Share With:</a></li>
+                            <li style="cursor: pointer;"><a class="share-icon fb" data-url="/en/news/jaybird-6-0-6-and-jaybird-5-0-13-released"><i class="fab fa-facebook-f"></i></a></li>
+                          
+                            <li style="cursor: pointer;"><a class="share-icon lin" data-url="/en/news/jaybird-6-0-6-and-jaybird-5-0-13-released"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="post-reader-text post-reader-text-2 post-reader-text-3 pt-50">
+                    <div class="row">
+                                                    <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/digest-of-q2-2026-firebird-news">Digest of Q2 2026 Firebird news</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                                                            <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/ngram-indexes-in-firebird-fast-substring-search-without-a-full-scan">VIDEO: NGRAM indexes in Firebird: fast substring search without a full scan</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-20">
+                <div class="all-post-sidebar">
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

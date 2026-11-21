@@ -1,0 +1,663 @@
+---
+title: "Firebird: How to Report Bugs"
+html_title: "Firebird: How to Report Bugs"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "How to Report Bugs"
+menu_active: "/en/development/"
+source_url: "/en/how-to-report-bugs"
+source_format: new
+url: "/en/how-to-report-bugs"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/development/">Development</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/devel-qa/">Quality Assurance</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">How to Report Bugs</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <em>by </em><a href="http://pobox.com/~anakin/" target="_blank"><em>Simon Tatham</em></a><em>, professional and free-software programmer</em><br />
+<br />
+You can find the original / latest version of this article <a href="http://www.chiark.greenend.org.uk/~sgtatham/bugs.html" target="_blank">here</a>.
+
+<div style="color: rgb(86, 86, 86); font-size: 11px; padding: 10px 15px 10px 25px;">NOTE: Simon Tatham is not a Firebird Project member! We reproduced his article about Bug reports here because it&#39;s excellent, and it would be pointless to try write better one.</div>
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Introduction</span></strong>
+
+<div style="text-align: justify;">Anybody who has written software for public use will probably have received at least one bad bug report. Reports that say nothing (&quot;It doesn&#39;t work!&quot;); reports that make no sense; reports that don&#39;t give enough information; reports that give wrong information. Reports of problems that turn out to be user error; reports of problems that turn out to be the fault of somebody else&#39;s program; reports of problems that turn out to be network failures.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">There&#39;s a reason why technical support is seen as a horrible job to be in, and that reason is bad bug reports. However, not all bug reports are unpleasant: I maintain free software, when I&#39;m not earning my living, and sometimes I receive wonderfully clear, helpful, informative bug reports.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">In this essay I&#39;ll try to state clearly what makes a good bug report. Ideally, I would like everybody in the world to read this essay before reporting any bugs to anybody. Certainly I would like everybody who reports bugs to me to have read it.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">In a nutshell, the aim of a bug report is to enable the programmer to see the program failing in front of him. You can either show him in person, or give him careful and detailed instructions on how to make it fail. If he can make it fail, he will try to gather extra information until he knows the cause. If he can&#39;t make it fail, he will have to ask you to gather that information for him.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">In bug reports, try to make very clear what are actual facts (&quot;I was at the computer and this happened&quot;) and what are speculations (&quot;I think the problem might be this&quot;). Leave out speculations if you want to, but don&#39;t leave out facts.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">When you report a bug, you are doing so because you want the bug fixed. There is no point in swearing at the programmer or being deliberately unhelpful. It may be his fault and your problem, and you might be right to be angry with him, but the bug will get fixed faster if you help by supplying all the information he needs. Remember also that if the program is free, the author is providing it out of kindness, so if too many people are rude to him, he may stop feeling kind.</div>
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">It doesn&#39;t work</span></strong>
+
+<div style="text-align: justify;">Give the programmer some credit for basic intelligence. If the program really didn&#39;t work at all, he would probably have noticed. Since he hasn&#39;t noticed, it must be working for him. Therefore, either you are doing something differently, or your environment is different from his. He needs information; providing this information is the purpose of a bug report. More information is almost always better than less.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">Many programs, particularly free ones, publish their list of known bugs. If you can find a list of known bugs, it&#39;s worth reading it to see if the bug you&#39;ve just found is already known or not. If it&#39;s already known, it probably isn&#39;t worth reporting again, but if you think you have more information than the report in the bug list, you might want to contact the programmer anyway. He might be able to fix the bug more easily if you can give him information he didn&#39;t already have.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">This essay is full of guidelines. None of them is an absolute rule. Particular programmers have particular ways they like bugs to be reported. If the program comes with its own set of bug-reporting guidelines, read them. If the guidelines that come with the program contradict the guidelines in this essay, follow the ones that come with the program!<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">If you are not reporting a bug but just asking for help using the program, you should state where you have already looked for the answer to your question. (&quot;I looked in chapter 4 and section 5.2 but couldn&#39;t find anything that told me if this is possible.&quot;) This will let the programmer know where people will expect to find the answer, so they can make the documentation easier to use.</div>
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Show me</span></strong>
+
+<div style="text-align: justify;">One of the very best ways you can report a bug is by showing it to the programmer. Stand him in front of your computer, fire up his software, and demonstrate the thing that goes wrong. Let him watch you start the machine, watch you run the software, watch how you interact with the software, and watch what the software does in response to your inputs.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">He knows that software like the back of his hand. He knows which parts he trusts, and he knows which parts are likely to have faults. He knows intuitively what to watch for. By the time the software does something obviously wrong, he may well have already noticed something subtly wrong earlier which might give him a clue. He can observe everything the computer does during the test run, and he can pick out the important bits for himself.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">This may not be enough. He may decide he needs more information, and ask you to show him the same thing again. He may ask you to talk him through the procedure, so that he can reproduce the bug for himself as many times as he wants. He might try varying the procedure a few times, to see whether the problem occurs in only one case or in a family of related cases. If you&#39;re unlucky, he may need to sit down for a couple of hours with a set of development tools and really start investigating. But the most important thing is to have the programmer looking at the computer when it goes wrong. Once he can see the problem happening, he can usually take it from there and start trying to fix it.</div>
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">Show me how to show myself</span></strong>
+
+<div style="text-align: justify;">This is the era of the Internet. This is the era of worldwide communication. This is the era in which I can send my software to somebody in Russia at the touch of a button, and he can send me comments about it just as easily. But if he has a problem with my program, he can&#39;t have me standing in front of it while it fails. &quot;Show me&quot; is good when you can, but often you can&#39;t.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">If you have to report a bug to a programmer who can&#39;t be present in person, the aim of the exercise is to enable him to reproduce the problem. You want the programmer to run his own copy of the program, do the same things to it, and make it fail in the same way. When he can see the problem happening in front of his eyes, then he can deal with it.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">So tell him exactly what you did. If it&#39;s a graphical program, tell him which buttons you pressed and in what order you pressed them. If it&#39;s a program you run by typing a command, show him precisely what command you typed. Wherever possible, you should provide a verbatim transcript of the session, showing what commands you typed and what the computer output in response.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">Give the programmer all the input you can think of. If the program reads from a file, you will probably need to send a copy of the file. If the program talks to another computer over a network, you probably can&#39;t send a copy of that computer, but you can at least say what kind of computer it is, and (if you can) what software is running on it.</div>
+<br />
+<span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>Works for me. So what goes wrong?</strong></span>
+
+<div style="text-align: justify;">If you give the programmer a long list of inputs and actions, and he fires up his own copy of the program and nothing goes wrong, then you haven&#39;t given him enough information. Possibly the fault doesn&#39;t show up on every computer; your system and his may differ in some way. Possibly you have misunderstood what the program is supposed to do, and you are both looking at exactly the same display but you think it&#39;s wrong and he knows it&#39;s right.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">So also describe what happened. Tell him exactly what you saw. Tell him why you think what you saw is wrong; better still, tell him exactly what you expected to see. If you say &quot;and then it went wrong&quot;, you have left out some very important information.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">If you saw error messages, tell the programmer, carefully and precisely, what they were. They are important! At this stage, the programmer is not trying to fix the problem; he&#39;s just trying to find it. He needs to know what has gone wrong, and those error messages are the computer&#39;s best effort to tell you that. Write the errors down if you have no other easy way to remember them, but it&#39;s not worth reporting that the program generated an error unless you can also report what the error message was.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">In particular, if the error message has numbers in it, do let the programmer have those numbers. Just because you can&#39;t see any meaning in them doesn&#39;t mean there isn&#39;t any. Numbers contain all kinds of information that can be read by programmers, and they are likely to contain vital clues. Numbers in error messages are there because the computer is too confused to report the error in words, but is doing the best it can to get the important information to you somehow.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">At this stage, the programmer is effectively doing detective work. He doesn&#39;t know what happened, and he can&#39;t get close enough to watch it happening for himself, so he&#39;s searching for clues that might give it away. Error messages, incomprehensible strings of numbers, and even unexplained delays are all just as important as fingerprints at the scene of a crime. Keep them!<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">If you are using Unix, the program may have produced a core dump. Core dumps are a particularly good source of clues, so don&#39;t throw them away. On the other hand, most programmers don&#39;t like to receive huge core files by e-mail without warning, so ask before mailing one to anybody. Also, be aware that the core file contains a record of the complete state of the program: any &quot;secrets&quot; involved (maybe the program was handling a personal message, or dealing with confidential data) may be contained in the core file.</div>
+<br />
+<span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>So then I tried...</strong></span>
+
+<div style="text-align: justify;">There are a lot of things you might do when an error or bug comes up. Many of them make the problem worse. A friend of mine at school deleted all her Word documents by mistake, and before calling in any expert help, she tried reinstalling Word, and then she tried running Defrag. Neither of these helped recover her files, and between them they scrambled her disk to the extent that no Undelete program in the world would have been able to recover anything. If she&#39;d only left it alone, she might have had a chance.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">Users like this are like a mongoose backed into a corner: with its back to the wall and seeing certain death staring it in the face, it attacks frantically, because doing something has to be better than doing nothing. This is not well adapted to the type of problems computers produce.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">Instead of being a mongoose, be an antelope. When an antelope is confronted with something unexpected or frightening, it freezes. It stays absolutely still and tries not to attract any attention, while it stops and thinks and works out the best thing to do. (If antelopes had a technical support line, it would be telephoning it at this point.) Then, once it has decided what the safest thing to do is, it does it.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">When something goes wrong, immediately stop doing anything. Don&#39;t touch any buttons at all. Look at the screen and notice everything out of the ordinary, and remember it or write it down. Then perhaps start cautiously pressing &quot;OK&quot; or &quot;Cancel&quot;, whichever seems safest. Try to develop a reflex reaction &mdash; if a computer does anything unexpected, freeze.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">If you manage to get out of the problem, whether by closing down the affected program or by rebooting the computer, a good thing to do is to try to make it happen again. Programmers like problems that they can reproduce more than once. Happy programmers fix bugs faster and more efficiently.</div>
+<br />
+<span style="color: rgb(6, 134, 173); font-size: 16px;"><strong>I think the tachyon modulation must be wrongly polarised</strong></span>
+
+<div style="text-align: justify;">It isn&#39;t only non-programmers who produce bad bug reports. Some of the worst bug reports I&#39;ve ever seen come from programmers, and even from good programmers.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">I worked with another programmer once who kept finding bugs in his own code and trying to fix them. Every so often he&#39;d hit a bug he couldn&#39;t solve, and he&#39;d call me over to help. &quot;What&#39;s gone wrong?&quot; I&#39;d ask. He would reply by telling me his current opinion of what had caused the problem.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">This worked fine when his current opinion was right. It meant he&#39;d already done half the work and we were able to finish the job together. It was efficient and useful.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">But quite often he was wrong. We would work for some time trying to figure out why some particular part of the program was producing incorrect data, and eventually we would discover that it wasn&#39;t, that we&#39;d been investigating a perfectly good piece of code for half an hour, and that the actual problem was somewhere else.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">I&#39;m sure he wouldn&#39;t do that to a doctor. &quot;Doctor, I think I&#39;ve got Perkin&#39;s disease.&quot; People know not to say that to a doctor: you describe the symptoms, the actual discomforts and aches and pains and rashes and fevers, and you let the doctor do the diagnosis of what caused the problem. Otherwise, the doctor dismisses you as a hypochondriac or crackpot, and quite rightly so.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">It&#39;s the same with programmers. Providing your own diagnosis might be helpful sometimes, but always state the symptoms. The diagnosis is an optional extra, and not an alternative to giving the symptoms. Equally, sending a modification to the code to fix the problem is a useful addition to a bug report but not an adequate substitute for one.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">If a programmer asks you for extra information, don&#39;t make it up! Somebody reported a bug to me once, and I asked him to try a command that I knew wouldn&#39;t work. The reason I asked him to try it was that I wanted to know which of two different error messages it would give. Knowing which error message came back would give a vital clue. But he didn&#39;t actually try it; he just mailed me back and said &quot;No, that won&#39;t work&quot;. It took me some time to persuade him to try it for real.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">Using your intelligence to help the programmer is fine. Even if your deductions are wrong, the programmer should be grateful that you at least tried to make his life easier. But report the symptoms as well, or you may well make his life much more difficult instead.</div>
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">That&#39;s funny, it did it a moment ago</span></strong>
+
+<div style="text-align: justify;">Say &quot;intermittent fault&quot; to any programmer and watch his face fall. The easy problems are the ones in which failure is caused by a simple sequence of actions. The programmer can then repeat those actions under closely observed test conditions and watch what happens in great detail. Too many problems simply don&#39;t work that way: there will be programs that fail once a week, or fail once in a blue moon, or never fail when you try them in front of the programmer but always fail when you have a deadline coming up.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">Most intermittent faults are not truly intermittent. Most of them have some logic somewhere. Some might occur when the machine is running out of memory, some might occur when another program tries to modify a critical file at the wrong moment, and some might occur only in the first half of every hour! (I&#39;ve actually seen one of these.)<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">Also, if you can reproduce the bug but the programmer can&#39;t, it could very well be that his computer and your computer are different in some way and this difference is causing the problem. I had a program once whose window curled up into a little ball in the top left corner of the screen, and sat there and sulked. But it only did it on 800x600 screens; it was fine on my 1024x768 monitor.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">The programmer will want to know anything you can find out about the problem. Try it on another machine, perhaps. Try it twice or three times and see how often it fails. If it goes wrong when you&#39;re doing serious work but not when you&#39;re trying to demonstrate it, it might be long running times or large files that make it fall over. Try to remember as much detail as you can about what you were doing to it when it did fall over, and if you see any patterns, mention them. Anything you can provide has to be some help. Even if it&#39;s only probabilistic (such as &quot;it tends to crash more often when Emacs is running&quot;), it might not provide direct clues to the cause of the problem, but it might help the programmer reproduce it.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">Most importantly, the programmer will want to be sure of whether he&#39;s dealing with a true intermittent fault or a machine-specific fault. He will want to know lots of details about your computer, so he can work out how it differs from his. A lot of these details will depend on the particular program, but one thing you should definitely be ready to provide is version numbers. The version number of the program itself, and the version number of the operating system, and probably the version numbers of any other programs that are involved in the problem.</div>
+<br />
+<strong><span style="color: rgb(6, 134, 173); font-size: 16px;">So I loaded the disk on to my Windows...</span></strong>
+
+<div style="text-align: justify;">Writing clearly is essential in a bug report. If the programmer can&#39;t tell what you meant, you might as well have not said anything.<br />
+&nbsp;</div>
+
+<div style="text-align: justify;">I get bug reports from all around the world. Many of them are from non-native English speakers, and a lot of those apologize for their poor English. In general, the bug reports with apologies for their poor English are actually very clear and useful. All the most unclear reports come from native English speakers who assume that I will understand them even if they don&#39;t make any effort to be clear or precise.</div>
+
+<ul>
+	<li style="text-align: justify;"><strong>Be specific.</strong> If you can do the same thing two different ways, state which one you used. &quot;I selected Load&quot; might mean &quot;I clicked on Load&quot; or &quot;I pressed Alt-L&quot;. Say which you did. Sometimes it matters.</li>
+	<li style="text-align: justify;"><strong>Be verbose.</strong> Give more information rather than less. If you say too much, the programmer can ignore some of it. If you say too little, they have to come back and ask more questions. One bug report I received was a single sentence; every time I asked for more information, the reporter would reply with another single sentence. It took me several weeks to get a useful amount of information, because it turned up one short sentence at a time.</li>
+	<li style="text-align: justify;"><strong>Be careful of pronouns.</strong> Don&#39;t use words like &quot;it&quot;, or references like &quot;the window&quot;, when it&#39;s unclear what they mean. Consider this: &quot;I started FooApp. It put up a warning window. I tried to close it and it crashed.&quot; It isn&#39;t clear what the user tried to close. Did they try to close the warning window, or the whole of FooApp? It makes a difference. Instead, you could say &quot;I started FooApp, which put up a warning window. I tried to close the warning window, and FooApp crashed.&quot; This is longer and more repetitive, but also clearer and less easy to misunderstand.</li>
+	<li style="text-align: justify;"><strong>Read what you wrote.</strong> Read the report back to yourself, and see if <strong>you </strong>think it&#39;s clear. If you have listed a sequence of actions which should produce the failure, try following them yourself, to see if you missed a step.</li>
+</ul>
+Summary:
+
+<ul>
+	<li style="text-align: justify;">The first aim of a bug report is to let the programmer see the failure with his own eyes. If you can&#39;t be with him to make it fail in front of him, give him detailed instructions so that he can make it fail for himself.</li>
+	<li style="text-align: justify;">In case the first aim doesn&#39;t succeed, and the programmer can&#39;t see it failing himself, the second aim of a bug report is to describe what went wrong. Describe everything in detail. State what you saw, and also state what you expected to see. Write down the error messages, especially if they have numbers in them.</li>
+	<li style="text-align: justify;">When your computer does something unexpected, freeze. Do nothing until you&#39;re calm, and don&#39;t do anything that you think might be dangerous.</li>
+	<li style="text-align: justify;">By all means, try to diagnose the fault yourself if you think you can, but if you do, you should still report the symptoms as well.</li>
+	<li style="text-align: justify;">Be ready to provide extra information if the programmer needs it. If he didn&#39;t need it, he wouldn&#39;t be asking for it. He isn&#39;t being deliberately awkward. Have version numbers at your fingertips, because they will probably be needed.</li>
+	<li style="text-align: justify;">Write clearly. Say what you mean, and make sure it can&#39;t be misinterpreted.</li>
+	<li style="text-align: justify;">Above all, be precise. Programmers like precision.</li>
+</ul>
+<em>Disclaimer: I&#39;ve never actually seen a mongoose or an antelope. My zoology may be inaccurate.</em>
+
+<hr /><br />
+Copyright &copy; 1999 Simon Tatham.<br />
+This document is <a href="http://www.opencontent.org/" target="_blank">OpenContent</a>.<br />
+You may copy and use the text under the terms of the <a href="http://www.opencontent.org/opl.shtml" target="_blank">OpenContent Licence</a>.<br />
+Please send comments and criticism on this article to <a href="mailto:anakin@pobox.com">anakin@pobox.com</a>.<br />
+Do not send bug reports for products from Firebird Project to the above address. Instead, follow this <a href="/en/methodology-and-tools#issue_tracking_system">link</a>.<br />
+&nbsp;
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Development</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/roadmap/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Server</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/roadmap-v6/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Roadmap</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-policy/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Policy</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/code-repository/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Code Repository</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/get-involved/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Get Involved</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/devel-qa/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Quality Assurance</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/devel-docs/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Documentation</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/devel-jdbc-driver/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Drivers</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-jdbc-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> JDBC Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-net-provider/" class="menulvl_3"><i class="fa fa-arrow-right"></i> .NET Provider</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-python-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Python Drivers and Libraries</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-odbc-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> ODBC Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-php-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> PHP Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-dev/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/saturnin/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Saturnin</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/butlerjavasdk/" class="menulvl_3"><i class="fa fa-arrow-right"></i> ButlerJavaSDK</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/butler-sdk-for-free-pascal/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Butler SDK for Free Pascal</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/team-members/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Development Lab</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/team-members/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Team Members</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/contributors/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Contributors</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/developers-reports/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Developers Reports</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/issue-tracker/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Issue Tracker</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-mailing-lists/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Mailing Lists</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/project-structure/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Project Structure</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

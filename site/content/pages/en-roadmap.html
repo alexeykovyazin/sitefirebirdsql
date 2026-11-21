@@ -1,0 +1,834 @@
+---
+title: "Firebird: Roadmap v6"
+html_title: "Firebird: Roadmap v6"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Roadmap v6"
+menu_active: "/en/development/"
+source_url: "/en/roadmap"
+source_format: new
+url: "/en/roadmap"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/development/">Development</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/devel-core/">Firebird Server</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/roadmap/">Firebird Roadmap</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Roadmap v6</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <p><em>Last updated: October 2026</em></p>
+
+<p>This document states the current development activities of the project and establishes the estimated release schedule for the foreseeable future. It gets periodically updated in order to be in line with the reality.</p>
+
+<h2><span style="color: rgb(6, 134, 173);">Stable releases</span></h2>
+
+<table border="0" cellpadding="0" cellspacing="0" class="Table" width="100%">
+	<tbody>
+		<tr class="Table_Header">
+			<td align="center" width="200"><big>Release Series</big></td>
+			<td align="center" width="150"><big>Next Version</big></td>
+			<td align="center" width="150"><big>Schedule</big></td>
+			<td align="center"><big>Useful Links</big></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><strong>v5.0</strong> <em>(since 2024)</em></td>
+			<td align="center">5.0.5</td>
+			<td align="center">Q4 2026</td>
+			<td align="center"><a href="http://github.com/FirebirdSQL/firebird/issues?q=is%3Aissue+label%3A%22fix-version%3A+5.0.5%22">Changes</a> &nbsp; |&nbsp;&nbsp; <a href="https://github.com/FirebirdSQL/snapshots/releases/tag/snapshot-v5.0-release">Snapshot Builds</a></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><strong>v4.0</strong> <em>(since 2021)</em></td>
+			<td align="center">4.0.8</td>
+			<td align="center">Q2 2027</td>
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues?q=is%3Aissue+label%3A%22fix-version%3A+4.0.8%22">Changes</a>&nbsp;&nbsp; | &nbsp; <a href="https://web.firebirdsql.org/downloads/snapshot_builds/">Snapshot Builds</a></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><strong>v3.0</strong> <em>(since 2016)</em></td>
+			<td align="center">3.0.15</td>
+			<td align="center">Q2 2027</td>
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues?q=is%3Aissue+label%3A%22fix-version%3A+3.0.15%22">Changes</a>&nbsp;&nbsp; |&nbsp;&nbsp; <a href="https://web.firebirdsql.org/downloads/snapshot_builds/">Snapshot Builds</a></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<h2><span style="color: rgb(6, 134, 173);">Firebird 6.0 Development</span></h2>
+
+<ul>
+	<li>Alpha Release&emsp;-&emsp;Q4 2026&emsp;-&emsp;<a href="https://github.com/FirebirdSQL/firebird/issues?q=is%3Aissue+label%3A%22fix-version%3A+6.0+Alpha+1%22">IN PROGRESS</a></li>
+	<li>Beta Release&emsp;-&emsp;Q2 2027</li>
+	<li>Final Release&emsp;-&emsp;Q4 2027</li>
+</ul>
+
+<p>Below are the features that are considered desirable and (hopefully) doable during the next few years. Those finished before the Beta stage will be included into the Firebird 6.0 release.</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="Table" width="100%">
+	<tbody>
+		<tr class="Table_Header">
+			<td align="center" width="50"><big>Tracker #</big></td>
+			<td align="center" width="300"><big>Feature / Improvement</big></td>
+			<td align="center" width="100"><big>Developer(s)</big></td>
+			<td align="center" width="50"><big>Status</big></td>
+		</tr>
+		<tr class="Table_Subsubtitle">
+			<td colspan="4"><big>Major features</big></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/5431">#5431</a></td>
+			<td>SQL-compliant JSON functions</td>
+			<td align="center">Artyom Abakumov</td>
+			<td align="center"><span style="color:#f39c12;">IN REVIEW</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/1055">#1055</a></td>
+			<td>Support for tablespaces</td>
+			<td align="center">Roman Simakov,<br />
+			Ilya Eremin</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/7954">#7954</a></td>
+			<td>Shared metadata cache</td>
+			<td align="center">Alex Peshkov</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/1115">#1115</a>, <a href="https://github.com/FirebirdSQL/firebird/issues/3031">#3031</a></td>
+			<td>SQL-standard compliant ROW data type</td>
+			<td align="center">Aleksey Mochalov</td>
+			<td align="center"><span style="color:#f39c12;">IN REVIEW</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/1113">#1113</a></td>
+			<td>Support for SQL schemas</td>
+			<td align="center">Adriano dos Santos Fernandes</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/1158">#1158</a></td>
+			<td>External data management (SQL:MED standard)</td>
+			<td align="center">Vasily Yashkov</td>
+			<td align="center"><span style="color:#f39c12;">IN REVIEW</span></td>
+		</tr>
+		<tr class="Table_Subsubtitle">
+			<td colspan="4"><big>Minor features and improvements</big></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/pull/8532">#8532</a></td>
+			<td>GREATEST and LEAST functions (SQL:2023 T054)</td>
+			<td align="center">Aleksey Chudaykin</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="http://github.com/FirebirdSQL/firebird/issues/8005">#8005</a></td>
+			<td>UNLIST function to decode separated values list into a record set</td>
+			<td align="center">Aleksey Chudaykin</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/pull/7868">#7868</a></td>
+			<td>Feature SET AUTOTERM in ISQL</td>
+			<td align="center">Adriano dos Santos Fernandes</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/pull/7748">#7748</a></td>
+			<td>Allow collation to be a part of data type</td>
+			<td align="center">Dimitry Sibiryakov</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/7744">#7744</a></td>
+			<td>ALTER ... {SQL SECURITY {DEFINER | INVOKER} | DROP SQL SECURITY}</td>
+			<td align="center">Alexander Zhdanov</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/pull/7718">#7718</a></td>
+			<td>Allow to create database with different owner</td>
+			<td align="center">Dimitry Sibiryakov</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/7675">#7675</a></td>
+			<td>EXPLAIN statement and RDB$SQL package</td>
+			<td align="center">Adriano dos Santos Fernandes</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/pull/7617">#7617</a></td>
+			<td>SQL:2023 ANY_VALUE aggregate function</td>
+			<td align="center">Adriano dos Santos Fernandes</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/7590">#7590</a></td>
+			<td>Improve DECLARE VARIABLE to accept complete value expressions</td>
+			<td align="center">Adriano dos Santos Fernandes</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/7587">#7587</a></td>
+			<td>CALL statement</td>
+			<td align="center">Adriano dos Santos Fernandes</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/7586">#7586</a></td>
+			<td>Named arguments for function call, EXECUTE PROCEDURE and procedure record source</td>
+			<td align="center">Adriano dos Santos Fernandes</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/7566">#7566</a></td>
+			<td>Allow DEFAULT keyword in argument list</td>
+			<td align="center">Adriano dos Santos Fernandes</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/7427">#7427</a></td>
+			<td>ALTER FUNCTION ... {DETERMINISTIC | NOT DETERMINISTIC}</td>
+			<td align="center">Alexander Zhdanov</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/4203">#4203</a></td>
+			<td>DROP [IF EXISTS] statement</td>
+			<td align="center">Adriano dos Santos Fernandes</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/2388">#2388</a></td>
+			<td>SQL standard FORMAT clause for CAST between string types and datetime types</td>
+			<td align="center">Artyom Ivanov</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/pull/7709">#7709</a></td>
+			<td>Recursive plan output for queries involving selectable stored procedures</td>
+			<td align="center">Dmitry Yemanov</td>
+			<td align="center"><span style="color:#f39c12;">IN REVIEW</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/7580">#7580</a></td>
+			<td>Trace failed attaches</td>
+			<td align="center">
+			<p>Artyom Abakumov,<br />
+			Vlad Khorsun</p>
+			</td>
+			<td align="center"><span style="color:#0686ad;">IN PROGRESS</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/7110">#7110</a></td>
+			<td>Add CSV support for external tables</td>
+			<td align="center">Dmitry Starodubov,<br />
+			Ilya Eremin</td>
+			<td align="center"><span style="color:#9b59b6;">PENDING PR</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/1118">#1118</a></td>
+			<td>Job/task scheduler</td>
+			<td align="center">Ilya Eremin</td>
+			<td align="center"><span style="color:#9b59b6;">PENDING PR</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="http://github.com/FirebirdSQL/firebird/issues/8909">#8909</a></td>
+			<td>Optional string types maximum length (SQL:2023 T081)</td>
+			<td align="center">Mark Rotteveel</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/pull/8564">#8564</a></td>
+			<td>Underscores in numeric literals (SQL:2023 T662)</td>
+			<td align="center">Aleksey Chudaykin</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center">n/a</td>
+			<td>Support for user-defined messages in the trace</td>
+			<td align="center">Dmitry Starodubov</td>
+			<td align="center"><span style="color:#9b59b6;">PENDING PR</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center">n/a</td>
+			<td>Parallel statistics collection (GSTAT)</td>
+			<td align="center">Aleksey Mochalov</td>
+			<td align="center"><span style="color:#9b59b6;">PENDING PR</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/pull/7332">#7332</a></td>
+			<td>Remove/increase the record size limit</td>
+			<td align="center">Dmitry Yemanov</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/2892">#2892</a></td>
+			<td>TRUNCATE statement</td>
+			<td align="center">
+			<p>Dmitry Yemanov,<br />
+			Aleksey Chudaykin</p>
+			</td>
+			<td align="center"><span style="color:#9b59b6;">PENDING PR</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/1036">#1036</a></td>
+			<td>Package-level constants</td>
+			<td align="center">Artyom Abakumov</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/pull/8564">#8564</a></td>
+			<td>Non-decimal integer literals (SQL:2023 T661)</td>
+			<td align="center">Aleksey Chudaykin</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/7973">#7973</a></td>
+			<td>Create iOS embedded build</td>
+			<td align="center">Alex Peshkov</td>
+			<td align="center"><span style="color:#4e5f70;">PLANNING</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/7967">#7967</a></td>
+			<td>Implement a way to build an index without blocking concurrent data modifications</td>
+			<td align="center">Vlad Khorsun</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/7964">#7964</a>, <a href="https://github.com/FirebirdSQL/firebird/issues/7258">#7258</a></td>
+			<td>Make FOREIGN KEY constraint to use any suitable index</td>
+			<td align="center">Vlad Khorsun</td>
+			<td align="center"><span style="color:#4e5f70;">PLANNING</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/5120">#5120</a></td>
+			<td>Hash/merge algorithms for outer joins</td>
+			<td align="center">Dmitry Yemanov</td>
+			<td align="center"><span style="color:#0686ad;">IN PROGRESS</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="http://github.com/FirebirdSQL/firebird/issues/3138">#3138</a></td>
+			<td>Referential integrity without index</td>
+			<td align="center">Vlad Khorsun</td>
+			<td align="center"><span style="color:#0686ad;">IN PROGRESS</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/2629">#2629</a></td>
+			<td>Ability to specify length for index segments to be indexed on char-based columns</td>
+			<td align="center">Vlad Khorsun</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/2111">#2111</a></td>
+			<td>Support value distribution histograms</td>
+			<td align="center">Dmitry Yemanov</td>
+			<td align="center"><span style="color:#4e5f70;">PLANNING</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/1503">#1503</a></td>
+			<td>Stored optimizer statistics</td>
+			<td align="center">Dmitry Yemanov,<br />
+			Vlad Khorsun</td>
+			<td align="center"><span style="color:#4e5f70;">PLANNING</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/1195">#1195</a></td>
+			<td>Remove context limit for stored procedures/functions/triggers as well as for user SQL queries</td>
+			<td align="center">Dmitry Yemanov</td>
+			<td align="center"><span style="color:#0686ad;">IN PROGRESS</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center"><a href="https://github.com/FirebirdSQL/firebird/issues/1095">#1095</a></td>
+			<td>Local temporary tables</td>
+			<td align="center">Adriano dos Santos Fernandes</td>
+			<td align="center"><span style="color:#006400;">COMPLETED</span></td>
+		</tr>
+		<tr class="Table_Row_White">
+			<td align="center">n/a</td>
+			<td>Multi-source replication</td>
+			<td align="center">Dmitry Yemanov</td>
+			<td align="center"><span style="color:#4e5f70;">PLANNING</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Development</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/roadmap/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Server</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/roadmap-v6/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Roadmap</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-policy/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Policy</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/code-repository/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Code Repository</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/get-involved/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Get Involved</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/devel-qa/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Quality Assurance</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/devel-docs/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Documentation</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/devel-jdbc-driver/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Drivers</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-jdbc-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> JDBC Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-net-provider/" class="menulvl_3"><i class="fa fa-arrow-right"></i> .NET Provider</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-python-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Python Drivers and Libraries</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-odbc-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> ODBC Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-php-driver/" class="menulvl_3"><i class="fa fa-arrow-right"></i> PHP Driver</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-dev/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/saturnin/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Saturnin</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/butlerjavasdk/" class="menulvl_3"><i class="fa fa-arrow-right"></i> ButlerJavaSDK</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/butler-sdk-for-free-pascal/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Butler SDK for Free Pascal</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/team-members/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Development Lab</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/team-members/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Team Members</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/contributors/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Contributors</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/developers-reports/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Developers Reports</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/issue-tracker/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Issue Tracker</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/devel-mailing-lists/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Mailing Lists</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/project-structure/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Project Structure</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

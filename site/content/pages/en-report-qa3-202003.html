@@ -1,0 +1,173 @@
+---
+title: "Firebird: Developer's Report: QA Stress Testing & Development"
+html_title: "Firebird: Developer's Report: QA Stress Testing & Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: QA Stress Testing & Development"
+menu_active: ""
+source_url: "/en/report-qa3-202003"
+source_format: new
+url: "/en/report-qa3-202003"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: QA Stress Testing &amp; Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <span style="font-weight: bold; color: rgb(6, 134, 173); font-size: 16px;">October 2019 to January 2020</span><br style="line-height: 20.8px;" />
+<br style="line-height: 20.8px;" />
+<span style="color:#474747;font-size:15px;font-weight:bold;"><u style="line-height: 20.8px;">January 2020</u></span>
+<ul>
+	<li>Created / modified QA tests for &gt; 30 tracker tickets</li>
+	<li>Found / reported bugs: CORE-6218, CORE-6223, CORE-6227, CORE-6238</li>
+	<li>Reported inconsistencies in FB 4.0 (Srp vs Legacy) while refactored old test for CORE-4766</li>
+	<li>Reported ACTION_TRACE_STOP not forcing the trace log to be fully written (flushed) to disk</li>
+	<li>Reported significant time degradation in test&nbsp;runs for Srp as compared to LegacyAuth</li>
+	<li>Found bug in FDB driver: Transaction::execute_immediate() method does not send the SQL dialect properly</li>
+	<li>Reported the fix for CORE-6236 being incomplete</li>
+	<li>Found regressions in fixes for CORE-4135 and CORE-5974</li>
+	<li>Multiple improvements in the fbt-cross-report package</li>
+</ul>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>December 2019</u></span></div>
+
+<ul>
+	<li>Created / modified QA tests for &gt;30 tracker tickets</li>
+	<li>Adjusted serveral old tests related to optimizer by Dmitry Yemanov&#39;s request</li>
+	<li>Found / reported bugs: CORE-6204, CORE-6211</li>
+	<li>fbt-cross-report: continued implementing</li>
+	<li>Reported FB crash caused by &#39;gfix -shut full -force 0 localhost:<production>&#39;</production></li>
+	<li>Refactored rundaily.bat: check for FB crashes and create backtraces in this case</li>
+</ul>
+
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>November 2019</u></span></div>
+
+<ul>
+	<li>Created / modified QA tests for 10 tracker tickets</li>
+	<li>Found / reported bugs: CORE-6182, CORE-6183, CORE-6185, CORE-6186, CORE-6187, CORE-6196</li>
+	<li>Reported SC hanging during the database shutdown under high load</li>
+	<li>Compared performance for database in normal vs locked (by nbackup) modes</li>
+	<li>Checked cursor behavior (stable vs unstable) when used in positioned updates</li>
+	<li>Reported &quot;gstat -r&quot; causing &quot;Unexpected end of DB file&quot; when DB is in backup-lock state</li>
+	<li>Reported several queries with FULL SCANs causing the time of backup to significantly increase</li>
+	<li>Reported the engine continuously trying to attach to a database in the full shutdown mode</li>
+	<li>fbt-cross-report: initial development</li>
+</ul>
+
+<div style="line-height: 20.8px;">
+<div style="line-height: 20.8px;"><span style="color:#474747;font-size:15px;font-weight:bold;"><u>October 2019</u></span></div>
+
+<ul>
+	<li>Created / modified QA tests for 18 tracker tickets</li>
+	<li>Re-checked known SIMILAR TO problems against the new &#39;re2&#39; library implementation</li>
+	<li>Reported problem with test for CORE-6097 when system locale differs from 419 (russian)</li>
+	<li>Error encountered when creating a sequence starting with value greater than 2^31-1 (probably FDB driver bug)</li>
+</ul>
+<br />
+<em style="line-height: 20.8px;">Pavel Zotov</em></div>
+<em style="line-height: 20.8px;">Moscow, Russian Federation</em><br style="line-height: 20.8px;" />
+&nbsp;
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

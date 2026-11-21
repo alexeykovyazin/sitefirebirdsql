@@ -1,0 +1,206 @@
+---
+title: "Firebird: Developer's Report: Core Coding and Development"
+html_title: "Firebird: Developer's Report: Core Coding and Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Report: Core Coding and Development"
+menu_active: ""
+source_url: "/en/report-core-development-202101"
+source_format: new
+url: "/en/report-core-development-202101"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Report: Core Coding and Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div><strong><span style="color: rgb(6, 134, 173); font-size: 16px;">September to December 2020</span></strong></div>
+
+<h4><u>September 2020</u></h4>
+
+<h4><em>master</em></h4>
+
+<ul>
+	<li>Let&#39;s build CLOOP using same make file that generates interface files.</li>
+	<li>Restore ability to use MSVC older than v2017.</li>
+	<li>Fix CLOOP handling of long unsigned constants. This should fix deadlock when attachment is initialized or released while database shutdown is in progress.</li>
+	<li>Postfix for CORE-6351 : Computed field could be wrongly evaluated as NULL.</li>
+	<li>Make sure statement-&gt;procedure (function) always points to procedure (function) the statement belongs to.</li>
+	<li>Ensure statement&#39;s memory pool is deleted after the statement in case of failure during BLR parsing.</li>
+</ul>
+
+<h4><em>B3_0_Release</em></h4>
+
+<ul>
+	<li>Fixed CLOOP handling of long unsigned constants. This should fix deadlock when attachment is initialized or released while database shutdown is in progress.</li>
+	<li>Postfix for CORE-6351 : Computed field could be wrongly evaluated as NULL.</li>
+	<li>Make sure statement-&gt;procedure (function) always points to procedure (function) the statement belongs to.</li>
+	<li>Ensure statement&#39;s memory pool is deleted after the statement in case of failure during BLR parsing.</li>
+</ul>
+<u>October</u>
+
+<h4><em>master</em></h4>
+
+<ul>
+	<li>Addition for my recent patch (deadlock when attachment is initialized or released while database shutdown is in progress).</li>
+	<li>Reworked Config: correct work with 64-bit integer in 32-bit code, refactor config values checks and defaults, remove some type casts.</li>
+	<li>Introduce new virtual table RDB$CONFIG.</li>
+	<li>Implement CORE-6332 : Get rid of File systemCacheThreshold parameter.</li>
+	<li>Delay creation of connections pool to avoid usage of not-initialized config when engine module is loaded.</li>
+	<li>Attempt to find the reason of crash around setLockAttachment(), cleanup.</li>
+	<li>Some renaming and other misc changes, as suggested by Dmitry.</li>
+	<li>Added documentation of new setting into firebird.conf.</li>
+	<li>Show default value for WireCrypt setting from server side view.</li>
+	<li>Fixed assert pointed by Alex.</li>
+</ul>
+<u>November</u>
+
+<h4><em>master</em></h4>
+
+<ul>
+	<li>A bit more debug code to catch issue with not detached BtrPageGCLock and AV in setLockAttachment() at disconnect time.</li>
+	<li>Fix for &quot;impossible&quot; case in IndexTableScan::close() that might be a source of the issue.</li>
+	<li>Fixed bug CORE-6437 : gfix cannot set big value for buffers</li>
+	<li>New field RDB$CONFIG_SOURCE for RDB$CONFIG table.</li>
+	<li>Update MSVC12 and MSVC14 builds.</li>
+	<li>Fixed AV detected by tests bugs.core_3323, bugs.core_5645 and bugs.core_5972</li>
+	<li>Follow Alex commit to fix Windows build</li>
+	<li>Fixed bug CORE-6447 : SET SQLDA_DISPLAY ON: different text of message for parameterized expression starting from second run</li>
+	<li>Refactor internal representation of configuration entries table.</li>
+	<li>RDB$CONFIG filling code now get values of global parameters using default config instance.</li>
+	<li>Don&#39;t store MetaName in EDS::Statement as it keeps reference to the memory allocated by local Database and EDS::Statement could<br />
+	be used after that Database instance destroyed.</li>
+	<li>Addition for CORE-5832 : Implement way to reset user session environment to its initial (default) state</li>
+	<li>Database triggers ON DISCONNECT and ON CONNECT is fired during session reset</li>
+	<li>New system variable RESETTING is introduced to detect session reset state.</li>
+</ul>
+
+<h4><em>B3_0_Release</em></h4>
+
+<ul>
+	<li>Fixed bug CORE-6437 : gfix cannot set big value for buffers</li>
+	<li>Fixed bug CORE-6447 : SET SQLDA_DISPLAY ON: different text of message for parameterized expression starting from second run</li>
+</ul>
+<u>December</u>
+
+<h4><em>master</em></h4>
+
+<ul>
+	<li>Merge pull request #296 from jmglogow/fix-win-thread-handle-type</li>
+	<li>Merge pull request #301 from stbergmann/handlecompare</li>
+	<li>Let use 64-bit int for CPU affinity mask (CpuAffinityMask setting).</li>
+	<li>Vlad&#39;s fix for CORE-6460 - Incorrect query result when using named window.&nbsp;</li>
+</ul>
+
+<h4><em>B3_0_Release</em></h4>
+
+<ul>
+	<li>Merge pull request #301 from stbergmann/handlecompare</li>
+	<li>Let use 64-bit int for CPU affinity mask (CpuAffinityMask setting).</li>
+</ul>
+<em>Vladyslav Khorsun</em><br />
+<em>Dnetpropetrovsk, Ukraine</em>
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

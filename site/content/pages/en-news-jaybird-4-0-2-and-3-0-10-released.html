@@ -1,0 +1,285 @@
+---
+title: "Firebird: Jaybird 4.0.2 and 3.0.10 released"
+html_title: "Firebird: Jaybird 4.0.2 and 3.0.10 released"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Jaybird 4.0.2 and 3.0.10 released"
+menu_active: ""
+source_url: "/en/news/jaybird-4-0-2-and-3-0-10-released"
+source_format: new
+url: "/en/news/jaybird-4-0-2-and-3-0-10-released"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+ 
+    <section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/about-firebird/">About Firebird</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/news/">News &amp; Events</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Jaybird 4.0.2 and 3.0.10 released</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-8">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div class="post-categories d-flex justify-content-between align-content-center">
+                        <div class="categories-share">
+                            <ul>
+                                <li><i class="fas fa-calendar"></i> Jan 17, 2021</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="title">Jaybird 4.0.2 and 3.0.10 released</h3>
+                                            </div>
+                    <div class="post-text mt-30">
+                        <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jaybird 4.0.2 and 3.0.10 have been released.</p>
+</div>
+</div>
+</div>
+
+<div class="sect1">
+<h2 id="_jaybird_4_0_2">Jaybird 4.0.2</h2>
+
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following has been changed or fixed since Jaybird 4.0.1:</p>
+</div>
+
+<div class="ulist">
+<ul>
+	<li>
+	<p>Fixed: First letter of JDBC escape was case-sensitive (<a href="http://tracker.firebirdsql.org/browse/JDBC-632" rel="noopener" target="_blank">JDBC-632</a>)</p>
+	</li>
+	<li>
+	<p>Fixed: Some usernames cannot authenticate using SRP (<a href="http://tracker.firebirdsql.org/browse/JDBC-635" rel="noopener" target="_blank">JDBC-635</a>)</p>
+	</li>
+	<li>
+	<p>Fixed: <code>ServiceConfigurationError</code> while loading plugins could prevent Jaybird from loading (<a href="http://tracker.firebirdsql.org/browse/JDBC-636" rel="noopener" target="_blank">JDBC-636</a>)</p>
+	</li>
+</ul>
+</div>
+
+<div class="paragraph">
+<p>Jaybird 4 supports Firebird 2.5 and higher, on Java 7, 8, 11 and 15 (support for Java 15 using the Java 11 version of the driver).</p>
+</div>
+
+<div class="paragraph">
+<p>See also:</p>
+</div>
+
+<div class="ulist">
+<ul>
+	<li>
+	<p><a href="/file/documentation/drivers_documentation/java/4.0.2/release_notes.html" rel="noopener" target="_blank">Jaybird 4.0.2 release notes</a></p>
+	</li>
+	<li>
+	<p><a href="/en/jdbc-driver/" rel="noopener">Jaybird downloads</a></p>
+	</li>
+	<li>
+	<p><a href="/file/documentation/drivers_documentation/java/4.0.2/release_notes.html#maven" rel="noopener" target="_blank">Instructions for Maven</a></p>
+	</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="sect1">
+<h2 id="_jaybird_3_0_10">Jaybird 3.0.10</h2>
+
+<div class="sectionbody">
+<div class="paragraph">
+<p>Although Jaybird 3 is still maintained, we recommend upgrading to Jaybird 4.</p>
+</div>
+
+<div class="paragraph">
+<p>The following has been changed or fixed since Jaybird 3.0.10:</p>
+</div>
+
+<div class="ulist">
+<ul>
+	<li>
+	<p>Added: A static utility method <code>FBDriver.normalizeProperties</code> which, given a JDBC url and a <code>Properties</code> object, returns a <code>Map<string, string=""></string,></code> containing the merged properties normalized to the common property name. (<a href="http://tracker.firebirdsql.org/browse/JDBC-627" rel="noopener" target="_blank">JDBC-627</a>)</p>
+	</li>
+	<li>
+	<p>Fixed: Use of <code>isc_dpb_no_db_triggers</code> no longer logs a warning (<a href="http://tracker.firebirdsql.org/browse/JDBC-628" rel="noopener" target="_blank">JDBC-628</a>)</p>
+	</li>
+	<li>
+	<p>Fixed: First letter of JDBC escape was case-sensitive (<a href="http://tracker.firebirdsql.org/browse/JDBC-632" rel="noopener" target="_blank">JDBC-632</a>)</p>
+	</li>
+	<li>
+	<p>Fixed: Some usernames cannot authenticate using SRP (<a href="http://tracker.firebirdsql.org/browse/JDBC-635" rel="noopener" target="_blank">JDBC-635</a>)</p>
+	</li>
+	<li>
+	<p>Fixed: <code>ServiceConfigurationError</code> while loading plugins could prevent Jaybird from loading (<a href="http://tracker.firebirdsql.org/browse/JDBC-636" rel="noopener" target="_blank">JDBC-636</a>)</p>
+	</li>
+</ul>
+</div>
+
+<div class="paragraph">
+<p>Jaybird 3 supports Firebird 2.0 and higher, on Java 7, 8, 11 and 15. Basic Java 9 and higher compatibility is provided through the Java 8 version of the driver.</p>
+</div>
+
+<div class="paragraph">
+<p>See also:</p>
+</div>
+
+<div class="ulist">
+<ul>
+	<li>
+	<p><a href="/file/documentation/drivers_documentation/java/3.0.10/release_notes.html" rel="noopener" target="_blank">Jaybird 3.0.10 release notes</a></p>
+	</li>
+	<li>
+	<p><a href="/en/jdbc-driver/" rel="noopener">Jaybird downloads</a></p>
+	</li>
+	<li>
+	<p><a href="/file/documentation/drivers_documentation/java/3.0.10/release_notes.html#maven" rel="noopener" target="_blank">Instructions for Maven</a></p>
+	</li>
+</ul>
+</div>
+</div>
+</div>
+
+                    </div>
+                  	<div>
+                    	<div>
+  <iframe frameborder="0"
+    height="150" 
+    scrolling="no" 
+    src="https://firebirdfoundation.substack.com/embed" 
+    style="border:1px solid #EEE; background:white;" 
+    width="100%" 
+    allow="encrypted-media"
+    sandbox="allow-scripts allow-same-origin allow-forms"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>  
+                  	</div>
+                    <div class="post-tags">
+                        <ul>
+                            <li><a><i class="fa fa-share"></i> Share With:</a></li>
+                            <li style="cursor: pointer;"><a class="share-icon fb" data-url="/en/news/jaybird-4-0-2-and-3-0-10-released"><i class="fab fa-facebook-f"></i></a></li>
+                          
+                            <li style="cursor: pointer;"><a class="share-icon lin" data-url="/en/news/jaybird-4-0-2-and-3-0-10-released"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="post-reader-text post-reader-text-2 post-reader-text-3 pt-50">
+                    <div class="row">
+                                                    <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/new-article-firebird-embedded-in-a-sandboxed-macos-app">New Article: Firebird Embedded in a sandboxed MacOS App</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                                                            <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/ngram-indexes-in-firebird-fast-substring-search-without-a-full-scan">VIDEO: NGRAM indexes in Firebird: fast substring search without a full scan</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-20">
+                <div class="all-post-sidebar">
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

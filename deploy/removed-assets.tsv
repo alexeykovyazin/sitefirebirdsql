@@ -1,0 +1,181 @@
+old_path	new_path	reason
+doclibs/ALLJARS.ZIP	file/downloads/doclibs/ALLJARS.ZIP	duplicate (same sha256)
+doctools/docbook-dtd.zip	file/downloads/doclibs/docbook-dtd.zip	duplicate (same sha256)
+doctools/docbook-stylesheets.zip	file/downloads/doclibs/docbook-stylesheets.zip	duplicate (same sha256)
+file/documentation/papers_presentations/fb2min.pdf	file/documentation/papers_presentations/Firebird_2_min.pdf	duplicate (same sha256)
+file/documentation/pdf/ru/firebird-language-reference-30-rus.pdf	file/documentation/pdf/ru/firebird-30-language-reference-ru.pdf	duplicate (same sha256)
+file/documentation/pdf/ru/firebird_3_0_language_reference_rus.pdf	file/documentation/pdf/ru/firebird-30-language-reference-ru.pdf	duplicate (same sha256)
+file/documentation/reference_manuals/reference_material/Firebird-1_5-ErrorCodes.pdf	file/documentation/reference_manuals/reference_material/Firebird-1.5-ErrorCodes.pdf	duplicate (same sha256)
+file/documentation/reference_manuals/reference_material/Firebird-1_5-LangRef-Update.pdf	file/documentation/reference_manuals/reference_material/Firebird-1.5-LangRef-Update.pdf	duplicate (same sha256)
+file/documentation/reference_manuals/reference_material/Firebird-2_0-ErrorCodes.pdf	file/documentation/reference_manuals/reference_material/Firebird-2.0-ErrorCodes.pdf	duplicate (same sha256)
+file/documentation/reference_manuals/reference_material/Firebird-2_1-ErrorCodes.pdf	file/documentation/reference_manuals/reference_material/Firebird-2.1-ErrorCodes.pdf	duplicate (same sha256)
+file/documentation/reference_manuals/reference_material/Firebird-2_1-LangRef-Update.pdf	file/documentation/reference_manuals/reference_material/Firebird-2.1-LangRef-Update.pdf	duplicate (same sha256)
+file/documentation/reference_manuals/reference_material/Firebird-2_5-LangRef-Update.pdf	file/documentation/reference_manuals/reference_material/Firebird-2.5-LangRef-Update.pdf	duplicate (same sha256)
+file/documentation/release_notes/Firebird-1_0-ReleaseNotes-Japanese.pdf	file/documentation/release_notes/Firebird-1.0-ReleaseNotes-Japanese.pdf	duplicate (same sha256)
+file/documentation/release_notes/Firebird-1_0-ReleaseNotes-Portuguese.pdf	file/documentation/release_notes/Firebird-1.0-ReleaseNotes-Portuguese.pdf	duplicate (same sha256)
+file/documentation/release_notes/Firebird-1_0-ReleaseNotes.pdf	file/documentation/release_notes/Firebird-1.0-ReleaseNotes.pdf	duplicate (same sha256)
+file/documentation/release_notes/Firebird-1_0_2-ReadMe.txt	file/documentation/release_notes/Firebird-1.0.2-ReadMe.txt	duplicate (same sha256)
+file/documentation/release_notes/Firebird-1_0_3-ReadMe.txt	file/documentation/release_notes/Firebird-1.0.3-ReadMe.txt	duplicate (same sha256)
+file/documentation/release_notes/Firebird-1_5-ReleaseNotes-Brazilian.pdf	file/documentation/release_notes/Firebird-1.5-ReleaseNotes-Brazilian.pdf	duplicate (same sha256)
+file/documentation/release_notes/Firebird-1_5-ReleaseNotes-Czech.pdf	file/documentation/release_notes/Firebird-1.5-ReleaseNotes-Czech.pdf	duplicate (same sha256)
+file/documentation/release_notes/Firebird-1_5-ReleaseNotes-Italian.pdf	file/documentation/release_notes/Firebird-1.5-ReleaseNotes-Italian.pdf	duplicate (same sha256)
+file/documentation/release_notes/Firebird-1_5-ReleaseNotes-Portuguese.pdf	file/documentation/release_notes/Firebird-1.5-ReleaseNotes-Portuguese.pdf	duplicate (same sha256)
+file/documentation/release_notes/Firebird-1_5-ReleaseNotes-Spanish.pdf	file/documentation/release_notes/Firebird-1.5-ReleaseNotes-Spanish.pdf	duplicate (same sha256)
+file/documentation/release_notes/Firebird-1_5_2-ReleaseNotes-French.pdf	file/documentation/release_notes/Firebird-1.5.2-ReleaseNotes-French.pdf	duplicate (same sha256)
+file/documentation/release_notes/Firebird-1_5_2-ReleaseNotes-German.pdf	file/documentation/release_notes/Firebird-1.5.2-ReleaseNotes-German.pdf	duplicate (same sha256)
+file/webinars/20260915matviews/materialized_views_in_firebird_engl.pdf	file/webinars/20260915matviews/materialized_views_in_firebird_eng.pdf	duplicate (same sha256)
+file/Jaybird_2_1_JDBC_driver_manual.pdf	file/documentation/drivers/Jaybird_2_1_JDBC_driver_manual.pdf	old version (2011, linked 2014)
+file/documentation/drivers/Jaybird_2_1_JDBC_driver_manual_2011-02-22.pdf	file/documentation/drivers/Jaybird_2_1_JDBC_driver_manual.pdf	old version (2011, linked 2014)
+file/documentation/reference_manuals/reference_material/Firebird-Cache.pdf	file/documentation/pdf/en/firebirddocs/fbcache/firebird-cache.pdf	old build (2011, linked 2024)
+file/documentation/reference_manuals/reference_material/Firebird-Internals.pdf	file/documentation/pdf/en/firebirddocs/firebirdinternals/firebird-internals.pdf	old build (2011, linked 2026)
+file/documentation/reference_manuals/user_manuals/Firebird-Generator-Guide.pdf	file/documentation/pdf/en/firebirddocs/generatorguide/firebird-generator-guide.pdf	old build (2011, linked 2024)
+file/documentation/reference_manuals/user_manuals/Firebird-fbmgr.pdf	file/documentation/pdf/en/firebirddocs/fbmgr/firebird-fbmgr.pdf	old build (2011, linked 2024)
+file/documentation/reference_manuals/user_manuals/Firebird-gsec.pdf	file/documentation/pdf/en/firebirddocs/gsec/firebird-gsec.pdf	old build (2011, linked 2024)
+file/documentation/reference_manuals/user_manuals/Firebird-gsplit.pdf	file/documentation/pdf/en/firebirddocs/gsplit/firebird-gsplit.pdf	old build (2011, linked 2024)
+file/documentation/reference_manuals/user_manuals/Firebird-gstat.pdf	file/documentation/pdf/en/firebirddocs/gstat/firebird-gstat.pdf	old build (2011, linked 2025)
+file/documentation/reference_manuals/user_manuals/Firebird-isql.pdf	file/documentation/pdf/en/firebirddocs/isql/firebird-isql.pdf	old build (2013, linked 2024)
+file/documentation/reference_manuals/user_manuals/Firebird-shell-scripts.pdf	file/documentation/pdf/en/firebirddocs/fb-shell-scripts/firebird-shell-scripts.pdf	old build (2011, linked 2024)
+file/documentation/reference_manuals/firebird_licenses/Public-Documentation-License.pdf	file/documentation/pdf/en/licenses/pdl/public-documentation-license.pdf	old build (2011, linked 2025)
+file/documentation/reference_manuals/fblangref25-en/Firebird_Language_Reference_25EN.pdf	file/documentation/pdf/en/refdocs/fblangref25/firebird-25-language-reference.pdf	old build (2017, linked 2026)
+file/documentation/reference_manuals/user_manuals/Firebird-1_0-QuickStart.pdf	file/documentation/reference_manuals/user_manuals/Firebird-1.0-QuickStart.pdf	same document, other build
+file/documentation/reference_manuals/user_manuals/Firebird-1_5-QuickStart.pdf	file/documentation/reference_manuals/user_manuals/Firebird-1.5-QuickStart.pdf	same document, other build
+file/documentation/reference_manuals/user_manuals/Firebird-1_5-QuickStart-French.pdf	file/documentation/reference_manuals/user_manuals/Firebird-1.5-QuickStart-French.pdf	same document, other build
+file/documentation/reference_manuals/user_manuals/Firebird-1_5-QuickStart-Japanese.pdf	file/documentation/reference_manuals/user_manuals/Firebird-1.5-QuickStart-Japanese.pdf	same document, other build
+file/documentation/reference_manuals/user_manuals/Firebird-1_5-QuickStart-Russian.pdf	file/documentation/reference_manuals/user_manuals/Firebird-1.5-QuickStart-Russian.pdf	same document, other build
+file/documentation/reference_manuals/user_manuals/Firebird-1_5-QuickStart-Spanish.pdf	file/documentation/reference_manuals/user_manuals/Firebird-1.5-QuickStart-Spanish.pdf	same document, other build
+file/documentation/reference_manuals/user_manuals/Firebird-2_5-QuickStart.pdf	file/documentation/reference_manuals/user_manuals/Firebird-2.5-QuickStart.pdf	same document, other build
+file/documentation/release_notes/Firebird-2_1_3-ReleaseNotes-Italian.pdf	file/documentation/release_notes/Firebird-2.1.3-ReleaseNotes-Italian.pdf	same document, other build
+file/documentation/release_notes/Firebird-1_5_6-ReleaseNotes.pdf	file/documentation/release_notes/Firebird-1.5.6-ReleaseNotes.pdf	same document, other build
+file/documentation/release_notes/Firebird-2_5_0-ReleaseNotes.pdf	file/documentation/release_notes/Firebird-2.5.0-ReleaseNotes.pdf	same document, other build
+file/documentation/release_notes/Firebird-2.0.6-ReleaseNotes.pdf	file/documentation/release_notes/Firebird-2.0.7-ReleaseNotes.pdf	old version (linked 2.0.7)
+file/documentation/release_notes/Firebird-2_0_6-ReleaseNotes.pdf	file/documentation/release_notes/Firebird-2.0.7-ReleaseNotes.pdf	old version (linked 2.0.7)
+file/documentation/release_notes/Firebird-2_1_3-ReleaseNotes.pdf	file/documentation/release_notes/Firebird-2_1_7-ReleaseNotes.pdf	old version (linked 2.1.7)
+file/documentation/release_notes/Firebird-2.1.4-ReleaseNotes.pdf	file/documentation/release_notes/Firebird-2_1_7-ReleaseNotes.pdf	old version (linked 2.1.7)
+file/documentation/release_notes/Firebird-2_1_4-ReleaseNotes.pdf	file/documentation/release_notes/Firebird-2_1_7-ReleaseNotes.pdf	old version (linked 2.1.7)
+file/documentation/release_notes/Firebird-2.1.5-ReleaseNotes.pdf	file/documentation/release_notes/Firebird-2_1_7-ReleaseNotes.pdf	old version (linked 2.1.7)
+file/documentation/release_notes/Firebird-2.1.5-SU1-ReleaseNotes.pdf	file/documentation/release_notes/Firebird-2_1_7-ReleaseNotes.pdf	old version (linked 2.1.7)
+file/documentation/release_notes/Firebird-2_1_6-ReleaseNotes.pdf	file/documentation/release_notes/Firebird-2_1_7-ReleaseNotes.pdf	old version (linked 2.1.7)
+file/documentation/release_notes/Firebird-2_1_3-BugFixes.pdf	file/documentation/release_notes/Firebird-2_1_7-BugFixes.pdf	old version (linked 2.1.7)
+file/documentation/release_notes/Firebird-2.1.4-BugFixes.pdf	file/documentation/release_notes/Firebird-2_1_7-BugFixes.pdf	old version (linked 2.1.7)
+file/documentation/release_notes/Firebird-2_1_4-BugFixes.pdf	file/documentation/release_notes/Firebird-2_1_7-BugFixes.pdf	old version (linked 2.1.7)
+file/documentation/release_notes/Firebird-2.1.5-BugFixes.pdf	file/documentation/release_notes/Firebird-2_1_7-BugFixes.pdf	old version (linked 2.1.7)
+file/documentation/release_notes/Firebird-2.1.5-SU1-BugFixes.pdf	file/documentation/release_notes/Firebird-2_1_7-BugFixes.pdf	old version (linked 2.1.7)
+file/documentation/release_notes/Firebird-2_1_6-BugFixes.pdf	file/documentation/release_notes/Firebird-2_1_7-BugFixes.pdf	old version (linked 2.1.7)
+file/documentation/release_notes/Firebird-2_1_3-Installation.pdf	file/documentation/release_notes/Firebird-2_1_6-Installation.pdf	old version (linked 2.1.6)
+file/documentation/release_notes/Firebird-2.1.4-Installation.pdf	file/documentation/release_notes/Firebird-2_1_6-Installation.pdf	old version (linked 2.1.6)
+file/documentation/release_notes/Firebird-2_1_4-Installation.pdf	file/documentation/release_notes/Firebird-2_1_6-Installation.pdf	old version (linked 2.1.6)
+file/documentation/release_notes/Firebird-2_5_2-SU1-ReleaseNotes.pdf	file/documentation/release_notes/Firebird-2_5_3-SU1-ReleaseNotes.pdf	old version (linked 2.5.3 SU1)
+file/documentation/release_notes/Firebird-4.0.0_Beta1-ReleaseNotes.pdf	file/documentation/release_notes/Firebird-4.0.1-ReleaseNotes.pdf	pre-release (linked 4.0.x)
+file/documentation/reference_manuals/user_manuals/Firebird-File-Metadata-Security-German.pdf	file/documentation/papers_presentations/Firebird-Security-German.pdf	duplicate (same md5)
+file/documentation/papers_presentations/Firebird-Security.pdf	file/documentation/reference_manuals/user_manuals/Firebird-File-Metadata-Security.pdf	old version (2011 edition kept)
+file/documentation/papers_presentations/Firebird-Security-Brazilian-Portuguese.pdf	file/documentation/reference_manuals/user_manuals/Firebird-File-Metadata-Security-Brazilian-Portuguese.pdf	old version (2011 edition kept)
+file/documentation/papers_presentations/Firebird-Security-Russian.pdf	file/documentation/reference_manuals/user_manuals/Firebird-File-Metadata-Security-Russian.pdf	old version (2011 edition kept)
+file/documentation/reference_manuals/user_manuals/Firebird-Generator-Guide-German.pdf	file/documentation/pdf/de/firebirddocs/generatorguide/firebird-generatoren-ratgeber.pdf	old version (new edition kept)
+file/documentation/reference_manuals/user_manuals/Firebird-Generator-Guide-Russian.pdf	file/documentation/pdf/ru/firebirddocs/generatorguide/firebird-generator-guide-ru.pdf	old version (new edition kept)
+file/documentation/reference_manuals/user_manuals/Firebird-nbackup-German.pdf	file/documentation/pdf/de/firebirddocs/nbackup/firebird-nbackup-de.pdf	old version (new edition kept)
+file/documentation/reference_manuals/reference_material/Firebird-Cache-German.pdf	file/documentation/pdf/de/firebirddocs/fbcache/firebird-cache-de.pdf	old version (new edition kept)
+file/documentation/reference_manuals/fbdevgd-en/Firebird_Devel_Guide_30EN.pdf	file/documentation/pdf/en/refdocs/fbdevgd30/firebird-30-developers-guide.pdf	old version (new edition kept)
+file/documentation/reference_manuals/html/fblangref25.html	file/documentation/html/en/refdocs/fblangref25/firebird-25-language-reference.html	old version (new edition kept)
+file/documentation/drivers/python/3.3.0/Python-DB-API-2.0.html	/en/drivers-documentation/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/3.3.0/beyond-python-db-api.html	/en/drivers-documentation/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/3.3.0/changelog.html	/en/drivers-documentation/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/3.3.0/concurrency.html	/en/drivers-documentation/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/3.3.0/genindex.html	/en/drivers-documentation/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/3.3.0/index.html	/en/drivers-documentation/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/3.3.0/installation.html	/en/drivers-documentation/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/3.3.0/license.html	/en/drivers-documentation/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/3.3.0/links.html	/en/drivers-documentation/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/3.3.0/modindex.html	/en/drivers-documentation/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/3.3.0/python-db-api-compliance.html	/en/drivers-documentation/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/3.3.0/search.html	/en/drivers-documentation/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/3.3.0/thread-safety-overview.html	/en/drivers-documentation/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/3.3.0/tutorial.html	/en/drivers-documentation/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/fdb/changelog.html	https://fdb.readthedocs.io/en/latest/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/fdb/differecnes-from-kdb.html	https://fdb.readthedocs.io/en/latest/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/fdb/genindex.html	https://fdb.readthedocs.io/en/latest/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/fdb/getting-started.html	https://fdb.readthedocs.io/en/latest/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/fdb/index.html	https://fdb.readthedocs.io/en/latest/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/fdb/license.html	https://fdb.readthedocs.io/en/latest/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/fdb/py-modindex.html	https://fdb.readthedocs.io/en/latest/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/fdb/python-db-api-compliance.html	https://fdb.readthedocs.io/en/latest/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/fdb/reference.html	https://fdb.readthedocs.io/en/latest/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/fdb/search.html	https://fdb.readthedocs.io/en/latest/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/fdb/usage-guide.html	https://fdb.readthedocs.io/en/latest/	old Python driver docs deleted (current docs on readthedocs)
+file/documentation/drivers/python/fdb/	https://fdb.readthedocs.io/en/latest/	old Python driver docs deleted
+file/documentation/drivers/python/3.3.0/	/en/drivers-documentation/	old Python driver docs deleted
+file/documentation/drivers_documentation/python/3.3.0/beyond-python-db-api.html	/en/drivers-documentation/	old Python driver docs deleted
+file/documentation/drivers/java/manual-SNAPSHOT/jaybird_manual.html	https://firebirdsql.github.io/jaybird-manual/jaybird_manual.html	pointer page to the Jaybird manual on GitHub (deleted)
+file/documentation/drivers/java/manual-SNAPSHOT/	https://firebirdsql.github.io/jaybird-manual/jaybird_manual.html	pointer page to the Jaybird manual on GitHub (deleted)
+en/newsletter/15504/	/en/newsletter/firebird-sql-project-newsletter-issue-3-15504/	broken link on old site: nearest page
+en/newsletter/firebird-sql-project-newsletter-issue-5-23744/	/en/news/firebird-sql-project-newsletter-issue-5-32610/	broken link on old site: nearest page
+en/firebird-2-5-1-rc1/	/en/firebird-2-5-1/	broken link on old site: nearest page
+en/firebird-2-5-1-rc1	/en/firebird-2-5-1/	broken link on old site: nearest page
+en/firebird-2-5-2-rc1	/en/firebird-2-5-2/	broken link on old site: nearest page
+en/firebird-5-0-0-rc-2/	/en/firebird-5-0/	broken link on old site: nearest page
+en/membership-application-form/	/joinfirebird	broken link on old site: nearest page
+en/quality-assurance-status	/en/firebird-test-suite/	broken link on old site: nearest page
+en/odbc-devel-status	/en/devel-odbc-driver/	broken link on old site: nearest page
+file/documentation/release_notes/Firebird-2.5.2-SU1-ReleaseNotes.pdf	/file/documentation/release_notes/Firebird-2.5.2-ReleaseNotes.pdf	broken link on old site: nearest page
+en/news/firebird-conference-2019-sessions-about-very-large-databases/roman_simakov.png	/img/firebird%20conference/conference-2019/roman_simakov.png	broken link on old site: nearest page
+guide/fb2min_gr.html	/file/documentation/papers_presentations/Firebird_2_min.pdf	broken link on old site: nearest page (Greek version lost, English PDF)
+file/documentation/release_notes/html/en/2_5/index.html	/file/documentation/release_notes/html/en/2_5/rlsnotes25.html	broken link in old copied docs: nearest current target
+file/documentation/release_notes/html/ja/index.html	/file/documentation/release_notes/html/ja/rlsnotes25.html	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/html/ru/index.html	/file/documentation/papers_presentations/html/ru/fbmetasecur-ru.html	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/html/ru/firebird-database-documentation-ru.html	/file/documentation/papers_presentations/html/ru/fbmetasecur-ru.html	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/html/pt_br/index.html	/file/documentation/papers_presentations/html/pt_br/fbmetasecur-pt_br.html	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/html/fr/index.html	/file/documentation/papers_presentations/html/fr/paper-fbent-fr.html	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/images/fb-tiny.gif	/file/documentation/papers_presentations/html/images/fb-tiny.gif	broken link in old copied docs: nearest current target
+file/documentation/reference_manuals/firebird_licenses/html/index.html	/en/licensing/	broken link in old copied docs: nearest current target
+file/documentation/reference_manuals/firebird_licenses/html/licenses-fr.html	/file/documentation/reference_manuals/user_manuals/html/fr/licenses-fr.html	broken link in old copied docs: nearest current target
+file/documentation/reference_manuals/firebird_licenses/html/firebirddocs.css	/file/documentation/reference_manuals/user_manuals/html/fr/firebirddocs.css	broken link in old copied docs: nearest current target
+index.php	/	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/index.php	/	broken link in old copied docs: nearest current target
+index.php?op=doc	/en/documentation/	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/index.php?op=doc	/en/documentation/	broken link in old copied docs: nearest current target
+index.php?op=doc&id=othersites	/en/third-party-docs-and-articles/	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/index.php?op=doc&id=othersites	/en/third-party-docs-and-articles/	broken link in old copied docs: nearest current target
+index.php?op=doc&id=userdoc	/en/reference-manuals/	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/index.php?op=doc&id=userdoc	/en/reference-manuals/	broken link in old copied docs: nearest current target
+index.php?op=doc&id=idpl	/en/initial-developer-s-public-license-version-1-0/	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/index.php?op=doc&id=idpl	/en/initial-developer-s-public-license-version-1-0/	broken link in old copied docs: nearest current target
+index.php?op=doc&id=ipl	/en/interbase-public-license/	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/index.php?op=doc&id=ipl	/en/interbase-public-license/	broken link in old copied docs: nearest current target
+index.php?op=devel&sub=doc	/en/development/	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/index.php?op=devel&sub=doc	/en/development/	broken link in old copied docs: nearest current target
+index.php?op=devel&sub=qa&id=bugreport_howto	/en/how-to-report-bugs/	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/index.php?op=devel&sub=qa&id=bugreport_howto	/en/how-to-report-bugs/	broken link in old copied docs: nearest current target
+index.php?op=ffoundation	/en/firebird-foundation/	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/index.php?op=ffoundation	/en/firebird-foundation/	broken link in old copied docs: nearest current target
+index.php?op=files	/en/downloads/	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/index.php?op=files	/en/downloads/	broken link in old copied docs: nearest current target
+index.php?op=lists	/en/mailing-lists/	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/index.php?op=lists	/en/mailing-lists/	broken link in old copied docs: nearest current target
+index.php?op=guide	/en/documentation/	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/index.php?op=guide	/en/documentation/	broken link in old copied docs: nearest current target
+index.php/op=doc	/en/documentation/	broken link in old copied docs: nearest current target
+cms	/	broken link in old copied docs: nearest current target
+en/consider-your-contribution/	/en/donate/	broken link in old copied docs: nearest current target
+en/downloads/&sub=engine	/en/downloads/	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/html/nullguide.html	/file/documentation/html/en/firebirddocs/nullguide/firebird-null-guide.html	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/html/ubusetup-license.html	/file/documentation/reference_manuals/user_manuals/html/ubusetup-license.html	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/html/ru/nullguide-ru.html	/file/documentation/reference_manuals/user_manuals/html/ru/nullguide-ru.html	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/html/ru/nbackup-license-ru.html	/file/documentation/reference_manuals/user_manuals/html/ru/nbackup-license-ru.html	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/html/pt_br/ibfbcoex-pt_br.html	/file/documentation/reference_manuals/user_manuals/html/ibfbcoex.html	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/html/firebird-database-documentation.html	/file/documentation/reference_manuals/user_manuals/html/firebird-database-documentation.html	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/html/pt_br/firebird-database-documentation.html	/en/documentation/	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/html/fr/papers-fr-book.html	/en/white-papers-presentations/	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/images/fb-facts.gif	/file/documentation/papers_presentations/html/images/fb-facts.gif	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/images/ff-text.gif	/file/documentation/papers_presentations/html/images/ff-text.gif	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/images/ff_linklogo_1.gif	/file/documentation/papers_presentations/html/images/ff_linklogo_1.gif	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/images/pdflogo.gif	/file/documentation/papers_presentations/html/images/pdflogo.gif	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/images/fb-facts-btn.gif	/file/documentation/papers_presentations/html/images/fb-facts.gif	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/images/fb-whatsnew.gif	/file/documentation/papers_presentations/html/images/fb-whatsnew-btn.gif	broken link in old copied docs: nearest current target
+file/documentation/papers_presentations/images/logo.gif	/file/documentation/papers_presentations/html/images/firebirdlogo.png	broken link in old copied docs: nearest current target
+file/documentation/reference_manuals/user_manuals/http://firebirdsql.org/pdfmanual/ru/Firebird-PovedeniyeNULL.pdf	/file/documentation/reference_manuals/user_manuals/Firebird-Null-Guide-Russian.pdf	broken link in old copied docs: nearest current target
+file/documentation/reference_manuals/user_manuals/it/Usare-NULL-in-Firebird.pdf	/file/documentation/reference_manuals/user_manuals/Firebird-Null-Guide-Italian.pdf	broken link in old copied docs: nearest current target
+file/documentation/reference_manuals/user_manuals/es	/en/reference-manuals/	broken link in old copied docs: nearest current target
+file/documentation/reference_manuals/user_manuals/fr	/en/reference-manuals/	broken link in old copied docs: nearest current target
+file/documentation/reference_manuals/user_manuals/html/de/docbuildhowto-de.html	/file/documentation/html/en/firebirddocs/docbuildhowto/firebird-docbuilding-howto.html	broken link in old copied docs: nearest current target
+file/documentation/release_notes/html/en/2_5/install210.html	/file/documentation/release_notes/html/install210.html	broken link in old copied docs: nearest current target
+file/documentation/release_notes/html/en/2_5/rnfb30-licence.html	/file/documentation/release_notes/html/en/2_5/rnfb25-licence.html	broken link in old copied docs: nearest current target
+file/documentation/release_notes/html/en/3_0/rnfb40-licence.html	/file/documentation/release_notes/html/en/2_5/rnfb25-licence.html	broken link in old copied docs: nearest current target

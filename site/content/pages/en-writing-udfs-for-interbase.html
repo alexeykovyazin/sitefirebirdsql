@@ -1,0 +1,406 @@
+---
+title: "Firebird: Writing UDFs for InterBase"
+html_title: "Firebird: Writing UDFs for InterBase"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Writing UDFs for InterBase"
+menu_active: "/en/firebird-rdbms/"
+source_url: "/en/writing-udfs-for-interbase"
+source_format: new
+url: "/en/writing-udfs-for-interbase"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/documentation/">Documentation</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/firebird-rdbms/">Firebird RDBMS</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/third-party-docs-and-articles/">Third-party Docs and Articles</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Writing UDFs for InterBase</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    Gregory Deatz shares his expert knowledge of writing User-defined Functions for InterBase<br />(Paper delivered at the Borland Developers' Conference, San Diego, July 2000)<br /><ul><li><a href="#introduction" name="top">Introduction</a><ul><li>What is a UDF?</li><li>Why write them?</li><li>Some do's, some don't's</li></ul></li><li><a href="#writing_udfs_in_delphi_for_windows_platforms">Writing UDFs in Delphi for Windows platforms</a><ul><li>Start a Delphi project</li><li>Create a new unit for your functions</li><li>Create a modulo routine</li><li>Build it, use it</li><li>But what about strings and dates?</li><li>Let's build a &quot;Left&quot; routine</li><li>Let's build some date routines</li></ul></li><li><a href="#writing_udfs_for_linux_unix_platforms">Writing UDFs for Linux/Unix platforms</a><ul><li>Create a C-file</li><li>Create the modulo routine</li><li>Build it, use it</li></ul></li><li><a href="#conclusions">Conclusions </a></li></ul><hr /><strong><span style="color: rgb(6, 134, 173); font-size: 16px;"><a name="introduction"></a>Introduction</span></strong><br /><br /><strong><span style="color: rgb(71, 71, 71); font-size: 16px;">What is a UDF?</span></strong><br /><br />A user defined function (UDF) in InterBase is merely a function written in any programming language that is compiled into a shared library. Under Windows platforms, shared libraries are commonly referred to as dynamic link libraries (DLL's).<br /><br /><strong><span style="color: rgb(71, 71, 71); font-size: 16px;">Why write them?</span></strong><br /><br />After all, stored procedures can accomplish quite a bit on their own.<br /><br />The truth of the matter is, InterBase does not come with a very rich set of built-in functions. Some common functions that are missing are <em>modulo </em>arithmetic, floating point formatting routines, date manipulation routines and string manipulation routines.<br /><br />It just so happens that programming languages like Delphi and C can produce amazingly fast code to do modulo arithmetic, and other various date processing, floating point formatting and string manipulation routines.<br /><br />It's also a well known fact that writing UDFs is an insanely easy task; however, the inexperienced DLL/shared library writer might be uneasy and uncomfortable with some of the requirements...<br /><br /><strong><span style="color: rgb(71, 71, 71); font-size: 16px;">Some do's, some don't's</span></strong><br /><br />Before we start going through some examples of writing UDFs, let's talk about what you should be doing, and what you <em>should not</em> be doing.<br /><br />Once you get the hang of writing UDFs, you will probably think that a whole world of InterBase extensibility has opened up to you through UDFs.<br /><br />On the one hand, it has... The mechanisms for invoking UDFs are quite simple, and since a UDF is simply a routine written in your favorite programming language, you can do virtually anything, right?<br /><br />Well, yes and no... One thing you can't do with UDFs: You can't pass <span style="font-family: Courier New;">NULLs</span> to them. Likewise, a UDF cannot return a <span style="font-family: Courier New;">NULL </span>value. Also, a UDF does not work within the context of a transaction. That is, transaction level information cannot be passed to a UDF, and therefore, a UDF isn't able to &quot;dig back&quot; to the database.<br /><br />Sort of. A UDF <em>can </em>establish a new connection to the database and start another transaction if it so desires, but this is where we come to the &quot;do's and don'ts&quot;, not to the &quot;can'ts&quot;.<br /><br />When you write UDFs, you should follow these two simple rules:<br />    <ul><li>A UDF should be a simple, <em>quick </em>function.</li><li>A UDF should <em>not </em>attempt to directly affect the state of the database.</li></ul>What does this mean?<br /><br />Well, a function that trims a string, performs modulo arithmetic, performs fancy date arithmetic or evaluates aspects of dates are all nice, simple, <em>quick </em>functions. They are good examples of candidate UDFs.<br /><br />Now, a function that attaches to a database, and inserts, deletes or updates data is probably a <em>bad idea</em>. A function that launches a program that performs a series of complex tasks is probably a <em>bad idea</em>. Why? Quite simply because these types of functions might stop a database from (a) doing transactional stuff or (b) even worse, they could significantly damage the performance of your server: As soon as a UDF is called, the thread that called that UDF blocks until the UDF returns.<br /><br />Remember, of course, that these are <em>general guidelines</em>. Your particular business case might dictate a need to do something that is <em>generally bad</em> because in your case it is <em>specifically </em>good, kind of like a glaucoma patient smoking... O yeah, stay on topic now.<br /><br />Let's get to the heart of the discussion, now!<br /><br /><a href="#top">return to top</a><br /><hr /><strong><span style="color: rgb(6, 134, 173); font-size: 16px;"><a name="writing_udfs_in_delphi_for_windows_platforms"></a>Writing UDFs in Delphi for Windows platforms</span></strong><br /><br /><strong><span style="color: rgb(71, 71, 71); font-size: 16px;">Start a Delphi project</span></strong><br /><br />Start a Delphi DLL project (a special type of project, when you click &quot;F&quot;ile &quot;N&quot;ew).<br /><br /><strong><span style="color: rgb(71, 71, 71); font-size: 16px;">Create a new unit for your functions</span></strong><br /><ul><li>Now, do &quot;F&quot;ile, &quot;N&quot;ew... UNIT.</li><li>It might be wise to do a Save All at this point... put your project where you feel is a good spot...</li></ul><strong><span style="color: rgb(71, 71, 71); font-size: 16px;">Create a modulo routine</span></strong><br /><br />In the newly created unit:<br /><ul><li>Declare the routine in the interface section:</li></ul><div style="margin-left: 40px;"><span style="font-family: Courier New;">function Modulo(var i, j: Integer): Integer; cdecl; export;</span></div><ul><li>Implement the routine in the implementation section</li></ul>            <div style="margin-left: 40px;"><span style="font-family: Courier New;">function Modulo(var i, j: Integer): Integer;<br />            begin<br />              </span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">if (j = 0) then<br />                </span></div><div style="margin-left: 120px;"><span style="font-family: Courier New;">result := -1 // just check the boundary condition, and<br />                             // return a reasonably uninteresting answer.</span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">              else<br />                </span></div><div style="margin-left: 120px;"><span style="font-family: Courier New;">result := i mod j;<br />            </span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;">end;<br /><br /></span></div><div style="margin-left: 40px;">&nbsp;</div>In the newly created project source:<br /><ul><li>Type the following immediately preceding the &quot;begin end.&quot;:</li></ul>          <div style="margin-left: 40px;"><span style="font-family: Courier New;">exports<br />                Modulo;<br /><br /></span></div><strong><span style="color: rgb(71, 71, 71); font-size: 16px;">Build it, use it</span></strong><br />    <br />So, build the project, and you now have a working DLL.<br /><br />Now, I'm only going to mention this once: This simplest way to get InterBase to appropriately find the DLL is to copy it to the UDF directory under the InterBase Installation, which may be:<br /><div style="margin-left: 40px;"><span style="font-family: Courier New;">      c:\Program Files\Borland\IntrBase\UDF.</span></div><div><br />To use the UDF.... do the following:</div><ul><li>Connect to a new or existing database using ISQL.</li><li>Type the following:</li></ul>                      <div style="margin-left: 80px;"><span style="font-family: Courier New;">declare external function f_Modulo<br />              </span></div><div style="margin-left: 120px;"><span style="font-family: Courier New;">integer, integer<br />              returns<br />              integer by value<br />              entry_point 'Modulo' module_name 'dll name minus &quot;.dll&quot;';</span></div>          <ul><li>Commit your changes.</li><li>Now test it...</li></ul><div style="margin-left: 40px;"><span style="font-family: Courier New;">            select f_Modulo(3, 2) from rdb$database<br /><br /></span></div>Whew! That was really easy, wasn't it?<br /><br /><strong><span style="color: rgb(71, 71, 71); font-size: 16px;">But what about strings and dates?</span></strong><br /><br />What about 'em anyway? A string and a date are not considered &quot;scalar&quot; values in InterBase-ese, so special care must be taken when returning their values to InterBase.<br /><br /><strong><span style="color: rgb(71, 71, 71); font-size: 16px;">Let's build a &quot;Left&quot; routine</span></strong><br /><br /><strong>Memory allocation issues</strong><br /><ul><li>If you have IB 5.1 or lower, then type the following declaration in the interface section of your unit:</li></ul><div style="margin-left: 40px;"><span style="font-family: Courier New;">      function malloc(Bytes: Integer): Pointer; cdecl; external 'msvcrt.dll';</span></div>    <ul><li>If you have InterBase 5.5 or better, then you don't really need this bit of coding magic. Instead, make sure that the<span style="font-family: Courier New;"> ib_util.pas</span> file is in your compiler search path, and that <span style="font-family: Courier New;">ib_util.dll</span> is in your real search path.</li></ul><div style="margin-left: 40px;">The simplest way to do this is to put<br />&nbsp;</div>      <div style="margin-left: 40px;"><span style="font-family: Courier New;">c:\Program Files\InterBase Corp\InterBase\include</span><br />&nbsp;</div><div style="margin-left: 40px;">in Delphi's library search path. Then, copy<br />&nbsp;</div><div style="margin-left: 40px;"><span style="font-family: Courier New;">      c:\Program Files\InterBase Corp\InterBase\lib\ib_util.dll</span></div>      <div style="margin-left: 40px;"><br />to your windows system directory (typically <span style="font-family: Courier New;">c:\Windows\System</span>).</div><ul><li>Then, put<span style="font-family: Courier New;"> ib_util.pas</span> in your uses clause of your interface section.</li></ul>      <div style="margin-left: 40px;"><span style="font-family: Courier New;">uses<br />        </span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">...,<br />        ib_util;</span></div><br />What are all these strange memory allocation details? Why can't I just allocate memory with AllocMem, or whatever? The simple answer is: You can't, so don't ask! The more complicated answer is that every compiler uses it's own favorite algorithms for managing memory that has been given to it by the OS. As an example, MSVC manages memory differently from Delphi. Guess what? IB is compiled with MSVC. In pre-5.5 version, you have to link directly to the MS VC Run-time DLL, and in post-5.5 days, InterBase gives you an IB call to make this possible. So, let's get on with building a string-ish function!<br /><br /><strong>Building the function</strong><br /><ul><li>In the interface section of the newly created unit, type the following declaration:</li></ul><div style="margin-left: 40px;"><span style="font-family: Courier New;">      function Left(sz: PChar; Cnt: Integer): PChar; cdecl; export;</span></div><ul><li>In the implementation section of the unit, type:</li></ul>      <div style="margin-left: 40px;"><span style="font-family: Courier New;">(* Return the Cnt leftmost characters of sz *)<br />      function Left(sz: PChar; var Cnt: Integer): PChar;<br />      var<br /></span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">        i: Integer;</span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;">begin</span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">        if (sz = nil) then<br /></span></div><div style="margin-left: 120px;"><span style="font-family: Courier New;">          result := nil<br />        </span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">else begin</span></div><div style="margin-left: 120px;"><span style="font-family: Courier New;">          i := 0;<br />          while ((sz[i] &lt;&gt; #0) and (i &lt; cnt)) do Inc(i);<br />          result := ib_util_malloc(i+1);<br />          Move(sz[0], result[0], i);<br />          result[i] := #0;<br />        </span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">end;<br />      </span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;">end;</span></div><ul><li>In your project source, in the &quot;exports&quot; section, type:</li></ul>      <div style="margin-left: 40px;"><span style="font-family: Courier New;">exports<br />        </span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">Modulo,<br />        Left;</span></div><ul><li>Now, build the project again...</li><li>Now, to use the routine, go to ISQL, and reconnect to the database you used above, and type:</li></ul>      <div style="margin-left: 40px;"><span style="font-family: Courier New;">declare external function f_Left<br />        </span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">cstring(64), integer<br />        returns cstring(64) free_it<br />        entry_point 'Left' module_name 'dll name minus &quot;.dll&quot;';</span></div><ul><li>And test it...</li></ul><div style="margin-left: 40px;"><span style="font-family: Courier New;">      select f_Left('Hello', 3) from rdb$database</span></div><br />Still pretty simple, huh?<br /><br /><strong><span style="color: rgb(71, 71, 71); font-size: 16px;">Let's build some date routines</span></strong><br /><ul><li>In InterBase 6, three different &quot;date&quot; types are supported, <span style="font-family: Courier New;">DATE</span>, <span style="font-family: Courier New;">TIME</span>, and <span style="font-family: Courier New;">TIMESTAMP</span>. For those familiar with InterBase 5.5 and older, the <span style="font-family: Courier New;">TIMESTAMP </span>data type is exactly the equivalent of the 5.5 <span style="font-family: Courier New;">DATE </span>type.</li><li>In order to &quot;decode&quot; and &quot;encode&quot; these types into something meaningful for your Delphi program, you need a &quot;little bit&quot; of information about the InterBase API. In your unit, put the following code:</li></ul>      <div style="margin-left: 40px;"><span style="font-family: Courier New;">interface<br />      ...<br />      type<br />        </span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">TM = record<br />          tm_sec : integer;   // Seconds<br />          tm_min : integer;   // Minutes<br />          tm_hour : integer;  // Hour (0--23)<br />          tm_mday : integer;  // Day of month (1--31)<br />          tm_mon : integer;   // Month (0--11)<br />          tm_year : integer;  // Year (calendar year minus 1900)<br />          tm_wday : integer;  // Weekday (0--6) Sunday = 0)<br />          tm_yday : integer;  // Day of year (0--365)<br />          tm_isdst : integer; // 0 if daylight savings time is not in effect)<br />        </span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;">end;</span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;">        PTM             = ^TM;<br /><br />        ISC_TIMESTAMP = record<br />          </span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">timestamp_date : Long;<br />          timestamp_time : ULong;<br />        </span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;">end;</span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;">        PISC_TIMESTAMP = ^ISC_TIMESTAMP;<br /><br />      implementation<br />      ...<br />      procedure isc_encode_timestamp  (tm_date                    : PTM;<br />                                       </span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">ib_date                    : PISC_TIMESTAMP);<br />                                      stdcall; external IBASE_DLL;<br />      </span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;">procedure isc_decode_timestamp  (ib_date: PISC_TIMESTAMP;</span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">                                       tm_date: PTM);<br />                                      stdcall; external IBASE_DLL;</span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;">      procedure isc_decode_sql_date   (var ib_date: Long;<br />                                       </span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">tm_date: PTM);<br />                                      stdcall; external IBASE_DLL;<br />      </span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;">procedure isc_encode_sql_date   (tm_date: PTM;</span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">var ib_date: Long);<br />                                      stdcall; external IBASE_DLL;</span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;">                                             procedure isc_decode_sql_time   (var ib_date: ULong;<br />                                       </span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">tm_date: PTM);<br />                                      stdcall; external IBASE_DLL;<br />      </span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;">procedure isc_encode_sql_time   (tm_date: PTM;</span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">                                       var ib_date: ULong);<br />                                      stdcall; external IBASE_DLL;</span></div>    <ul><li>Now, let's write some date UDFs!</li><li>In the interface section of the newly created unit, type the following declaration:</li></ul>      <div style="margin-left: 40px;"><span style="font-family: Courier New;">function Year(var ib_date: Long): Integer; cdecl; export;<br />      function Hour(var ib_time: ULong): Integer; cdecl; export;</span></div><ul><li>In the implementation section of the unit, type:</li></ul>      <div style="margin-left: 40px;"><span style="font-family: Courier New;">function Year(var ib_date: Long): Integer;<br />      var<br />        </span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">tm_date: TM;<br />      </span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;">begin</span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">isc_decode_sql_date(@ib_date, @tm_date);<br />        result := tm_date.tm_year + 1900;<br />      </span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;">end;</span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;">        <br />      function Hour(var ib_time: ULong): Integer;<br />      var<br /></span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">        tm_date: TM;<br />      </span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;">begin</span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">        isc_decode_sql_time(@ib_time, @tm_date);<br />        result := tm_date.tm_hour;<br />      </span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;">end;</span></div>    <ul><li>In your project source, in the &quot;exports&quot; section, type:</li></ul>      <div style="margin-left: 40px;"><span style="font-family: Courier New;">exports<br />        </span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">Modulo,<br />        Left,<br />        Year,<br />        Hour;</span></div>    <ul><li>Now, build the project again...</li><li>Now, to use the routine, go to ISQL, and reconnect to the database you used above, and type:</li></ul><div style="margin-left: 40px;"><span style="font-family: Courier New;">declare external function f_Year</span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">date<br />        returns integer by value<br />        entry_point 'Year' module_name 'dll name minus &quot;.dll&quot;';</span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;">              <br />declare external function f_Hour<br />        </span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">time<br />        returns integer by value<br />        entry_point 'Hour' module_name 'dll name minus &quot;.dll&quot;';</span></div><ul><li>And test it...</li></ul><div style="margin-left: 40px;"><span style="font-family: Courier New;">      select f_Year(cast('7/11/00' as date)) from rdb$database</span></div><br />Not quite as easy as string or number manipulations, but still pretty simple, huh?<br /><br /><a href="#top">return to top</a><br /><hr /><strong><span style="color: rgb(6, 134, 173); font-size: 16px;"><a name="writing_udfs_for_linux_unix_platforms"></a>Writing UDFs for Linux/Unix platforms</span></strong><br /><br />Most Linux novices that have been initiated into programming in the Windoze world will probably feel a bit intimidated by the notion of &quot;writing a UDF for Linux/Unix platforms&quot;.<br /><br />The process couldn't be simpler, and, in some respects, I find it easier and &quot;more intuitive&quot; than doing it under windows platforms.<br /><br />Whenever you compile a C-File, it creates an &quot;object&quot; file, which is something that will be statically linked to some other code during a &quot;linking&quot; phase, which generally produces an executable file of some form.<br /><br />It's during this &quot;linking&quot; phase that we are going to tell the c-compiler to create a &quot;shared library&quot;, which is essentially a &quot;shared object&quot; file that can be dynamically linked to a program at run-time, not at compile-time.<br /><br />In Windoze-ese, we call these &quot;things&quot; Dynamically Linked Libraries, because the library of functions is &quot;linked&quot; to the executable <em>dynamically</em>, at run-time. Thus we arrive at the &quot;DLL&quot; extension for these files.<br /><br />In Unix/Linux-ese, we call these &quot;things&quot; shared libraries, which are essentially &quot;shared object&quot; files--libraries of code that can be dynamically linked at run-time. Thus we arrive at the conventional &quot;so&quot; extension for these files.<br /><br />You need to remember that there is nothing inherently different between a Linux &quot;Shared Library&quot; and a Windows &quot;DLL&quot;. They are the same thing, at least in concept.<br /><br />So.... how do we create a shared library under Linux?<br /><br /><strong><span style="color: rgb(71, 71, 71); font-size: 16px;">Create a C-file</span></strong><br /><br />This much is easy, right? Just open a text file with a .c extension.<br /><br /><strong><span style="color: rgb(71, 71, 71); font-size: 16px;">Create the modulo routine</span></strong><br /><br /><span style="font-family: Courier New;">int modulo(int *, int *);<br /><br />int modulo(a, b)<br />     </span><div style="margin-left: 40px;"><span style="font-family: Courier New;">int *a;<br />     int *b;</span></div><div><span style="font-family: Courier New;">{</span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;">if (*b == 0)<br /></span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">return -1; // return something suitably stupid.<br />  </span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;">else</span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">    return *a % *b;</span></div><div><span style="font-family: Courier New;">}</span></div><br /><strong><span style="color: rgb(71, 71, 71); font-size: 16px;">Build it, use it</span></strong><br /><br />At the command-line<br /><div style="margin-left: 40px;"><span style="font-family: Courier New;">gcc -c -O -fpic -fwritable-strings &lt;your udf&gt;.c<br />ld -G &lt;your udf&gt;.o -lm -lc -o &lt;your udflib&gt;.so<br />cp &lt;your udflib&gt;.so /usr/interbase/udf</span></div><br />In ISQL<br /><div style="margin-left: 40px;"><span style="font-family: Courier New;">declare external function f_Modulo<br />  </span></div><div style="margin-left: 80px;"><span style="font-family: Courier New;">integer, integer<br />  returns<br />  integer by value<br />  entry_point 'modulo' module_name 'name of shared library';<br /></span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;"><br />commit;</span></div><div style="margin-left: 40px;"><span style="font-family: Courier New;"><br />select f_Modulo(3, 2) from rdb$database;<br /><br /></span></div>Holy guacamole, Batman! That was <em>really </em>easy.<br /><br />Now, instead of going through the motions of writing the other routines, I'll leave it as an exercise for the reader. HOWEVER, if there proves to be time in the lecture, I will go through more examples.<br /><br /><a href="#top">return to top</a><br /><hr /><strong><span style="color: rgb(6, 134, 173); font-size: 16px;"><a name="conclusions"></a>Conclusions</span></strong><br /><br />Wow! Writing UDFs is really easy--there isn't much to it--and look! Linux development ain't so difficult after all.<br /><br />And, of course, we can make the following brain-dead conclusions about developing UDFs for InterBase:<br /><br /><strong>They are easy.</strong> There is no excuse for not building them if you need them.<br /><br /><strong>Don't get carried away.</strong> As powerful as UDFs can be, don't get carried away. Be very objective when deciding where you should place little tidbits of functionality: Am I better served by a UDF or a stored procedure?<br /><br />And that, my friends, is UDF development.<br /><br />For even more examples and happy-fun programming, download FreeUDFLib, a Delphi UDF library for InterBase and FreeUDFLibC a C based UDF library for InterBase that runs on Solaris, Linux, Windows, etc... at <a target="_blank" href="http://www.interbase.com/download">InterBase</a>.<br /><br /><a href="#top">return to top</a><br /><br /><br />
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+<div class="bgMenuLeft">
+
+<div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Documentation</h3>
+  </div>
+</div>
+
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-rdbms/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird RDBMS</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/release-notes/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Release Notes</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/reference-manuals/" class="menulvl_3"><i class="fa fa-arrow-right"></i> All Reference Manuals</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/white-papers-presentations/" class="menulvl_3"><i class="fa fa-arrow-right"></i> White Papers &amp; Presentations</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/books/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Books</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/drivers-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Drivers Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/third-party-docs-and-articles/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Third-party Docs and Articles</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/external-documentation/" class="menulvl_3"><i class="fa fa-arrow-right"></i> External Documentation</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/licensing/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Licensing</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/features/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Features</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/sql-conformance/" class="menulvl_3"><i class="fa fa-arrow-right"></i> SQL Conformance</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/historical-reference/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Historical Reference</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-butler-doc/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird Butler</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-brand-faq/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Branding Policy</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+    
+ 
+ 
+  
+   <div class="menu-tree  bgLVL_3">
+      <a href="/en/firebird-brand-faq/" class="menulvl_3"><i class="fa fa-arrow-right"></i> Firebird Brand FAQ</a>
+      
+   </div>  
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/logos/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Logos</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+  
+  
+    <div class="menu-tree  bgLVL_2">   
+      <a href="/en/firebird-and-other-databases/" class="menulvl_2"><i class="fa fa-arrow-right"></i> Firebird and other databases</a>
+      
+    </div>  
+    
+ 
+ 
+    
+ 
+ 
+    
+
+
+
+</div> 
+
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,231 @@
+---
+title: "Firebird: Jaybird 6.0.5 and Jaybird 5.0.12 released"
+html_title: "Firebird: Jaybird 6.0.5 and Jaybird 5.0.12 released"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Jaybird 6.0.5 and Jaybird 5.0.12 released"
+menu_active: ""
+source_url: "/en/news/jaybird-6-0-5-and-jaybird-5-0-12-released"
+source_format: new
+url: "/en/news/jaybird-6-0-5-and-jaybird-5-0-12-released"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+ 
+    <section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/about-firebird/">About Firebird</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/news/">News &amp; Events</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Jaybird 6.0.5 and Jaybird 5.0.12 released</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-8">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div class="post-categories d-flex justify-content-between align-content-center">
+                        <div class="categories-share">
+                            <ul>
+                                <li><i class="fas fa-calendar"></i> Mar 27, 2026</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="title">Jaybird 6.0.5 and Jaybird 5.0.12 released</h3>
+                                            </div>
+                    <div class="post-text mt-30">
+                        <p>We are happy to announce the release of Jaybird 6.0.5 and Jaybird 5.0.12, providing bug fixes. Jaybird is the Firebird JDBC driver.</p>
+
+<h2>Changes</h2>
+
+<p>The following was fixed or changed in Jaybird 6.0.5:</p>
+
+<ul>
+	<li>JDBC 4.5 support: <code>JaybirdTypeCodes.DECFLOAT</code> and <code>JaybirdType.DECFLOAT</code> now use type code <code>2015</code> instead of <code>-6001</code> (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/906/hovercard" data-id="3803745213" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/906" href="https://github.com/FirebirdSQL/jaybird/issues/906" target="_blank">#906</a>)</li>
+	<li>JDBC 4.5 support: implemented methods <code>enquoteIdentifier</code>, <code>enquoteLiteral</code>, <code>enquoteNCharLiteral</code>, and <code>isSimpleIdentifier</code> on <code>FBConnection</code>, and added them to interface <code>FirebirdConnection</code> for access in older Java versions (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/908/hovercard" data-id="3803993824" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/908" href="https://github.com/FirebirdSQL/jaybird/issues/908" target="_blank">#908</a>)</li>
+	<li>JDBC 4.5 support: implemented &quot;disable escape processing&quot; JDBC escape (<code>{\...\}</code>) (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/909/hovercard" data-id="3804018610" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/909" href="https://github.com/FirebirdSQL/jaybird/issues/909" target="_blank">#909</a>)</li>
+	<li>JDBC 4.5 support: <code>FBDatabaseMetaData.getJDBCMinorVersion()</code> should report 5 (for JDBC 4.5) on Java 26 and higher (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/915/hovercard" data-id="3821817794" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/915" href="https://github.com/FirebirdSQL/jaybird/issues/915" target="_blank">#915</a>)</li>
+	<li>Fixed: JDBC escapes should not be parsed inside dialect 3 delimited identifiers or dialect 1 string literals (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/921/hovercard" data-id="3855704250" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/921" href="https://github.com/FirebirdSQL/jaybird/issues/921" target="_blank">#921</a>)</li>
+	<li>Fixed: <code>IndexOutOfBoundsException</code> in <code>FBCachedBlob.getBytes(long, int)</code> for position or length beyond end of data (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/923/hovercard" data-id="3905638217" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/923" href="https://github.com/FirebirdSQL/jaybird/issues/923" target="_blank">#923</a>)</li>
+	<li>Fixed: Using native client, password is limited to 255 bytes (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/925/hovercard" data-id="3975971514" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/925" href="https://github.com/FirebirdSQL/jaybird/issues/925" target="_blank">#925</a>)</li>
+	<li>Fixed: Infinite loop in <code>FBPooledConnection#fireConnectionError(SQLException)</code> if the exception has a chained exception and neither is fatal (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/927/hovercard" data-id="4033867798" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/927" href="https://github.com/FirebirdSQL/jaybird/issues/927" target="_blank">#927</a>)</li>
+</ul>
+
+<p>The following was fixed or changed in Jaybird 5.0.12:</p>
+
+<ul>
+	<li>JDBC 4.5 support: <code>JaybirdTypeCodes.DECFLOAT</code> and <code>JaybirdType.DECFLOAT</code> now use type code <code>2015</code> instead of <code>-6001</code> (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/917/hovercard" data-id="3842763404" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/917" href="https://github.com/FirebirdSQL/jaybird/issues/917" target="_blank">#917</a>)</li>
+	<li>JDBC 4.5 support: implemented methods <code>enquoteIdentifier</code>, <code>enquoteLiteral</code>, <code>enquoteNCharLiteral</code>, and <code>isSimpleIdentifier</code> on <code>FBConnection</code>, and added them to interface <code>FirebirdConnection</code> for access in older Java versions (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/918/hovercard" data-id="3843482998" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/918" href="https://github.com/FirebirdSQL/jaybird/issues/918" target="_blank">#918</a>)</li>
+	<li>JDBC 4.5 support: implemented &quot;disable escape processing&quot; JDBC escape (<code>{\...\}</code>) (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/920/hovercard" data-id="3855386196" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/920" href="https://github.com/FirebirdSQL/jaybird/issues/920" target="_blank">#920</a>)</li>
+	<li>Fixed: JDBC escapes should not be parsed inside dialect 3 delimited identifiers or dialect 1 string literals (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/922/hovercard" data-id="3855739315" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/922" href="https://github.com/FirebirdSQL/jaybird/issues/922" target="_blank">#922</a>)</li>
+	<li>Fixed: <code>IndexOutOfBoundsException</code> in <code>FBCachedBlob.getBytes(long, int)</code> for position or length beyond end of data (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/924/hovercard" data-id="3905641313" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/924" href="https://github.com/FirebirdSQL/jaybird/issues/924" target="_blank">#924</a>)</li>
+	<li>Fixed: Using native client, password is limited to 255 bytes (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/926/hovercard" data-id="3978834902" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/926" href="https://github.com/FirebirdSQL/jaybird/issues/926" target="_blank">#926</a>)</li>
+	<li>Fixed: Infinite loop in <code>FBPooledConnection#fireConnectionError(SQLException)</code> if the exception has a chained exception and neither is fatal (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/928/hovercard" data-id="4033873639" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/928" href="https://github.com/FirebirdSQL/jaybird/issues/928" target="_blank">#928</a>)</li>
+	<li>JDBC 4.5 support: <code>FBDatabaseMetaData.getJDBCMinorVersion()</code> should report 5 (for JDBC 4.5) on Java 26 and higher (<a aria-keyshortcuts="Alt+ArrowUp" class="issue-link js-issue-link" data-error-text="Failed to load title" data-hovercard-type="issue" data-hovercard-url="/FirebirdSQL/jaybird/issues/929/hovercard" data-id="4052040202" data-permission-text="Title is private" data-url="https://github.com/FirebirdSQL/jaybird/issues/929" href="https://github.com/FirebirdSQL/jaybird/issues/929" target="_blank">#929</a>)</li>
+</ul>
+
+<p>Bug reports about undocumented changes in behavior are appreciated. Feedback can be sent to <a href="https://groups.google.com/g/firebird-java" target="_blank">Firebird-java</a> or reported on the issue tracker <a href="https://github.com/FirebirdSQL/jaybird/issues" target="_blank">https://github.com/FirebirdSQL/jaybird/issues</a>.</p>
+
+<h2>Jaybird 6.0.5</h2>
+
+<p>Jaybird 6 supports Firebird 3.0, Firebird 4.0, and Firebird 5.0, on Java 17, Java 21, Java 25, and Java 26.</p>
+
+<p>See also:</p>
+
+<ul>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html">Jaybird 6 release notes</a></li>
+	<li><a href="/en/jdbc-driver/">Jaybird downloads</a></li>
+	<li><a href="/docs/drivers/java/6.0.x/release_notes.html#maven">Instructions for Maven</a></li>
+</ul>
+
+<h2>Jaybird 5.0.12</h2>
+
+<p>Jaybird 5 supports Firebird 2.5,&nbsp;Firebird 3.0, Firebird 4.0, and Firebird 5.0, on Java 8, Java 11, Java 17, Java 21, Java 25, and Java 26 (support for Java 11 and higher using the Java 11 version of the driver).&nbsp;</p>
+
+<p>See also:</p>
+
+<ul>
+	<li><a href="/docs/drivers/java/5.0.x/release_notes.html">Jaybird 5 release notes</a></li>
+	<li><a href="/en/jdbc-driver/">Jaybird downloads</a></li>
+	<li><a href="/docs/drivers/java/5.0.x/release_notes.html#maven">Instructions for Maven</a></li>
+</ul>
+
+                    </div>
+                  	<div>
+                    	<div>
+  <iframe frameborder="0"
+    height="150" 
+    scrolling="no" 
+    src="https://firebirdfoundation.substack.com/embed" 
+    style="border:1px solid #EEE; background:white;" 
+    width="100%" 
+    allow="encrypted-media"
+    sandbox="allow-scripts allow-same-origin allow-forms"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>  
+                  	</div>
+                    <div class="post-tags">
+                        <ul>
+                            <li><a><i class="fa fa-share"></i> Share With:</a></li>
+                            <li style="cursor: pointer;"><a class="share-icon fb" data-url="/en/news/jaybird-6-0-5-and-jaybird-5-0-12-released"><i class="fab fa-facebook-f"></i></a></li>
+                          
+                            <li style="cursor: pointer;"><a class="share-icon lin" data-url="/en/news/jaybird-6-0-5-and-jaybird-5-0-12-released"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="post-reader-text post-reader-text-2 post-reader-text-3 pt-50">
+                    <div class="row">
+                                                    <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/entity-framework-core-10-provider-for-firebird-is-ready">Entity Framework Core 10 provider for Firebird is ready</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                                                            <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/ngram-indexes-in-firebird-fast-substring-search-without-a-full-scan">VIDEO: NGRAM indexes in Firebird: fast substring search without a full scan</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-20">
+                <div class="all-post-sidebar">
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

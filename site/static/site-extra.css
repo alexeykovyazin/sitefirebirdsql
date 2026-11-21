@@ -1,0 +1,3 @@
+/* Small additions for pages converted from the legacy template. */
+.legacy-content ul { padding-left: 20px; }
+.legacy-content a { color: inherit; text-decoration: underline; }

@@ -1,0 +1,176 @@
+---
+title: "Firebird: Jaybird 2.2.8 Released"
+html_title: "Firebird: Jaybird 2.2.8 Released"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Jaybird 2.2.8 Released"
+menu_active: ""
+source_url: "/en/news/jaybird-2-2-8-released-69621"
+source_format: new
+url: "/en/news/jaybird-2-2-8-released-69621"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+ 
+    <section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/about-firebird/">About Firebird</a></li>
+                                                                                                                                    <li class="breadcrumb-item"><a href="/en/news/">News &amp; Events</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Jaybird 2.2.8 Released</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-8">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <div class="post-categories d-flex justify-content-between align-content-center">
+                        <div class="categories-share">
+                            <ul>
+                                <li><i class="fas fa-calendar"></i> Jun 06, 2015</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="title">Jaybird 2.2.8 Released</h3>
+                                            </div>
+                    <div class="post-text mt-30">
+                        The Firebird JDBC team is happy to announce the release of <a href="/en/jdbc-driver/">Jaybird 2.2.8</a>. <p>This release contains the following changes and fixes:</p> <ul>     <li>Support for Java 5 has been dropped</li>     <li>Fixed: LibreOffice doesn't display tables with more than 41 records (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-383">JDBC-383</a>)</li>     <li>Improvement: Don't use Firebird provided IP address for connecting event channel (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-384">JDBC-384</a>)</li>     <li>Fixed: <code>Connection.getMetaData().getColumns</code> result set contains wrong (empty) <code>COLUMN_DEF</code> if column type was defined using domain (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-388">JDBC-388</a>)</li>     <li>Fixed: Unable to retrieve update count after result set (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-390">JDBC-390</a>)<br />     After executing a query that produces a result set, calling <code>getMoreResults </code>will allow <code>getUpdateCount </code>to actually return the update count where previously it always returned <code>-1</code>. This also allows obtaining the update count after a select query (even when executed using <code>executeQuery</code>). For selects the result will usually be <code>0</code>.</li>     <li>Fixed: <code>SELECT </code>statements are processed for <code>getGeneratedKeys </code>by appending <code>RETURNING </code>(+ all columnnames) (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-391">JDBC-391</a>)</li>     <li>Fixed: Generated key grammar does not correctly handle quoted table names (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-392">JDBC-392</a>)</li>     <li>Fixed: Generated key grammar does not detect returning clause in update and delete (<a target="_blank" href="http://tracker.firebirdsql.org/browse/JDBC-393">JDBC-393</a>)</li> </ul> <p>The release is also available on maven(*):</p> <p style="margin-left: 40px;"><code>&lt;groupId&gt;org.firebirdsql.jdbc&lt;/groupId&gt;<br /> &lt;artifactId&gt;jaybird-jdkXX&lt;/artifactId&gt;<br /> &lt;version&gt;2.2.8&lt;/version&gt;</code></p> * The artifactId depends on your target Java version: jaybird-jdk18, jaybird-jdk17, or jaybird-jdk16.
+                    </div>
+                  	<div>
+                    	<div>
+  <iframe frameborder="0"
+    height="150" 
+    scrolling="no" 
+    src="https://firebirdfoundation.substack.com/embed" 
+    style="border:1px solid #EEE; background:white;" 
+    width="100%" 
+    allow="encrypted-media"
+    sandbox="allow-scripts allow-same-origin allow-forms"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>  
+                  	</div>
+                    <div class="post-tags">
+                        <ul>
+                            <li><a><i class="fa fa-share"></i> Share With:</a></li>
+                            <li style="cursor: pointer;"><a class="share-icon fb" data-url="/en/news/jaybird-2-2-8-released-69621"><i class="fab fa-facebook-f"></i></a></li>
+                          
+                            <li style="cursor: pointer;"><a class="share-icon lin" data-url="/en/news/jaybird-2-2-8-released-69621"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="post-reader-text post-reader-text-2 post-reader-text-3 pt-50">
+                    <div class="row">
+                                                    <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>PREVIOUS NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/ado-net-provider-4-6-2-0-release-69539">ADO.NET Provider 4.6.2.0 Release</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                                                            <div class="col-md-6">
+                                <div class="post-reader-prev">
+                                    <span>NEXT NEWS <i class="fal fa-angle-right"></i></span>
+                                    <h4 class="title">
+                                        <a href="/en/news/ngram-indexes-in-firebird-fast-substring-search-without-a-full-scan">VIDEO: NGRAM indexes in Firebird: fast substring search without a full scan</a>
+                                    </h4>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-20">
+                <div class="all-post-sidebar">
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

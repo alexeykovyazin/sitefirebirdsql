@@ -1,0 +1,261 @@
+---
+title: "Firebird: Developer's Resport: Core Coding and Development"
+html_title: "Firebird: Developer's Resport: Core Coding and Development"
+description: "Firebird SQL: The true open-source relational database"
+keywords: ""
+og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
+og_description: "Firebird SQL: The true open-source relational database"
+og_image: "//firebirdsql.org/img/site/fb.jpg"
+og_site_name: "Developer's Resport: Core Coding and Development"
+menu_active: ""
+source_url: "/en/report-core-development-202109"
+source_format: new
+url: "/en/report-core-development-202109"
+---
+
+
+
+
+
+    <script>
+    $(document).ready(function() {
+        $("#languageSelect").on('change',function(){
+            window.location.href = $(this).val();
+        });
+    });
+</script>
+
+
+
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+    <div class="about-author-content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+
+                                                                                        <li class="breadcrumb-item"><a href="/en/ff-reports/">FF-reports</a></li>
+                                                                                                                                    <li class="breadcrumb-item active">Developer&#039;s Resport: Core Coding and Development</li>
+                                                            
+            </ol>
+        </nav>
+    </div>
+</div>
+            <div class="col-lg-9">
+                <div class="post-layout-top-content post-layout-top-content-3">
+                    <h2>April to August 2021</h2>
+
+<h3>April</h3>
+<strong><u>master</u></strong>
+
+<ul>
+	<li>Fixed bug CORE-6531 : COMPUTED BY column looses charset and collate of source field &lt;F&gt; when &lt;F&gt; is either of type BLOB or VARCHAR casted to BLOB.</li>
+	<li>Fixed bug CORE-6532 : Results of сoncatenation with blob has no info about collation of source columns (which are declared with such info)</li>
+	<li>Fixed XNET protocol after recent changes.</li>
+	<li>Fixed wrong sync used after write failure.</li>
+	<li>Added missing sync to the CCH_forget_page().</li>
+	<li>Fixed bug CORE-6003 : RDB$GET_TRANSACTION_CN works different in Super and Classic</li>
+	<li>Additional patch for CORE-6015 : Segfault when using expression index with complex expression</li>
+	<li>Changed way to detect indirect recursion: when req_caller chain is broken by EXECUTE STATEMENT.</li>
+	<li>Allow to cancel statement\attachment when it is waiting on LCK_record_gc lock.</li>
+	<li>Merge pull request #311 from FirebirdSQL/TempTableDirectory</li>
+	<li>Merge pull request #314 from FirebirdSQL/core-5515</li>
+	<li>Attempt to fix Travis build on Xenial Linux Fixed bug 6777 : AV when engine shut down and cancels attachment that is waiting in lock manager.</li>
+	<li>Fixed bug GH-6782 : Getting &quot;records fetched&quot; for functions/procedures in trace.</li>
+</ul>
+<u><strong>B3_0_Release</strong></u>
+
+<ul>
+	<li>Fixed bug CORE-6531 : COMPUTED BY column looses charset and collate of source field &lt;F&gt; when &lt;F&gt; is either of type BLOB or VARCHAR casted to BLOB.</li>
+	<li>Fixed bug CORE-6532 : Results of сoncatenation with blob has no info about collation of source columns (which are declared with such info)</li>
+	<li>Fixed XNET protocol after recent changes.</li>
+	<li>Fixed wrong sync used after write failure.</li>
+	<li>Added missing sync to the CCH_forget_page().</li>
+	<li>Backport from master reworked fix for CORE-6015 : Segfault when using expression index with complex expression.</li>
+	<li>Additional patch for CORE-6015 : Segfault when using expression index with complex expression.</li>
+	<li>Changed way to detect indirect recursion: when req_caller chain is broken by EXECUTE STATEMENT.</li>
+	<li>Allow to cancel statement\attachment when it is waiting on LCK_record_gc lock.</li>
+	<li>Backport fix for bug GH-6777 : AV when engine shut down and cancels attachment that is waiting in lock manager.</li>
+	<li>Fixed bug GH-6782 : Getting &quot;records fetched&quot; for functions/procedures in trace.</li>
+	<li>This should fix bug GH-6781 : Crashing process hangs (UDF exception). Another attempt to fix bug GH-6781 : Crashing process hangs (UDF exception).</li>
+</ul>
+
+<h3>May</h3>
+<strong><u>master</u></strong>
+
+<ul>
+	<li>Fixed bug GH-6785 : problem when restoring the database firebird 4 rc1 4.0.0.2353</li>
+	<li>Improvement GH-6748 : Freeing a statement using DSQL_drop or DSQL_unprepare should send free packet immediately [CORE6519]&nbsp;</li>
+	<li>Fixed bugs GH-3106 : Many indexed reads in a compound index with NULLs [CORE2709]</li>
+	<li>Fixed bugs GH-3810 : Wrong or missing IS NULL optimization (regression) [CORE3449]</li>
+	<li>Fixed bug GH-6781 : Crashing process hangs (UDF exception).</li>
+	<li>Fixed bug #6802 : When the statement timeout is set, it causes the lock manager to delay reporting deadlocks until timeout is expired</li>
+</ul>
+<u><strong>B3_0_Release</strong></u>
+
+<ul>
+	<li>Next attempt to fix bug GH-6781 : Crashing process hangs (UDF exception).</li>
+	<li>Improvement GH-6748 : Freeing a statement using DSQL_drop or DSQL_unprepare should send free packet immediately [CORE6519]</li>
+</ul>
+
+<h3>June</h3>
+<strong><u>master</u></strong>
+
+<ul>
+	<li>Fixed bug GH-6866 : Some orphan records left at RDB$SECURITY_CLASSES and RDB$USER_PRIVILEGES after DROP PROCEDURE\FUNCTION</li>
+	<li>Fixed few inconsistencies introduced when VIO_erase() started to use update in place:<br />
+	- GC thread\sweeper ignores deleted records with no backversions, that should be cleaned up,<br />
+	- VIO_erase wrongly increments number of deleted records in case of failure (lock conflict, etc),<br />
+	- missing notification of GC thread in VIO_erase().</li>
+</ul>
+<u><strong>v4.0-release</strong></u>
+
+<ul>
+	<li>Fixed bug GH-6866 : Some orphan records left at RDB$SECURITY_CLASSES and RDB$USER_PRIVILEGES after DROP PROCEDURE\FUNCTION</li>
+	<li>Fixed few inconsistencies introduced when VIO_erase() started to use update in place:<br />
+	- GC thread\sweeper ignores deleted records with no backversions, that should be cleaned up,<br />
+	- VIO_erase wrongly increments number of deleted records in case of failure (lock conflict, etc),<br />
+	- missing notification of GC thread in VIO_erase().</li>
+	<li>Fixed memory leak found by Jiř&iacute;, see &quot;Memory leak with external engine plugin&quot; in fb-devel</li>
+</ul>
+<u><strong>B3_0_Release</strong></u>
+
+<ul>
+	<li>Fixed bug GH-6866 : Some orphan records left at RDB$SECURITY_CLASSES and RDB$USER_PRIVILEGES after DROP PROCEDURE\FUNCTION work/gh-6843</li>
+	<li>Fixed bug GH-6843 : Crash when UDR is used by system attachment, for ex. Garbage Collector</li>
+</ul>
+
+<h3>July</h3>
+<strong><u>master</u></strong>
+
+<ul>
+	<li>Correction for my old commit (AV detected by tests bugs.core_3323, bugs.core_5645 and bugs.core_5972)</li>
+	<li>Fixed memory leak found by Jiř&iacute;, see &quot;Memory leak with external engine plugin&quot; in fb-devel</li>
+	<li>Fixed tiny memory leak.</li>
+	<li>Fixed incorrect pools usage leading to memory leaks.</li>
+	<li>Make sure Engine instance is not destroyed before SharedXXX objects, that uses pointer on Engine in own dtor&#39;s.</li>
+	<li>Also, plugins (i.e. Engine) must be released via Plugin Manager, not directly.</li>
+	<li>Postfix (incorrect pools usage leading to memory leaks).</li>
+</ul>
+<u>v4.0-release</u>
+
+<ul>
+	<li>Fixed tiny memory leak.</li>
+	<li>Fixed incorrect pools usage leading to memory leaks.</li>
+	<li>Make sure Engine instance is not destroyed before SharedXXX objects, that uses pointer on Engine in own dtor&#39;s.<br />
+	Also, plugins (i.e. Engine) must be released via Plugin Manager, not directly.</li>
+	<li>Correction for my old commit (AV detected by tests bugs.core_3323, bugs.core_5645 and bugs.core_5972)</li>
+	<li>Postfix (incorrect pools usage leading to memory leaks).</li>
+</ul>
+<strong><u>B3_0_Release</u></strong>
+
+<ul>
+	<li>Backported PR168 and PR294</li>
+	<li>Backport fixes for memory leaks found by Jiř&iacute;, see &quot;Memory leak with external engine plugin&quot; in fb-devel</li>
+	<li>Make sure Engine instance is not destroyed before SharedXXX objects, that uses pointer on Engine in own dtor&#39;s.<br />
+	Also, plugins (i.e. Engine) must be released via Plugin Manager, not directly.</li>
+	<li>Backport one more fix against memory leak in UDR</li>
+</ul>
+
+<h3>August</h3>
+<u><strong>master</strong></u>
+
+<ul>
+	<li>Frontported additional patch for #6027 : Installation of Firebird 3.0.3 on SLES 12 SP3 fails with &#39;&#39;Could not find acceptable ICU library&quot;.</li>
+	<li>Fixed bug #6918 : Service detach is always traced</li>
+	<li>Follow Alex commit de15522f (Fixed #6886: Different interfaces behavior depending upon source of interface). This should fix numerous crashes shown by fb-tests</li>
+	<li>Merge pull request #6938 from red-soft-ru/4_0_drop_gtt_fix</li>
+</ul>
+<strong><u>v4.0-release</u></strong>
+
+<ul>
+	<li>Additional patch for #6027 : Installation of Firebird 3.0.3 on SLES 12 SP3 fails with &#39;&#39;Could not find acceptable ICU library&quot;. This should fix build on Ubuntu 18</li>
+	<li>Another attempt to fix a build on Ubuntu 18</li>
+	<li>Fixed build on Alpine Linux.</li>
+	<li>Added tests for presence of dlinfo() and its options on building host.</li>
+	<li>Fixed bug #6918 : Service detach is always traced</li>
+	<li>Merge pull request #6938 from red-soft-ru/4_0_drop_gtt_fix</li>
+</ul>
+<u><strong>B3_0_Release</strong></u>
+
+<ul>
+	<li>Fixed bug #6918 : Service detach is always traced</li>
+	<li>&nbsp;Merge pull request #6938 from red-soft-ru/4_0_drop_gtt_fix</li>
+</ul>
+<em>Vladyslav Khorsun<br />
+Dnetpropetrovsk, Ukraine</em>
+                </div>
+            </div>
+            <div class="col-lg-3 mt-20">
+                <div class="all-post-sidebar">
+                    
+
+                    <div class="most-share-post">
+  <div class="section-title">
+    <h3 class="title">Popular</h3>
+  </div>
+</div>
+<div class="most-share-post-items">
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/shop-products">Shop</a></h3>
+      
+      <div class="count">
+        <span>1</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/reference-manuals">All Reference Manuals</a></h3>
+      
+      <div class="count">
+        <span>2</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/firebird-5-0-4">Firebird 5.0.4</a></h3>
+      
+      <div class="count">
+        <span>3</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/emberwings-magazine">EmberWings Magazine</a></h3>
+      
+      <div class="count">
+        <span>4</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/roadmap">Firebird Roadmap</a></h3>
+      
+      <div class="count">
+        <span>5</span>
+      </div>
+    </div>
+      <div class="most-share-post-item">
+      <h3 class="title"><a href="/en/donate">Support Firebird</a></h3>
+      
+      <div class="count">
+        <span>6</span>
+      </div>
+    </div>
+  
+</div>
+
+                    
+<div class="banners-wrapper mt-45">
+  <div id="banners_PRIGHT">
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ GetBanners ('PRIGHT',0) });
+</script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
