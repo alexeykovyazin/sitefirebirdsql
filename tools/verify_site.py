@@ -186,6 +186,16 @@ def main():
                 pages.append(f)
                 seen_files.add(f)
                 queue.append((f, page_url(site_root, f)))
+    # CMS banners: GetBanners() in /js/functions-min.js loads /68854C93/68854C93.js (the banner list),
+    # then /68854C93/<file>/<file>.html for each listed file.
+    blist = os.path.join(assets_root, "68854C93", "68854C93.js")
+    if os.path.isfile(blist):
+        seen_files.add(os.path.realpath(blist))
+        for name in re.findall(r"file\s*:\s*'([^']+)'", open(blist, encoding="utf-8", errors="replace").read()):
+            f = os.path.realpath(os.path.join(assets_root, "68854C93", name, name + ".html"))
+            if os.path.isfile(f):
+                seen_files.add(f)
+                queue.append((f, "/68854C93/%s/%s.html" % (name, name)))
 
     broken, inbound = [], collections.Counter()
     checked = {}

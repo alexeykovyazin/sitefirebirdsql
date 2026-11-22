@@ -18,8 +18,17 @@ done
 if [ "$total" -gt 0 ] && [ $((del*100/total)) -gt 2 ]; then echo "ABORT: $del of $total files would be deleted"; exit 3; fi
 for d in $DIRS; do mkdir -p $DST/$d; rsync "${OPTS[@]}" $SRC/$d/ $DST/$d/; done
 for f in $FILES; do rsync -a -e "$SSH" $SRC/$f $DST/$f; done
-# 68854C93: only the image used by /en/firebird-performance-tour-2019; the rest is in private/68854C93.
-rsync -a --include=/68854C93/ --include=/68854C93/performance-tour-2019/ --include=/68854C93/performance-tour-2019/performance-tour-2019.png --exclude="*" -e "$SSH" mirror@$ORIGIN_HOST:static/68854C93 $DST/
+# 68854C93 (CMS banners): the banner list 68854C93.js, the banner folders it names (GetBanners() loads
+# them on the home page and in the right column), and the image used by /en/firebird-performance-tour-2019.
+# Old banners are in private/68854C93.
+mkdir -p $DST/68854C93
+rsync -a -e "$SSH" mirror@$ORIGIN_HOST:static/68854C93/68854C93.js $DST/68854C93/68854C93.js
+# Skip CMS leftovers in banner folders: admin thumbnails (cms-*), old copies (_*), empty "none" files.
+INC=(--exclude="/68854C93/*/cms-*" --exclude="/68854C93/*/_*" --exclude="/68854C93/*/none" --include=/68854C93/ --include=/68854C93/68854C93.js --include=/68854C93/performance-tour-2019/ --include=/68854C93/performance-tour-2019/performance-tour-2019.png)
+for b in $(grep -oE "file[[:space:]]*:[[:space:]]*'[^']+'" $DST/68854C93/68854C93.js | sed -E "s/.*'([^']+)'/\1/"); do
+  INC+=(--include="/68854C93/$b/" --include="/68854C93/$b/**")
+done
+rsync -a --delete --delete-excluded "${INC[@]}" --exclude="*" -e "$SSH" mirror@$ORIGIN_HOST:static/68854C93 $DST/
 mkdir -p $DST/rss && rsync -a --exclude=/pt/ -e "$SSH" mirror@$ORIGIN_HOST:static/rss/ $DST/rss/  # /rss/pt/ redirects to the EN feed
 ln -sfn file/documentation $DST/docs
 cd $DST && find . -type f -printf "%P\t%s\n" | sort > /srv/firebirdsql/assets-manifest.tsv
