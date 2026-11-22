@@ -3408,3 +3408,5 @@
 
 # Replaced by site/static/template/css/font-awesome.min.css (no SVG font sources)
 /css/font-awesome.min.css
+# /file/articles/firebird-qa-en.html is a Hugo page now (site/content/extra/firebird-qa-en.html, made by tools/wrap_article.py).
+/articles/firebird-qa-en.html

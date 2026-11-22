@@ -1,4 +1,4 @@
-pages scanned: 1227, files reached: 8094, links: 406852 (external/skipped: 103384)
+pages scanned: 1228, files reached: 8094, links: 406898 (external/skipped: 103390)
 broken links: 3 (in site pages: 0, in copied files: 3; unique targets: 3)
 bad files (manifest): 0
 orphan files: 0, 0.0 MB (documents: 0)

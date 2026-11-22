@@ -24,6 +24,16 @@ Where files go:
 | `converter/global-replace.tsv` | text replacements in all pages | applied to every page |
 | `site/content/pages/` | pages made by the converter | **do not edit**: rewritten on each run |
 
+A standalone HTML article (own `<html>`, `<style>`, no site menu) gets the site header, menu and footer this way.
+The URL stays the same:
+
+```
+python tools/wrap_article.py article.html /file/articles/<name>.html site/content/extra/<name>.html
+```
+
+Add `/articles/<name>.html` to `deploy/assets-exclude.txt`, so the sync does not copy the old file.
+Example: `/file/articles/firebird-qa-en.html`.
+
 Large files (zip, pdf, images for `/file/...` and `/img/...`) are not in git.
 Put them on the origin server into the same folder; the daily sync copies them to the droplet.
 Release downloads are usually links to GitHub, so they need no upload.
