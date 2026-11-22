@@ -34,6 +34,17 @@ python tools/wrap_article.py article.html /file/articles/<name>.html site/conten
 Add `/articles/<name>.html` to `deploy/assets-exclude.txt`, so the sync does not copy the old file.
 Example: `/file/articles/firebird-qa-en.html`.
 
+An EmberWings PDF gets an HTML copy next to it (same name, `.html`), with a left menu of articles.
+Pictures go to `site/static/file/emberwings/<name>/`. Needs `pip install pymupdf`.
+`--full` lists pages shown as one picture (cover, contents, survey); `--toc` is the contents page.
+In Git Bash, set `MSYS_NO_PATHCONV=1`, or it changes the `/file/...` arguments into Windows paths.
+
+```
+python tools/pdf_magazine.py EmberWings-2025-02.pdf /file/emberwings/EmberWings-2025-02.html \
+  site/content/extra/emberwings-2025-02.html site/static/file/emberwings/EmberWings-2025-02 \
+  /file/emberwings/EmberWings-2025-02 --full 1,2,4,76 --toc 4 --title "EmberWings 2025/2"
+```
+
 Large files (zip, pdf, images for `/file/...` and `/img/...`) are not in git.
 Put them on the origin server into the same folder; the daily sync copies them to the droplet.
 Release downloads are usually links to GitHub, so they need no upload.
