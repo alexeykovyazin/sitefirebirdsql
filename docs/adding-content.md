@@ -170,11 +170,11 @@ The RSS feed (`/rss/en/news.xml`) comes from the origin server and does not incl
 
 6. Run the converter, check locally, deploy.
 
-## 4. Crowdfunding test pages
+## 4. Crowdfunding page (/foundation/features/)
 
-Two test designs: `site/content/extra/crowdfunding-test-a.html` and `crowdfunding-test-b.html`.
-They have `draft: true`, so a normal build does not publish them.
+Page: `site/content/extra/foundation-features.html`, URL `/foundation/features/`.
 Payments are simulated; pledges are kept only in the browser (localStorage).
+Sponsor logos: `site/static/file/crowdfunding/img/` (copies of `private/img/community/ff_logo_*.svg`).
 
 1. Update the feature list from the spreadsheet:
 
@@ -182,7 +182,7 @@ Payments are simulated; pledges are kept only in the browser (localStorage).
    python tools/crowdfunding_data.py E:/FF/features.ods site/static/file/crowdfunding/cf-data.js
    ```
 
-2. Preview with drafts: `cd site && hugo server --config hugo.toml,hugo.local.toml --buildDrafts`,
-   then open http://localhost:1313/en/crowdfunding-test-a/ and `/en/crowdfunding-test-b/`.
+2. Preview: `cd site && hugo server --config hugo.toml,hugo.local.toml`,
+   then open http://localhost:1313/foundation/features/.
 
 Shared logic (cart, pledges, totals) is in `site/static/file/crowdfunding/cf-core.js`.
