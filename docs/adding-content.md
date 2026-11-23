@@ -174,6 +174,8 @@ The RSS feed (`/rss/en/news.xml`) comes from the origin server and does not incl
 
 Page: `site/content/extra/foundation-features.html`, URL `/foundation/features/`.
 Payments are simulated; pledges are kept only in the browser (localStorage).
+The "Propose your feature" form has no server part: it opens the visitor's email program
+with a message to `foundation@firebirdsql.org` (address: `FF_MAIL` in the page script).
 Sponsor logos: `site/static/file/crowdfunding/img/` (copies of `private/img/community/ff_logo_*.svg`).
 
 1. Update the feature list from the spreadsheet:
