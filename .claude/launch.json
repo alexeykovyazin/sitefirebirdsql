@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "hugo-drafts",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "cd /d site && hugo server --config hugo.toml,hugo.local.toml --buildDrafts --port 1313"],
+      "port": 1313
+    }
+  ]
+}

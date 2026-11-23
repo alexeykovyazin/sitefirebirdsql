@@ -1,0 +1,655 @@
+---
+title: "Firebird crowdfunding (test, variant B)"
+html_title: "Firebird crowdfunding – test variant B"
+description: "Test page: crowdfunding for Firebird 5.5 and Firebird 6+ features"
+url: "/en/crowdfunding-test-b/"
+draft: true
+---
+<!-- Test page. Data: /file/crowdfunding/cf-data.js (tools/crowdfunding_data.py). State: /file/crowdfunding/cf-core.js -->
+<style>
+.cfb{--teal:#2e6474;--teal-d:#21505d;--teal-l:#e3eef1;--red:#ff5555;--red-d:#e43f3f;--ink:#17222b;--text:#3a434b;--muted:#69747e;--line:#dfe3e5;--bg:#f3f5f6;--free:#e3e7ea;--ok:#23845a;--ok-l:#e2f3ea;--amber:#8a5c00;--amber-l:#fff3d1;--violet:#7a3fb8;--violet-l:#f1e8fb;color:var(--text);background:var(--bg);font-size:16px;line-height:1.5;padding-bottom:56px}
+.cfb *{box-sizing:border-box}
+.cfb [hidden]{display:none!important}
+.cfb h1,.cfb h2,.cfb h3,.cfb h4{color:var(--ink);margin:0;font-weight:700;letter-spacing:0}
+.cfb p{margin:0}
+.cfb ul{list-style:none;margin:0;padding:0}
+.cfb a{color:var(--teal)}
+.cfb button{font:inherit;cursor:pointer}
+.cfb-wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+.cfb-muted{color:var(--muted)}
+.cfb-testbar{background:var(--amber-l);border-bottom:1px solid #f0d58a;font-size:14px;padding:8px 16px;display:flex;gap:8px 14px;align-items:center;flex-wrap:wrap;justify-content:center;color:#5c4400}
+.cfb-testbar b{letter-spacing:.06em}
+.cfb-testbar button,.cfb-testbar a{background:#fff;border:1px solid #e2c56d;border-radius:6px;padding:3px 10px;font-size:13px;color:#5c4400;text-decoration:none}
+.cfb-hero{background:var(--ink);color:#c9d3d8;padding:40px 0 32px}
+.cfb-hero h1{color:#fff;font-size:38px;line-height:1.15}
+.cfb-kicker{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.cfb-hero-top{display:flex;gap:24px 40px;justify-content:space-between;align-items:flex-end;flex-wrap:wrap}
+.cfb-hero-top p{max-width:640px;margin-top:12px;font-size:17px}
+.cfb-total{display:flex;align-items:center;gap:16px}
+.cfb-total b{display:block;color:#fff;font-size:30px;line-height:1.1;font-variant-numeric:tabular-nums}
+.cfb-total span{font-size:14px}
+.cfb-camps{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.cfb-camp{text-align:left;background:#22303b;border:1px solid #33434f;border-top:4px solid #33434f;border-radius:12px;padding:16px 18px;color:#c9d3d8;transition:background .15s,border-color .15s}
+.cfb-camp:hover{background:#273743}
+.cfb-camp[aria-pressed=true]{border-top-color:var(--red);background:#2a3a46}
+.cfb-camp small{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8fa1ab}
+.cfb-camp strong{display:block;color:#fff;font-size:19px;line-height:1.3;margin:4px 0 14px}
+.cfb-seg{display:flex;gap:3px;height:12px}
+.cfb-seg span{position:relative;background:#3b4c59;border-radius:3px;overflow:hidden;min-width:6px}
+.cfb-seg span i{position:absolute;left:0;top:0;bottom:0;background:var(--red);width:0;transition:width .7s ease}
+.cfb-camp-nums{display:flex;justify-content:space-between;font-size:14px;margin-top:10px;font-variant-numeric:tabular-nums}
+.cfb-camp-nums b{color:#fff}
+.cfb-layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start;margin-top:28px}
+.cfb-intro{margin-bottom:16px}
+.cfb-intro h2{font-size:26px;line-height:1.25}
+.cfb-intro p{margin-top:6px;font-size:15px}
+.cfb-group{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.cfb-group.is-open{box-shadow:0 10px 30px rgba(23,34,43,.1);border-color:#c8d2d6}
+.cfb-ghead{display:grid;grid-template-columns:52px minmax(0,1fr) auto auto;gap:14px 18px;align-items:center;padding:14px 18px}
+.cfb-ring{width:52px;height:52px;position:relative}
+.cfb-ring svg{display:block;transform:rotate(-90deg)}
+.cfb-ring b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--ink);font-variant-numeric:tabular-nums}
+.cfb-ring circle{transition:stroke-dashoffset .7s ease}
+.cfb-gname h3{font-size:19px;line-height:1.3}
+.cfb-gname p{font-size:14px;color:var(--muted);margin-top:2px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.cfb-gnums{text-align:right;font-size:14px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.cfb-gnums b{display:block;font-size:17px;color:var(--ink)}
+.cfb-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:9px 18px;font-weight:600;font-size:15px;line-height:1.2;white-space:nowrap}
+.cfb-btn:hover{background:var(--bg)}
+.cfb-btn:disabled{opacity:.45;cursor:not-allowed}
+.cfb-btn-red{background:var(--red);border-color:var(--red);color:#fff}
+.cfb-btn-red:hover{background:var(--red-d);border-color:var(--red-d)}
+.cfb-btn-red:disabled:hover{background:var(--red)}
+.cfb-btn-dark{background:var(--ink);border-color:var(--ink);color:#fff}
+.cfb-btn-dark:hover{background:#2a3742}
+.cfb-btn-dark[aria-expanded=true]{background:#fff;color:var(--ink);border-color:#b8c2c7}
+.cfb-gbody{border-top:1px solid var(--line);display:grid;grid-template-columns:auto minmax(0,1fr);gap:24px;padding:20px 18px;animation:cfbIn .25s ease}
+.cfb-gbody.cfb-nofund{grid-template-columns:1fr}
+@keyframes cfbIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.cfb-vt{display:flex;gap:8px;align-items:stretch;align-self:start}
+.cfb-scale{display:flex;flex-direction:column;justify-content:space-between;font-size:12px;color:var(--muted);text-align:right;padding:8px 0 64px;font-variant-numeric:tabular-nums;min-width:52px}
+.cfb-col{display:flex;flex-direction:column;align-items:center}
+.cfb-tube{background:#fff;border:2px solid #cfd6da;border-bottom:0;border-radius:16px 16px 0 0;padding:8px 8px 6px;position:relative}
+.cfb-grid{display:flex;flex-flow:row wrap-reverse;align-content:flex-start;gap:3px;height:var(--h);width:var(--w)}
+.cfb-sq{display:block;width:var(--s);height:var(--s);border-radius:3px;background:var(--seg,var(--free));transition:background .15s,transform .15s}
+.cfb-sq.free{cursor:pointer}
+.cfb-sq.free:hover{transform:scale(1.2)}
+.cfb-sq.f{background:var(--teal)}
+.cfb-sq.m{background:var(--red)}
+.cfb-sq.s{background:#ffb0b0;box-shadow:inset 0 0 0 2px var(--red-d)}
+.cfb-sq.h{box-shadow:inset 0 0 0 2px #ff9a9a}
+.cfb-sq.pop{animation:cfbPop .5s ease both}
+@keyframes cfbPop{0%{transform:scale(.2);background:#ffe08a}60%{transform:scale(1.35)}100%{transform:scale(1)}}
+.cfb-bulb{width:64px;height:64px;margin-top:-4px;border-radius:50%;background:var(--free);border:2px solid #cfd6da;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:var(--ink);font-variant-numeric:tabular-nums;transition:background .4s,color .4s}
+.cfb-bulb.is-warm{background:var(--red);border-color:var(--red-d);color:#fff}
+.cfb-side h4{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.cfb-amount{background:var(--bg);border-radius:12px;padding:14px 16px}
+.cfb-amount-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.cfb-amount-top b{font-size:26px;color:var(--ink);font-variant-numeric:tabular-nums}
+.cfb-amount input[type=range]{width:100%;margin:12px 0 6px;accent-color:var(--red)}
+.cfb-chips{display:flex;flex-wrap:wrap;gap:6px}
+.cfb-chips button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 12px;font-size:13px;color:var(--ink)}
+.cfb-chips button:hover{border-color:var(--red)}
+.cfb-chips button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.cfb-hint{font-size:13px;color:var(--muted);margin-top:10px}
+.cfb-full{display:flex;align-items:center;gap:8px;color:var(--ok);font-weight:700;background:var(--ok-l);border-radius:12px;padding:14px 16px}
+.cfb-feats{margin-top:18px}
+.cfb-feat{display:grid;grid-template-columns:14px minmax(0,1fr) auto;gap:10px;padding:9px 0;border-bottom:1px solid #eef1f2;align-items:start}
+.cfb-feat:last-child{border-bottom:0}
+.cfb-sw{width:14px;height:14px;border-radius:4px;margin-top:4px;background:var(--seg,var(--free))}
+.cfb-feat-name{font-weight:600;color:var(--ink);line-height:1.35}
+.cfb-feat-name a{font-weight:400;font-size:13px}
+.cfb-feat-what{font-size:14px;color:var(--muted)}
+.cfb-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:5px}
+.cfb-chip{display:inline-block;font-size:12px;line-height:1.3;padding:2px 8px;border-radius:999px;background:var(--bg);border:1px solid #e4e8ea}
+.cfb-st-done{background:var(--teal-l);color:var(--teal-d);border-color:#cfe1e6}
+.cfb-st-exp{background:var(--violet-l);color:var(--violet);border-color:#e4d3f6}
+.cfb-st-wip{background:var(--amber-l);color:var(--amber);border-color:#f3e0a8}
+.cfb-st-plan{background:#f1f2f3;color:#56606a}
+.cfb-paid{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;line-height:1.3;padding:2px 8px;border-radius:999px;background:var(--ok-l);color:var(--ok);border:1px solid #c5e6d4}
+.cfb-price{font-weight:700;color:var(--ink);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.cfb-price small{display:block;font-weight:400;font-size:12px;color:var(--muted)}
+.cfb-sponsors{margin-top:14px;font-size:14px}
+.cfb-sponsors ul{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.cfb-sponsors li{border:1px solid var(--line);border-radius:999px;padding:2px 10px}
+.cfb-sponsors li.mine{border-color:var(--red);color:var(--red-d);font-weight:600}
+.cfb-aside{position:sticky;top:16px}
+.cfb-cartbox{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px}
+.cfb-cartbox h3{font-size:18px}
+.cfb-cartlist{margin:12px 0;border-top:1px solid var(--line)}
+.cfb-cartlist li{display:flex;gap:10px;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid #eef1f2;font-size:14px}
+.cfb-cartlist li small{display:block;color:var(--muted);font-size:12px}
+.cfb-cartlist li b{color:var(--ink);font-variant-numeric:tabular-nums}
+.cfb-x{border:0;background:none;color:var(--muted);font-size:18px;line-height:1;padding:2px 4px}
+.cfb-carttotal{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.cfb-carttotal b{font-size:24px;color:var(--ink);font-variant-numeric:tabular-nums}
+.cfb-cartbox .cfb-btn{width:100%}
+.cfb-empty{font-size:14px;color:var(--muted);margin-top:8px}
+.cfb-howto{margin-top:12px;font-size:13px;color:var(--muted);padding-left:18px;list-style:decimal}
+.cfb-howto li{margin:3px 0}
+.cfb-rm{margin-top:28px;background:#fff;border:1px solid #c5e6d4;border-radius:12px;padding:20px 18px}
+.cfb-rm-head{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
+.cfb-rm-head h2{font-size:22px}
+.cfb-rm>p{margin-top:6px;font-size:15px;max-width:720px}
+.cfb-filter{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.cfb-filter button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:3px 12px;font-size:13px;color:var(--ink)}
+.cfb-filter button[aria-pressed=true]{background:var(--ok);border-color:var(--ok);color:#fff}
+.cfb-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.cfb-tile{border:1px solid #e3ebe6;border-radius:10px;padding:10px 12px;background:linear-gradient(180deg,#f6fbf8,#fff);display:flex;flex-direction:column;gap:6px;font-size:14px}
+.cfb-tile-top{display:flex;justify-content:space-between;gap:8px;font-size:12px}
+.cfb-tile-name{color:var(--ink);font-weight:600;line-height:1.35}
+.cfb-tile-foot{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.cfb-overlay{position:fixed;inset:0;background:rgba(23,34,43,.5);z-index:80;opacity:0;transition:opacity .25s}
+.cfb-overlay.is-on{opacity:1}
+.cfb-drawer{position:fixed;top:0;right:0;bottom:0;width:min(460px,100vw);background:#fff;z-index:81;display:flex;flex-direction:column;box-shadow:-16px 0 48px rgba(0,0,0,.25);transform:translateX(105%);transition:transform .3s ease}
+.cfb-drawer.is-on{transform:none}
+.cfb-dhead{padding:18px 20px;border-bottom:1px solid var(--line)}
+.cfb-dhead-top{display:flex;align-items:center;gap:10px}
+.cfb-dhead h2{font-size:21px}
+.cfb-sim{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--amber-l);color:#7a5600;border-radius:999px;padding:2px 10px}
+.cfb-dhead .cfb-x{margin-left:auto;font-size:26px}
+.cfb-steps{display:flex;gap:6px;margin:14px 0 0;padding:0;list-style:none}
+.cfb-steps li{flex:1;font-size:13px;color:var(--muted);border-top:3px solid var(--line);padding-top:6px}
+.cfb-steps li.on{color:var(--ink);font-weight:600;border-top-color:var(--red)}
+.cfb-steps li.done{color:var(--ink);border-top-color:var(--ink)}
+.cfb-dbody{flex:1;overflow:auto;padding:16px 20px}
+.cfb-dfoot{display:flex;gap:10px;justify-content:space-between;align-items:center;padding:14px 20px;border-top:1px solid var(--line);background:var(--bg)}
+.cfb-dfoot b{font-size:20px;color:var(--ink);font-variant-numeric:tabular-nums}
+.cfb-line{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid #eef1f2}
+.cfb-line div:first-child{flex:1;min-width:0}
+.cfb-line small{display:block;color:var(--muted);font-size:12px}
+.cfb-line b{min-width:76px;text-align:right;color:var(--ink);font-variant-numeric:tabular-nums}
+.cfb-step{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px}
+.cfb-step button{width:30px;height:30px;border:0;background:none;font-size:17px;color:var(--ink)}
+.cfb-step button:disabled{opacity:.35;cursor:not-allowed}
+.cfb-step output{min-width:26px;text-align:center;font-weight:700;color:var(--ink)}
+.cfb-field{display:block;margin-bottom:14px;font-size:14px;font-weight:600;color:var(--ink)}
+.cfb-field input,.cfb-field textarea{display:block;width:100%;margin-top:4px;border:1px solid #c9cfd2;border-radius:10px;padding:9px 12px;font:inherit;font-weight:400;color:var(--ink)}
+.cfb-field input:focus,.cfb-field textarea:focus{outline:2px solid var(--teal);outline-offset:1px}
+.cfb-field.bad input{border-color:var(--red-d)}
+.cfb-err{display:none;color:var(--red-d);font-weight:400;font-size:13px;margin-top:3px}
+.cfb-field.bad .cfb-err{display:block}
+.cfb-check{display:flex;gap:8px;align-items:center;font-size:14px}
+.cfb-pm{display:flex;flex-direction:column;gap:8px}
+.cfb-pm label{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer}
+.cfb-pm label:has(input:checked){border-color:var(--ink);box-shadow:0 0 0 2px var(--ink)}
+.cfb-pm b{color:var(--ink);display:block}
+.cfb-pm small{color:var(--muted)}
+.cfb-summary{background:var(--bg);border-radius:12px;padding:12px 14px;margin-top:14px;font-size:14px}
+.cfb-summary div{display:flex;justify-content:space-between;padding:2px 0}
+.cfb-center{text-align:center;padding:40px 10px}
+.cfb-spin{width:44px;height:44px;border-radius:50%;border:4px solid var(--free);border-top-color:var(--red);margin:0 auto 16px;animation:cfbSpin .8s linear infinite}
+@keyframes cfbSpin{to{transform:rotate(360deg)}}
+.cfb-okicon{width:64px;height:64px;border-radius:50%;background:var(--ok-l);color:var(--ok);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.cfb-center h3{font-size:22px;margin-bottom:6px}
+.cfb-center ul{display:inline-block;text-align:left;margin-top:12px}
+.cfb-mobilebar{display:none}
+@media (max-width:980px){
+  .cfb-layout{grid-template-columns:1fr}
+  .cfb-aside{display:none}
+  .cfb-mobilebar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--ink);color:#fff;padding:10px 16px;align-items:center;gap:12px;box-shadow:0 -6px 24px rgba(0,0,0,.2)}
+  .cfb-mobilebar.is-on{display:flex}
+  .cfb-mobilebar span{flex:1;font-size:14px}
+  .cfb-mobilebar b{font-size:18px}
+}
+@media (max-width:700px){
+  .cfb-hero h1{font-size:29px}
+  .cfb-camps{grid-template-columns:1fr}
+  .cfb-ghead{grid-template-columns:44px minmax(0,1fr) auto;padding:12px 14px}
+  .cfb-ring,.cfb-ring svg{width:44px;height:44px}
+  .cfb-gnums{grid-column:2;grid-row:2;text-align:left}
+  .cfb-gnums b{display:inline;font-size:15px}
+  .cfb-ghead .cfb-btn{grid-column:3;grid-row:1/3}
+  .cfb-gbody{grid-template-columns:1fr;padding:16px 14px}
+  .cfb-vt{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){.cfb *{animation:none!important;transition:none!important}}
+</style>
+
+<div class="cfb" id="cfb">
+  <div class="cfb-testbar" role="note">
+    <span><b>TEST PAGE · VARIANT B</b> · Payments are simulated. Pledges stay only in this browser.</span>
+    <button type="button" data-act="demo">Add demo pledges</button>
+    <button type="button" data-act="reset">Reset</button>
+    <a href="/en/crowdfunding-test-a/">Open variant A</a>
+  </div>
+
+  <header class="cfb-hero">
+    <div class="cfb-wrap">
+      <div class="cfb-hero-top">
+        <div>
+          <div class="cfb-kicker">Firebird crowdfunding</div>
+          <h1>Fund the Firebird features you need</h1>
+          <p>Pick a campaign, open a feature group and fill its thermometer: one square is $250. Your selection from several groups goes into one payment.</p>
+        </div>
+        <div class="cfb-total" id="cfb-total"></div>
+      </div>
+      <div class="cfb-camps" id="cfb-camps"></div>
+    </div>
+  </header>
+
+  <div class="cfb-wrap cfb-layout">
+    <main id="cfb-main"></main>
+    <aside class="cfb-aside">
+      <div class="cfb-cartbox" aria-live="polite">
+        <h3>Your support</h3>
+        <div id="cfb-cart"></div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="cfb-mobilebar" id="cfb-mobilebar">
+    <span>Your support: <b id="cfb-mb-total">$0</b></span>
+    <button type="button" class="cfb-btn cfb-btn-red" data-act="open">Continue</button>
+  </div>
+
+  <div class="cfb-overlay" id="cfb-overlay" hidden data-act="close"></div>
+  <div class="cfb-drawer" id="cfb-drawer" role="dialog" aria-modal="true" aria-labelledby="cfb-dtitle" hidden>
+    <div class="cfb-dhead">
+      <div class="cfb-dhead-top"><h2 id="cfb-dtitle">Support Firebird</h2><span class="cfb-sim">Simulation</span>
+        <button type="button" class="cfb-x" data-act="close" aria-label="Close">&times;</button></div>
+      <ol class="cfb-steps" id="cfb-steps"><li>1. Selection</li><li>2. Sponsor</li><li>3. Payment</li></ol>
+    </div>
+    <form class="cfb-dbody" id="cfb-dbody" novalidate>
+      <div data-step="1"><div id="cfb-lines"></div></div>
+      <div data-step="2">
+        <label class="cfb-field" data-f="name">Name or company<input name="name" autocomplete="organization" maxlength="80"><span class="cfb-err">Enter a name or a company.</span></label>
+        <label class="cfb-field" data-f="email">Email for the receipt<input name="email" type="email" autocomplete="email" maxlength="120"><span class="cfb-err">Enter a valid email.</span></label>
+        <label class="cfb-field">Message to the developers (optional)<textarea name="msg" rows="3" maxlength="400"></textarea></label>
+        <label class="cfb-check"><input type="checkbox" name="show" checked> Show my name in the sponsor list</label>
+      </div>
+      <div data-step="3">
+        <div class="cfb-pm">
+          <label><input type="radio" name="method" value="card" checked><span><b>Card</b><small>Visa, Mastercard, American Express</small></span></label>
+          <label><input type="radio" name="method" value="paypal"><span><b>PayPal</b><small>Pay with a PayPal account</small></span></label>
+          <label><input type="radio" name="method" value="invoice"><span><b>Invoice</b><small>We send an invoice for a bank transfer</small></span></label>
+        </div>
+        <div class="cfb-summary" id="cfb-summary"></div>
+        <p class="cfb-muted" style="font-size:13px;margin-top:10px">Test page: no payment details are asked, no money is charged.</p>
+      </div>
+      <div data-step="wait" class="cfb-center"><div class="cfb-spin"></div><h3>Processing the payment…</h3><p class="cfb-muted">Simulation, it takes a second.</p></div>
+      <div data-step="done" class="cfb-center">
+        <div class="cfb-okicon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <h3 id="cfb-done-title">Thank you!</h3><p id="cfb-done-text"></p><ul id="cfb-done-list"></ul>
+      </div>
+    </form>
+    <div class="cfb-dfoot">
+      <button type="button" class="cfb-btn" data-act="back">Back</button>
+      <b id="cfb-dtotal"></b>
+      <button type="button" class="cfb-btn cfb-btn-red" data-act="next" id="cfb-next">Next</button>
+    </div>
+  </div>
+</div>
+
+<script src="/file/crowdfunding/cf-data.js"></script>
+<script src="/file/crowdfunding/cf-core.js"></script>
+<script>
+(function () {
+  "use strict";
+  var CF = window.CF, D = CF.data, SQ = CF.SQ, esc = CF.esc, usd = CF.usd;
+  var root = document.getElementById("cfb");
+  var CHECK = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  /* light tints for feature segments of the thermometer */
+  var SEG = ["#d6e6ec", "#f6dcc9", "#dcd6f0", "#d4ecdc", "#f3e3b5", "#e9d3e3"];
+  var ROWS = 20;
+  var camp = location.hash === "#fb6" ? "fb6" : "fb55";
+  var openId = null;
+  var step = 1;
+  var rmFilter = "all";
+  var drawer = document.getElementById("cfb-drawer"), overlay = document.getElementById("cfb-overlay");
+  var form = document.getElementById("cfb-dbody");
+
+  function chip(text, cls) { return text ? '<span class="cfb-chip ' + (cls || "") + '">' + esc(text) + "</span>" : ""; }
+  function blocks(n) { return n + (n === 1 ? " block" : " blocks"); }
+  function pct(g) { return g.squares ? Math.round(CF.funded(g) / g.squares * 100) : 0; }
+
+  /* feature segments: which feature each square belongs to (priced features only) */
+  function segments(g) {
+    var segs = [], at = 0;
+    g.features.forEach(function (f, i) {
+      if (f.price && !f.roadmap6) { var n = Math.round(f.price / SQ); segs.push({ f: f, from: at, to: at + n, color: SEG[segs.length % SEG.length] }); at += n; }
+    });
+    if (!segs.length || at !== g.squares) return [];
+    return segs;
+  }
+  function segOf(segs, i) { for (var k = 0; k < segs.length; k++) if (i < segs[k].to) return segs[k]; return null; }
+
+  /* ---------- static markup ---------- */
+  function ring(g) {
+    var r = 22, c = 2 * Math.PI * r;
+    return '<div class="cfb-ring"><svg width="52" height="52" viewBox="0 0 52 52"><circle cx="26" cy="26" r="' + r + '" fill="none" stroke="#e3e7ea" stroke-width="6"/>' +
+      '<circle data-arc cx="26" cy="26" r="' + r + '" fill="none" stroke="#ff5555" stroke-width="6" stroke-linecap="round" stroke-dasharray="' + c.toFixed(1) + '" stroke-dashoffset="' + c.toFixed(1) + '"/></svg><b data-pct>' + (g.squares ? "0%" : "–") + "</b></div>";
+  }
+
+  function featureHtml(f, g, segs) {
+    var c1 = g.campaign.id === "fb55";
+    var rm = f.issue && CF.roadmapByIssue[f.issue];
+    var seg = segs.filter(function (s) { return s.f === f; })[0];
+    var price = "";
+    if (c1 && f.price) price = usd(f.price) + "<small>porting and tests</small>";
+    else if (!c1 && !f.roadmap6) price = f.price ? usd(f.price) + "<small>" + blocks(Math.round(f.price / SQ)) + "</small>" : (g.goal ? "<small>in group budget</small>" : "");
+    return '<li class="cfb-feat"><span class="cfb-sw" style="' + (seg ? "--seg:" + seg.color : f.roadmap6 ? "--seg:#bfe3cf" : "") + '"></span><div>' +
+      '<div class="cfb-feat-name">' + esc(f.name) + (f.issue ? " " + CF.issueLinks(f.issue) : "") + "</div>" +
+      (f.what ? '<div class="cfb-feat-what">' + esc(f.what) + "</div>" : "") +
+      '<div class="cfb-tags">' + chip(f.status, "cfb-st-" + CF.statusKind(f.status)) + (f.target ? chip("Target: " + f.target) : "") +
+      (rm && c1 ? chip("Firebird 6 roadmap: " + rm.status.toLowerCase()) : "") +
+      (f.roadmap6 ? '<span class="cfb-paid">' + CHECK + (c1 ? "Firebird 6: paid by current sponsors" : "Paid by current sponsors") + "</span>" : "") +
+      '</div></div><div class="cfb-price">' + price + "</div></li>";
+  }
+
+  function groupHtml(g) {
+    var has = g.squares > 0;
+    var sub = g.description || g.features.map(function (f) { return f.name; }).join(" · ");
+    return '<article class="cfb-group" id="g-' + g.id + '" data-id="' + g.id + '">' +
+      '<div class="cfb-ghead">' + ring(g) + '<div class="cfb-gname"><h3>' + esc(g.name) + "</h3><p>" + g.features.length +
+      (g.features.length === 1 ? " feature · " : " features · ") + esc(sub) + "</p></div>" +
+      '<div class="cfb-gnums">' + (has ? "<b data-raised></b>of " + usd(g.goal) : '<span class="cfb-muted">Budget is not set yet</span>') + "</div>" +
+      '<button type="button" class="cfb-btn cfb-btn-dark" data-act="toggle" aria-expanded="false" aria-controls="b-' + g.id + '">' + (has ? "Support" : "Details") + "</button></div>" +
+      '<div class="cfb-gbody' + (has ? "" : " cfb-nofund") + '" id="b-' + g.id + '" hidden></div></article>';
+  }
+
+  function bodyHtml(g) {
+    var segs = segments(g);
+    var feats = '<div class="cfb-feats"><h4>Features in this group</h4><ul>' + g.features.map(function (f) { return featureHtml(f, g, segs); }).join("") + "</ul></div>";
+    if (!g.squares) return '<div class="cfb-side"><p class="cfb-muted">The budget for this group is not in the sheet yet. It will open for funding later.</p>' + feats + "</div>";
+    var sq = "";
+    for (var i = 0; i < g.squares; i++) {
+      var s = segOf(segs, i);
+      sq += '<i class="cfb-sq" data-i="' + i + '"' + (s ? ' style="--seg:' + s.color + '"' : "") + "></i>";
+    }
+    var cols = Math.ceil(g.squares / ROWS), rows = Math.ceil(g.squares / cols), size = g.squares <= ROWS ? 24 : 14, gap = 3;
+    var chips = [1, 4, 20, 40].map(function (q) { return '<button type="button" data-q="' + q + '">' + usd(q * SQ) + "</button>"; }).join("") +
+      '<button type="button" data-q="all">All remaining</button><button type="button" data-q="0">Clear</button>';
+    return '<div class="cfb-vt"><div class="cfb-scale"><span>' + usd(g.goal) + "</span><span>" + usd(g.goal / 2) + "</span><span>$0</span></div>" +
+      '<div class="cfb-col"><div class="cfb-tube"><div class="cfb-grid" data-grid style="--s:' + size + "px;--h:" + (rows * size + (rows - 1) * gap) + "px;--w:" + (cols * size + (cols - 1) * gap) + 'px">' + sq + "</div></div>" +
+      '<div class="cfb-bulb" data-bulb></div></div></div>' +
+      '<div class="cfb-side"><div data-pick><h4>Choose your amount</h4><div class="cfb-amount">' +
+      '<div class="cfb-amount-top"><b data-selusd>$0</b><span class="cfb-muted" data-left></span></div>' +
+      '<input type="range" min="0" step="1" value="0" data-range aria-label="Number of $250 blocks">' +
+      '<div class="cfb-chips">' + chips + "</div>" +
+      '<p class="cfb-hint">Or click a free square in the thermometer. ' + (segs.length ? "Colors show how the group budget splits between features." : "") + "</p></div></div>" +
+      '<div class="cfb-full" data-full hidden>' + CHECK + "This group is fully funded. Thank you!</div>" +
+      feats + '<div class="cfb-sponsors" data-sponsors></div></div>';
+  }
+
+  function roadmapHtml() {
+    var statuses = [];
+    D.roadmap.forEach(function (r) { if (statuses.indexOf(r.status) < 0) statuses.push(r.status); });
+    return '<section class="cfb-rm" id="cfb-rm"><div class="cfb-rm-head"><h2>Firebird 6 roadmap</h2><span class="cfb-paid" style="font-size:14px;padding:4px 12px">' + CHECK + "Paid by current sponsors</span></div>" +
+      "<p>" + D.roadmap.length + " features of the Firebird 6 plan are already paid by current sponsors. They do not need crowdfunding.</p>" +
+      '<div class="cfb-filter" id="cfb-filter"><button type="button" data-rmf="all" aria-pressed="true">All · ' + D.roadmap.length + "</button>" +
+      statuses.map(function (s) {
+        var n = D.roadmap.filter(function (r) { return r.status === s; }).length;
+        return '<button type="button" data-rmf="' + esc(s) + '" aria-pressed="false">' + esc(s.charAt(0) + s.slice(1).toLowerCase()) + " · " + n + "</button>";
+      }).join("") + '</div><div class="cfb-tiles" id="cfb-tiles"></div></section>';
+  }
+  function renderTiles() {
+    document.getElementById("cfb-tiles").innerHTML = D.roadmap.filter(function (r) { return rmFilter === "all" || r.status === rmFilter; }).map(function (r) {
+      return '<div class="cfb-tile"><div class="cfb-tile-top"><span>' + (CF.issueLinks(r.issue) || "&nbsp;") + "</span>" + chip(r.status.toLowerCase(), "cfb-st-" + CF.statusKind(r.status)) + "</div>" +
+        '<div class="cfb-tile-name">' + esc(r.name) + '</div><div class="cfb-tile-foot"><span class="cfb-paid">' + CHECK + "Paid</span>" +
+        (r.backport55 ? chip("also for 5.5", "cfb-st-done") : "") + "</div></div>";
+    }).join("");
+  }
+
+  function renderCampaign() {
+    var c = D.campaigns.filter(function (x) { return x.id === camp; })[0];
+    openId = null;
+    document.getElementById("cfb-main").innerHTML = '<div class="cfb-intro"><h2>' + esc(c.title) + "</h2><p>" + esc(c.note) + "</p></div>" +
+      c.groups.map(groupHtml).join("") + (c.id === "fb6" ? roadmapHtml() : "");
+    if (c.id === "fb6") renderTiles();
+    root.querySelectorAll("[data-camp]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-camp") === camp)); });
+    c.groups.forEach(function (g) { updateGroup(g, 0); });
+  }
+
+  function renderCamps() {
+    document.getElementById("cfb-camps").innerHTML = D.campaigns.map(function (c, i) {
+      var goal = CF.campaignTotals(c).goal;
+      return '<button type="button" class="cfb-camp" data-camp="' + c.id + '" aria-pressed="false"><small>Campaign ' + (i + 1) + "</small><strong>" + esc(c.title) + "</strong>" +
+        '<div class="cfb-seg">' + c.groups.filter(function (g) { return g.squares; }).map(function (g) {
+          return '<span style="flex:' + g.goal + '" title="' + esc(g.name) + '"><i data-segfill="' + g.id + '"></i></span>';
+        }).join("") + '</div><div class="cfb-camp-nums"><span><b data-craised></b> of ' + usd(goal) + "</span><span data-cgroups></span></div></button>";
+    }).join("");
+  }
+
+  /* ---------- dynamic parts ---------- */
+  function updateGroup(g, animBatch) {
+    var art = document.getElementById("g-" + g.id);
+    if (!art) return;
+    var p = pct(g), arc = art.querySelector("[data-arc]");
+    if (g.squares) {
+      var c = 2 * Math.PI * 22;
+      arc.style.strokeDashoffset = (c * (1 - p / 100)).toFixed(1);
+      art.querySelector("[data-pct]").textContent = p + "%";
+      art.querySelector("[data-raised]").textContent = usd(CF.funded(g) * SQ) + " ";
+    }
+    var body = art.querySelector(".cfb-gbody");
+    if (body.hidden || !g.squares) return;
+    var f = CF.funded(g), sel = CF.cart(g.id), free = g.squares - f;
+    var own = CF.owners(g), sqs = body.querySelectorAll(".cfb-sq"), k = 0;
+    for (var i = 0; i < sqs.length; i++) {
+      var el = sqs[i], o = own[i], cls = "cfb-sq";
+      if (o) {
+        cls += o.mine ? " m" : " f";
+        el.title = "Block " + (i + 1) + " · $250 · " + o.name;
+        if (animBatch && o.batch === animBatch) { cls += " pop"; el.style.animationDelay = Math.min(k++ * 25, 1200) + "ms"; }
+      } else {
+        cls += " free" + (i < f + sel ? " s" : "");
+        el.title = "Select blocks up to " + (i + 1) + " (" + usd((i - f + 1) * SQ) + ")";
+      }
+      el.className = cls;
+    }
+    var bulb = body.querySelector("[data-bulb]");
+    bulb.textContent = p + "%";
+    bulb.classList.toggle("is-warm", f > 0);
+    body.querySelector("[data-pick]").hidden = free === 0;
+    body.querySelector("[data-full]").hidden = free > 0;
+    var range = body.querySelector("[data-range]");
+    range.max = free;
+    range.value = sel;
+    body.querySelector("[data-selusd]").textContent = usd(sel * SQ);
+    body.querySelector("[data-left]").textContent = blocks(sel) + " · " + usd(free * SQ) + " left";
+    body.querySelectorAll("[data-q]").forEach(function (b) {
+      var a = b.getAttribute("data-q"), q = a === "all" ? free : +a;
+      b.hidden = a !== "all" && a !== "0" && q >= free;
+      b.setAttribute("aria-pressed", String(a !== "0" && sel > 0 && sel === q));
+    });
+    var sp = CF.sponsorsOf(g);
+    body.querySelector("[data-sponsors]").innerHTML = sp.length ? '<h4 class="cfb-muted" style="font-size:13px;letter-spacing:.08em;text-transform:uppercase">Sponsors</h4><ul>' + sp.map(function (s) {
+      return "<li" + (s.mine ? ' class="mine"' : "") + ">" + esc(s.name) + " · " + usd(s.usd) + "</li>";
+    }).join("") + "</ul>" : "";
+  }
+
+  function updateTotals() {
+    var t = CF.allTotals(), p = t.goal ? Math.round(t.raised / t.goal * 100) : 0;
+    document.getElementById("cfb-total").innerHTML = "<div><b>" + usd(t.raised) + "</b><span>raised of " + usd(t.goal) + " · " + p + "% · " + t.sponsors + " sponsors</span></div>";
+    D.campaigns.forEach(function (c) {
+      var ct = CF.campaignTotals(c), btn = root.querySelector('[data-camp="' + c.id + '"]');
+      btn.querySelector("[data-craised]").textContent = usd(ct.raised);
+      btn.querySelector("[data-cgroups]").textContent = ct.groups + " groups · " + ct.features + " features";
+      c.groups.forEach(function (g) {
+        var el = btn.querySelector('[data-segfill="' + g.id + '"]');
+        if (el) el.style.width = pct(g) + "%";
+      });
+    });
+  }
+
+  function updateCart() {
+    var items = CF.cartItems(), t = CF.cartTotal();
+    document.getElementById("cfb-cart").innerHTML = items.length
+      ? '<ul class="cfb-cartlist">' + items.map(function (it) {
+          return "<li><div>" + esc(it.group.name) + "<small>" + esc(it.group.campaign.short) + " · " + blocks(it.squares) + "</small></div><b>" + usd(it.usd) +
+            '</b><button type="button" class="cfb-x" data-act="uncart" data-id="' + it.group.id + '" aria-label="Remove">&times;</button></li>';
+        }).join("") + '</ul><div class="cfb-carttotal"><span>Total</span><b>' + usd(t.usd) + '</b></div><button type="button" class="cfb-btn cfb-btn-red" data-act="open">Continue to payment</button>'
+      : '<p class="cfb-empty">Nothing selected yet.</p><ol class="cfb-howto"><li>Click <b>Support</b> in a group.</li><li>Select blocks of $250 in the thermometer.</li><li>Repeat in other groups, then pay once.</li></ol>';
+    document.getElementById("cfb-mobilebar").classList.toggle("is-on", t.squares > 0);
+    document.getElementById("cfb-mb-total").textContent = usd(t.usd);
+    if (!drawer.hidden && step === 1) renderLines();
+    document.getElementById("cfb-dtotal").textContent = usd(t.usd);
+  }
+
+  function updateAll(animBatch) {
+    CF.groups.forEach(function (g) { updateGroup(g, animBatch); });
+    updateTotals();
+    updateCart();
+  }
+
+  function toggleGroup(g) {
+    root.querySelectorAll(".cfb-group").forEach(function (art) {
+      var id = art.getAttribute("data-id"), btn = art.querySelector("[data-act=toggle]"), body = art.querySelector(".cfb-gbody");
+      var open = id === g.id && btn.getAttribute("aria-expanded") !== "true";
+      btn.setAttribute("aria-expanded", String(open));
+      art.classList.toggle("is-open", open);
+      if (open) {
+        body.innerHTML = bodyHtml(g);
+        body.hidden = false;
+        openId = id;
+        updateGroup(g, 0);
+      } else if (!body.hidden) {
+        body.hidden = true;
+        body.innerHTML = "";
+      }
+    });
+    if (!root.querySelector(".cfb-group.is-open")) openId = null;
+  }
+
+  /* ---------- checkout drawer ---------- */
+  function renderLines() {
+    var items = CF.cartItems();
+    document.getElementById("cfb-lines").innerHTML = items.map(function (it) {
+      return '<div class="cfb-line" data-id="' + it.group.id + '"><div>' + esc(it.group.name) + "<small>" + esc(it.group.campaign.title) + "</small></div>" +
+        '<span class="cfb-step"><button type="button" data-act="ddec" aria-label="One block less">&minus;</button><output>' + it.squares +
+        '</output><button type="button" data-act="dinc" aria-label="One block more"' + (it.squares >= CF.free(it.group) ? " disabled" : "") + ">+</button></span><b>" + usd(it.usd) +
+        '</b><button type="button" class="cfb-x" data-act="uncart" data-id="' + it.group.id + '" aria-label="Remove">&times;</button></div>';
+    }).join("") || '<p class="cfb-muted">Nothing selected.</p>';
+  }
+  function setStep(s) {
+    step = s;
+    form.querySelectorAll("[data-step]").forEach(function (el) { el.hidden = String(el.getAttribute("data-step")) !== String(s); });
+    document.querySelectorAll("#cfb-steps li").forEach(function (li, i) {
+      li.className = (typeof s === "number" ? (i + 1 === s ? "on" : i + 1 < s ? "done" : "") : "done");
+    });
+    var next = document.getElementById("cfb-next"), back = drawer.querySelector("[data-act=back]");
+    var t = CF.cartTotal();
+    back.hidden = !(s === 2 || s === 3);
+    next.hidden = s === "wait";
+    next.disabled = typeof s === "number" && t.squares === 0;
+    next.textContent = s === 3 ? "Pay " + usd(t.usd) : s === "done" ? "Back to the page" : "Next";
+    document.getElementById("cfb-dtotal").hidden = s === "done" || s === "wait";
+    if (s === 1) renderLines();
+    if (s === 3) {
+      document.getElementById("cfb-summary").innerHTML = CF.cartItems().map(function (it) {
+        return "<div><span>" + esc(it.group.name) + " (" + esc(it.group.campaign.short) + ")</span><span>" + usd(it.usd) + "</span></div>";
+      }).join("") + '<div style="border-top:1px solid #dfe3e5;margin-top:6px;padding-top:6px;font-weight:700;color:#17222b"><span>Total</span><span>' + usd(t.usd) + "</span></div>";
+    }
+  }
+  function openDrawer() {
+    if (!CF.cartTotal().squares) return;
+    overlay.hidden = false;
+    drawer.hidden = false;
+    form.querySelectorAll(".cfb-field").forEach(function (f) { f.classList.remove("bad"); });
+    setStep(1);
+    requestAnimationFrame(function () { overlay.classList.add("is-on"); drawer.classList.add("is-on"); });
+    drawer.querySelector(".cfb-x").focus();
+  }
+  function closeDrawer() {
+    overlay.classList.remove("is-on");
+    drawer.classList.remove("is-on");
+    setTimeout(function () { overlay.hidden = true; drawer.hidden = true; }, 300);
+    if (step === "done" && drawer.dataset.batch) {
+      var b = +drawer.dataset.batch;
+      delete drawer.dataset.batch;
+      setTimeout(function () { CF.groups.forEach(function (g) { updateGroup(g, b); }); }, 250);
+    }
+  }
+  function next() {
+    if (step === 1) return setStep(2);
+    if (step === 2) {
+      var name = form.elements.name.value.trim(), email = form.elements.email.value.trim();
+      var okN = !!name, okM = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      form.querySelector("[data-f=name]").classList.toggle("bad", !okN);
+      form.querySelector("[data-f=email]").classList.toggle("bad", !okM);
+      if (!okN) return form.elements.name.focus();
+      if (!okM) return form.elements.email.focus();
+      return setStep(3);
+    }
+    if (step === 3) {
+      var t = CF.cartTotal();
+      setStep("wait");
+      setTimeout(function () {
+        var n = form.elements.name.value.trim();
+        var items = CF.checkout({ name: n, show: form.elements.show.checked, method: form.elements.method.value });
+        drawer.dataset.batch = CF.lastBatch();
+        document.getElementById("cfb-done-title").textContent = "Thank you, " + n + "!";
+        document.getElementById("cfb-done-text").textContent = "You funded " + blocks(t.squares) + " (" + usd(t.usd) + "). A receipt would go to " + form.elements.email.value.trim() + ".";
+        document.getElementById("cfb-done-list").innerHTML = items.map(function (it) {
+          return "<li>" + esc(it.group.name) + " (" + esc(it.group.campaign.short) + "): " + usd(it.usd) + "</li>";
+        }).join("");
+        setStep("done");
+      }, 1300);
+      return;
+    }
+    if (step === "done") closeDrawer();
+  }
+
+  /* ---------- events ---------- */
+  root.addEventListener("click", function (e) {
+    var t = e.target.closest("[data-act],[data-camp],[data-q],[data-rmf],.cfb-sq");
+    if (!t || !root.contains(t)) return;
+    var art = t.closest(".cfb-group"), g = art && CF.byId[art.getAttribute("data-id")];
+    if (t.hasAttribute("data-camp")) { camp = t.getAttribute("data-camp"); history.replaceState(null, "", "#" + camp); renderCampaign(); return; }
+    if (t.hasAttribute("data-rmf")) {
+      rmFilter = t.getAttribute("data-rmf");
+      root.querySelectorAll("[data-rmf]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === t)); });
+      renderTiles();
+      return;
+    }
+    if (t.classList.contains("cfb-sq")) {
+      var i = +t.getAttribute("data-i"), f = CF.funded(g), sel = CF.cart(g.id);
+      if (i < f) return;
+      var n = i - f + 1;
+      CF.setCart(g.id, n === sel ? n - 1 : n);
+      return;
+    }
+    if (t.hasAttribute("data-q")) { var q = t.getAttribute("data-q"); CF.setCart(g.id, q === "all" ? CF.free(g) : +q); return; }
+    var id;
+    switch (t.getAttribute("data-act")) {
+      case "toggle": toggleGroup(g); break;
+      case "open": openDrawer(); break;
+      case "close": closeDrawer(); break;
+      case "next": next(); break;
+      case "back": setStep(step - 1); break;
+      case "uncart": CF.setCart(t.getAttribute("data-id"), 0); if (!drawer.hidden && !CF.cartTotal().squares && step === 1) closeDrawer(); break;
+      case "ddec": id = t.closest(".cfb-line").getAttribute("data-id"); CF.setCart(id, CF.cart(id) - 1); break;
+      case "dinc": id = t.closest(".cfb-line").getAttribute("data-id"); CF.setCart(id, CF.cart(id) + 1); break;
+      case "demo": CF.addDemo(); break;
+      case "reset": if (confirm("Delete all simulated pledges in this browser?")) CF.reset(); break;
+    }
+  });
+  root.addEventListener("input", function (e) {
+    if (!e.target.matches("[data-range]")) return;
+    CF.setCart(e.target.closest(".cfb-group").getAttribute("data-id"), +e.target.value);
+  });
+  root.addEventListener("mouseover", function (e) {
+    var grid = e.target.closest("[data-grid]");
+    if (!grid) return;
+    var g = CF.byId[grid.closest(".cfb-group").getAttribute("data-id")];
+    var sq = e.target.closest(".cfb-sq.free"), f = CF.funded(g), sel = CF.cart(g.id), upto = sq ? +sq.getAttribute("data-i") : -1;
+    grid.querySelectorAll(".cfb-sq").forEach(function (el, i) { el.classList.toggle("h", i >= f + sel && i <= upto); });
+  });
+  root.addEventListener("mouseout", function (e) {
+    var grid = e.target.closest("[data-grid]");
+    if (grid && !grid.contains(e.relatedTarget)) grid.querySelectorAll(".cfb-sq.h").forEach(function (el) { el.classList.remove("h"); });
+  });
+  form.addEventListener("submit", function (e) { e.preventDefault(); next(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !drawer.hidden && step !== "wait") closeDrawer(); });
+
+  CF.on(function (kind, info) {
+    var anim = kind === "pledge" && (info.demo || drawer.hidden) ? info.batch : 0;
+    updateAll(anim);
+  });
+
+  renderCamps();
+  renderCampaign();
+  updateAll(0);
+})();
+</script>

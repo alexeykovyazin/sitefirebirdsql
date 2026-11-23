@@ -169,3 +169,20 @@ The RSS feed (`/rss/en/news.xml`) comes from the origin server and does not incl
 5. **News.** Create `site/content/news/firebird-5-0-5-released.md` as in example 1, with a link to `/en/firebird-5-0-5/`.
 
 6. Run the converter, check locally, deploy.
+
+## 4. Crowdfunding test pages
+
+Two test designs: `site/content/extra/crowdfunding-test-a.html` and `crowdfunding-test-b.html`.
+They have `draft: true`, so a normal build does not publish them.
+Payments are simulated; pledges are kept only in the browser (localStorage).
+
+1. Update the feature list from the spreadsheet:
+
+   ```
+   python tools/crowdfunding_data.py E:/FF/features.ods site/static/file/crowdfunding/cf-data.js
+   ```
+
+2. Preview with drafts: `cd site && hugo server --config hugo.toml,hugo.local.toml --buildDrafts`,
+   then open http://localhost:1313/en/crowdfunding-test-a/ and `/en/crowdfunding-test-b/`.
+
+Shared logic (cart, pledges, totals) is in `site/static/file/crowdfunding/cf-core.js`.

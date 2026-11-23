@@ -1,0 +1,698 @@
+---
+title: "Firebird crowdfunding (test, variant A)"
+html_title: "Firebird crowdfunding – test variant A"
+description: "Test page: crowdfunding for Firebird 5.5 and Firebird 6+ features"
+url: "/en/crowdfunding-test-a/"
+draft: true
+---
+<!-- Test page. Data: /file/crowdfunding/cf-data.js (tools/crowdfunding_data.py). State: /file/crowdfunding/cf-core.js -->
+<style>
+.cfa{--teal:#2e6474;--teal-d:#21505d;--teal-l:#e3eef1;--red:#ff5555;--red-d:#e43f3f;--ink:#17222b;--text:#3a434b;--muted:#6b7680;--line:#dcdedf;--row:#eceff0;--soft:#f4f6f7;--free:#e6e9eb;--ok:#23845a;--ok-l:#e2f3ea;--amber:#9a6700;--amber-l:#fff3d1;--violet:#7a3fb8;--violet-l:#f1e8fb;color:var(--text);font-size:16px;line-height:1.5;padding-bottom:110px;background:#fff}
+.cfa *{box-sizing:border-box}
+.cfa [hidden]{display:none!important}
+.cfa h1,.cfa h2,.cfa h3,.cfa h4{color:var(--ink);margin:0;font-weight:700;letter-spacing:0}
+.cfa p{margin:0}
+.cfa ul{list-style:none;margin:0;padding:0}
+.cfa a{color:var(--teal)}
+.cfa button{font:inherit;cursor:pointer}
+.cfa-wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+.cfa-muted{color:var(--muted)}
+.cfa-testbar{background:var(--amber-l);border-bottom:1px solid #f0d58a;font-size:14px;padding:8px 16px;display:flex;gap:8px 14px;align-items:center;flex-wrap:wrap;justify-content:center;color:#5c4400}
+.cfa-testbar b{letter-spacing:.06em}
+.cfa-testbar button,.cfa-testbar a{background:#fff;border:1px solid #e2c56d;border-radius:6px;padding:3px 10px;font-size:13px;color:#5c4400;text-decoration:none}
+.cfa-testbar button:hover,.cfa-testbar a:hover{background:#fff9e8}
+.cfa-hero{padding:40px 0 24px}
+.cfa-kicker{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red-d)}
+.cfa-hero h1{font-size:38px;line-height:1.15;margin-top:8px;max-width:760px}
+.cfa-lead{max-width:780px;font-size:17px;margin-top:12px}
+.cfa-stats{display:flex;gap:16px 40px;margin-top:24px;flex-wrap:wrap}
+.cfa-stat b{display:block;font-size:28px;line-height:1.1;color:var(--ink);font-variant-numeric:tabular-nums}
+.cfa-stat span{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cfa-jump{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:4px 0 32px}
+.cfa-jump a{display:block;border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--text);text-decoration:none;transition:border-color .15s}
+.cfa-jump a:hover{border-color:var(--teal)}
+.cfa-jump small{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.cfa-jump strong{display:block;color:var(--ink);font-size:16px;line-height:1.3;margin:2px 0 8px}
+.cfa-jump .cfa-nums{display:flex;justify-content:space-between;font-size:13px;margin-top:6px;font-variant-numeric:tabular-nums}
+.cfa-bar{height:8px;background:var(--free);border-radius:4px;overflow:hidden}
+.cfa-bar i{display:block;height:100%;width:0;background:var(--teal);border-radius:4px;transition:width .7s ease}
+.cfa-bar.is-paid i{background:var(--ok)}
+.cfa-section{margin-bottom:40px;scroll-margin-top:16px}
+.cfa-phead{display:flex;gap:12px 32px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;margin-bottom:14px;padding-bottom:12px;border-bottom:3px solid var(--ink)}
+.cfa-phead h2{font-size:26px;line-height:1.2;margin-top:2px}
+.cfa-note{margin-top:6px;font-size:15px;color:var(--muted);max-width:760px}
+.cfa-ptotal{font-size:14px;text-align:right;font-variant-numeric:tabular-nums}
+.cfa-ptotal b{font-size:22px;color:var(--ink)}
+.cfa-group{border:1px solid var(--line);border-radius:10px;margin-bottom:14px;background:#fff;overflow:hidden}
+.cfa-ghead{display:grid;grid-template-columns:minmax(0,1fr) 240px auto;gap:10px 24px;align-items:center;padding:12px 16px;background:var(--soft);border-bottom:1px solid var(--line)}
+.cfa-gtitle h3{font-size:18px;line-height:1.3}
+.cfa-gtitle p{font-size:14px;color:var(--muted)}
+.cfa-gnums{display:flex;justify-content:space-between;gap:8px;font-size:13px;margin-top:5px;font-variant-numeric:tabular-nums}
+.cfa-gnums b{color:var(--ink)}
+.cfa-nogoal{font-size:14px;color:var(--muted);font-style:italic}
+.cfa-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:8px;padding:8px 14px;font-weight:600;font-size:15px;line-height:1.2;white-space:nowrap;text-decoration:none}
+.cfa-btn:hover{border-color:#aab6bb;background:var(--soft)}
+.cfa-btn:disabled{opacity:.45;cursor:not-allowed}
+.cfa-btn-primary{background:var(--red);border-color:var(--red);color:#fff}
+.cfa-btn-primary:hover{background:var(--red-d);border-color:var(--red-d);color:#fff}
+.cfa-btn-primary:disabled:hover{background:var(--red)}
+.cfa-btn-support{background:var(--teal);border-color:var(--teal);color:#fff;min-width:118px}
+.cfa-btn-support:hover{background:var(--teal-d);border-color:var(--teal-d)}
+.cfa-btn-support svg{transition:transform .2s}
+.cfa-btn-support[aria-expanded=true]{background:#fff;color:var(--teal)}
+.cfa-btn-support[aria-expanded=true] svg{transform:rotate(180deg)}
+.cfa-fundrow{overflow:hidden;transition:height .3s ease;border-bottom:1px solid var(--line)}
+.cfa-fund{padding:16px;background:#fbfcfc}
+.cfa-fund-hint{font-size:14px;color:var(--muted);margin-bottom:10px}
+.cfa-thermo{display:flex;align-items:center}
+.cfa-bulb{flex:none;width:72px;height:72px;border-radius:50%;background:var(--free);border:4px solid #fff;box-shadow:0 0 0 1px var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink);font-weight:700;font-size:16px;position:relative;z-index:1;margin-right:-10px;transition:background .4s,color .4s;font-variant-numeric:tabular-nums}
+.cfa-bulb.is-warm{background:var(--teal);color:#fff}
+.cfa-tube{flex:1;min-width:0;background:#fff;border:1px solid var(--line);border-radius:0 14px 14px 0;padding:7px 8px 7px 16px}
+.cfa-grid{display:flex;flex-flow:column-reverse wrap;align-content:flex-start;gap:3px;height:var(--h,20px)}
+.cfa-sq{display:block;width:var(--s,16px);height:var(--s,16px);border-radius:3px;background:var(--free);transition:background .15s,transform .15s}
+.cfa-sq.f{background:var(--teal)}
+.cfa-sq.m{background:var(--red)}
+.cfa-sq.s{background:repeating-linear-gradient(135deg,#ffb3b3 0 3px,#ff7a7a 3px 6px);box-shadow:inset 0 0 0 1px var(--red-d)}
+.cfa-sq.h{background:#ffd0d0}
+.cfa-sq.free{cursor:pointer}
+.cfa-sq.free:hover{transform:scale(1.15)}
+.cfa-sq.pop{animation:cfaPop .5s ease both}
+@keyframes cfaPop{0%{transform:scale(.3);background:#ffe08a}60%{transform:scale(1.3)}100%{transform:scale(1)}}
+.cfa-legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted);margin:8px 0 0 70px}
+.cfa-legend span{display:inline-flex;align-items:center;gap:6px}
+.cfa-legend i{width:12px;height:12px;border-radius:3px;display:inline-block;background:var(--free)}
+.cfa-legend i.f{background:var(--teal)}.cfa-legend i.m{background:var(--red)}
+.cfa-legend i.s{background:repeating-linear-gradient(135deg,#ffb3b3 0 3px,#ff7a7a 3px 6px);box-shadow:inset 0 0 0 1px var(--red-d)}
+.cfa-pick{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.cfa-stepper{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+.cfa-stepper button{width:34px;height:34px;border:0;background:none;font-size:20px;line-height:1;color:var(--ink)}
+.cfa-stepper button:disabled{opacity:.35;cursor:not-allowed}
+.cfa-stepper output{min-width:32px;text-align:center;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.cfa-picktext{font-size:15px}
+.cfa-picktext b{color:var(--ink);font-size:18px;font-variant-numeric:tabular-nums}
+.cfa-quick{display:flex;flex-wrap:wrap;gap:6px}
+.cfa-quick button{border:1px solid var(--line);background:#fff;border-radius:20px;padding:3px 12px;font-size:13px;color:var(--ink)}
+.cfa-quick button:hover{border-color:var(--red);color:var(--red-d)}
+.cfa-quick button[aria-pressed=true]{background:var(--red);border-color:var(--red);color:#fff}
+.cfa-pick .cfa-btn-primary{margin-left:auto}
+.cfa-full{display:inline-flex;align-items:center;gap:6px;color:var(--ok);font-weight:700}
+.cfa-sponsors{margin-top:12px;font-size:14px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.cfa-sponsors b{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.cfa-sponsors span{background:#fff;border:1px solid var(--line);border-radius:20px;padding:1px 10px}
+.cfa-sponsors span.mine{border-color:var(--red);color:var(--red-d);font-weight:600}
+/* dense feature tables */
+.cfa-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:14px;line-height:1.35}
+.cfa-table th{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);white-space:nowrap;background:#fff}
+.cfa-table td{padding:6px 10px;border-bottom:1px solid var(--row);vertical-align:top;overflow-wrap:anywhere}
+.cfa-table tr:last-child td{border-bottom:0}
+.cfa-table tbody tr:hover td{background:#fafbfb}
+.cfa-table th:first-child,.cfa-table td:first-child{padding-left:16px}
+.cfa-table th:last-child,.cfa-table td:last-child{padding-right:16px}
+.cfa-table .num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.cfa-table td.num{font-weight:700;color:var(--ink)}
+.cfa-table td.num small{display:block;font-weight:400;font-size:12px;color:var(--muted)}
+.cfa-fname{font-weight:600;color:var(--ink)}
+.cfa-what{color:var(--muted)}
+.cfa-issue{white-space:nowrap}
+.cfa-cat td{background:var(--soft)!important;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:5px;padding-bottom:5px}
+.cfa-chip{display:inline-block;font-size:12px;line-height:1.3;padding:1px 8px;border-radius:20px;background:var(--soft);color:var(--text);border:1px solid #e7eaec;white-space:nowrap}
+.cfa-st-done{background:var(--teal-l);color:var(--teal-d);border-color:#cfe1e6}
+.cfa-st-exp{background:var(--violet-l);color:var(--violet);border-color:#e4d3f6}
+.cfa-st-wip{background:var(--amber-l);color:var(--amber);border-color:#f3e0a8}
+.cfa-st-plan{background:#f1f2f3;color:#56606a}
+.cfa-paid{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;line-height:1.3;padding:1px 8px;border-radius:20px;background:var(--ok-l);color:var(--ok);border:1px solid #c5e6d4;white-space:nowrap}
+.cfa-paid svg{flex:none}
+.cfa-table .cfa-chip,.cfa-table .cfa-paid{white-space:normal}
+.cfa-group-paid{border-color:#c5e6d4}
+.cfa-group-paid .cfa-ghead{background:#f1f9f4;border-bottom-color:#c5e6d4}
+/* permanent sponsors */
+.cfa-become{background:var(--ink);color:#c9d3d8;border-radius:16px;padding:28px 24px}
+.cfa-become .cfa-phead{border-bottom-color:#3b4c59}
+.cfa-become h2,.cfa-become h3{color:#fff}
+.cfa-become .cfa-note{color:#a9b7bf}
+.cfa-become .cfa-kicker{color:var(--red)}
+.cfa-tier-h{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8fa1ab;margin:18px 0 10px}
+.cfa-tiers{display:grid;gap:12px}
+.cfa-tiers-2{grid-template-columns:repeat(2,1fr)}
+.cfa-tiers-4{grid-template-columns:repeat(4,1fr)}
+.cfa-tier{background:#22303b;border:1px solid #33434f;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.cfa-tier-top{display:flex;gap:14px;align-items:center}
+.cfa-tier img{width:68px;height:auto;flex:none;background:#fff;border-radius:8px;padding:4px}
+.cfa-tier h3{font-size:19px;line-height:1.25}
+.cfa-tier .cfa-price-line{font-size:14px;color:#fff;font-weight:600}
+.cfa-tier .cfa-price-line small{display:block;font-weight:400;color:#a9b7bf}
+.cfa-tier ul{font-size:14px;line-height:1.4;display:flex;flex-direction:column;gap:4px}
+.cfa-tier li{padding-left:18px;position:relative}
+.cfa-tier li::before{content:"";position:absolute;left:2px;top:7px;width:8px;height:5px;border-left:2px solid var(--red);border-bottom:2px solid var(--red);transform:rotate(-45deg)}
+.cfa-tier .cfa-btn{margin-top:auto;align-self:flex-start}
+.cfa-tier-plat{border-color:#6f7f8b;background:linear-gradient(160deg,#2b3b47,#22303b)}
+.cfa-become-foot{margin-top:16px;font-size:14px;color:#a9b7bf}
+.cfa-become-foot a{color:#fff}
+/* cart and dialog */
+.cfa-cart{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--ink);color:#fff;box-shadow:0 -6px 24px rgba(0,0,0,.18);transform:translateY(110%);transition:transform .25s ease}
+.cfa-cart.is-on{transform:none}
+.cfa-cart-in{max-width:1180px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:12px 20px;flex-wrap:wrap}
+.cfa-cart-label{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#9fb0b8}
+.cfa-cart-items{display:flex;flex-wrap:wrap;gap:6px;flex:1;min-width:0}
+.cfa-cart-items span{background:rgba(255,255,255,.1);border-radius:20px;padding:3px 6px 3px 12px;font-size:13px;display:inline-flex;align-items:center;gap:6px}
+.cfa-cart-items button{border:0;background:rgba(255,255,255,.15);color:#fff;width:20px;height:20px;border-radius:50%;font-size:13px;line-height:20px;padding:0}
+.cfa-cart-total{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums}
+.cfa-cart .cfa-btn-ghost{background:none;border-color:rgba(255,255,255,.3);color:#fff}
+.cfa-cart .cfa-btn-ghost:hover{background:rgba(255,255,255,.08)}
+.cfa-dlg{border:0;border-radius:14px;padding:0;width:min(640px,calc(100vw - 32px));max-height:calc(100vh - 32px);box-shadow:0 24px 80px rgba(0,0,0,.35);color:var(--text)}
+.cfa-dlg::backdrop{background:rgba(23,34,43,.55)}
+.cfa-dlg form{display:flex;flex-direction:column;max-height:calc(100vh - 32px)}
+.cfa-dlg header{display:flex;align-items:center;gap:12px;padding:18px 22px;border-bottom:1px solid var(--line)}
+.cfa-dlg header h2{font-size:22px}
+.cfa-sim{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--amber-l);color:#7a5600;border-radius:20px;padding:2px 10px}
+.cfa-x{margin-left:auto;border:0;background:none;font-size:26px;line-height:1;color:var(--muted);padding:0 4px}
+.cfa-dlg-body{padding:6px 22px 18px;overflow:auto}
+.cfa-dlg section{padding:14px 0;border-bottom:1px solid #eef0f1}
+.cfa-dlg section:last-child{border-bottom:0}
+.cfa-dlg h3{font-size:16px;margin-bottom:10px}
+.cfa-items{width:100%;border-collapse:collapse;font-size:15px}
+.cfa-items td{padding:8px 0;border-bottom:1px solid #f0f2f3;vertical-align:middle}
+.cfa-items td small{display:block;color:var(--muted);font-size:12px}
+.cfa-items td.n{text-align:right;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;width:90px}
+.cfa-items .cfa-stepper button{width:30px;height:30px;font-size:17px}
+.cfa-items .cfa-stepper output{min-width:28px}
+.cfa-rm{border:0;background:none;color:var(--muted);font-size:20px;padding:0 0 0 8px}
+.cfa-dtotal{display:flex;justify-content:space-between;margin-top:10px;font-size:15px}
+.cfa-dtotal b{font-size:20px;color:var(--ink)}
+.cfa-field{display:block;margin-bottom:12px;font-size:14px;font-weight:600;color:var(--ink)}
+.cfa-field input{display:block;width:100%;margin-top:4px;border:1px solid #c9cfd2;border-radius:8px;padding:9px 12px;font:inherit;font-weight:400;color:var(--ink)}
+.cfa-field input:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal)}
+.cfa-field.bad input{border-color:var(--red-d)}
+.cfa-err{display:none;color:var(--red-d);font-weight:400;font-size:13px;margin-top:3px}
+.cfa-field.bad .cfa-err{display:block}
+.cfa-check{display:flex;gap:8px;align-items:center;font-size:14px}
+.cfa-methods{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.cfa-methods label{border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:14px;cursor:pointer;display:flex;flex-direction:column;gap:2px}
+.cfa-methods label:has(input:checked){border-color:var(--teal);box-shadow:0 0 0 3px rgba(46,100,116,.14)}
+.cfa-methods input{margin:0 0 4px}
+.cfa-methods b{color:var(--ink)}
+.cfa-methods small{color:var(--muted);font-size:12px}
+.cfa-dlg footer{display:flex;justify-content:flex-end;gap:10px;padding:14px 22px;border-top:1px solid var(--line);background:var(--soft);border-radius:0 0 14px 14px}
+.cfa-dlg .cfa-state{padding:40px 22px;text-align:center}
+.cfa-spin{width:44px;height:44px;border-radius:50%;border:4px solid var(--teal-l);border-top-color:var(--teal);margin:0 auto 16px;animation:cfaSpin .8s linear infinite}
+@keyframes cfaSpin{to{transform:rotate(360deg)}}
+.cfa-okicon{width:64px;height:64px;border-radius:50%;background:var(--ok-l);color:var(--ok);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.cfa-state h3{font-size:22px;margin-bottom:6px}
+.cfa-state ul{display:inline-block;text-align:left;margin-top:12px}
+.cfa-state li{padding:3px 0}
+@media (max-width:980px){
+  .cfa-jump{grid-template-columns:1fr 1fr}
+  .cfa-tiers-4{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  .cfa-ghead{grid-template-columns:1fr auto}
+  .cfa-gmeter{grid-column:1/-1;grid-row:2}
+  .cfa-tiers-2{grid-template-columns:1fr}
+  /* tables become stacked rows */
+  .cfa-table thead{display:none}
+  .cfa-table,.cfa-table tbody,.cfa-table tr,.cfa-table td{display:block;width:100%}
+  .cfa-table tr{padding:8px 16px;border-bottom:1px solid var(--row)}
+  .cfa-table tbody tr:last-child{border-bottom:0}
+  .cfa-table td{border:0;padding:1px 0!important;text-align:left!important}
+  .cfa-table td:empty{display:none}
+  .cfa-table td[data-l]:not(:first-child)::before{content:attr(data-l) ": ";color:var(--muted);font-weight:400;font-size:12px}
+  .cfa-table td.num small{display:inline;margin-left:4px}
+  .cfa-cat{padding:0!important}
+  .cfa-cat td{padding:5px 16px!important}
+}
+@media (max-width:600px){
+  .cfa-hero h1{font-size:29px}
+  .cfa-jump{grid-template-columns:1fr}
+  .cfa-phead h2{font-size:22px}
+  .cfa-ptotal{text-align:left}
+  .cfa-bulb{width:54px;height:54px;font-size:14px}
+  .cfa-legend{margin-left:0}
+  .cfa-pick .cfa-btn-primary{margin-left:0;width:100%}
+  .cfa-methods{grid-template-columns:1fr}
+  .cfa-cart-items{display:none}
+  .cfa-tiers-4{grid-template-columns:1fr}
+  .cfa-become{padding:22px 16px;border-radius:12px}
+}
+@media (prefers-reduced-motion:reduce){.cfa *{animation:none!important;transition:none!important}}
+</style>
+
+<div class="cfa" id="cfa">
+  <div class="cfa-testbar" role="note">
+    <span><b>TEST PAGE · VARIANT A</b> · Payments are simulated. Pledges stay only in this browser.</span>
+    <button type="button" data-act="demo">Add demo pledges</button>
+    <button type="button" data-act="reset">Reset</button>
+    <a href="/en/crowdfunding-test-b/">Open variant B</a>
+  </div>
+
+  <div class="cfa-wrap">
+    <section class="cfa-hero">
+      <div class="cfa-kicker">Firebird crowdfunding</div>
+      <h1>Choose the Firebird features you need, and help pay for them</h1>
+      <p class="cfa-lead">Features are grouped. Each group has one budget. Click <b>Support</b> on a group, select blocks of $250 in its thermometer and pay. You can select blocks in several groups and pay once.</p>
+      <div class="cfa-stats" id="cfa-stats"></div>
+    </section>
+
+    <nav class="cfa-jump" id="cfa-jump" aria-label="Page sections"></nav>
+    <div id="cfa-sections"></div>
+  </div>
+
+  <div class="cfa-cart" id="cfa-cart" aria-live="polite">
+    <div class="cfa-cart-in">
+      <span class="cfa-cart-label">Your selection</span>
+      <div class="cfa-cart-items" id="cfa-cart-items"></div>
+      <span class="cfa-cart-total" id="cfa-cart-total"></span>
+      <button type="button" class="cfa-btn cfa-btn-ghost" data-act="clear">Clear</button>
+      <button type="button" class="cfa-btn cfa-btn-primary" data-act="checkout">Checkout</button>
+    </div>
+  </div>
+
+  <dialog class="cfa-dlg" id="cfa-dlg" aria-labelledby="cfa-dlg-title">
+    <form novalidate>
+      <header>
+        <h2 id="cfa-dlg-title">Checkout</h2>
+        <span class="cfa-sim">Simulation</span>
+        <button type="button" class="cfa-x" data-act="close" aria-label="Close">&times;</button>
+      </header>
+      <div class="cfa-dlg-body" data-view="form">
+        <section>
+          <h3>1. Your selection</h3>
+          <table class="cfa-items"><tbody id="cfa-dlg-items"></tbody></table>
+          <div class="cfa-dtotal"><span id="cfa-dlg-count"></span><b id="cfa-dlg-total"></b></div>
+        </section>
+        <section>
+          <h3>2. Sponsor</h3>
+          <label class="cfa-field" data-f="name">Name or company
+            <input name="name" autocomplete="organization" maxlength="80">
+            <span class="cfa-err">Enter a name or a company.</span>
+          </label>
+          <label class="cfa-field" data-f="email">Email for the receipt
+            <input name="email" type="email" autocomplete="email" maxlength="120">
+            <span class="cfa-err">Enter a valid email.</span>
+          </label>
+          <label class="cfa-check"><input type="checkbox" name="show" checked> Show my name in the sponsor list</label>
+        </section>
+        <section>
+          <h3>3. Payment method</h3>
+          <div class="cfa-methods">
+            <label><input type="radio" name="method" value="card" checked><b>Card</b><small>Visa, Mastercard</small></label>
+            <label><input type="radio" name="method" value="paypal"><b>PayPal</b><small>PayPal account</small></label>
+            <label><input type="radio" name="method" value="invoice"><b>Invoice</b><small>Bank transfer</small></label>
+          </div>
+          <p class="cfa-muted" style="font-size:13px;margin-top:10px">Test page: no payment details are asked, no money is charged.</p>
+        </section>
+      </div>
+      <div class="cfa-state" data-view="processing" hidden>
+        <div class="cfa-spin"></div>
+        <h3>Processing the payment…</h3>
+        <p class="cfa-muted">Simulation, it takes a second.</p>
+      </div>
+      <div class="cfa-state" data-view="done" hidden>
+        <div class="cfa-okicon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <h3 id="cfa-done-title">Thank you!</h3>
+        <p id="cfa-done-text"></p>
+        <ul id="cfa-done-list"></ul>
+      </div>
+      <footer>
+        <button type="button" class="cfa-btn" data-act="close" data-foot="form">Cancel</button>
+        <button type="submit" class="cfa-btn cfa-btn-primary" id="cfa-pay" data-foot="form">Pay</button>
+        <button type="button" class="cfa-btn cfa-btn-primary" data-act="close" data-foot="done" hidden>Back to the page</button>
+      </footer>
+    </form>
+  </dialog>
+</div>
+
+<script src="/file/crowdfunding/cf-data.js"></script>
+<script src="/file/crowdfunding/cf-core.js"></script>
+<script>
+(function () {
+  "use strict";
+  var CF = window.CF, D = CF.data, SQ = CF.SQ, esc = CF.esc, usd = CF.usd;
+  var root = document.getElementById("cfa");
+  var CHECK = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  var CHEVRON = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+  var QUICK = [1, 4, 20, 40];
+  var IMG = "/file/crowdfunding/img/";
+  var pendingBatch = 0;
+  var dlg = document.getElementById("cfa-dlg");
+
+  /* Permanent support programs. Texts: /firebird-associate, /firebird-partner, /en/how-to-become-a-sponsor/ */
+  var PROGRAMS = [
+    { name: "Firebird Associate", img: "ff_logo_associate.svg", price: "Monthly or annual donation", href: "/firebird-associate",
+      perks: ["EmberWings magazine one year before public release", "Closed live webinars", "Discounts: certification exams, conferences, partner offers", "Gifts at least twice a year"] },
+    { name: "Firebird Partner", img: "ff_logo_partner.svg", price: "Monthly or annual donation", href: "/firebird-partner",
+      perks: ["All Associate benefits", "Exclusive technical content", "Take part in Firebird release planning", "Higher level of benefits than Associate"] }
+  ];
+  var TIERS = [
+    { name: "Bronze", img: "ff_logo_sponsor_bronze.svg", price: "$900 – $1,999 per year", alt: "commitment or one-time donation" },
+    { name: "Silver", img: "ff_logo_sponsor_silver.svg", price: "$175 – $499 per month", alt: "or one-time $2,000 – $5,999" },
+    { name: "Gold", img: "ff_logo_sponsor_gold.svg", price: "$500 – $1,000 per month", alt: "or one-time $6,000 – $11,999" },
+    { name: "Platinum", img: "ff_logo_sponsor_platinum.svg", price: "More than $1,000 per month", alt: "or one-time $12,000 or more" }
+  ];
+
+  function chip(text, cls) { return text ? '<span class="cfa-chip ' + (cls || "") + '">' + esc(text) + "</span>" : ""; }
+  function status(s) { return chip(s, "cfa-st-" + CF.statusKind(s)); }
+  function paid(text) { return '<span class="cfa-paid">' + CHECK + esc(text) + "</span>"; }
+  function pct(g) { return g.squares ? Math.round(CF.funded(g) / g.squares * 100) : 0; }
+  function blocks(n) { return n + (n === 1 ? " block" : " blocks"); }
+  function cols(w) { return "<colgroup>" + w.map(function (x) { return '<col style="width:' + x + '%">'; }).join("") + "</colgroup>"; }
+  function td(label, html, cls) {
+    if (!String(html).replace(/<[^>]*>/g, "").trim()) html = "";
+    return "<td" + (cls ? ' class="' + cls + '"' : "") + ' data-l="' + label + '">' + html + "</td>"; }
+
+  /* ---------- tables ---------- */
+  function tableC1(g) {
+    return '<table class="cfa-table">' + cols([36, 8, 24, 20, 12]) + '<thead><tr><th>Feature</th><th>Issue</th><th>Status now</th><th>Firebird 6 roadmap</th><th class="num">Porting and tests</th></tr></thead><tbody>' +
+      g.features.map(function (f) {
+        var rm = f.issue && CF.roadmapByIssue[f.issue];
+        var fb6 = f.roadmap6 ? paid((rm ? rm.status.charAt(0) + rm.status.slice(1).toLowerCase() + " · " : "") + "paid by current sponsors") : '<span class="cfa-muted">not in roadmap</span>';
+        return "<tr>" + td("Feature", '<span class="cfa-fname">' + esc(f.name) + "</span>") + td("Issue", '<span class="cfa-issue">' + CF.issueLinks(f.issue) + "</span>") +
+          td("Status", status(f.status)) + td("Firebird 6", fb6) + td("Porting and tests", f.price ? usd(f.price) : "", "num") + "</tr>";
+      }).join("") + "</tbody></table>";
+  }
+  function tableC2(g) {
+    return '<table class="cfa-table">' + cols([26, 33, 14, 12, 15]) + '<thead><tr><th>Feature</th><th>What it does</th><th>Status</th><th>Target</th><th class="num">Price</th></tr></thead><tbody>' +
+      g.features.map(function (f) {
+        var price = f.roadmap6 ? paid("Paid by current sponsors") : f.price ? usd(f.price) + "<small>" + blocks(Math.round(f.price / SQ)) + "</small>"
+          : (g.goal ? '<small>in group budget</small>' : '<small>not set</small>');
+        return "<tr>" + td("Feature", '<span class="cfa-fname">' + esc(f.name) + "</span>" + (f.issue ? ' <span class="cfa-issue">' + CF.issueLinks(f.issue) + "</span>" : "")) +
+          td("What it does", '<span class="cfa-what">' + esc(f.what) + "</span>") + td("Status", status(f.status)) + td("Target", esc(f.target)) + td("Price", price, "num") + "</tr>";
+      }).join("") + "</tbody></table>";
+  }
+
+  /* ---------- groups ---------- */
+  function fundHtml(g) {
+    var sq = "";
+    for (var i = 0; i < g.squares; i++) sq += '<i class="cfa-sq" data-i="' + i + '"></i>';
+    var quick = QUICK.map(function (q) { return '<button type="button" data-q="' + q + '">' + usd(q * SQ) + "</button>"; }).join("") +
+      '<button type="button" data-q="all">All remaining</button>';
+    return '<div class="cfa-fundrow" id="f-' + g.id + '" hidden><div class="cfa-fund">' +
+      '<p class="cfa-fund-hint">Goal ' + usd(g.goal) + ". One square = $250. Click a free square to select all blocks up to it.</p>" +
+      '<div class="cfa-thermo"><div class="cfa-bulb" data-bulb></div><div class="cfa-tube"><div class="cfa-grid" data-grid>' + sq + "</div></div></div>" +
+      '<div class="cfa-legend"><span><i class="f"></i>Funded</span><span><i class="m"></i>Your support</span><span><i class="s"></i>Selected</span><span><i></i>Free</span></div>' +
+      '<div class="cfa-pick" data-pick><div class="cfa-stepper"><button type="button" data-act="dec" aria-label="One block less">&minus;</button><output data-sel>0</output><button type="button" data-act="inc" aria-label="One block more">+</button></div>' +
+      '<div class="cfa-picktext">selected = <b data-selusd>$0</b> <span class="cfa-muted" data-left></span></div>' +
+      '<div class="cfa-quick">' + quick + "</div>" +
+      '<button type="button" class="cfa-btn cfa-btn-primary" data-act="checkout">Checkout</button></div>' +
+      '<p class="cfa-pick" data-full hidden><span class="cfa-full">' + CHECK + "This group is fully funded. Thank you!</span></p>" +
+      '<div class="cfa-sponsors" data-sponsors></div></div></div>';
+  }
+
+  function groupHtml(g) {
+    var has = g.squares > 0;
+    var n = g.features.length + (g.features.length === 1 ? " feature" : " features");
+    return '<article class="cfa-group" id="g-' + g.id + '" data-id="' + g.id + '">' +
+      '<div class="cfa-ghead"><div class="cfa-gtitle"><h3>' + esc(g.name) + "</h3><p>" + (g.description ? esc(g.description) + " · " : "") + n + "</p></div>" +
+      (has ? '<div class="cfa-gmeter"><div class="cfa-bar"><i data-bar></i></div><div class="cfa-gnums"><span><b data-raised></b> of ' + usd(g.goal) + '</span><span data-pct></span></div></div>' +
+             '<button type="button" class="cfa-btn cfa-btn-support" data-act="toggle" aria-expanded="false" aria-controls="f-' + g.id + '">Support' + CHEVRON + "</button>"
+           : '<div class="cfa-gmeter cfa-nogoal">Budget is not set yet</div><span></span>') +
+      "</div>" + (has ? fundHtml(g) : "") +
+      (g.campaign.id === "fb55" ? tableC1(g) : tableC2(g)) + "</article>";
+  }
+
+  function roadmapHtml() {
+    var cats = [];
+    D.roadmap.forEach(function (r) { if (cats.indexOf(r.category) < 0) cats.push(r.category); });
+    var rows = cats.map(function (c) {
+      return '<tr class="cfa-cat"><td colspan="5">' + esc(c) + "</td></tr>" + D.roadmap.filter(function (r) { return r.category === c; }).map(function (r) {
+        return "<tr>" + td("Feature", '<span class="cfa-fname">' + esc(r.name) + "</span>") + td("Issue", '<span class="cfa-issue">' + CF.issueLinks(r.issue) + "</span>") +
+          td("Status", status(r.status.charAt(0) + r.status.slice(1).toLowerCase())) + td("Also for 5.5", r.backport55 ? "Possible" : "") +
+          td("Funding", paid("Paid by current sponsors"), "num") + "</tr>";
+      }).join("");
+    }).join("");
+    return '<section class="cfa-section" id="roadmap"><div class="cfa-phead"><div><div class="cfa-kicker">Already funded</div><h2>Firebird 6 roadmap</h2>' +
+      '<p class="cfa-note">These features are in the Firebird 6 plan. Current sponsors already pay for them, so they are not part of the crowdfunding.</p></div>' +
+      '<div class="cfa-ptotal"><b>' + D.roadmap.length + "</b> features<br>paid by current sponsors</div></div>" +
+      '<article class="cfa-group cfa-group-paid"><div class="cfa-ghead"><div class="cfa-gtitle"><h3>Firebird 6 roadmap</h3><p>' + D.roadmap.length + " features</p></div>" +
+      '<div class="cfa-gmeter"><div class="cfa-bar is-paid"><i style="width:100%"></i></div><div class="cfa-gnums"><span><b>Paid</b> by current sponsors</span><span>100%</span></div></div>' +
+      paid("Funded") + "</div>" +
+      '<table class="cfa-table">' + cols([44, 12, 14, 12, 18]) + '<thead><tr><th>Feature</th><th>Issue</th><th>Status</th><th>Also for 5.5</th><th class="num">Funding</th></tr></thead><tbody>' + rows + "</tbody></table></article></section>";
+  }
+
+  function becomeHtml() {
+    return '<section class="cfa-section cfa-become" id="become-sponsor"><div class="cfa-phead"><div><div class="cfa-kicker">Long-term support</div><h2>Become a permanent sponsor</h2>' +
+      '<p class="cfa-note">Crowdfunding pays for single features. Regular support from Associates, Partners and Sponsors keeps the Firebird Foundation working every day.</p></div></div>' +
+      '<h3 class="cfa-tier-h">Subscriptions</h3><div class="cfa-tiers cfa-tiers-2">' + PROGRAMS.map(function (p) {
+        return '<div class="cfa-tier"><div class="cfa-tier-top"><img src="' + IMG + p.img + '" alt="' + esc(p.name) + ' logo" width="64" height="75"><div><h3>' + esc(p.name) +
+          '</h3><div class="cfa-price-line">' + esc(p.price) + "</div></div></div><ul>" + p.perks.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") +
+          '</ul><a class="cfa-btn cfa-btn-primary" href="' + p.href + '">Become ' + (p.name.indexOf("Associate") >= 0 ? "an Associate" : "a Partner") + "</a></div>";
+      }).join("") + "</div>" +
+      '<h3 class="cfa-tier-h">Sponsorship levels</h3><div class="cfa-tiers cfa-tiers-4">' + TIERS.map(function (t) {
+        return '<div class="cfa-tier' + (t.name === "Platinum" ? " cfa-tier-plat" : "") + '"><div class="cfa-tier-top"><img src="' + IMG + t.img + '" alt="' + t.name + ' sponsor logo" width="64" height="75"><div><h3>' +
+          t.name + '</h3><div class="cfa-price-line">' + esc(t.price) + "<small>" + esc(t.alt) + "</small></div></div></div>" +
+          "<ul><li>All Partner benefits</li><li>Priority access to events and content</li><li>Logo on the sponsors page</li></ul>" +
+          '<a class="cfa-btn ' + (t.name === "Platinum" ? "cfa-btn-primary" : "") + '" href="/en/how-to-become-a-sponsor/">Become ' + t.name + " sponsor</a></div>";
+      }).join("") + "</div>" +
+      '<p class="cfa-become-foot">Payments in US dollars, euros or Czech crowns. See <a href="/en/how-to-become-a-sponsor/">How to become a sponsor</a> and the <a href="/en/sponsors/">list of sponsors</a>.</p></section>';
+  }
+
+  function renderStatic() {
+    var c1 = D.campaigns[0], c2 = D.campaigns[1];
+    document.getElementById("cfa-jump").innerHTML =
+      D.campaigns.map(function (c, i) {
+        return '<a href="#' + c.id + '" data-jump="' + c.id + '"><small>Campaign ' + (i + 1) + "</small><strong>" + esc(c.short === "Firebird 5.5" ? "Release Firebird 5.5" : "Features for Firebird 6+") +
+          '</strong><div class="cfa-bar"><i data-cbar></i></div><div class="cfa-nums"><span data-craised></span><span data-cpct></span></div></a>';
+      }).join("") +
+      '<a href="#roadmap"><small>Already funded</small><strong>Firebird 6 roadmap</strong><div class="cfa-bar is-paid"><i style="width:100%"></i></div><div class="cfa-nums"><span>' +
+      D.roadmap.length + " features</span><span>paid</span></div></a>" +
+      '<a href="#become-sponsor"><small>Long-term support</small><strong>Become a permanent sponsor</strong><div class="cfa-nums" style="margin-top:0"><span>Associate · Partner · Bronze – Platinum</span></div></a>';
+    document.getElementById("cfa-sections").innerHTML = D.campaigns.map(function (c, i) {
+      return '<section class="cfa-section" id="' + c.id + '"><div class="cfa-phead"><div><div class="cfa-kicker">Campaign ' + (i + 1) + "</div><h2>" + esc(c.title) + '</h2><p class="cfa-note">' + esc(c.note) + "</p></div>" +
+        '<div class="cfa-ptotal" data-ptotal></div></div>' + c.groups.map(groupHtml).join("") + "</section>";
+    }).join("") + roadmapHtml() + becomeHtml();
+  }
+
+  /* ---------- dynamic parts ---------- */
+  function layoutGrid(g) {
+    var grid = document.querySelector("#f-" + g.id + " [data-grid]");
+    if (!grid || !grid.offsetWidth) return;
+    var n = g.squares, gap = 3;
+    var s = n <= 16 ? 28 : n <= 60 ? 20 : n <= 160 ? 16 : 14;
+    var cols = Math.max(1, Math.floor((grid.clientWidth + gap) / (s + gap)));
+    var rows = Math.ceil(n / cols);
+    grid.style.setProperty("--s", s + "px");
+    grid.style.setProperty("--h", (rows * s + (rows - 1) * gap) + "px");
+  }
+
+  function updateGroup(g, animBatch) {
+    var art = document.getElementById("g-" + g.id);
+    if (!art || !g.squares) return;
+    var f = CF.funded(g), sel = CF.cart(g.id), free = g.squares - f, p = pct(g);
+    art.querySelector("[data-bar]").style.width = p + "%";
+    art.querySelector("[data-raised]").textContent = usd(f * SQ);
+    art.querySelector("[data-pct]").textContent = p + "%" + (sel ? " · " + usd(sel * SQ) + " selected" : "");
+    var row = art.querySelector(".cfa-fundrow");
+    var bulb = row.querySelector("[data-bulb]");
+    bulb.textContent = p + "%";
+    bulb.classList.toggle("is-warm", f > 0);
+    var own = CF.owners(g), sqs = row.querySelectorAll(".cfa-sq"), k = 0;
+    for (var i = 0; i < sqs.length; i++) {
+      var el = sqs[i], o = own[i], cls = "cfa-sq";
+      if (o) {
+        cls += o.mine ? " m" : " f";
+        el.title = "Block " + (i + 1) + " · $250 · " + o.name;
+        if (animBatch && o.batch === animBatch) { cls += " pop"; el.style.animationDelay = Math.min(k++ * 25, 1200) + "ms"; }
+      } else {
+        cls += " free" + (i < f + sel ? " s" : "");
+        el.title = "Select blocks up to " + (i + 1) + " (" + usd((i - f + 1) * SQ) + ")";
+        el.style.animationDelay = "";
+      }
+      el.className = cls;
+    }
+    row.querySelector("[data-sel]").textContent = sel;
+    row.querySelector("[data-selusd]").textContent = usd(sel * SQ);
+    row.querySelector("[data-left]").textContent = free ? "· " + blocks(free) + " (" + usd(free * SQ) + ") left" : "";
+    row.querySelector("[data-act=dec]").disabled = sel <= 0;
+    row.querySelector("[data-act=inc]").disabled = sel >= free;
+    row.querySelectorAll("[data-q]").forEach(function (b) {
+      var a = b.getAttribute("data-q"), q = a === "all" ? free : +a;
+      b.hidden = free === 0 || (a !== "all" && q >= free);
+      b.setAttribute("aria-pressed", String(sel > 0 && sel === q));
+    });
+    row.querySelector("[data-pick] [data-act=checkout]").disabled = CF.cartTotal().squares === 0;
+    row.querySelector("[data-pick]").hidden = free === 0;
+    row.querySelector("[data-full]").hidden = free > 0;
+    var sp = CF.sponsorsOf(g);
+    row.querySelector("[data-sponsors]").innerHTML = sp.length ? "<b>Sponsors</b>" + sp.map(function (s) {
+      return "<span" + (s.mine ? ' class="mine"' : "") + ">" + esc(s.name) + " · " + usd(s.usd) + "</span>";
+    }).join("") : "";
+  }
+
+  function updateTotals() {
+    var t = CF.allTotals();
+    var nSq = CF.groups.reduce(function (a, g) { return a + CF.funded(g); }, 0);
+    document.getElementById("cfa-stats").innerHTML =
+      '<div class="cfa-stat"><b>' + usd(t.raised) + "</b><span>raised</span></div>" +
+      '<div class="cfa-stat"><b>' + usd(t.goal) + "</b><span>total goal</span></div>" +
+      '<div class="cfa-stat"><b>' + nSq + "</b><span>blocks funded</span></div>" +
+      '<div class="cfa-stat"><b>' + t.sponsors + "</b><span>sponsors</span></div>";
+    D.campaigns.forEach(function (c) {
+      var ct = CF.campaignTotals(c), p = ct.goal ? Math.round(ct.raised / ct.goal * 100) : 0;
+      var j = root.querySelector('[data-jump="' + c.id + '"]');
+      j.querySelector("[data-cbar]").style.width = p + "%";
+      j.querySelector("[data-craised]").textContent = usd(ct.raised) + " of " + usd(ct.goal);
+      j.querySelector("[data-cpct]").textContent = p + "%";
+      document.querySelector("#" + c.id + " [data-ptotal]").innerHTML = "<b>" + usd(ct.raised) + "</b> of " + usd(ct.goal) + "<br>" +
+        ct.groups + " groups · " + ct.features + " features";
+    });
+  }
+
+  function updateCart() {
+    var items = CF.cartItems(), t = CF.cartTotal();
+    document.getElementById("cfa-cart").classList.toggle("is-on", t.squares > 0);
+    document.getElementById("cfa-cart-items").innerHTML = items.map(function (it) {
+      return "<span>" + esc(it.group.name) + " (" + esc(it.group.campaign.short) + ") · " + usd(it.usd) +
+        '<button type="button" data-act="uncart" data-id="' + it.group.id + '" aria-label="Remove">&times;</button></span>';
+    }).join("");
+    document.getElementById("cfa-cart-total").textContent = usd(t.usd);
+  }
+
+  function updateAll(animBatch) {
+    CF.groups.forEach(function (g) { updateGroup(g, animBatch); });
+    updateTotals();
+    updateCart();
+    if (dlg.open && !dlg.dataset.done) renderDialogItems();
+  }
+
+  /* the thermometer opens on its own, several groups can be open at once */
+  function toggleFund(art) {
+    var btn = art.querySelector("[data-act=toggle]"), row = art.querySelector(".cfa-fundrow");
+    var open = btn.getAttribute("aria-expanded") !== "true";
+    btn.setAttribute("aria-expanded", String(open));
+    var g = CF.byId[art.getAttribute("data-id")];
+    if (open) {
+      row.hidden = false;
+      layoutGrid(g);
+      var h = row.scrollHeight;
+      row.style.height = "0px";
+      requestAnimationFrame(function () { row.style.height = h + "px"; });
+      setTimeout(function () { row.style.height = ""; }, 320);
+    } else {
+      row.style.height = row.scrollHeight + "px";
+      requestAnimationFrame(function () { row.style.height = "0px"; });
+      setTimeout(function () { row.hidden = true; row.style.height = ""; }, 300);
+    }
+  }
+
+  /* ---------- checkout dialog ---------- */
+  function renderDialogItems() {
+    var items = CF.cartItems(), t = CF.cartTotal();
+    document.getElementById("cfa-dlg-items").innerHTML = items.map(function (it) {
+      var free = CF.free(it.group);
+      return '<tr data-id="' + it.group.id + '"><td>' + esc(it.group.name) + "<small>" + esc(it.group.campaign.title) + "</small></td>" +
+        '<td><span class="cfa-stepper"><button type="button" data-act="ddec" aria-label="One block less">&minus;</button><output>' + it.squares +
+        '</output><button type="button" data-act="dinc" aria-label="One block more"' + (it.squares >= free ? " disabled" : "") + ">+</button></span></td>" +
+        '<td class="n">' + usd(it.usd) + '</td><td style="width:28px"><button type="button" class="cfa-rm" data-act="uncart" data-id="' + it.group.id + '" aria-label="Remove">&times;</button></td></tr>';
+    }).join("") || '<tr><td class="cfa-muted">Nothing selected.</td></tr>';
+    document.getElementById("cfa-dlg-count").textContent = blocks(t.squares) + " × $250";
+    document.getElementById("cfa-dlg-total").textContent = usd(t.usd);
+    var pay = document.getElementById("cfa-pay");
+    pay.textContent = "Pay " + usd(t.usd);
+    pay.disabled = t.squares === 0;
+  }
+  function showView(name) {
+    dlg.querySelectorAll("[data-view]").forEach(function (v) { v.hidden = v.getAttribute("data-view") !== name; });
+    dlg.querySelectorAll("[data-foot]").forEach(function (b) { b.hidden = b.getAttribute("data-foot") !== name; });
+  }
+  function openDialog() {
+    if (!CF.cartTotal().squares) return;
+    delete dlg.dataset.done;
+    dlg.querySelectorAll(".cfa-field").forEach(function (f) { f.classList.remove("bad"); });
+    renderDialogItems();
+    showView("form");
+    dlg.showModal();
+  }
+  function submitDialog(e) {
+    e.preventDefault();
+    var form = dlg.querySelector("form");
+    var name = form.elements.name.value.trim(), email = form.elements.email.value.trim();
+    var okName = name.length > 0, okMail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    form.querySelector("[data-f=name]").classList.toggle("bad", !okName);
+    form.querySelector("[data-f=email]").classList.toggle("bad", !okMail);
+    if (!okName) { form.elements.name.focus(); return; }
+    if (!okMail) { form.elements.email.focus(); return; }
+    var t = CF.cartTotal();
+    var method = form.elements.method.value;
+    showView("processing");
+    setTimeout(function () {
+      dlg.dataset.done = "1";
+      var items = CF.checkout({ name: name, show: form.elements.show.checked, method: method });
+      pendingBatch = CF.lastBatch();
+      document.getElementById("cfa-done-title").textContent = "Thank you, " + name + "!";
+      document.getElementById("cfa-done-text").textContent = "You funded " + blocks(t.squares) + " (" + usd(t.usd) + "). A receipt would go to " + email + ".";
+      document.getElementById("cfa-done-list").innerHTML = items.map(function (it) {
+        return "<li>" + esc(it.group.name) + " (" + esc(it.group.campaign.short) + "): " + usd(it.usd) + "</li>";
+      }).join("");
+      showView("done");
+    }, 1300);
+  }
+
+  /* ---------- events ---------- */
+  root.addEventListener("click", function (e) {
+    var t = e.target.closest("[data-act],[data-q],.cfa-sq");
+    if (!t || !root.contains(t)) return;
+    var art = t.closest(".cfa-group"), g = art && CF.byId[art.getAttribute("data-id")];
+    if (t.classList.contains("cfa-sq")) {
+      var i = +t.getAttribute("data-i"), f = CF.funded(g), sel = CF.cart(g.id);
+      if (i < f) return;
+      var n = i - f + 1;
+      CF.setCart(g.id, n === sel ? n - 1 : n);
+      return;
+    }
+    if (t.hasAttribute("data-q")) {
+      var q = t.getAttribute("data-q");
+      CF.setCart(g.id, q === "all" ? CF.free(g) : +q);
+      return;
+    }
+    var id;
+    switch (t.getAttribute("data-act")) {
+      case "toggle": toggleFund(art); break;
+      case "inc": CF.setCart(g.id, CF.cart(g.id) + 1); break;
+      case "dec": CF.setCart(g.id, CF.cart(g.id) - 1); break;
+      case "checkout": openDialog(); break;
+      case "clear": CF.clearCart(); break;
+      case "uncart": CF.setCart(t.getAttribute("data-id"), 0); if (dlg.open && !CF.cartTotal().squares) dlg.close(); break;
+      case "ddec": id = t.closest("tr").getAttribute("data-id"); CF.setCart(id, CF.cart(id) - 1); break;
+      case "dinc": id = t.closest("tr").getAttribute("data-id"); CF.setCart(id, CF.cart(id) + 1); break;
+      case "close": dlg.close(); break;
+      case "demo": CF.addDemo(); break;
+      case "reset": if (confirm("Delete all simulated pledges in this browser?")) CF.reset(); break;
+    }
+  });
+
+  /* hover preview: highlight the blocks a click would select */
+  root.addEventListener("mouseover", function (e) {
+    var grid = e.target.closest("[data-grid]");
+    if (!grid) return;
+    var g = CF.byId[grid.closest(".cfa-group").getAttribute("data-id")];
+    var sq = e.target.closest(".cfa-sq.free"), f = CF.funded(g), sel = CF.cart(g.id), upto = sq ? +sq.getAttribute("data-i") : -1;
+    grid.querySelectorAll(".cfa-sq").forEach(function (el, i) { el.classList.toggle("h", i >= f + sel && i <= upto); });
+  });
+  root.addEventListener("mouseout", function (e) {
+    var grid = e.target.closest("[data-grid]");
+    if (grid && !grid.contains(e.relatedTarget)) grid.querySelectorAll(".cfa-sq.h").forEach(function (el) { el.classList.remove("h"); });
+  });
+
+  dlg.querySelector("form").addEventListener("submit", submitDialog);
+  dlg.addEventListener("close", function () {
+    if (pendingBatch) {
+      var b = pendingBatch;
+      pendingBatch = 0;
+      CF.groups.forEach(function (g) { updateGroup(g, b); });
+    }
+  });
+
+  CF.on(function (kind, info) {
+    if (kind === "pledge") updateAll(info.demo ? info.batch : (dlg.open ? 0 : info.batch));
+    else updateAll(0);
+  });
+
+  var rt;
+  window.addEventListener("resize", function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { CF.groups.forEach(layoutGrid); }, 120);
+  });
+
+  renderStatic();
+  updateAll(0);
+})();
+</script>
