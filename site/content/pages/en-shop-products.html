@@ -44,262 +44,235 @@ url: "/en/shop-products"
 </div>
             <div class="col-lg-9">
                 <div class="post-layout-top-content post-layout-top-content-3">
-                    <!-- Table-Based Shop Layout without JavaScript or Tabs -->
-<h2 class="shop-heading">Firebird SQL Shop</h2>
+                    <style>
+.fbs { font-size: 16px; line-height: 1.55; color: #1f1e1c; }
+.fbs h2 { font-size: 30px; font-weight: 700; margin: 0 0 4px; }
+.fbs p { margin: 0 0 12px; }
+.fbs a { color: #c73a07; }
+.fbs-sub { font-size: 18px; color: #6b6963; margin: 0 0 16px !important; }
+.fbs-hero { background: linear-gradient(135deg, #fff4ee 0%, #fdf9f5 100%); border: 1px solid #f3dccf; border-radius: 10px; padding: 22px 24px 18px; margin-bottom: 22px; }
+.fbs-facts { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.fbs-facts li { display: flex; align-items: center; gap: 8px; background: #fff; border: 1px solid #f0e2d8; border-radius: 6px; padding: 7px 12px; font-size: 14.5px; }
+.fbs-facts svg { flex: 0 0 18px; color: #e4450b; }
+.fbs-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; padding: 0; list-style: none; }
+.fbs-nav a { display: inline-block; border: 1px solid #e6e3db; background: #fff; color: #1f1e1c; border-radius: 16px; padding: 4px 12px; font-size: 14px; text-decoration: none; }
+.fbs-nav a:hover { border-color: #e4450b; color: #e4450b; }
+.fbs-nav span { color: #9a968e; font-size: 12.5px; margin-left: 3px; }
+.fbs h3.fbs-sec { display: flex; align-items: baseline; gap: 10px; font-size: 22px; margin: 34px 0 14px; padding-bottom: 6px; border-bottom: 2px solid #e4450b; scroll-margin-top: 90px; }
+.fbs h3.fbs-sec small { font-size: 14px; font-weight: 400; color: #6b6963; }
+.fbs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.fbs-card { display: flex; flex-direction: column; border: 1px solid #e6e3db; border-radius: 8px; background: #fff; overflow: hidden; transition: box-shadow .15s, border-color .15s; }
+.fbs-card:hover { border-color: #f0c2a8; box-shadow: 0 4px 14px rgba(0,0,0,.08); }
+.fbs-top { display: flex; gap: 14px; padding: 14px 14px 0; }
+.fbs-img { flex: 0 0 104px; height: 120px; display: flex; align-items: center; justify-content: center; background: #f6f3ee; border-radius: 6px; padding: 8px; }
+.fbs-img img { max-width: 100%; max-height: 104px; width: auto; height: auto; }
+.fbs-img svg { width: 56px; height: 56px; color: #e4450b; }
+.fbs-card h4 { font-size: 18px; line-height: 1.3; margin: 0 0 4px; }
+.fbs-card h4 a { color: #1f1e1c; text-decoration: none; }
+.fbs-card h4 a:hover { color: #e4450b; }
+.fbs-vendor { display: inline-block; background: #fbe9d9; color: #b23a0a; font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; }
+.fbs-desc { font-size: 14.5px; color: #44423d; margin: 0 !important; }
+.fbs-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding: 12px 14px; }
+.fbs-price { font-size: 19px; font-weight: 700; color: #1f1e1c; white-space: nowrap; }
+.fbs-price small { font-size: 13px; font-weight: 400; color: #6b6963; }
+.fbs-btn { background: #e4450b; color: #fff !important; padding: 6px 16px; border-radius: 18px; font-weight: 700; font-size: 14.5px; white-space: nowrap; }
+.fbs-btn:hover { background: #c33a08; }
+.fbs-wide { grid-column: 1 / -1; }
+.fbs-wide .fbs-top { padding: 18px 18px 0; }
+.fbs-wide .fbs-img { flex-basis: 150px; height: 130px; }
+.fbs-wide h4 { font-size: 21px; }
+.fbs-wide .fbs-foot { padding: 12px 18px 16px; }
+.fbs-partner { display: flex; gap: 18px; align-items: center; margin-top: 38px; background: #f6f3ee; border-radius: 10px; padding: 20px 22px; }
+.fbs-partner svg { flex: 0 0 44px; width: 44px; height: 44px; color: #e4450b; }
+.fbs-partner h3 { font-size: 20px; margin: 0 0 4px; }
+.fbs-partner p { margin: 0 !important; font-size: 15px; }
+.fbs a.fbs-btn, .fbs-nav a, .fbs-card h4 a { text-decoration: none !important; }
+@media (max-width: 767px) {
+  .fbs-grid { grid-template-columns: 1fr; }
+  .fbs-img, .fbs-wide .fbs-img { flex-basis: 84px; height: 100px; }
+  .fbs-img img { max-height: 84px; }
+  .fbs-partner { flex-direction: column; align-items: flex-start; }
+}
+</style>
+<div class="fbs">
+<div class="fbs-hero">
+<h2>Firebird SQL Shop</h2>
+<p class="fbs-sub">Books, tools and services for Firebird from Firebird experts</p>
+<ul class="fbs-facts">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg><span><strong>Each purchase</strong> funds open source Firebird development</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg><span>Products and services from <strong>Firebird developers and partners</strong></span></li>
+</ul>
+</div>
 
-<p class="shop-intro"><strong>Purchases through FirebirdSQL shop generate commissions that fund open source Firebird development.</strong></p>
-<!-- Category Links for Navigation -->
+<ul class="fbs-nav">
+<li><a href="#books">Books<span>2</span></a></li>
+<li><a href="#advanced-distributions">Distributions<span>1</span></a></li>
+<li><a href="#encryption-plugin">Encryption<span>1</span></a></li>
+<li><a href="#recovery-tools">Recovery tools<span>1</span></a></li>
+<li><a href="#reporting">Reporting<span>3</span></a></li>
+<li><a href="#migration">Migration<span>1</span></a></li>
+<li><a href="#performance-optimization">Optimization services<span>1</span></a></li>
+<li><a href="#recover-service">Recovery services<span>1</span></a></li>
+</ul>
 
-<div class="category-links"><a href="#advanced-distributions">Advanced Distributions</a> <a href="#encryption-plugin">Encryption</a> <a href="#recovery-tools">Recovery</a>&nbsp;<a href="#reporting">Reporting Tools</a>&nbsp;<a href="#migration">Migration</a><br />
-<a href="#performance-optimization">Performance Optimization services</a> <a href="#recover-service">Recovery services</a></div>
+<h3 class="fbs-sec" id="books">Firebird Books <small>by Denis Simonov</small></h3>
+<div class="fbs-grid">
+<div class="fbs-card">
+<div class="fbs-top">
+<a class="fbs-img" href="/en/featured-products/book-secrets-of-firebird-sql-optimizer"><img alt="Book Secrets of Firebird SQL Optimizer" src="/img/shop/cover_ng_secrets_fb_opt.jpg" loading="lazy" /></a>
+<div>
+<span class="fbs-vendor">Book</span>
+<h4><a href="/en/featured-products/book-secrets-of-firebird-sql-optimizer">Secrets of Firebird SQL Optimizer</a></h4>
+<p class="fbs-desc">A detailed course on query optimization in Firebird SQL.</p>
+</div>
+</div>
+<div class="fbs-foot"><span class="fbs-price">&euro;41</span><a class="fbs-btn" href="/en/featured-products/book-secrets-of-firebird-sql-optimizer">Learn more</a></div>
+</div>
+<div class="fbs-card">
+<div class="fbs-top">
+<a class="fbs-img" href="/detailed-features-of-firebird-5-2nd-edition"><img alt="Book Detailed New Features of Firebird 5" src="/img/shop/cover_english_big_2nd_edition_small.jpg" loading="lazy" /></a>
+<div>
+<span class="fbs-vendor">Book</span>
+<h4><a href="/detailed-features-of-firebird-5-2nd-edition">Detailed New Features of Firebird 5, 2nd edition</a></h4>
+<p class="fbs-desc">Learn how to use the full potential of Firebird 5.</p>
+</div>
+</div>
+<div class="fbs-foot"><span class="fbs-price">&euro;16</span><a class="fbs-btn" href="/detailed-features-of-firebird-5-2nd-edition">Learn more</a></div>
+</div>
+</div>
 
-<h3 class="category-header" id="books">Firebird Books</h3>
+<h3 class="fbs-sec" id="advanced-distributions">Advanced Firebird Distributions</h3>
+<div class="fbs-grid">
+<div class="fbs-card fbs-wide">
+<div class="fbs-top">
+<a class="fbs-img" href="/hqbird"><img alt="HQbird" src="/img/shop/hobird-logo.jpg" loading="lazy" /></a>
+<div>
+<span class="fbs-vendor">IBSurgeon</span>
+<h4><a href="/hqbird">HQbird: 100% compatible and supercharged</a></h4>
+<p class="fbs-desc">Enterprise-ready Firebird distribution with advanced performance optimization, monitoring, high availability and additional features.</p>
+</div>
+</div>
+<div class="fbs-foot"><span class="fbs-price"><small>from</small> &euro;849 <small>/ server</small></span><a class="fbs-btn" href="/hqbird">Learn more</a></div>
+</div>
+</div>
 
-<table class="product-table">
-	<tbody>
-		<tr>
-			<td class="product-image-cell">
-			<div class="product-image-container"><a href="/en/featured-products/book-secrets-of-firebird-sql-optimizer"><img alt="Book Secrets of Firebird SQL Optimizer" src="/img/shop/cover_ng_secrets_fb_opt.jpg" width="150px" /></a>
+<h3 class="fbs-sec" id="encryption-plugin">Encryption</h3>
+<div class="fbs-grid">
+<div class="fbs-card fbs-wide">
+<div class="fbs-top">
+<a class="fbs-img" href="/encryption-plugin-framework-for-firebird"><img alt="Encryption Plugin Framework For Firebird" src="/img/shop/FEPF_encryption_plugin_512_512.jpg" loading="lazy" /></a>
+<div>
+<span class="fbs-vendor">IBSurgeon</span>
+<h4><a href="/encryption-plugin-framework-for-firebird">Encryption Plugin Framework for Firebird</a></h4>
+<p class="fbs-desc">Protect your data with AES-256 database encryption. Unlimited license per company to protect your business applications.</p>
+</div>
+</div>
+<div class="fbs-foot"><span class="fbs-price"><small>from</small> &euro;1699</span><a class="fbs-btn" href="/encryption-plugin-framework-for-firebird">Learn more</a></div>
+</div>
+</div>
 
-			<div class="product-tag">D.Simonov</div>
-			</div>
-			</td>
-			<td class="product-info-cell">
-			<h3 class="product-title">Secrets of Firebird SQL Optimizer</h3>
-			Books
+<h3 class="fbs-sec" id="recovery-tools">Recovery Tools</h3>
+<div class="fbs-grid">
+<div class="fbs-card fbs-wide">
+<div class="fbs-top">
+<a class="fbs-img" href="/firstaid"><img alt="IBSurgeon FirstAID" src="/img/shop/ibfirstaid_transparent2.gif" loading="lazy" /></a>
+<div>
+<span class="fbs-vendor">IBSurgeon</span>
+<h4><a href="/firstaid">IBSurgeon FirstAID</a></h4>
+<p class="fbs-desc">Recover corrupted databases, extract data and repair damaged database files.</p>
+</div>
+</div>
+<div class="fbs-foot"><span class="fbs-price"><small>from</small> &euro;189</span><a class="fbs-btn" href="/firstaid">Learn more</a></div>
+</div>
+</div>
 
-			<p class="product-description">Detailed course of optimization of queries in Firebird SQL.</p>
-			</td>
-			<td class="price-cell"><span class="product-price">&euro;41.00</span><a class="product-button" href="/en/featured-products/book-secrets-of-firebird-sql-optimizer">Learn more</a></td>
-		</tr>
-		<tr>
-			<td class="product-image-cell">
-			<div class="product-image-container"><a href="/detailed-features-of-firebird-5-2nd-edition"><img alt="Book Detailed New Features of Firebird 5" src="/img/shop/cover_english_big_2nd_edition_small.jpg" /></a>
-			<div class="product-tag">D.Simonov</div>
-			</div>
-			</td>
-			<td class="product-info-cell">
-			<h3 class="product-title">Detailed New Features of Firebird 5, 2nd edition</h3>
-			Books
+<h3 class="fbs-sec" id="reporting">Reporting Tools <small>by Fast Reports</small></h3>
+<p class="fbs-desc" style="margin-bottom:14px !important">Design and print invoices, financial reports, product catalogs, forms, tickets, bills and much more from your Firebird data.</p>
+<div class="fbs-grid">
+<div class="fbs-card">
+<div class="fbs-top">
+<a class="fbs-img" href="/fast-reports-reporting-vcl"><img alt="FastReport VCL" src="/img/shop/logofr_symbol.png" loading="lazy" /></a>
+<div>
+<span class="fbs-vendor">Fast Reports</span>
+<h4><a href="/fast-reports-reporting-vcl">FastReport VCL</a></h4>
+<p class="fbs-desc">Report generator for Delphi and C++Builder applications.</p>
+</div>
+</div>
+<div class="fbs-foot"><span class="fbs-price"><small>from</small> &euro;499 <small>/ developer</small></span><a class="fbs-btn" href="/fast-reports-reporting-vcl">Learn more</a></div>
+</div>
+<div class="fbs-card">
+<div class="fbs-top">
+<a class="fbs-img" href="/fastreport-vcl-reporting-lazarus"><img alt="FastReport VCL for Lazarus" src="/img/shop/logofr_symbol.png" loading="lazy" /></a>
+<div>
+<span class="fbs-vendor">Fast Reports</span>
+<h4><a href="/fastreport-vcl-reporting-lazarus">FastReport VCL for Lazarus</a></h4>
+<p class="fbs-desc">Report generator for Lazarus and Free Pascal applications.</p>
+</div>
+</div>
+<div class="fbs-foot"><span class="fbs-price"><small>from</small> &euro;499 <small>/ developer</small></span><a class="fbs-btn" href="/fastreport-vcl-reporting-lazarus">Learn more</a></div>
+</div>
+<div class="fbs-card fbs-wide">
+<div class="fbs-top">
+<a class="fbs-img" href="/fastreport-net-ultimate"><img alt="FastReport .NET Ultimate" src="/img/shop/logofr_symbol.png" loading="lazy" /></a>
+<div>
+<span class="fbs-vendor">Fast Reports</span>
+<h4><a href="/fastreport-net-ultimate">FastReport .NET Ultimate</a></h4>
+<p class="fbs-desc">Band-oriented report generator for .NET: create almost any type of document from your Firebird data.</p>
+</div>
+</div>
+<div class="fbs-foot"><span class="fbs-price"><small>from</small> &euro;1499 <small>/ developer</small></span><a class="fbs-btn" href="/fastreport-net-ultimate">Learn more</a></div>
+</div>
+</div>
 
-			<p class="product-description">Learn how to use full potential of Firebird 5.</p>
-			</td>
-			<td class="price-cell"><span class="product-price">&euro;16.00&nbsp;</span><a class="product-button" href="/detailed-features-of-firebird-5-2nd-edition">Learn more</a></td>
-		</tr>
-		<!-- Additional products can be added as new rows -->
-	</tbody>
-</table>
+<h3 class="fbs-sec" id="migration">Migration Tools</h3>
+<div class="fbs-grid">
+<div class="fbs-card fbs-wide">
+<div class="fbs-top">
+<a class="fbs-img" href="/migration-framework-for-firebird"><img alt="Migration Framework" src="/img/shop/migfmk/migration_fmk_logo.png" loading="lazy" /></a>
+<div>
+<span class="fbs-vendor">IBSurgeon</span>
+<h4><a href="/migration-framework-for-firebird">Migration Framework</a></h4>
+<p class="fbs-desc">Automates the migration of Firebird databases to a new version: full backup and restore, recompilation of objects and their adaptation to the new version. No manual database administration is necessary.</p>
+</div>
+</div>
+<div class="fbs-foot"><span class="fbs-price"><small>from</small> &euro;375</span><a class="fbs-btn" href="/migration-framework-for-firebird">Learn more</a></div>
+</div>
+</div>
 
-<h3 class="category-header" id="advanced-distributions">Advanced Firebird Distributions</h3>
+<h3 class="fbs-sec" id="performance-optimization">Services</h3>
+<div class="fbs-grid">
+<div class="fbs-card">
+<div class="fbs-top">
+<a class="fbs-img" href="/ibsurgeon-firebird-configuration-optimization-audit-incident" aria-label="Configuration, optimization and audit incident"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 14l4-4"/><path d="M3.3 19a10 10 0 1 1 17.4 0"/><circle cx="12" cy="14" r="1.2"/></svg></a>
+<div>
+<span class="fbs-vendor">IBSurgeon</span>
+<h4><a href="/ibsurgeon-firebird-configuration-optimization-audit-incident">Configuration, Optimization, Audit incident</a></h4>
+<p class="fbs-desc">Optimize your Firebird database with expert help in 2 sessions. Usually you can schedule it for the next day.</p>
+</div>
+</div>
+<div class="fbs-foot"><span class="fbs-price">&euro;575</span><a class="fbs-btn" href="/ibsurgeon-firebird-configuration-optimization-audit-incident">Learn more</a></div>
+</div>
+<div class="fbs-card" id="recover-service">
+<div class="fbs-top">
+<a class="fbs-img" href="/ibsurgeon-recovery-service-for-firebird" aria-label="Firebird Recovery Service"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3"/><path d="M4 11v6c0 1.7 3.6 3 8 3"/><path d="M20 5v5"/><path d="M15 17.5l2 2 4-4"/></svg></a>
+<div>
+<span class="fbs-vendor">IBSurgeon</span>
+<h4><a href="/ibsurgeon-recovery-service-for-firebird">Firebird Recovery Service</a></h4>
+<p class="fbs-desc">Experts recover badly corrupted databases, also larger than 65 GB. They connect securely to your server.</p>
+</div>
+</div>
+<div class="fbs-foot"><span class="fbs-price">&euro;2500</span><a class="fbs-btn" href="/ibsurgeon-recovery-service-for-firebird">Learn more</a></div>
+</div>
+</div>
 
-<table class="product-table">
-	<tbody>
-		<tr>
-			<td class="product-image-cell">
-			<div class="product-image-container"><a href="/hqbird"><img alt="Firebird Advanced Distribution" src="/img/shop/hobird-logo.jpg" /></a>
-
-			<div class="product-tag">IBSurgeon</div>
-			</div>
-			</td>
-			<td class="product-info-cell">
-			<h3 class="product-title">HQbird: 100% compatible and supercharged</h3>
-			Enterprise
-
-			<p class="product-description">Enterprise-ready Firebird distribution with advanced performance optimization, monitoring, high availability, and additional features.</p>
-			</td>
-			<td class="price-cell"><span class="product-price">from &euro;849.00/server</span> <a class="product-button" href="/hqbird">Learn more</a></td>
-		</tr>
-		<!-- Additional products can be added as new rows -->
-	</tbody>
-</table>
-<!-- Encryption Plugin Section -->
-
-<h3 class="category-header" id="encryption-plugin">Encryption&nbsp;</h3>
-
-<table class="product-table">
-	<tbody>
-		<tr>
-			<td class="product-image-cell">
-			<div class="product-image-container"><a href="/encryption-plugin-framework-for-firebird"><img alt="Encryption Plugin Framework For Firebird" src="/img/shop/FEPF_encryption_plugin_512_512.jpg" /></a>
-
-			<div class="product-tag">IBSurgeon</div>
-			</div>
-			</td>
-			<td class="product-info-cell">
-			<h3 class="product-title">Encryption Plugin Framework For Firebird</h3>
-			<span class="product-category">Security</span>
-
-			<p class="product-description">Protect your data with database encryption plugin, offering AES-256 encryption for sensitive information. Unlimited license per company to protect business applications.</p>
-			</td>
-			<td class="price-cell"><span class="product-price">from &euro;1699.00</span> <a class="product-button" href="/encryption-plugin-framework-for-firebird">Learn more</a></td>
-		</tr>
-		<!-- Additional products can be added as new rows -->
-	</tbody>
-</table>
-<!-- Recovery Tools Section -->
-
-<h3 class="category-header" id="recovery-tools">Recovery Tools</h3>
-
-<table class="product-table">
-	<tbody>
-		<tr>
-			<td class="product-image-cell">
-			<div class="product-image-container"><a href="/firstaid"><img alt="FirstAID Database Recovery Tool" src="/img/shop/ibfirstaid_transparent2.gif" /></a>
-
-			<div class="product-tag">IBSurgeon</div>
-			</div>
-			</td>
-			<td class="product-info-cell">
-			<h3 class="product-title">IBSurgeon FirstAID</h3>
-			<span class="product-category">Recovery</span>
-
-			<p class="product-description">Comprehensive tool for recovering corrupted databases, extracting data, and repairing damaged database files.</p>
-			</td>
-			<td class="price-cell"><span class="product-price">from &euro;189.00</span> <a class="product-button" href="/firstaid">Learn more</a></td>
-		</tr>
-		<!-- Additional products can be added as new rows -->
-	</tbody>
-</table>
-
-<h3 class="category-header" id="reporting">Reporting tools</h3>
-
-<table class="product-table">
-	<tbody>
-		<tr>
-			<td class="product-image-cell">
-			<div class="product-image-container"><a href="/fast-reports-reporting-vcl"><img alt="Fast Report reporting" src="/img/shop/logofr_symbol.png" /></a>
-
-			<div class="product-tag">Fast Reports</div>
-			</div>
-			</td>
-			<td class="product-info-cell">
-			<h3 class="product-title">FastReport Reporting VCL</h3>
-			<span class="product-category">Reporting</span>
-
-			<p class="product-description">If you have data that needs to be made visually understandable, FastReport is the perfect solution for you: design and print invoices, financial reports, product catalogs with color profile support, restaurant menus, sales details, questionnaires with electronic forms, airline tickets, utility bills, and much more.</p>
-			</td>
-			<td class="price-cell"><span class="product-price">from &euro;499/developer</span>&nbsp;<a class="product-button" href="/fast-reports-reporting-vcl">Learn more</a></td>
-		</tr>
-	</tbody>
-</table>
-
-<table class="product-table">
-	<tbody>
-		<tr>
-			<td class="product-image-cell">
-			<div class="product-image-container"><a href="/fastreport-vcl-reporting-lazarus"><img alt="Fast Report reporting" src="/img/shop/logofr_symbol.png" /></a>
-
-			<div class="product-tag">Fast Reports</div>
-			</div>
-			</td>
-			<td class="product-info-cell">
-			<h3 class="product-title">FastReport Reporting VCL Lazarus</h3>
-			<span class="product-category">Reporting</span>
-
-			<p class="product-description">If you have data that needs to be made visually understandable, FastReport is the perfect solution for you: design and print invoices, financial reports, product catalogs with color profile support, restaurant menus, sales details, questionnaires with electronic forms, airline tickets, utility bills, and much more.</p>
-			</td>
-			<td class="price-cell"><span class="product-price">from &euro;499/developer</span>&nbsp;<a class="product-button" href="/fastreport-vcl-reporting-lazarus">Learn more</a></td>
-		</tr>
-		<!-- Additional products can be added as new rows -->
-	</tbody>
-</table>
-
-<table class="product-table">
-	<tbody>
-		<tr>
-			<td class="product-image-cell">
-			<div class="product-image-container"><a href="/fastreport-net-ultimate"><img alt="Fast Report reporting" src="/img/shop/logofr_symbol.png" /></a>
-
-			<div class="product-tag">Fast Reports</div>
-			</div>
-			</td>
-			<td class="product-info-cell">
-			<h3 class="product-title">FastReport .NET Ultimate</h3>
-			<span class="product-category">Reporting</span>
-
-			<p class="product-description">FastReport .NET Ultimate is a comprehensive band-oriented report generator designed for creating virtually any type of document including invoices, financial reports, product catalogs with color profile support, restaurant menus, sales details, questionnaires with electronic forms, airline tickets, utility bills, and much more. If you have data that needs to be made visually understandable, FastReport is the perfect solution for you.</p>
-			</td>
-			<td class="price-cell"><span class="product-price">from &euro;1499/developer</span>&nbsp;<a class="product-button" href="/fastreport-net-ultimate">Learn more</a></td>
-		</tr>
-		<!-- Additional products can be added as new rows -->
-	</tbody>
-</table>
-
-<h3 class="category-header" id="migration">Migration tools</h3>
-
-<table class="product-table">
-	<tbody>
-		<tr>
-			<td class="product-image-cell">
-			<div class="product-image-container"><a href="/migration-framework-for-firebird"><img alt="Migration" src="/img/shop/migfmk/migration_fmk_logo.png" /></a>
-
-			<div class="product-tag">IBSurgeon</div>
-			</div>
-			</td>
-			<td class="product-info-cell">
-			<h3 class="product-title">Migration Framework</h3>
-			<span class="product-category">Migration</span>
-
-			<p class="product-description">Migration Framework is a comprehensive tool designed to automate the migration of Firebird databases between different versions. It performs the complete backup/restore process, recompiles objects, and adapts them to the new version, eliminating the need for manual database administration during migration.</p>
-			</td>
-			<td class="price-cell"><span class="product-price">from &euro;375</span> <a class="product-button" href="/migration-framework-for-firebird">Learn more</a></td>
-		</tr>
-		<!-- Additional products can be added as new rows -->
-	</tbody>
-</table>
-<!-- Performance optimization service section -->
-
-<h3 class="category-header" id="performance-optimization">Performance optimization services</h3>
-
-<table class="product-table">
-	<tbody>
-		<tr>
-			<td class="product-image-cell">
-			<div class="product-image-container"><a href="/ibsurgeon-firebird-configuration-optimization-audit-incident"><img alt="Firebird Performance Optimization" src="https://placehold.co/800x600/f5f5f5/e4450b?text=Performance Optimization" /></a>
-
-			<div class="product-tag">IBSurgeon</div>
-			</div>
-			</td>
-			<td class="product-info-cell">
-			<h3 class="product-title">Configuration/Optimization/Audit incident</h3>
-			<span class="product-category">Support</span>
-
-			<p class="product-description">Optimize your Firebird database with professional expertise in 2 sessions. Can usually be scheduled for the next day.</p>
-			</td>
-			<td class="price-cell"><span class="product-price">&euro;575</span> <a class="product-button" href="/ibsurgeon-firebird-configuration-optimization-audit-incident">Learn more</a></td>
-		</tr>
-	</tbody>
-</table>
-<!-- Recovery services section -->
-
-<h3 class="category-header" id="recover-service">Recovery services</h3>
-
-<table class="product-table">
-	<tbody>
-		<tr>
-			<td class="product-image-cell">
-			<div class="product-image-container"><a href="/ibsurgeon-recovery-service-for-firebird"><img alt="Firebird database recovery" src="https://placehold.co/800x600/f5f5f5/e4450b?text=Database recovery" /></a>
-
-			<div class="product-tag">IBSurgeon</div>
-			</div>
-			</td>
-			<td class="product-info-cell">
-			<h3 class="product-title">Firebird Recovery Service</h3>
-			<span class="product-category">recovery</span>
-
-			<p class="product-description">Recover corrupted Firebird databases with expert recovery services. For databases larger than 65GB with severe corruption, manual recovery by specialists is your only option. Our recovery experts connect securely to your server for fast, on-site database restoration.</p>
-			</td>
-			<td class="price-cell"><span class="product-price">&euro;2500</span> <a class="product-button" href="/ibsurgeon-recovery-service-for-firebird">Learn more</a></td>
-		</tr>
-	</tbody>
-</table>
-
-<p>&nbsp;</p>
-
-<h3>Interested in selling your products in the FirebirdSQL shop?</h3>
-
-<p>Have questions about our products and services? Want to learn about partnership opportunities and requirements?<br />
-Contact Alexey Kovyazin at ak@firebirdsql.org for complete details and conditions.</p>
+<div class="fbs-partner">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v2a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/><path d="M5 13v7h14v-7"/><path d="M10 20v-4h4v4"/></svg>
+<div>
+<h3>Sell your product in the Firebird SQL Shop</h3>
+<p>Questions about products and services, partnership conditions and requirements: write to Alexey Kovyazin, <a href="mailto:ak@firebirdsql.org">ak@firebirdsql.org</a>.</p>
+</div>
+</div>
+</div>
 
                 </div>
             </div>
