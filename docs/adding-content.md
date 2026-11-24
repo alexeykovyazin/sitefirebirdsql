@@ -189,12 +189,13 @@ Shared logic (cart, pledges, totals) is in `site/static/file/crowdfunding/cf-cor
 
 ## 5. HQbird page (/hqbird)
 
-The page is made from the HQbird overview (Asciidoctor HTML from the dochqbird project):
+The page is made from the content block in the dochqbird project
+(`website/firebirdsql-hqbird/content.html` and `img/*.png`):
 
 ```
-python tools/hqbird_page.py E:/Projects_2026/dochqbird/build/website/hqbird2027-overview.html
+python tools/hqbird_page.py E:/Projects_2026/dochqbird/website/firebirdsql-hqbird
 ```
 
-It writes `converter/manual/hqbird.html` and `site/content/pages/hqbird.html`, and saves the
-embedded pictures to `site/static/file/hqbird/2027/`.
+It writes `converter/manual/hqbird.html` and `site/content/pages/hqbird.html`, and copies the
+screenshots to `site/static/img/shop/hqbird/2027/`.
 The user guide PDF (`/img/shop/hqbird/hqbird-2027-userguide.pdf`) is not in git: put it on the origin server.
