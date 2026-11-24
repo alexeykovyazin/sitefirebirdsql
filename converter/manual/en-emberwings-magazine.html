@@ -1,7 +1,7 @@
 ---
 title: "Firebird: EmberWings Magazine"
 html_title: "Firebird: EmberWings Magazine"
-description: "Firebird SQL: The true open-source relational database"
+description: "EmberWings: the quarterly magazine about Firebird. Read all issues online or download the PDF."
 keywords: ""
 og_title: "Firebird: The true open source database for Windows, Linux, Mac OS X and more"
 og_description: "Firebird SQL: The true open-source relational database"
@@ -45,138 +45,172 @@ url: "/en/emberwings-magazine"
 </div>
             <div class="col-lg-9">
                 <div class="post-layout-top-content post-layout-top-content-3">
-                    <h2 style="-webkit-print-color-adjust: exact; margin: 0px 0px 10px; padding: 0px; font-weight: bold; -webkit-font-smoothing: antialiased; cursor: text; position: relative; font-size: 24px; border-bottom: 1px solid rgb(204, 204, 204); color: rgb(0, 0, 0); font-family: Helvetica, arial, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">EmberWings: Quarterly Magazine about Firebird</h2>
+                    <style>
+.ewl { font-size: 16px; line-height: 1.55; color: #1f1e1c; }
+.ewl h2 { font-size: 30px; font-weight: 700; margin: 0 0 4px; }
+.ewl .ewl-sub { font-size: 18px; color: #6b6963; margin: 0 0 18px; }
+.ewl p { margin: 0 0 12px; }
+.ewl a { color: #93223a; }
+.ewl-facts { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 8px; padding: 0; list-style: none; }
+.ewl-facts li { background: #f6f3ee; border-radius: 6px; padding: 8px 14px; font-size: 15px; }
+.ewl h2.ewl-sec { font-size: 22px; margin: 32px 0 14px; padding-bottom: 6px; border-bottom: 2px solid #93223a; }
+.ewl-next { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.ewl-soon { display: flex; gap: 16px; align-items: center; background: #fbf7f2; border: 1px solid #ece4d8; border-radius: 8px; padding: 14px; }
+.ewl-soon img { width: 92px; height: auto; border-radius: 3px; box-shadow: 0 1px 4px rgba(0,0,0,.25); }
+.ewl-soon h3 { font-size: 18px; margin: 0 0 4px; }
+.ewl-soon p { font-size: 14.5px; margin: 0 0 8px; }
+.ewl-donate { display: inline-block; background: #93223a; color: #fff !important; padding: 5px 14px; border-radius: 16px; font-size: 14px; text-decoration: none; }
+.ewl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.ewl-card { display: flex; flex-direction: column; border: 1px solid #e6e3db; border-radius: 8px; overflow: hidden; background: #fff; }
+.ewl-cover { display: block; background: #f3f0ea; padding: 16px 16px 0; text-align: center; }
+.ewl-cover img { width: 100%; max-width: 220px; height: auto; box-shadow: 0 2px 8px rgba(0,0,0,.25); transition: transform .15s; }
+.ewl-cover:hover img { transform: translateY(-3px); }
+.ewl-body { padding: 12px 14px 14px; }
+.ewl-body h3 { font-size: 19px; margin: 0 0 2px; }
+.ewl-body h3 a { color: #1f1e1c; text-decoration: none; }
+.ewl-meta { color: #6b6963; font-size: 14px; margin: 0 0 10px !important; }
+.ewl-actions { display: flex; gap: 10px; align-items: center; }
+.ewl-btn { background: #93223a; color: #fff !important; padding: 6px 16px; border-radius: 18px; font-weight: 700; text-decoration: none; font-size: 15px; }
+.ewl-btn:hover { background: #7a1b30; }
+.ewl-pdf { font-size: 14px; border: 1px solid #93223a; padding: 5px 12px; border-radius: 18px; text-decoration: none; }
+.ewl details { margin-top: 10px; font-size: 14px; }
+.ewl summary { cursor: pointer; color: #6b6963; }
+.ewl details ul { margin: 6px 0 0; padding-left: 18px; list-style: disc; }
+.ewl details li { margin: 0 0 3px; break-inside: avoid; }
+.ewl details a { color: #1f1e1c; text-decoration: none; }
+.ewl details a:hover { color: #93223a; text-decoration: underline; }
+.ewl-latest { grid-column: 1 / -1; flex-direction: row; }
+.ewl-latest .ewl-cover { flex: 0 0 260px; padding: 18px; }
+.ewl-latest .ewl-body { padding: 18px 20px; }
+.ewl-latest .ewl-body h3 { font-size: 24px; }
+.ewl-tag { display: inline-block; background: #fbe9d9; color: #93223a; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; }
+.ewl-latest details ul { columns: 2; }
+@media (max-width: 991px) { .ewl-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) {
+  .ewl-grid, .ewl-next { grid-template-columns: 1fr; }
+  .ewl-latest { flex-direction: column; }
+  .ewl-latest .ewl-cover { flex: none; }
+  .ewl-latest details ul { columns: 1; }
+}
+.ewl a.ewl-donate, .ewl a.ewl-btn, .ewl a.ewl-pdf, .ewl a.ewl-cover { text-decoration: none !important; }
+</style>
+<div class="ewl">
+<h2>EmberWings</h2>
+<p class="ewl-sub">The quarterly magazine about Firebird</p>
 
-<p><strong>EmberWings</strong> is a quarterly PDF magazine that was originally launched by <a href="https://www.ibphoenix.com/">IBPhoenix</a> in March 2024. After the release of three issues, publication was transferred to the Firebird Foundation, where it now serves as the <strong>official publication</strong> for the Firebird Project.</p>
+<p><strong>EmberWings</strong> is the <strong>official publication</strong> of the Firebird Project. <a href="https://www.ibphoenix.com/">IBPhoenix</a> launched it in March 2024. After three issues, the Firebird Foundation took over the publication.</p>
 
-<p><strong>EmberWings</strong> is available for <strong>free</strong>, but with a 3-month delay for the general public. Regular <a href="/donate">Firebird Foundation donors</a> get exclusive early access to every new edition upon release​.</p>
+<p>Each issue has technical articles, guides and tips, interviews with noteworthy people, Firebird development updates, community news, product reviews and a touch of thematic humor.</p>
 
-<p>In addition to technical articles, guides, and tips, it features interviews with noteworthy individuals, updates on Firebird&rsquo;s development, community news, reviews of interesting products, and a touch of thematic humor. All of this presented in a streamlined format with an aesthetically pleasing print-friendly layout.</p>
+<ul class="ewl-facts">
+<li><strong>Free</strong> for everyone, 3 months after release</li>
+<li><strong>Early access</strong> for <a href="/donate">Firebird Foundation donors</a></li>
+<li><strong>Read online</strong> or download the print-friendly PDF</li>
+</ul>
 
-<table align="left" border="1" cellpadding="2" cellspacing="1" class="Table">
-	<tbody>
-		<tr>
-			<td><img alt="EmberWings 2026/4 Cover" src="/img/emberwings/ew-thumb-2026-04.jpg" style="width: 247px; height: 320px;" /></td>
-			<td style="text-align: center;">Will be published for <a href="/donate">Firebird supporters</a> in December 2026,<br />
-			and to general public in March 2027.</td>
-		</tr>
-		<tr>
-			<td><img alt="EmberWings 2026/3 Cover" src="/img/emberwings/ew-thumb-2026-03.jpg" style="width: 247px; height: 320px;" /></td>
-			<td style="text-align: center;">
-			<p>This issue was published on September 28, 2026, and has 56 pages.</p>
+<h2 class="ewl-sec">Coming next</h2>
+<div class="ewl-next">
+<div class="ewl-soon"><img src="/img/emberwings/ew-thumb-2026-03.jpg" alt="EmberWings 2026/3 cover" loading="lazy">
+<div><h3>EmberWings 2026/3</h3><p>Published on September 28, 2026, 56 pages. Available now to Firebird supporters, free for everyone in December 2026.</p><a class="ewl-donate" href="/donate">Get early access</a></div></div>
+<div class="ewl-soon"><img src="/img/emberwings/ew-thumb-2026-04.jpg" alt="EmberWings 2026/4 cover" loading="lazy">
+<div><h3>EmberWings 2026/4</h3><p>For Firebird supporters in December 2026, free for everyone in March 2027.</p><a class="ewl-donate" href="/donate">Support Firebird</a></div></div>
+</div>
 
-			<p style="text-align: center;">It&#39;s currently available to <a href="/donate">Firebird supporters</a><br />
-			and will be available to the general public in December 2026.</p>
-			</td>
-		</tr>
-		<tr>
-			<td><img alt="EmberWings 2026/2 Cover" src="/img/emberwings/ew-thumb-2026-02.jpg" style="width: 247px; height: 320px;" /></td>
-			<td style="text-align: center;">
-			<p>This issue was published on June 30, 2026, and has 74 pages, and is available to <strong>all</strong> readers.</p>
-
-			<p style="text-align: center;"><a href="/file/emberwings/EmberWings-2026-02.html"><strong><span style="font-size:22px;"><big>Read online</big></span></strong></a></p>
-
-			<p style="text-align: center;"><a href="/file/emberwings/EmberWings-2026-02.pdf" target="_blank">Download PDF</a></p>
-			</td>
-		</tr>
-		<tr>
-			<td><img alt="EmberWings 2026/1 Cover" src="/img/emberwings/ew-thumb-2026-01.jpg" style="width: 247px; height: 320px;" /></td>
-			<td style="text-align: center;">
-			<p>This issue was published on March 30, 2026, has 66 pages, and is available to <strong>all</strong> readers.</p>
-
-			<p style="text-align: center;"><a href="/file/emberwings/EmberWings-2026-01.html"><strong><span style="font-size:22px;"><big>Read online</big></span></strong></a></p>
-
-			<p style="text-align: center;"><a href="/file/emberwings/EmberWings-2026-01.pdf" target="_blank">Download PDF</a></p>
-			</td>
-		</tr>
-		<tr>
-			<td><img alt="EmberWings 2025/4 Cover" src="/img/emberwings/ew-thumb-2025-04.jpg" style="width: 247px; height: 320px;" /></td>
-			<td style="text-align: center;">
-			<p>This issue was published on December 17, 2025, has 90 pages, and is available to <strong>all</strong> readers.</p>
-
-			<p style="text-align: center;"><a href="/file/emberwings/EmberWings-2025-04.html"><strong><span style="font-size:22px;"><big>Read online</big></span></strong></a></p>
-
-			<p style="text-align: center;"><a href="/file/emberwings/EmberWings-2025-04.pdf" target="_blank">Download PDF</a></p>
-			</td>
-		</tr>
-		<tr>
-			<td><img alt="EmberWings 2025/3 Cover" src="/img/emberwings/ew-thumb-2025-03.jpg" style="width: 247px; height: 320px;" /></td>
-			<td style="text-align: center;">
-			<p>This issue was published on September 29, 2025, has 62 pages, and is available to <strong>all</strong> readers.</p>
-
-			<p style="text-align: center;"><a href="/file/emberwings/EmberWings-2025-03.html"><strong><span style="font-size:22px;"><big>Read online</big></span></strong></a></p>
-
-			<p style="text-align: center;"><a href="/file/emberwings/EmberWings-2025-03.pdf" target="_blank">Download PDF</a></p>
-			</td>
-		</tr>
-		<tr>
-			<td><img alt="EmberWings 2025/2 Cover" src="/img/emberwings/ew-thumb-2025-02.jpg" style="width: 247px; height: 320px;" /></td>
-			<td style="text-align: center;">
-			<p>This issue was published on June 20, 2025, has 76 pages, and is available to <strong>all</strong> readers.</p>
-
-			<p style="text-align: center;"><a href="/file/emberwings/EmberWings-2025-02.html"><strong><span style="font-size:22px;"><big>Read online</big></span></strong></a></p>
-
-			<p style="text-align: center;"><a href="/file/emberwings/EmberWings-2025-02.pdf" target="_blank">Download PDF</a></p>
-			</td>
-		</tr>
-		<tr>
-			<td><img alt="EmberWings 2025/1 Cover" src="/img/emberwings/ew-thumb-2025-01.jpg" style="width: 248px; height: 320px;" /></td>
-			<td style="text-align: center;">
-			<p>This issue was published on March 30, 2025, has 66 pages, and is available to <strong>all</strong> readers.</p>
-
-			<p style="text-align: center;"><a href="/file/emberwings/EmberWings-2025-01.html"><strong><span style="font-size:22px;"><big>Read online</big></span></strong></a></p>
-
-			<p style="text-align: center;"><a href="/file/emberwings/EmberWings-2025-01.pdf" target="_blank">Download PDF</a></p>
-			</td>
-		</tr>
-		<tr>
-			<td><img alt="EmberWIngs 2024/4 Cover" src="/img/emberwings/ew-thumb-2024-04.jpg" style="width: 246px; height: 320px;" /></td>
-			<td style="text-align: center;">
-			<p>This issue was published on December 18, 2024, has 88 pages, and is available to <strong>all</strong> readers.</p>
-
-			<p style="text-align: center;"><a href="/file/emberwings/EmberWings-2024-04.html"><strong><span style="font-size:22px;"><big>Read online</big></span></strong></a></p>
-
-			<p style="text-align: center;"><a href="/file/emberwings/EmberWings-2024-04.pdf" target="_blank">Download PDF</a></p>
-			</td>
-		</tr>
-		<tr>
-			<td style="width: 247px;"><img alt="EmberWIngs 2024/3 Cover" src="/img/emberwings/ew-thumb-2024-03.jpg" style="width: 247px; height: 320px;" /></td>
-			<td>
-			<p class="first" style="text-align: center;">This issue was published on September 30, 2024, has 60 pages, and is available to <strong>all</strong> readers.</p>
-
-			<p style="text-align: center;"><a href="/file/emberwings/EmberWings-2024-03.html"><strong><span style="font-size:22px;"><big>Read online</big></span></strong></a></p>
-
-			<p style="text-align: center;"><a href="/file/emberwings/EmberWings-2024-03.pdf" target="_blank">Download PDF</a></p>
-			</td>
-		</tr>
-		<tr>
-			<td style="width: 247px;"><img alt="EmberWIngs 2024/2 Cover" src="/img/emberwings/ew-thumb-2024-02.jpg" style="border-width: 0px; border-style: solid; width: 248px; height: 320px;" /></td>
-			<td>
-			<p class="first" style="text-align: center;">This issue was published on June 21, 2024, has 70 pages, and is available to <strong>all</strong> readers.</p>
-
-			<p style="text-align: center;"><a href="/file/emberwings/EmberWings-2024-02.html"><strong><span style="font-size:22px;"><big>Read online</big></span></strong></a></p>
-
-			<p style="text-align: center;"><a href="/file/emberwings/EmberWings-2024-02.pdf" target="_blank">Download PDF</a></p>
-			</td>
-		</tr>
-		<tr>
-			<td style="width: 247px;"><img alt="EmberWings 2024/1 Cover" src="/img/emberwings/ew-thumb-2024-01.jpg" style="border-width: 0px; border-style: solid; width: 247px; height: 320px;" /></td>
-			<td>
-			<p class="first" style="text-align: center;">This issue was published on March 22, 2024, has 58 pages, and is available to <strong>all</strong> readers.</p>
-
-			<p style="text-align: center;"><a href="/file/emberwings/EmberWings-2024-01.html"><strong><span style="font-size:22px;"><big>Read online</big></span></strong></a></p>
-
-			<p style="text-align: center;"><a href="/file/emberwings/EmberWings-2024-01.pdf" target="_blank">Download PDF</a></p>
-
-			<p>&nbsp;</p>
-			</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
+<h2 class="ewl-sec">All issues</h2>
+<div class="ewl-grid">
+<article class="ewl-card ewl-latest">
+  <a class="ewl-cover" href="/file/emberwings/EmberWings-2026-02.html"><img src="/img/emberwings/ew-thumb-2026-02.jpg" alt="EmberWings 2026/2 cover" loading="lazy" width="247" height="320"></a>
+  <div class="ewl-body">
+    <span class="ewl-tag">Latest free issue</span>
+    <h3><a href="/file/emberwings/EmberWings-2026-02.html">EmberWings 2026/2</a></h3>
+    <p class="ewl-meta">June 30, 2026 &middot; 74 pages</p>
+    <p class="ewl-actions"><a class="ewl-btn" href="/file/emberwings/EmberWings-2026-02.html">Read online</a> <a class="ewl-pdf" href="/file/emberwings/EmberWings-2026-02.pdf" target="_blank">PDF</a></p>
+    <details open><summary>In this issue</summary><ul><li><a href="/file/emberwings/EmberWings-2026-02.html#observability-without-illusions">Observability Without Illusions</a></li><li><a href="/file/emberwings/EmberWings-2026-02.html#interview-with-dalton-calford">Interview with Dalton Calford</a></li><li><a href="/file/emberwings/EmberWings-2026-02.html#development-update-2026-q2">Development update: 2026/Q2</a></li><li><a href="/file/emberwings/EmberWings-2026-02.html#toolbox-razorsql">Toolbox: RazorSQL</a></li><li><a href="/file/emberwings/EmberWings-2026-02.html#answers-to-your-questions">Answers to your questions</a></li><li><a href="/file/emberwings/EmberWings-2026-02.html#planet-firebird">Planet Firebird</a></li><li><a href="/file/emberwings/EmberWings-2026-02.html#when-fast-becomes-fragile">When Fast Becomes Fragile</a></li><li><a href="/file/emberwings/EmberWings-2026-02.html#and-now-for-something-completely-different">...And now for something completely different</a></li></ul></details>
+  </div>
+</article>
+<article class="ewl-card">
+  <a class="ewl-cover" href="/file/emberwings/EmberWings-2026-01.html"><img src="/img/emberwings/ew-thumb-2026-01.jpg" alt="EmberWings 2026/1 cover" loading="lazy" width="247" height="320"></a>
+  <div class="ewl-body">
+    <h3><a href="/file/emberwings/EmberWings-2026-01.html">EmberWings 2026/1</a></h3>
+    <p class="ewl-meta">March 30, 2026 &middot; 66 pages</p>
+    <p class="ewl-actions"><a class="ewl-btn" href="/file/emberwings/EmberWings-2026-01.html">Read online</a> <a class="ewl-pdf" href="/file/emberwings/EmberWings-2026-01.pdf" target="_blank">PDF</a></p>
+    <details><summary>In this issue</summary><ul><li><a href="/file/emberwings/EmberWings-2026-01.html#the-importance-of-holistic-thinking">The Importance of Holistic Thinking</a></li><li><a href="/file/emberwings/EmberWings-2026-01.html#interview-with-carlos-h-cantu">Interview with Carlos H. Cantu</a></li><li><a href="/file/emberwings/EmberWings-2026-01.html#development-update-2026-q1">Development update: 2026/Q1</a></li><li><a href="/file/emberwings/EmberWings-2026-01.html#toolbox-sqlserverbooster">Toolbox: SQLServerBooster</a></li><li><a href="/file/emberwings/EmberWings-2026-01.html#answers-to-your-questions">Answers to your questions</a></li><li><a href="/file/emberwings/EmberWings-2026-01.html#planet-firebird">Planet Firebird</a></li><li><a href="/file/emberwings/EmberWings-2026-01.html#firebird-database-cve-vulnerabilities">Firebird Database CVE Vulnerabilities</a></li><li><a href="/file/emberwings/EmberWings-2026-01.html#and-now-for-something-completely-different">...And now for something completely different</a></li></ul></details>
+  </div>
+</article>
+<article class="ewl-card">
+  <a class="ewl-cover" href="/file/emberwings/EmberWings-2025-04.html"><img src="/img/emberwings/ew-thumb-2025-04.jpg" alt="EmberWings 2025/4 cover" loading="lazy" width="247" height="320"></a>
+  <div class="ewl-body">
+    <h3><a href="/file/emberwings/EmberWings-2025-04.html">EmberWings 2025/4</a></h3>
+    <p class="ewl-meta">December 17, 2025 &middot; 90 pages</p>
+    <p class="ewl-actions"><a class="ewl-btn" href="/file/emberwings/EmberWings-2025-04.html">Read online</a> <a class="ewl-pdf" href="/file/emberwings/EmberWings-2025-04.pdf" target="_blank">PDF</a></p>
+    <details><summary>In this issue</summary><ul><li><a href="/file/emberwings/EmberWings-2025-04.html#25-years-of-firebird">25 Years of Firebird</a></li><li><a href="/file/emberwings/EmberWings-2025-04.html#interview-with-dmitry-yemanov">Interview with Dmitry Yemanov</a></li><li><a href="/file/emberwings/EmberWings-2025-04.html#development-update-2025-q4">Development update: 2025/Q4</a></li><li><a href="/file/emberwings/EmberWings-2025-04.html#toolbox-libreoffice">Toolbox: LibreOffice</a></li><li><a href="/file/emberwings/EmberWings-2025-04.html#answers-to-your-questions">Answers to your questions</a></li><li><a href="/file/emberwings/EmberWings-2025-04.html#planet-firebird">Planet Firebird</a></li><li><a href="/file/emberwings/EmberWings-2025-04.html#and-now-for-something-completely-different">...And now for something completely different</a></li></ul></details>
+  </div>
+</article>
+<article class="ewl-card">
+  <a class="ewl-cover" href="/file/emberwings/EmberWings-2025-03.html"><img src="/img/emberwings/ew-thumb-2025-03.jpg" alt="EmberWings 2025/3 cover" loading="lazy" width="247" height="320"></a>
+  <div class="ewl-body">
+    <h3><a href="/file/emberwings/EmberWings-2025-03.html">EmberWings 2025/3</a></h3>
+    <p class="ewl-meta">September 29, 2025 &middot; 62 pages</p>
+    <p class="ewl-actions"><a class="ewl-btn" href="/file/emberwings/EmberWings-2025-03.html">Read online</a> <a class="ewl-pdf" href="/file/emberwings/EmberWings-2025-03.pdf" target="_blank">PDF</a></p>
+    <details><summary>In this issue</summary><ul><li><a href="/file/emberwings/EmberWings-2025-03.html#the-little-shop-of-horrors-firebird-edition">The Little Shop of Horrors (Firebird Edition)</a></li><li><a href="/file/emberwings/EmberWings-2025-03.html#interview-with-fabio-augusto-dal-castel">Interview with Fabio Augusto Dal Castel</a></li><li><a href="/file/emberwings/EmberWings-2025-03.html#development-update-2025-q3">Development update: 2025/Q3</a></li><li><a href="/file/emberwings/EmberWings-2025-03.html#toolbox-flyspeed-sql-query">Toolbox: FlySpeed SQL Query</a></li><li><a href="/file/emberwings/EmberWings-2025-03.html#answers-to-your-questions">Answers to your questions</a></li><li><a href="/file/emberwings/EmberWings-2025-03.html#planet-firebird">Planet Firebird</a></li><li><a href="/file/emberwings/EmberWings-2025-03.html#the-power-of-embedded-firebird">The Power of embedded Firebird</a></li><li><a href="/file/emberwings/EmberWings-2025-03.html#and-now-for-something-completely-different">...And now for something completely different</a></li></ul></details>
+  </div>
+</article>
+<article class="ewl-card">
+  <a class="ewl-cover" href="/file/emberwings/EmberWings-2025-02.html"><img src="/img/emberwings/ew-thumb-2025-02.jpg" alt="EmberWings 2025/2 cover" loading="lazy" width="247" height="320"></a>
+  <div class="ewl-body">
+    <h3><a href="/file/emberwings/EmberWings-2025-02.html">EmberWings 2025/2</a></h3>
+    <p class="ewl-meta">June 20, 2025 &middot; 76 pages</p>
+    <p class="ewl-actions"><a class="ewl-btn" href="/file/emberwings/EmberWings-2025-02.html">Read online</a> <a class="ewl-pdf" href="/file/emberwings/EmberWings-2025-02.pdf" target="_blank">PDF</a></p>
+    <details><summary>In this issue</summary><ul><li><a href="/file/emberwings/EmberWings-2025-02.html#the-rise-of-the-phoenix">The Rise of the Phoenix</a></li><li><a href="/file/emberwings/EmberWings-2025-02.html#interview-with-alex-peshkov">Interview with Alex Peshkov</a></li><li><a href="/file/emberwings/EmberWings-2025-02.html#development-update-2025-q2">Development update: 2025/Q2</a></li><li><a href="/file/emberwings/EmberWings-2025-02.html#toolbox-firebird-in-vs-code">Toolbox: Firebird in VS Code</a></li><li><a href="/file/emberwings/EmberWings-2025-02.html#answers-to-your-questions">Answers to your questions</a></li><li><a href="/file/emberwings/EmberWings-2025-02.html#planet-firebird">Planet Firebird</a></li><li><a href="/file/emberwings/EmberWings-2025-02.html#introduction-to-saturnin">Introduction to Saturnin</a></li><li><a href="/file/emberwings/EmberWings-2025-02.html#and-now-for-something-completely-different">...And now for something completely different</a></li></ul></details>
+  </div>
+</article>
+<article class="ewl-card">
+  <a class="ewl-cover" href="/file/emberwings/EmberWings-2025-01.html"><img src="/img/emberwings/ew-thumb-2025-01.jpg" alt="EmberWings 2025/1 cover" loading="lazy" width="247" height="320"></a>
+  <div class="ewl-body">
+    <h3><a href="/file/emberwings/EmberWings-2025-01.html">EmberWings 2025/1</a></h3>
+    <p class="ewl-meta">March 30, 2025 &middot; 66 pages</p>
+    <p class="ewl-actions"><a class="ewl-btn" href="/file/emberwings/EmberWings-2025-01.html">Read online</a> <a class="ewl-pdf" href="/file/emberwings/EmberWings-2025-01.pdf" target="_blank">PDF</a></p>
+    <details><summary>In this issue</summary><ul><li><a href="/file/emberwings/EmberWings-2025-01.html#why-are-some-firebird-apps-cursed">Why are some Firebird apps cursed?</a></li><li><a href="/file/emberwings/EmberWings-2025-01.html#interview-with-jim-starkey">Interview with Jim Starkey</a></li><li><a href="/file/emberwings/EmberWings-2025-01.html#development-update-2025-q1">Development update: 2025/Q1</a></li><li><a href="/file/emberwings/EmberWings-2025-01.html#toolbox-database-workbench-lite">Toolbox: DBWorkbench Lite</a></li><li><a href="/file/emberwings/EmberWings-2025-01.html#answers-to-your-questions">Answers to your questions</a></li><li><a href="/file/emberwings/EmberWings-2025-01.html#planet-firebird">Planet Firebird</a></li><li><a href="/file/emberwings/EmberWings-2025-01.html#the-firebird-butler-project">The Firebird Butler Project</a></li><li><a href="/file/emberwings/EmberWings-2025-01.html#and-now-for-something-completely-different">...And now for something completely different</a></li></ul></details>
+  </div>
+</article>
+<article class="ewl-card">
+  <a class="ewl-cover" href="/file/emberwings/EmberWings-2024-04.html"><img src="/img/emberwings/ew-thumb-2024-04.jpg" alt="EmberWings 2024/4 cover" loading="lazy" width="247" height="320"></a>
+  <div class="ewl-body">
+    <h3><a href="/file/emberwings/EmberWings-2024-04.html">EmberWings 2024/4</a></h3>
+    <p class="ewl-meta">December 18, 2024 &middot; 88 pages</p>
+    <p class="ewl-actions"><a class="ewl-btn" href="/file/emberwings/EmberWings-2024-04.html">Read online</a> <a class="ewl-pdf" href="/file/emberwings/EmberWings-2024-04.pdf" target="_blank">PDF</a></p>
+    <details><summary>In this issue</summary><ul><li><a href="/file/emberwings/EmberWings-2024-04.html#a-new-chapter-for-emberwings">A New Chapter for EmberWings</a></li><li><a href="/file/emberwings/EmberWings-2024-04.html#firebird-info-calls">Firebird Info Calls</a></li><li><a href="/file/emberwings/EmberWings-2024-04.html#interview-with-adriano-dos-santos-fernandes">Interview with Adriano dos Santos Fernandes</a></li><li><a href="/file/emberwings/EmberWings-2024-04.html#development-update-2024-q4">Development update: 2024/Q4</a></li><li><a href="/file/emberwings/EmberWings-2024-04.html#toolbox-ibquery">Toolbox: IBQuery</a></li><li><a href="/file/emberwings/EmberWings-2024-04.html#answers-to-your-questions">Answers to your questions</a></li><li><a href="/file/emberwings/EmberWings-2024-04.html#planet-firebird">Planet Firebird</a></li><li><a href="/file/emberwings/EmberWings-2024-04.html#notes-on-the-effect-of-using-alter-index">Notes on the effect of using ALTER INDEX</a></li><li><a href="/file/emberwings/EmberWings-2024-04.html#and-now-for-something-completely-different">..And now for something completely different</a></li></ul></details>
+  </div>
+</article>
+<article class="ewl-card">
+  <a class="ewl-cover" href="/file/emberwings/EmberWings-2024-03.html"><img src="/img/emberwings/ew-thumb-2024-03.jpg" alt="EmberWings 2024/3 cover" loading="lazy" width="247" height="320"></a>
+  <div class="ewl-body">
+    <h3><a href="/file/emberwings/EmberWings-2024-03.html">EmberWings 2024/3</a></h3>
+    <p class="ewl-meta">September 30, 2024 &middot; 60 pages</p>
+    <p class="ewl-actions"><a class="ewl-btn" href="/file/emberwings/EmberWings-2024-03.html">Read online</a> <a class="ewl-pdf" href="/file/emberwings/EmberWings-2024-03.pdf" target="_blank">PDF</a></p>
+    <details><summary>In this issue</summary><ul><li><a href="/file/emberwings/EmberWings-2024-03.html#emberwings-under-firebird-s-wing">EmberWings Under Firebird's Wing</a></li><li><a href="/file/emberwings/EmberWings-2024-03.html#challenges-with-primary-keys">Challenges with Primary Keys</a></li><li><a href="/file/emberwings/EmberWings-2024-03.html#interview-with-pavel-zotov">Interview with Pavel Zotov</a></li><li><a href="/file/emberwings/EmberWings-2024-03.html#development-update-2024-q3">Development update: 2024/Q3</a></li><li><a href="/file/emberwings/EmberWings-2024-03.html#toolbox-red-expert">Toolbox: Red Expert</a></li><li><a href="/file/emberwings/EmberWings-2024-03.html#answers-to-your-questions">Answers to your questions</a></li><li><a href="/file/emberwings/EmberWings-2024-03.html#automatic-test-creation">Automatic Test Creation</a></li><li><a href="/file/emberwings/EmberWings-2024-03.html#and-now-for-something-completely-different">..And now for something completely different</a></li></ul></details>
+  </div>
+</article>
+<article class="ewl-card">
+  <a class="ewl-cover" href="/file/emberwings/EmberWings-2024-02.html"><img src="/img/emberwings/ew-thumb-2024-02.jpg" alt="EmberWings 2024/2 cover" loading="lazy" width="247" height="320"></a>
+  <div class="ewl-body">
+    <h3><a href="/file/emberwings/EmberWings-2024-02.html">EmberWings 2024/2</a></h3>
+    <p class="ewl-meta">June 21, 2024 &middot; 70 pages</p>
+    <p class="ewl-actions"><a class="ewl-btn" href="/file/emberwings/EmberWings-2024-02.html">Read online</a> <a class="ewl-pdf" href="/file/emberwings/EmberWings-2024-02.pdf" target="_blank">PDF</a></p>
+    <details><summary>In this issue</summary><ul><li><a href="/file/emberwings/EmberWings-2024-02.html#your-voice-our-vision-the-future-of-emberwings-mag">Your Voice, Our Vision: The Future of EmberWings Magazine</a></li><li><a href="/file/emberwings/EmberWings-2024-02.html#using-firebird-qa-tools">Using Firebird QA tools</a></li><li><a href="/file/emberwings/EmberWings-2024-02.html#interview-with-hajime-nakagami">Interview with Hajime Nakagami</a></li><li><a href="/file/emberwings/EmberWings-2024-02.html#development-update-2024-q2">Development update: 2024/Q2</a></li><li><a href="/file/emberwings/EmberWings-2024-02.html#toolbox-dbeaver-ce">Toolbox: DBeaver CE</a></li><li><a href="/file/emberwings/EmberWings-2024-02.html#answers-to-your-questions">Answers to your questions</a></li><li><a href="/file/emberwings/EmberWings-2024-02.html#optimization-of-the-database-structure">Optimization of the database structure</a></li><li><a href="/file/emberwings/EmberWings-2024-02.html#and-now-for-something-completely-different">..And now for something completely different</a></li></ul></details>
+  </div>
+</article>
+<article class="ewl-card">
+  <a class="ewl-cover" href="/file/emberwings/EmberWings-2024-01.html"><img src="/img/emberwings/ew-thumb-2024-01.jpg" alt="EmberWings 2024/1 cover" loading="lazy" width="247" height="320"></a>
+  <div class="ewl-body">
+    <h3><a href="/file/emberwings/EmberWings-2024-01.html">EmberWings 2024/1</a></h3>
+    <p class="ewl-meta">March 22, 2024 &middot; 58 pages</p>
+    <p class="ewl-actions"><a class="ewl-btn" href="/file/emberwings/EmberWings-2024-01.html">Read online</a> <a class="ewl-pdf" href="/file/emberwings/EmberWings-2024-01.pdf" target="_blank">PDF</a></p>
+    <details><summary>In this issue</summary><ul><li><a href="/file/emberwings/EmberWings-2024-01.html#setting-the-blaze-introducing-emberwings-magazine">Setting the Blaze: Introducing EmberWings Magazine</a></li><li><a href="/file/emberwings/EmberWings-2024-01.html#updating-a-database-server-the-basics">Updating a Database Server: The Basics</a></li><li><a href="/file/emberwings/EmberWings-2024-01.html#interview-with-ji-in-ura">Interview with Jiří Činčura</a></li><li><a href="/file/emberwings/EmberWings-2024-01.html#development-update-2024-q1">Development update: 2024/Q1</a></li><li><a href="/file/emberwings/EmberWings-2024-01.html#toolbox-firebird-editor-pro">Toolbox: Firebird Editor Pro</a></li><li><a href="/file/emberwings/EmberWings-2024-01.html#answers-to-your-questions">Answers to your questions</a></li><li><a href="/file/emberwings/EmberWings-2024-01.html#using-tools-written-in-python">Using tools written in Python</a></li><li><a href="/file/emberwings/EmberWings-2024-01.html#and-now-for-something-completely-different">..And now for something completely different</a></li></ul></details>
+  </div>
+</article>
+</div>
+</div>
 
                 </div>
             </div>
