@@ -186,3 +186,15 @@ Sponsor logos: `site/static/file/crowdfunding/img/` (copies of `private/img/comm
    then open http://localhost:1313/foundation/features/.
 
 Shared logic (cart, pledges, totals) is in `site/static/file/crowdfunding/cf-core.js`.
+
+## 5. HQbird page (/hqbird)
+
+The page is made from the HQbird overview (Asciidoctor HTML from the dochqbird project):
+
+```
+python tools/hqbird_page.py E:/Projects_2026/dochqbird/build/website/hqbird2027-overview.html
+```
+
+It writes `converter/manual/hqbird.html` and `site/content/pages/hqbird.html`, and saves the
+embedded pictures to `site/static/file/hqbird/2027/`.
+The user guide PDF (`/img/shop/hqbird/hqbird-2027-userguide.pdf`) is not in git: put it on the origin server.
