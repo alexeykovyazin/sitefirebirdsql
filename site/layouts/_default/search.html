@@ -1,0 +1,29 @@
+{{ define "main" }}
+<section class="post-layout-1-area post-layout-3-area pb-80">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="about-author-content">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/en/start/">Home</a></li>
+                            <li class="breadcrumb-item active">Search</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <h1 class="site-search-title">Search</h1>
+                <div class="site-search-box">
+                    <label for="q" class="sr-only">Site search</label>
+                    <input id="q" type="search" placeholder="What are you looking for?" autocomplete="off"
+                           data-search-index="/index.json" data-empty="No results found."
+                           data-error="Could not load the search index.">
+                </div>
+                <div id="search-results" class="site-search-results" aria-live="polite"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="/site-search.js" defer></script>
+{{ end }}

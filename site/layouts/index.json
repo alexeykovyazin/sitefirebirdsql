@@ -1,0 +1,18 @@
+{{- /* Search index for /en/search/ (static/site-search.js, Fuse.js). Same approach as ib-aid.com. */ -}}
+{{- $generic := "Firebird SQL: The true open-source relational database" -}}
+{{- $items := slice -}}
+{{- range where site.Pages "Kind" "in" (slice "home" "page" "section") -}}
+  {{- if or .Params.search_exclude (not .RelPermalink) -}}{{- continue -}}{{- end -}}
+  {{- $html := .Content -}}
+  {{- $html = replaceRE `(?is)<(script|style)\b.*?</(script|style)>` " " $html -}}
+  {{- $html = replaceRE `(?is)<nav aria-label="breadcrumb">.*?</nav>` " " $html -}}
+  {{- /* Drop share links, prev/next news and the sidebar: they are the same on every page. */ -}}
+  {{- $html = replaceRE `(?s)<div class="(post-tags|all-post-sidebar)">.*$` " " $html -}}
+  {{- $text := $html | plainify | htmlUnescape -}}
+  {{- $text = replaceRE `\s+` " " $text | strings.TrimSpace -}}
+  {{- $title := strings.TrimPrefix "Firebird: " .Title -}}
+  {{- $summary := .Params.summary | default .Params.description -}}
+  {{- if or (not $summary) (eq $summary $generic) -}}{{- $summary = truncate 180 "" $text | htmlUnescape -}}{{- end -}}
+  {{- $items = $items | append (dict "title" $title "url" .RelPermalink "summary" $summary "content" (truncate 1500 "" $text | htmlUnescape)) -}}
+{{- end -}}
+{{- $items | jsonify -}}

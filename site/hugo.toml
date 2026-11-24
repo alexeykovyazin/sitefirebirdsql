@@ -13,7 +13,7 @@ timeout = "300s"
   changeFreq = "weekly"
 
 [outputs]
-  home = ["HTML"]
+  home = ["HTML", "JSON"]
   section = ["HTML"]
   page = ["HTML"]
 
