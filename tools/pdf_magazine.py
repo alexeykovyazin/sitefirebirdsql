@@ -5,14 +5,15 @@ The page keeps the PDF font sizes (1 pt = 4/3 px, so text looks like the PDF at 
 Images are rendered from the PDF into IMG_DIR. Needs PyMuPDF (pip install pymupdf).
 
 Usage:
-  python tools/pdf_magazine.py PDF URL OUT.html IMG_DIR IMG_URL [--full 1,4] [--toc 4]
+  python tools/pdf_magazine.py PDF [PDF ...]
 Example:
-  python tools/pdf_magazine.py EmberWings-2025-02.pdf /file/emberwings/EmberWings-2025-02.html \
-      site/content/extra/emberwings-2025-02.html site/static/file/emberwings/EmberWings-2025-02 \
-      /file/emberwings/EmberWings-2025-02 --full 1,4 --toc 4
+  python tools/pdf_magazine.py EmberWings-2025-02.pdf
+writes site/content/extra/emberwings-2025-02.html (URL /file/emberwings/EmberWings-2025-02.html)
+and its pictures to site/static/file/emberwings/EmberWings-2025-02/.
 
---full: pages rendered as one picture (cover, contents). --toc: contents page; its internal
-links give the article start pages and the menu names.
+--full: pages rendered as one picture (default auto: cover, contents, last page, adverts).
+--toc: contents page (default: the page with most internal links); its links give the article
+start pages and the menu names.
 """
 import argparse
 import html
@@ -336,10 +337,40 @@ def element_html(e, anchors):
     return '<%s style="%s">%s</%s>' % (tag, style, e["html"], tag)
 
 
+def auto_full(doc, toc):
+    """Pages shown as one picture: cover, contents, last page, adverts and greetings.
+    These have light text on a dark background, or one picture over the whole page."""
+    full = {1, len(doc)} | ({toc} if toc else set())
+    for i, p in enumerate(doc, 1):
+        area = p.rect.get_area()
+        d = p.get_text("dict")["blocks"]
+        img = sum((fitz.Rect(b["bbox"]) & p.rect).get_area() for b in d if b["type"] == 1)
+        light_text = sum(len(s["text"].strip()) for b in d if b["type"] == 0
+                         for l in b["lines"] for s in l["spans"] if s["color"] > 0xe0e0e0)
+        if img > 0.95 * area or light_text > 60:
+            full.add(i)
+    return full
+
+
 def build(args):
     doc = fitz.open(args.pdf)
+    name = os.path.splitext(os.path.basename(args.pdf))[0]          # EmberWings-2025-02
+    m = re.search(r"(\d{4})-0?(\d+)$", name)
+    args.url = args.url or "/file/emberwings/%s.html" % name
+    args.out = args.out or "site/content/extra/%s.html" % name.lower()
+    args.img_url = args.img_url or "/file/emberwings/%s" % name
+    args.img_dir = args.img_dir or "site/static" + args.img_url
+    args.title = args.title or ("EmberWings %s/%s" % m.groups() if m else name)
+    args.description = args.description or "%s: the quarterly magazine about Firebird" % args.title
+    if not args.toc:
+        links = [len([l for l in p.get_links() if l.get("page") is not None and not l.get("uri")]) for p in doc]
+        args.toc = links.index(max(links)) + 1 if max(links) >= 5 else 0
+    full = auto_full(doc, args.toc) if args.full == "auto" else {int(x) for x in args.full.split(",") if x}
+    print("%s: contents page %s, pages as pictures %s" % (name, args.toc, sorted(full)))
+    if os.path.isdir(args.img_dir):
+        for f in os.listdir(args.img_dir):
+            os.remove(os.path.join(args.img_dir, f))
     os.makedirs(args.img_dir, exist_ok=True)
-    full = {int(x) for x in args.full.split(",") if x}
     toc = {}
     if args.toc:
         tp = doc[args.toc - 1]
@@ -350,7 +381,7 @@ def build(args):
             r = fitz.Rect(l["from"])
             label = " ".join(w[4] for w in words if fitz.Rect(w[:4]).intersects(r) and
                              abs((w[1] + w[3]) / 2 - (r.y0 + r.y1) / 2) < 5)
-            toc[l["page"]] = clean(label).strip()
+            toc[l["page"]] = (toc.get(l["page"], "") + " " + clean(label)).strip()
     els, counter = [], [0]
     for i, p in enumerate(doc):
         pno = i + 1
@@ -367,6 +398,24 @@ def build(args):
                             links=links))
             continue
         pe = page_elements(Page(p), pno, args.img_dir, args.img_url, counter)
+        # A big title in two text blocks is one title.
+        k = 0
+        while k < len(pe) - 1:
+            a, b = pe[k], pe[k + 1]
+            if a["kind"] == b["kind"] == "h1" and b["bbox"][1] - a["bbox"][3] < a["size"]:
+                a["text"] += " " + b["text"]
+                a["bbox"] = (a["bbox"][0], a["bbox"][1], b["bbox"][2], b["bbox"][3])
+                del pe[k + 1]
+            else:
+                k += 1
+        # With a contents page, only the articles it lists are top level; other big titles are sections.
+        if toc:
+            first = True
+            for e in pe:
+                if e["kind"] == "h1":
+                    if i not in toc or not first:
+                        e["kind"] = "h2"
+                    first = False
         if i in toc and not any(e["kind"] == "h1" for e in pe):
             pe.insert(0, dict(kind="h1", text=esc(toc[i]), bbox=(LEFT, 0, RIGHT, 0), x0=LEFT,
                               pno=pno, box=(), size=24))
@@ -409,7 +458,10 @@ def build(args):
             body.append('<div class="%s" style="%s">' % (cls, st))
             stack.append(b)
         if e["kind"] == "li" and not in_list:
-            body.append('<ul style="%s">' % ("margin-left:%.0fpx" % indent(e) if indent(e) > 30 else ""))
+            st = "margin-left:%.0fpx;" % indent(e) if indent(e) > 30 else ""
+            if re.match(r"(<[^>]+>)*\s*(\d+|[a-z])[.)]\s", e["html"]):
+                st += "list-style:none;"   # the text already has the number
+            body.append('<ul style="%s">' % st)
             in_list = True
         if e.get("full"):
             body.append('<div class="ew-page"><img src="%s" alt="Page %d" loading="lazy">' % (e["src"], e["pno"]))
@@ -567,13 +619,15 @@ TEMPLATE = """%(fm)s
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("pdf")
-    ap.add_argument("url")
-    ap.add_argument("out")
-    ap.add_argument("img_dir")
-    ap.add_argument("img_url")
-    ap.add_argument("--full", default="1")
-    ap.add_argument("--toc", type=int, default=0)
-    ap.add_argument("--title", default="EmberWings magazine")
-    ap.add_argument("--description", default="EmberWings, the quarterly magazine about Firebird")
-    build(ap.parse_args())
+    ap.add_argument("pdf", nargs="+")
+    ap.add_argument("--url", help="default /file/emberwings/<PDF name>.html")
+    ap.add_argument("--out", help="default site/content/extra/<pdf name>.html")
+    ap.add_argument("--img-dir", help="default site/static/file/emberwings/<PDF name>")
+    ap.add_argument("--img-url", help="default /file/emberwings/<PDF name>")
+    ap.add_argument("--full", default="auto", help="page numbers, or auto")
+    ap.add_argument("--toc", type=int, default=0, help="contents page; default: the page with most links")
+    ap.add_argument("--title", help="default EmberWings YYYY/N")
+    ap.add_argument("--description")
+    a = ap.parse_args()
+    for pdf in a.pdf:
+        build(argparse.Namespace(**dict(vars(a), pdf=pdf)))
