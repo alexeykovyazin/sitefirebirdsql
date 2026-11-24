@@ -1,0 +1,49 @@
+{
+ "_comment": "Extra features for campaign 1 (release 5.5), merged by tools/crowdfunding_data.py on top of features.ods. A feature with the same first issue number replaces the row from features.ods.",
+ "defaults": {"status": "Built for Firebird 6", "price": 1000, "roadmap6": true},
+ "groups": [
+  {"name": "Monitoring", "features": [
+   {"issue": "#9225", "name": "Lower profiler overhead", "what": "The profiler slows down the measured code less"},
+   {"issue": "#9220", "name": "Correct PSQL line statistics in the profiler", "what": "Fix of wrong or missing PSQL line statistics"},
+   {"issue": "#8639", "name": "Remote profiler: fix of a concurrency problem", "what": "Reliable communication with the remote profiler"}
+  ]},
+  {"name": "SQL/PSQL", "features": [
+   {"issue": "#7617", "name": "ANY_VALUE aggregate function (SQL:2023)"},
+   {"issue": "#7590", "name": "DECLARE VARIABLE with any value expression"},
+   {"issue": "#7697, #7675", "name": "EXPLAIN statement and RDB$SQL package", "what": "Show the plan of a query from SQL"},
+   {"issue": "#8498", "name": "Range-based FOR statement", "what": "FOR loop over a range of integer values in PSQL"},
+   {"issue": "#8870, #8869", "name": "USING statement", "what": "Run a query with parameters declared in the statement itself"},
+   {"issue": "#9315, #9204", "name": "Named parameters", "what": "Use :name parameters in queries", "status": "Awaiting review"},
+   {"issue": "#7980", "name": "GEN_UUID can generate v7 UUID", "what": "Time-ordered UUIDs, good for primary keys"}
+  ]},
+  {"name": "DDL", "features": [
+   {"issue": "#4203", "name": "DROP … IF EXISTS"},
+   {"issue": "#8062", "name": "CREATE … IF NOT EXISTS"},
+   {"issue": "#8722", "name": "DECLARE FILTER … IF NOT EXISTS"},
+   {"issue": "#1095", "name": "Local temporary tables", "what": "Temporary tables that exist only in one connection"},
+   {"issue": "#1181", "name": "CREATE TABLE … AS SELECT", "what": "Create and fill a table from a query"}
+  ]},
+  {"name": "Procedures and functions", "features": [
+   {"issue": "#7586, #7557", "name": "Named arguments", "what": "Named arguments for function calls, EXECUTE PROCEDURE and selectable procedures"},
+   {"issue": "#7566, #7557", "name": "DEFAULT keyword in argument list", "what": "Use the default value of a parameter in a call"},
+   {"issue": "#7587, #7557", "name": "CALL statement", "what": "Call a procedure or function with one statement"},
+   {"issue": "#1745", "name": "User-defined aggregate functions", "what": "Write your own aggregate functions"}
+  ]},
+  {"name": "Window functions", "features": [
+   {"issue": "#2058", "name": "Frame EXCLUDE clause", "what": "Exclude the current row, group or ties from the window frame"},
+   {"issue": "#9047", "name": "GROUPS unit for window frames", "what": "Frame bounds counted in peer groups"},
+   {"issue": "#9192", "name": "Faster window functions with ORDER BY", "what": "Up to 1.8 times faster: the frame is not evaluated for functions that do not use it"},
+   {"issue": "#9271, #9226", "name": "Optimized execution of window functions", "status": "Awaiting review"}
+  ]},
+  {"name": "Performance", "features": [
+   {"issue": "#7989", "name": "Faster external (UDR) functions"},
+   {"issue": "#9191", "name": "Faster conversion of TIME WITH TIME ZONE to TIME", "what": "For example, CURRENT_TIME assigned to a TIME column: up to 4 times faster"}
+  ]},
+  {"name": "Tools and connectivity", "features": [
+   {"issue": "#9033", "name": "Unix domain sockets", "what": "Fast local connections on Linux"},
+   {"issue": "#9154", "name": "gbak FAST_PATH mode", "what": "Faster backup and restore"},
+   {"issue": "#8751, #8750", "name": "Restore of Firebird 6 backups in Firebird 5.5", "what": "Downgrade compatibility", "status": "Awaiting review"},
+   {"issue": "#7868", "name": "SET AUTOTERM in ISQL", "what": "No need to change the terminator for PSQL code"}
+  ]}
+ ]
+}

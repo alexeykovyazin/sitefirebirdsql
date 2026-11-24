@@ -8,8 +8,12 @@ Sheet layout (Sheet1):
     "Adaptation and testing ..."         -> campaign 1 (release 5.5), one feature per row
     "Extra features on top of Firebird 6" -> campaign 2 (Firebird 6+), group rows + feature rows
     "ROADMAP"                             -> Firebird 6 roadmap, paid by current sponsors
+
+tools/crowdfunding_fb55_extra.json adds features to campaign 1 (new groups are created).
+A feature with the same first issue number as a row in features.ods replaces that row.
 """
 import json
+import os
 import re
 import sys
 import zipfile
@@ -20,6 +24,7 @@ NS_T = "{urn:oasis:names:tc:opendocument:xmlns:table:1.0}"
 NS_X = "{urn:oasis:names:tc:opendocument:xmlns:text:1.0}"
 NS_O = "{urn:oasis:names:tc:opendocument:xmlns:office:1.0}"
 SQUARE_USD = 250
+EXTRA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "crowdfunding_fb55_extra.json")
 
 
 def read_rows(path):
@@ -74,6 +79,45 @@ def feature(row, issue=""):
     }
 
 
+def first_issue(s):
+    m = re.search(r"#\d+", s or "")
+    return m.group(0) if m else ""
+
+
+def merge_extra(campaign, path):
+    """Add or replace features from crowdfunding_fb55_extra.json (key: first issue number)."""
+    if not os.path.exists(path):
+        return
+    with open(path, encoding="utf-8") as f:
+        extra = json.load(f)
+    defaults = extra.get("defaults", {})
+    for xg in extra["groups"]:
+        g = next((x for x in campaign["groups"] if x["name"] == xg["name"]), None)
+        if g is None:
+            g = {"id": campaign["id"] + "-" + slug(xg["name"]), "name": xg["name"], "description": "",
+                 "groupPrice": None, "received": 0, "features": []}
+            campaign["groups"].append(g)
+        for xf in xg["features"]:
+            new = {"issue": "", "name": "", "what": "", "status": "", "target": "",
+                   "price": None, "received": 0, "roadmap6": False}
+            new.update(defaults)
+            new.update(xf)
+            key = first_issue(new["issue"])
+            old = None
+            for og in campaign["groups"]:
+                for i, of in enumerate(og["features"]):
+                    if key and first_issue(of["issue"]) == key:
+                        old = (og, i, of)
+            if old and old[0] is g:  # same group: update in place, keep received money
+                new["received"] = old[2]["received"]
+                g["features"][old[1]] = new
+                continue
+            if old:  # moved to another group
+                new["received"] = old[2]["received"]
+                del old[0]["features"][old[1]]
+            g["features"].append(new)
+
+
 def main(src, dst):
     rows = read_rows(src)
     c1 = {"id": "fb55", "title": "Release Firebird 5.5 with the features below",
@@ -122,6 +166,8 @@ def main(src, dst):
                 continue
             roadmap.append({"issue": "" if a == "n/a" else a, "name": b, "status": row[3],
                             "target": row[4], "backport55": yes(row[5]), "category": category})
+
+    merge_extra(c1, EXTRA)
 
     for c in (c1, c2):
         for g in c["groups"]:
