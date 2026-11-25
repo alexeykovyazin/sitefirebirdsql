@@ -240,7 +240,8 @@ Each stage has a **result** — the condition that closes the stage.
 2. Remove `crawl`/`convert` from CI; `site/content/` is the only source. Assets — only on the droplet + DO Spaces.
 3. Instructions for authors: news, images, preview, PR → check → deploy.
 4. Run the converter one last time, so `site/content/pages/` has all `converter/manual/` copies applied. From then on, CMS pages are edited in `site/content/pages/` directly.
-5. Remove `scraper/`, `converter/` and `raw/` from the repository (git history keeps them). Turn off the old server 1 month after R4.
+5. Move `site/content/pages/` files into topic folders (news, report, community, firebird, newsletter, devel, ...). The `url:` front matter keeps the URLs the same.
+6. Remove `scraper/`, `converter/` and `raw/` from the repository (git history keeps them). Turn off the old server 1 month after R4.
 
 ## 5. Repository structure
 
