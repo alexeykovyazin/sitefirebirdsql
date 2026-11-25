@@ -129,7 +129,18 @@ def inline(spans, page, base_size):
         buf.append(h)
     flush()
     s = "".join(out)
-    return re.sub(r"</strong><strong>|</em><em>|</code><code>", "", s)
+    s = re.sub(r"</strong><strong>|</em><em>|</code><code>", "", s)
+    return re.sub(r"</(strong|em)> <\1>", " ", s)
+
+
+def join_lines(lines):
+    """Spans of several lines, with a space where a line ends without one."""
+    out = []
+    for l in lines:
+        if out and not out[-1]["text"].endswith((" ", "-", "/")):
+            out.append(dict(out[-1], text=" ", font="x", flags=0, color=0x130101))
+        out.extend(s for s in l["spans"] if clean(s["text"]).strip())
+    return out
 
 
 def code_line(line, x0, cw):
@@ -176,7 +187,7 @@ def convert_block(b, page, pno):
         return [dict(base, box=(), kind="h1", text=esc(full.split("In This Issue")[0] or full))]
     if all(is_bold(s) for s in spans) and len(full) < 120 and len(lines) <= 2 and spans[0]["color"] in DARK:
         lvl = "h2" if size >= 15.5 and size != 16.5 else "h3"
-        return [dict(base, kind=lvl, text=inline(spans, page, size))]
+        return [dict(base, kind=lvl, text=inline(join_lines(lines), page, size))]
 
     # Split the block into paragraphs and list items.
     items, cur = [], None
@@ -540,6 +551,8 @@ CSS = """
 .ew-main h3 { font-weight: 700; margin: 16px 0 6px; line-height: 1.3; }
 .ew-main h1, .ew-main h2, .ew-main h3 { scroll-margin-top: 16px; color: #130101; }
 .ew-main h2, .ew-main h3, .ew-main p, .ew-main li { font-family: Lato, "Segoe UI", Arial, sans-serif; }
+.ew-main p, .ew-main li { font-weight: 400; }
+.ew-main strong, .ew-main b { font-weight: 700; }
 .ew-main a { color: #2b6cc4; }
 .ew-main ul { margin: 0 0 10px 22px; padding: 0; }
 .ew-main li { margin: 0 0 4px; }
