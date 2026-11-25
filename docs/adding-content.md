@@ -9,20 +9,33 @@ hugo server --config hugo.toml,hugo.local.toml
 ```
 
 ```
-python converter/convert.py
+python converter/convert.py          # transition period only
 cd site && hugo --quiet -d ../public && cd ..
 HOST=$DROPLET_HOST ./deploy/deploy.sh
 ```
 
-Where files go:
+## Where to edit
 
-| Folder | What | Converter |
+The site has two modes (see [README](../README.md#two-modes-now-and-after-the-final-conversion)):
+the **transition period** (now, the old CMS is still the source) and the time **after the final conversion**
+(git is the only source). Most files are the same in both modes:
+
+| Folder | What | In both modes |
 |---|---|---|
-| `site/content/news/*.md` | new news in Markdown | not touched |
-| `site/content/extra/*.html` | new HTML pages (not from the CMS) | not touched |
-| `converter/manual/*.html` | changed copies of CMS pages | copied over `site/content/pages/` |
-| `converter/global-replace.tsv` | text replacements in all pages | applied to every page |
-| `site/content/pages/` | pages made by the converter | **do not edit**: rewritten on each run |
+| `site/content/news/*.md` | news in Markdown | edit directly |
+| `site/content/extra/*.html` | new HTML pages (not from the CMS) | edit directly |
+| `site/layouts/` | header, menu, footer | edit directly |
+
+Only pages that came from the CMS (`site/content/pages/`) are different:
+
+| Task | Transition period (now) | After the final conversion |
+|---|---|---|
+| Change a CMS page `<file>.html` | edit `converter/manual/<file>.html` (first copy it from `site/content/pages/` if it is not there) | edit `site/content/pages/<file>.html` |
+| Change a text in all pages | add a row to `converter/global-replace.tsv` | search and replace in `site/content/pages/` |
+| Make the change active | run `python converter/convert.py` | nothing: Hugo reads the file |
+| `site/content/pages/` | **do not edit**: the converter writes it again on each run | normal content |
+
+In the examples below, "edit the CMS page `<file>.html`" means the file from this table.
 
 A standalone HTML article (own `<html>`, `<style>`, no site menu) gets the site header, menu and footer this way.
 The URL stays the same:
@@ -44,7 +57,8 @@ python tools/pdf_magazine.py EmberWings-2026-03.pdf
 ```
 
 Large files (zip, pdf, images for `/file/...` and `/img/...`) are not in git.
-Put them on the origin server into the same folder; the daily sync copies them to the droplet.
+In the transition period, put them on the origin server into the same folder; the daily sync copies them to the droplet.
+After the final conversion, put them directly on the droplet in `/srv/firebirdsql/assets/` (same folder).
 Release downloads are usually links to GitHub, so they need no upload.
 
 ## 1. Add a news item (Markdown)
@@ -106,9 +120,8 @@ The RSS feed (`/rss/en/news.xml`) comes from the origin server and does not incl
    - [Jaybird downloads](/en/jdbc-driver/)
    ```
 
-2. **Downloads page** `/en/jdbc-driver/`. Edit `converter/manual/en-jdbc-driver.html`
-   (if the file is not there, copy it from `site/content/pages/en-jdbc-driver.html` first).
-   In the "Jaybird 6.0.7" block, change the version, the GitHub link and the text:
+2. **Downloads page** `/en/jdbc-driver/`. Edit the CMS page `en-jdbc-driver.html`
+   (see [Where to edit](#where-to-edit)). In the "Jaybird 6.0.7" block, change the version, the GitHub link and the text:
 
    ```html
    <td colspan="3"><span ...>Jaybird 6.0.8</span></td>
@@ -123,7 +136,7 @@ The RSS feed (`/rss/en/news.xml`) comes from the origin server and does not incl
 3. **Documentation (optional).** The release notes in `/docs/drivers/java/6.0.x/` are on the origin server
    (`file/documentation/drivers/java/6.0.x/`). Copy the new `release_notes.html` there, or link to GitHub as in the news above.
 
-4. Run the converter, check locally, deploy.
+4. Run the converter (transition period only), check locally, deploy.
 
 ## 3. A new Firebird release (example: Firebird 5.0.5)
 
@@ -147,26 +160,38 @@ The RSS feed (`/rss/en/news.xml`) comes from the origin server and does not incl
    (for example `.../releases/download/v5.0.5/Firebird-5.0.5.xxxxx-0-windows-x64.exe`).
 
 2. **Main page** `/en/firebird-5-0/` (always the latest 5.0.x). Make the same changes in
-   `converter/manual/en-firebird-5-0.html`. The old page `/en/firebird-5-0-4/` stays as the archive.
+   the CMS page `en-firebird-5-0.html`. The old page `/en/firebird-5-0-4/` stays as the archive.
 
-3. **Other pages with the version.** Edit manual copies of `/en/downloads/` (`converter/manual/en-downloads.html`)
-   and `/en/server-packages/` (`converter/manual/en-server-packages.html`). Find the lines:
+3. **Other pages with the version.** Edit the CMS pages `en-downloads.html` (`/en/downloads/`)
+   and `en-server-packages.html` (`/en/server-packages/`). Find the lines:
 
    ```
    grep -n "5\.0\.4" site/content/pages/en-downloads.html site/content/pages/en-server-packages.html
    ```
 
-4. **"Popular" box on all pages.** It links to the latest release. Add a row to
-   `converter/global-replace.tsv` (columns are separated by a TAB):
+4. **"Popular" box on all pages.** It links to the latest release. Change this text in all pages:
 
    ```
-   old	new	note
-   href="/en/firebird-5-0-4">Firebird 5.0.4<	href="/en/firebird-5-0-5">Firebird 5.0.5<	latest release in Popular box
+   old: href="/en/firebird-5-0-4">Firebird 5.0.4<
+   new: href="/en/firebird-5-0-5">Firebird 5.0.5<
    ```
+
+   - Transition period: add a row to `converter/global-replace.tsv` (columns are separated by a TAB):
+
+     ```
+     old	new	note
+     href="/en/firebird-5-0-4">Firebird 5.0.4<	href="/en/firebird-5-0-5">Firebird 5.0.5<	latest release in Popular box
+     ```
+
+   - After the final conversion: replace the text in the files directly:
+
+     ```
+     grep -rl 'href="/en/firebird-5-0-4">Firebird 5.0.4<' site/content | xargs sed -i 's|href="/en/firebird-5-0-4">Firebird 5.0.4<|href="/en/firebird-5-0-5">Firebird 5.0.5<|g'
+     ```
 
 5. **News.** Create `site/content/news/firebird-5-0-5-released.md` as in example 1, with a link to `/en/firebird-5-0-5/`.
 
-6. Run the converter, check locally, deploy.
+6. Run the converter (transition period only), check locally, deploy.
 
 ## 4. Crowdfunding page (/foundation/features/)
 
@@ -196,6 +221,6 @@ The page is made from the content block in the dochqbird project
 python tools/hqbird_page.py E:/Projects_2026/dochqbird/website/firebirdsql-hqbird
 ```
 
-It writes `converter/manual/hqbird.html` and `site/content/pages/hqbird.html`, and copies the
+It writes `converter/manual/hqbird.html` and `site/content/pages/hqbird.html` (both modes work), and copies the
 screenshots to `site/static/img/shop/hqbird/2027/`.
 The user guide PDF (`/img/shop/hqbird/hqbird-2027-userguide.pdf`) is not in git: put it on the origin server.
