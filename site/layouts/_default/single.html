@@ -2,7 +2,7 @@
 {{- if eq .RelPermalink "/en/news/" -}}
   {{- /* Markdown news go on top of the CMS news list. */ -}}
   {{- $mark := `<div class="trending-news-item technology-item">` -}}
-  {{- $items := partial "md-news.html" (dict "fmt" "list") -}}
+  {{- $items := partial "md-news.html" (dict "fmt" "list" "cms" .Content) -}}
   {{- replace .Content $mark (print $items $mark) 1 | safeHTML -}}
 {{- else -}}
 {{ .Content }}

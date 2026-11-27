@@ -179,3 +179,5 @@ file/documentation/reference_manuals/user_manuals/html/de/docbuildhowto-de.html	
 file/documentation/release_notes/html/en/2_5/install210.html	/file/documentation/release_notes/html/install210.html	broken link in old copied docs: nearest current target
 file/documentation/release_notes/html/en/2_5/rnfb30-licence.html	/file/documentation/release_notes/html/en/2_5/rnfb25-licence.html	broken link in old copied docs: nearest current target
 file/documentation/release_notes/html/en/3_0/rnfb40-licence.html	/file/documentation/release_notes/html/en/2_5/rnfb25-licence.html	broken link in old copied docs: nearest current target
+en/news/entity-framework-core-11-provider-for-firebird-is-ready	/en/news/efcore-11-provider-released/	CMS copy of a Markdown news
+en/news/entity-framework-core-11-provider-for-firebird-is-ready/	/en/news/efcore-11-provider-released/	CMS copy of a Markdown news

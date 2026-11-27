@@ -1,6 +1,9 @@
-{{/* Markdown news, newest first. Input: dict "fmt" "list"|"home". */}}
+{{/* Markdown news, newest first. Input: dict "fmt" "list"|"home", "cms" (page content).
+     A news item that the CMS list already shows (same title) is skipped: no duplicate. */}}
 {{- $news := where (where site.RegularPages "Section" "news") "Draft" false -}}
+{{- $cms := "" -}}{{- with $.cms -}}{{- $cms = . | plainify | htmlUnescape -}}{{- end -}}
 {{- range $news.ByDate.Reverse -}}
+{{- if and $cms (strings.Contains $cms .Title) -}}{{- continue -}}{{- end -}}
 {{- $summary := .Params.summary | default (.Summary | plainify | truncate 200) -}}
 {{- if eq $.fmt "home" }}
 <div class="news-item d-flex flex-column flex-md-row mb-4 pb-4 border-bottom">

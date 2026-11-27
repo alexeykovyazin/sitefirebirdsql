@@ -49,6 +49,8 @@
 "/en/membership-application-form/" "/joinfirebird";
 "/en/membership/" "/en/firebird-foundation/";
 "/en/migrating-from-firebird-to-postgresql-what-can-go-wrong/" "/migrating-from-firebird-to-postgresql-what-can-go-wrong";
+"/en/news/entity-framework-core-11-provider-for-firebird-is-ready" "/en/news/efcore-11-provider-released/";
+"/en/news/entity-framework-core-11-provider-for-firebird-is-ready/" "/en/news/efcore-11-provider-released/";
 "/en/news/firebird-conference-2019-sessions-about-very-large-databases/roman_simakov.png" "/img/firebird%20conference/conference-2019/roman_simakov.png";
 "/en/news/fx/1/" "/en/news/";
 "/en/newsletter/15504/" "/en/newsletter/firebird-sql-project-newsletter-issue-3-15504/";
@@ -502,6 +504,7 @@
 "/pt/news/annual-general-meeting-of-firebird-foundation-march-20-2013--19188" "/en/news/annual-general-meeting-of-firebird-foundation-march-20-2013--19188";
 "/pt/news/annual-general-meeting-of-firebird-foundation-sep-16-2024" "/en/news/annual-general-meeting-of-firebird-foundation-sep-16-2024";
 "/pt/news/answers-and-discussions-on-3-challenges" "/en/news/answers-and-discussions-on-3-challenges";
+"/pt/news/anti-black-friday-this-friday-don-t-save-give" "/en/news/anti-black-friday-this-friday-don-t-save-give";
 "/pt/news/article-writing-contest-with-cash-prizes-10059" "/en/news/article-writing-contest-with-cash-prizes-10059";
 "/pt/news/beta-version-3-0-0-8-of-firebird-odbc" "/en/news/beta-version-3-0-0-8-of-firebird-odbc";
 "/pt/news/beta-version-of-jaybird-2-2-released-16949" "/en/news/beta-version-of-jaybird-2-2-released-16949";
