@@ -38,6 +38,25 @@ def meta(h, attr, key):
     return html.unescape(m.group(1)) if m else ""
 
 
+def _cf_decode(hexs):
+    key = int(hexs[:2], 16)
+    return bytes(int(hexs[i:i + 2], 16) ^ key for i in range(2, len(hexs), 2)).decode("utf-8", "replace")
+
+
+def cf_email_decode(h):
+    """Undo Cloudflare e-mail obfuscation ("[email protected]"): the CMS is behind Cloudflare since 2026-11."""
+    h = re.sub(r'<script data-cfasync="false" src="/cdn-cgi/scripts/[^"]*/email-decode\.min\.js"></script>', "", h)
+    # Plain-text e-mail.
+    h = re.sub(r'<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="([0-9a-f]+)">[^<]*</a>',
+               lambda m: html.escape(_cf_decode(m.group(1)), quote=False), h)
+    # Text of a mailto link.
+    h = re.sub(r'<span class="__cf_email__" data-cfemail="([0-9a-f]+)">[^<]*</span>',
+               lambda m: html.escape(_cf_decode(m.group(1)), quote=False), h)
+    # mailto link target.
+    return re.sub(r'href="/cdn-cgi/l/email-protection#([0-9a-f]+)"',
+                  lambda m: 'href="mailto:%s"' % html.escape(_cf_decode(m.group(1))), h)
+
+
 def relink(s):
     """Absolute links to our own hosts -> site-relative."""
     s = re.sub(r'((?:href|src|action)\s*=\s*["\'])' + SITE_HOSTS + r'(/[^"\']*)?', lambda m: m.group(1) + (m.group(2) or "/"), s, flags=re.I)
@@ -145,7 +164,7 @@ def main():
         rs.sort(key=lambda r: (-int(r["links_in"] or 0), r["url"].endswith("/"), len(r["url"])))
         canon = rs[0]
         url = canon["url"]
-        h = read(page_file(args.raw, url))
+        h = cf_email_decode(read(page_file(args.raw, url)))
         p = parse_new(h) if canon["format"] == "new" else parse_legacy(h)
         if p is None:
             conv.append((url, canon["format"], "manual", ""))
